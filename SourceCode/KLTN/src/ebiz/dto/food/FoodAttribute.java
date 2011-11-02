@@ -42,7 +42,7 @@ public class FoodAttribute implements Serializable{
 
     @PrimaryKey
     @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
-    private Long productAttributeId;
+    private Integer productAttributeId;
     
     @Persistent
     private String productAttributeName;
@@ -52,7 +52,7 @@ public class FoodAttribute implements Serializable{
      * 
      * @return the productAttributeId
      */
-    public Long getProductAttributeId() {
+    public Integer getProductAttributeId() {
         return productAttributeId;
     }
     /**
@@ -60,7 +60,7 @@ public class FoodAttribute implements Serializable{
      * 
      * @param productAttributeId the productAttributeId to set
      */
-    public void setProductAttributeId(Long productAttributeId) {
+    public void setProductAttributeId(Integer productAttributeId) {
         this.productAttributeId = productAttributeId;
     }
     /**
