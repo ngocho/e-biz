@@ -40,7 +40,7 @@ public class FoodStatus implements Serializable{
 
     @PrimaryKey
     @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
-    private Long  foodStatusId;
+    private Integer  foodStatusId;
     
     @Persistent
     private String foodStatusName;
@@ -48,14 +48,14 @@ public class FoodStatus implements Serializable{
      * Get value of foodStatusId.
      * @return the foodStatusId
      */
-    public Long getFoodStatusId() {
+    public Integer getFoodStatusId() {
         return foodStatusId;
     }
     /**
      * Set the value for foodStatusId.
      * @param foodStatusId the foodStatusId to set
      */
-    public void setFoodStatusId(Long foodStatusId) {
+    public void setFoodStatusId(Integer foodStatusId) {
         this.foodStatusId = foodStatusId;
     }
     /**
