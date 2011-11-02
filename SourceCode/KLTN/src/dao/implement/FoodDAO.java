@@ -18,13 +18,13 @@
  */
 package dao.implement;
 
-import dao.inf.FoodInterfaceDAO;
+import dao.inf.IFoodDAO;
 
 
 /**
  * @author Administrator
  *
  */
-public class FoodDAO implements FoodInterfaceDAO{
+public class FoodDAO implements IFoodDAO{
 
 }
