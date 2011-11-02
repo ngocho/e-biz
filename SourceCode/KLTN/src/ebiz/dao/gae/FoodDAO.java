@@ -16,12 +16,15 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package dto.food;
+package ebiz.dao.gae;
+
+import dao.inf.IFoodDAO;
+
 
 /**
  * @author Administrator
  *
  */
-public class Food {
+public class FoodDAO implements IFoodDAO{
 
 }

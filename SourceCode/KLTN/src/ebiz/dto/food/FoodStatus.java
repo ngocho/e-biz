@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package dto.food;
+package ebiz.dto.food;
 
 import java.io.Serializable;
 
@@ -30,54 +30,48 @@ import javax.jdo.annotations.PrimaryKey;
  *
  */
 /**
- * phan loai mon an : xao, chien, canh,...
+ * xac dinh status cua thuc pham : dang ban , khuyen mai,  het hsd, het hang,..
  */
-
 @PersistenceCapable
-public class FoodAttribute implements Serializable{
-
-   
+public class FoodStatus implements Serializable{
+    
     /**  . */
     private static final long serialVersionUID = 1L;
 
     @PrimaryKey
     @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
-    private Long productAttributeId;
+    private Long  foodStatusId;
     
     @Persistent
-    private String productAttributeName;
+    private String foodStatusName;
+    /**
+     * Get value of foodStatusId.
+     * @return the foodStatusId
+     */
+    public Long getFoodStatusId() {
+        return foodStatusId;
+    }
+    /**
+     * Set the value for foodStatusId.
+     * @param foodStatusId the foodStatusId to set
+     */
+    public void setFoodStatusId(Long foodStatusId) {
+        this.foodStatusId = foodStatusId;
+    }
+    /**
+     * Get value of foodStatusName.
+     * @return the foodStatusName
+     */
+    public String getFoodStatusName() {
+        return foodStatusName;
+    }
+    /**
+     * Set the value for foodStatusName.
+     * @param foodStatusName the foodStatusName to set
+     */
+    public void setFoodStatusName(String foodStatusName) {
+        this.foodStatusName = foodStatusName;
+    }
     
-    /**
-     * Get value of productAttributeId.
-     * 
-     * @return the productAttributeId
-     */
-    public Long getProductAttributeId() {
-        return productAttributeId;
-    }
-    /**
-     * Set the value for productAttributeId.
-     * 
-     * @param productAttributeId the productAttributeId to set
-     */
-    public void setProductAttributeId(Long productAttributeId) {
-        this.productAttributeId = productAttributeId;
-    }
-    /**
-     * Get value of productAttributeName.
-     * 
-     * @return the productAttributeName
-     */
-    public String getProductAttributeName() {
-        return productAttributeName;
-    }
-    /**
-     * Set the value for productAttributeName.
-     * 
-     * @param productAttributeName the productAttributeName to set
-     */
-    public void setProductAttributeName(String productAttributeName) {
-        this.productAttributeName = productAttributeName;
-    }
 
 }

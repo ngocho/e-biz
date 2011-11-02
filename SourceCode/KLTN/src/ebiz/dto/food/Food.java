@@ -16,12 +16,12 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package dao.inf;
+package ebiz.dto.food;
 
 /**
  * @author Administrator
  *
  */
-public interface FoodInterfaceDAO {
+public class Food {
 
 }

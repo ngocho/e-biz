@@ -16,15 +16,12 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package dao.implement;
-
-import dao.inf.FoodInterfaceDAO;
-
+package dao.inf;
 
 /**
  * @author Administrator
  *
  */
-public class FoodDAO implements FoodInterfaceDAO{
+public interface IFoodDAO {
 
 }
