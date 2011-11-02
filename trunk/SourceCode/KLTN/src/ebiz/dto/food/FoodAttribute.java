@@ -16,7 +16,8 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package dto.food;
+package ebiz.dto.food;
+
 import java.io.Serializable;
 
 import javax.jdo.annotations.IdGeneratorStrategy;
@@ -26,55 +27,57 @@ import javax.jdo.annotations.PrimaryKey;
 
 /**
  * @author Thuy
+ *
+ */
+/**
+ * phan loai mon an : xao, chien, canh,...
  */
 
-/**
- * xac dinh loai thuc pham ban rieng le hay duoc so che theo mon
- */
 @PersistenceCapable
-public class FoodType implements Serializable{
-    
+public class FoodAttribute implements Serializable{
+
+   
     /**  . */
     private static final long serialVersionUID = 1L;
 
     @PrimaryKey
     @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
-    private Long productTypeId;
-   
+    private Long productAttributeId;
+    
     @Persistent
-    private String productTypeName;
-   
+    private String productAttributeName;
+    
     /**
-     * Get value of productTypeId.
+     * Get value of productAttributeId.
      * 
-     * @return the productTypeId
+     * @return the productAttributeId
      */
-    public Long getProductTypeId() {
-        return productTypeId;
+    public Long getProductAttributeId() {
+        return productAttributeId;
     }
     /**
-     * Set the value for productTypeId.
+     * Set the value for productAttributeId.
      * 
-     * @param productTypeId the productTypeId to set
+     * @param productAttributeId the productAttributeId to set
      */
-    public void setProductTypeId(Long productTypeId) {
-        this.productTypeId = productTypeId;
+    public void setProductAttributeId(Long productAttributeId) {
+        this.productAttributeId = productAttributeId;
     }
     /**
-     * Get value of productTypeName.
+     * Get value of productAttributeName.
      * 
-     * @return the productTypeName
+     * @return the productAttributeName
      */
-    public String getProductTypeName() {
-        return productTypeName;
+    public String getProductAttributeName() {
+        return productAttributeName;
     }
     /**
-     * Set the value for productTypeName.
+     * Set the value for productAttributeName.
      * 
-     * @param productTypeName the productTypeName to set
+     * @param productAttributeName the productAttributeName to set
      */
-    public void setProductTypeName(String productTypeName) {
-        this.productTypeName = productTypeName;
+    public void setProductAttributeName(String productAttributeName) {
+        this.productAttributeName = productAttributeName;
     }
 
 }

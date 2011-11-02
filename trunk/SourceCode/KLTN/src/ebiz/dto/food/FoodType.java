@@ -16,8 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package dto.food;
-
+package ebiz.dto.food;
 import java.io.Serializable;
 
 import javax.jdo.annotations.IdGeneratorStrategy;
@@ -27,51 +26,55 @@ import javax.jdo.annotations.PrimaryKey;
 
 /**
  * @author Thuy
- *
  */
+
 /**
- * xac dinh status cua thuc pham : dang ban , khuyen mai,  het hsd, het hang,..
+ * xac dinh loai thuc pham ban rieng le hay duoc so che theo mon
  */
 @PersistenceCapable
-public class FoodStatus implements Serializable{
+public class FoodType implements Serializable{
     
     /**  . */
     private static final long serialVersionUID = 1L;
 
     @PrimaryKey
     @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
-    private Long  foodStatusId;
-    
+    private Long productTypeId;
+   
     @Persistent
-    private String foodStatusName;
+    private String productTypeName;
+   
     /**
-     * Get value of foodStatusId.
-     * @return the foodStatusId
+     * Get value of productTypeId.
+     * 
+     * @return the productTypeId
      */
-    public Long getFoodStatusId() {
-        return foodStatusId;
+    public Long getProductTypeId() {
+        return productTypeId;
     }
     /**
-     * Set the value for foodStatusId.
-     * @param foodStatusId the foodStatusId to set
+     * Set the value for productTypeId.
+     * 
+     * @param productTypeId the productTypeId to set
      */
-    public void setFoodStatusId(Long foodStatusId) {
-        this.foodStatusId = foodStatusId;
+    public void setProductTypeId(Long productTypeId) {
+        this.productTypeId = productTypeId;
     }
     /**
-     * Get value of foodStatusName.
-     * @return the foodStatusName
+     * Get value of productTypeName.
+     * 
+     * @return the productTypeName
      */
-    public String getFoodStatusName() {
-        return foodStatusName;
+    public String getProductTypeName() {
+        return productTypeName;
     }
     /**
-     * Set the value for foodStatusName.
-     * @param foodStatusName the foodStatusName to set
+     * Set the value for productTypeName.
+     * 
+     * @param productTypeName the productTypeName to set
      */
-    public void setFoodStatusName(String foodStatusName) {
-        this.foodStatusName = foodStatusName;
+    public void setProductTypeName(String productTypeName) {
+        this.productTypeName = productTypeName;
     }
-    
 
 }
