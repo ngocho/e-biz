@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package dto;
+package ebiz.dto;
 
 import java.io.Serializable;
 
@@ -26,7 +26,7 @@ import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
 /**
- * @author Thuy
+ * @author ThuyNT
  *
  */
 @PersistenceCapable
@@ -37,7 +37,7 @@ public class CategoryProduct implements Serializable{
     
     @PrimaryKey
     @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
-    private Long categoryProductId;
+    private String categoryProductId;
     
     @Persistent
     private String  categoryProductName;
@@ -46,14 +46,14 @@ public class CategoryProduct implements Serializable{
      * Get value of categoryProductId.
      * @return the categoryProductId
      */
-    public Long getCategoryProductId() {
+    public String getCategoryProductId() {
         return categoryProductId;
     }
     /**
      * Set the value for categoryProductId.
      * @param categoryProductId the categoryProductId to set
      */
-    public void setCategoryProductId(Long categoryProductId) {
+    public void setCategoryProductId(String categoryProductId) {
         this.categoryProductId = categoryProductId;
     }
     /**
