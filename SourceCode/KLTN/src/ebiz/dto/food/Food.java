@@ -19,7 +19,7 @@
 package ebiz.dto.food;
 
 /**
- * @author Administrator
+ * @author ThuyNT
  *
  */
 public class Food {
