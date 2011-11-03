@@ -16,10 +16,10 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package util;
+package ebiz.util;
 
 /**
- * @author Administrator
+ * @author ThuyNT
  *
  */
 public class CommonConstant {
