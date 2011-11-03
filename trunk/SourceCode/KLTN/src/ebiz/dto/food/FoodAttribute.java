@@ -26,7 +26,7 @@ import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
 /**
- * @author Thuy
+ * @author ThuyNT
  *
  */
 /**
@@ -42,7 +42,7 @@ public class FoodAttribute implements Serializable{
 
     @PrimaryKey
     @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
-    private Integer productAttributeId;
+    private String productAttributeId;
     
     @Persistent
     private String productAttributeName;
@@ -52,7 +52,7 @@ public class FoodAttribute implements Serializable{
      * 
      * @return the productAttributeId
      */
-    public Integer getProductAttributeId() {
+    public String getProductAttributeId() {
         return productAttributeId;
     }
     /**
@@ -60,7 +60,7 @@ public class FoodAttribute implements Serializable{
      * 
      * @param productAttributeId the productAttributeId to set
      */
-    public void setProductAttributeId(Integer productAttributeId) {
+    public void setProductAttributeId(String productAttributeId) {
         this.productAttributeId = productAttributeId;
     }
     /**

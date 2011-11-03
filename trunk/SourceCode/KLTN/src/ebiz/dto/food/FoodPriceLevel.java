@@ -25,7 +25,7 @@ import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
 /**
- * @author Thuy
+ * @author ThuyNT
  *
  */
 
@@ -39,7 +39,7 @@ public class FoodPriceLevel  implements Serializable{
     
     @PrimaryKey
     @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
-    private Long  foodPriceLevelId;
+    private String  foodPriceLevelId;
     
     private Long startPrice;
     private Long endPrice;
