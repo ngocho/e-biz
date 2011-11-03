@@ -23,5 +23,10 @@ package ebiz.form;
  *
  */
 public class Login {
+    
+    private String loginId;
+    private String loginPassword;
+    private String loginName;
+    private String type;            //type of account : customer, admin, employee
 
 }
