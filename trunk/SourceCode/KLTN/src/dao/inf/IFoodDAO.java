@@ -16,10 +16,10 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package dao.inf;
+package ebiz.dao.inf;
 
 /**
- * @author Administrator
+ * @author ThuyNT
  *
  */
 public interface IFoodDAO {
