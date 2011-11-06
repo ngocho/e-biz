@@ -23,6 +23,8 @@ package ebiz.util;
  *
  */
 public class CommonConstant {
-
+    public final static  String SUCCESS = "success";
+    public  final static String FAILURE = "failure";
+    public  final static String USER    = "user";
     
 }
