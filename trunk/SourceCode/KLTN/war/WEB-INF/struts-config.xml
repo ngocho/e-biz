@@ -1,0 +1,41 @@
+
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+<struts-config>
+
+
+  <form-beans>
+	<form-bean name="login" type="formBean.loginbean" />
+	<form-bean name="customer" type="ebiz.dto.account.customer.Customer" />
+	
+  </form-beans>
+  <global-exceptions>
+
+  </global-exceptions>
+
+  <global-forwards>
+	<forward name="register" path="/register.vn"/>
+	<forward name="main.page" path="/index.jsp" />  
+	<forward name="success" path="/index.jsp" /> 
+	
+  </global-forwards>
+  
+
+  <action-mappings>
+	<action input="/jsp/account/RegisterCustomer.jsp"
+			path="/register" 
+			type="ebiz.action.account.customer.Register"
+			name="customer"
+			scope="request"
+			validate="true">
+		<forward name="success" path="/jsp/common/home.jsp" redirect="true"/>
+		<forward name="failure" path="/jsp/account/RegisterCustomer.jsp" redirect="true"/>
+	</action>
+  </action-mappings>
+  <message-resources parameter="ApplicationResources" />  
+  <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+        <set-property
+            property="pathnames"
+            value="/WEB-INF/validator-rules.xml,/WEB-INF/validation.xml"/>
+  	</plug-in>
+   
+</struts-config>
