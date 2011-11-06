@@ -16,15 +16,35 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package ebiz.dao.implement;
+package ebiz.dao.inf;
 
-import ebiz.dao.inf.IFoodDAO;
-
+import ebiz.dto.account.customer.Customer;
 
 /**
  * @author ThuyNT
  *
  */
-public class FoodDAO implements IFoodDAO{
+public interface ICustomerDAO {
+    /**
+     * 
+     * kiem tra su ton tai cua Customer , neu chua co thi insert
+     * @param customer
+     * @return 
+     */
+    public boolean insertCustomer(Customer customer );
+    
+    public boolean isCustomer(Customer customer );
+        
+    /**
+     * dua vao thong tin dang nhap : username, pass lay thong tin cua customer
+     * @param loginId
+     * @param loginPassword
+     * @return
+     */
+    public Customer getCustomerById(String id);
+    
+//    public void 
+    
+    
 
 }
