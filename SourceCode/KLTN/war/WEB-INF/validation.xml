@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE form-validation PUBLIC
+"-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.1.3//EN"
+"http://jakarta.apache.org/commons/dtds/validator_1_1_3.dtd">
+
+<form-validation>
+
+    <!--
+     This is a minimal Validator form file with a couple of examples.
+-->
+
+    <global>
+
+        <!-- An example global constant
+        <constant>
+            <constant-name>postalCode</constant-name>
+            <constant-value>^\d{5}\d*$</constant-value>
+        </constant>
+        end example-->
+
+    </global>
+
+    <formset>
+        <!-- An example form -->
+        <form name="customer">
+            <field
+                property="customerId"
+                depends="required">
+                <arg0 key="customer.customerId"/>
+            </field>
+            <field
+                property="customerPassword"
+                depends="required">
+                <arg0 key="customer.customerPassword"/>
+            </field>
+            <field
+                property="customerEmail"
+                depends="required,email">
+                <arg0 key="customer.customerEmail"/>
+            </field>
+            <field
+                property="customerAddress"
+                depends="required">
+                <arg0 key="customer.customerAddress"/>
+            </field>
+        </form>
+        <form name="register">
+            <field
+                property="user"
+                depends="required">
+                <arg0 key="register.user"/>
+            </field>
+            <field
+                property="pass"
+                depends="required">
+                <arg0 key="register.pass"/>
+            </field>
+            <field
+                property="repass"
+                depends="required">
+                <arg0 key="register.repass"/>
+            </field>
+            <field
+                property="email"
+                depends="required,email">
+                <arg0 key="register.email"/>
+                
+            </field>
+        </form>
+    </formset>
+        
+</form-validation>
