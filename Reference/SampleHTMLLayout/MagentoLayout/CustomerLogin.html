@@ -1,0 +1,337 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0058)http://localhost/magento/index.php/customer/account/login/ -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Customer Login</title>
+<meta name="description" content="Default Description">
+<meta name="keywords" content="Magento, Varien, E-commerce">
+<meta name="robots" content="*">
+<link rel="icon" href="http://localhost/magento/skin/frontend/default/default/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="http://localhost/magento/skin/frontend/default/default/favicon.ico" type="image/x-icon">
+<!--[if lt IE 7]>
+<script type="text/javascript">
+//<![CDATA[
+    var BLANK_URL = 'http://localhost/magento/js/blank.html';
+    var BLANK_IMG = 'http://localhost/magento/js/spacer.gif';
+//]]>
+</script>
+<![endif]-->
+<link rel="stylesheet" type="text/css" href="./resource_files/styles.css" media="all">
+<link rel="stylesheet" type="text/css" href="./resource_files/widgets.css" media="all">
+<link rel="stylesheet" type="text/css" href="./resource_files/print.css" media="print">
+<script type="text/javascript" src="./resource_files/prototype.js"></script>
+<script type="text/javascript" src="./resource_files/ccard.js"></script>
+<script type="text/javascript" src="./resource_files/validation.js"></script>
+<script type="text/javascript" src="./resource_files/builder.js"></script>
+<script type="text/javascript" src="./resource_files/effects.js"></script>
+<script type="text/javascript" src="./resource_files/dragdrop.js"></script>
+<script type="text/javascript" src="./resource_files/controls.js"></script>
+<script type="text/javascript" src="./resource_files/slider.js"></script>
+<script type="text/javascript" src="./resource_files/js.js"></script>
+<script type="text/javascript" src="./resource_files/form.js"></script>
+<script type="text/javascript" src="./resource_files/menu.js"></script>
+<script type="text/javascript" src="./resource_files/translate.js"></script>
+<script type="text/javascript" src="./resource_files/cookies.js"></script>
+<!--[if lt IE 8]>
+<link rel="stylesheet" type="text/css" href="http://localhost/magento/skin/frontend/default/default/css/styles-ie.css" media="all" />
+<![endif]-->
+<!--[if lt IE 7]>
+<script type="text/javascript" src="http://localhost/magento/js/lib/ds-sleight.js"></script>
+<script type="text/javascript" src="http://localhost/magento/skin/frontend/base/default/js/ie6.js"></script>
+<![endif]-->
+
+<script type="text/javascript">
+//<![CDATA[
+Mage.Cookies.path     = '/magento';
+Mage.Cookies.domain   = '.localhost';
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+optionalZipCountries = ["HK","IE","MO","PA"];
+//]]>
+</script>
+<script type="text/javascript">var Translator = new Translate({"Please use only letters (a-z or A-Z), numbers (0-9) or underscore(_) in this field, first character should be a letter.":"Please use only letters (a-z or A-Z), numbers (0-9) or underscores (_) in this field, first character must be a letter."});</script></head>
+<body class=" customer-account-login">
+<div class="wrapper">
+        <noscript>
+        &lt;div class="noscript"&gt;
+            &lt;div class="noscript-inner"&gt;
+                &lt;p&gt;&lt;strong&gt;JavaScript seem to be disabled in your browser.&lt;/strong&gt;&lt;/p&gt;
+                &lt;p&gt;You must have JavaScript enabled in your browser to utilize the functionality of this website.&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    </noscript>
+    <div class="page">
+        <div class="header-container">
+    <div class="header">
+                <a href="http://localhost/magento/index.php/" title="Magento Commerce" class="logo"><strong>Magento Commerce</strong><img src="./resource_files/logo.gif" alt="Magento Commerce"></a>
+                <div class="quick-access">
+            <form id="search_mini_form" action="http://localhost/magento/index.php/catalogsearch/result/" method="get">
+    <div class="form-search">
+        <label for="search">Search:</label>
+        <input id="search" type="text" name="q" value="" class="input-text" autocomplete="off">
+        <button type="submit" title="Search" class="button"><span><span>Search</span></span></button>
+        <div id="search_autocomplete" class="search-autocomplete" style="display: none; "></div>
+        <script type="text/javascript">
+        //<![CDATA[
+            var searchForm = new Varien.searchForm('search_mini_form', 'search', 'Search entire store here...');
+            searchForm.initAutocomplete('http://localhost/magento/index.php/catalogsearch/ajax/suggest/', 'search_autocomplete');
+        //]]>
+        </script>
+    </div>
+</form>
+            <p class="welcome-msg">Default welcome msg! </p>
+            <ul class="links">
+                        <li class="first"><a href="http://localhost/magento/index.php/customer/account/" title="My Account">My Account</a></li>
+                                <li><a href="http://localhost/magento/index.php/wishlist/" title="My Wishlist">My Wishlist</a></li>
+                                <li><a href="http://localhost/magento/index.php/checkout/cart/" title="My Cart" class="top-link-cart">My Cart</a></li>
+                                <li><a href="http://localhost/magento/index.php/checkout/" title="Checkout" class="top-link-checkout">Checkout</a></li>
+                                <li class=" last"><a href="./resource_files/resource.html" title="Log In">Log In</a></li>
+            </ul>
+            <div class="form-language">
+    <label for="select-language">Your Language:</label>
+    <select id="select-language" title="Your Language" onchange="window.location.href=this.value">
+                    <option value="http://localhost/magento/index.php/customer/account/login/?___store=default&amp;___from_store=default" selected="selected">English</option>
+                    <option value="http://localhost/magento/index.php/customer/account/login/?___store=french&amp;___from_store=default">French</option>
+                    <option value="http://localhost/magento/index.php/customer/account/login/?___store=german&amp;___from_store=default">German</option>
+        </select>
+</div>
+        </div>
+            </div>
+</div>
+<div class="nav-container">
+    <ul id="nav">
+        <li class="level0 nav-1 level-top first parent">
+<a href="http://localhost/magento/index.php/catalog/category/view/s/furniture/id/10/" class="level-top">
+<span>Furniture</span>
+</a>
+<ul class="level0">
+<li class="level1 nav-1-1 first">
+<a href="http://localhost/magento/index.php/catalog/category/view/s/living-room/id/22/">
+<span>Living Room</span>
+</a>
+</li><li class="level1 nav-1-2 last">
+<a href="http://localhost/magento/index.php/catalog/category/view/s/bedroom/id/23/">
+<span>Bedroom</span>
+</a>
+</li>
+</ul>
+</li><li class="level0 nav-2 level-top parent">
+<a href="http://localhost/magento/index.php/catalog/category/view/s/electronics/id/13/" class="level-top">
+<span>Electronics</span>
+</a>
+<ul class="level0">
+<li class="level1 nav-2-1 first">
+<a href="http://localhost/magento/index.php/catalog/category/view/s/cell-phones/id/8/">
+<span>Cell Phones</span>
+</a>
+</li><li class="level1 nav-2-2 parent">
+<a href="http://localhost/magento/index.php/catalog/category/view/s/cameras/id/12/">
+<span>Cameras</span>
+</a>
+<ul class="level1">
+<li class="level2 nav-2-2-1 first">
+<a href="http://localhost/magento/index.php/catalog/category/view/s/accessories/id/25/">
+<span>Accessories</span>
+</a>
+</li><li class="level2 nav-2-2-2 last">
+<a href="http://localhost/magento/index.php/catalog/category/view/s/digital-cameras/id/26/">
+<span>Digital Cameras</span>
+</a>
+</li>
+</ul>
+</li><li class="level1 nav-2-3 last parent">
+<a href="http://localhost/magento/index.php/catalog/category/view/s/computers/id/15/">
+<span>Computers</span>
+</a>
+<ul class="level1">
+<li class="level2 nav-2-3-3 first">
+<a href="http://localhost/magento/index.php/catalog/category/view/s/build-your-own/id/27/">
+<span>Build Your Own</span>
+</a>
+</li><li class="level2 nav-2-3-4">
+<a href="http://localhost/magento/index.php/catalog/category/view/s/laptops/id/28/">
+<span>Laptops</span>
+</a>
+</li><li class="level2 nav-2-3-5">
+<a href="http://localhost/magento/index.php/catalog/category/view/s/hard-drives/id/29/">
+<span>Hard Drives</span>
+</a>
+</li><li class="level2 nav-2-3-6">
+<a href="http://localhost/magento/index.php/catalog/category/view/s/monitors/id/30/">
+<span>Monitors</span>
+</a>
+</li><li class="level2 nav-2-3-7">
+<a href="http://localhost/magento/index.php/catalog/category/view/s/ram-memory/id/31/">
+<span>RAM / Memory</span>
+</a>
+</li><li class="level2 nav-2-3-8">
+<a href="http://localhost/magento/index.php/catalog/category/view/s/cases/id/32/">
+<span>Cases</span>
+</a>
+</li><li class="level2 nav-2-3-9">
+<a href="http://localhost/magento/index.php/catalog/category/view/s/processors/id/33/">
+<span>Processors</span>
+</a>
+</li><li class="level2 nav-2-3-10 last">
+<a href="http://localhost/magento/index.php/catalog/category/view/s/peripherals/id/34/">
+<span>Peripherals</span>
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li><li class="level0 nav-3 level-top last parent">
+<a href="http://localhost/magento/index.php/catalog/category/view/s/apparel/id/18/" class="level-top">
+<span>Apparel</span>
+</a>
+<ul class="level0">
+<li class="level1 nav-3-1 first">
+<a href="http://localhost/magento/index.php/catalog/category/view/s/shirts/id/4/">
+<span>Shirts</span>
+</a>
+</li><li class="level1 nav-3-2 parent">
+<a href="http://localhost/magento/index.php/catalog/category/view/s/shoes/id/5/">
+<span>Shoes</span>
+</a>
+<ul class="level1">
+<li class="level2 nav-3-2-1 first">
+<a href="http://localhost/magento/index.php/catalog/category/view/s/mens/id/16/">
+<span>Mens</span>
+</a>
+</li><li class="level2 nav-3-2-2 last">
+<a href="http://localhost/magento/index.php/catalog/category/view/s/womens/id/17/">
+<span>Womens</span>
+</a>
+</li>
+</ul>
+</li><li class="level1 nav-3-3 last">
+<a href="http://localhost/magento/index.php/catalog/category/view/s/hoodies/id/19/">
+<span>Hoodies</span>
+</a>
+</li>
+</ul>
+</li>    </ul>
+</div>
+        <div class="main-container col1-layout">
+            <div class="main">
+                                <div class="col-main">
+                                        <div class="account-login">
+    <div class="page-title">
+        <h1>Login or Create an Account</h1>
+    </div>
+        <form action="http://localhost/magento/index.php/customer/account/loginPost/" method="post" id="login-form">
+        <div class="col2-set">
+            <div class="col-1 new-users">
+                <div class="content">
+                    <h2>New Customers</h2>
+                    <p>By creating an account with our store, you will be able to move through the checkout process faster, store multiple shipping addresses, view and track your orders in your account and more.</p>
+                </div>
+            </div>
+            <div class="col-2 registered-users">
+                <div class="content">
+                    <h2>Registered Customers</h2>
+                    <p>If you have an account with us, please log in.</p>
+                    <ul class="form-list">
+                        <li>
+                            <label for="email" class="required"><em>*</em>Email Address</label>
+                            <div class="input-box">
+                                <input type="text" name="login[username]" value="" id="email" class="input-text required-entry validate-email" title="Email Address">
+                            </div>
+                        </li>
+                        <li>
+                            <label for="pass" class="required"><em>*</em>Password</label>
+                            <div class="input-box">
+                                <input type="password" name="login[password]" class="input-text required-entry validate-password" id="pass" title="Password">
+                            </div>
+                        </li>
+                                            </ul>
+                    
+
+<script type="text/javascript">
+//<![CDATA[
+    function toggleRememberMepopup(event){
+        if($('remember-me-popup')){
+            var viewportHeight = document.viewport.getHeight(),
+                docHeight      = $$('body')[0].getHeight(),
+                height         = docHeight > viewportHeight ? docHeight : viewportHeight;
+            $('remember-me-popup').toggle();
+            $('window-overlay').setStyle({ height: height + 'px' }).toggle();
+        }
+        Event.stop(event);
+    }
+
+    document.observe("dom:loaded", function() {
+        new Insertion.Bottom($$('body')[0], $('window-overlay'));
+        new Insertion.Bottom($$('body')[0], $('remember-me-popup'));
+
+        $$('.remember-me-popup-close').each(function(element){
+            Event.observe(element, 'click', toggleRememberMepopup);
+        })
+        $$('#remember-me-box a').each(function(element) {
+            Event.observe(element, 'click', toggleRememberMepopup);
+        });
+    });
+//]]>
+</script>
+                    <p class="required">* Required Fields</p>
+                </div>
+            </div>
+        </div>
+        <div class="col2-set">
+            <div class="col-1 new-users">
+                <div class="buttons-set">
+                    <button type="button" title="Create an Account" class="button" onclick="window.location=&#39;http://localhost/magento/index.php/customer/account/create/&#39;;"><span><span>Create an Account</span></span></button>
+                </div>
+            </div>
+            <div class="col-2 registered-users">
+                <div class="buttons-set">
+                    <a href="http://localhost/magento/index.php/customer/account/forgotpassword/" class="f-left">Forgot Your Password?</a>
+                    <button type="submit" class="button" title="Login" name="send" id="send2"><span><span>Login</span></span></button>
+                </div>
+            </div>
+        </div>
+            </form>
+    <script type="text/javascript">
+    //<![CDATA[
+        var dataForm = new VarienForm('login-form', true);
+    //]]>
+    </script>
+</div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-container">
+    <div class="footer">
+        <ul>
+<li><a href="http://localhost/magento/index.php/about-magento-demo-store">About Us</a></li>
+<li class="last"><a href="http://localhost/magento/index.php/customer-service">Customer Service</a></li>
+</ul><ul class="links">
+                        <li class="first"><a href="http://localhost/magento/index.php/catalog/seo_sitemap/category/" title="Site Map">Site Map</a></li>
+                                <li><a href="http://localhost/magento/index.php/catalogsearch/term/popular/" title="Search Terms">Search Terms</a></li>
+                                <li><a href="http://localhost/magento/index.php/catalogsearch/advanced/" title="Advanced Search">Advanced Search</a></li>
+                                <li><a href="http://localhost/magento/index.php/sales/guest/form/" title="Orders and Returns">Orders and Returns</a></li>
+                                <li class=" last"><a href="http://localhost/magento/index.php/contacts/" title="Contact Us">Contact Us</a></li>
+            </ul>
+        <p class="bugs">Help Us to Keep Magento Healthy - <a href="http://www.magentocommerce.com/bug-tracking" onclick="this.target=&#39;_blank&#39;"><strong>Report All Bugs</strong></a> (ver. 1.6.0.0)</p>
+        <address>© 2008 Magento Demo Store. All Rights Reserved.</address>
+    </div>
+</div>
+            </div>
+</div>
+
+
+<div id="window-overlay" class="window-overlay" style="display:none;"></div><div id="remember-me-popup" class="remember-me-popup" style="display:none;">
+    <div class="remember-me-popup-head">
+        <h3>What's this?</h3>
+        <a href="http://localhost/magento/index.php/customer/account/login/#" class="remember-me-popup-close" title="Close">Close</a>
+    </div>
+    <div class="remember-me-popup-body">
+        <p>Checking "Remember Me" will let you access your shopping cart on this computer when you are logged out</p>
+        <div class="remember-me-popup-close-button a-right">
+            <a href="http://localhost/magento/index.php/customer/account/login/#" class="remember-me-popup-close button" title="Close"><span>Close</span></a>
+        </div>
+    </div>
+</div></body></html>

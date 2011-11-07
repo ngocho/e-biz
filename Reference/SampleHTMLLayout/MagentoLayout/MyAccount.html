@@ -1,0 +1,355 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>My Account</title>
+<meta name="description" content="Default Description">
+<meta name="keywords" content="Magento, Varien, E-commerce">
+<meta name="robots" content="*">
+<link rel="icon" href="http://localhost/magento/skin/frontend/default/default/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="http://localhost/magento/skin/frontend/default/default/favicon.ico" type="image/x-icon">
+<!--[if lt IE 7]>
+<script type="text/javascript">
+//<![CDATA[
+    var BLANK_URL = 'http://localhost/magento/js/blank.html';
+    var BLANK_IMG = 'http://localhost/magento/js/spacer.gif';
+//]]>
+</script>
+<![endif]-->
+<link rel="stylesheet" type="text/css" href="resource_files/styles.css" media="all">
+<link rel="stylesheet" type="text/css" href="resource_files/widgets.css" media="all">
+<link rel="stylesheet" type="text/css" href="resource_files/print.css" media="print">
+<script type="text/javascript" src="resource_files/prototype.js"></script>
+<script type="text/javascript" src="resource_files/ccard.js"></script>
+<script type="text/javascript" src="resource_files/validation.js"></script>
+<script type="text/javascript" src="resource_files/builder.js"></script>
+<script type="text/javascript" src="resource_files/effects.js"></script>
+<script type="text/javascript" src="resource_files/dragdrop.js"></script>
+<script type="text/javascript" src="resource_files/controls.js"></script>
+<script type="text/javascript" src="resource_files/slider.js"></script>
+<script type="text/javascript" src="resource_files/js.js"></script>
+<script type="text/javascript" src="resource_files/form.js"></script>
+<script type="text/javascript" src="resource_files/menu.js"></script>
+<script type="text/javascript" src="resource_files/translate.js"></script>
+<script type="text/javascript" src="resource_files/cookies.js"></script>
+<script type="text/javascript" src="resource_files/weee.js"></script>
+<!--[if lt IE 8]>
+<link rel="stylesheet" type="text/css" href="http://localhost/magento/skin/frontend/default/default/css/styles-ie.css" media="all" />
+<![endif]-->
+<!--[if lt IE 7]>
+<script type="text/javascript" src="http://localhost/magento/js/lib/ds-sleight.js"></script>
+<script type="text/javascript" src="http://localhost/magento/skin/frontend/base/default/js/ie6.js"></script>
+<![endif]-->
+
+<script type="text/javascript">
+//<![CDATA[
+Mage.Cookies.path     = '/magento';
+Mage.Cookies.domain   = '.localhost';
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+optionalZipCountries = ["HK","IE","MO","PA"];
+//]]>
+</script>
+<script type="text/javascript">var Translator = new Translate({"Please use only letters (a-z or A-Z), numbers (0-9) or underscore(_) in this field, first character should be a letter.":"Please use only letters (a-z or A-Z), numbers (0-9) or underscores (_) in this field, first character must be a letter."});</script></head><body class=" customer-account-index">
+<div class="wrapper">
+        <noscript>
+        <div class="noscript">
+            <div class="noscript-inner">
+                <p><strong>JavaScript seem to be disabled in your browser.</strong></p>
+                <p>You must have JavaScript enabled in your browser to utilize the functionality of this website.</p>
+            </div>
+        </div>
+    </noscript>
+    <div class="page">
+        <div class="header-container">
+    <div class="header">
+                <a href="http://localhost/magento/index.php/" title="Magento Commerce" class="logo"><strong>Magento Commerce</strong><img src="resource_files/logo.gif" alt="Magento Commerce"></a>
+                <div class="quick-access">
+            <form id="search_mini_form" action="http://localhost/magento/index.php/catalogsearch/result/" method="get">
+    <div class="form-search">
+        <label for="search">Search:</label>
+        <input autocomplete="off" id="search" name="q" value="Search entire store here..." class="input-text" type="text">
+        <button type="submit" title="Search" class="button"><span><span>Search</span></span></button>
+        <div style="display: none;" id="search_autocomplete" class="search-autocomplete"></div>
+        <script type="text/javascript">
+        //<![CDATA[
+            var searchForm = new Varien.searchForm('search_mini_form', 'search', 'Search entire store here...');
+            searchForm.initAutocomplete('http://localhost/magento/index.php/catalogsearch/ajax/suggest/', 'search_autocomplete');
+        //]]>
+        </script>
+    </div>
+</form>
+            <p class="welcome-msg">Welcome, Thạch Lê Ngọc! </p>
+            <ul class="links">
+                        <li class="first"><a href="http://localhost/magento/index.php/customer/account/" title="My Account">My Account</a></li>
+                                <li><a href="http://localhost/magento/index.php/wishlist/" title="My Wishlist">My Wishlist</a></li>
+                                <li><a href="http://localhost/magento/index.php/checkout/cart/" title="My Cart" class="top-link-cart">My Cart</a></li>
+                                <li><a href="http://localhost/magento/index.php/checkout/" title="Checkout" class="top-link-checkout">Checkout</a></li>
+                                <li class=" last"><a href="http://localhost/magento/index.php/customer/account/logout/" title="Log Out">Log Out</a></li>
+            </ul>
+            <div class="form-language">
+    <label for="select-language">Your Language:</label>
+    <select id="select-language" title="Your Language" onchange="window.location.href=this.value">
+                    <option value="http://localhost/magento/index.php/customer/account/index/?___store=default&amp;___from_store=default" selected="selected">English</option>
+                    <option value="http://localhost/magento/index.php/customer/account/index/?___store=french&amp;___from_store=default">French</option>
+                    <option value="http://localhost/magento/index.php/customer/account/index/?___store=german&amp;___from_store=default">German</option>
+        </select>
+</div>
+        </div>
+            </div>
+</div>
+<div class="nav-container">
+    <ul id="nav">
+        <li class="level0 nav-1 level-top first parent">
+<a href="http://localhost/magento/index.php/catalog/category/view/s/furniture/id/10/" class="level-top">
+<span>Furniture</span>
+</a>
+<ul class="level0">
+<li class="level1 nav-1-1 first">
+<a href="http://localhost/magento/index.php/catalog/category/view/s/living-room/id/22/">
+<span>Living Room</span>
+</a>
+</li><li class="level1 nav-1-2 last">
+<a href="http://localhost/magento/index.php/catalog/category/view/s/bedroom/id/23/">
+<span>Bedroom</span>
+</a>
+</li>
+</ul>
+</li><li class="level0 nav-2 level-top parent">
+<a href="http://localhost/magento/index.php/catalog/category/view/s/electronics/id/13/" class="level-top">
+<span>Electronics</span>
+</a>
+<ul class="level0">
+<li class="level1 nav-2-1 first">
+<a href="http://localhost/magento/index.php/catalog/category/view/s/cell-phones/id/8/">
+<span>Cell Phones</span>
+</a>
+</li><li class="level1 nav-2-2 parent">
+<a href="http://localhost/magento/index.php/catalog/category/view/s/cameras/id/12/">
+<span>Cameras</span>
+</a>
+<ul class="level1">
+<li class="level2 nav-2-2-1 first">
+<a href="http://localhost/magento/index.php/catalog/category/view/s/accessories/id/25/">
+<span>Accessories</span>
+</a>
+</li><li class="level2 nav-2-2-2 last">
+<a href="http://localhost/magento/index.php/catalog/category/view/s/digital-cameras/id/26/">
+<span>Digital Cameras</span>
+</a>
+</li>
+</ul>
+</li><li class="level1 nav-2-3 last parent">
+<a href="http://localhost/magento/index.php/catalog/category/view/s/computers/id/15/">
+<span>Computers</span>
+</a>
+<ul class="level1">
+<li class="level2 nav-2-3-3 first">
+<a href="http://localhost/magento/index.php/catalog/category/view/s/build-your-own/id/27/">
+<span>Build Your Own</span>
+</a>
+</li><li class="level2 nav-2-3-4">
+<a href="http://localhost/magento/index.php/catalog/category/view/s/laptops/id/28/">
+<span>Laptops</span>
+</a>
+</li><li class="level2 nav-2-3-5">
+<a href="http://localhost/magento/index.php/catalog/category/view/s/hard-drives/id/29/">
+<span>Hard Drives</span>
+</a>
+</li><li class="level2 nav-2-3-6">
+<a href="http://localhost/magento/index.php/catalog/category/view/s/monitors/id/30/">
+<span>Monitors</span>
+</a>
+</li><li class="level2 nav-2-3-7">
+<a href="http://localhost/magento/index.php/catalog/category/view/s/ram-memory/id/31/">
+<span>RAM / Memory</span>
+</a>
+</li><li class="level2 nav-2-3-8">
+<a href="http://localhost/magento/index.php/catalog/category/view/s/cases/id/32/">
+<span>Cases</span>
+</a>
+</li><li class="level2 nav-2-3-9">
+<a href="http://localhost/magento/index.php/catalog/category/view/s/processors/id/33/">
+<span>Processors</span>
+</a>
+</li><li class="level2 nav-2-3-10 last">
+<a href="http://localhost/magento/index.php/catalog/category/view/s/peripherals/id/34/">
+<span>Peripherals</span>
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li><li class="level0 nav-3 level-top last parent">
+<a href="http://localhost/magento/index.php/catalog/category/view/s/apparel/id/18/" class="level-top">
+<span>Apparel</span>
+</a>
+<ul class="level0">
+<li class="level1 nav-3-1 first">
+<a href="http://localhost/magento/index.php/catalog/category/view/s/shirts/id/4/">
+<span>Shirts</span>
+</a>
+</li><li class="level1 nav-3-2 parent">
+<a href="http://localhost/magento/index.php/catalog/category/view/s/shoes/id/5/">
+<span>Shoes</span>
+</a>
+<ul class="level1">
+<li class="level2 nav-3-2-1 first">
+<a href="http://localhost/magento/index.php/catalog/category/view/s/mens/id/16/">
+<span>Mens</span>
+</a>
+</li><li class="level2 nav-3-2-2 last">
+<a href="http://localhost/magento/index.php/catalog/category/view/s/womens/id/17/">
+<span>Womens</span>
+</a>
+</li>
+</ul>
+</li><li class="level1 nav-3-3 last">
+<a href="http://localhost/magento/index.php/catalog/category/view/s/hoodies/id/19/">
+<span>Hoodies</span>
+</a>
+</li>
+</ul>
+</li>    </ul>
+</div>
+        <div class="main-container col2-left-layout">
+            <div class="main">
+                                <div class="col-main">
+                                        <div class="my-account"><div class="dashboard">
+    <div class="page-title">
+        <h1>My Dashboard</h1>
+    </div>
+    <ul class="messages"><li class="success-msg"><ul><li><span>Thank you for registering with Main Store.</span></li></ul></li></ul>    <div class="welcome-msg">
+    <p class="hello"><strong>Hello, Thạch Lê Ngọc!</strong></p>
+    <p>From your My Account Dashboard you have the ability to view a 
+snapshot of your recent account activity and update your account 
+information. Select a link below to view or edit information.</p>
+</div>
+        <div class="box-account box-info">
+        <div class="box-head">
+            <h2>Account Information</h2>
+        </div>
+        <div class="col2-set">
+    <div class="col-1">
+        <div class="box">
+            <div class="box-title">
+                <h3>Contact Information</h3>
+                <a href="http://localhost/magento/index.php/customer/account/edit/">Edit</a>
+            </div>
+            <div class="box-content">
+                <p>
+                    Thạch Lê Ngọc<br>
+                    thachln@open-ones.com<br>
+                    <a href="http://localhost/magento/index.php/customer/account/edit/changepass/1/">Change Password</a>
+                </p>
+            </div>
+        </div>
+    </div>
+        <div class="col-2">
+        <div class="box">
+            <div class="box-title">
+                <h3>Newsletters</h3>
+                <a href="http://localhost/magento/index.php/newsletter/manage/">Edit</a>
+            </div>
+            <div class="box-content">
+                <p>
+                                            You are currently not 
+subscribed to any newsletter.                                    </p>
+            </div>
+        </div>
+    </div>
+    </div>
+        <div class="col2-set">
+    <div class="box">
+        <div class="box-title">
+            <h3>Address Book</h3>
+            <a href="http://localhost/magento/index.php/customer/address/">Manage Addresses</a>
+        </div>
+        <div class="box-content">
+            <div class="col-1">
+                <h4>Default Billing Address</h4>
+                <address>
+                    You have not set a default billing address.<br>
+                    <a href="http://localhost/magento/index.php/customer/address/edit/">Edit Address</a>
+                </address>
+            </div>
+            <div class="col-2">
+                <h4>Default Shipping Address</h4>
+                <address>
+                    You have not set a default shipping address.<br>
+                    <a href="http://localhost/magento/index.php/customer/address/edit/">Edit Address</a>
+                </address>
+            </div>
+        </div>
+    </div>
+</div>
+    </div>
+        </div></div>                </div>
+                <div class="col-left sidebar"><div class="block block-account">
+    <div class="block-title">
+        <strong><span>My Account</span></strong>
+    </div>
+    <div class="block-content">
+        <ul>
+                                                                                                    <li class="current"><strong>Account Dashboard</strong></li>
+                                                                                <li><a href="http://localhost/magento/index.php/customer/account/edit/">Account Information</a></li>
+                                                                                <li><a href="http://localhost/magento/index.php/customer/address/">Address Book</a></li>
+                                                                                <li><a href="http://localhost/magento/index.php/sales/order/history/">My Orders</a></li>
+                                                                                <li><a href="http://localhost/magento/index.php/sales/billing_agreement/">Billing Agreements</a></li>
+                                                                                <li><a href="http://localhost/magento/index.php/sales/recurring_profile/">Recurring Profiles</a></li>
+                                                                                <li><a href="http://localhost/magento/index.php/review/customer/">My Product Reviews</a></li>
+                                                                                <li><a href="http://localhost/magento/index.php/tag/customer/">My Tags</a></li>
+                                                                                <li><a href="http://localhost/magento/index.php/wishlist/">My Wishlist</a></li>
+                                                                                <li><a href="http://localhost/magento/index.php/downloadable/customer/products/">My Downloadable Products</a></li>
+                                                                                <li class="last"><a href="http://localhost/magento/index.php/newsletter/manage/">Newsletter Subscriptions</a></li>
+                                    </ul>
+    </div>
+</div>
+<div class="block block-banner">
+    <div class="block-content">
+                    <a href="http://localhost/magento/index.php/checkout/cart/" title="Our customer service is available 24/7. Call us at (555) 555-0123.">
+                    <img src="resource_files/col_left_callout.jpg" alt="Our customer service is available 24/7. Call us at (555) 555-0123.">
+                </a>
+            </div>
+</div>
+<div class="block block-cart">
+        <div class="block-title">
+        <strong><span>My Cart</span></strong>
+    </div>
+    <div class="block-content">
+                        <p class="empty">You have no items in your shopping cart.</p>
+        </div>
+</div>
+<div class="block block-list block-compare">
+    <div class="block-title">
+        <strong><span>Compare Products                    </span></strong>
+    </div>
+    <div class="block-content">
+            <p class="empty">You have no items to compare.</p>
+        </div>
+</div>
+</div>
+            </div>
+        </div>
+        <div class="footer-container">
+    <div class="footer">
+        <ul>
+<li><a href="http://localhost/magento/index.php/about-magento-demo-store">About Us</a></li>
+<li class="last"><a href="http://localhost/magento/index.php/customer-service">Customer Service</a></li>
+</ul><ul class="links">
+                        <li class="first"><a href="http://localhost/magento/index.php/catalog/seo_sitemap/category/" title="Site Map">Site Map</a></li>
+                                <li><a href="http://localhost/magento/index.php/catalogsearch/term/popular/" title="Search Terms">Search Terms</a></li>
+                                <li><a href="http://localhost/magento/index.php/catalogsearch/advanced/" title="Advanced Search">Advanced Search</a></li>
+                                                                <li class=" last"><a href="http://localhost/magento/index.php/contacts/" title="Contact Us">Contact Us</a></li>
+            </ul>
+        <p class="bugs">Help Us to Keep Magento Healthy - <a href="http://www.magentocommerce.com/bug-tracking" onclick="this.target='_blank'"><strong>Report All Bugs</strong></a> (ver. 1.6.0.0)</p>
+        <address>© 2008 Magento Demo Store. All Rights Reserved.</address>
+    </div>
+</div>
+            </div>
+</div>
+</body></html>
