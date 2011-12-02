@@ -18,10 +18,29 @@
  */
 package ebiz.dto.food;
 
+import java.util.Date;
+
 /**
  * @author ThuyNT
  *
  */
 public class Food {
+    
+    private Long foodId;
+    private String foodName;
+    private String foodPriceLevelId;
+    private String productAttributeId;
+    private String foodStatusId;
+    private String productTypeId;
+    private Date startDate;
+    private Date expDate;
+    private Integer number;
+    private String detail;
+    private String calo;
+    private Long price;
+    private String providerID;  //nha cung cap 
+    private String url;   //luu duong dan hinh anh
+    
+    
 
 }

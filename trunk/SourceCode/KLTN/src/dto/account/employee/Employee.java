@@ -23,5 +23,10 @@ package ebiz.dto.account.employee;
  *
  */
 public class Employee {
+    private Long id;
+    private String password;
+    private String name;
+    private Integer age;
+    //private Stri
 
 }

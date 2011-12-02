@@ -19,6 +19,7 @@
 package ebiz.dto.account.customer;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.IdGeneratorStrategy;
@@ -26,46 +27,52 @@ import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 import javax.jdo.annotations.Extension;   
 
+import org.apache.struts.chain.commands.servlet.ValidateActionForm;
 import org.apache.struts.validator.ValidatorForm;
 
-import ebiz.form.Login;
+
+import ebiz.form.LoginForm;
 
 /**
  * @author ThuyNT
  *
  */
 @PersistenceCapable
-public class Customer extends ValidatorForm implements Serializable{
+public class Customer extends ValidatorForm  {
     
+   
     /**  . */
     private static final long serialVersionUID = 1L;
-    
     //ten dang nhap
     @PrimaryKey
     @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
     @Extension(vendorName="datanucleus", key="gae.encoded-pk", value="true")
     private String customerId;
+    @Persistent
     private String customerPassword;
+    @Persistent
     private String customerName;
+    @Persistent
     private String customerGender;
-    private Integer customerAge; 
+    @Persistent
+    private Date customerBirth; 
+    @Persistent
     private String customerEmail;           //bat buoc
+    @Persistent
     private String customerPhone;
+    @Persistent
     private String customerAddress;
+    @Persistent
     private String customerType;            // khach hang binh thuong, thanh vien, vip
+    @Persistent
     private String customerService;
+    @Persistent
     private Long customerSumMoney;
+    @Persistent
     private Integer customerMark;           //tich luy diem
+    @Persistent
     private Boolean isPay;                  // tra tien chua?
     
-    public Login editForm(){
-        Login user = new Login();
-        user.setLoginId(customerId);
-        user.setLoginName(customerName);
-        user.setLoginPassword(customerPassword);
-        user.setType("0");
-        return user;
-    }
     
     /**
      * Get value of customerId.
@@ -124,18 +131,18 @@ public class Customer extends ValidatorForm implements Serializable{
         this.customerGender = customerGender;
     }
     /**
-     * Get value of customerAge.
-     * @return the customerAge
+     * Get value of customerBirth.
+     * @return the customerBirth
      */
-    public Integer getCustomerAge() {
-        return customerAge;
+    public Date getCustomerBirth() {
+        return customerBirth;
     }
     /**
-     * Set the value for customerAge.
-     * @param customerAge the customerAge to set
+     * Set the value for customerBirth.
+     * @param customerBirth the customerBirth to set
      */
-    public void setCustomerAge(Integer customerAge) {
-        this.customerAge = customerAge;
+    public void setCustomerBirth(Date customerBirth) {
+        this.customerBirth = customerBirth;
     }
     /**
      * Get value of customerEmail.
