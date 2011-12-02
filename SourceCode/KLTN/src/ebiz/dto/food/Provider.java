@@ -18,17 +18,16 @@
  */
 package ebiz.dto.food;
 
-import com.google.appengine.repackaged.com.google.common.base.Flag.Date;
-
 /**
  * @author ThuyNT
  *
  */
-public class ProductPromotionType {
-    
-    private String productPromotionTypeId;
-    private String productPromotionTypeName;
-  
+public class Provider {
+    private String providerID;
+    private String providerName;
+    private String providerPhone;
+    private String providerAdd;
+    private String providerDetail;
     
 
 }
