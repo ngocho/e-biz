@@ -47,11 +47,9 @@ public class GPSActivity extends MapActivity{
 		{
 			super.draw(canvas, mapView, shadow);                   
 
-			//---translate the GeoPoint to screen pixels---
 			Point screenPts = new Point();
 			mapView.getProjection().toPixels(p, screenPts);
 
-			//---add the marker---
 			Bitmap bmp = BitmapFactory.decodeResource(
 					getResources(), R.drawable.pushpin);            
 			canvas.drawBitmap(bmp, screenPts.x, screenPts.y-50, null);         
@@ -60,7 +58,6 @@ public class GPSActivity extends MapActivity{
 		@Override
 		public boolean onTouchEvent(MotionEvent event, MapView mapView) 
 		{   
-			//---when user lifts his finger---
 			if (event.getAction() == 1) {                
 				GeoPoint p = mapView.getProjection().fromPixels(
 						(int) event.getX(),
@@ -162,23 +159,19 @@ public class GPSActivity extends MapActivity{
     };
     public void setOverlay1(){	
         int foodLength = foodItem.length;
-        // Create itemizedOverlay2 if it doesn't exist and display all three items
         if(! foodIsDisplayed){
         mapOverlays = mapView.getOverlays();	
         drawable1 = this.getResources().getDrawable(R.drawable.pushpin); 
         itemizedOverlay1 = new MyItemizedOverlay(drawable1,this); 
-        // Display all three items at once
         for(int i=0; i<foodLength; i++){
             itemizedOverlay1.addOverlay(foodItem[i]);
         }
         mapOverlays.add(itemizedOverlay1);
         foodIsDisplayed = !foodIsDisplayed;
-        // Remove each item successively with button clicks
         } else {			
             itemizedOverlay1.removeItem(itemizedOverlay1.size()-1);
             if((itemizedOverlay1.size() < 1))  foodIsDisplayed = false;
         }    
-        // Added symbols will be displayed when map is redrawn so force redraw now
         mapView.postInvalidate(); 
     }
 }

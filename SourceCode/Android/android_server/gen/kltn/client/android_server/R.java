@@ -177,17 +177,23 @@ public final class R {
         public static final int yellow_green=0x7f040040;
     }
     public static final class drawable {
-        public static final int icon=0x7f020000;
-        public static final int pushpin=0x7f020001;
+        public static final int bg_header=0x7f020000;
+        public static final int icon=0x7f020001;
+        public static final int pushpin=0x7f020002;
+        public static final int title_test=0x7f020003;
     }
     public static final class id {
         public static final int btn_chatstaff_send=0x7f060007;
         public static final int edt_chatstaff_message=0x7f060006;
         public static final int fr=0x7f06000d;
         public static final int imageView1=0x7f060005;
+        public static final int imageView2=0x7f060012;
         public static final int image_promotion=0x7f06000b;
+        public static final int line_dialog_gps_chat=0x7f060011;
+        public static final int line_dialog_gps_info=0x7f060013;
         public static final int linearLayout1=0x7f060002;
         public static final int linearLayout2=0x7f060004;
+        public static final int listtest_title=0x7f060010;
         public static final int mainlayout=0x7f060008;
         public static final int mapview=0x7f060009;
         public static final int promotion_content=0x7f06000c;
@@ -202,7 +208,8 @@ public final class R {
         public static final int content_chatstaff=0x7f030000;
         public static final int content_gps=0x7f030001;
         public static final int content_promotion=0x7f030002;
-        public static final int main=0x7f030003;
+        public static final int dialog_gps=0x7f030003;
+        public static final int main=0x7f030004;
     }
     public static final class string {
         public static final int app_name=0x7f050001;
@@ -211,6 +218,9 @@ public final class R {
         public static final int exit=0x7f050008;
         public static final int exit_msg=0x7f050009;
         public static final int generic_failure=0x7f05000c;
+        public static final int gps_dialog_chat=0x7f050016;
+        public static final int gps_dialog_info=0x7f050017;
+        public static final int gps_dialog_title=0x7f050015;
         public static final int hello=0x7f050000;
         public static final int msg_error=0x7f050007;
         public static final int no_item=0x7f05000a;
