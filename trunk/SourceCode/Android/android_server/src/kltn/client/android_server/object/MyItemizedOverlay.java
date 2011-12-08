@@ -6,9 +6,18 @@ package kltn.client.android_server.object;
 import java.text.Annotation;
 import java.util.ArrayList;
 
+import kltn.client.android_server.R;
+import kltn.client.android_server.activity.ChatActivity;
+
 import android.app.Application;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.view.Window;
+import android.view.View.OnClickListener;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.google.android.maps.GeoPoint;
@@ -23,6 +32,7 @@ public class MyItemizedOverlay extends ItemizedOverlay<OverlayItem> {
     
     private ArrayList<OverlayItem> myOverlays ;
     private Context context;
+    private Dialog mDialog;
 
     public MyItemizedOverlay(Drawable defaultMarker,Context mcontext) {
         super(boundCenterBottom(defaultMarker));
@@ -41,22 +51,14 @@ public class MyItemizedOverlay extends ItemizedOverlay<OverlayItem> {
         return myOverlays.get(i);
     }
         
-    // Removes overlay item i
     public void removeItem(int i){
         myOverlays.remove(i);
         populate();
     }
         
-    // Handle tap events on overlay icons
     @Override
     protected boolean onTap(int i){
             
-        /*	In this case we will just put a transient Toast message on the screen indicating that we have
-        captured the relevant information about the overlay item.  In a more serious application one
-        could replace the Toast with display of a customized view with the title, snippet text, and additional
-        features like an embedded image, video, or sound, or links to additional information. (The lat and
-        lon variables return the coordinates of the icon that was clicked, which could be used for custom
-        positioning of a display view.)*/
         
         GeoPoint  gpoint = myOverlays.get(i).getPoint();
         double lat = gpoint.getLatitudeE6()/1e6;
@@ -65,12 +67,37 @@ public class MyItemizedOverlay extends ItemizedOverlay<OverlayItem> {
         toast += "\nText: "+myOverlays.get(i).getSnippet();
         toast += 	"\nSymbol coordinates: Lat = "+lat+" Lon = "+lon+" (microdegrees)";
         Toast.makeText(context, toast, Toast.LENGTH_LONG).show();
+        showDialog();
         return(true);
     }
 
-    // Returns present number of items in list
     @Override
     public int size() {
         return myOverlays.size();
+    }
+    public void showDialog(){
+    	mDialog=new Dialog(context);
+    	mDialog.setTitle("");mDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+    	mDialog.setContentView(R.layout.dialog_gps);
+    	mDialog.setCancelable(true);
+    	LinearLayout chat=(LinearLayout)mDialog.findViewById(R.id.line_dialog_gps_chat);
+    	LinearLayout info=(LinearLayout)mDialog.findViewById(R.id.line_dialog_gps_info);
+    	chat.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent i=new Intent(context, ChatActivity.class);
+				context.startActivity(i);
+			}
+		});
+    	info.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent i=new Intent(context, ChatActivity.class);
+				context.startActivity(i);
+			}
+		});
+    	mDialog.show();
     }
 }

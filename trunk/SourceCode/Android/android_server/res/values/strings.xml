@@ -23,4 +23,7 @@
 	<string name="remind_at_start">Don\'t show next time.</string>
 	<string name="chatstaff_button">Gửi</string>
 	<string name="chatstaff_title">chat staff</string>
+	<string name="gps_dialog_title">Quản lý nhân viên</string>
+	<string name="gps_dialog_chat">Chat message</string>
+	<string name="gps_dialog_info">Thông tin giao hàng</string>
 </resources>
