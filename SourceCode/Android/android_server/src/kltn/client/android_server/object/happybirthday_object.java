@@ -8,7 +8,7 @@ package kltn.client.android_server.object;
  *
  */
 public class happybirthday_object {
-	String phonenumber,message;
+	public String phonenumber,message;
 	public happybirthday_object(String phone,String message_content){
 		phonenumber=phone;
 		message=message_content;

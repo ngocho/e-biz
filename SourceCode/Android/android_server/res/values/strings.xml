@@ -26,4 +26,7 @@
 	<string name="gps_dialog_title">Quản lý nhân viên</string>
 	<string name="gps_dialog_chat">Chat message</string>
 	<string name="gps_dialog_info">Thông tin giao hàng</string>
+	<string name="active_xu_title">Quản lý active XU</string>
+	<string name="xu_true">Tài khoản của bạn được nạp 50XU !</string>
+	<string name="xu_false">Mã nạp XU này không có thực, xin nhập lại!</string>
 </resources>
