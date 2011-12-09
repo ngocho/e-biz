@@ -5,7 +5,7 @@
  * should not be modified by hand.
  */
 
-package kltn.client.android_server;
+package kltn.client.android_staff;
 
 public final class R {
     public static final class attr {
@@ -178,72 +178,36 @@ public final class R {
     }
     public static final class drawable {
         public static final int bg_header=0x7f020000;
-        public static final int chat_icon=0x7f020001;
-        public static final int icon=0x7f020002;
-        public static final int manager_icon=0x7f020003;
-        public static final int pushpin=0x7f020004;
-        public static final int title_test=0x7f020005;
+        public static final int icon=0x7f020001;
+        public static final int icon_staff=0x7f020002;
+        public static final int title_test=0x7f020003;
     }
     public static final class id {
-        public static final int active_xu_content=0x7f060005;
-        public static final int active_xu_restart=0x7f060008;
-        public static final int active_xu_start=0x7f060007;
-        public static final int btn_chatstaff_send=0x7f06000c;
-        public static final int edt_chatstaff_message=0x7f06000b;
-        public static final int fr=0x7f060006;
+        public static final int btn_login_exit=0x7f06000c;
+        public static final int btn_login_ok=0x7f06000b;
+        public static final int edt_login_password=0x7f060009;
+        public static final int edt_login_username=0x7f060006;
         public static final int imageView1=0x7f060001;
-        public static final int imageView2=0x7f060015;
-        public static final int image_promotion=0x7f060010;
-        public static final int line_dialog_gps_chat=0x7f060014;
-        public static final int line_dialog_gps_info=0x7f060016;
+        public static final int imageView2=0x7f060003;
         public static final int linearLayout1=0x7f060004;
         public static final int linearLayout2=0x7f060000;
+        public static final int linearLayout3=0x7f060007;
+        public static final int linearLayout4=0x7f06000a;
         public static final int listtest_title=0x7f060002;
-        public static final int mainlayout=0x7f06000d;
-        public static final int mapview=0x7f06000e;
-        public static final int promotion_content=0x7f060011;
-        public static final int promotion_restart=0x7f060013;
-        public static final int promotion_start=0x7f060012;
-        public static final int scrollView1=0x7f060003;
-        public static final int textView1=0x7f060009;
-        public static final int tvw_content_chatstaff=0x7f06000a;
-        public static final int zoom=0x7f06000f;
+        public static final int textView1=0x7f060005;
+        public static final int textView2=0x7f060008;
     }
     public static final class layout {
-        public static final int content_active_xu=0x7f030000;
-        public static final int content_chatstaff=0x7f030001;
-        public static final int content_gps=0x7f030002;
-        public static final int content_promotion=0x7f030003;
-        public static final int dialog_gps=0x7f030004;
-        public static final int main=0x7f030005;
+        public static final int login=0x7f030000;
+        public static final int main=0x7f030001;
     }
     public static final class string {
-        public static final int active_xu_title=0x7f050018;
         public static final int app_name=0x7f050001;
-        public static final int chatstaff_button=0x7f050013;
-        public static final int chatstaff_title=0x7f050014;
-        public static final int exit=0x7f050008;
-        public static final int exit_msg=0x7f050009;
-        public static final int generic_failure=0x7f05000c;
-        public static final int gps_dialog_chat=0x7f050016;
-        public static final int gps_dialog_info=0x7f050017;
-        public static final int gps_dialog_title=0x7f050015;
         public static final int hello=0x7f050000;
-        public static final int msg_error=0x7f050007;
-        public static final int no_item=0x7f05000a;
-        public static final int no_service=0x7f05000d;
-        public static final int null_pdu=0x7f05000e;
-        public static final int promotion_restart=0x7f050004;
-        public static final int promotion_start=0x7f050002;
-        public static final int promotion_stop=0x7f050003;
-        public static final int promotion_title=0x7f050005;
-        public static final int radio_off=0x7f05000f;
-        public static final int remind_at_start=0x7f050012;
-        public static final int sms_delivered=0x7f050010;
-        public static final int sms_not_delivered=0x7f050011;
-        public static final int sms_send=0x7f05000b;
-        public static final int title_error=0x7f050006;
-        public static final int xu_false=0x7f05001a;
-        public static final int xu_true=0x7f050019;
+        public static final int login_exit=0x7f050006;
+        public static final int login_ok=0x7f050005;
+        public static final int login_password=0x7f050004;
+        public static final int login_title=0x7f050002;
+        public static final int login_user=0x7f050003;
     }
 }
