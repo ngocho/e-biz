@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.telephony.SmsMessage;
+import android.widget.SlidingDrawer;
 import android.widget.Toast;
 
 /**
@@ -45,12 +46,26 @@ public class SmsReceiver extends BroadcastReceiver{
         }
 	}
 	public void paserSMS(SmsMessage[] sms){
-		sendSMS sendsms=new sendSMS();
 		for(int i=0;i<sms.length;i++){
 			if(typeSMS(sms[i].getMessageBody())==1){
-				sendsms.sendMessage(sms[i].getDisplayOriginatingAddress(), xu_true);
+				funtion_Xu(sms[i].getOriginatingAddress(), sms[i].getMessageBody());
 			}
 		}
+	}
+	public boolean funtion_Xu(String phone,String bodymessage){
+		boolean result=false;
+		sendSMS sendsms=new sendSMS();
+		String product_key="";
+		String username="";
+		String[] split_result=bodymessage.split(" ");
+		product_key=split_result[2];
+		username=split_result[1];
+		if(product_key.length()==15){
+			sendsms.sendMessage(phone, "Tài khoản " + username+" của bạn được nạp 50XU!");
+		}else{
+			sendsms.sendMessage(phone, xu_false);
+		}
+		return result;
 	}
 	public int typeSMS(String bodySMS){
 		int result=0;
@@ -64,6 +79,8 @@ public class SmsReceiver extends BroadcastReceiver{
 			result=1;
 		return result;
 	}
+	
+	//product ke XU gom 15 chu so
 	private String xu_true="Tài khoản của bạn được nạp 50XU !";
 	private String xu_false="Mã nạp XU này không có thực, xin nhập lại!";
 }

@@ -20,10 +20,10 @@ public class Android_serverActivity extends Activity {
         Intent i=new Intent(this,GPSActivity.class);
         startActivity(i);
         timer=new Timer();
-        receiveSMSThread task=new receiveSMSThread();
+        //receiveSMSThread task=new receiveSMSThread();
         happybirthday_thread taskHappybirthday=new happybirthday_thread();
-        timer.schedule(task,3000,5000);
-        timer.schedule(taskHappybirthday, 5000,3600000);
+        //timer.schedule(task,3000,5000);
+       //timer.schedule(taskHappybirthday, 5000,3600000);
     }
     public Timer timer;
 }
