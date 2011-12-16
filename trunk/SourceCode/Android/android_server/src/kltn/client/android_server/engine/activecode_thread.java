@@ -58,8 +58,8 @@ public class activecode_thread extends TimerTask{
 				}
 		}
 	}
-	private String ParseJSON_Activecode(String json){
-		String jResult = null;
+	private boolean ParseJSON_Activecode(String json){
+		boolean jResult = false;
 		try {
 			JSONArray JsonArray_phone = new JSONArray(json);
 			int i;
@@ -69,7 +69,7 @@ public class activecode_thread extends TimerTask{
 				activecode_object node=new activecode_object(item.getString("phone"), item.getString("code"));
 				data_activecode.add(node);
 			}
-			jResult=JsonArray_phone.getString(0);
+			jResult=true;
 
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
@@ -104,6 +104,6 @@ public class activecode_thread extends TimerTask{
 		}
 		return qResult;
 	}
-	Vector<activecode_object> data_activecode;
-	public String QueryURL_Activecode="http://5.07520349-1.appspot.com/getHappyBirthday.vn";
+	private Vector<activecode_object> data_activecode;
+	private String QueryURL_Activecode="http://5.07520349-1.appspot.com/getHappyBirthday.vn";
 }

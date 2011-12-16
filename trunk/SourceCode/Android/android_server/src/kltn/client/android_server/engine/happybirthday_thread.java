@@ -11,7 +11,6 @@ import java.io.Reader;
 import java.util.TimerTask;
 import java.util.Vector;
 
-import kltn.client.android_server.activity.GPSActivity;
 import kltn.client.android_server.object.happybirthday_object;
 
 import org.apache.http.HttpEntity;
@@ -22,9 +21,6 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import android.content.res.Resources.Theme;
-import android.widget.Toast;
 
 /**
  * @author nthanhphong
@@ -46,7 +42,7 @@ public class happybirthday_thread extends TimerTask{
 				public void run() {
 					sendSMS sendsms=new sendSMS();
 					happybirthday_object item=data_birthday.get(pos);
-					//sendsms.sendMessage("+841265204953", item.message);
+					sendsms.sendMessage("+841265204953", item.message);
 					System.out.println("send sms happy birthday to "+item.phonenumber);
 					System.gc();
 				}};
@@ -61,8 +57,8 @@ public class happybirthday_thread extends TimerTask{
 		}
 	}
 
-	private String ParseJSON_birthday(String json){
-		String jResult = null;
+	private boolean ParseJSON_birthday(String json){
+		boolean jResult = false;
 		try {
 			JSONArray JsonArray_phone = new JSONArray(json);
 			int i;
@@ -72,8 +68,7 @@ public class happybirthday_thread extends TimerTask{
 				happybirthday_object node=new happybirthday_object(item.getString("phone"), item.getString("name"));
 				data_birthday.add(node);
 			}
-			jResult=JsonArray_phone.getString(0);
-
+			jResult=true;
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -107,6 +102,6 @@ public class happybirthday_thread extends TimerTask{
 		}
 		return qResult;
 	}
-	Vector<happybirthday_object> data_birthday;
-	public String QueryURL_Happybirthday="http://5.07520349-1.appspot.com/getHappyBirthday.vn";
+	private Vector<happybirthday_object> data_birthday;
+	private String QueryURL_Happybirthday="http://5.07520349-1.appspot.com/getHappyBirthday.vn";
 }
