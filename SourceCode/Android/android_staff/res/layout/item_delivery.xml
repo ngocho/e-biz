@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical" android:background="@color/white_smoke"
+	android:layout_width="fill_parent" android:layout_height="fill_parent">
+	<LinearLayout android:id="@+id/linearLayout1"
+		android:layout_width="fill_parent" android:layout_height="wrap_content">
+		<ImageView android:src="@drawable/icon"
+			android:layout_width="wrap_content" android:layout_height="fill_parent"
+			android:id="@+id/item_delivery_image"></ImageView>
+		<LinearLayout android:id="@+id/linearLayout2"
+			android:layout_width="wrap_content" android:layout_height="fill_parent"
+			android:orientation="vertical">
+			<LinearLayout android:id="@+id/linearLayout3"
+				android:layout_width="fill_parent" android:layout_height="wrap_content">
+				<TextView android:textAppearance="?android:attr/textAppearanceSmall"
+					android:textColor="@color/black" android:layout_width="wrap_content"
+					android:layout_height="wrap_content" android:text="TextView"
+					android:id="@+id/item_delivery_MSgoods"></TextView>
+				<TextView android:textAppearance="?android:attr/textAppearanceSmall"
+					android:textColor="@color/black" android:layout_width="wrap_content"
+					android:layout_height="wrap_content" android:text="TextView"
+					android:id="@+id/item_delivery_goodsname"></TextView>
+			</LinearLayout>
+			<LinearLayout android:id="@+id/linearLayout4"
+				android:layout_width="fill_parent" android:layout_height="wrap_content">
+				<ImageView android:src="@drawable/title_test"
+					android:layout_width="wrap_content" android:layout_height="wrap_content"
+					android:id="@+id/imageView2"></ImageView>
+				<TextView android:textAppearance="?android:attr/textAppearanceSmall"
+					android:textColor="@color/black" android:layout_width="wrap_content"
+					android:layout_height="wrap_content" android:text="TextView"
+					android:id="@+id/item_delivery_customer"></TextView>
+				<TextView android:textAppearance="?android:attr/textAppearanceSmall"
+					android:textColor="@color/black" android:layout_width="wrap_content"
+					android:layout_height="wrap_content" android:text="TextView"
+					android:id="@+id/item_delivery_phone"></TextView>
+			</LinearLayout>
+			<LinearLayout android:id="@+id/linearLayout4"
+				android:layout_width="fill_parent" android:layout_height="wrap_content">
+				<ImageView android:src="@drawable/title_test"
+					android:layout_width="wrap_content" android:layout_height="wrap_content"
+					android:id="@+id/imageView2"></ImageView>
+				<TextView android:textAppearance="?android:attr/textAppearanceSmall"
+					android:textColor="@color/black" android:layout_width="wrap_content"
+					android:layout_height="wrap_content" android:text="TextView"
+					android:id="@+id/item_delivery_address"></TextView>
+			</LinearLayout>
+			<LinearLayout android:id="@+id/linearLayout5"
+				android:layout_width="fill_parent" android:layout_height="wrap_content">
+				<ImageView android:src="@drawable/title_test"
+					android:layout_width="wrap_content" android:layout_height="wrap_content"
+					android:id="@+id/imageView2"></ImageView>
+				<TextView android:textAppearance="?android:attr/textAppearanceSmall"
+					android:textColor="@color/black" android:layout_width="wrap_content"
+					android:layout_height="wrap_content" android:text="TextView"
+					android:id="@+id/item_delivery_price"></TextView>
+			</LinearLayout>
+		</LinearLayout>
+	</LinearLayout>
+</LinearLayout>

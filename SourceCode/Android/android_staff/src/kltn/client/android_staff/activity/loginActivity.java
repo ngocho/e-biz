@@ -6,11 +6,13 @@ package kltn.client.android_staff.activity;
 import kltn.client.android_staff.R;
 import kltn.client.android_staff.engine.engine;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 /**
  * @author nthanhphong
@@ -39,7 +41,13 @@ public class loginActivity extends Activity{
 		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
-			mengine.login(edt_username.getText().toString(), edt_password.getText().toString());
+			if(!mengine.login(edt_username.getText().toString(), edt_password.getText().toString()))
+					Toast.makeText(loginActivity.this, R.string.login_fasle, Toast.LENGTH_SHORT).show();
+			else{
+				finish();
+				Intent i=new Intent(loginActivity.this,loginActivity.class);
+				startActivity(i);
+			}
 		}
 	};
 	private OnClickListener action_exit=new OnClickListener() {
