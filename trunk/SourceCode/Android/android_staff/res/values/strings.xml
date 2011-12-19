@@ -5,8 +5,13 @@
 	<string name="app_name">Android_staff</string>
 	<string name="login_title">Đăng nhập hệ thống</string>
 	<string name="login_user">Tài khoản:</string>
-	<string name="login_password">Mật khẩu:</string>
+	<string name="login_password">Mật khẩu: </string>
 	<string name="login_ok">Đăng nhập</string>
-	<string name="login_exit">Hủy</string>
+	<string name="login_exit">Thoát</string>
 	<string name="delivery_content_title">Hệ thống giao hàng</string>
+	<string name="delivery_content_dialog">Chi tiết giao hàng</string>
+	<string name="delivery_content_map">Xem bản đồ</string>
+	<string name="delivery_content_note">Ghi chú</string>
+	<string name="delivery_content_check">Đã giao hàng</string>
+	<string name="chat_title">Chat message</string>
 </resources>

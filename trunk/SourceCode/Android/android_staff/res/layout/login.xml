@@ -18,25 +18,25 @@
 	<ImageView android:id="@+id/imageView2" android:src="@drawable/icon_staff"
 		android:layout_height="wrap_content" android:layout_width="wrap_content"
 		android:layout_gravity="center_horizontal"></ImageView>
-	<LinearLayout android:layout_height="wrap_content"
+	<LinearLayout android:layout_height="wrap_content" android:layout_marginBottom="5dp"
 		android:layout_marginLeft="10dp" android:layout_marginRight="10dp"
 		android:layout_width="fill_parent" android:id="@+id/linearLayout1">
 		<TextView android:id="@+id/textView1" android:textAppearance="?android:attr/textAppearanceMedium"
-			android:layout_height="wrap_content" android:textColor="@color/black"
-			android:layout_width="wrap_content" android:text="@string/login_user"></TextView>
-		<EditText android:layout_height="wrap_content"
-			android:layout_marginLeft="5dp" android:layout_weight="1"
+			android:layout_height="wrap_content" android:textColor="@color/black" 
+			android:layout_width="100dp" android:text="@string/login_user"></TextView>
+		<EditText android:layout_height="35dp" android:background="@drawable/button_bg_s"
+			android:layout_marginLeft="5dp" android:layout_weight="1" 
 			android:id="@+id/edt_login_username" android:layout_width="wrap_content">
 			<requestFocus></requestFocus>
 		</EditText>
 	</LinearLayout>
-	<LinearLayout android:layout_height="wrap_content"
+	<LinearLayout android:layout_height="wrap_content" android:layout_marginBottom="10dp"
 		android:layout_marginLeft="10dp" android:layout_marginRight="10dp"
 		android:layout_width="fill_parent" android:id="@+id/linearLayout3">
 		<TextView android:id="@+id/textView2" android:textAppearance="?android:attr/textAppearanceMedium"
-			android:layout_height="wrap_content" android:textColor="@color/black"
-			android:layout_width="wrap_content" android:text="@string/login_password"></TextView>
-		<EditText android:layout_height="wrap_content"
+			android:layout_height="wrap_content" android:textColor="@color/black"  
+			android:layout_width="100dp" android:text="@string/login_password"></TextView>
+		<EditText android:layout_height="35dp"  android:background="@drawable/button_bg_s"
 			android:layout_marginLeft="5dp" android:layout_weight="1"
 			android:id="@+id/edt_login_password" android:layout_width="wrap_content"
 			android:inputType="textPassword"></EditText>

@@ -13,24 +13,26 @@
 			android:textStyle="bold" android:textAppearance="?android:attr/textAppearanceMedium"
 			android:layout_width="wrap_content" android:id="@+id/listtest_title"
 			android:layout_height="wrap_content" android:textColor="@color/black"
-			android:text="@string/delivery_content_title"></TextView>
+			android:text="@string/chat_title"></TextView>
 	</LinearLayout>
-	<ListView android:layout_height="wrap_content" android:id="@+id/listView_delivery_content"
-		android:layout_weight="1.0" android:layout_width="fill_parent"></ListView>
+	<ListView android:layout_height="wrap_content"
+		android:id="@+id/listView_chat_content" android:layout_weight="1.0"
+		android:layout_width="fill_parent"></ListView>
 	<LinearLayout android:layout_width="fill_parent"
 		android:id="@+id/linearLayout1" android:layout_height="wrap_content"
 		android:background="@drawable/bg_header" android:gravity="center_vertical">
-		<ImageButton android:id="@+id/delivery_home" android:src="@drawable/icon_home"
+		<ImageButton android:id="@+id/chat_home" android:src="@drawable/icon_home"
 			android:layout_weight="1.0" android:background="@color/transparent"
 			android:layout_width="wrap_content" android:layout_height="wrap_content"></ImageButton>
-		<ImageButton android:id="@+id/delivery_favorite"
+		<ImageButton android:id="@+id/chat_favorite"
 			android:src="@drawable/icon_favarous" android:layout_weight="1.0"
 			android:background="@color/transparent" android:layout_width="wrap_content"
 			android:layout_height="wrap_content"></ImageButton>
-		<ImageButton android:id="@+id/delivery_setting" android:src="@drawable/icon_setting"
-			android:layout_weight="1.0" android:layout_width="wrap_content"
-			android:background="@color/transparent" android:layout_height="wrap_content"></ImageButton>
-		<ImageButton android:id="@+id/delivery_about" android:src="@drawable/icon_net"
+		<ImageButton android:id="@+id/chat_setting"
+			android:src="@drawable/icon_setting" android:layout_weight="1.0"
+			android:layout_width="wrap_content" android:background="@color/transparent"
+			android:layout_height="wrap_content"></ImageButton>
+		<ImageButton android:id="@+id/chat_about" android:src="@drawable/icon_net"
 			android:layout_weight="1.0" android:background="@color/transparent"
 			android:layout_width="wrap_content" android:layout_height="wrap_content"></ImageButton>
 	</LinearLayout>

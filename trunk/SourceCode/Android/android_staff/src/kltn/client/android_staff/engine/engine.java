@@ -55,7 +55,7 @@ public class engine {
 		return ParseJSON_login(username, password);
 	}
 	
-	private boolean ParseJSON_login(String produckey,String username){
+	private boolean ParseJSON_login(String username,String password){
 		boolean jResult = false;
 		try {
 			JSONArray JsonArray_phone = new JSONArray(Query_URL(URL_Login));
@@ -63,7 +63,7 @@ public class engine {
 			if(item.getString("flag").equals("true"))
 				jResult=true;
 		}
-		catch (JSONException e) {
+		catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -90,7 +90,7 @@ public class engine {
 		} catch (ClientProtocolException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (IOException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

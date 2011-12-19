@@ -10,15 +10,18 @@ import object.delivery;
 
 import kltn.client.android_staff.R;
 import android.app.Activity;
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.speech.tts.TextToSpeech;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 /**
@@ -35,7 +38,17 @@ public class delivery_Activity extends Activity{
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.delivery_content);
+		mlistviewDelivery=(ListView)findViewById(R.id.listView_delivery_content);
+		data_delivery=new Vector<delivery>();
+		data_delivery.add(new delivery("D2", "P3", "Tủ lạnh Panasonic", "4.000.000 VNĐ", "Phú Nhuận", "01229905085", "A.Long", "1.675", "34.8966", false));
+		mlistAdapter adapter=new mlistAdapter();
+		mlistviewDelivery.setAdapter(adapter);
+		Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+		 
+		// Vibrate for 300 milliseconds
+		v.vibrate(300);
 	}
+	private ListView mlistviewDelivery;
 	Vector<delivery> data_delivery;
 	public class mlistAdapter extends BaseAdapter{  
 
