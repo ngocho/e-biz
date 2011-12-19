@@ -2,4 +2,15 @@
 <resources>
     <string name="hello">Hello World, Android_clientActivity!</string>
     <string name="app_name">Android_client</string>
+    <string name="register_title">Đăng ký</string>
+    <string name="register_email">E-mail:</string>
+    <string name="register_nickname">Tên Thành Viên (Nickname):</string>
+    <string name="register_password">Mật Khẩu (Password):</string>
+    <string name="register_sex">Giới Tính (Sex):</string>
+    <string name="register_phone">Số Điện Thoại (Phone):</string>
+    <string name="register_name">Họ Tên (Full Name):</string>
+    <string name="register_address">Địa Chỉ (Address):</string>
+    <string name="register_birthday">Ngày Sinh (Date of Birth):</string>
+    <string name="register_check">Tôi đồng ý với các điều khoản Thỏa thuận sử dụng</string>
+    <string name="register_button">Tạo Tài Khoản</string>
 </resources>

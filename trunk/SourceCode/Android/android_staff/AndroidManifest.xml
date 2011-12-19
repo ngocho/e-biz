@@ -23,5 +23,6 @@
 		<activity android:name=".activity.delivery_Activity"></activity>
 		<uses-library android:name="com.google.android.maps" />
 		<activity android:name=".activity.chatActivity"></activity>
+		<activity android:name=".activity.mapActivity"></activity>
 	</application>
 </manifest>

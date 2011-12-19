@@ -3,6 +3,7 @@ package kltn.client.android_staff;
 import kltn.client.android_staff.activity.chatActivity;
 import kltn.client.android_staff.activity.delivery_Activity;
 import kltn.client.android_staff.activity.loginActivity;
+import kltn.client.android_staff.activity.mapActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,7 +15,7 @@ public class Android_staffActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         finish();
-        Intent i=new Intent(this,chatActivity.class);
+        Intent i=new Intent(this,mapActivity.class);
         startActivity(i);
     }
 }
