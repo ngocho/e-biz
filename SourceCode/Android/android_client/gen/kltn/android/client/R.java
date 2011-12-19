@@ -5,7 +5,7 @@
  * should not be modified by hand.
  */
 
-package kltn.client.android_staff;
+package kltn.android.client;
 
 public final class R {
     public static final class attr {
@@ -177,103 +177,49 @@ public final class R {
         public static final int yellow_green=0x7f040040;
     }
     public static final class drawable {
-        public static final int bg_header=0x7f020000;
-        public static final int button_bg_s=0x7f020001;
-        public static final int button_bg_us=0x7f020002;
-        public static final int clock_icon=0x7f020003;
-        public static final int footer=0x7f020004;
-        public static final int icon=0x7f020005;
-        public static final int icon_address=0x7f020006;
-        public static final int icon_app=0x7f020007;
-        public static final int icon_favarous=0x7f020008;
-        public static final int icon_home=0x7f020009;
-        public static final int icon_net=0x7f02000a;
-        public static final int icon_person=0x7f02000b;
-        public static final int icon_price=0x7f02000c;
-        public static final int icon_setting=0x7f02000d;
-        public static final int icon_staff=0x7f02000e;
-        public static final int manager_icon=0x7f02000f;
-        public static final int phone_icon=0x7f020010;
-        public static final int title_test=0x7f020011;
+        public static final int icon=0x7f020000;
+        public static final int icon_female=0x7f020001;
+        public static final int icon_male=0x7f020002;
     }
     public static final class id {
-        public static final int btn_login_exit=0x7f060032;
-        public static final int btn_login_ok=0x7f060031;
-        public static final int chat_about=0x7f060008;
-        public static final int chat_favorite=0x7f060006;
-        public static final int chat_home=0x7f060005;
-        public static final int chat_setting=0x7f060007;
-        public static final int delivery_about=0x7f060010;
-        public static final int delivery_favorite=0x7f06000e;
-        public static final int delivery_home=0x7f06000d;
-        public static final int delivery_setting=0x7f06000f;
-        public static final int dialog_delivery_MSgoods=0x7f060013;
-        public static final int dialog_delivery_address=0x7f060019;
-        public static final int dialog_delivery_check=0x7f06001f;
-        public static final int dialog_delivery_close=0x7f060023;
-        public static final int dialog_delivery_customer=0x7f060017;
-        public static final int dialog_delivery_date=0x7f06001c;
-        public static final int dialog_delivery_goodsname=0x7f060014;
-        public static final int dialog_delivery_image=0x7f060011;
-        public static final int dialog_delivery_map=0x7f060022;
-        public static final int dialog_delivery_note=0x7f06001e;
-        public static final int dialog_delivery_ok=0x7f060021;
-        public static final int dialog_delivery_phone=0x7f060018;
-        public static final int dialog_delivery_price=0x7f06001b;
-        public static final int edt_login_password=0x7f060030;
-        public static final int edt_login_username=0x7f06002e;
-        public static final int imageView1=0x7f060001;
-        public static final int imageView2=0x7f060016;
-        public static final int item_chat_cos=0x7f060025;
-        public static final int item_chat_date=0x7f060026;
-        public static final int item_chat_image=0x7f060024;
-        public static final int item_delivery_MSgoods=0x7f060028;
-        public static final int item_delivery_address=0x7f06002c;
-        public static final int item_delivery_customer=0x7f06002a;
-        public static final int item_delivery_goodsname=0x7f060029;
-        public static final int item_delivery_image=0x7f060027;
-        public static final int item_delivery_phone=0x7f06002b;
-        public static final int item_delivery_price=0x7f06002d;
-        public static final int linearLayout1=0x7f060004;
-        public static final int linearLayout2=0x7f060000;
-        public static final int linearLayout3=0x7f060012;
-        public static final int linearLayout4=0x7f060015;
-        public static final int linearLayout5=0x7f06001a;
-        public static final int linearLayout6=0x7f060020;
-        public static final int listView_chat_content=0x7f060003;
-        public static final int listView_delivery_content=0x7f06000c;
-        public static final int listtest_title=0x7f060002;
-        public static final int mainlayout=0x7f060009;
-        public static final int mapview=0x7f06000a;
-        public static final int textView1=0x7f06001d;
-        public static final int textView2=0x7f06002f;
-        public static final int zoom=0x7f06000b;
+        public static final int imageView1=0x7f06000a;
+        public static final int imageView2=0x7f06000c;
+        public static final int linearLayout1=0x7f060000;
+        public static final int linearLayout2=0x7f060003;
+        public static final int linearLayout3=0x7f060009;
+        public static final int register_address=0x7f060010;
+        public static final int register_back=0x7f060001;
+        public static final int register_birthday=0x7f060011;
+        public static final int register_check=0x7f060012;
+        public static final int register_female=0x7f06000d;
+        public static final int register_fullname=0x7f060008;
+        public static final int register_mail=0x7f06000e;
+        public static final int register_male=0x7f06000b;
+        public static final int register_nickname=0x7f060005;
+        public static final int register_ok=0x7f060013;
+        public static final int register_password=0x7f060007;
+        public static final int register_phone=0x7f06000f;
+        public static final int textView1=0x7f060002;
+        public static final int textView2=0x7f060004;
+        public static final int textView3=0x7f060006;
     }
     public static final class layout {
-        public static final int chat_content=0x7f030000;
-        public static final int content_gps=0x7f030001;
-        public static final int delivery_content=0x7f030002;
-        public static final int dialog_detail=0x7f030003;
-        public static final int item_chat=0x7f030004;
-        public static final int item_delivery=0x7f030005;
-        public static final int login=0x7f030006;
-        public static final int main=0x7f030007;
+        public static final int main=0x7f030000;
+        public static final int register_content=0x7f030001;
     }
     public static final class string {
-        public static final int app_name=0x7f050002;
-        public static final int chat_title=0x7f05000d;
-        public static final int delivery_content_check=0x7f05000c;
-        public static final int delivery_content_dialog=0x7f050009;
-        public static final int delivery_content_map=0x7f05000a;
-        public static final int delivery_content_note=0x7f05000b;
-        public static final int delivery_content_title=0x7f050008;
-        public static final int delivery_dialog_close=0x7f05000e;
-        public static final int hello=0x7f050001;
-        public static final int login_exit=0x7f050007;
-        public static final int login_fasle=0x7f050000;
-        public static final int login_ok=0x7f050006;
-        public static final int login_password=0x7f050005;
-        public static final int login_title=0x7f050003;
-        public static final int login_user=0x7f050004;
+        public static final int app_name=0x7f050001;
+        public static final int hello=0x7f050000;
+        public static final int register_address=0x7f050009;
+        public static final int register_birthday=0x7f05000a;
+        public static final int register_button=0x7f05000c;
+        public static final int register_check=0x7f05000b;
+        public static final int register_email=0x7f050003;
+        public static final int register_name=0x7f050008;
+        public static final int register_nickname=0x7f050004;
+        public static final int register_password=0x7f050005;
+        public static final int register_phone=0x7f050007;
+        public static final int register_sex=0x7f050006;
+        public static final int register_title=0x7f050002;
     }
 }

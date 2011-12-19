@@ -14,4 +14,5 @@
 	<string name="delivery_content_note">Ghi chú</string>
 	<string name="delivery_content_check">Đã giao hàng</string>
 	<string name="chat_title">Chat message</string>
+	<string name="delivery_dialog_close">Đóng</string>
 </resources>
