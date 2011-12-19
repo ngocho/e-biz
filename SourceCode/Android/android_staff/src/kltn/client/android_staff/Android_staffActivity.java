@@ -1,6 +1,10 @@
 package kltn.client.android_staff;
 
+import kltn.client.android_staff.activity.chatActivity;
+import kltn.client.android_staff.activity.delivery_Activity;
+import kltn.client.android_staff.activity.loginActivity;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 
 public class Android_staffActivity extends Activity {
@@ -9,5 +13,8 @@ public class Android_staffActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        finish();
+        Intent i=new Intent(this,chatActivity.class);
+        startActivity(i);
     }
 }
