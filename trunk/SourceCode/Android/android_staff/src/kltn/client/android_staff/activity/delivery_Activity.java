@@ -12,6 +12,7 @@ import kltn.client.android_staff.R;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -134,6 +135,15 @@ public class delivery_Activity extends Activity{
 			
 			@Override
 			public void onClick(View v) {
+				dialog.cancel();
+			}
+		});
+		map.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent i=new Intent(delivery_Activity.this,mapActivity.class);
+				startActivity(i);
 				dialog.cancel();
 			}
 		});

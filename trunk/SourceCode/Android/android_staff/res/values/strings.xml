@@ -15,4 +15,6 @@
 	<string name="delivery_content_check">Đã giao hàng</string>
 	<string name="chat_title">Chat message</string>
 	<string name="delivery_dialog_close">Đóng</string>
+	<string name="chat_button">Gửi</string>
+	<string name="statistic_title">Thống kê giao hàng</string>
 </resources>

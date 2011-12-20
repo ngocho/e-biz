@@ -1,5 +1,6 @@
 package kltn.android.server;
 
+import kltn.client.android_server.R;
 import android.app.Activity;
 import android.os.Bundle;
 

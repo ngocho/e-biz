@@ -28,8 +28,25 @@ import android.R.bool;
  *
  */
 public class engine {
+	
+	
+	
+	
+	
 	public Vector<delivery> get_delivery(String username,String password){
 		Vector<delivery> result=ParseJSON_get_delivery(Query_URL(URL_Login));
+		return result;
+	}
+	
+	public String sendMessageChat(String id,String message){
+		//id bằng username của staff + @ + staff
+		String result="";
+		try {
+			JSONArray JsonArray_chat=new JSONArray(Query_URL(URL_Chat));
+			JSONObject item=JsonArray_chat.getJSONObject(0);
+			result=item.getString("chat");
+		} catch (Exception e) {
+		}
 		return result;
 	}
 	
@@ -55,6 +72,7 @@ public class engine {
 		return ParseJSON_login(username, password);
 	}
 	
+	//login vào hệ thống
 	private boolean ParseJSON_login(String username,String password){
 		boolean jResult = false;
 		try {
@@ -64,11 +82,12 @@ public class engine {
 				jResult=true;
 		}
 		catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return jResult;
 	}
+	
+	// query 1 url từ server
 	private String Query_URL(String q){
 		String qResult = null;
 		String qString =q;
@@ -96,5 +115,6 @@ public class engine {
 		}
 		return qResult;
 	}
-	String URL_Login="http://5.07520349-1.appspot.com/getActiveXU.vn";
+	String URL_Login="http://5.07520349-1.appspot.com/getLogin.vn";
+	String URL_Chat="http://5.07520349-1.appspot.com/getLogin.vn";
 }
