@@ -45,7 +45,7 @@ public class loginActivity extends Activity{
 					Toast.makeText(loginActivity.this, R.string.login_fasle, Toast.LENGTH_SHORT).show();
 			else{
 				finish();
-				Intent i=new Intent(loginActivity.this,loginActivity.class);
+				Intent i=new Intent(loginActivity.this,delivery_Activity.class);
 				startActivity(i);
 			}
 		}

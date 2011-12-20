@@ -24,5 +24,6 @@
 		<uses-library android:name="com.google.android.maps" />
 		<activity android:name=".activity.chatActivity"></activity>
 		<activity android:name=".activity.mapActivity"></activity>
+		<provider android:authorities="kltn.client.android_staff" android:name=".engine.MainProvider"></provider>
 	</application>
 </manifest>

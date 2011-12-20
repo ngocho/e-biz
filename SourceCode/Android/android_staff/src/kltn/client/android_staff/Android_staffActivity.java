@@ -15,7 +15,7 @@ public class Android_staffActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         finish();
-        Intent i=new Intent(this,mapActivity.class);
+        Intent i=new Intent(this,chatActivity.class);
         startActivity(i);
     }
 }

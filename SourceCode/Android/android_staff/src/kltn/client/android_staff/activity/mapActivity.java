@@ -110,7 +110,7 @@ public class mapActivity extends MapActivity{
 						LayoutParams.WRAP_CONTENT)); 
 		mapView.displayZoomControls(true);
 		mc = mapView.getController();
-        String coordinates[] = {"35.9537", "-83.926158"};
+        String coordinates[] = {"10.7910576", "106.696861"};
         double lat = Double.parseDouble(coordinates[0]);
         double lng = Double.parseDouble(coordinates[1]);
  
