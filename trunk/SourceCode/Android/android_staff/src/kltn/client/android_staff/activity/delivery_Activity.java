@@ -26,6 +26,7 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -34,7 +35,7 @@ import android.widget.TextView;
  * @author nthanhphong
  *
  */
-public class delivery_Activity extends Activity{
+public class delivery_Activity extends Activity implements OnClickListener{
 
 	/* (non-Javadoc)
 	 * @see android.app.Activity#onCreate(android.os.Bundle)
@@ -45,15 +46,21 @@ public class delivery_Activity extends Activity{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.delivery_content);
 		mlistviewDelivery=(ListView)findViewById(R.id.listView_delivery_content);
+		menu_delivery=(ImageButton)findViewById(R.id.delivery_home);
+		menu_food=(ImageButton)findViewById(R.id.delivery_food);
+		menu_statistic=(ImageButton)findViewById(R.id.delivery_statistic);
+		memu_chat=(ImageButton)findViewById(R.id.delivery_chat);
+
 		data_delivery=new Vector<delivery>();
 		data_delivery.add(new delivery("D2", "P3", "Tủ lạnh Panasonic", "4.000.000 VNĐ", "Phú Nhuận", "01229905085", "A.Long", "1.675", "34.8966", false));
 		mlistAdapter adapter=new mlistAdapter();
 		mlistviewDelivery.setAdapter(adapter);
-//		Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-//		 
-//		// Vibrate for 300 milliseconds
-//		v.vibrate(300);
+		//		Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+		//		 
+		//		// Vibrate for 300 milliseconds
+		//		v.vibrate(300);
 	}
+	private ImageButton menu_delivery,menu_statistic,memu_chat,menu_food;
 	private ListView mlistviewDelivery;
 	Vector<delivery> data_delivery;
 	public class mlistAdapter extends BaseAdapter{  
@@ -93,7 +100,7 @@ public class delivery_Activity extends Activity{
 				address.setText(item.Address);
 				price.setText(item.Price);
 				convertView.setOnClickListener(new OnClickListener() {
-					
+
 					@Override
 					public void onClick(View v) {
 						showDialogDetail(item);
@@ -132,14 +139,14 @@ public class delivery_Activity extends Activity{
 		note.setText("");
 		check.setChecked(false);
 		close.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				dialog.cancel();
 			}
 		});
 		map.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				Intent i=new Intent(delivery_Activity.this,mapActivity.class);
@@ -148,5 +155,31 @@ public class delivery_Activity extends Activity{
 			}
 		});
 		dialog.show();
+	}
+	/* (non-Javadoc)
+	 * @see android.view.View.OnClickListener#onClick(android.view.View)
+	 */
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.delivery_chat:
+				Intent chat=new Intent(delivery_Activity.this,chatActivity.class);
+				startActivity(chat);
+			break;
+		case R.id.delivery_food:
+				Intent food=new Intent(delivery_Activity.this,delivery_Activity.class);
+				startActivity(food);
+			break;
+		case R.id.delivery_home:
+				Intent home=new Intent(delivery_Activity.this,delivery_Activity.class);
+				startActivity(home);
+			break;
+		case R.id.delivery_statistic:
+				Intent statistic=new Intent(delivery_Activity.this,delivery_Activity.class);
+				startActivity(statistic);
+			break;
+		default:
+			break;
+		}
 	}
 }

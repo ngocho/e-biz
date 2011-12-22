@@ -18,13 +18,13 @@
 			android:text="@string/delivery_content_dialog"></TextView>
 	</LinearLayout>
 	<LinearLayout android:id="@+id/linearLayout1"
-		android:layout_width="fill_parent" android:layout_height="wrap_content">
-		<ImageView android:src="@drawable/icon"
-			android:layout_width="wrap_content" android:layout_height="fill_parent"
-			android:id="@+id/dialog_delivery_image"></ImageView>
+		android:layout_width="fill_parent" android:layout_height="wrap_content" android:gravity="center_vertical">
+		<ImageView android:layout_width="70dp" android:padding="2dp"
+			android:src="@drawable/icon_delivery" android:scaleType="centerInside"
+			android:layout_height="70dp" android:id="@+id/dialog_delivery_image"></ImageView>
 		<LinearLayout android:id="@+id/linearLayout2"
 			android:layout_marginLeft="5dp" android:layout_width="fill_parent"
-			android:layout_height="fill_parent" android:orientation="vertical">
+			android:layout_height="wrap_content" android:orientation="vertical">
 			<LinearLayout android:id="@+id/linearLayout3"
 				android:layout_width="fill_parent" android:layout_height="wrap_content"
 				android:gravity="center_horizontal">
@@ -62,7 +62,7 @@
 				<ImageView android:src="@drawable/icon_address"
 					android:layout_width="40dp" android:layout_height="wrap_content"
 					android:id="@+id/imageView2"></ImageView>
-				<TextView android:textAppearance="?android:attr/textAppearanceSmall"
+				<TextView android:textAppearance="?android:attr/textAppearanceSmall" android:lines="2"
 					android:textColor="@color/black" android:layout_width="wrap_content"
 					android:layout_height="wrap_content" android:text="TextView"
 					android:id="@+id/dialog_delivery_address"></TextView>
@@ -114,7 +114,8 @@
 			android:layout_width="wrap_content" android:id="@+id/dialog_delivery_ok"></Button>
 		<Button android:layout_height="wrap_content" android:text="@string/delivery_content_map"
 			android:layout_width="wrap_content" android:id="@+id/dialog_delivery_map"></Button>
-		<Button android:text="@string/delivery_dialog_close" android:id="@+id/dialog_delivery_close"
-			android:layout_width="wrap_content" android:layout_height="wrap_content"></Button>
+		<Button android:text="@string/delivery_dialog_close"
+			android:id="@+id/dialog_delivery_close" android:layout_width="wrap_content"
+			android:layout_height="wrap_content"></Button>
 	</LinearLayout>
 </LinearLayout>

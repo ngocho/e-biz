@@ -185,16 +185,22 @@ public final class R {
         public static final int icon=0x7f020005;
         public static final int icon_address=0x7f020006;
         public static final int icon_app=0x7f020007;
-        public static final int icon_favarous=0x7f020008;
-        public static final int icon_home=0x7f020009;
-        public static final int icon_net=0x7f02000a;
-        public static final int icon_person=0x7f02000b;
-        public static final int icon_price=0x7f02000c;
-        public static final int icon_setting=0x7f02000d;
-        public static final int icon_staff=0x7f02000e;
-        public static final int manager_icon=0x7f02000f;
-        public static final int phone_icon=0x7f020010;
-        public static final int title_test=0x7f020011;
+        public static final int icon_chat=0x7f020008;
+        public static final int icon_delivery=0x7f020009;
+        public static final int icon_favarous=0x7f02000a;
+        public static final int icon_home=0x7f02000b;
+        public static final int icon_net=0x7f02000c;
+        public static final int icon_person=0x7f02000d;
+        public static final int icon_price=0x7f02000e;
+        public static final int icon_setting=0x7f02000f;
+        public static final int icon_staff=0x7f020010;
+        public static final int manager_icon=0x7f020011;
+        public static final int menu_chat=0x7f020012;
+        public static final int menu_delivery=0x7f020013;
+        public static final int menu_food=0x7f020014;
+        public static final int menu_stats=0x7f020015;
+        public static final int phone_icon=0x7f020016;
+        public static final int title_test=0x7f020017;
     }
     public static final class id {
         public static final int btn_login_exit=0x7f060034;
@@ -205,10 +211,10 @@ public final class R {
         public static final int chat_favorite=0x7f06000a;
         public static final int chat_home=0x7f060009;
         public static final int chat_setting=0x7f06000b;
-        public static final int delivery_about=0x7f060014;
-        public static final int delivery_favorite=0x7f060012;
+        public static final int delivery_chat=0x7f060013;
+        public static final int delivery_food=0x7f060012;
         public static final int delivery_home=0x7f060011;
-        public static final int delivery_setting=0x7f060013;
+        public static final int delivery_statistic=0x7f060014;
         public static final int dialog_delivery_MSgoods=0x7f060016;
         public static final int dialog_delivery_address=0x7f06001b;
         public static final int dialog_delivery_check=0x7f060021;
