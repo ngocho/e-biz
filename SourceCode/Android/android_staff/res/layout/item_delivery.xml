@@ -3,13 +3,14 @@
 	android:orientation="vertical" android:background="@color/white_smoke"
 	android:layout_width="fill_parent" android:layout_height="fill_parent">
 	<LinearLayout android:id="@+id/linearLayout1"
-		android:layout_width="fill_parent" android:layout_height="wrap_content">
-		<ImageView android:src="@drawable/icon"
-			android:layout_width="wrap_content" android:layout_height="fill_parent"
-			android:id="@+id/item_delivery_image"></ImageView>
+		android:layout_width="fill_parent" android:layout_height="wrap_content"
+		android:gravity="center_vertical">
+		<ImageView android:layout_width="70dp" android:padding="2dp"
+			android:scaleType="centerInside" android:layout_height="70dp"
+			android:id="@+id/item_delivery_image" android:src="@drawable/icon_delivery"></ImageView>
 		<LinearLayout android:id="@+id/linearLayout2"
-			android:layout_marginLeft="5dp" android:layout_width="fill_parent"
-			android:layout_height="fill_parent" android:orientation="vertical">
+			android:layout_width="fill_parent" android:layout_height="wrap_content"
+			android:orientation="vertical">
 			<LinearLayout android:id="@+id/linearLayout3"
 				android:layout_width="fill_parent" android:layout_height="wrap_content"
 				android:gravity="center_horizontal">
@@ -48,9 +49,9 @@
 					android:layout_width="40dp" android:layout_height="wrap_content"
 					android:id="@+id/imageView2"></ImageView>
 				<TextView android:textAppearance="?android:attr/textAppearanceSmall"
-					android:textColor="@color/black" android:layout_width="wrap_content"
-					android:layout_height="wrap_content" android:text="TextView"
-					android:id="@+id/item_delivery_address"></TextView>
+					android:lines="2" android:textColor="@color/black"
+					android:layout_width="wrap_content" android:layout_height="wrap_content"
+					android:text="TextView" android:id="@+id/item_delivery_address"></TextView>
 			</LinearLayout>
 			<LinearLayout android:id="@+id/linearLayout5"
 				android:layout_width="fill_parent" android:layout_height="wrap_content"
