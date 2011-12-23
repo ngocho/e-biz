@@ -13,4 +13,8 @@
     <string name="register_birthday">Ngày Sinh (Date of Birth):</string>
     <string name="register_check">Tôi đồng ý với các điều khoản Thỏa thuận sử dụng</string>
     <string name="register_button">Tạo Tài Khoản</string>
+    <string name="login_username">Tên đăng nhập (hoặc e-mail):</string>
+    <string name="login_password">Mật khẩu:</string>
+    <string name="login_register">Đăng Ký</string>
+    <string name="login_login">Đăng Nhập</string>
 </resources>
