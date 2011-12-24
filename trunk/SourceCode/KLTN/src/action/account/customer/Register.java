@@ -23,51 +23,48 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
-import com.google.appengine.api.taskqueue.Queue;
 
+import com.google.appengine.api.taskqueue.Queue;
 import ebiz.action.BaseAction;
 import ebiz.dao.gae.CustomerDAO;
 import ebiz.dao.inf.ICustomerDAO;
 import ebiz.dto.account.customer.Customer;
-import ebiz.form.Login;
+import ebiz.form.LoginForm;
 import ebiz.util.CommonConstant;
-
 
 /**
  * @author ThuyNT
- *
  */
-public class Register extends BaseAction{
-   
-    public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception 
-    {
+public class Register extends BaseAction {
+
+    public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
+            HttpServletResponse response) throws Exception {
+
+        // after checked validation using xml file
+        Customer register = (Customer)form;
         
-        //after checked validation using xml file
-        Customer register =(Customer)form;
         boolean f;
-        //su dung interface de goi  ???? || goi truc tiep DAO hay thong qua BLO
-        CustomerDAO custDao = new CustomerDAO();
+        // //su dung interface de goi ???? || goi truc tiep DAO hay thong qua BLO
+        ICustomerDAO custDao = new CustomerDAO();
         f = custDao.insertCustomer(register);
-        if(f){
-            HttpSession se=request.getSession();
-            se.setMaxInactiveInterval(300);
-            Login user = new Login();
-            user = register.editForm();
-            
-            //luu cac gia tri vao session
+        if (f) {
+            HttpSession se = request.getSession();
+//            se.setMaxInactiveInterval(300);
+            LoginForm user = new LoginForm();
+//            user = register.editForm();
+
+            // //luu cac gia tri vao session
             se.setAttribute(CommonConstant.USER, user);
-            
-            
-            //thuc hien goi mail thong bao thanh cong --> use task queue
-            
+
+            // thuc hien goi mail thong bao thanh cong --> use task queue
+
             return mapping.findForward(SUCCESS);
         }
         return mapping.findForward(FAILURE);
     }
-
+    
 
 }

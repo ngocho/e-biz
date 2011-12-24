@@ -21,24 +21,20 @@ package ebiz.dto.account.customer;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.Extension;
 import javax.jdo.annotations.IdGeneratorStrategy;
+import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
-import javax.jdo.annotations.Extension;   
 
-import org.apache.struts.chain.commands.servlet.ValidateActionForm;
 import org.apache.struts.validator.ValidatorForm;
-
-
-import ebiz.form.LoginForm;
 
 /**
  * @author ThuyNT
  *
  */
 @PersistenceCapable
-public class Customer extends ValidatorForm  {
+public class Customer extends ValidatorForm  implements Serializable{
     
    
     /**  . */
