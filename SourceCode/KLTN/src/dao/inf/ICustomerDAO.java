@@ -18,6 +18,8 @@
  */
 package ebiz.dao.inf;
 
+import java.util.List;
+
 import ebiz.dto.account.customer.Customer;
 
 /**
@@ -42,9 +44,10 @@ public interface ICustomerDAO {
      * @return
      */
     public Customer getCustomerById(String id);
-    
-//    public void 
-    
+    public int isCustomerID(String id, String pass);
+    public int isCustomerMail(String email, String pass);
+//    public Customer getCustomerList(String customerService);
+    public List<String> getPhoneList();
     
 
 }
