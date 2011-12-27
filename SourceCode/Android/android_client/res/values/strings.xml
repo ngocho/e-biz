@@ -17,4 +17,5 @@
     <string name="login_password">Mật khẩu:</string>
     <string name="login_register">Đăng Ký</string>
     <string name="login_login">Đăng Nhập</string>
+    <string name="exit">Bạn có muốn thoát khỏi chương trình?</string>
 </resources>

@@ -13,6 +13,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="kltn.client.android_client.activity.MainActivity"></activity>
 
     </application>
 </manifest>
