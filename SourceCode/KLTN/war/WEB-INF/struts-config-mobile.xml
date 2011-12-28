@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+<struts-config>
+
+
+  <form-beans>
+    <!-- <form-bean name="login" type="formBean.loginbean" /> -->
+    <form-bean name="customer" type="ebiz.dto.account.customer.Customer" />
+
+  </form-beans>
+  <global-exceptions>
+
+  </global-exceptions>
+
+  <global-forwards>
+    <!-- <forward name="register" path="/register.vn"/> <forward name="/index.jsp" 
+      path="/"/> <forward name="main.page" path="/index.jsp" /> <forward name="success" 
+      path="/index.jsp" /> -->
+  </global-forwards>
+
+
+  <action-mappings>
+    <action path="/getPromotion"
+      type="mobile.ebiz.action.Promotion" 
+      scope="session" validate="false">
+    </action>
+    <action path="/getActiveXU"
+      type="mobile.ebiz.action.ActiveXU" 
+      scope="session" validate="false">
+    </action>
+     <action path="/getHappyBirthday"
+      type="mobile.ebiz.action.HappyBirthday" 
+      scope="session" validate="false">
+    </action>
+     <action path="/getEmployeeInfo"
+      type="mobile.ebiz.action.EmployeeInfo" 
+      scope="session" validate="false">
+    </action>
+  </action-mappings>
+  <!-- <message-resources parameter="ApplicationResources" />
+  <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+    <set-property property="pathnames"
+      value="/WEB-INF/validator-rules.xml,/WEB-INF/validation.xml" />
+  </plug-in> -->
+
+</struts-config>
