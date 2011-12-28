@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!--
+    $Id: tiles-defs.xml 481833 2006-12-03 17:32:52Z niallp $
+
+    Licensed to the Apache Software Foundation (ASF) under one or more
+    contributor license agreements.  See the NOTICE file distributed with
+    this work for additional information regarding copyright ownership.
+    The ASF licenses this file to You under the Apache License, Version 2.0
+    (the "License"); you may not use this file except in compliance with
+    the License.  You may obtain a copy of the License at
+   
+         http://www.apache.org/licenses/LICENSE-2.0
+   
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 1.3//EN"
+       "http://struts.apache.org/dtds/tiles-config_1_3.dtd">
+
+<!-- Definitions for Tiles documentation   -->
+
+<tiles-definitions>
+<definition name="baseLayout" path="/baseLayout.jsp">
+        <put name="title"  value="Sample Page Title" />
+        <put name="header" value="/header.jsp" />
+        <put name="content"   value="/content.jsp" />
+        <put name="footer" value="/footer.jsp" />
+        <put name="right"   value="/right.jsp" />
+        <put name="left"   value="/left.jsp" />
+        <put name="pankuzu"   value="/pankuzu.jsp" /> 
+    </definition>
+    
+    <definition name="loginLayout" extends="baseLayout">
+        <put name="title" value="Checkout" />
+        <put name="content" value="/content_login.jsp" />
+    </definition>
+    <definition name="registerLayout" extends="baseLayout">
+        <put name="title" value="Checkout" />
+        <put name="content" value="/content_register.jsp" />
+    </definition>
+    
+    
+    <definition name="baseLayout_product" path="/baseLayout_product.jsp">
+        <put name="header" value="/header.jsp" />
+        <put name="content"   value="/content_product.jsp" />
+        <put name="footer" value="/footer.jsp" />
+        <put name="right"   value="/right.jsp" />
+        <put name="pankuzu"   value="/pankuzu.jsp" /> 
+    </definition>
+    <definition name="category" extends="baseLayout">
+        <put name="title" value="Category" />
+        <put name="left" value="/left_category.jsp" />
+        <put name="content" value="/content_category.jsp" />
+    </definition>
+    <definition name="shopping" path="/ShoppingCart.jsp">
+        <put name="title" value="Shopping Cart" />
+        <put name="header" value="/header.jsp" />
+        <put name="content" value="/content_shopping.jsp" />
+    </definition>
+    
+    <definition name="checkout" extends="baseLayout">
+        <put name="title" value="Checkout" />
+        <put name="content" value="/content_checkout.jsp" />
+    </definition>
+    <definition name="bill" extends="baseLayout">
+        <put name="title" value="Checkout" />
+        <put name="content" value="/content_bill.jsp" />
+    </definition>
+    <definition name="product" extends="baseLayout_product">
+      
+    </definition>
+
+</tiles-definitions>

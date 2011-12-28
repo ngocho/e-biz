@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+<struts-config>
+
+
+  <form-beans>
+    <!-- <form-bean name="login" type="formBean.loginbean" /> -->
+    <form-bean name="customer" type="ebiz.dto.account.customer.Customer" />
+    <form-bean name="login" type="ebiz.form.LoginForm" />
+  </form-beans>
+  <global-exceptions>
+
+  </global-exceptions>
+
+  <global-forwards>
+    <forward name="loginCustomer" path="loginLayout"/>
+    <forward name="registerCustomer" path="registerLayout"/>
+    <!--  <forward name="/index.jsp" 
+      path="/"/> <forward name="main.page" path="/index.jsp" /> <forward name="success" 
+      path="/index.jsp" /> -->
+  </global-forwards>
+
+
+  <action-mappings>
+    <action path="/loginCustomer" forward="loginLayout">
+    </action>
+    <action path="/registerCustomer" forward="registerLayout">
+    </action>
+
+    <!-- <action input="/login.jsp" path="/login" type="action.login" name="login" 
+      scope="request" validate="true"> <forward name="success" path="/index.jsp" 
+      redirect="true"/> <forward name="failure" path="/login.jsp" redirect="true"/> 
+      </action> -->
+     <!--  <action input="loginLayout"
+      path="/loginCustomer"
+      type="ebiz.action.account.customer.TransferLogin" 
+      name="login"
+      scope="session" validate="true">
+      <forward name="success" path="loginLayout" redirect="true" />
+    </action> -->
+      <action input="loginLayout" 
+      path="/loginAction"
+      type="ebiz.action.account.customer.Login" 
+      name="login"
+      scope="session" validate="true">
+      <forward name="success" path="loginLayout" redirect="true" />
+      <forward name="failure" path="loginLayout" redirect="true" />
+    </action>
+    <action input="registerLayout" 
+      path="/registerAction"
+      type="ebiz.action.account.customer.Register" 
+      name="login"
+      scope="session" validate="true">
+      <forward name="success" path="/home.jsp" redirect="true" />
+      <forward name="failure" path="registerLayout" redirect="true" />
+    </action>
+     <action input="checkout" 
+      path="/updateCustomer"
+      type="ebiz.action.account.customer.UpdateCustomer" 
+      name="login"
+      scope="session" validate="false">
+      <forward name="success" path="/createBill.vn" redirect="true" />
+      <forward name="failure" path="/register.jsp" redirect="true" />
+    </action>
+    
+    <!--  action path="/getPromotion"
+      type="mobile.ebiz.action.Promotion" 
+      scope="session" validate="false">
+    </action>-->
+
+  </action-mappings>
+  <!-- <message-resources parameter="ApplicationResources" />
+  <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+    <set-property property="pathnames"
+      value="/WEB-INF/validator-rules.xml,/WEB-INF/validation.xml" />
+  </plug-in> -->
+
+</struts-config>
