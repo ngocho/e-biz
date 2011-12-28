@@ -23,6 +23,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import mobile.ebiz.blo.user.CustomerBLO;
+
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
@@ -44,7 +46,8 @@ public class Register extends BaseAction {
             HttpServletResponse response) throws Exception {
 
         // after checked validation using xml file
-        Customer register = (Customer)form;
+        LoginForm user = (LoginForm)form;
+        Customer register = CustomerBLO.getObject(user);
         
         boolean f;
         // //su dung interface de goi ???? || goi truc tiep DAO hay thong qua BLO
@@ -53,7 +56,6 @@ public class Register extends BaseAction {
         if (f) {
             HttpSession se = request.getSession();
 //            se.setMaxInactiveInterval(300);
-            LoginForm user = new LoginForm();
 //            user = register.editForm();
 
             // //luu cac gia tri vao session

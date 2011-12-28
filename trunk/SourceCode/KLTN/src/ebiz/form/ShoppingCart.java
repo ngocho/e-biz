@@ -41,6 +41,7 @@ public class ShoppingCart implements java.io.Serializable{
     }
     public ShoppingCart(){
         products = new ArrayList<FoodForm>();
+        user = new LoginForm();
         count = 0;
        
     }
