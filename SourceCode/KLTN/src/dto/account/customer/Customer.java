@@ -57,7 +57,7 @@ public class Customer extends ValidatorForm  implements Serializable{
     @Persistent
     private String customerPhone;
     @Persistent
-    private String customerAddress;
+    private Address customerAddress;
     @Persistent
     private String customerType;            // khach hang binh thuong, thanh vien, vip
     @Persistent
@@ -68,6 +68,14 @@ public class Customer extends ValidatorForm  implements Serializable{
     private Integer customerMark;           //tich luy diem
     @Persistent
     private Boolean isPay;                  // tra tien chua?
+    @Persistent
+    private Long accountOnline;
+    @Persistent
+    private String payOnlineType;      //  
+    @Persistent
+    private String isAd;
+    @Persistent
+    private Boolean isActive;
     
     
     /**
@@ -172,14 +180,14 @@ public class Customer extends ValidatorForm  implements Serializable{
      * Get value of customerAddress.
      * @return the customerAddress
      */
-    public String getCustomerAddress() {
+    public Address getCustomerAddress() {
         return customerAddress;
     }
     /**
      * Set the value for customerAddress.
      * @param customerAddress the customerAddress to set
      */
-    public void setCustomerAddress(String customerAddress) {
+    public void setCustomerAddress(Address customerAddress) {
         this.customerAddress = customerAddress;
     }
     /**
@@ -251,6 +259,62 @@ public class Customer extends ValidatorForm  implements Serializable{
      */
     public void setIsPay(Boolean isPay) {
         this.isPay = isPay;
+    }
+    /**
+     * Get value of accountOnline.
+     * @return the accountOnline
+     */
+    public Long getAccountOnline() {
+        return accountOnline;
+    }
+    /**
+     * Set the value for accountOnline.
+     * @param accountOnline the accountOnline to set
+     */
+    public void setAccountOnline(Long accountOnline) {
+        this.accountOnline = accountOnline;
+    }
+    /**
+     * Get value of payOnlineType.
+     * @return the payOnlineType
+     */
+    public String getPayOnlineType() {
+        return payOnlineType;
+    }
+    /**
+     * Set the value for payOnlineType.
+     * @param payOnlineType the payOnlineType to set
+     */
+    public void setPayOnlineType(String payOnlineType) {
+        this.payOnlineType = payOnlineType;
+    }
+    /**
+     * Get value of isAd.
+     * @return the isAd
+     */
+    public String getIsAd() {
+        return isAd;
+    }
+    /**
+     * Set the value for isAd.
+     * @param isAd the isAd to set
+     */
+    public void setIsAd(String isAd) {
+        this.isAd = isAd;
+    }
+    /**
+     * Get value of isActive.
+     * @return the isActive
+     */
+    public Boolean getIsActive() {
+        return isActive;
+    }
+    /**
+     * Set the value for isActive.
+     * @param isActive the isActive to set
+     */
+    public void setIsActive(Boolean isActive) {
+        this.isActive = isActive;
     }
     
 }

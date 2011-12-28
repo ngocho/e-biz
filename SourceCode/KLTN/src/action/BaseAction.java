@@ -29,4 +29,5 @@ import ebiz.util.CommonConstant;
 public class BaseAction extends Action{
     protected final static String SUCCESS = CommonConstant.SUCCESS;
     protected final static String FAILURE = CommonConstant.FAILURE;
+    protected final static String INPUT = CommonConstant.INPUT;
 }

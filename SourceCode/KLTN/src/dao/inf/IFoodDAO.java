@@ -28,6 +28,7 @@ import ebiz.dto.food.FoodPromotion;
 import ebiz.dto.food.FoodStatus;
 import ebiz.dto.food.FoodType;
 import ebiz.form.Paging;
+import ebiz.form.ShoppingCart;
 
 /**
  * @author ThuyNT
@@ -54,6 +55,7 @@ public interface IFoodDAO {
 //    public FoodPromotion getFoodPromotionById(String col,Long key);
     public FoodPromotion getFoodPromotionById(Long key);
 //    public boolean updateNumber(Long id ,String col, Integer value);
+//    public boolean billing(ShoppingCart key);
     
 
 }
