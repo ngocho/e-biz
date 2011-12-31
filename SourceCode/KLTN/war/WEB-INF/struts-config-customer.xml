@@ -43,7 +43,7 @@
       type="ebiz.action.account.customer.Login" 
       name="login"
       scope="session" validate="true">
-      <forward name="success" path="loginLayout" redirect="true" />
+      <forward name="success" path="home" redirect="true" />
       <forward name="failure" path="loginLayout" redirect="true" />
     </action>
     <action input="registerLayout" 
@@ -51,16 +51,21 @@
       type="ebiz.action.account.customer.Register" 
       name="login"
       scope="session" validate="true">
-      <forward name="success" path="/home.jsp" redirect="true" />
+      <forward name="success" path="home" redirect="true" />
       <forward name="failure" path="registerLayout" redirect="true" />
     </action>
      <action input="checkout" 
-      path="/updateCustomer"
+      path="/getInforBill"
       type="ebiz.action.account.customer.UpdateCustomer" 
       name="login"
-      scope="session" validate="false">
+      scope="session" validate="true">
       <forward name="success" path="/createBill.vn" redirect="true" />
-      <forward name="failure" path="/register.jsp" redirect="true" />
+      <forward name="failure" path="shopping" redirect="true" />
+      <forward name="input" path="checkout" redirect="true" />
+    </action>
+    <action
+      path="/sendMailRegister"
+      type="ebiz.action.account.customer.SendMailRegister" >
     </action>
     
     <!--  action path="/getPromotion"
