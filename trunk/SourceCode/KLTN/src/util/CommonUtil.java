@@ -18,10 +18,22 @@
  */
 package ebiz.util;
 
+import java.util.List;
+
 /**
  * @author ThuyNT
  *
  */
 public class CommonUtil {
-
+    
+    /*public static List<?> equal(List<Object> objectList,List<?> list ){
+        List<E> list = new List<E>() {
+        };
+        for(Object object: objectList){
+            list.add((?)object);
+        }
+        
+    }
+*/
+  
 }
