@@ -35,7 +35,7 @@ public interface ICustomerDAO {
      */
     public boolean insertCustomer(Customer customer );
     
-    public boolean isCustomer(Customer customer );
+    public boolean isCustomer(String id );
         
     /**
      * dua vao thong tin dang nhap : username, pass lay thong tin cua customer
