@@ -21,6 +21,7 @@ package ebiz.dto.food;
 import java.io.Serializable;
 
 import javax.jdo.annotations.IdGeneratorStrategy;
+import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
@@ -32,6 +33,7 @@ import javax.jdo.annotations.PrimaryKey;
 /**
  * chia thanh nhieu muc tien khac nhau
  */
+@PersistenceCapable
 public class FoodPriceLevel  implements Serializable{
 
     /**  . */
@@ -40,9 +42,52 @@ public class FoodPriceLevel  implements Serializable{
     @PrimaryKey
     @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
     private String  foodPriceLevelId;
-    
+    @Persistent
     private Long startPrice;
+    @Persistent
     private Long endPrice;
+    /**
+     * Get value of foodPriceLevelId.
+     * @return the foodPriceLevelId
+     */
+    public String getFoodPriceLevelId() {
+        return foodPriceLevelId;
+    }
+    /**
+     * Set the value for foodPriceLevelId.
+     * @param foodPriceLevelId the foodPriceLevelId to set
+     */
+    public void setFoodPriceLevelId(String foodPriceLevelId) {
+        this.foodPriceLevelId = foodPriceLevelId;
+    }
+    /**
+     * Get value of startPrice.
+     * @return the startPrice
+     */
+    public Long getStartPrice() {
+        return startPrice;
+    }
+    /**
+     * Set the value for startPrice.
+     * @param startPrice the startPrice to set
+     */
+    public void setStartPrice(Long startPrice) {
+        this.startPrice = startPrice;
+    }
+    /**
+     * Get value of endPrice.
+     * @return the endPrice
+     */
+    public Long getEndPrice() {
+        return endPrice;
+    }
+    /**
+     * Set the value for endPrice.
+     * @param endPrice the endPrice to set
+     */
+    public void setEndPrice(Long endPrice) {
+        this.endPrice = endPrice;
+    }
     
     
 

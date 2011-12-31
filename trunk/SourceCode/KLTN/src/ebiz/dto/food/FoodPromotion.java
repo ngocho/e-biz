@@ -18,33 +18,64 @@
  */
 package ebiz.dto.food;
 
-import com.google.appengine.repackaged.com.google.common.base.Flag.Date;
+import java.io.Serializable;
+import java.util.Date;
+
+import javax.jdo.annotations.IdGeneratorStrategy;
+import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.Persistent;
+import javax.jdo.annotations.PrimaryKey;
+
 
 /**
  * @author ThuyNT
  *
  */
-public class FoodPromotion {
-    private String productPromotionTypeId;
+@PersistenceCapable
+public class FoodPromotion implements Serializable{
+   
+    private static final long serialVersionUID = 1L;
+    @PrimaryKey
+    @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
+    private Long productId;
+    @Persistent
     private String productPromotionTypeName;
-    private String productId;
+    @Persistent
+    private String productPromotionTypeId;
+    @Persistent
     private String productName;
+    @Persistent
     private Long pricePromo;
+    @Persistent
     private Long price;
+    @Persistent
     private Date expPromo;
+    @Persistent
+    private String calo;
+    @Persistent
+    private String detail;
+    @Persistent
+    private String cooking;
+    @Persistent
+    private String url;
+    @Persistent
+    private Integer number;
+    @Persistent
+    private Integer reviewer;
+   
     /**
-     * Get value of productPromotionTypeId.
-     * @return the productPromotionTypeId
+     * Get value of productId.
+     * @return the productId
      */
-    public String getProductPromotionTypeId() {
-        return productPromotionTypeId;
+    public Long getProductId() {
+        return productId;
     }
     /**
-     * Set the value for productPromotionTypeId.
-     * @param productPromotionTypeId the productPromotionTypeId to set
+     * Set the value for productId.
+     * @param productId the productId to set
      */
-    public void setProductPromotionTypeId(String productPromotionTypeId) {
-        this.productPromotionTypeId = productPromotionTypeId;
+    public void setProductId(Long productId) {
+        this.productId = productId;
     }
     /**
      * Get value of productPromotionTypeName.
@@ -61,18 +92,18 @@ public class FoodPromotion {
         this.productPromotionTypeName = productPromotionTypeName;
     }
     /**
-     * Get value of productId.
-     * @return the productId
+     * Get value of productPromotionTypeId.
+     * @return the productPromotionTypeId
      */
-    public String getProductId() {
-        return productId;
+    public String getProductPromotionTypeId() {
+        return productPromotionTypeId;
     }
     /**
-     * Set the value for productId.
-     * @param productId the productId to set
+     * Set the value for productPromotionTypeId.
+     * @param productPromotionTypeId the productPromotionTypeId to set
      */
-    public void setProductId(String productId) {
-        this.productId = productId;
+    public void setProductPromotionTypeId(String productPromotionTypeId) {
+        this.productPromotionTypeId = productPromotionTypeId;
     }
     /**
      * Get value of productName.
@@ -129,6 +160,90 @@ public class FoodPromotion {
      */
     public void setExpPromo(Date expPromo) {
         this.expPromo = expPromo;
+    }
+    /**
+     * Get value of calo.
+     * @return the calo
+     */
+    public String getCalo() {
+        return calo;
+    }
+    /**
+     * Set the value for calo.
+     * @param calo the calo to set
+     */
+    public void setCalo(String calo) {
+        this.calo = calo;
+    }
+    /**
+     * Get value of detail.
+     * @return the detail
+     */
+    public String getDetail() {
+        return detail;
+    }
+    /**
+     * Set the value for detail.
+     * @param detail the detail to set
+     */
+    public void setDetail(String detail) {
+        this.detail = detail;
+    }
+    /**
+     * Get value of reviewer.
+     * @return the reviewer
+     */
+    public Integer getReviewer() {
+        return reviewer;
+    }
+    /**
+     * Set the value for reviewer.
+     * @param reviewer the reviewer to set
+     */
+    public void setReviewer(Integer reviewer) {
+        this.reviewer = reviewer;
+    }
+    /**
+     * Get value of url.
+     * @return the url
+     */
+    public String getUrl() {
+        return url;
+    }
+    /**
+     * Set the value for url.
+     * @param url the url to set
+     */
+    public void setUrl(String url) {
+        this.url = url;
+    }
+    /**
+     * Get value of number.
+     * @return the number
+     */
+    public Integer getNumber() {
+        return number;
+    }
+    /**
+     * Set the value for number.
+     * @param number the number to set
+     */
+    public void setNumber(Integer number) {
+        this.number = number;
+    }
+    /**
+     * Get value of cooking.
+     * @return the cooking
+     */
+    public String getCooking() {
+        return cooking;
+    }
+    /**
+     * Set the value for cooking.
+     * @param cooking the cooking to set
+     */
+    public void setCooking(String cooking) {
+        this.cooking = cooking;
     }
     
 }

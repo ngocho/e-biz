@@ -30,14 +30,13 @@ import javax.jdo.annotations.PrimaryKey;
  *
  */
 /**
- * phan loai mon an : xao, chien, canh,...
+ * phan loai mon an : xao, chien, canh,kho...
  */
 
 @PersistenceCapable
 public class FoodAttribute implements Serializable{
 
-   
-    /**  . */
+
     private static final long serialVersionUID = 1L;
 
     @PrimaryKey
