@@ -26,9 +26,11 @@ import com.google.appengine.repackaged.org.json.JSONException;
 import com.google.appengine.repackaged.org.json.JSONObject;
 
 import ebiz.dao.gae.CustomerDAO;
+import ebiz.dao.gae.PMF;
 import ebiz.dao.inf.ICustomerDAO;
 import ebiz.dto.account.customer.Address;
 import ebiz.dto.account.customer.Customer;
+import ebiz.dto.food.Food;
 import ebiz.form.LoginForm;
 import ebiz.util.CommonConstant;
 
@@ -119,23 +121,66 @@ public class CustomerBLO {
      * get Customer by ID
      */
     
-    public static Customer getObject(LoginForm user){
-      Customer customer = new Customer();
-      customer.setCustomerId(user.getLoginId());
-      customer.setCustomerName(user.getLoginName());
-      customer.setCustomerGender(user.getGender());
-      customer.setCustomerPhone(user.getPhone());
-      customer.setCustomerEmail(user.getEmail());
-      Address add = new Address();
-      add.setBuildingName(user.getBuildingName());
-      add.setDistrictName(user.getDistrictName());
-      add.setHomeNumber(user.getHomeNumber());
-      add.setStreetName(user.getStreetName());
-      add.setWardName(user.getWardName());
-      customer.setCustomerAddress(add);
-      return customer;
-        
+//    public static Customer getObject(LoginForm user){
+//      Customer customer = new Customer();
+//      customer.setCustomerId(user.getLoginId());
+//      customer.setCustomerPassword(user.getLoginPassword());
+//      customer.setCustomerName(user.getLoginName());
+//      customer.setCustomerGender(user.getGender());
+//      customer.setCustomerPhone(user.getPhone());
+//      customer.setCustomerEmail(user.getEmail());
+//      customer.setIsAdEmail(user.getIsAdEmail());
+//      customer.setIsAdPhone(user.getIsAdPhone());
+//      Address add = new Address();
+//      add.setBuildingName(user.getBuildingName());
+//      add.setDistrictName(user.getDistrictName());
+//      add.setHomeNumber(user.getHomeNumber());
+//      add.setStreetName(user.getStreetName());
+//      add.setWardName(user.getWardName());
+//      customer.setCustomerAddress(add);
+//      return customer;
+//        
+//    }
+    
+//    public static LoginForm editForm(Customer customer){
+//        LoginForm form  = new LoginForm();
+//    }
+    /**
+     * get Customer by ID
+     */
+    
+    public static boolean registerCustomer(Customer customer){
+      
+      boolean   flag = custDao.isCustomer(customer.getCustomerId());
+         if(!flag){
+         return  custDao.insertCustomer(customer);
+         }
+         return false;
+   }
+  
+   
+    public static int testCustomerID(String id, String pass) {
+
+        return custDao.isCustomerID(id, pass);
     }
+    public static int testCustomerEmail(String email, String pass) {
+
+        return custDao.isCustomerMail(email, pass);
+    }
+    /**
+     * 
+     * if duplicate primarikey = over write
+     * @param customer
+     * @return
+     */
+    public static boolean updatecustomer(Customer customer) {
+        custDao.insertCustomer(customer);
+        Customer cus = custDao.getCustomerById(customer.getCustomerId());
+        return true;
+    }
+       
+        
+    
     
     
 
