@@ -18,8 +18,16 @@
  */
 package ebiz.dao.gae;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.jdo.PersistenceManager;
+import javax.jdo.Query;
+
 import ebiz.dao.inf.ICustomerDAO;
 import ebiz.dto.account.customer.Customer;
+import ebiz.util.CommonConstant;
+import ebiz.util.CommonUtil;
 
 /**
  * @author ThuyNT
@@ -29,17 +37,16 @@ public class CustomerDAO implements ICustomerDAO {
     @Override
     public boolean insertCustomer(Customer customer) {
 
-        boolean flag;
-        flag = PMF.isObject(Customer.class, customer.getCustomerId());
-        if (flag) {
-            flag = PMF.insertObject(customer);
-        }
-        return flag;
+//       boolean   flag = PMF.isObject(Customer.class, customer.getCustomerId());
+//          if(!flag){
+          return  PMF.insertObject(customer);
+//          }
+//          return false;
     }
     @Override
-    public boolean isCustomer(Customer customer) {
+    public boolean isCustomer(String id) {
 
-        return PMF.isObject(Customer.class, customer.getCustomerId());
+        return PMF.isObject(Customer.class, id);
 
     }
     @Override
@@ -48,5 +55,66 @@ public class CustomerDAO implements ICustomerDAO {
         Customer customer = null;
         customer = (Customer) PMF.getObjectById(Customer.class, id);
         return customer;
+    }
+    @Override
+    public int isCustomerID(String id, String pass){
+        Customer customer = null;
+        customer = (Customer) PMF.getObjectById(Customer.class, id);
+        if(null != customer){
+        //get password
+            String passCust = customer.getCustomerPassword();
+            if(pass.equals(passCust)){
+                return 1;   //success
+            }
+            else
+            { 
+                return 0;   //didn't match
+            }
+        }
+        else
+        {
+            return -1;      //didn't exist this user
+        }
+        
+        
+    }
+    @Override
+    public int isCustomerMail(String email, String pass){
+        Customer customer = new Customer();
+        List<Object> ObjectList = new ArrayList<Object>();
+        ObjectList = PMF.getObjectByMail(Customer.class, email);
+        
+        //have result 
+        if(!ObjectList.isEmpty()){
+            customer = (Customer)ObjectList.get(0);
+            String passCust = customer.getCustomerPassword();
+            if(pass == passCust){
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+        else
+        {
+            return -1;
+        }
+        
+    }
+    @SuppressWarnings("unchecked")
+    @Override
+    public List<String> getPhoneList(){
+        List<String> phoneList = new ArrayList<String>();
+        PersistenceManager pm = PMF.getPMF();
+        Query q = pm.newQuery("select customerId  from " + Customer.class + " where customerService = \'"
+                + CommonConstant.CUSTOMER_SERVICE1);
+        try {
+            phoneList = (List<String>) q.execute();
+        } finally {
+            q.closeAll();
+        }
+        return phoneList;
+        
     }
 }
