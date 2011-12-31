@@ -3,6 +3,7 @@
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
 <%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic"%>
 <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@taglib uri="http://java.sun.com/jstl/core" prefix="c"%>
 <div class="header">
   <div class="header-row1">
     <!--<h2 class="site-logo"><a href="http://foodzie.com/"><strong>Foodzie: Taste Something Different</strong></a></h2> -->
@@ -36,7 +37,12 @@ Tiếng Anh
 </li>
 
       <li></li>
+      <c:if test="${user ==null}">
       <li class="first"><a href="/loginCustomer.vn">Đăng nhập</a>        </li>
+      </c:if>
+      <c:if test="${user !=null}">
+      <li class="first"><a href="/loginCustomer.vn">Đăng xuất</a>        </li>
+      </c:if>
         <li>
             <a href="/registerCustomer.vn">Đăng kí</a>        </li>
         <!--li class="last">
