@@ -31,6 +31,10 @@ import javax.jdo.annotations.PrimaryKey;
  */
 /**
  * xac dinh status cua thuc pham : dang ban , khuyen mai,  het hsd, het hang,..
+ * 1 : đang bán
+ * 2: khuyến mãi
+ * -1 : hết hạn sử dụng
+ * 0 : hết hàng 
  */
 @PersistenceCapable
 public class FoodStatus implements Serializable{

@@ -18,13 +18,57 @@
  */
 package ebiz.dto.food;
 
+import java.io.Serializable;
+
+import javax.jdo.annotations.IdGeneratorStrategy;
+import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.Persistent;
+import javax.jdo.annotations.PrimaryKey;
+
 /**
+ * kiểu khuyến mãi
  * @author ThuyNT
  *
  */
-public class FoodPromotionType {
+@PersistenceCapable
+public class FoodPromotionType implements Serializable{
     
-    private String foodId;
+    /**  . */
+    private static final long serialVersionUID = 1L;
+    @PrimaryKey
+    @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
+    private String promotionType;
+    @Persistent
+    private String promotionName;
+    /**
+     * Get value of promotionType.
+     * @return the promotionType
+     */
+    public String getPromotionType() {
+        return promotionType;
+    }
+    /**
+     * Set the value for promotionType.
+     * @param promotionType the promotionType to set
+     */
+    public void setPromotionType(String promotionType) {
+        this.promotionType = promotionType;
+    }
+    /**
+     * Get value of promotionName.
+     * @return the promotionName
+     */
+    public String getPromotionName() {
+        return promotionName;
+    }
+    /**
+     * Set the value for promotionName.
+     * @param promotionName the promotionName to set
+     */
+    public void setPromotionName(String promotionName) {
+        this.promotionName = promotionName;
+    }
+    
     
 
 }
