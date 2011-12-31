@@ -18,7 +18,6 @@
  */
 package ebiz.action.account.customer;
 
-import javax.jdo.PersistenceManager;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -28,11 +27,11 @@ import mobile.ebiz.blo.user.CustomerBLO;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import org.apache.struts.action.ActionMessage;
+import org.apache.struts.action.ActionMessages;
 
-import com.google.appengine.api.taskqueue.Queue;
 import ebiz.action.BaseAction;
-import ebiz.dao.gae.CustomerDAO;
-import ebiz.dao.inf.ICustomerDAO;
+import ebiz.blo.common.SendMail;
 import ebiz.dto.account.customer.Customer;
 import ebiz.form.LoginForm;
 import ebiz.util.CommonConstant;
@@ -44,29 +43,30 @@ public class Register extends BaseAction {
 
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
-
+        System.out.println("REGISTER");
+       
         // after checked validation using xml file
-        LoginForm user = (LoginForm)form;
-        Customer register = CustomerBLO.getObject(user);
-        
+        LoginForm user = (LoginForm) form;
+        Customer register = user.getCustomer();
         boolean f;
-        // //su dung interface de goi ???? || goi truc tiep DAO hay thong qua BLO
-        ICustomerDAO custDao = new CustomerDAO();
-        f = custDao.insertCustomer(register);
+
+        f = CustomerBLO.registerCustomer(register);
+        System.out.println("RESULT" + f);
         if (f) {
             HttpSession se = request.getSession();
-//            se.setMaxInactiveInterval(300);
-//            user = register.editForm();
-
-            // //luu cac gia tri vao session
+            // save value in session
             se.setAttribute(CommonConstant.USER, user);
 
-            // thuc hien goi mail thong bao thanh cong --> use task queue
+            //send mail  --> use task queue
+            SendMail.registerSuccess(user.getEmail());
 
             return mapping.findForward(SUCCESS);
         }
+
+        ActionMessages messages = new ActionMessages();
+        messages.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage("errors.duplicated"));
+        saveMessages(request, messages); // storing messages as request attributes
         return mapping.findForward(FAILURE);
     }
-    
 
 }
