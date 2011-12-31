@@ -23,26 +23,16 @@
 
     <formset>
         <!-- An example form -->
-        <form name="customer">
+        <form name="login">
             <field
-                property="customerId"
+                property="loginId"
                 depends="required">
-                <arg0 key="customer.customerId"/>
+                <arg0 key="login.loginId"/>
             </field>
             <field
-                property="customerPassword"
+                property="loginPassword"
                 depends="required">
-                <arg0 key="customer.customerPassword"/>
-            </field>
-            <field
-                property="customerEmail"
-                depends="required,email">
-                <arg0 key="customer.customerEmail"/>
-            </field>
-            <field
-                property="customerAddress"
-                depends="required">
-                <arg0 key="customer.customerAddress"/>
+                <arg0 key="login.loginPassword"/>
             </field>
         </form>
         <form name="register">

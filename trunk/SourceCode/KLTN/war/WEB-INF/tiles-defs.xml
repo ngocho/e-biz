@@ -73,5 +73,9 @@
     <definition name="product" extends="baseLayout_product">
       
     </definition>
+    <definition name="home" extends="baseLayout">
+      
+    </definition>
+    
 
 </tiles-definitions>
