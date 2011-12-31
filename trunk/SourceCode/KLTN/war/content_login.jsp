@@ -1,8 +1,10 @@
+<%@page import="ebiz.util.CommonConstant"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
   pageEncoding="UTF-8"%>
 <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
 <%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic"%>
+<%@taglib  uri="http://java.sun.com/jstl/core" prefix="c"%>
 <script type="text/javascript">
     function change() {
         var i = document.getElementById("type").value;
@@ -37,7 +39,7 @@
           <li><label for="email" class="required" id="typeLogin"><em>*</em>Tên
               đăng nhâp</label>
             <div class="input-box">
-              <html:text property="loginName" />
+              <html:text property="loginId" />
               <!--  <input type="text" name="login[username]" value="" id="email" class="input-text required-entry validate-email" title="Email Address"> -->
             </div></li>
           <li><label for="pass" class="required"><em>*</em>Password</label>
@@ -49,8 +51,21 @@
             <div class="input-box">
               <input type="submit" name="OK" id="pass" title="Password"
                 value="Đăng nhập">
+                    <input type="reset" name="OK" id="reset" title="Password"
+                value="Xóa hết">
             </div></li>
           <li>
+           <li>
+                <logic:messagesPresent message="true">
+   <html:messages id="message" message="true">
+     <bean:write name="message"/><br/>
+   </html:messages>
+</logic:messagesPresent>
+<html:messages id="error">
+<%= error%>
+</html:messages>
+                
+                </li>     
             <div class="input-box">
               <a href="/registerCustomer.vn" >Đăng kí nếu chưa có
                 tài khoản</a>

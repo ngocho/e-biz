@@ -11,15 +11,13 @@
     </div>
     <html:form action="/registerAction.vn" method="get">
         <div class="fieldset">
-            <input type="hidden" name="success_url" value="" />
-            <input type="hidden" name="error_url" value="" />
-             <input type="hidden" name="type" id = "type" value="1" />
-            <h2 class="legend">Thông tin đăng nhập</h2>
+        <!--   <input type="hidden" name="type" id = "type" value="1" />
+ -->            <h2 class="legend">Thông tin đăng nhập</h2>
             
             <ul class="form-list">
             <li class="fields">
               <div class="field">
-            <input type="button" style="background:url(); background:#00CCFF" onclick="change()" id= "idLogin" value="Dùng email để đăng kí" />
+           <!--  <input type="button" style="background:url(); background:#00CCFF" onclick="change()" id= "idLogin" value="Dùng email để đăng kí" /> -->
             </div>
             </li>
                 <li class="fields">
@@ -27,10 +25,11 @@
     <div class="field name-firstname">
         <label for="firstname" class="required" id="typeLogin"  ><em>*</em>Tên đăng nhập</label>
         <div class="input-box">
-        <html:text property="loginId" />
+        <html:text property="loginId" /> 
         </div>
 
     </div>
+    <html:errors property="usrinvalid" />
                 </li>
                 
                 <li class="fields">
@@ -49,14 +48,14 @@
                     </div>
 
                 </li>
-                                <!--li class="control">
-
-                    <div class="input-box">
-                        <input type="checkbox" name="is_subscribed" title="Sign Up for Newsletter" value="1" id="is_subscribed" class="checkbox" />
-                    </div>
-                    <label for="is_subscribed">Sign Up for Newsletter</label>
-                </li-->
-                                                                                                    </ul>
+                <li>
+                <logic:messagesPresent message="true">
+   <html:messages id="message" message="true">
+     <bean:write name="message"/><br/>
+   </html:messages>
+</logic:messagesPresent>
+                
+                </li>                                                                   </ul>
         </div>
             <div class="fieldset">
 
@@ -159,12 +158,14 @@
                 </li>
                 <li>
                     <div class="field">
-                        <label for="confirmation" class="required">Số điện thoại</label>
-                        <div class="input-box">
-                           <html:checkbox property="isAd" />
-                        </div>
+                      <html:checkbox property="isAdEmail" />   Nhận thông tin khuyến mãi qua email 
                     </div>
 
+                </li>
+                 <li>
+                    <div class="field">
+                      <html:checkbox property="isAdPhone" />   Nhận thông tin khuyến mãi qua di động
+                    </div>
                 </li>
                             </ul>
                             
@@ -225,10 +226,5 @@
 </div>
 </html:form>
 
-<script type="text/javascript">
-    //<![CDATA[
-        var dataForm = new VarienForm('form-validate', true);
-            //]]>
-    </script>
 </div>
 </div>
