@@ -17,7 +17,7 @@
         </div>
         <div id="checkout-step-billing" class="step a-item" > 
         <fieldset>
-        <html:form action="/updateCustomer.vn" method="get">
+        <html:form action="/getInforBill.vn" method="get">
 
     <ul class="form-list">
         <li id="billing-new-address-form">
@@ -116,13 +116,13 @@
 
         </fieldset>
      </li>
-            <li class="control">
+          <!--   <li class="control">
             <input name="billing[use_for_shipping]" id="billing:use_for_shipping_yes" value="1" checked="checked" title="Ship to this address" onclick="$('shipping:same_as_billing').checked = true;" class="radio" type="radio"><label for="billing:use_for_shipping_yes">Thanh toán qua th? ATM</label></li>
         <li class="control">
             <input name="billing[use_for_shipping]" id="billing:use_for_shipping_no" value="0" title="Ship to different address" onclick="$('shipping:same_as_billing').checked = false;" class="radio" type="radio"><label for="billing:use_for_shipping_no">Thanh toán qua c?ng thanh toán tr?c tuy?n</label>
-        </li>
+        </li> -->
         <li>
-        <button type="submit" title="Thanh toán" class="button"  ><span><span>Thanh toán</span></span></button>
+        <button type="submit" title="Thanh toán" class="button"  ><span><span>Tiếp tục</span></span></button>
         </li>
         </ul>
         </html:form>

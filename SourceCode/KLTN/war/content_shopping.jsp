@@ -38,7 +38,7 @@
                 <tfoot>
                     <tr class="first last">
                         <td colspan="50" class="a-right last">
-                        <input type="hidden" name="type" value="1"/>
+                        <input type="hidden" name="type" value="0"/>
                                                         <button type="button" title="Continue Shopping" class="button btn-continue" onclick="setLocation('http://demo.magentocommerce.com/')"><span><span>Continue Shopping</span></span></button>
                                                         <button type="button"  id="updateSC"  title="Update Shopping Cart" class="button btn-update"><span><span>Cập nhật</span></span></button>
                                                         <button type="submit" title="Check Out Shopping Cart"  id ="checkout" class="button btn-update"><span><span>Thanh toán</span></span></button>

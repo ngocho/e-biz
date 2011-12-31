@@ -102,7 +102,7 @@ $(document).ready(function(){
 
         <div class="clearer"></div>
             </form>
-            </logic:present>
+            
     <script type="text/javascript">
     //<![CDATA[
       /*  var productAddToCartForm = new VarienForm('product_addtocart_form');
@@ -155,6 +155,7 @@ $(document).ready(function(){
     <div class="std">
        <bean:write name="DetailProduct" property="detail" />    </div>
         </div>
+        </logic:present>
         <div class="box-collateral box-additional">
                             <h2>Hướng dẫn nấu </h2>
                             thông tin hướng dẫn nấu ăn
