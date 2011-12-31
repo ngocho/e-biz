@@ -42,7 +42,6 @@ public class Customer extends ValidatorForm  implements Serializable{
     //ten dang nhap
     @PrimaryKey
     @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
-    @Extension(vendorName="datanucleus", key="gae.encoded-pk", value="true")
     private String customerId;
     @Persistent
     private String customerPassword;
@@ -56,7 +55,7 @@ public class Customer extends ValidatorForm  implements Serializable{
     private String customerEmail;           //bat buoc
     @Persistent
     private String customerPhone;
-    @Persistent
+    @Persistent(defaultFetchGroup = "true")
     private Address customerAddress;
     @Persistent
     private String customerType;            // khach hang binh thuong, thanh vien, vip
@@ -73,9 +72,13 @@ public class Customer extends ValidatorForm  implements Serializable{
     @Persistent
     private String payOnlineType;      //  
     @Persistent
-    private String isAd;
+    private Boolean isAdEmail;
+    @Persistent
+    private Boolean isAdPhone;
     @Persistent
     private Boolean isActive;
+    @Persistent
+    private String urlAvatar;
     
     
     /**
@@ -289,20 +292,6 @@ public class Customer extends ValidatorForm  implements Serializable{
         this.payOnlineType = payOnlineType;
     }
     /**
-     * Get value of isAd.
-     * @return the isAd
-     */
-    public String getIsAd() {
-        return isAd;
-    }
-    /**
-     * Set the value for isAd.
-     * @param isAd the isAd to set
-     */
-    public void setIsAd(String isAd) {
-        this.isAd = isAd;
-    }
-    /**
      * Get value of isActive.
      * @return the isActive
      */
@@ -315,6 +304,48 @@ public class Customer extends ValidatorForm  implements Serializable{
      */
     public void setIsActive(Boolean isActive) {
         this.isActive = isActive;
+    }
+    /**
+     * Get value of isAdEmail.
+     * @return the isAdEmail
+     */
+    public Boolean getIsAdEmail() {
+        return isAdEmail;
+    }
+    /**
+     * Set the value for isAdEmail.
+     * @param isAdEmail the isAdEmail to set
+     */
+    public void setIsAdEmail(Boolean isAdEmail) {
+        this.isAdEmail = isAdEmail;
+    }
+    /**
+     * Get value of isAdPhone.
+     * @return the isAdPhone
+     */
+    public Boolean getIsAdPhone() {
+        return isAdPhone;
+    }
+    /**
+     * Set the value for isAdPhone.
+     * @param isAdPhone the isAdPhone to set
+     */
+    public void setIsAdPhone(Boolean isAdPhone) {
+        this.isAdPhone = isAdPhone;
+    }
+    /**
+     * Get value of urlAvatar.
+     * @return the urlAvatar
+     */
+    public String getUrlAvatar() {
+        return urlAvatar;
+    }
+    /**
+     * Set the value for urlAvatar.
+     * @param urlAvatar the urlAvatar to set
+     */
+    public void setUrlAvatar(String urlAvatar) {
+        this.urlAvatar = urlAvatar;
     }
     
 }
