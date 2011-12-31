@@ -22,7 +22,6 @@ import mobile.ebiz.blo.user.CustomerBLO;
 
 import org.apache.struts.validator.ValidatorForm;
 
-import ebiz.dao.gae.CustomerDAO;
 import ebiz.dto.account.customer.Address;
 import ebiz.dto.account.customer.Customer;
 
@@ -48,19 +47,48 @@ public class LoginForm extends ValidatorForm{
     private String districtName;
     private String buildingName;
     private String note; //bill 
-    private Boolean isAd; 
+    private Boolean isAdEmail; 
+    private Boolean isAdPhone; 
     public boolean isEmpty(){
         if(loginId ==null){
             return true;
         }
         return false;
     }
-    public void  getCustomer(){
-
-        Customer cust = CustomerBLO.getCustomerByID(loginId);
-        this.phone = cust.getCustomerPhone();
-        this.setBuildingName(cust.getCustomerAddress().getBuildingName());
-        this.setDistrictName(cust.getCustomerAddress().getDistrictName());
+    public  Customer getCustomer(){
+        Customer customer = new Customer();
+        customer.setCustomerId(this.loginId);
+        customer.setCustomerPassword(this.loginPassword);
+        customer.setCustomerName(this.loginName);
+        customer.setCustomerGender(this.gender);
+        customer.setCustomerPhone(this.phone);
+        customer.setCustomerEmail(this.email);
+        customer.setIsAdEmail(this.isAdEmail);
+        customer.setIsAdPhone(this.isAdPhone);
+        Address add = new Address();
+        add.setBuildingName(this.buildingName);
+        add.setDistrictName(this.districtName);
+        add.setHomeNumber(this.homeNumber);
+        add.setStreetName(this.streetName);
+        add.setWardName(this.wardName);
+        customer.setCustomerAddress(add);
+        return customer;
+          
+      }
+    
+    public void  editForm(Customer customer){
+        this.loginId = customer.getCustomerId();
+        this.loginName = customer.getCustomerName();
+        this.loginPassword = customer.getCustomerPassword();
+        this.gender = customer.getCustomerGender();
+        this.phone = customer.getCustomerPhone();
+        this.email = customer.getCustomerEmail();
+        this.buildingName = customer.getCustomerAddress().getBuildingName();
+        this.districtName = customer.getCustomerAddress().getDistrictName();
+        this.homeNumber = customer.getCustomerAddress().getHomeNumber();
+        this.streetName = customer.getCustomerAddress().getStreetName();
+        this.wardName = customer.getCustomerAddress().getWardName();
+        
         
     }
     /**
@@ -272,18 +300,32 @@ public class LoginForm extends ValidatorForm{
         this.email = email;
     }
     /**
-     * Get value of isAd.
-     * @return the isAd
+     * Get value of isAdPhone.
+     * @return the isAdPhone
      */
-    public Boolean getIsAd() {
-        return isAd;
+    public Boolean getIsAdPhone() {
+        return isAdPhone;
     }
     /**
-     * Set the value for isAd.
-     * @param isAd the isAd to set
+     * Set the value for isAdPhone.
+     * @param isAdPhone the isAdPhone to set
      */
-    public void setIsAd(Boolean isAd) {
-        this.isAd = isAd;
+    public void setIsAdPhone(Boolean isAdPhone) {
+        this.isAdPhone = isAdPhone;
+    }
+    /**
+     * Get value of isAdEmail.
+     * @return the isAdEmail
+     */
+    public Boolean getIsAdEmail() {
+        return isAdEmail;
+    }
+    /**
+     * Set the value for isAdEmail.
+     * @param isAdEmail the isAdEmail to set
+     */
+    public void setIsAdEmail(Boolean isAdEmail) {
+        this.isAdEmail = isAdEmail;
     }
 
 }

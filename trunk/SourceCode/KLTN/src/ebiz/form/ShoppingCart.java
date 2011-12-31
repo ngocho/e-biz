@@ -53,6 +53,9 @@ public class ShoppingCart implements java.io.Serializable{
         return false;
     }
     
+    public int size(){
+        return products.size();
+    }
     public void addFood(FoodForm food, Integer number){
         food.setSubTotal(food.getPrice()* number);
         food.setNumber(number);
