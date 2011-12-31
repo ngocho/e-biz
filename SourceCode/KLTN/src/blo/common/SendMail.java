@@ -18,27 +18,26 @@
  */
 package ebiz.blo.common;
 
+import com.google.appengine.api.taskqueue.Queue;
+import com.google.appengine.api.taskqueue.QueueFactory;
+import com.google.appengine.api.taskqueue.TaskOptions;
+
 /**
  * @author ThuyNT
  *
  */
 public class SendMail {
-    public static void registerSuccess(){
+    private static Queue queue = QueueFactory.getDefaultQueue();
+    /**
+     * 
+     * when register account success -> send mail
+     * @param email
+     */
+    public static void registerSuccess(String email){
 
-//      //send mail thong bao dang ki thanh cong
-//      String email=myform.getEmail();
-//      Queue queue = QueueFactory.getDefaultQueue();
-//      TaskOptions url=TaskOptions.Builder.url("/sendMail.vn");
-//      url.param("flag", "dk");
-//      url.param("email", email);
-//      queue.add(url);
-//      return mapping.findForward(SUCCESS);
-//      
-//}
-//finally 
-//{
-//      pm.close();
-//}
+      TaskOptions url=TaskOptions.Builder.withUrl("/sendMailRegister.vn");
+      url.param("email", email);
+      queue.add(url);
     }
 
 }
