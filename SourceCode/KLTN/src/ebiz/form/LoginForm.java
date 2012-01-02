@@ -18,7 +18,7 @@
  */
 package ebiz.form;
 
-import mobile.ebiz.blo.user.CustomerBLO;
+import ebiz.blo.customer.CustomerBLO;
 
 import org.apache.struts.validator.ValidatorForm;
 

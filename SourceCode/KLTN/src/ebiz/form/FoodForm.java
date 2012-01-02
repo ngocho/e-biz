@@ -56,7 +56,7 @@ public class FoodForm {
         this.reviewer = food.getReviewer();
         this.url = food.getUrl();
         this.number = food.getNumber();
-        this.productTypeId = food.getProductTypeId();
+        this.productTypeId = food.getFoodTypeId();
         //het san pham
         if(food.getNumber()== 0){
             this.status = CommonConstant.STATUS_MESSAGE_0;
@@ -123,7 +123,7 @@ public class FoodForm {
         this.calo = food.getCalo();
         this.detail = food.getDetail();
         this.cooking = food.getCooking();
-        this.productTypeId = food.getProductTypeId();
+        this.productTypeId = food.getFoodTypeId();
         //het san pham
         if(food.getNumber()== 0){
             this.status = CommonConstant.STATUS_MESSAGE_0;
