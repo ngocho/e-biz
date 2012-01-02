@@ -47,7 +47,7 @@ public class Food  implements Serializable{
     @Persistent
     private String foodStatusId;
     @Persistent
-    private String productTypeId;
+    private String foodTypeId;
     @Persistent
     private Date startDate;
     @Persistent
@@ -146,15 +146,15 @@ public class Food  implements Serializable{
      * Get value of productTypeId.
      * @return the productTypeId
      */
-    public String getProductTypeId() {
-        return productTypeId;
+    public String getFoodTypeId() {
+        return foodTypeId;
     }
     /**
      * Set the value for productTypeId.
      * @param productTypeId the productTypeId to set
      */
-    public void setProductTypeId(String productTypeId) {
-        this.productTypeId = productTypeId;
+    public void setFoodTypeId(String foodTypeId) {
+        this.foodTypeId = foodTypeId;
     }
     /**
      * Get value of startDate.
