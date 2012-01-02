@@ -70,13 +70,13 @@ Tiếng Anh
     <ul id="nav">
         <li class="level0 nav-1 level-top first parent">
 <a
-          href="category.vn"
+          href="category.vn?typeProduct=1"
           class="level-top">
 
 <span class="white-text">Thực phẩm sơ chế</span>
         </a>
         <a
-          href="category.vn"
+          href="category.vn?typeProduct=2"
           class="level-top">
 
 <span class="white-text">Thức ăn nấu sẵn</span>
@@ -98,7 +98,7 @@ Tiếng Anh
 </li>
   <li class="level0 nav-4 level-top first parent">
 <a
-          href="http://localhost/magento/index.php/catalog/category/view/s/furniture/id/10/"
+          href="category.vn?typeProduct=3"
           class="level-top">
 
 <span class="white-text">Rau xanh</span>
