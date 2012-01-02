@@ -18,14 +18,18 @@
  */
 package ebiz.form;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * @author ThuyNT
  *
  */
-public class ProductVO {
+public class ProductVO implements Serializable{
     
+    /**  . */
+    private static final long serialVersionUID = 1L;
+
     //number of record/page
     private Integer limit ;
     
@@ -37,6 +41,8 @@ public class ProductVO {
     
     //save pagin
     private List<Paging> pagingList;
+    
+    private String typeProduct;
 
     /**
      * Get value of limit.
@@ -100,6 +106,22 @@ public class ProductVO {
      */
     public void setPagingList(List<Paging> pagingList) {
         this.pagingList = pagingList;
+    }
+
+    /**
+     * Get value of typeProduct.
+     * @return the typeProduct
+     */
+    public String getTypeProduct() {
+        return typeProduct;
+    }
+
+    /**
+     * Set the value for typeProduct.
+     * @param typeProduct the typeProduct to set
+     */
+    public void setTypeProduct(String typeProduct) {
+        this.typeProduct = typeProduct;
     }
 
 }
