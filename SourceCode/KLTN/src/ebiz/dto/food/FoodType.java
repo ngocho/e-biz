@@ -30,6 +30,9 @@ import javax.jdo.annotations.PrimaryKey;
 
 /**
  * xac dinh loai thuc pham: rau xanh, sơ chế, nấu sẵn,..
+ * 1 : prepared food
+ * 2 : cooked food
+ * 3 : vegetable
  */
 @PersistenceCapable
 public class FoodType implements Serializable{
