@@ -244,24 +244,23 @@ public final class PMF {
      */
 
     @SuppressWarnings("unchecked")
-    public static List<?> getObjectList(Class<?> className, String col,HashMap<Integer, String> paging, String order,int record, int page) {
+    public static List<?> getObjectList(Class<?> className, String col,HashMap<Integer, String> paging, String order,int record, int page,String filterCol, String typeProduct) {
         
-        
-        String cursorString = null;
-        PersistenceManager pm = getPMF();
-        Cursor cursor;
-        if (paging.containsKey(page)) {
-            cursorString = paging.get(page);
-        }
-        Query query = pm.newQuery(className);
-        query.setRange((record*(page - 1)) , record*page);
-        List<Object> results = new ArrayList<Object>();
-        // query.setFilter("lastName == lastNameParam");
-        query.setOrdering(col + " " + order);
-        // query.declareParameters("String lastNameParam");
-        try {
+		String cursorString = null;
+		PersistenceManager pm = getPMF();
+		Cursor cursor;
+		if (paging.containsKey(page)) {
+			cursorString = paging.get(page);
+		}
+		Query query = pm.newQuery(className);
+		query.setRange((record * (page - 1)), record * page);
+		List<Object> results = new ArrayList<Object>();
+		query.setFilter(filterCol + " == param");
+		query.declareParameters("String param");
+		query.setOrdering(col + " " + order);
+		try {
             if (cursorString == null) { // first page
-                results = (List<Object>) query.execute();
+                results = (List<Object>) query.execute(typeProduct);
                 cursor = JDOCursorHelper.getCursor(results);
                 
             } else {
@@ -288,12 +287,12 @@ public final class PMF {
      */
 
     @SuppressWarnings("unchecked")
-    public static List<?> diplayFirstPage(Class<?> className, String col,HashMap<Integer, String> paging, String order,int record, int page) {
+    public static List<?> diplayPageFood(Class<?> className, String col,HashMap<Integer, String> paging, String order,int record, int page,String filterCol, String typeProduct) {
         
         List<Object> results = new ArrayList<Object>();
         int count ;
         PersistenceManager pm = getPMF();
-        Query query = pm.newQuery("select count(" + col + ")  from " + className.getName());
+        Query query = pm.newQuery("select count(" + col + ")  from " + className.getName() + " where "+ filterCol +"  ==  "+ typeProduct);
         try {
                 count = (Integer)query.execute();
                 
@@ -307,7 +306,7 @@ public final class PMF {
                 for( int  i =1; i<= div; i++){
                     paging.put(i, null);
                 }
-                results = (List<Object>) getObjectList(className,col,paging,order,record,page);
+                results = (List<Object>) getObjectList(className,col,paging,order,record,page,filterCol, typeProduct);
 
         } finally {
             query.closeAll();
@@ -360,6 +359,20 @@ public final class PMF {
         List<Object> results = new ArrayList<Object>();
         query.setFilter(col + " == param");
         query.declareParameters("String param");
+        try {
+            results = (List<Object>) query.execute(key);
+        } finally {
+            query.closeAll();
+        }
+        return results;
+    }
+    @SuppressWarnings("unchecked")
+    public static List<?> getObjectListByValue(Class<?> className, String col, Long key) {
+        PersistenceManager pm = getPMF();
+        Query query = pm.newQuery(className);
+        List<Object> results = new ArrayList<Object>();
+        query.setFilter(col + " == param");
+        query.declareParameters("Long param");
         try {
             results = (List<Object>) query.execute(key);
         } finally {
