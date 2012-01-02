@@ -51,7 +51,7 @@
       type="ebiz.action.account.customer.Register" 
       name="login"
       scope="session" validate="true">
-      <forward name="success" path="home" redirect="true" />
+      <forward name="success" path="loginLayout" redirect="true" />
       <forward name="failure" path="registerLayout" redirect="true" />
     </action>
      <action input="checkout" 
