@@ -63,6 +63,7 @@ public class DisplayCategory extends BaseAction {
           List<FoodForm> foods = new ArrayList<FoodForm>();
           ProductVO vo = new ProductVO();
         String typeProduct = request.getParameter("typeProduct");
+        System.out.println("TYPE PRODUCT" +typeProduct);
         if(typeProduct ==null){
             vo = (ProductVO)se.getAttribute(CommonConstant.PRODUCTVO);
             typeProduct = vo.getTypeProduct();
@@ -70,10 +71,10 @@ public class DisplayCategory extends BaseAction {
         vo.setTypeProduct(typeProduct);
       
         IFoodDAO dao = new FoodDAO();
-       Initialize.initializeFood();
-        Initialize.initializeFoodAttribute();
-        Initialize.initializeFoodStatus();
-        Initialize.initializeFoodPriceLevel();
+//       Initialize.initializeFood();
+//        Initialize.initializeFoodAttribute();
+//        Initialize.initializeFoodStatus();
+//        Initialize.initializeFoodPriceLevel();
        // get attribute --> save in session
         attrs = dao.getAttributeList("productAttributeName");
         se.setAttribute(CommonConstant.FOOD_CATEGORY_A, attrs);
