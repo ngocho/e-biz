@@ -57,8 +57,8 @@ public class CommonConstant {
     
     //FOOD TYPE 
     public final static String TYPE_1  = "1";      //prepared cook
-    public final static String TYPE_2  = "1";       //cooked food
-    public final static String TYPE_3  = "1";      //vegatable
+    public final static String TYPE_2  = "2";       //cooked food
+    public final static String TYPE_3  = "3";      //vegatable
     //BILL STATUS
     public final static Integer BILLSTATUS_0 = 0;  //order
     public final static Integer BILLSTATUS_1 = 1;  //paid money

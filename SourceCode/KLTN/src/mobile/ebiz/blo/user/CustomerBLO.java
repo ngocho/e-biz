@@ -149,38 +149,38 @@ public class CustomerBLO {
      * get Customer by ID
      */
     
-    public static boolean registerCustomer(Customer customer){
-      
-      boolean   flag = custDao.isCustomer(customer.getCustomerId());
-         if(!flag){
-         return  custDao.insertCustomer(customer);
-         }
-         return false;
-   }
-  
-   
-    public static int testCustomerID(String id, String pass) {
-
-        return custDao.isCustomerID(id, pass);
-    }
-    public static int testCustomerEmail(String email, String pass) {
-
-        return custDao.isCustomerMail(email, pass);
-    }
-    /**
-     * 
-     * if duplicate primarikey = over write
-     * @param customer
-     * @return
-     */
-    public static boolean updatecustomer(Customer customer) {
-        custDao.insertCustomer(customer);
-        Customer cus = custDao.getCustomerById(customer.getCustomerId());
-        return true;
-    }
-       
-        
-    
+//    public static boolean registerCustomer(Customer customer){
+//      
+//      boolean   flag = custDao.isCustomer(customer.getCustomerId());
+//         if(!flag){
+//         return  custDao.insertCustomer(customer);
+//         }
+//         return false;
+//   }
+//  
+//   
+//    public static int testCustomerID(String id, String pass) {
+//
+//        return custDao.isCustomerID(id, pass);
+//    }
+//    public static int testCustomerEmail(String email, String pass) {
+//
+//        return custDao.isCustomerMail(email, pass);
+//    }
+//    /**
+//     * 
+//     * if duplicate primarikey = over write
+//     * @param customer
+//     * @return
+//     */
+//    public static boolean updatecustomer(Customer customer) {
+//        custDao.insertCustomer(customer);
+//        Customer cus = custDao.getCustomerById(customer.getCustomerId());
+//        return true;
+//    }
+//       
+//        
+//    
     
     
 
