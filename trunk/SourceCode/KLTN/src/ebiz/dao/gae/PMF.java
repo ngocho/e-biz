@@ -292,10 +292,11 @@ public final class PMF {
         List<Object> results = new ArrayList<Object>();
         int count ;
         PersistenceManager pm = getPMF();
-        Query query = pm.newQuery("select count(" + col + ")  from " + className.getName() + " where "+ filterCol +"  ==  "+ typeProduct);
+        Query query = pm.newQuery("select count(" + col + ")  from " + className.getName() + " where "+ filterCol +"  == \""+ typeProduct+ "\"");
         try {
                 count = (Integer)query.execute();
-                
+                System.out.println("QUERY" +query.toString());
+                System.out.println("COUNT"+ count);
                 //count number of page
                 int div = count /record;
                 if(count % record >0){
