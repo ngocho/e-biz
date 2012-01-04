@@ -69,6 +69,7 @@ public final class PMF {
         try {
            return  pm.makePersistent(obj);
         } catch (Exception ex) {
+            ex.printStackTrace();
             return null;
         } finally {
             pm.close();
