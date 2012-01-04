@@ -5,7 +5,7 @@ import java.util.List;
 import ebiz.dto.checkout.*;
 
 public interface IOrderDAO {
-	public OrderBill save(OrderBill order);
+    public OrderBill save(OrderBill order);
 
 	public boolean insertDetailOrder(DetailOrder order);
 
