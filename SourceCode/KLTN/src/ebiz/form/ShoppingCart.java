@@ -33,7 +33,7 @@ public class ShoppingCart implements java.io.Serializable{
    
     private LoginForm user;
     private List<FoodForm> products;
-    private Integer count;   // name product not number of product
+    private Integer count;   // number of bought product
     private Long total;      // paid money
     
     public ShoppingCart(LoginForm user){
@@ -54,15 +54,28 @@ public class ShoppingCart implements java.io.Serializable{
     }
     
     public int size(){
-        return products.size();
+        int sum =0;
+        for(FoodForm food :products ){
+                sum  = sum + food.getNumber();
+            }
+        count = sum;
+        return count;
     }
+    /**
+     * add food into shop
+     * @param food
+     * @param number
+     */
     public void addFood(FoodForm food, Integer number){
         food.setSubTotal(food.getPrice()* number);
         food.setNumber(number);
         products.add(food);
-        count = products.size();
     }
-    
+    /**
+     * 
+     * remove food in shop
+     * @param id
+     */
     public void removeFood(Long id){
        for(FoodForm food :products ){
            if(id == food.getId()){
@@ -71,13 +84,26 @@ public class ShoppingCart implements java.io.Serializable{
        }
         count = products.size();
     }
-    
+    /**
+     * increase number of product if exist in shop
+     * @param id
+     * @param number
+     */
     public void updateNumberFood(Long  id, Integer number){
         for(FoodForm food :products ){
             if(id == food.getId()){
                food.setNumber(number);
+               food.setSubTotal(number*food.getPrice());
             }
         }
+    }
+    public Integer getNumberFood(Long id){
+        for(FoodForm food :products ){
+            if(id == food.getId()){
+              return food.getNumber();
+            }
+        }
+        return 0;
     }
     /**
      * Get value of user.
@@ -135,5 +161,9 @@ public class ShoppingCart implements java.io.Serializable{
     public void setTotal(Long total) {
         this.total = total;
     }
+    /**
+     * Get value of bill.
+     * @return the bill
+     */
 
 }

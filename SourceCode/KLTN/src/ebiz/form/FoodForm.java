@@ -18,10 +18,7 @@
  */
 package ebiz.form;
 
-import javax.jdo.annotations.Persistent;
-
 import ebiz.dto.food.Food;
-import ebiz.dto.food.FoodPromotion;
 import ebiz.util.CommonConstant;
 
 /**
