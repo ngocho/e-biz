@@ -48,17 +48,17 @@ public class Login extends BaseAction {
         HttpSession se = request.getSession();
         // get type of login
         String type = request.getParameter("type");
-       if(type ==null){
+       if (type == null) {
            type = "1";
        }
         int flag = -1;
         if ("1".equals(type)) {
-            System.out.println("TEST"+flag);
+            System.out.println("TEST" + flag);
             // dung ten de dang nhap
             // kiem tra trong co so du lieu
             flag = CustomerBLO.isLoginID(login.getLoginId(), login.getLoginPassword());
 //            login.setLoginName("nguyen thi thuy");
-            System.out.println("TEST"+flag);
+            System.out.println("TEST" + flag);
         }
 //        } else {
 //            // dung email de dang nhap
@@ -77,10 +77,8 @@ public class Login extends BaseAction {
             // add error password wrong
             messages.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage("login.user.existed"));
         } else if (flag == 0) {
-            
             // user input didn't exist
             messages.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage("login.password.wrong"));
-           
         }
         saveMessages(request, messages); // storing messages as request attributes
         return mapping.findForward(FAILURE);
