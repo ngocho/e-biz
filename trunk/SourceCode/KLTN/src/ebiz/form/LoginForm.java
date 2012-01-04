@@ -24,6 +24,7 @@ import org.apache.struts.validator.ValidatorForm;
 
 import ebiz.dto.account.customer.Address;
 import ebiz.dto.account.customer.Customer;
+import ebiz.util.CommonUtil;
 
 /**
  * @author Administrator
@@ -50,11 +51,9 @@ public class LoginForm extends ValidatorForm{
     private Boolean isAdEmail; 
     private Boolean isAdPhone; 
     public boolean isEmpty(){
-        if(loginId ==null){
-            return true;
-        }
-        return false;
+        return CommonUtil.isBlankOrNull(loginId);
     }
+    
     public  Customer getCustomer(){
         Customer customer = new Customer();
         customer.setCustomerId(this.loginId);
