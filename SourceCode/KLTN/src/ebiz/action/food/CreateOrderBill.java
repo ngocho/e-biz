@@ -28,26 +28,35 @@ import org.apache.struts.action.ActionMapping;
 
 import ebiz.action.BaseAction;
 import ebiz.blo.food.FoodBLO;
+import ebiz.dto.checkout.OrderBill;
+import ebiz.form.LoginForm;
+import ebiz.form.OrderBillForm;
 import ebiz.form.ShoppingCart;
 import ebiz.util.CommonConstant;
 
 /**
- * @author ThuyNT
+ * @author Administrator
  *
  */
-
 public class CreateOrderBill extends BaseAction {
-    
-    /*
-     * using ajax to call this action
-     */
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
         System.out.println("CREATE BILL");
+        LoginForm user = (LoginForm) form;
+        OrderBill order = new OrderBill();
         HttpSession se = request.getSession();
-        ShoppingCart shopCart =(ShoppingCart) se.getAttribute(CommonConstant.SHOPPING);
-        FoodBLO.billing(shopCart);
+        ShoppingCart shopCart = (ShoppingCart)se.getAttribute(CommonConstant.SHOPPING);
+        shopCart.setUser(user);
+        //billing
+        order = FoodBLO.billing(shopCart);
+        //transfer OrderBill-> form to display
+        OrderBillForm orderForm = new OrderBillForm();
+        orderForm.getOrderBill(order);
+        //update atrributes
+        orderForm.setNumberProduct(shopCart.size());
+        orderForm.setNameCustomer(user.getLoginName());
+        //set orderForm into session
+        se.setAttribute("bill", orderForm);
         return mapping.findForward(SUCCESS);
-        
 }
 }

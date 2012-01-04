@@ -44,13 +44,15 @@ import ebiz.util.CommonConstant;
         public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
                 HttpServletResponse response) throws Exception {
             String type = request.getParameter("type");
-            if(type == "0"){ //checkout
+            System.out.println("TYPE@@@@@"+type);
+            if(type.equals("0")){ //checkout
                 HttpSession se = request.getSession();
                 ShoppingCart shop  = (ShoppingCart)se.getAttribute(CommonConstant.SHOPPING);
                 LoginForm user = shop.getUser();
                 if(shop.size() == 0){
                     return mapping.findForward(FAILURE); 
                 }
+                System.out.println("EMPTY"+user.isEmpty());
                 if(!user.isEmpty()){
                     //put attributes into LoginForm
                     Customer customer = CustomerBLO.getCustomerByID(user.getLoginId());
@@ -59,6 +61,8 @@ import ebiz.util.CommonConstant;
                 }
                 else{
                     // user didn't log-in
+                    System.out.println("REQUIRE LOGIN");
+                    request.setAttribute("type", 1);
                     return mapping.findForward(INPUT);
                 }
             }

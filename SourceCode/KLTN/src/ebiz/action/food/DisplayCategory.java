@@ -63,7 +63,6 @@ public class DisplayCategory extends BaseAction {
           List<FoodForm> foods = new ArrayList<FoodForm>();
           ProductVO vo = new ProductVO();
         String typeProduct = request.getParameter("typeProduct");
-        System.out.println("TYPE PRODUCT" +typeProduct);
         if(typeProduct ==null){
             vo = (ProductVO)se.getAttribute(CommonConstant.PRODUCTVO);
             typeProduct = vo.getTypeProduct();
@@ -98,7 +97,7 @@ public class DisplayCategory extends BaseAction {
 
         se.setAttribute(CommonConstant.PRODUCTVO, vo);
         
-        
+        System.out.println("SIZE OF FOOD"+foods.size());
       //list food
         se.setAttribute(CommonConstant.FOOD_CATEGORY_F, foods);
         
