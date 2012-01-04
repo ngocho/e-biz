@@ -56,7 +56,7 @@ public class Initialize {
             food.setExpDate(new Date());
             food.setNumber(12);
             food.setPrice(new Long(i*2));
-            
+            food.setNumberOrder(0);
             food.setProductAttributeId("1");
             food.setProviderID("NCC1");
             food.setReviewer(123);
