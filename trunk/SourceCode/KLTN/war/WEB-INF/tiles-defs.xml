@@ -24,7 +24,7 @@
 <!-- Definitions for Tiles documentation   -->
 
 <tiles-definitions>
-<definition name="baseLayout" path="/baseLayout.jsp">
+    <definition name="baseLayout" path="/baseLayout.jsp">
         <put name="title"  value="Sample Page Title" />
         <put name="header" value="/header.jsp" />
         <put name="content"   value="/content.jsp" />
@@ -32,6 +32,14 @@
         <put name="right"   value="/right.jsp" />
         <put name="left"   value="/left.jsp" />
         <put name="pankuzu"   value="/pankuzu.jsp" /> 
+    </definition>
+    <definition name="baseLayout1" path="/baseLayout1.jsp">
+        <put name="title" value="Shopping Cart" />
+        <put name="header" value="/header.jsp" />
+        <put name="left"   value="/blank.jsp" />
+        <put name="pankuzu"   value="/pankuzu.jsp" /> 
+        <put name="content" value="/blank.jsp" />
+        <put name="footer" value="/footer.jsp" />
     </definition>
     
     <definition name="loginLayout" extends="baseLayout">
@@ -42,26 +50,40 @@
         <put name="title" value="Checkout" />
         <put name="content" value="/content_register.jsp" />
     </definition>
-    
-    
-    <definition name="baseLayout_product" path="/baseLayout_product.jsp">
-        <put name="header" value="/header.jsp" />
-        <put name="content"   value="/content_product.jsp" />
-        <put name="footer" value="/footer.jsp" />
-        <put name="right"   value="/right.jsp" />
-        <put name="pankuzu"   value="/pankuzu.jsp" /> 
-    </definition>
     <definition name="category" extends="baseLayout">
         <put name="title" value="Category" />
         <put name="left" value="/left_category.jsp" />
         <put name="content" value="/content_category.jsp" />
     </definition>
-    <definition name="shopping" path="/ShoppingCart.jsp">
-        <put name="title" value="Shopping Cart" />
-        <put name="header" value="/header.jsp" />
-        <put name="content" value="/content_shopping.jsp" />
+    <definition name="shopping" extends="baseLayout1">
     </definition>
-    
+     <definition name="uploadImage" extends="baseLayout1">
+        <put name="title" value="Shopping Cart" />
+        <put name="content" value="/content_uploadProduct.jsp" />
+    </definition>
+     <!-- start admin -->
+     <definition name="home_admin" extends="baseLayout1">
+      <put name="title" value="Admin Home" />
+      <put name="header" value="/header_admin.jsp" />
+      <put name="content" value="/content_login.jsp" />
+     </definition>
+     <!-- end admin -->
+      <!-- start provider -->
+      <definition name="home_provider" extends="baseLayout1">
+      <put name="title" value="Provider Home" />
+      <put name="left"   value="/left_provider.jsp" />
+      <put name="header" value="/header_provider.jsp" />
+      <put name="content" value="/content_login.jsp" />
+     </definition>
+       <definition name="home_customer" extends="baseLayout1">
+      <put name="title" value="Customer Home" />
+      <put name="left"   value="/left_customer.jsp" />
+     </definition>
+     <definition name="home_content" extends="baseLayout1">
+      <put name="title" value="Customer Content" />
+      <put name="left"   value="/left_customer.jsp" />
+     </definition>
+        <!-- end provider -->
     <definition name="checkout" extends="baseLayout">
         <put name="title" value="Checkout" />
         <put name="content" value="/content_checkout.jsp" />
@@ -70,12 +92,41 @@
         <put name="title" value="Checkout" />
         <put name="content" value="/content_bill.jsp" />
     </definition>
-    <definition name="product" extends="baseLayout_product">
-      
+    <definition name="bill" extends="baseLayout">
+        <put name="title" value="Checkout" />
+        <put name="content" value="/content_bill.jsp" />
+    </definition>
+    <definition name="product" extends="baseLayout">
+        <put name="title"  value="Detail Product" />
+        <put name="content"   value="/content_product.jsp" />
+        <put name="right"   value="/right.jsp" />
+        <put name="left"   value="/blank.jsp" />
     </definition>
     <definition name="home" extends="baseLayout">
-      
     </definition>
+    
+    
+   <!--  <definition name="baseLayout_product" path="/baseLayout_product.jsp">
+        <put name="header" value="/header.jsp" />
+        <put name="content"   value="/content_product.jsp" />
+        <put name="footer" value="/footer.jsp" />
+        <put name="right"   value="/right.jsp" />
+        <put name="pankuzu"   value="/pankuzu.jsp" /> 
+    </definition>-->
+    
+ <!--   <definition name="baseLayout1" path="/ShoppingCart.jsp">
+        <put name="title" value="Shopping Cart" />
+        <put name="header" value="/header.jsp" />
+        <put name="content" value="/content_shopping.jsp" />
+    </definition> --> 
+   <!--  <definition name="shopping" extends="baseLayout">
+        <put name="content"   value="/content_shopping.jsp" />
+        <put name="left"   value="/blank.jsp" />
+        </definition>--> 
+    <!-- <definition name="shopping" extends="baseLayout1">
+    </definition>-->
+   
+    <!-- admin -->
     
 
 </tiles-definitions>

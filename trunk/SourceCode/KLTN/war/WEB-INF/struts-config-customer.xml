@@ -54,7 +54,7 @@
       <forward name="success" path="loginLayout" redirect="true" />
       <forward name="failure" path="registerLayout" redirect="true" />
     </action>
-     <action input="checkout" 
+    <!--   <action input="checkout" 
       path="/getInforBill"
       type="ebiz.action.account.customer.UpdateCustomer" 
       name="login"
@@ -62,7 +62,7 @@
       <forward name="success" path="/createBill.vn" redirect="true" />
       <forward name="failure" path="shopping" redirect="true" />
       <forward name="input" path="checkout" redirect="true" />
-    </action>
+    </action>-->
     <action
       path="/sendMailRegister"
       type="ebiz.action.account.customer.SendMailRegister" >
