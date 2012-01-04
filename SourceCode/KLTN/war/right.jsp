@@ -9,7 +9,7 @@
   <div class="block block-cart">
     <c:if test="${user !=null}">
       <div class="block-title">
-        <a href="#"><strong><span>TÀI KHOẢN CỦA BẠN</span>
+        <a href="/customer.vn"><strong><span>TÀI KHOẢN CỦA BẠN</span>
         </strong>
         </a>
       </div>

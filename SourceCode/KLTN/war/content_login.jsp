@@ -23,11 +23,16 @@
 <div class="home-spot">
   <div class="col-2 registered-users" class="login">
     <div class="content">
+    <logic:present name="type" scope="request">
+     <c:if test="${type ==1}" >
+     <b> Hãy đăng kí trước khi thanh toán đơn hàng</b>
+     </c:if>
+    </logic:present>
       <h2>ĐĂNG NHẬP</h2>
       <!--p>If you have an account with us, please log in.</p-->
       <ul class="form-list">
         <html:form action="/loginAction.vn" method="get">
-          <li class="fields">
+          <!-- <li class="fields">
 
             <div class="field">
               <input type="hidden" name="type" id="type" value="1" /> <input
@@ -35,7 +40,7 @@
                 style="background: url(); background: #00CCFF"
                 onclick="change()" id="idLogin"
                 value="Dùng email để đăng nhập" />
-            </div></li>
+            </div></li> -->
           <li><label for="email" class="required" id="typeLogin"><em>*</em>Tên
               đăng nhâp</label>
             <div class="input-box">
@@ -74,34 +79,6 @@
       </ul>
 
 
-      <script type="text/javascript">
-                            //         
-                            function toggleRememberMepopup(event) {
-                                if ($('remember-me-popup')) {
-                                    var viewportHeight = document.viewport.getHeight(), docHeight = $$('body')[0]
-                                            .getHeight(), height = docHeight > viewportHeight ? docHeight
-                                            : viewportHeight;
-                                    $('remember-me-popup').toggle();
-                                    $('window-overlay').setStyle({
-                                        height : height + 'px'
-                                    }).toggle();
-                                }
-                                Event.stop(event);
-                            }
-
-                            document.observe("dom:loaded", function() {
-                                new Insertion.Bottom($$('body')[0], $('window-overlay'));
-                                new Insertion.Bottom($$('body')[0], $('remember-me-popup'));
-
-                                $$('.remember-me-popup-close').each(function(element) {
-                                    Event.observe(element, 'click', toggleRememberMepopup);
-                                })
-                                $$('#remember-me-box a').each(function(element) {
-                                    Event.observe(element, 'click', toggleRememberMepopup);
-                                });
-                            });
-                            //
-                        </script>
       <p class="required">* Bắt buộc phải nhập</p>
     </div>
   </div>

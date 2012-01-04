@@ -17,7 +17,7 @@
         </div>
         <div id="checkout-step-billing" class="step a-item" > 
         <fieldset>
-        <html:form action="/getInforBill.vn" method="get">
+        <html:form action="/createBill.vn" method="get">
 
     <ul class="form-list">
         <li id="billing-new-address-form">
@@ -50,7 +50,7 @@
                       <div class="field">
                         <label for="billing:email" class="required"><em>*</em>Tên đường</label>
                         <div class="input-box">
-                            <input name="billing[email]" id="billing:email" title="Email Address" class="input-text validate-email required-entry" type="text">
+                             <html:text size="30" property="streetName"/>
                         </div>
                       </div>
                     </li>
@@ -58,37 +58,37 @@
                     <div class="field">
                         <label for="billing:company">Phường</label>
                         <div class="input-box">
-                            <input id="billing:company" name="billing[company]" title="Company" class="input-text" type="text">
+                              <html:text size="30" property="wardName"/>
                         </div>
                     </div>
                      <div class="field">
                         <label for="billing:email" class="required"><em>*</em>Quận</label>
                         <div class="input-box">
-                        <select name="ddlDist0" id="ddlDist0">
-                         <option selected="selected" value="0"> - - - - - - - - - - - - Chọn quận- - - - - - - - - - - - - </option>
-    <option value="18">1</option>
-    <option value="42">2</option>
-    <option value="17">3</option>
-    <option value="21">4</option>
-    <option value="20">5</option>
-    <option value="25">6</option>
-    <option value="41">7</option>
-    <option value="37">8</option>
-    <option value="43">9</option>
-    <option value="19">10</option>
-    <option value="24">11</option>
-    <option value="44">12</option>
-    <option value="36">Bình Chánh</option>
-    <option value="39">Bình Tân</option>
-    <option value="31">Bình Thạnh</option>
-    <option value="38">Gò Vấp</option>
-    <option value="61">Hóc Môn</option>
-    <option value="63">Nhà Bè</option>
-    <option value="32">Phú Nhuận</option>
-    <option value="22">Tân Bình</option>
-    <option value="40">Tân Phú</option>
-    <option value="45">Thủ Đức</option>
-</select>
+                        <html:select property="districtName">
+                          <html:option  value="0"> - - - - - - - - - - - - Chọn quận- - - - - - - - - - - - - </html:option>
+     <html:option value="1">1</html:option>
+     <html:option value="2">2</html:option>
+    <html:option value="3">3</html:option>
+    <html:option value="4">4</html:option>
+    <html:option value="5">5</html:option>
+    <html:option value="6">6</html:option>
+    <html:option value="7">7</html:option>
+    <html:option value="8">8</html:option>
+    <html:option value="9">9</html:option>
+    <html:option value="10">10</html:option>
+    <html:option value="11">11</html:option>
+    <html:option value="12">12</html:option>
+    <html:option value="13">Bình Chánh</html:option>
+    <html:option value="14">Bình Tân</html:option>
+    <html:option value="15">Bình Thạnh</html:option>
+    <html:option value="16">Gò Vấp</html:option>
+    <html:option value="17">Hóc Môn</html:option>
+    <html:option value="18">Nhà Bè</html:option>
+    <html:option value="19">Phú Nhuận</html:option>
+    <html:option value="20">Tân Bình</html:option>
+    <html:option value="21">Tân Phú</html:option>
+    <html:option value="22">Thủ Đức</html:option>
+</html:select>
                         </div>
                       </div>
                     </li>

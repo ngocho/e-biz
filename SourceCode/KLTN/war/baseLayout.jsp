@@ -34,7 +34,7 @@
 <script type="text/javascript" src="js/form.js"></script>
 <script type="text/javascript" src="js/menu.js"></script>
 <script type="text/javascript" src="js/cookies.js"></script>
-
+<script type="text/javascript" src="js/ajax.js"></script>
 <script type="text/javascript" src="js/jquery-1.2.6.min.js"></script>
 
 <script type="text/javascript">

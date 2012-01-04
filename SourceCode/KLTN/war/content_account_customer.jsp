@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
   pageEncoding="UTF-8"%>
 <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
@@ -13,7 +15,7 @@
     <li class="section allow active">
 
       <div class="step-title">
-        <h2>Hóa đơn thanh toán</h2>
+        <h2>Thông tin tài khoản</h2>
       </div>
       <div id="checkout-step-billing" class="step a-item">
         <fieldset>
@@ -21,14 +23,12 @@
             <table>
               <tbody id="bill">
                 <tr>
-                  <th width="150" height="25" style="font-weight: bold">Mã hóa
-                    đơn :</th>
+                  <th width="150" height="25" style="font-weight: bold">Tên đăng nhập :</th>
                   <td style="font-weight: bold; color: red"><bean:write
                       name="bill" property="id" /></td>
                 </tr>
                 <tr>
-                   <th width="150" height="25" style="font-weight: bold">Mã
-                    khách hàng :</th>
+                   <th width="150" height="25" style="font-weight: bold">Tên đại diện :</th>
                   <td style="font-weight: bold; color: red"><bean:write
                       name="bill" property="idCustomer" /></td>
                 </tr>
@@ -79,3 +79,4 @@
       </div></li>
   </ul>
 </div>
+    
