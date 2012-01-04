@@ -51,6 +51,8 @@ public class UpdateCustomer extends BaseAction{
 //        LoginForm  user  = shop.getUser();
 //        user =(LoginForm) form;
         LoginForm user = (LoginForm) form;
+        System.out.println("NAME" + user.getLoginName());
+        System.out.println("ID" + user.getLoginId());
         Customer customer = user.getCustomer();
         flag = CustomerBLO.updatecustomer(customer);
         if(flag){
