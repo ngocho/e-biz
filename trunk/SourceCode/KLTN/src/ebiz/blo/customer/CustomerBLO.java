@@ -25,7 +25,9 @@ import ebiz.dao.gae.OrderDAO;
 import ebiz.dao.inf.ICustomerDAO;
 import ebiz.dao.inf.IOrderDAO;
 import ebiz.dto.checkout.*;
+import ebiz.dto.account.customer.Address;
 import ebiz.dto.account.customer.Customer;
+import ebiz.util.CommonUtil;
 
 /**
  * @author ThuyNT
@@ -215,6 +217,25 @@ public class CustomerBLO {
     	return orderDao.getDetailByIDOrBill(idOrder);
     }
     
+    public static String toStringAddres(Address add){
+        String address ="";
+        if(!CommonUtil.isBlankOrNull(add.getHomeNumber())){
+            address = address + add.getHomeNumber().toString() + ", ";
+        }
+        if(!CommonUtil.isBlankOrNull(add.getBuildingName())){
+            address = address + add.getBuildingName().toString() + ", ";
+        }
+        if(!CommonUtil.isBlankOrNull(add.getStreetName())){
+            address = address + add.getStreetName().toString() + ", ";
+        }
+        if(add.getWardName()!=null){
+            address = address + add.getWardName().toString() + ", ";
+        }
+        if(add.getDistrictName()!=null){
+            address = address + add.getDistrictName().toString();
+        }
+        return address;
+    }
     
        
         
