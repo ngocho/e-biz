@@ -25,6 +25,8 @@ import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
+import com.google.appengine.api.datastore.Key;
+
 @PersistenceCapable
 public class DetailOrder implements Serializable{
     /**  . */
@@ -42,36 +44,6 @@ public class DetailOrder implements Serializable{
     private Long subPrice;
     @Persistent
     private Long orderId;
-    public Long getIdProduct() {
-        return idProduct;
-    }
-    public void setIdProduct(Long idProduct) {
-        this.idProduct = idProduct;
-    }
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
-    public Integer getNumber() {
-        return number;
-    }
-    public void setNumber(Integer number) {
-        this.number = number;
-    }
-    public Long getSubPrice() {
-        return subPrice;
-    }
-    public void setSubPrice(Long subPrice) {
-        this.subPrice = subPrice;
-    }
-    public Long getOrderId() {
-        return orderId;
-    }
-    public void setOrderId(Long orderId) {
-        this.orderId = orderId;
-    }
     /**
      * Get value of id.
      * @return the id
@@ -86,6 +58,75 @@ public class DetailOrder implements Serializable{
     public void setId(Long id) {
         this.id = id;
     }
-    
+    /**
+     * Get value of idProduct.
+     * @return the idProduct
+     */
+    public Long getIdProduct() {
+        return idProduct;
+    }
+    /**
+     * Set the value for idProduct.
+     * @param idProduct the idProduct to set
+     */
+    public void setIdProduct(Long idProduct) {
+        this.idProduct = idProduct;
+    }
+    /**
+     * Get value of name.
+     * @return the name
+     */
+    public String getName() {
+        return name;
+    }
+    /**
+     * Set the value for name.
+     * @param name the name to set
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+    /**
+     * Get value of number.
+     * @return the number
+     */
+    public Integer getNumber() {
+        return number;
+    }
+    /**
+     * Set the value for number.
+     * @param number the number to set
+     */
+    public void setNumber(Integer number) {
+        this.number = number;
+    }
+    /**
+     * Get value of subPrice.
+     * @return the subPrice
+     */
+    public Long getSubPrice() {
+        return subPrice;
+    }
+    /**
+     * Set the value for subPrice.
+     * @param subPrice the subPrice to set
+     */
+    public void setSubPrice(Long subPrice) {
+        this.subPrice = subPrice;
+    }
+    /**
+     * Get value of orderId.
+     * @return the orderId
+     */
+    public Long getOrderId() {
+        return orderId;
+    }
+    /**
+     * Set the value for orderId.
+     * @param orderId the orderId to set
+     */
+    public void setOrderId(Long orderId) {
+        this.orderId = orderId;
+    }
 
 }
