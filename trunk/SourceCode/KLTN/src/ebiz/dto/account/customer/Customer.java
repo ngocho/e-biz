@@ -72,7 +72,8 @@ public class Customer  implements Serializable{
     private Boolean isAdPhone;
     @Persistent
     private Boolean isActive;
-    
+    @Persistent
+    private Long xuOnline;
     
     /**
      * Get value of customerId.
@@ -325,6 +326,20 @@ public class Customer  implements Serializable{
      */
     public void setIsAdPhone(Boolean isAdPhone) {
         this.isAdPhone = isAdPhone;
+    }
+    /**
+     * Get value of xuOnline.
+     * @return the xuOnline
+     */
+    public Long getXuOnline() {
+        return xuOnline;
+    }
+    /**
+     * Set the value for xuOnline.
+     * @param xuOnline the xuOnline to set
+     */
+    public void setXuOnline(Long xuOnline) {
+        this.xuOnline = xuOnline;
     }
     
 }
