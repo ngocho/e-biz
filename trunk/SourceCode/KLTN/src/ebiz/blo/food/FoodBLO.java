@@ -23,20 +23,17 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
-import com.google.appengine.api.datastore.DatastoreFailureException;
-import com.google.appengine.api.datastore.DatastoreService;
-import com.google.appengine.api.datastore.DatastoreServiceFactory;
-import com.google.appengine.api.datastore.Transaction;
-import ebiz.blo.customer.CustomerBLO;
 import ebiz.dao.gae.FoodDAO;
 import ebiz.dao.gae.OrderDAO;
 import ebiz.dao.gae.PMF;
 import ebiz.dao.inf.IFoodDAO;
 import ebiz.dao.inf.IOrderDAO;
-import ebiz.dto.checkout.*;
 import ebiz.dto.account.customer.Customer;
+import ebiz.dto.checkout.DetailOrder;
+import ebiz.dto.checkout.OrderBill;
 import ebiz.dto.food.Food;
 import ebiz.form.FoodForm;
+import ebiz.form.LoginForm;
 import ebiz.form.Paging;
 import ebiz.form.ShoppingCart;
 import ebiz.util.CommonConstant;
@@ -177,7 +174,6 @@ public class FoodBLO {
 			numberDB = foodDB.getNumber();
 
 			if (!shopCart.isEmpty()) {
-				System.out.println("!isEmpty");
 				List<FoodForm> foodList = shopCart.getProducts();
 				// ? exist product in shopping cart
 				for (FoodForm foodForm : foodList) {
@@ -190,6 +186,8 @@ public class FoodBLO {
 							foodForm.setNumber(numberProduct);
 							foodForm.setSubTotal(foodForm.getPrice()
 									* numberProduct);
+							//update size of product in shop
+							shopCart.size();
 							return true;
 						} else {
 							return false;
@@ -207,6 +205,7 @@ public class FoodBLO {
 					food.setPromoPrice(food.getPromoPrice());
 				}
 				shopCart.addFood(food, number);
+				shopCart.size();
 				System.out.println("SIZE" + shopCart.getCount());
 			} else {
 				return false;
@@ -320,84 +319,72 @@ public class FoodBLO {
 	 * update number of product Order when status of Bill : order
 	 */
 	public static boolean upNumberFoodOrder(Long id, Integer number) {
-
+	    
+	    System.out.println("ID" +number);
 		Food food = foodDao.getFoodById(id);
+		if(food == null){
+		    System.out.println("NULL");
+		}
+		  System.out.println("Number" +food.getNumberOrder());
 		food.setNumberOrder(food.getNumberOrder() + number);
 		return foodDao.saveFood(food);
 
 	}
 
-	/**
-	 * create bill
-	 * 
-	 * @param id
-	 * @param number
-	 * @return
-	 */
-	public static boolean billing(ShoppingCart shop) {
+    /**
+     * [Give the description for method].
+     * @param shop
+     * @return OrderBill
+     */
+	public static OrderBill billing(ShoppingCart shop) {
 
-		if (shop.getUser().getLoginId() != null) {
-			Customer customer = new Customer();
+	    //infor shipping ( get from form , did'nt update in Customer)
+	    LoginForm login = shop.getUser();
+		if (login.getLoginId() != null) {
+			Customer customer = login.getCustomer();
 			Long moneyOrder = new Long(0);
-			customer = CustomerBLO.getCustomerByID(shop.getUser().getLoginId());
+//			customer = CustomerBLO.getCustomerByID(shop.getUser().getLoginId());
+		
 			OrderBill order = new OrderBill();
 			System.out.println("CUSTOMER" + customer.getCustomerId());
 			// create OrderBill
-			order.setNameCustomer(customer.getCustomerName());
+			order.setIdCustomer(customer.getCustomerId());
 			order.setAddress(customer.getCustomerAddress());
 			order.setEmail(customer.getCustomerEmail());
 			order.setPhone(customer.getCustomerPhone());
 			order.setStatus(CommonConstant.BILLSTATUS_0); // chua giao
 			order.setDateOrder(new Date());
-			DatastoreService ds = DatastoreServiceFactory.getDatastoreService();
-			// Queue queue = QueueFactory.getDefaultQueue();
-			// insert , update database using transaction
-			Transaction txn = ds.beginTransaction();
-			try {
-
-				// save order
-				order = orderDao.save(order);
-				Long idOrder = order.getId();
-				System.out.println(order.getId());
-
-				// create detailOrder --> save in database
+            List<DetailOrder> detailOrderList = new ArrayList<DetailOrder>();
+            // save order
+            moneyOrder = sumMoneyOrder(shop);
+            order.setSumPrice(moneyOrder);
+            order = orderDao.save(order);
+            Long idOrder = order.getId();
+            // save in shopping
+            // create detailOrder --> save in database
 
 				for (FoodForm food : shop.getProducts()) {
-					moneyOrder = moneyOrder + food.getNumber()
-							* food.getPrice();
 					DetailOrder detail = new DetailOrder();
 					detail.setIdProduct(food.getId());
 					detail.setName(food.getName());
 					detail.setNumber(food.getNumber());
-					detail.setSubPrice(moneyOrder);
+					detail.setSubPrice(food.getNumber() * food.getPrice());
 					detail.setOrderId(idOrder);
-
+					detailOrderList.add(detail);
 					// save DetailOrder
 					orderDao.insertDetailOrder(detail);
 
 					// increase number of product Order
 					upNumberFoodOrder(food.getId(), food.getNumber());
-					// downNumberOfFood(food.getId(), food.getNumber());
-				}
 
-				// sum money for this bill
-				order.setSumPrice(moneyOrder);
-
-				// update sumMoney for order
-				orderDao.save(order);
-				txn.commit();
-				return true;
-			} catch (DatastoreFailureException e) {
-				txn.rollback();
-				return false;
-			}
 		}
-		return false;// user chua dang nhap
+				return order;
+		}
+		return null;// user chua dang nhap
 	}
 
 	/**
 	 * cancel bill when status : order
-	 * 
 	 * @param id
 	 * @param number
 	 * @return
@@ -419,7 +406,6 @@ public class FoodBLO {
 
 	/**
 	 * set status of OrderBill:
-	 * 
 	 * @param id
 	 * @param number
 	 * @return
@@ -434,12 +420,28 @@ public class FoodBLO {
 		return false;
 	}
 
-	/**
-	 * delete product
-	 */
-	public static boolean deleteFood(Food food) {
-		return PMF.delete(food);
-	}
+    /**
+     * [Give the description for method].
+     * @param food
+     * @return boolean
+     */
+
+    public static boolean deleteFood(Food food) {
+        return PMF.delete(food);
+    }
+/**
+ * [Give the description for method].
+ * @param shop
+ * @return Long
+ */
+    public static Long sumMoneyOrder(ShoppingCart shop) {
+        Long moneyOrder = new Long(0);
+        for (FoodForm food : shop.getProducts()) {
+            moneyOrder = moneyOrder + food.getNumber()
+                    * food.getPrice();
+        }
+        return moneyOrder;
+    }
 
 }
 
