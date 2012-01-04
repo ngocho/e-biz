@@ -30,9 +30,9 @@ import org.apache.struts.action.ActionMapping;
 
 import ebiz.action.BaseAction;
 import ebiz.blo.food.FoodBLO;
-import ebiz.form.FoodForm;
 import ebiz.form.ShoppingCart;
 import ebiz.util.CommonConstant;
+import ebiz.util.CommonUtil;
 
 /**
  * @author ThuyNT
@@ -49,20 +49,28 @@ public class AddShoppingCart extends BaseAction {
         response.setContentType("text/xml; charset=utf-8");
         response.setCharacterEncoding("utf-8");
         PrintWriter out=response.getWriter();
-        
-        String id = request.getParameter("id");
-        String number = request.getParameter("number");
-        Integer count = Integer.parseInt(number);
+        boolean flag;
+       HttpSession se = request.getSession();
+       ShoppingCart shopCart =(ShoppingCart) se.getAttribute("shop");
+       String id = request.getParameter("id");
+       Long key = new Long(0);
+       String number = request.getParameter("number");
+       Integer count = Integer.parseInt(number);
        System.out.println("ID"+id);
        System.out.println("Number"+number);
-        boolean flag;
-        HttpSession se = request.getSession();
-        ShoppingCart shopCart =(ShoppingCart) se.getAttribute("shop");
+       if(!CommonUtil.isBlankOrNull(id)){
+           key = Long.parseLong(id);
+       }
        if(shopCart == null){
             shopCart = new ShoppingCart();
         }
+       Integer numberInShop = shopCart.getNumberFood(key);
+      
        try{
         if(number!=null){
+            //if required product > product in shop
+            if(count >numberInShop){ 
+           //test in database, then add shopping
             flag = FoodBLO.addShoppingCart( shopCart,id, count );
             if(!flag){
                 
@@ -70,14 +78,20 @@ public class AddShoppingCart extends BaseAction {
                 return null;
             }
         }
-        //set info of product into session
        
-        se.setAttribute(CommonConstant.SHOPPING, shopCart);
-        System.out.println(se.getAttribute(CommonConstant.FOOD_DETAIL_PRODUCT));
-        System.out.println("detail" + shopCart.getCount());
-        out.println(shopCart.getCount());
-        return null;
+        //if required product < product in shop
+        else{
+            shopCart.updateNumberFood(key, numberInShop);
+            shopCart.size();
         }
+            //set info of product into session
+            se.setAttribute(CommonConstant.SHOPPING, shopCart);
+            System.out.println(se.getAttribute(CommonConstant.FOOD_DETAIL_PRODUCT));
+            System.out.println("detail" + shopCart.getCount());
+            out.println(shopCart.getCount());
+            return null;
+        }
+       }
         catch(Exception e)
         {
             

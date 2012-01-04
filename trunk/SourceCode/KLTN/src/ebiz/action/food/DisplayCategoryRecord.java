@@ -54,10 +54,9 @@ public class DisplayCategoryRecord extends BaseAction {
      * phân trang ( lưu trang đầu tiên vào session)
      * 
      */
-    @SuppressWarnings("unchecked")
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
-        
+        System.out.println("CATEGORY");
         HttpSession se = request.getSession();
         List<FoodForm> foods = new ArrayList<FoodForm>();
         List<Paging> pageList = new ArrayList<Paging>();
