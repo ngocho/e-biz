@@ -68,11 +68,12 @@
       type="ebiz.action.food.AuthenticationUser" 
       scope="session" validate="false">
       <forward name="success" path="checkout" redirect="true" />
-      <forward name="input" path="login" redirect="true" />
+      <forward name="input" path="loginLayout" redirect="true" />
     </action>
      <action 
       path="/createBill"
       type="ebiz.action.food.CreateOrderBill" 
+      name="login"
       scope="session" validate="false">
       <forward name="success" path="bill" redirect="true" />
       <forward name="input" path="loginLayout" redirect="true" />
