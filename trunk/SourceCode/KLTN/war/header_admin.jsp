@@ -13,9 +13,9 @@
                 <a href="#"><strong>Foodzie: Taste Something Different</strong></a>                </h2> -->
 
     <div class="logo-sidenote">
-      <p>
+     <!--  <p>
         <a href="#">Hãy đăng kí để thuận tiện khi mua hàng!</a>
-      </p>
+      </p> -->
     </div>
     <ul class="super-links" style="" id="customer_super_links">
       <li>Lựa chọn ngôn ngữ 
@@ -28,12 +28,6 @@ Tiếng Anh
 </option>
 
 </select>
-<%-- <html:select property="123">
-<html:option value="">Tiếng Anh
-</html:option>
-<html:option value="">Tiếng Việt
-</html:option>
-</html:select> --%>
 </li>
 
       <li></li>
@@ -48,16 +42,6 @@ Tiếng Anh
         <!--li class="last">
             <a href="http://foodzie.com/newsletter_signup/" onclick="showNewsletterModal(); return false;">Join Mailing List</a>        </li-->
       </ul>
-<div class="block-cart_header">
-      <a id="current_cart_items_count" href="/displayShoppingCart.vn"
-        class="count"> <logic:present name="shop">
-          <bean:write name="shop" property="count" />
-        </logic:present> </a>
-      <h3>
-        <a href="/displayShoppingCart.vn"></a>
-      </h3>
-    <a href="/checkAuthentication.vn"" class="link-checkout"></a>
-    </div>
  </div>
  <div class="header-row2">
                 
@@ -73,13 +57,13 @@ Tiếng Anh
           href="category.vn?typeProduct=1"
           class="level-top">
 
-<span class="white-text">Thực phẩm sơ chế</span>
+<span class="white-text">Người dùng</span>
         </a>
         <a
           href="category.vn?typeProduct=2"
           class="level-top">
 
-<span class="white-text">Thức ăn nấu sẵn</span>
+<span class="white-text">Nhân viên</span>
         </a>
 <!-- <ul class="level0">
 <li class="level1 nav-1-1 first">
@@ -101,7 +85,7 @@ Tiếng Anh
           href="category.vn?typeProduct=3"
           class="level-top">
 
-<span class="white-text">Rau xanh</span>
+<span class="white-text">Sản phẩm</span>
         </a>
         </li>
           <li class="level0 nav-4 level-top first parent">
@@ -109,21 +93,21 @@ Tiếng Anh
           href="http://localhost/magento/index.php/catalog/category/view/s/furniture/id/10/"
           class="level-top">
 
-<span class="white-text">Gia vị</span>
+<span class="white-text">Nhà cung cấp</span>
         </a>
         <li class="level0 nav-2 level-top parent">
 <a
           href="http://localhost/magento/index.php/catalog/category/view/s/electronics/id/13/"
           class="level-top">
-<span class="white-text">Dụng cụ làm bếp</span>
+<span class="white-text">Giao hàng</span>
         </a>
 
 </li>  
  <li class="level0 nav-2 level-top parent">
 <a
-          href="/provider.vn"
+          href="http://localhost/magento/index.php/catalog/category/view/s/electronics/id/13/"
           class="level-top">
-<span class="white-text">Cửa hàng</span>
+<span class="white-text">Hóa đơn</span>
         </a>
 
 </li>  
@@ -142,7 +126,7 @@ Tiếng Anh
 </fieldset>
 </form> 
             </div>
-			<script type="text/javascript">
+            <script type="text/javascript">
                 jQuery(document).ready(function($) {
                     var toggle = $('.store-nav-toggle');
                     var nav = $('.store-nav');

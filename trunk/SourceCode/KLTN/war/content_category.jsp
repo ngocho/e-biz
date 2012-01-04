@@ -109,7 +109,7 @@ $(document).ready(function(){
                             <strong>Page: &nbsp;</strong> 
                           
                               <span >
-                               <input type="hidden" id="page" value ="<bean:write name="productVo" property="page"/>"></input>
+                               <input type="hidden" name="page" id="page" value ="<bean:write name="productVo" property="page"/>"></input>
 <logic:present name="productVo" property="pagingList">
 <logic:iterate id="element"  name="productVo" property="pagingList">
 <c:choose>
@@ -137,8 +137,7 @@ $(document).ready(function(){
 
         <div class="limiter">
             <label>Hiển thị </label>
-           
-            <input type="hidden" id="limit" value ="<bean:write name="productVo" property="limit"/>"></input>
+            <input type="hidden"  id="limit" value ="<bean:write name="productVo" property="limit"/>"></input>
             <select id="record" onchange="setLocation(this.value)">
                             <option value="/categoryRecord.vn?limit=8" selected="selected">
                     8                </option>
@@ -157,7 +156,7 @@ $(document).ready(function(){
             
         <div class="sort-by">
             <label >Sắp xếp tăng dần theo</label>
-            <input type="hidden" id="col" value ="<bean:write name="productVo" property="col"/>"></input>
+            <input type="hidden" name="col" id="col" value ="<bean:write name="productVo" property="col"/>"></input>
             <select id="order" onchange="setLocation(this.value)">
                             <option value="/categoryRecord.vn?col=foodName" selected="selected">
                     Tên                </option>
