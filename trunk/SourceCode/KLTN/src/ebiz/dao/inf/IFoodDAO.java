@@ -15,10 +15,12 @@ public interface IFoodDAO {
 	public Food getFoodById(String key);
 	
 	public Food getFoodById(Long key);
-	
+	public String getStatusNameByID(String id);
 	public List<Food> getListFoodByValue(String col, String id);
 
 	public List<Food> getFoodListAll();
+	
+	public List<Food> getFoodListByProviderStatus(String idProvider, String statusFood);
 	
 	public List<FoodPromotion> getListFoodPromotion();
 

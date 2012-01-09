@@ -19,6 +19,13 @@ public interface IOrderDAO {
 	public List<OrderBill> getOrListByIDCustomer(String idCustomer);
 	public List<OrderBill> getOrListByIDEmployee(String idEmployee);
 	public List<DetailOrder> getDetailByIDOrBill(Long id);
+	public List<OrderBill> getOrListByStatus(String userID, Integer status);
+
+    /**
+     * [Give the description for method].
+     * @return
+     */
+    List<OrderBill> getOrderList();
 		
 	
 
