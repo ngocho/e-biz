@@ -20,20 +20,20 @@
 </script>
 <![endif]-->
 <link rel="stylesheet" type="text/css" href="css/styles.css" media="all"/>
-<link rel="stylesheet" type="text/css" href="css/widgets.css" media="all"/>
-<link rel="stylesheet" type="text/css" href="css/print.css" media="print"/>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<!-- <link rel="stylesheet" type="text/css" href="css/widgets.css" media="all"/>
+<link rel="stylesheet" type="text/css" href="css/print.css" media="print"/> -->
+<!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 <script type="text/javascript" src="js/ccard.js"></script>
 <script type="text/javascript" src="js/validation.js"></script>
 <script type="text/javascript" src="js/builder.js"></script>
 <script type="text/javascript" src="js/effects.js"></script>
 <script type="text/javascript" src="js/dragdrop.js"></script>
 <script type="text/javascript" src="js/controls.js"></script>
-<script type="text/javascript" src="js/slider.js"></script>
+<script type="text/javascript" src="js/slider.js"></script> -->
 <script type="text/javascript" src="js/js.js"></script>
-<script type="text/javascript" src="js/form.js"></script>
-<script type="text/javascript" src="js/menu.js"></script>
-<script type="text/javascript" src="js/cookies.js"></script>
+<!-- <script type="text/javascript" src="js/form.js"></script>
+<script type="text/javascript" src="js/menu.js"></script> -->
+<!-- <script type="text/javascript" src="js/cookies.js"></script> -->
 <script type="text/javascript" src="js/ajax.js"></script>
 <script type="text/javascript" src="js/jquery-1.2.6.min.js"></script>
 
@@ -78,18 +78,7 @@ $(function() {
 <script type="text/javascript" src="http://localhost/magento/skin/frontend/base/default/js/ie6.js"></script>
 <![endif]-->
 
-<script type="text/javascript">
-//<![CDATA[
-Mage.Cookies.path     = '/magento';
-Mage.Cookies.domain   = '.localhost';
-//]]>
-</script>
 
-<script type="text/javascript">
-//<![CDATA[
-optionalZipCountries = ["HK","IE","MO","PA"];
-//]]>
-</script>
 </head>
 <body class=" cms-index-index cms-home">
 <div class="wrapper">

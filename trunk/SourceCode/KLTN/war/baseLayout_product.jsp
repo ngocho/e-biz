@@ -48,37 +48,10 @@
 <script type="text/javascript" src="http://demo3.magentocommerce.com/skin/frontend/base/default/js/ie6.js"></script>
 <![endif]-->
 
-<script type="text/javascript">
-//<![CDATA[
-Mage.Cookies.path     = '/';
-Mage.Cookies.domain   = '.demo.magentocommerce.com';
-//]]>
-</script>
 
-<script type="text/javascript">
-//<![CDATA[
-optionalZipCountries = ["HK","IE","MO","PA"];
-//]]>
-</script>
 <script src="resource_files/ga.js" async="" type="text/javascript"></script></head><body class=" catalog-product-view catalog-product-view product-chair categorypath-bed-and-bath category-bed-and-bath">
 
 <!-- BEGIN GOOGLE ANALYTICS CODE -->
-<script type="text/javascript">
-//<![CDATA[
-    (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
-    })();
-
-    var _gaq = _gaq || [];
-
-_gaq.push(['_setAccount', 'UA-165362-10']);
-_gaq.push(['_trackPageview']);
-
-
-//]]>
-</script>
 <!-- END GOOGLE ANALYTICS CODE --><div class="wrapper">
         <noscript>
         <div class="noscript">
