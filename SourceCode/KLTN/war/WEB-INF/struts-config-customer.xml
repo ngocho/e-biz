@@ -46,6 +46,7 @@
       <forward name="success" path="home" redirect="true" />
       <forward name="failure" path="loginLayout" redirect="true" />
     </action>
+    
     <action input="registerLayout" 
       path="/registerAction"
       type="ebiz.action.account.customer.Register" 
@@ -53,7 +54,30 @@
       scope="session" validate="true">
       <forward name="success" path="loginLayout" redirect="true" />
       <forward name="failure" path="registerLayout" redirect="true" />
+      </action>
+      
+     <action 
+      path="/logoutCustomer.vn"
+      type="ebiz.action.account.customer.Logout" >
+      <forward name="success" path="home" redirect="true" />
     </action>
+    
+    <action 
+      path="/displayBill"
+      type="ebiz.action.account.customer.DisplayBill" >
+      <forward name="success" path="home_content_bill" redirect="true" />
+    </action>
+      <action 
+      path="/reOrder"
+      type="ebiz.action.account.customer.ResetOldBill" >
+      <forward name="success" path="home_customer_reOrder" redirect="true" />
+      <forward name="failure" path="home_content_bill" redirect="true" />
+      </action>
+        <action 
+      path="/setStatusOrder"
+      type="ebiz.action.account.admin.SetStatusOrder" >
+      <forward name="success" path="home_customer_reOrder" redirect="true" />
+      </action>
     <!--   <action input="checkout" 
       path="/getInforBill"
       type="ebiz.action.account.customer.UpdateCustomer" 

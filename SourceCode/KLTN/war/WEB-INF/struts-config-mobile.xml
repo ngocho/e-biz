@@ -24,6 +24,10 @@
       type="mobile.ebiz.action.Promotion" 
       scope="session" validate="false">
     </action>
+     <action path="/getProductList"
+      type="mobile.ebiz.action.GetProductList" 
+      scope="session" validate="false">
+    </action>
     <action path="/getActiveXU"
       type="mobile.ebiz.action.ActiveXU" 
       scope="session" validate="false">
