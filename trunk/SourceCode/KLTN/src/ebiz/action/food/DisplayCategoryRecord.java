@@ -56,7 +56,9 @@ public class DisplayCategoryRecord extends BaseAction {
      */
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
-        System.out.println("CATEGORY");
+        
+        String order = request.getParameter("order");
+        System.out.println("CATEGORY"+ order);
         HttpSession se = request.getSession();
         List<FoodForm> foods = new ArrayList<FoodForm>();
         List<Paging> pageList = new ArrayList<Paging>();
@@ -65,7 +67,9 @@ public class DisplayCategoryRecord extends BaseAction {
         int record = CommonConstant.DEFAULT_RECORD;
         String limit;
         String col;
-        String order = "asc";
+        if(order == null){
+        order = vo.getOrder();
+        }
         int  page = 1;
        
         vo = (ProductVO)se.getAttribute(CommonConstant.PRODUCTVO);
@@ -86,6 +90,7 @@ public class DisplayCategoryRecord extends BaseAction {
          if(p!=null){
              page = Integer.parseInt(p);
          }
+  
          if(page >1){ //get old 
              pageList = (List<Paging>) vo.getPagingList();
              paging = FoodBLO.toHashMap(pageList);
@@ -100,7 +105,7 @@ public class DisplayCategoryRecord extends BaseAction {
         vo.setCol(col);
         vo.setPage(page);
         vo.setPagingList(pageList);
-        
+        vo.setOrder(order);
 //        se.setAttribute("limit", record);
 //        se.setAttribute("col", col);
 //        se.setAttribute("page", page);

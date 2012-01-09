@@ -34,6 +34,7 @@ import ebiz.dto.account.customer.Customer;
 import ebiz.form.LoginForm;
 import ebiz.form.ShoppingCart;
 import ebiz.util.CommonConstant;
+import ebiz.util.CommonUtil;
 
 /**
  * @author ThuyNT
@@ -48,15 +49,15 @@ import ebiz.util.CommonConstant;
             if(type.equals("0")){ //checkout
                 HttpSession se = request.getSession();
                 ShoppingCart shop  = (ShoppingCart)se.getAttribute(CommonConstant.SHOPPING);
-                LoginForm user = shop.getUser();
+                LoginForm user = (LoginForm)se.getAttribute("user");
                 if(shop.size() == 0){
                     return mapping.findForward(FAILURE); 
                 }
-                System.out.println("EMPTY"+user.isEmpty());
-                if(!user.isEmpty()){
+                if(user !=null){
                     //put attributes into LoginForm
                     Customer customer = CustomerBLO.getCustomerByID(user.getLoginId());
                     user.editForm(customer);
+                    shop.setUser(user);
                     return mapping.findForward(SUCCESS); // transfer action : create Bill
                 }
                 else{
@@ -66,7 +67,7 @@ import ebiz.util.CommonConstant;
                     return mapping.findForward(INPUT);
                 }
             }
-            return mapping.findForward(SUCCESS);
+            return mapping.findForward(FAILURE);
         }
         
 

@@ -51,7 +51,7 @@ public class CreateOrderBill extends BaseAction {
         order = FoodBLO.billing(shopCart);
         //transfer OrderBill-> form to display
         OrderBillForm orderForm = new OrderBillForm();
-        orderForm.getOrderBill(order);
+        orderForm.editForm(order);
         //update atrributes
         orderForm.setNumberProduct(shopCart.size());
         orderForm.setNameCustomer(user.getLoginName());

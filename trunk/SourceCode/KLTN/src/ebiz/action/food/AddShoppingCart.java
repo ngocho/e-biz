@@ -77,13 +77,15 @@ public class AddShoppingCart extends BaseAction {
                 out.println("0");
                 return null;
             }
+            shopCart.size();
         }
        
         //if required product < product in shop
         else{
-            shopCart.updateNumberFood(key, numberInShop);
+            shopCart.updateNumberFood(key, numberInShop + count);
             shopCart.size();
         }
+            
             //set info of product into session
             se.setAttribute(CommonConstant.SHOPPING, shopCart);
             System.out.println(se.getAttribute(CommonConstant.FOOD_DETAIL_PRODUCT));
