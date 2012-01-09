@@ -56,10 +56,11 @@
         <put name="content" value="/content_category.jsp" />
     </definition>
     <definition name="shopping" extends="baseLayout1">
+     <put name="content" value="/content_shopping.jsp" />
     </definition>
      <definition name="uploadImage" extends="baseLayout1">
         <put name="title" value="Shopping Cart" />
-        <put name="content" value="/content_uploadProduct.jsp" />
+        <put name="content" value="/content_provider_uploadProduct.jsp" />
     </definition>
      <!-- start admin -->
      <definition name="home_admin" extends="baseLayout1">
@@ -69,21 +70,44 @@
      </definition>
      <!-- end admin -->
       <!-- start provider -->
-      <definition name="home_provider" extends="baseLayout1">
+      <definition name="home_provider_login" extends="baseLayout1">
+      <put name="title" value="Provider Login" />
+      <put name="left"   value="/left_provider.jsp" />
+      <put name="header" value="/header_provider.jsp" />
+      <put name="content" value="/content_provider_login.jsp" />
+     </definition>
+     <definition name="home_provider_register" extends="baseLayout1">
+      <put name="title" value="Provider Login" />
+      <put name="left"   value="/left_provider.jsp" />
+      <put name="header" value="/header_provider.jsp" />
+      <put name="content" value="/content_provider_register.jsp" />
+     </definition>
+       <definition name="home_provider_upload" extends="baseLayout1">
       <put name="title" value="Provider Home" />
       <put name="left"   value="/left_provider.jsp" />
       <put name="header" value="/header_provider.jsp" />
-      <put name="content" value="/content_login.jsp" />
+      <put name="content" value="/content_provider_uploadProduct.jsp" />
      </definition>
+       <definition name="home_provider" extends="baseLayout1">
+      <put name="title" value="Provider Home" />
+      <put name="header" value="/header_provider.jsp" />
+      <put name="content" value="/content_provider_productInfo.jsp" />
+     </definition>
+      <!-- end provider -->
        <definition name="home_customer" extends="baseLayout1">
       <put name="title" value="Customer Home" />
       <put name="left"   value="/left_customer.jsp" />
+      <put name="content" value="/content_customer_info.jsp" />
      </definition>
-     <definition name="home_content" extends="baseLayout1">
-      <put name="title" value="Customer Content" />
-      <put name="left"   value="/left_customer.jsp" />
+     <definition name="home_content_bill" extends="baseLayout1">
+      <put name="title" value="Customer Bill" />
+      <put name="content" value="/content_customer_bill.jsp" />
      </definition>
-        <!-- end provider -->
+      <definition name="home_customer_reOrder" extends="baseLayout1">
+      <put name="title" value="Customer ReOrder" />
+      <put name="content" value="/content_customer_reOrder.jsp" />
+     </definition>
+       
     <definition name="checkout" extends="baseLayout">
         <put name="title" value="Checkout" />
         <put name="content" value="/content_checkout.jsp" />

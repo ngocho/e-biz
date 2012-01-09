@@ -10,16 +10,14 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
     <url-pattern>/upload.vn</url-pattern> </filter-mapping> <filter-mapping> 
     <filter-name>UTF8Filter</filter-name> <url-pattern>/bill.vn</url-pattern> 
     </filter-mapping> -->
-  <welcome-file-list>
-    <welcome-file>home.jsp</welcome-file>
-  </welcome-file-list>
+  
 
   <servlet>
     <servlet-name>action</servlet-name>
     <servlet-class>org.apache.struts.action.ActionServlet</servlet-class>
     <init-param>
       <param-name>config</param-name>
-      <param-value>/WEB-INF/struts-config.xml,/WEB-INF/struts-config-customer.xml,/WEB-INF/struts-config-food.xml,/WEB-INF/struts-config-mobile.xml
+      <param-value>/WEB-INF/struts-config-provider.xml,/WEB-INF/struts-config.xml,/WEB-INF/struts-config-customer.xml,/WEB-INF/struts-config-food.xml,/WEB-INF/struts-config-mobile.xml
       </param-value>
     </init-param>
     <load-on-startup>1</load-on-startup>
@@ -31,7 +29,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
     <url-pattern>*.vn</url-pattern>
   </servlet-mapping>
   <session-config>
-    <session-timeout>30</session-timeout>
+    <session-timeout>100</session-timeout>
   </session-config>
   <!-- <error-page> <error-code>500</error-code> <location>/error.jsp</location> 
     </error-page> -->
@@ -77,7 +75,9 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
       <taglib-location>/WEB-INF/x.tld</taglib-location>
     </taglib>
   </jsp-config>
-
+<welcome-file-list>
+    <welcome-file>home.vn</welcome-file>
+  </welcome-file-list>
 </web-app>
 
   
