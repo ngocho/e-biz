@@ -18,7 +18,8 @@
  */
 package ebiz.action;
 
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -28,36 +29,25 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
-import com.google.appengine.api.blobstore.BlobKey;
-import com.google.appengine.api.blobstore.BlobstoreService;
-import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
-import com.google.appengine.api.images.ImagesService;
-import com.google.appengine.api.images.ImagesServiceFactory;
+import ebiz.blo.food.FoodBLO;
+import ebiz.form.FoodForm;
 
 /**
  * @author ThuyNT
  */
-public class UploadImage extends BaseAction {
-    private BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
+public class Home extends BaseAction {
 
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
         HttpServletResponse response) throws Exception {
-        Map<String, BlobKey> blobs = blobstoreService.getUploadedBlobs(request);
-//      blobstoreService.createUploadUrl(")
-        BlobKey blobKey = blobs.get("myFile");
         HttpSession se = request.getSession();
-        String urlKey =  blobKey.getKeyString();
-//      BlobKey blobKey1 = new BlobKey(blobKey)
-        ImagesService imagesService = ImagesServiceFactory.getImagesService();
-       String urlImage =  imagesService.getServingUrl(blobKey);
-      
-       System.out.println("URLIMAGE : " + urlImage);
-        if (blobKey != null) {
-            se.setAttribute("urlImage", urlImage);
-            se.setAttribute("urlImageKey", urlKey);
+        List<FoodForm> formList = new ArrayList<FoodForm>();
+        formList = FoodBLO.getFoodListByStatus(8,"1");
+        if(!formList.isEmpty()){
+            se.setAttribute("promotionFood", formList);
         }
-        return mapping.findForward(SUCCESS);
+      return mapping.findForward(SUCCESS);
     }
+
 
 
 }

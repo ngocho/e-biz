@@ -18,11 +18,8 @@
  */
 package ebiz.action;
 
-import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
@@ -31,33 +28,26 @@ import org.apache.struts.action.ActionMapping;
 import com.google.appengine.api.blobstore.BlobKey;
 import com.google.appengine.api.blobstore.BlobstoreService;
 import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
-import com.google.appengine.api.images.ImagesService;
-import com.google.appengine.api.images.ImagesServiceFactory;
 
 /**
  * @author ThuyNT
  */
-public class UploadImage extends BaseAction {
+public class ServeImage extends BaseAction {
     private BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
 
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
         HttpServletResponse response) throws Exception {
-        Map<String, BlobKey> blobs = blobstoreService.getUploadedBlobs(request);
-//      blobstoreService.createUploadUrl(")
-        BlobKey blobKey = blobs.get("myFile");
-        HttpSession se = request.getSession();
-        String urlKey =  blobKey.getKeyString();
-//      BlobKey blobKey1 = new BlobKey(blobKey)
-        ImagesService imagesService = ImagesServiceFactory.getImagesService();
-       String urlImage =  imagesService.getServingUrl(blobKey);
-      
-       System.out.println("URLIMAGE : " + urlImage);
-        if (blobKey != null) {
-            se.setAttribute("urlImage", urlImage);
-            se.setAttribute("urlImageKey", urlKey);
+        String urlKey = request.getParameter("urlKey");
+       
+        if(urlKey != null ){
+            if(! urlKey.isEmpty()){
+        BlobKey blobKey = new BlobKey(urlKey);
+        blobstoreService.serve(blobKey, response);
         }
-        return mapping.findForward(SUCCESS);
+        }
+        return null;
     }
+
 
 
 }
