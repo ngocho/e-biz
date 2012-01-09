@@ -2101,4 +2101,8 @@ ul#thumbs img{
   background:url(../Images/Commons/bkg_body.gif) no-repeat;
   margin-left: 100px;
   margin-top: 50px;
-} 
+}
+#ul_format ul li {
+  font-size: 15pt;
+  color:blue;
+  }
