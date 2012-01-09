@@ -18,7 +18,6 @@
  */
 package ebiz.util;
 
-import java.util.List;
 
 /**
  * @author ThuyNT
@@ -37,5 +36,11 @@ public class CommonUtil {
                s="";
            }
            return s;
+       }
+       public static boolean isNull(Object obj){
+           if(obj == null){
+               return true;
+           }
+           return false;
        }
 }
