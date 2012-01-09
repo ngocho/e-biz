@@ -16,33 +16,42 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package ebiz.action.account.customer;
+package ebiz.action.account.admin;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import ebiz.action.BaseAction;
-import ebiz.form.LoginForm;
+import ebiz.blo.food.FoodBLO;
 
 /**
- * @author ThuyNT
+ * @author Administrator
+ *
  */
-public class Logout extends BaseAction {
+public class SetStatusOrder extends BaseAction {
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
-
-        HttpSession se = request.getSession();
-        LoginForm login = (LoginForm) se.getAttribute("user");
-        if(login != null){
-            se.invalidate();
+        String id = request.getParameter("id");
+        String type = request.getParameter("type");
+        System.out.println("ID"+id);
+        if(id == null ||type ==null){
+         
+            return mapping.findForward(SUCCESS);
+           
         }
-     
+        Integer status = Integer.parseInt(type);
+        Long  orderID = Long.parseLong(id);
+        if(FoodBLO.updateStatusOrderBill(orderID, status))
+        {
+            request.setAttribute("flag",true );
+            return mapping.findForward(SUCCESS);
+        }
+        
         return mapping.findForward(SUCCESS);
-    }
+     }
 
 }
