@@ -39,10 +39,15 @@ public class ProductVO implements Serializable{
     //number of page
     private Integer  page;
     
-    //save pagin
+    //order
+    private String order;
+    
+    //save paging
     private List<Paging> pagingList;
     
     private String typeProduct;
+    
+    private String numberFoodView;
 
     /**
      * Get value of limit.
@@ -122,6 +127,38 @@ public class ProductVO implements Serializable{
      */
     public void setTypeProduct(String typeProduct) {
         this.typeProduct = typeProduct;
+    }
+
+    /**
+     * Get value of numberFoodView.
+     * @return the numberFoodView
+     */
+    public String getNumberFoodView() {
+        return numberFoodView;
+    }
+
+    /**
+     * Set the value for numberFoodView.
+     * @param numberFoodView the numberFoodView to set
+     */
+    public void setNumberFoodView(String numberFoodView) {
+        this.numberFoodView = numberFoodView;
+    }
+
+    /**
+     * Get value of order.
+     * @return the order
+     */
+    public String getOrder() {
+        return order;
+    }
+
+    /**
+     * Set the value for order.
+     * @param order the order to set
+     */
+    public void setOrder(String order) {
+        this.order = order;
     }
 
 }

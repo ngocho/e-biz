@@ -18,8 +18,6 @@
  */
 package ebiz.form;
 
-import ebiz.blo.customer.CustomerBLO;
-
 import org.apache.struts.validator.ValidatorForm;
 
 import ebiz.dto.account.customer.Address;
@@ -50,6 +48,9 @@ public class LoginForm extends ValidatorForm{
     private String note; //bill 
     private Boolean isAdEmail; 
     private Boolean isAdPhone; 
+    //select type of bill to display
+    private Integer isCustomerBill;
+
     public boolean isEmpty(){
         return CommonUtil.isBlankOrNull(loginId);
     }
@@ -87,6 +88,7 @@ public class LoginForm extends ValidatorForm{
         this.homeNumber = customer.getCustomerAddress().getHomeNumber();
         this.streetName = customer.getCustomerAddress().getStreetName();
         this.wardName = customer.getCustomerAddress().getWardName();
+      
         
         
     }
@@ -325,6 +327,22 @@ public class LoginForm extends ValidatorForm{
      */
     public void setIsAdEmail(Boolean isAdEmail) {
         this.isAdEmail = isAdEmail;
+    }
+
+    /**
+     * Get value of isCustomerBill.
+     * @return the isCustomerBill
+     */
+    public Integer getIsCustomerBill() {
+        return isCustomerBill;
+    }
+
+    /**
+     * Set the value for isCustomerBill.
+     * @param isCustomerBill the isCustomerBill to set
+     */
+    public void setIsCustomerBill(Integer isCustomerBill) {
+        this.isCustomerBill = isCustomerBill;
     }
 
 }
