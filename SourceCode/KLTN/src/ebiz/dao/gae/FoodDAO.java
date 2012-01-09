@@ -176,6 +176,34 @@ public class FoodDAO implements IFoodDAO {
 		return false;
 	}
 
+    /**
+     * [Explain the description for this method here].
+     * @return
+     * @see ebiz.dao.inf.IFoodDAO#getFoodListByProviderStatus()
+     */
+    @SuppressWarnings("unchecked")
+    @Override
+    public List<Food> getFoodListByProviderStatus(String idProvider, String statusFood) {
+        List<Food> foodList = new ArrayList<Food>();
+        foodList = (List<Food>)PMF.getObjectListByTwoValues(Food.class, "providerID", idProvider, "foodStatusId", statusFood);
+        return foodList;
+    }
+
+    /**
+     * [Explain the description for this method here].
+     * @param id
+     * @return
+     * @see ebiz.dao.inf.IFoodDAO#getStatusNameByID(java.lang.String)
+     */
+    @Override
+    public String getStatusNameByID(String id) {
+        FoodStatus status = (FoodStatus)PMF.getObjectById(FoodStatus.class, id);
+        if(status !=null){
+            return status.getFoodStatusName();
+        }
+        return null;
+    }
+
 	// /**
 	// * create bill using transaction : put task into taks queue
 	// * @param key
