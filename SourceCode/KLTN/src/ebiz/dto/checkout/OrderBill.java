@@ -1,15 +1,14 @@
 package ebiz.dto.checkout;
 
-import ebiz.dto.account.customer.Address;
-
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
 import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
+
+import ebiz.dto.account.customer.Address;
 
 @PersistenceCapable
 public class OrderBill  implements Serializable{
