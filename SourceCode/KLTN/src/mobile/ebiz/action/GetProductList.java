@@ -23,44 +23,36 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import mobile.ebiz.blo.MobileBLO;
 
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
-import mobile.ebiz.blo.product.Product;
-
-
-import com.google.appengine.repackaged.org.json.JSONArray;
 import com.google.appengine.repackaged.org.json.JSONException;
 import com.google.appengine.repackaged.org.json.JSONObject;
 
 import ebiz.action.BaseAction;
-import ebiz.dto.food.Food;
-import ebiz.util.CommonConstant;
 
 /**
  * @author ThuyNT
  */
-public class ActiveXU extends BaseAction {
+public class GetProductList extends BaseAction {
 
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out;
-
-        JSONObject json = new JSONObject();
-        boolean flag = true;
-        // call function to active code  
+        List<JSONObject> objList = new ArrayList<JSONObject>();
 
         try {
             
-            json.put("flag", flag);
+            objList = MobileBLO.getFoodListAll();
             out = response.getWriter();
-            out.println("123");
+            out.println(objList);
             out.flush();
         } catch (JSONException ex) {
             // TODO Auto-generated catch block
@@ -69,9 +61,6 @@ public class ActiveXU extends BaseAction {
             // TODO Auto-generated catch block
             ex.printStackTrace();
         }
-        
-
-        return mapping.findForward(null);
-
+        return null;
     }
 }
