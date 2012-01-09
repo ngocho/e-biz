@@ -16,33 +16,53 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package ebiz.action.account.customer;
+package ebiz.action.account.provider;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import org.apache.struts.action.ActionMessage;
+import org.apache.struts.action.ActionMessages;
 
 import ebiz.action.BaseAction;
-import ebiz.form.LoginForm;
+import ebiz.blo.common.SendMail;
+import ebiz.blo.provider.ProviderBLO;
+import ebiz.dto.account.provider.Provider;
+import ebiz.form.ProviderForm;
 
 /**
  * @author ThuyNT
  */
-public class Logout extends BaseAction {
+public class Register extends BaseAction {
+
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
+        System.out.println("REGISTER PRO");
+       
+        // after checked validation using xml file
+        ProviderForm user = (ProviderForm) form;
+        Provider register = user.getProvider();
+        boolean flag;
 
-        HttpSession se = request.getSession();
-        LoginForm login = (LoginForm) se.getAttribute("user");
-        if(login != null){
-            se.invalidate();
+        flag = ProviderBLO.registerProvider(register);
+        if (flag) {
+//            HttpSession se = request.getSession();
+            // save value in session
+//            se.setAttribute(CommonConstant.USER, user);
+
+            //send mail  --> use task queue
+            SendMail.registerSuccess(user.getEmail());
+
+            return mapping.findForward(SUCCESS);
         }
-     
-        return mapping.findForward(SUCCESS);
+        //account is Exsist
+        ActionMessages messages = new ActionMessages();
+        messages.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage("errors.duplicated"));
+        saveMessages(request, messages); // storing messages as request attributes
+        return mapping.findForward(FAILURE);
     }
 
 }

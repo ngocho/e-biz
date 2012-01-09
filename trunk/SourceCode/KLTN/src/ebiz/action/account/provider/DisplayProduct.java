@@ -16,7 +16,10 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package ebiz.action.account.customer;
+package ebiz.action.account.provider;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -27,21 +30,35 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import ebiz.action.BaseAction;
-import ebiz.form.LoginForm;
+import ebiz.blo.provider.ProviderBLO;
+import ebiz.form.FoodForm;
+import ebiz.form.ProviderForm;
 
 /**
  * @author ThuyNT
  */
-public class Logout extends BaseAction {
+public class DisplayProduct extends BaseAction {
+
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
-
-        HttpSession se = request.getSession();
-        LoginForm login = (LoginForm) se.getAttribute("user");
-        if(login != null){
-            se.invalidate();
+        String value = request.getParameter("value");
+        HttpSession se =request.getSession();
+        ProviderForm login;
+        List<FoodForm> formList = new ArrayList<FoodForm>();
+        login = (ProviderForm)se.getAttribute("provider");
+        System.out.println("USER PRO ID"+value);
+        //required Login
+        if(login == null){
+            return mapping.findForward(FAILURE);
         }
-     
+       
+        if(value ==null){
+           
+            value="0";
+        }
+        //get FoodFormList to display
+        formList = ProviderBLO.getFoodFormList(login.getLoginId(), value);
+        se.setAttribute("providerProduct", formList);
         return mapping.findForward(SUCCESS);
     }
 

@@ -20,9 +20,6 @@ package ebiz.action.account.customer;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import ebiz.blo.customer.CustomerBLO;
 
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
@@ -32,9 +29,9 @@ import org.apache.struts.action.ActionMessages;
 
 import ebiz.action.BaseAction;
 import ebiz.blo.common.SendMail;
+import ebiz.blo.customer.CustomerBLO;
 import ebiz.dto.account.customer.Customer;
 import ebiz.form.LoginForm;
-import ebiz.util.CommonConstant;
 
 /**
  * @author ThuyNT
@@ -43,19 +40,17 @@ public class Register extends BaseAction {
 
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
-        System.out.println("REGISTER");
        
         // after checked validation using xml file
         LoginForm user = (LoginForm) form;
         Customer register = user.getCustomer();
-        boolean f;
+        boolean flag;
 
-        f = CustomerBLO.registerCustomer(register);
-        System.out.println("RESULT" + f);
-        if (f) {
-            HttpSession se = request.getSession();
-            // save value in session
-//            se.setAttribute(CommonConstant.USER, user);
+        flag = CustomerBLO.registerCustomer(register);
+        Customer obj = CustomerBLO.getCustomerByID(register.getCustomerId());
+        flag = CustomerBLO.registerCustomer(obj);
+      
+        if (flag) {
 
             //send mail  --> use task queue
             SendMail.registerSuccess(user.getEmail());

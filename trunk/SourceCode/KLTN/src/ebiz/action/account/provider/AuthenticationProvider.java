@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package ebiz.action.account.customer;
+package ebiz.action.account.provider;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -27,22 +27,22 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import ebiz.action.BaseAction;
-import ebiz.form.LoginForm;
+import ebiz.form.ProviderForm;
 
 /**
- * @author ThuyNT
+ * @author Administrator
  */
-public class Logout extends BaseAction {
+public class AuthenticationProvider extends BaseAction {
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
-
+        System.out.println("AuthenticationProvider");
         HttpSession se = request.getSession();
-        LoginForm login = (LoginForm) se.getAttribute("user");
-        if(login != null){
-            se.invalidate();
+        ProviderForm provider = (ProviderForm) se.getAttribute("provider");
+        if (provider == null) {
+            System.out.println("NULL");
+            return mapping.findForward(FAILURE);
         }
-     
+        System.out.println("AuthenticationProvider + NOT NULL");
         return mapping.findForward(SUCCESS);
     }
-
 }
