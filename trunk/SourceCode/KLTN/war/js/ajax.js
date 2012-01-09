@@ -18,6 +18,45 @@ function  addToCart(quantity,idProduct){
         });
     
 }
+function  addToCart(quantity,idProduct){
+    $.ajax({
+        type: "GET",
+        url: "/addShoppingCart.vn",
+        data: "id="+idProduct+"&number="+quantity,
+        dataType: "html",
+        async: false,
+        success: function(data){
+            if(data == 0){
+                alert("Sản phẩm không đủ")
+            }
+            else{
+            $("#countShop").html(data) ;
+            $("#current_cart_items_count").html(data) ;
+            }
+        }
+        });
+    
+}
+function  uploadImage(url){
+    $.ajax({
+        type: "GET",
+        url: "/addShoppingCart.vn",
+        data: "id="+idProduct+"&number="+quantity,
+        dataType: "html",
+        async: false,
+        success: function(data){
+            if(data == 0){
+                alert("Sản phẩm không đủ")
+            }
+            else{
+            $("#countShop").html(data) ;
+            $("#current_cart_items_count").html(data) ;
+            }
+        }
+        });
+    
+}
+
 
 function  updateNumberProduct(idUpdate,numberUpdate){
     $.ajax({
