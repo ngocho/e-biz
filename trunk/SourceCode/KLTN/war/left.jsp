@@ -2,7 +2,7 @@
   pageEncoding="UTF-8"%>
 <div class="col-left side-col">
 <p class="home-callout">
-<a href="#"><img src="Images/Commons/ph_callout_left_top.gif" border="0"></a>
+<a href="#"><img src="Images/Commons/pano.jpg" width="200" height="200" border="0"></a>
 </p>
 <p class="home-callout">
 <img src="js/ph_callout_left_rebel.jpg" border="0">
@@ -32,7 +32,7 @@
         <strong><span>Từ khóa hay được tìm kiếm</span></strong>
     </div>
     <div class="block-content">
-        <ul class="tags-list">
+       <!--  <ul class="tags-list">
                             <li><a href="http://localhost/magento/index.php/tag/product/list/tagId/23/" style="font-size:89%;">Camera</a></li>
                             <li><a href="http://localhost/magento/index.php/tag/product/list/tagId/109/" style="font-size:82%;">Hohoho</a></li>
                             <li><a href="http://localhost/magento/index.php/tag/product/list/tagId/27/" style="font-size:145%;">SEXY</a></li>
@@ -53,7 +53,7 @@
                             <li><a href="http://localhost/magento/index.php/tag/product/list/tagId/30/" style="font-size:96%;">red</a></li>
                             <li><a href="http://localhost/magento/index.php/tag/product/list/tagId/28/" style="font-size:82%;">tight</a></li>
                             <li><a href="http://localhost/magento/index.php/tag/product/list/tagId/4/" style="font-size:96%;">young</a></li>
-                  </ul>
+                  </ul> -->
         <div class="actions">
             <a href="http://localhost/magento/index.php/tag/list/">View All Tags</a>
         </div>

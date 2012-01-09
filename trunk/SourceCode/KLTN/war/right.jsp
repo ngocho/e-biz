@@ -14,11 +14,11 @@
         </a>
       </div>
       <strong><span><bean:write name="<%=CommonConstant.WELCOME %>" scope="session" /></span></strong></br>
-      <a href="#" style="margin-left:130px;"><b> Đăng xuất</b></a>
+      <a href="/logoutCustomer.vn" style="margin-left:130px;"><b> Đăng xuất</b></a>
     </c:if>
     <c:if test="${user ==null}">
       <div class="block-title">
-        <a href="#"><strong><span>ĐĂNG NHẬP</span>
+        <a href="/loginCustomer.vn"><strong><span>ĐĂNG NHẬP</span>
         </strong>
         </a>
       </div>
@@ -58,7 +58,7 @@
   <div class="block block-cart">
     <div class="block-title">
 
-      <a href=""><strong><span>GIỎ HÀNG</span> </strong> </a>
+      <a href="/displayShoppingCart.vn"><strong><span>GIỎ HÀNG</span> </strong> </a>
     </div>
     <div class="block-content">
       <p class="empty">
@@ -68,11 +68,13 @@
             <bean:write name="shop" property="count" />
           </logic:present> </span> món hàng
       </p>
-      <p class="empty">a</p>
-      <p class="empty">b</p>
-      <p class="empty">c</p>
+       <logic:present name="shop" property="products">
+        <logic:iterate id="element"  name="shop" property="products" length="3">
+      <p class="empty"><bean:write name="element" property="name"/></p>
+      </logic:iterate>
+      </logic:present>
       <p class="empty" style="text-align: right">
-        <a href="#">...thanh toán</a>
+        <a href="/checkAuthentication.vn">...thanh toán</a>
       </p>
     </div>
   </div>
@@ -195,7 +197,7 @@
     </form>
   </div>
   <div class="paypal-logo">
-    <a href="http://localhost/magento/#" title="Additional Options"
+    <a href="#"
       onclick="javascript:window.open(&#39;https://www.paypal.com/us/cgi-bin/webscr?cmd=xpt/Marketing/popup/OLCWhatIsPayPal-outside&#39;,&#39;paypal&#39;,&#39;width=600,height=350,left=0,top=0,location=no,status=yes,scrollbars=yes,resizable=yes&#39;); return false;"><img
       src="Images/Commons/bnr_nowAccepting_150x60.gif"
       alt="Các ngân hàng trực tuyến có thể thanh toán"
