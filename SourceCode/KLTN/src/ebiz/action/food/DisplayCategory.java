@@ -56,52 +56,51 @@ public class DisplayCategory extends BaseAction {
      */
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
-          HttpSession se = request.getSession();
-          List<String> attrs = new ArrayList<String>();
-          List<FoodPriceLevel> prices = new ArrayList<FoodPriceLevel>();
-          List<Paging> pageList = new ArrayList<Paging>();
-          List<FoodForm> foods = new ArrayList<FoodForm>();
-          ProductVO vo = new ProductVO();
+        HttpSession se = request.getSession();
+        List<String> attrs = new ArrayList<String>();
+        List<FoodPriceLevel> prices = new ArrayList<FoodPriceLevel>();
+        List<Paging> pageList = new ArrayList<Paging>();
+        List<FoodForm> foods = new ArrayList<FoodForm>();
+        ProductVO vo = new ProductVO();
         String typeProduct = request.getParameter("typeProduct");
-        if(typeProduct ==null){
-            vo = (ProductVO)se.getAttribute(CommonConstant.PRODUCTVO);
+        if (typeProduct == null) {
+            vo = (ProductVO) se.getAttribute(CommonConstant.PRODUCTVO);
             typeProduct = vo.getTypeProduct();
         }
         vo.setTypeProduct(typeProduct);
-      
-        IFoodDAO dao = new FoodDAO();
-//       Initialize.initializeFood();
-//        Initialize.initializeFoodAttribute();
-//        Initialize.initializeFoodStatus();
-//        Initialize.initializeFoodPriceLevel();
-       // get attribute --> save in session
-        attrs = dao.getAttributeList("productAttributeName");
+
+//         Initialize.initializeFood();
+//         Initialize.initializeFoodAttribute();
+//         Initialize.initializeFoodStatus();
+//         Initialize.initializeFoodPriceLevel();
+        // get attribute --> save in session
+        attrs = FoodBLO.getAttributeFoodList();
         se.setAttribute(CommonConstant.FOOD_CATEGORY_A, attrs);
-        
-       //get type of price --> save in session
-        prices = dao.getPriceList();
+
+        // get type of price --> save in session
+        prices = FoodBLO.getPriceFoodList();
         se.setAttribute(CommonConstant.FOOD_CATEGORY_P, prices);
-        
-        //getproduct --> save in session
+
+        // getproduct --> save in session
         HashMap<Integer, String> paging = new HashMap<Integer, String>();
-        
-        foods = FoodBLO.initFoodCategory(paging,CommonConstant.DEFAULT_RECORD,typeProduct);
+
+        foods = FoodBLO.initFoodCategory(paging, CommonConstant.DEFAULT_RECORD, typeProduct);
         pageList = FoodBLO.updateStatusPaging(paging);
-        //paging
+        // paging
         vo.setPagingList(pageList);
-//        se.setAttribute(CommonConstant.PAGING, pageList);
-        //number display in 1 page
+        // se.setAttribute(CommonConstant.PAGING, pageList);
+        // number display in 1 page
         vo.setLimit(CommonConstant.DEFAULT_RECORD);
         vo.setCol(CommonConstant.DEFAULT_COL);
         vo.setPage(CommonConstant.DEFAULT_PAGE);
 
         se.setAttribute(CommonConstant.PRODUCTVO, vo);
-        
-        System.out.println("SIZE OF FOOD"+foods.size());
-      //list food
+
+//        System.out.println("SIZE OF FOOD" + foods.size());
+        // list food
         se.setAttribute(CommonConstant.FOOD_CATEGORY_F, foods);
-        
-      //return display category
+
+        // return display category
         return mapping.findForward(SUCCESS);
 
     }
