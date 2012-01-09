@@ -34,6 +34,22 @@
                 depends="required">
                 <arg0 key="login.loginPassword"/>
             </field>
+            <field
+                property="loginPassword"
+                depends="minlength">
+                <var>
+                    <var-name>minlength
+                    </var-name>
+                    <var-value>8
+                    </var-value>
+                </var>
+                <arg0 key="login.loginPassword"/>
+            </field>
+            <field
+                property="email"
+                depends="email">
+                <arg0 key="login.email"/>
+            </field>
         </form>
         <form name="register">
             <field
