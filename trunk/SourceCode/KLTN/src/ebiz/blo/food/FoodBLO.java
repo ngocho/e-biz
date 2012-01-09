@@ -23,6 +23,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.mail.Folder;
+
 import ebiz.dao.gae.FoodDAO;
 import ebiz.dao.gae.OrderDAO;
 import ebiz.dao.gae.PMF;
@@ -32,11 +34,13 @@ import ebiz.dto.account.customer.Customer;
 import ebiz.dto.checkout.DetailOrder;
 import ebiz.dto.checkout.OrderBill;
 import ebiz.dto.food.Food;
+import ebiz.dto.food.FoodPriceLevel;
 import ebiz.form.FoodForm;
 import ebiz.form.LoginForm;
 import ebiz.form.Paging;
 import ebiz.form.ShoppingCart;
 import ebiz.util.CommonConstant;
+import ebiz.util.CommonUtil;
 
 /**
  * @author ThuyNT
@@ -59,6 +63,58 @@ public class FoodBLO {
 		// get info cua product
 		return foodDao.getFoodById(id);
 	}
+	/**
+     * ! khuyến mãi get info của sản phẩm khuyến mãi
+     */
+    public static List<Food> getFoodListAll() {
+        // get info cua product
+        return foodDao.getFoodListAll();
+    }
+    
+    /**
+     * ! khuyến mãi get info của sản phẩm khuyến mãi
+     */
+    public static List<FoodForm> getFoodListByStatus(int limit,String idStatus) {
+        // get info cua product
+        List<FoodForm> formList = new ArrayList<FoodForm>();
+        List<Food> foodList = new ArrayList<Food>();
+        foodList =  (List<Food>) foodDao.getListFoodByValue("foodStatusId", idStatus);
+       if(!foodList.isEmpty()){
+           if(foodList.size() <limit){
+               limit = foodList.size();
+           }
+       
+        for( int i =0;i<limit; i++){
+            FoodForm form  = new FoodForm();
+            form.editForm(foodList.get(i));
+            if(form !=null){
+                formList.add(form);
+            }
+        }
+       }
+        /*
+        for(Food food : foodList){
+            if(food !=null){
+                FoodForm form = new FoodForm();
+                form.editForm(food);
+                formList.add(form);
+            }
+        }*/
+        return formList;
+    }
+	
+	/**
+     * ! khuyến mãi get info của sản phẩm khuyến mãi
+     */
+    public static String getNameStatusById(String id) {
+        // get info cua product
+        return foodDao.getStatusNameByID(id);
+    }
+//	public static String getNameProByID(String id) {
+//        // get info cua product
+//        return foodDao.getFoodById(id);
+//    }
+
 
 	/**
 	 * get Food to display category
@@ -79,9 +135,13 @@ public class FoodBLO {
 		// transfer dto-> form : display
 		for (Food food : foodList) {
 			FoodForm form = new FoodForm();
+			//display
+			System.out.println("IS DISPLAY "+ food.getIsDisplay());
+			if(food.getIsDisplay() == 1){
 			form.editForm(food);
-			if (!form.isEmpty()) {
+			if (!form.isEmpty() ) {
 				formList.add(form);
+			}
 			}
 		}
 		return formList;
@@ -100,6 +160,20 @@ public class FoodBLO {
 				typeProduct);
 		return formList;
 	}
+
+//    /**
+//     * init display Food Category
+//     * 
+//     * @return
+//     */
+//    public static List<FoodForm> initFoodCategory(
+//            HashMap<Integer, String> paging, int record, String typeProduct) {
+//
+//        List<FoodForm> formList = new ArrayList<FoodForm>();
+//        formList = getFoodFormList("foodName", paging, "asc", record, 1,
+//                typeProduct);
+//        return formList;
+//    }
 
 	/**
 	 * get Food to display detail product using String key
@@ -187,7 +261,7 @@ public class FoodBLO {
 							foodForm.setSubTotal(foodForm.getPrice()
 									* numberProduct);
 							//update size of product in shop
-							shopCart.size();
+//							shopCart.size();
 							return true;
 						} else {
 							return false;
@@ -352,7 +426,7 @@ public class FoodBLO {
 			order.setAddress(customer.getCustomerAddress());
 			order.setEmail(customer.getCustomerEmail());
 			order.setPhone(customer.getCustomerPhone());
-			order.setStatus(CommonConstant.BILLSTATUS_0); // chua giao
+			order.setStatus(CommonConstant.BILLSTATUS_1); // chua giao
 			order.setDateOrder(new Date());
             List<DetailOrder> detailOrderList = new ArrayList<DetailOrder>();
             // save order
@@ -382,6 +456,64 @@ public class FoodBLO {
 		}
 		return null;// user chua dang nhap
 	}
+	/**
+	 * get new DetailOrder for ReOrder( for test with old )
+	 * @param orderID
+	 * @return
+	 */
+	public static List<DetailOrder> getDetailOrderRe(Long orderID) {
+//	    OrderBill orderBill = new OrderBill();
+//	    orderBill = order;
+	    List<DetailOrder> detailList = new ArrayList<DetailOrder>();
+	    //get detail Order
+	    detailList = orderDao.getDetailByIDOrBill(orderID);
+	    //test product in order Detail with product current
+	    for(DetailOrder detail :detailList ){
+	      
+	        Food tempFood = foodDao.getFoodById(detail.getIdProduct());
+	        //co san pham nay
+	        if(!CommonUtil.isNull(tempFood)){
+	            //not enough product for reOrder
+	           if(tempFood.getNumber()  < detail.getNumber()){
+	               detail.setNumber(tempFood.getNumber());
+	           }
+	            
+	        }
+	        //didn't exist this product
+	        else{
+	            detailList.remove(detail);
+	        }
+	    }
+	    return detailList;
+	}
+	
+	/**
+	 * get detailOrder for Order
+	 * @param order
+	 * @return
+	 */
+	    public static List<DetailOrder> getDetailOrder(Long orderID) {
+//	      OrderBill orderBill = new OrderBill();
+//	      orderBill = order;
+	        List<DetailOrder> detailList = new ArrayList<DetailOrder>();
+	        //get detail Order
+	        detailList = orderDao.getDetailByIDOrBill(orderID);
+	        //test product in order Detail with product current
+	        
+	        return detailList;
+	    
+	}
+	    public static boolean isEqual(List<DetailOrder> list1, List<DetailOrder> list2){
+	        if(list1.size() !=list2.size()){
+	            return false;
+	        }
+	        for( int i =0; i< list1.size(); i++){
+	            if(list2.get(i).getNumber() != list1.get(i).getNumber()){
+	                return false;
+	            }
+	        }
+	        return true;
+	    }
 
 	/**
 	 * cancel bill when status : order
@@ -442,9 +574,25 @@ public class FoodBLO {
         }
         return moneyOrder;
     }
+    //upload Food (provider)
+    public static boolean uploadFood(Food food){
+        return foodDao.saveFood(food);
+    }
 
+
+    public static List<String> getAttributeFoodList(){
+       return  foodDao.getAttributeList("productAttributeName");
+    }
+    public static  List<FoodPriceLevel> getPriceFoodList(){
+        return  foodDao.getPriceList();
+     }
+    public static  String  getFoodStatus(Long money){
+//        return  foodDao.getPriceList();
+        return "1";
+     }
+    
+    
 }
-
 // /**
 // *
 // * get detail info of product
