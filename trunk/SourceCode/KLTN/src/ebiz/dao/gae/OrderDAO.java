@@ -71,6 +71,7 @@ public class OrderDAO implements IOrderDAO {
         /**
          * get list order bill by id customer
          */
+        @SuppressWarnings("unchecked")
         @Override
         public List<OrderBill> getOrListByIDCustomer(String idCustomer){
         	
@@ -82,6 +83,7 @@ public class OrderDAO implements IOrderDAO {
         /**
          * get List order detail by Id order
          */
+        @SuppressWarnings("unchecked")
         @Override
         public List<DetailOrder> getDetailByIDOrBill(Long id){
         	List<DetailOrder> orderList = new ArrayList<DetailOrder>();
@@ -91,11 +93,32 @@ public class OrderDAO implements IOrderDAO {
         /**
          * get List order bill by Id employee
          */
+        @SuppressWarnings("unchecked")
         @Override
         public List<OrderBill> getOrListByIDEmployee(String idEmployee){
         	List<OrderBill> orderList = new ArrayList<OrderBill>();
         	orderList = (List<OrderBill>)PMF.getObjectListByValue(OrderBill.class, "idEmployee", idEmployee);
         	return orderList;
+        }
+        /**
+         * get List order bill by Id employee
+         */
+        @SuppressWarnings("unchecked")
+        @Override
+        public List<OrderBill> getOrListByStatus(String userID, Integer status){
+            List<OrderBill> orderList = new ArrayList<OrderBill>();
+            orderList = (List<OrderBill>)PMF.getObjectListByTwoValues(OrderBill.class,"idCustomer",userID, "status", status);
+            return orderList;
+        }
+        /**
+         * get List order bill by Id employee
+         */
+        @SuppressWarnings("unchecked")
+        @Override
+        public List<OrderBill> getOrderList(){
+            List<OrderBill> orderList = new ArrayList<OrderBill>();
+            orderList = (List<OrderBill>)PMF.getObjectList(OrderBill.class);
+            return orderList;
         }
         
 }

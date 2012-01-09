@@ -50,7 +50,6 @@ public final class PMF {
 
     public static boolean insertObject(Object obj) {
         PersistenceManager pm = getPMF();
-        System.out.println("######### ");
         try {
             pm.makePersistent(obj);
         } catch (Exception ex) {
@@ -75,6 +74,7 @@ public final class PMF {
             pm.close();
         }
     }
+
     /**
      * 
      * delete obj in database
@@ -293,7 +293,7 @@ public final class PMF {
         List<Object> results = new ArrayList<Object>();
         int count ;
         PersistenceManager pm = getPMF();
-        Query query = pm.newQuery("select count(" + col + ")  from " + className.getName() + " where "+ filterCol +"  == \""+ typeProduct+ "\"");
+        Query query = pm.newQuery("select count(" + col + ")  from " + className.getName() + " where "+ filterCol +"  == \""+ typeProduct+ "\"" );
         try {
                 count = (Integer)query.execute();
                 System.out.println("QUERY" +query.toString());
@@ -368,6 +368,25 @@ public final class PMF {
         }
         return results;
     }
+    /**
+     * get list of object by input value order column (search, display
+     * @param className
+     * @return
+     */
+    @SuppressWarnings("unchecked")
+    public static List<?> getObjectListByValue(Class<?> className, String col, Integer value) {
+        PersistenceManager pm = getPMF();
+        Query query = pm.newQuery(className);
+        List<Object> results = new ArrayList<Object>();
+        query.setFilter(col + " == param");
+        query.declareParameters("String param");
+        try {
+            results = (List<Object>) query.execute(value);
+        } finally {
+            query.closeAll();
+        }
+        return results;
+    }
     @SuppressWarnings("unchecked")
     public static List<?> getObjectListByValue(Class<?> className, String col, Long key) {
         PersistenceManager pm = getPMF();
@@ -379,6 +398,68 @@ public final class PMF {
             results = (List<Object>) query.execute(key);
         } finally {
             query.closeAll();
+        }
+        return results;
+    }
+    /**
+     * get list of object by input value order column (search, display
+     * @param className
+     * @return
+     */
+    @SuppressWarnings("unchecked")
+    public static List<?> getObjectListByTwoValues(Class<?> className, String col1, String key1, String col2, Integer key2) {
+        PersistenceManager pm = getPMF();
+        
+        StringBuffer sql = new StringBuffer();
+        sql.append("( ");
+        sql.append(col1);
+        sql.append(" == \'");
+        sql.append(key1);
+        sql.append("\'");
+        sql.append(" && ");
+        sql.append(col2);
+        sql.append(" == ");
+        sql.append(key2);
+        sql.append(" )");
+        Query q = pm.newQuery(className,sql.toString());
+        System.out.println(sql.toString());
+//        Query q = pm.newQuery("select  from  " + className.getName()+ " where "+col1 +"== \""+key1 +"\" and  "+col2 +"== " + key2);
+        List<Object> results = new ArrayList<Object>();
+        try {
+            results = (List<Object>) q.execute();
+        } finally {
+            q.closeAll();
+        }
+        return results;
+    }
+    /**
+     * get list of object by input value order column (search, display
+     * @param className
+     * @return
+     */
+    @SuppressWarnings("unchecked")
+    public static List<?> getObjectListByTwoValues(Class<?> className, String col1, String key1, String col2, String key2) {
+        PersistenceManager pm = getPMF();
+        
+        StringBuffer sql = new StringBuffer();
+        sql.append("( ");
+        sql.append(col1);
+        sql.append(" == \'");
+        sql.append(key1);
+        sql.append("\'");
+        sql.append(" && ");
+        sql.append(col2);
+        sql.append(" == \'");
+        sql.append(key2);
+        sql.append("\')");
+        Query q = pm.newQuery(className,sql.toString());
+        System.out.println(sql.toString());
+//        Query q = pm.newQuery("select  from  " + className.getName()+ " where "+col1 +"== \""+key1 +"\" and  "+col2 +"== " + key2);
+        List<Object> results = new ArrayList<Object>();
+        try {
+            results = (List<Object>) q.execute();
+        } finally {
+            q.closeAll();
         }
         return results;
     }
