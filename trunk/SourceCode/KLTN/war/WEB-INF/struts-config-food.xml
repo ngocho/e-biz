@@ -58,6 +58,12 @@
       type="ebiz.action.food.AddShoppingCart" 
       scope="session" validate="false">
     </action>
+     <action 
+      path="/addShopping"
+      type="ebiz.action.food.AddShoppingSubmit" 
+      scope="session" validate="false">
+      <forward name="success" path="category" redirect="true" />
+    </action>
     <action 
       path="/updateShoppingCart"
       type="ebiz.action.food.UpdateShoppingCart" 
@@ -69,6 +75,7 @@
       scope="session" validate="false">
       <forward name="success" path="checkout" redirect="true" />
       <forward name="input" path="loginLayout" redirect="true" />
+      <forward name="failure" path="shopping" redirect="true" />
     </action>
      <action 
       path="/createBill"

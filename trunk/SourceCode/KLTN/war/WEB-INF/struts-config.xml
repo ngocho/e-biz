@@ -22,20 +22,29 @@
   </global-exceptions>
 
   <global-forwards>
-    <forward name="welcome" path="/Welcome.do" />
-       <forward name="admin" path="home_admin" />  
+    <forward name="Welcome" path="/home.vn" />
+    <forward name="admin" path="home_admin" />  
   </global-forwards>
 
   <action-mappings>
    <action path="/admin" forward="home_admin">
     </action>
-    <action path="/provider" forward="home_provider">
-    </action>
+    
      <action path="/customer" forward="home_customer">
     </action>
-    <!-- <action path="/Link" parameter="method" type="com.vaannila.LinkAction"> 
-      <forward name="friends" path="friends"/> <forward name="office" path="office"/> 
-      </action> -->
+      
+       <action
+      path="/home"
+      type="ebiz.action.Home" 
+      scope="session" validate="false">
+      <forward name="success" path="home" redirect="true" />
+     </action>
+      <action
+      path="/serveImage"
+      type="ebiz.action.ServeImage" 
+      scope="session" validate="true">
+     </action>
+     
     <action path="/Welcome" forward="/welcomeStruts.jsp" />
   </action-mappings>
 
