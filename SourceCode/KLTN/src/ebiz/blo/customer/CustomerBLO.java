@@ -18,6 +18,7 @@
  */
 package ebiz.blo.customer;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import ebiz.dao.gae.CustomerDAO;
@@ -27,6 +28,7 @@ import ebiz.dao.inf.IOrderDAO;
 import ebiz.dto.checkout.*;
 import ebiz.dto.account.customer.Address;
 import ebiz.dto.account.customer.Customer;
+import ebiz.form.OrderBillForm;
 import ebiz.util.CommonUtil;
 
 /**
@@ -236,11 +238,23 @@ public class CustomerBLO {
         }
         return address;
     }
-    
-       
+    public static List<OrderBillForm> getOrderBillFormList(String userId,Integer value){
         
-    
-    
-    
-
+        List<OrderBill> orderList = new ArrayList<OrderBill>();
+        List<OrderBillForm> formList = new ArrayList<OrderBillForm>();
+        //get all
+        if(value ==0){
+            orderList = orderDao.getOrListByIDCustomer(userId);
+        }
+        //get by attr
+        else{
+        orderList = orderDao.getOrListByStatus(userId,value);
+        }
+        for(OrderBill order :orderList ){
+            OrderBillForm form = new OrderBillForm();
+            form.editForm(order);
+            formList.add(form);
+        }
+        return formList;
+    }
 }
