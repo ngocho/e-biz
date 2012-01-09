@@ -96,15 +96,23 @@
                     <div class="field">
                         <label for="billing:city" class="required">Tòa nhà</label>
                         <div class="input-box">
-                            <input title="City" name="billing[city]" class="input-text required-entry" id="billing:city" type="text">
+                        <html:text size="30" property="buildingName"/>
                         </div>
                     </div>
                   </li>
+                 <%--   <li class="fields">
+                    <div class="field">
+                        <label for="billing:city" class="required">Ngày giao hàng</label>
+                        <div class="input-box">
+                             <html:text size="30" property="buildingName"/>
+                        </div>
+                    </div>
+                  </li> --%>
                   <li class="fields">
                     <div class="field">
                         <label for="billing:city" class="required">Lời nhắn</label>
                         <div class="input-box">
-                            <textarea style="width: 528px;" cols="8" rows="2"> </textarea>
+                            <html:textarea  property="note"/>
                         </div>
                     </div>
                   </li>

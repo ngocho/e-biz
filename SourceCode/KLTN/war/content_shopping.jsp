@@ -53,18 +53,13 @@
                 <logic:present name="shop" property="products">
                 <logic:iterate id="element"  name="shop" property="products">
                 <tr class="first last odd">
-    <td><a href="" title="Chair" class="product-image"><img src="<bean:write name="element" property="url"/>" alt="Chair" width="75" height="75"/></a></td>
+    <td><img src="<bean:write name="element" property="url"/>" alt="Chair" width="75" height="75"/></td>
     <td>
         <h2 class="product-name">
         <input type="hidden" name="idFood" value="<bean:write name="element"  property="id" />" />
-                    <a href="http://demo.magentocommerce.com/chair.html"><bean:write name="element" property="name" /> </a>
+                    <a href="#"><bean:write name="element" property="name" /> </a>
                 </h2>
                                                 </td>
-   <!--  <td class="a-center">
-                <a href="/editProductShopping" title="Edit item parameters">Edit</a>
-            </td>
-     -->
-    
                 <td class="a-right">
                             <span class="cart-price">
                                                 <span class="price"><bean:write name="element" property="price" />  </span>                
@@ -82,7 +77,7 @@
                                                 <span class="price"><bean:write name="element" property="subTotal"/></span>                            
         </span>
             </td>
-            <td class="a-center last"><a href="http://demo.magentocommerce.com/checkout/cart/delete/id/495540/uenc/aHR0cDovL2RlbW8ubWFnZW50b2NvbW1lcmNlLmNvbS9jaGVja291dC9jYXJ0Lw,,/" title="Remove item"  class="a-center">Xóa</a></td>
+            <td class="a-center last"><a href="" title="Remove item"  class="a-center">Xóa</a></td>
 </tr>
 </logic:iterate>
 </logic:present>

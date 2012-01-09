@@ -1,34 +1,42 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
   pageEncoding="UTF-8"%>
+  <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic"%>
+<%@taglib uri="http://java.sun.com/jstl/core" prefix="c"%>
 <div class="home-spot">
   <p class="home-callout">
+  
 <div id='wrapper'>
-        <!--div id='header'></div-->
+        <logic:present name="promotionFood">
         <div id='body'>
             <div id="bigPic">
-               <a href=""><img src="Images/Foods/1.jpg" alt="" /></a> 
-                 <a href=""><img src="Images/Foods/2.jpg" alt="" /></a>
+            <logic:iterate id="element" name="promotionFood" >
+               <a href=""><img src="/serveImage.vn?urlKey=<bean:write name="element" property="urlKey"/>" alt="" /></a> 
+            <!--      <a href=""><img src="Images/Foods/2.jpg" alt="" /></a>
                  <a href=""><img src="Images/Foods/3.jpg" alt="" /></a>
                  <a href=""><img src="Images/Foods/4.jpg" alt="" /></a>
                  <a href=""><img src="Images/Foods/5.jpg" alt="" /></a>
-                 <a href=""><img src="Images/Foods/6.jpg" alt="" /></a>
-            
+                 <a href=""><img src="Images/Foods/6.jpg" alt="" /></a> -->
+            </logic:iterate>
             </div>
             
             
             <ul id="thumbs">
-                <li class='active' rel='1'><img src="Images/Foods/1.jpg" alt="" /></li>
-                <li rel='2'><img src="Images/Foods/2.jpg" alt="" /></li>
+            <logic:iterate id="element" name="promotionFood" >
+                <li class='active' rel='1'><img src="/serveImage.vn?urlKey=<bean:write name="element" property="urlKey"/>" alt="" /></li>
+               <!--  <li rel='2'><img src="Images/Foods/2.jpg" alt="" /></li>
                 <li rel='3'><img src="Images/Foods/3.jpg" alt="" /></li>
                 <li rel='4'><img src="Images/Foods/4.jpg" alt="" /></li>
                 <li rel='5'><img src="Images/Foods/5.jpg" alt="" /></li>
-                <li rel='6'><img src="Images/Foods/6.jpg" alt="" /></li>
-                
+                <li rel='6'><img src="Images/Foods/6.jpg" alt="" /></li> -->
+              </logic:iterate>  
             </ul>
         
         </div>
         <div class='clearfix'></div>
         <div id='push'></div>
+        </logic:present>
     </div>
 <script type="text/javascript">
     var currentImage;
@@ -85,72 +93,37 @@
 <img src="js/free_shipping_callout.jpg" border="0" width="570">
 </p-->
 <div class="box best-selling" style=" width:570px">
-<h3>Các sản phẩm bán chạy nhất</h3>
+<h3>Các sản phẩm khuyến mãi</h3>
+<logic:present name="promotionFood">
+
 <table border="0" cellspacing="0">
     <tbody>
+    <logic:iterate id="element" name="promotionFood" >
         <tr class="odd">
-            <td><a href="http://localhost/magento/index.php/sony-vaio-vgn-txn27n-b-11-1-notebook-pc.html"><img class="product-img" src="Images/Foods/1.jpg" border="0" height="120" width="160"></a>
+            <td><a href="#"><img class="product-img" src="/serveImage.vn?urlKey=<bean:write name="element" property="urlKey"/>" border="0" height="120" width="160"></a>
             <div class="product-description">
-            <p><a href="http://localhost/magento/index.php/sony-vaio-vgn-txn27n-b-11-1-notebook-pc.html">Măng chua</a></p>
-            <p><a href=""><img src="Images/Commons/xem.jpg" width="70"></img></a><!-- a class="link" href="#" >Xem hang </a> --></p>
-            <p><a href=""><img src="Images/Commons/mua.jpg" width="70"></img></a>
+            <p><a href="#"><bean:write name="element" property="name"/>  </a></p>
+            <p><a href="/displayProductDetail.vn?id=<bean:write name="element" property="id" />"><img src="Images/Commons/xem.jpg" width="70"></img></a><!-- a class="link" href="#" >Xem hang </a> --></p>
+            <p><a href="/addShopping.vn?id=<bean:write name="element" property="id"/>"><img src="Images/Commons/mua.jpg" width="70"></img></a>
             <p>
-            Xem tất cả <a href="http://localhost/magento/index.php/electronics/computers/laptops.html">Rau</a>
+            Xem tất cả <a href="#"></a>
             </p>
             </div>
-            </td>
+       <!--      </td>
           <td><a href="http://localhost/magento/index.php/sony-vaio-vgn-txn27n-b-11-1-notebook-pc.html"><img class="product-img" src="Images/Foods/2.jpg" border="0" height="120" width="160"></a>
             <div class="product-description">
             <p><a href="http://localhost/magento/index.php/sony-vaio-vgn-txn27n-b-11-1-notebook-pc.html">Bí đỏ</a></p>
-            <p><a href=""><img src="Images/Commons/xem.jpg" width="70"></img></a><!-- a class="link" href="#" >Xem hang </a> --></p>
+            <p><a href=""><img src="Images/Commons/xem.jpg" width="70"></img></a>a class="link" href="#" >Xem hang </a></p>
             <p><a href=""><img src="Images/Commons/mua.jpg" width="70"></img></a>
             <p>
             Xem tất cả <a href="http://localhost/magento/index.php/electronics/computers/laptops.html">Rau</a>
             </p>
             </div>
-            </td>
+            </td> -->
         </tr>
-        <tr class="even">
-            <td><a href="http://localhost/magento/index.php/olympus-stylus-750-7-1mp-digital-camera.html"><img class="product-img" src="js/best_selling_img03.jpg" border="0" width="95"></a>
-            <div class="product-description">
-            <p>
-            <a href="http://localhost/magento/index.php/olympus-stylus-750-7-1mp-digital-camera.html">Olympus Stylus 750 7.1MP Digital Camera</a>
-            </p>
-            <p>
-            See all <a href="http://localhost/magento/index.php/electronics/cameras/digital-cameras.html">Digital Cameras</a>
-            </p>
-            </div>
-            </td>
-            <td><a href="http://localhost/magento/index.php/acer-ferrari-3200-notebook-computer-pc.html"><img class="product-img" src="js/best_selling_img04.jpg" border="0" width="95"></a>
-            <div class="product-description">
-            <p>
-            <a href="http://localhost/magento/index.php/acer-ferrari-3200-notebook-computer-pc.html">Acer Ferrari 3200 Notebook Computer PC</a>
-            </p>
-            <p>
-            See all <a href="http://localhost/magento/index.php/electronics/computers/laptops.html">Laptops</a>
-            </p>
-            </div>
-            </td>
-        </tr>
-        <tr class="odd">
-            <td><a href="http://localhost/magento/index.php/asics-men-s-gel-kayano-xii.html"><img class="product-img" src="js/best_selling_img05.jpg" border="0" width="95"></a>
-            <div class="product-description">
-            <p><a href="http://localhost/magento/index.php/asics-men-s-gel-kayano-xii.html">ASICS® Men's GEL-Kayano® XII</a></p>
-            <p>See all <a href="http://localhost/magento/index.php/apparel/shoes.html">Shoes</a></p>
-            </div>
-            </td>
-            <td><a href="http://localhost/magento/index.php/coalesce-functioning-on-impatience-t-shirt.html"><img class="product-img" src="js/best_selling_img06.jpg" border="0" width="95"></a>
-            <div class="product-description">
-            <p>
-            <a href="http://localhost/magento/index.php/coalesce-functioning-on-impatience-t-shirt.html">Coalesce: Functioning On Impatience T-Shirt</a>
-            </p>
-            <p>
-            See all <a href="http://localhost/magento/index.php/apparel/shirts.html">Shirts</a>
-            </p>
-            </div>
-            </td>
-        </tr>
+        </logic:iterate>
     </tbody>
 </table>
+</logic:present>
 </div>
 </div>
