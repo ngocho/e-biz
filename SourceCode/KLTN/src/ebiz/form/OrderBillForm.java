@@ -37,10 +37,12 @@ public class OrderBillForm {
     private Date dateOrder;
     private Date dateShip;
     private Long sumPrice;
+    private Integer status;
     private Integer numberProduct;
     private String phoneWebsite;
+    private String idEmployee;
     
-    public void getOrderBill(OrderBill order){
+    public void editForm(OrderBill order){
         id = order.getId();
         idCustomer = order.getIdCustomer();
         address = CustomerBLO.toStringAddres(order.getAddress());
@@ -49,6 +51,8 @@ public class OrderBillForm {
         dateOrder = order.getDateOrder();
         dateShip = order.getDateShip();
         sumPrice = order.getSumPrice();
+        status = order.getStatus();
+        idEmployee = order.getIdEmployee();
     }
     /**
      * Get value of id.
@@ -203,6 +207,34 @@ public class OrderBillForm {
      */
     public void setPhoneWebsite(String phoneWebsite) {
         this.phoneWebsite = phoneWebsite;
+    }
+    /**
+     * Get value of status.
+     * @return the status
+     */
+    public Integer getStatus() {
+        return status;
+    }
+    /**
+     * Set the value for status.
+     * @param status the status to set
+     */
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+    /**
+     * Get value of idEmployee.
+     * @return the idEmployee
+     */
+    public String getIdEmployee() {
+        return idEmployee;
+    }
+    /**
+     * Set the value for idEmployee.
+     * @param idEmployee the idEmployee to set
+     */
+    public void setIdEmployee(String idEmployee) {
+        this.idEmployee = idEmployee;
     }
 
 }

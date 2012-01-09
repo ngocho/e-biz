@@ -18,6 +18,12 @@
  */
 package ebiz.form;
 
+import java.io.Serializable;
+
+import org.apache.struts.validator.ValidatorForm;
+
+import ebiz.blo.food.FoodBLO;
+import ebiz.blo.provider.ProviderBLO;
 import ebiz.dto.food.Food;
 import ebiz.util.CommonConstant;
 
@@ -25,25 +31,55 @@ import ebiz.util.CommonConstant;
  * @author ThuyNT
  *
  */
-public class FoodForm {
+public class FoodForm extends ValidatorForm implements Serializable{
     
+    /**  . */
+    private static final long serialVersionUID = 1L;
     private Long id;
     private String name;
     private String productTypeId;
     private Long price;
     private Long promoPrice;
     private Integer reviewer;
-    private String status;   // san pham da het, khuyen mai
+    private String status;   // san pham da het, khuyen mai(id)
+    private String statusName;  // hien thi name
     private Integer number;
     private String calo;
+    private String idAttr;
     private String url;
     private String detail;
     private String cooking;
     private Long subTotal;
+    private String nameProvider;
+    private String idProvider;
+    private String urlKey;
+    public Food getFood(){
+        Food food = new Food();
+        food.setFoodName(this.name);
+        food.setPrice(this.price);
+        food.setUrl(this.url);
+        food.setUrlKey(this.urlKey);
+        food.setPricePromotion(this.promoPrice);
+        food.setNumber(this.number);
+        food.setDetail(this.detail);
+        food.setCooking(this.cooking);
+        food.setFoodTypeId(this.productTypeId);
+        food.setProviderID(this.idProvider);
+        food.setFoodStatusId(this.status);
+        return food;
+    }
+    public void clear(){
+        this.name ="";
+        this.calo ="";
+        this.cooking ="";
+        this.detail ="";
+        this.price = new Long(0);
+        this.number =0;
+        this.detail ="";
     
+    }
     /**
      * 
-     * san pham dang ban
      * @param food
      * @return
      */
@@ -52,14 +88,19 @@ public class FoodForm {
         this.name = food.getFoodName();
         this.reviewer = food.getReviewer();
         this.url = food.getUrl();
+        this.urlKey = food.getUrlKey();
         this.number = food.getNumber();
         this.productTypeId = food.getFoodTypeId();
+        this.idProvider = food.getProviderID();
+        this.nameProvider = ProviderBLO.getNameProviderByID(this.idProvider);
+        this.status = food.getFoodStatusId();
         //het san pham
         if(food.getNumber()== 0){
-            this.status = CommonConstant.STATUS_MESSAGE_0;
+            this.statusName = CommonConstant.STATUS_MESSAGE_0;
         }
         else
         {
+            this.statusName = FoodBLO.getNameStatusById(this.status);
             this.price = food.getPrice();
             this.promoPrice = food.getPricePromotion();
         }
@@ -121,6 +162,8 @@ public class FoodForm {
         this.detail = food.getDetail();
         this.cooking = food.getCooking();
         this.productTypeId = food.getFoodTypeId();
+        this.idProvider = food.getProviderID();
+        this.nameProvider = ProviderBLO.getNameProviderByID(this.idProvider);
         //het san pham
         if(food.getNumber()== 0){
             this.status = CommonConstant.STATUS_MESSAGE_0;
@@ -329,6 +372,76 @@ public class FoodForm {
      */
     public void setProductTypeId(String productTypeId) {
         this.productTypeId = productTypeId;
+    }
+    /**
+     * Get value of nameProvider.
+     * @return the nameProvider
+     */
+    public String getNameProvider() {
+        return nameProvider;
+    }
+    /**
+     * Set the value for nameProvider.
+     * @param nameProvider the nameProvider to set
+     */
+    public void setNameProvider(String nameProvider) {
+        this.nameProvider = nameProvider;
+    }
+    /**
+     * Get value of idProvider.
+     * @return the idProvider
+     */
+    public String getIdProvider() {
+        return idProvider;
+    }
+    /**
+     * Set the value for idProvider.
+     * @param idProvider the idProvider to set
+     */
+    public void setIdProvider(String idProvider) {
+        this.idProvider = idProvider;
+    }
+    /**
+     * Get value of statusName.
+     * @return the statusName
+     */
+    public String getStatusName() {
+        return statusName;
+    }
+    /**
+     * Set the value for statusName.
+     * @param statusName the statusName to set
+     */
+    public void setStatusName(String statusName) {
+        this.statusName = statusName;
+    }
+    /**
+     * Get value of idAttr.
+     * @return the idAttr
+     */
+    public String getIdAttr() {
+        return idAttr;
+    }
+    /**
+     * Set the value for idAttr.
+     * @param idAttr the idAttr to set
+     */
+    public void setIdAttr(String idAttr) {
+        this.idAttr = idAttr;
+    }
+    /**
+     * Get value of urlKey.
+     * @return the urlKey
+     */
+    public String getUrlKey() {
+        return urlKey;
+    }
+    /**
+     * Set the value for urlKey.
+     * @param urlKey the urlKey to set
+     */
+    public void setUrlKey(String urlKey) {
+        this.urlKey = urlKey;
     }
     
     
