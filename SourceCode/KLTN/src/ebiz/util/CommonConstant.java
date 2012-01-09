@@ -26,10 +26,13 @@ public class CommonConstant {
     public final static  String SUCCESS = "success";
     public  final static String FAILURE = "failure";
     public  final static String INPUT   =  "input";
+    
+    //save in session
     public  final static String USER    = "user";
+    public  final static String PROVIDER    = "provider";
     public  final static String SHOPPING    = "shop";
     public  final static String WELCOME    = "Chào mừng ";
-    
+    public final static String BILL ="bill";
     //CUSTOMER for sending message prmotion
     public  final static String CODECUSTOMER_0    = "0";
     public  final static String PHONECUSTOMER   = "phone";
@@ -60,11 +63,12 @@ public class CommonConstant {
     public final static String TYPE_2  = "2";       //cooked food
     public final static String TYPE_3  = "3";      //vegatable
     //BILL STATUS
-    public final static Integer BILLSTATUS_0 = 0;  //order
-    public final static Integer BILLSTATUS_1 = 1;  //paid money
-    public final static Integer BILLSTATUS_2 = 2;  //assign
-    public final static Integer BILLSTATUS_3 = 3;  //finish shiiping
-    public final static Integer BILLSTATUS_4 =-1;  //cancel
+    public final static Integer BILLSTATUS_0 = 0;  //assign for employee
+    public final static Integer BILLSTATUS_1 = 1;  //not paid money(order) or reOrder
+    public final static Integer BILLSTATUS_2 = 2;  //not rececive (paid money)
+    public final static Integer BILLSTATUS_3 = 3;  // paid money
+    public final static Integer BILLSTATUS_4 =4;  //rececive
+    public final static Integer BILLSTATUS_5 =5;  //cancel
     //DISPLAY CATEGORY
     public final static String FOOD_TYPE =   "foodTypeId";  
     public final static String FOOD_CATEGORY_A =   "Attribute";  
