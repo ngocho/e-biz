@@ -20,26 +20,21 @@ package mobile.ebiz.action;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
 
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import mobile.ebiz.blo.product.Product;
+import mobile.ebiz.blo.user.CustomerBLO;
 
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
-import mobile.ebiz.blo.product.Product;
-import mobile.ebiz.blo.user.CustomerBLO;
-
-import com.google.appengine.repackaged.org.json.JSONArray;
 import com.google.appengine.repackaged.org.json.JSONException;
 import com.google.appengine.repackaged.org.json.JSONObject;
 
 import ebiz.action.BaseAction;
-import ebiz.dto.food.Food;
 import ebiz.util.CommonConstant;
 
 /**
