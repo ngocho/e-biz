@@ -22,29 +22,30 @@ Tiếng Anh
 </li>
 
       <li></li>
-      <c:if test="${user ==null}">
-      <li class="first"><a href="/loginCustomer.vn">Đăng nhập</a>        </li>
+      <c:if test="${provider ==null}">
+      <li class="first"><a href="/loginProvider.vn">Đăng nhập</a>        </li>
       </c:if>
-      <c:if test="${user !=null}">
-      <li class="first"><a href="/loginCustomer.vn">Đăng xuất</a>        </li>
+      <c:if test="${provider !=null}">
+      <li class="first"><a href="/logoutProviderAcc.vn">Đăng xuất</a>        </li>
       </c:if>
         <li>
-            <a href="/registerCustomer.vn">Đăng kí</a>        </li>
+            <a href="/registerProvider.vn">Đăng kí</a>        </li>
         <!--li class="last">
             <a href="http://foodzie.com/newsletter_signup/" onclick="showNewsletterModal(); return false;">Join Mailing List</a>        </li-->
       </ul>
  </div>
  <div class="header-row2">
 <div class="nav-container">
+<logic:present name="provider">
     <ul id="nav">
         <li class="level0 nav-1 level-top first parent">
-<a href="category.vn?typeProduct=1"
+<a href="/displayInfo.vn"
           class="level-top">
 
 <span class="white-text">Thông tin cửa hàng</span>
         </a>
         <a
-          href="category.vn?typeProduct=2"
+          href="/uploadLink.vn"
           class="level-top">
 
 <span class="white-text">Upload sản phẩm</span>
@@ -65,6 +66,7 @@ Tiếng Anh
 <span class="white-text">Đơn hàng</span>
         </a>
 </ul>
+</logic:present>
 </div>
 <form id="search_mini_form" action="#" method="get">
 <fieldset class="form-search">
