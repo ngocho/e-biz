@@ -33,6 +33,7 @@ import javax.jdo.annotations.PrimaryKey;
  * 1 : prepared food
  * 2 : cooked food
  * 3 : vegetable
+ * 4 : gia vi
  */
 @PersistenceCapable
 public class FoodType implements Serializable{

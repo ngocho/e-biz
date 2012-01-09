@@ -71,7 +71,13 @@ public class Food  implements Serializable{
     @Persistent
     private String url;   //luu duong dan hinh anh
     @Persistent
+    private String urlKey;   //luu duong dan hinh anh
+    @Persistent
     private Integer reviewer;
+    @Persistent
+    private Integer uploadDate;
+    @Persistent
+    private Integer isDisplay;
     /**
      * Get value of foodId.
      * @return the foodId
@@ -323,6 +329,48 @@ public class Food  implements Serializable{
      */
     public void setPricePromotion(Long pricePromotion) {
         this.pricePromotion = pricePromotion;
+    }
+    /**
+     * Get value of uploadDate.
+     * @return the uploadDate
+     */
+    public Integer getUploadDate() {
+        return uploadDate;
+    }
+    /**
+     * Set the value for uploadDate.
+     * @param uploadDate the uploadDate to set
+     */
+    public void setUploadDate(Integer uploadDate) {
+        this.uploadDate = uploadDate;
+    }
+    /**
+     * Get value of isDisplay.
+     * @return the isDisplay
+     */
+    public Integer getIsDisplay() {
+        return isDisplay;
+    }
+    /**
+     * Set the value for isDisplay.
+     * @param isDisplay the isDisplay to set
+     */
+    public void setIsDisplay(Integer isDisplay) {
+        this.isDisplay = isDisplay;
+    }
+    /**
+     * Get value of urlKey.
+     * @return the urlKey
+     */
+    public String getUrlKey() {
+        return urlKey;
+    }
+    /**
+     * Set the value for urlKey.
+     * @param urlKey the urlKey to set
+     */
+    public void setUrlKey(String urlKey) {
+        this.urlKey = urlKey;
     }
     
     
