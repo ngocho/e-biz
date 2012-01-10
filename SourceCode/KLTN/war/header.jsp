@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
   pageEncoding="UTF-8"%>
-
+<%@taglib uri="http://java.sun.com/jstl/core" prefix="c"%>
 <div class="header">
   <div class="header-row1">
 
@@ -90,7 +90,16 @@ Tiếng Anh
 <span class="white-text">Cửa hàng</span>
         </a>
 
-</li>  
+</li> 
+  <c:if test="${user !=null}">
+    <li class="level0 nav-2 level-top parent">
+<a         href="customer.vn"
+            class="level-top">
+<span class="white-text">Tài khoản của bạn</span>
+        </a>
+</li>
+</c:if>
+
 </ul>
 </div>
 <form id="search_mini_form" action="#" method="get">
