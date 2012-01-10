@@ -26,7 +26,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import mobile.ebiz.blo.user.CustomerBLO;
+
+import mobile.ebiz.blo.MobileBLO;
 
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
@@ -36,6 +37,7 @@ import com.google.appengine.repackaged.org.json.JSONException;
 import com.google.appengine.repackaged.org.json.JSONObject;
 
 import ebiz.action.BaseAction;
+import ebiz.blo.customer.CustomerBLO;
 
 /**
  * @author ThuyNT
@@ -52,7 +54,7 @@ public class EmployeeInfo extends BaseAction {
 
         try {
             
-            objList = CustomerBLO.createEmployeeInfo();
+            objList = MobileBLO.createEmployeeInfo();
             out = response.getWriter();
             out.println(objList);
             out.flush();

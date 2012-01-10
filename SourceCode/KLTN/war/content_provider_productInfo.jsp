@@ -41,7 +41,7 @@ $(document).ready(function(){
 <logic:present name="providerProduct" >
 <logic:iterate id="element"  name="providerProduct">
 <tr>
-<td> <img src="/serveImage.vn?urlKey=<bean:write name="element" property="urlKey"/>" width="30" height="30"/></td>
+<td> <img src="<bean:write name="element" property="url"/>" width="30" height="30"/></td>
 <td> <bean:write name="element" property="id"/></td>
 <td> <bean:write name="element" property="name"/></td>
 <td><bean:write name="element" property="productTypeId"/></td>
