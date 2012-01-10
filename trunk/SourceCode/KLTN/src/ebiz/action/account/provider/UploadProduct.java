@@ -55,6 +55,9 @@ public class UploadProduct extends BaseAction {
         Food food = foodForm.getFood();
         System.out.println("ID pro"+food.getProviderID());
         System.out.println("ID pro"+food.getFoodStatusId());
+        food.setIsDisplay(1); //updated ( must edit : 0)
+        food.setNumberOrder(0);
+        food.setFoodPriceLevelId(FoodBLO.getFoodIdPrice(food.getPrice()));
         food.setIsDisplay(0);
         boolean flagUpload = FoodBLO.uploadFood(food);
         System.out.println("UPLOAD" +flagUpload);
