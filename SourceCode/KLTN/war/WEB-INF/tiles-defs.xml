@@ -55,9 +55,16 @@
         <put name="left" value="/left_category.jsp" />
         <put name="content" value="/content_category.jsp" />
     </definition>
+    
     <definition name="shopping" extends="baseLayout1">
      <put name="content" value="/content_shopping.jsp" />
     </definition>
+    
+      <definition name="shopping_detail" extends="baseLayout">
+      <put name="title" value="Provider Home" />
+      <put name="content" value="/content_detailShopping.jsp" />
+     </definition>
+     
      <definition name="uploadImage" extends="baseLayout1">
         <put name="title" value="Shopping Cart" />
         <put name="content" value="/content_provider_uploadProduct.jsp" />
@@ -123,7 +130,6 @@
     <definition name="product" extends="baseLayout">
         <put name="title"  value="Detail Product" />
         <put name="content"   value="/content_product.jsp" />
-        <put name="right"   value="/right.jsp" />
         <put name="left"   value="/blank.jsp" />
     </definition>
     <definition name="home" extends="baseLayout">
