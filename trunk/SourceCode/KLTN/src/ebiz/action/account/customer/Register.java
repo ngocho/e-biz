@@ -40,19 +40,24 @@ public class Register extends BaseAction {
 
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
-       
+
         // after checked validation using xml file
         LoginForm user = (LoginForm) form;
+
+        // check password
+        if (!user.getLoginPassword().equals(user.getLoginPasswordPre())) {
+            ActionMessages messages = new ActionMessages();
+            messages.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage("password.notmatch"));
+            saveMessages(request, messages); // storing messages as request attributes
+            return mapping.findForward(FAILURE);
+        }
         Customer register = user.getCustomer();
         boolean flag;
 
         flag = CustomerBLO.registerCustomer(register);
-        Customer obj = CustomerBLO.getCustomerByID(register.getCustomerId());
-        flag = CustomerBLO.registerCustomer(obj);
-      
         if (flag) {
 
-            //send mail  --> use task queue
+            // send mail --> use task queue
             SendMail.registerSuccess(user.getEmail());
 
             return mapping.findForward(SUCCESS);
