@@ -20,14 +20,21 @@ package ebiz.form;
 
 import java.util.Date;
 
+import org.apache.struts.validator.ValidatorForm;
+
 import ebiz.blo.customer.CustomerBLO;
+import ebiz.dto.account.customer.Address;
+import ebiz.dto.account.customer.Customer;
 import ebiz.dto.checkout.OrderBill;
+import ebiz.util.CommonConstant;
 
 /**
  * @author Administrator
  *
  */
-public class OrderBillForm {
+public class OrderBillForm extends ValidatorForm{
+    /**  . */
+    private static final long serialVersionUID = 1L;
     private Long id;
     private String idCustomer;
     private String nameCustomer;
@@ -41,6 +48,12 @@ public class OrderBillForm {
     private Integer numberProduct;
     private String phoneWebsite;
     private String idEmployee;
+    private String homeNumber;
+    private String streetName;
+    private String wardName;
+    private String districtName;
+    private String buildingName;
+    private String note; //bill 
     
     public void editForm(OrderBill order){
         id = order.getId();
@@ -53,6 +66,37 @@ public class OrderBillForm {
         sumPrice = order.getSumPrice();
         status = order.getStatus();
         idEmployee = order.getIdEmployee();
+    }
+    public OrderBill getOrder(){
+        OrderBill order = new OrderBill();
+        order.setIdCustomer(this.idCustomer);
+        order.setIdCustomer(this.address);
+       
+        order.setEmail(this.email);
+        order.setPhone(this.phone);
+        order.setStatus(CommonConstant.BILLSTATUS_1); // chua giao
+        order.setDateOrder(new Date());
+        Address add = new Address();
+        add.setBuildingName(this.buildingName);
+        add.setDistrictName(this.districtName);
+        add.setHomeNumber(this.homeNumber);
+        add.setStreetName(this.streetName);
+        add.setWardName(this.wardName);
+        order.setAddress(add);
+        return order;
+    }
+    
+    
+    public void editCustomer(Customer user){
+        idCustomer = user.getCustomerId();
+        nameCustomer = user.getCustomerName();
+        phone = user.getCustomerPhone();
+        email = user.getCustomerEmail();
+        this.buildingName = user.getCustomerAddress().getBuildingName();
+        this.districtName = user.getCustomerAddress().getDistrictName();
+        this.homeNumber = user.getCustomerAddress().getHomeNumber();
+        this.streetName = user.getCustomerAddress().getStreetName();
+        this.wardName = user.getCustomerAddress().getWardName();
     }
     /**
      * Get value of id.
@@ -235,6 +279,90 @@ public class OrderBillForm {
      */
     public void setIdEmployee(String idEmployee) {
         this.idEmployee = idEmployee;
+    }
+    /**
+     * Get value of homeNumber.
+     * @return the homeNumber
+     */
+    public String getHomeNumber() {
+        return homeNumber;
+    }
+    /**
+     * Set the value for homeNumber.
+     * @param homeNumber the homeNumber to set
+     */
+    public void setHomeNumber(String homeNumber) {
+        this.homeNumber = homeNumber;
+    }
+    /**
+     * Get value of streetName.
+     * @return the streetName
+     */
+    public String getStreetName() {
+        return streetName;
+    }
+    /**
+     * Set the value for streetName.
+     * @param streetName the streetName to set
+     */
+    public void setStreetName(String streetName) {
+        this.streetName = streetName;
+    }
+    /**
+     * Get value of wardName.
+     * @return the wardName
+     */
+    public String getWardName() {
+        return wardName;
+    }
+    /**
+     * Set the value for wardName.
+     * @param wardName the wardName to set
+     */
+    public void setWardName(String wardName) {
+        this.wardName = wardName;
+    }
+    /**
+     * Get value of districtName.
+     * @return the districtName
+     */
+    public String getDistrictName() {
+        return districtName;
+    }
+    /**
+     * Set the value for districtName.
+     * @param districtName the districtName to set
+     */
+    public void setDistrictName(String districtName) {
+        this.districtName = districtName;
+    }
+    /**
+     * Get value of buildingName.
+     * @return the buildingName
+     */
+    public String getBuildingName() {
+        return buildingName;
+    }
+    /**
+     * Set the value for buildingName.
+     * @param buildingName the buildingName to set
+     */
+    public void setBuildingName(String buildingName) {
+        this.buildingName = buildingName;
+    }
+    /**
+     * Get value of note.
+     * @return the note
+     */
+    public String getNote() {
+        return note;
+    }
+    /**
+     * Set the value for note.
+     * @param note the note to set
+     */
+    public void setNote(String note) {
+        this.note = note;
     }
 
 }
