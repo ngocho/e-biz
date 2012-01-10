@@ -14,6 +14,8 @@
             </intent-filter>
         </activity>
         <activity android:name="kltn.client.android_client.activity.MainActivity"></activity>
+        <activity android:name="kltn.client.android_client.activity.registerActivity"></activity>
+        <activity android:name="kltn.client.android_client.activity.imageActivity"></activity>
 
     </application>
 </manifest>

@@ -177,88 +177,180 @@ public final class R {
         public static final int yellow_green=0x7f040040;
     }
     public static final class drawable {
-        public static final int back=0x7f020000;
-        public static final int btn_ads_close=0x7f020001;
-        public static final int btn_ads_close_over=0x7f020002;
-        public static final int button_bg_s=0x7f020003;
-        public static final int button_bg_us=0x7f020004;
-        public static final int button_exit=0x7f020005;
-        public static final int button_login=0x7f020006;
-        public static final int button_register=0x7f020007;
-        public static final int exit=0x7f020008;
-        public static final int icon=0x7f020009;
-        public static final int icon_female=0x7f02000a;
-        public static final int icon_male=0x7f02000b;
-        public static final int icon_person=0x7f02000c;
-        public static final int map_bg_popup_title_bar=0x7f02000d;
-        public static final int nm_city_bg=0x7f02000e;
-        public static final int nm_index_tab_spec=0x7f02000f;
-        public static final int nm_login_btn_login=0x7f020010;
-        public static final int nm_login_btn_login_over=0x7f020011;
-        public static final int nm_login_btn_registry=0x7f020012;
-        public static final int nm_login_btn_registry_over=0x7f020013;
-        public static final int nm_tabbottom=0x7f020014;
-        public static final int nm_tabselect=0x7f020015;
-        public static final int nm_tabunselect=0x7f020016;
-        public static final int title_background_button=0x7f020017;
+        public static final int app_setting=0x7f020000;
+        public static final int back=0x7f020001;
+        public static final int btn_ads_close=0x7f020002;
+        public static final int btn_ads_close_over=0x7f020003;
+        public static final int btn_back=0x7f020004;
+        public static final int btn_back_over=0x7f020005;
+        public static final int button_back=0x7f020006;
+        public static final int button_bg_s=0x7f020007;
+        public static final int button_bg_us=0x7f020008;
+        public static final int button_exit=0x7f020009;
+        public static final int button_login=0x7f02000a;
+        public static final int button_register=0x7f02000b;
+        public static final int button_save=0x7f02000c;
+        public static final int detail_tabbottom=0x7f02000d;
+        public static final int detail_tabselect=0x7f02000e;
+        public static final int detail_tabunselect=0x7f02000f;
+        public static final int edittext=0x7f020010;
+        public static final int exit=0x7f020011;
+        public static final int icon=0x7f020012;
+        public static final int icon_favarous=0x7f020013;
+        public static final int icon_female=0x7f020014;
+        public static final int icon_home=0x7f020015;
+        public static final int icon_male=0x7f020016;
+        public static final int icon_net=0x7f020017;
+        public static final int icon_person=0x7f020018;
+        public static final int icon_setting=0x7f020019;
+        public static final int map_bg_popup_title_bar=0x7f02001a;
+        public static final int map_menubar=0x7f02001b;
+        public static final int nm_buy_btn=0x7f02001c;
+        public static final int nm_city_bg=0x7f02001d;
+        public static final int nm_counter_bg=0x7f02001e;
+        public static final int nm_deal_bg=0x7f02001f;
+        public static final int nm_diachi_bg=0x7f020020;
+        public static final int nm_edittext=0x7f020021;
+        public static final int nm_giaca=0x7f020022;
+        public static final int nm_gtgdgiaca=0x7f020023;
+        public static final int nm_index_btn_login=0x7f020024;
+        public static final int nm_index_btn_login_over=0x7f020025;
+        public static final int nm_index_tab_spec=0x7f020026;
+        public static final int nm_item_bg=0x7f020027;
+        public static final int nm_login_btn_login=0x7f020028;
+        public static final int nm_login_btn_login_over=0x7f020029;
+        public static final int nm_login_btn_registry=0x7f02002a;
+        public static final int nm_login_btn_registry_over=0x7f02002b;
+        public static final int nm_tabbottom=0x7f02002c;
+        public static final int nm_tabselect=0x7f02002d;
+        public static final int nm_tabunselect=0x7f02002e;
+        public static final int nm_time=0x7f02002f;
+        public static final int nm_timer_bg=0x7f020030;
+        public static final int person_icon=0x7f020031;
+        public static final int search=0x7f020032;
+        public static final int title_background_button=0x7f020033;
+        public static final int toolbar_btn=0x7f020034;
+        public static final int toolbar_btn_over=0x7f020035;
     }
     public static final class id {
-        public static final int button1=0x7f06000b;
-        public static final int button2=0x7f06000a;
-        public static final int button3=0x7f060006;
-        public static final int button4=0x7f060007;
-        public static final int button5=0x7f060008;
+        public static final int btn_main_best=0x7f060008;
+        public static final int btn_main_lastest=0x7f060007;
+        public static final int btn_main_nearest=0x7f060006;
+        public static final int button1=0x7f06000e;
+        public static final int button2=0x7f060011;
+        public static final int button3=0x7f060012;
         public static final int button6=0x7f060002;
-        public static final int comment_item_add=0x7f060013;
-        public static final int comment_item_date=0x7f060011;
-        public static final int comment_item_des=0x7f060010;
-        public static final int comment_item_show=0x7f060012;
-        public static final int comment_item_username=0x7f06000f;
-        public static final int editText1=0x7f06000d;
-        public static final int editText2=0x7f060018;
-        public static final int imageView1=0x7f06000e;
-        public static final int imageView2=0x7f060021;
+        public static final int button7=0x7f06000b;
+        public static final int comment_item_add=0x7f060018;
+        public static final int comment_item_date=0x7f060016;
+        public static final int comment_item_des=0x7f060015;
+        public static final int comment_item_show=0x7f060017;
+        public static final int comment_item_username=0x7f060014;
+        public static final int detail_back=0x7f060019;
+        public static final int detail_food_buyprice=0x7f06002d;
+        public static final int detail_food_count=0x7f060032;
+        public static final int detail_food_hour=0x7f06001d;
+        public static final int detail_food_minute=0x7f06001e;
+        public static final int detail_food_ok=0x7f06002f;
+        public static final int detail_food_price=0x7f060026;
+        public static final int detail_food_second=0x7f06001f;
+        public static final int detail_food_sub=0x7f060028;
+        public static final int detail_food_tab_comment=0x7f060035;
+        public static final int detail_food_tab_contact=0x7f060036;
+        public static final int detail_food_tab_content=0x7f060033;
+        public static final int detail_food_tab_image=0x7f060034;
+        public static final int detail_title=0x7f06001a;
+        public static final int editText1=0x7f060010;
+        public static final int editText2=0x7f06004e;
+        public static final int imageView1=0x7f060013;
+        public static final int imageView2=0x7f060058;
+        public static final int image_activity_back=0x7f060039;
+        public static final int image_activity_content=0x7f060038;
+        public static final int image_activity_gallery=0x7f060037;
+        public static final int image_activity_number=0x7f06003b;
+        public static final int image_activity_save=0x7f06003a;
+        public static final int item_buyer_best_buycount=0x7f060040;
+        public static final int item_buyer_best_date=0x7f060043;
+        public static final int item_buyer_best_gt=0x7f06003c;
+        public static final int item_buyer_best_image=0x7f060042;
+        public static final int item_buyer_best_name=0x7f060041;
+        public static final int item_buyer_best_price=0x7f06003d;
+        public static final int item_buyer_best_pricesub=0x7f06003e;
+        public static final int item_buyer_date_buyprice=0x7f06003f;
+        public static final int item_buyer_date_hou=0x7f060046;
+        public static final int item_buyer_date_image=0x7f060045;
+        public static final int item_buyer_date_mi=0x7f060047;
+        public static final int item_buyer_date_name=0x7f060044;
+        public static final int item_buyer_date_ok=0x7f060049;
+        public static final int item_buyer_date_price=0x7f06004a;
+        public static final int item_buyer_date_se=0x7f060048;
         public static final int layout_tab_host=0x7f060009;
         public static final int linearLayout1=0x7f060004;
+        public static final int linearLayout10=0x7f060023;
+        public static final int linearLayout11=0x7f060024;
+        public static final int linearLayout12=0x7f060027;
+        public static final int linearLayout13=0x7f060029;
+        public static final int linearLayout14=0x7f06002a;
+        public static final int linearLayout15=0x7f06002b;
+        public static final int linearLayout16=0x7f06002e;
+        public static final int linearLayout17=0x7f060030;
         public static final int linearLayout2=0x7f060005;
         public static final int linearLayout3=0x7f060003;
         public static final int linearLayout4=0x7f060000;
-        public static final int listView1=0x7f06000c;
-        public static final int login_exit=0x7f060015;
-        public static final int login_ok=0x7f060019;
-        public static final int login_password=0x7f060017;
-        public static final int login_register=0x7f06001a;
-        public static final int login_username=0x7f060016;
-        public static final int register_address=0x7f060025;
-        public static final int register_back=0x7f06001b;
-        public static final int register_birthday=0x7f060026;
-        public static final int register_check=0x7f060027;
-        public static final int register_female=0x7f060022;
-        public static final int register_fullname=0x7f06001f;
-        public static final int register_mail=0x7f060023;
-        public static final int register_male=0x7f060020;
-        public static final int register_nickname=0x7f06001c;
-        public static final int register_ok=0x7f060028;
-        public static final int register_password=0x7f06001e;
-        public static final int register_phone=0x7f060024;
+        public static final int linearLayout5=0x7f06000a;
+        public static final int linearLayout6=0x7f06001b;
+        public static final int linearLayout7=0x7f060020;
+        public static final int linearLayout8=0x7f06001c;
+        public static final int linearLayout9=0x7f060022;
+        public static final int listView1=0x7f06000f;
+        public static final int list_lasttest=0x7f060061;
+        public static final int login_exit=0x7f06004b;
+        public static final int login_ok=0x7f06004f;
+        public static final int login_password=0x7f06004d;
+        public static final int login_register=0x7f060050;
+        public static final int login_username=0x7f06004c;
+        public static final int menu_login=0x7f06000c;
+        public static final int menu_setting=0x7f06000d;
+        public static final int register_address=0x7f06005c;
+        public static final int register_back=0x7f060051;
+        public static final int register_birthday=0x7f06005d;
+        public static final int register_check=0x7f06005e;
+        public static final int register_female=0x7f060059;
+        public static final int register_fullname=0x7f060056;
+        public static final int register_mail=0x7f06005a;
+        public static final int register_male=0x7f060057;
+        public static final int register_nickname=0x7f060053;
+        public static final int register_ok=0x7f06005f;
+        public static final int register_password=0x7f060055;
+        public static final int register_phone=0x7f06005b;
+        public static final int scrollView1=0x7f060052;
+        public static final int tab_detail_image_gallery=0x7f060060;
         public static final int textView1=0x7f060001;
-        public static final int textView2=0x7f060014;
-        public static final int textView3=0x7f06001d;
+        public static final int textView2=0x7f06002c;
+        public static final int textView3=0x7f060054;
+        public static final int textView4=0x7f060031;
+        public static final int textView5=0x7f060021;
+        public static final int textView6=0x7f060025;
     }
     public static final class layout {
-        public static final int activity_main=0x7f030000;
-        public static final int comment_content=0x7f030001;
-        public static final int comment_item=0x7f030002;
-        public static final int comment_user_item=0x7f030003;
-        public static final int item_buyer_best=0x7f030004;
-        public static final int item_buyer_date=0x7f030005;
-        public static final int item_buyer_nearest=0x7f030006;
-        public static final int login_content=0x7f030007;
-        public static final int main=0x7f030008;
-        public static final int register_content=0x7f030009;
-        public static final int tab_best=0x7f03000a;
-        public static final int tab_lastest=0x7f03000b;
-        public static final int tab_nearest=0x7f03000c;
+        public static final int about_activity=0x7f030000;
+        public static final int activity_main=0x7f030001;
+        public static final int comment_content=0x7f030002;
+        public static final int comment_item=0x7f030003;
+        public static final int comment_user_item=0x7f030004;
+        public static final int contact_activity=0x7f030005;
+        public static final int detail_food_activity=0x7f030006;
+        public static final int image_activity=0x7f030007;
+        public static final int item_buyer_best=0x7f030008;
+        public static final int item_buyer_date=0x7f030009;
+        public static final int item_buyer_nearest=0x7f03000a;
+        public static final int login_content=0x7f03000b;
+        public static final int main=0x7f03000c;
+        public static final int register_content=0x7f03000d;
+        public static final int tab_best=0x7f03000e;
+        public static final int tab_detail_image=0x7f03000f;
+        public static final int tab_lastest=0x7f030010;
+        public static final int tab_nearest=0x7f030011;
     }
     public static final class string {
         public static final int app_name=0x7f050001;
@@ -280,4 +372,25 @@ public final class R {
         public static final int register_sex=0x7f050006;
         public static final int register_title=0x7f050002;
     }
+    public static final class styleable {
+        /** Attributes that can be used with a GalleryTheme.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #GalleryTheme_android_galleryItemBackground kltn.android.client:android_galleryItemBackground}</code></td><td></td></tr>
+           </table>
+           @see #GalleryTheme_android_galleryItemBackground
+         */
+        public static final int[] GalleryTheme = {
+            0x0101004c
+        };
+        /**
+          <p>This symbol is the offset where the {@link kltn.android.client.R.attr#android_galleryItemBackground}
+          attribute's value can be found in the {@link #GalleryTheme} array.
+          @attr name android:android_galleryItemBackground
+        */
+        public static final int GalleryTheme_android_galleryItemBackground = 0;
+    };
 }

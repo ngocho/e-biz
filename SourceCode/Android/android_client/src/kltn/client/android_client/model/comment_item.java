@@ -3,7 +3,6 @@
  */
 package kltn.client.android_client.model;
 
-import android.R.string;
 import android.net.Uri;
 
 /**
