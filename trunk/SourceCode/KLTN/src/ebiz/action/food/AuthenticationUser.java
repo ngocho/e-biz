@@ -22,19 +22,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import ebiz.blo.customer.CustomerBLO;
-
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import ebiz.action.BaseAction;
-import ebiz.dto.account.customer.Address;
+import ebiz.blo.customer.CustomerBLO;
 import ebiz.dto.account.customer.Customer;
 import ebiz.form.LoginForm;
+import ebiz.form.OrderBillForm;
 import ebiz.form.ShoppingCart;
 import ebiz.util.CommonConstant;
-import ebiz.util.CommonUtil;
 
 /**
  * @author ThuyNT
@@ -44,9 +42,9 @@ import ebiz.util.CommonUtil;
        
         public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
                 HttpServletResponse response) throws Exception {
-            String type = request.getParameter("type");
-            System.out.println("TYPE@@@@@"+type);
-            if(type.equals("0")){ //checkout
+//            String type = request.getParameter("type");
+//            System.out.println("TYPE@@@@@"+type);
+//            if(type.equals("0")){ //checkout
                 HttpSession se = request.getSession();
                 ShoppingCart shop  = (ShoppingCart)se.getAttribute(CommonConstant.SHOPPING);
                 LoginForm user = (LoginForm)se.getAttribute("user");
@@ -56,8 +54,15 @@ import ebiz.util.CommonUtil;
                 if(user !=null){
                     //put attributes into LoginForm
                     Customer customer = CustomerBLO.getCustomerByID(user.getLoginId());
-                    user.editForm(customer);
-                    shop.setUser(user);
+                    OrderBillForm orderForm = shop.getOrder();
+                    if(orderForm == null){
+                        orderForm = new OrderBillForm();
+                    }
+                    orderForm.editCustomer(customer);
+                    shop.setOrder(orderForm);
+                    se.setAttribute("bill", orderForm);
+//                    shop.setUser(user);
+                    
                     return mapping.findForward(SUCCESS); // transfer action : create Bill
                 }
                 else{
@@ -66,8 +71,8 @@ import ebiz.util.CommonUtil;
                     request.setAttribute("type", 1);
                     return mapping.findForward(INPUT);
                 }
-            }
-            return mapping.findForward(FAILURE);
+//            }
+//            return mapping.findForward(FAILURE);
         }
         
 
