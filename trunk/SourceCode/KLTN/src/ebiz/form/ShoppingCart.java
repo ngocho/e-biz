@@ -35,6 +35,16 @@ public class ShoppingCart implements java.io.Serializable{
     private List<FoodForm> products;
     private Integer count;   // number of bought product
     private Long total;      // paid money
+    private OrderBillForm order;
+    
+    public FoodForm getFood(Long id){
+        for(FoodForm food : products){
+            if(food.getId().equals(id)){
+                return food;
+            }
+        }
+        return null;
+    }
     
     public ShoppingCart(LoginForm user){
         this.user = user;
@@ -61,6 +71,15 @@ public class ShoppingCart implements java.io.Serializable{
         count = sum;
         return count;
     }
+    
+    public void sumMoney(){
+        long sumMoney = 0;
+        for(FoodForm food :products ){
+            sumMoney  = sumMoney + food.getPrice()*food.getNumber();
+        }
+        this.total = sumMoney;
+    }
+    
     /**
      * add food into shop
      * @param food
@@ -84,6 +103,11 @@ public class ShoppingCart implements java.io.Serializable{
        }
         count = products.size();
     }
+    
+    public boolean removeFood(FoodForm food){
+       return products.remove(food);
+         
+     }
     /**
      * increase number of product if exist in shop
      * @param id
@@ -165,5 +189,19 @@ public class ShoppingCart implements java.io.Serializable{
      * Get value of bill.
      * @return the bill
      */
+    /**
+     * Get value of order.
+     * @return the order
+     */
+    public OrderBillForm getOrder() {
+        return order;
+    }
+    /**
+     * Set the value for order.
+     * @param order the order to set
+     */
+    public void setOrder(OrderBillForm order) {
+        this.order = order;
+    }
 
 }
