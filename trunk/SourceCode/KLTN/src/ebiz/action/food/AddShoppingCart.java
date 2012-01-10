@@ -18,8 +18,6 @@
  */
 package ebiz.action.food;
 
-import java.io.PrintWriter;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -36,74 +34,56 @@ import ebiz.util.CommonUtil;
 
 /**
  * @author ThuyNT
- *
  */
-public class AddShoppingCart extends BaseAction {
-    
+public class AddShoppingSubmit extends BaseAction {
+
     /*
      * using ajax to call this action
      */
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
-        
-        response.setContentType("text/xml; charset=utf-8");
-        response.setCharacterEncoding("utf-8");
-        PrintWriter out=response.getWriter();
+
         boolean flag;
-       HttpSession se = request.getSession();
-       ShoppingCart shopCart =(ShoppingCart) se.getAttribute("shop");
-       String id = request.getParameter("id");
-       Long key = new Long(0);
-       String number = request.getParameter("number");
-       Integer count = Integer.parseInt(number);
-       System.out.println("ID"+id);
-       System.out.println("Number"+number);
-       if(!CommonUtil.isBlankOrNull(id)){
-           key = Long.parseLong(id);
-       }
-       if(shopCart == null){
+        HttpSession se = request.getSession();
+        ShoppingCart shopCart = (ShoppingCart) se.getAttribute("shop");
+        String id = request.getParameter("id");
+        Long key = new Long(0);
+//        String number = request.getParameter("number");
+        Integer count = 1;
+        System.out.println("ID" + id);
+        System.out.println("Number" + count);
+        if (!CommonUtil.isBlankOrNull(id)) {
+            key = Long.parseLong(id);
+        }
+        if (shopCart == null) {
             shopCart = new ShoppingCart();
         }
-       Integer numberInShop = shopCart.getNumberFood(key);
-      
-       try{
-        if(number!=null){
-            //if required product > product in shop
-            if(count >numberInShop){ 
-           //test in database, then add shopping
-            flag = FoodBLO.addShoppingCart( shopCart,id, count );
-            if(!flag){
-                
-                out.println("0");
-                return null;
+        Integer numberInShop = shopCart.getNumberFood(key);
+
+        if (id != null) {
+            // if required product > product in shop
+            if (count > numberInShop) {
+                // test in database, then add shopping
+                flag = FoodBLO.addShoppingCart(shopCart, id, count);
+                System.out.println("FLAG"+flag);
+                if (flag) {
+
+                    shopCart.size();
+
+                }
             }
-            shopCart.size();
-        }
-       
-        //if required product < product in shop
-        else{
-            shopCart.updateNumberFood(key, numberInShop + count);
-            shopCart.size();
-        }
-            
-            //set info of product into session
+
+            // if required product < product in shop
+            else {
+                shopCart.updateNumberFood(key, count + numberInShop);
+                shopCart.size();
+            }
+            // set info of product into session
             se.setAttribute(CommonConstant.SHOPPING, shopCart);
             System.out.println(se.getAttribute(CommonConstant.FOOD_DETAIL_PRODUCT));
             System.out.println("detail" + shopCart.getCount());
-            out.println(shopCart.getCount());
-            return null;
-        }
-       }
-        catch(Exception e)
-        {
-            
-        }
-        finally{
-            out.flush();
-            out.close();
-        }
-        
-        return null;
-    }
 
+        }
+        return mapping.findForward(SUCCESS);
+    }
 }
