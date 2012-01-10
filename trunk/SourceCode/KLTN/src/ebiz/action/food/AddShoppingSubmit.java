@@ -67,7 +67,6 @@ public class AddShoppingSubmit extends BaseAction {
             if (count > numberInShop) {
                 // test in database, then add shopping
                 flag = FoodBLO.addShoppingCart(shopCart, id, count);
-                System.out.println("FLAG"+flag);
                 if (flag) {
 
                     shopCart.size();
@@ -77,7 +76,7 @@ public class AddShoppingSubmit extends BaseAction {
 
             // if required product < product in shop
             else {
-                shopCart.updateNumberFood(key, count + numberInShop);
+                shopCart.updateNumberFood(key, numberInShop);
                 shopCart.size();
             }
             // set info of product into session

@@ -18,20 +18,15 @@
  */
 package ebiz.blo.common;
 
-import java.text.DateFormat;
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import ebiz.blo.food.FoodBLO;
 import ebiz.dao.gae.FoodDAO;
 import ebiz.dao.inf.IFoodDAO;
 import ebiz.dto.food.Food;
 import ebiz.dto.food.FoodAttribute;
 import ebiz.dto.food.FoodPriceLevel;
-import ebiz.dto.food.FoodPromotion;
-import ebiz.dto.food.FoodPromotionType;
 import ebiz.dto.food.FoodStatus;
 import ebiz.util.CommonConstant;
 
@@ -57,6 +52,7 @@ public class Initialize {
             food.setNumber(12);
             food.setPrice(new Long(i*2));
             food.setNumberOrder(0);
+            food.setIsDisplay(1);
             food.setProductAttributeId("1");
             food.setProviderID("NCC1");
             food.setReviewer(123);

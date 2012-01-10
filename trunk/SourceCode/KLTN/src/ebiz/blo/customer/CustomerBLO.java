@@ -21,6 +21,8 @@ package ebiz.blo.customer;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.appengine.repackaged.org.json.JSONObject;
+
 import ebiz.dao.gae.CustomerDAO;
 import ebiz.dao.gae.OrderDAO;
 import ebiz.dao.inf.ICustomerDAO;

@@ -18,12 +18,47 @@
  */
 package mobile.ebiz.xu;
 
+import java.io.Serializable;
+
+import javax.jdo.annotations.IdGeneratorStrategy;
+import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.Persistent;
+import javax.jdo.annotations.PrimaryKey;
+
 /**
  * @author Administrator
  *
  */
-public class IDXU {
-    private String id;
+@PersistenceCapable
+public class IDXU implements Serializable{
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	@PrimaryKey
+    @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
+	private String id;
+	@Persistent
     private Long money;
-
+	@Persistent
+	private String flag;
+	
+	public void setFlag(String flag){
+		this.flag=flag;
+	}
+	public String getFlag(){
+		return flag;
+	}
+	public String getId(){
+		return id;
+	}
+	public Long getMoney(){
+		return money;
+	}
+	public void setId(String mid){
+		this.id=mid;
+	}
+	public void setMoney(Long mmoney){
+		this.money=mmoney;
+	}
 }

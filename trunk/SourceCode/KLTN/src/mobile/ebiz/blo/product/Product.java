@@ -38,9 +38,8 @@ public class Product {
         JSONArray foodList = new JSONArray();
         List<FoodPromotion> foods = new ArrayList<FoodPromotion>();
         FoodDAO dao = new FoodDAO();
-        
         foods = dao.getListFoodPromotion();
-        for(FoodPromotion food : foods){
+        for (FoodPromotion food : foods) {
             JSONObject obj = new JSONObject();
             obj.put("id", food.getProductId());
             obj.put("name", food.getProductName());
@@ -51,20 +50,17 @@ public class Product {
         json.put("data", foodList);
         return json;
     }
-    
     public static JSONArray getFoodPromotionList() throws JSONException{
         JSONArray foodList = new JSONArray();
         List<FoodPromotion> foods = new ArrayList<FoodPromotion>();
         FoodDAO dao = new FoodDAO();
-        
         foods = dao.getListFoodPromotion();
-        for(FoodPromotion food : foods){
+        for (FoodPromotion food : foods) {
             JSONObject obj = new JSONObject();
             obj.put("id", food.getProductId());
             obj.put("name", food.getProductName());
             foodList.put(obj);
         }
-       
         return foodList;
     }
     public static JSONObject createFoodPromotion() throws JSONException{

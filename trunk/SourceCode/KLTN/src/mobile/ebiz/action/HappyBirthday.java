@@ -26,7 +26,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import mobile.ebiz.blo.user.CustomerBLO;
+
+import mobile.ebiz.blo.MobileBLO;
 
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
@@ -42,37 +43,24 @@ import ebiz.action.BaseAction;
  */
 public class HappyBirthday extends BaseAction {
 
-    public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
-            HttpServletResponse response) throws Exception {
-        response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out;
+	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out;
+		List<JSONObject> objList = new ArrayList<JSONObject>();
+		try {
 
-//        JSONObject json = new JSONObject();
-//        JSONObject jsonPhone = new JSONObject();
-        List<JSONObject> objList = new ArrayList<JSONObject>();
-
-        // call function get thong tin khuyen mai
-
-        try {
-            
-            objList = CustomerBLO.createHappyBirth();
-//            json.put(CommonConstant.PHONECUSTOMER, jsonPhone);
-//            json.put(arg0, arg1)
-//            jsonFood = Product.createFoodPromotion();
-//            json.put(CommonConstant.NAMEFOOD_PRO, jsonFood);
-            out = response.getWriter();
-            out.println(objList);
-            out.flush();
-        } catch (JSONException ex) {
-            // TODO Auto-generated catch block
-            ex.printStackTrace();
-        } catch (IOException ex) {
-            // TODO Auto-generated catch block
-            ex.printStackTrace();
-        }
-        
-
-        return mapping.findForward(null);
-
-    }
+			objList = MobileBLO.createHappyBirth();
+			out = response.getWriter();
+			out.println(objList);
+			out.flush();
+		} catch (JSONException ex) {
+			// TODO Auto-generated catch block
+			ex.printStackTrace();
+		} catch (IOException ex) {
+			// TODO Auto-generated catch block
+			ex.printStackTrace();
+		}
+		return mapping.findForward(null);
+	}
 }
