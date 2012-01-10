@@ -6,7 +6,7 @@
   <form-beans>
     <!-- <form-bean name="login" type="formBean.loginbean" /> -->
     <form-bean name="customer" type="ebiz.dto.account.customer.Customer" />
-
+    <form-bean name="order" type="ebiz.form.OrderBillForm" />
   </form-beans>
   <global-exceptions>
 
@@ -32,7 +32,7 @@
       type="ebiz.action.food.DisplayCategory" 
       scope="session" validate="false">
       <forward name="success" path="category" redirect="true" />
-      <forward name="failure" path="/home.jsp" redirect="true" />
+      <forward name="failure" path="/home.vn" redirect="true" />
     </action>
     <action 
       path="/categoryRecord"
@@ -53,11 +53,34 @@
       scope="session" validate="false">
       <forward name="success" path="shopping" redirect="true" />
     </action>
+    
+      <action 
+      path="/displayShoppingDetail"
+      type="ebiz.action.food.ShoppingFoodDetail" >
+      <forward name="success" path="shopping_detail" redirect="true" />
+    </action>
+    
+     <action 
+      path="/updateShopping"
+      type="ebiz.action.food.UpdateShoppingCart" >
+      <forward name="success" path="shopping" redirect="true" />
+       <forward name="failure" path="shopping_detail" redirect="true" />
+    </action>
+    
+     <action 
+      path="/deleteShoppingFood"
+      type="ebiz.action.food.DeleteFoodShop" >
+      <forward name="success" path="/home.vn" redirect="true" />
+        <forward name="failure" path="shopping" redirect="true" />
+    </action>
+    
+    
     <action 
       path="/addShoppingCart"
       type="ebiz.action.food.AddShoppingCart" 
       scope="session" validate="false">
     </action>
+    
      <action 
       path="/addShopping"
       type="ebiz.action.food.AddShoppingSubmit" 
@@ -80,7 +103,7 @@
      <action 
       path="/createBill"
       type="ebiz.action.food.CreateOrderBill" 
-      name="login"
+      name="order"
       scope="session" validate="false">
       <forward name="success" path="bill" redirect="true" />
       <forward name="input" path="loginLayout" redirect="true" />
