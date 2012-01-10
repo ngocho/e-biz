@@ -1,8 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  android:orientation="vertical" android:background="@color/white_smoke"
-  android:layout_width="fill_parent"
-  android:layout_height="fill_parent">
-    
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical" android:background="@drawable/nm_item_bg"
+	android:layout_width="fill_parent" android:layout_height="wrap_content">
+	<TextView android:text="TextView" android:textColor="@color/black"
+		android:id="@+id/item_buyer_date_name" android:layout_marginLeft="5dp"
+		android:layout_marginTop="15dp" android:textAppearance="?android:attr/textAppearanceMedium"
+		android:textSize="14dp" android:lines="2" android:layout_width="wrap_content"
+		android:layout_height="wrap_content"></TextView>
+	<LinearLayout android:id="@+id/linearLayout1"
+		android:layout_marginBottom="10dp" android:layout_width="fill_parent"
+		android:layout_height="wrap_content">
+		<ImageView android:id="@+id/item_buyer_date_image"
+			android:src="@drawable/btn_ads_close" android:layout_width="200dp"
+			android:layout_height="wrap_content"></ImageView>
+		<LinearLayout android:id="@+id/linearLayout2"
+			android:layout_width="fill_parent" android:layout_height="180dp"
+			android:orientation="vertical">
+			<LinearLayout android:id="@+id/linearLayout2"
+				android:background="@drawable/nm_counter_bg" android:layout_width="fill_parent"
+				android:layout_height="wrap_content" android:orientation="vertical"
+				android:gravity="center_horizontal">
+				<TextView android:text="Thời gian còn lại:"
+					android:textColor="@color/white" android:layout_marginTop="10dp"
+					android:textSize="13dp" android:id="@+id/textView2"
+					android:textAppearance="?android:attr/textAppearanceMedium"
+					android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
+				<LinearLayout android:id="@+id/linearLayout3"
+					android:layout_width="fill_parent" android:layout_height="wrap_content"
+					android:gravity="center_horizontal">
+					<TextView android:text="16" android:id="@+id/item_buyer_date_hou"
+						android:textColor="@color/orange_red" android:textAppearance="?android:attr/textAppearanceMedium"
+						android:layout_width="wrap_content" android:layout_height="wrap_content"
+						android:background="@drawable/nm_edittext"></TextView>
+					<TextView android:text="12" android:id="@+id/item_buyer_date_mi"
+						android:layout_marginLeft="5dp" android:textColor="@color/orange_red"
+						android:textAppearance="?android:attr/textAppearanceMedium"
+						android:background="@drawable/nm_edittext" android:layout_width="wrap_content"
+						android:layout_height="wrap_content"></TextView>
+					<TextView android:text="32" android:id="@+id/item_buyer_date_se"
+						android:background="@drawable/nm_edittext"
+						android:layout_marginLeft="5dp" android:textColor="@color/orange_red"
+						android:textAppearance="?android:attr/textAppearanceMedium"
+						android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
+				</LinearLayout>
+				<LinearLayout android:id="@+id/linearLayout4"
+					android:layout_width="fill_parent" android:layout_height="wrap_content"
+					android:gravity="center_horizontal">
+					<TextView android:text="giờ" android:id="@+id/textView4"
+						android:textSize="12dp" android:textAppearance="?android:attr/textAppearanceSmall"
+						android:textColor="@color/white" android:layout_width="wrap_content"
+						android:layout_height="wrap_content"></TextView>
+					<TextView android:text="phút" android:id="@+id/textView4"
+						android:layout_marginLeft="13dp" android:textSize="12dp"
+						android:textAppearance="?android:attr/textAppearanceSmall"
+						android:textColor="@color/white" android:layout_width="wrap_content"
+						android:layout_height="wrap_content"></TextView>
+					<TextView android:text="giây" android:id="@+id/textView4"
+						android:textSize="12dp" android:layout_marginLeft="10dp"
+						android:textAppearance="?android:attr/textAppearanceSmall"
+						android:textColor="@color/white" android:layout_width="wrap_content"
+						android:layout_height="wrap_content"></TextView>
+				</LinearLayout>
+				<Button android:layout_width="wrap_content"
+					android:layout_marginBottom="5dp" android:layout_marginTop="5dp"
+					android:textColor="@color/white" android:textStyle="bold"
+					android:layout_marginLeft="5dp" android:layout_marginRight="5dp"
+					android:text="Chi tiết" android:background="@drawable/nm_buy_btn"
+					android:id="@+id/item_buyer_date_ok" android:layout_height="wrap_content"></Button>
+			</LinearLayout>
+			<LinearLayout android:id="@+id/linearLayout2"
+				android:layout_marginTop="5dp" android:layout_width="fill_parent"
+				android:layout_height="fill_parent" android:layout_marginLeft="2dp"
+				android:orientation="vertical" android:gravity="center_horizontal">
+
+				<LinearLayout android:id="@+id/linearLayout6"
+					android:background="@color/black" android:layout_width="fill_parent"
+					android:layout_height="wrap_content" android:gravity="center_horizontal">
+					<TextView android:text="Giá trị: " android:id="@+id/textView4"
+						android:textSize="12dp" android:textAppearance="?android:attr/textAppearanceSmall"
+						android:textColor="@color/white" android:layout_width="wrap_content"
+						android:layout_height="wrap_content"></TextView>
+					<TextView android:text="giây" android:id="@+id/item_buyer_date_price"
+						android:textStyle="bold" android:textSize="12dp"
+						android:textAppearance="?android:attr/textAppearanceSmall"
+						android:textColor="@color/white" android:layout_width="wrap_content"
+						android:layout_height="wrap_content"></TextView>
+				</LinearLayout>
+				<LinearLayout android:id="@+id/linearLayout5"
+					android:background="@drawable/nm_gtgdgiaca" android:layout_width="fill_parent"
+					android:layout_height="wrap_content" android:orientation="vertical"
+					android:gravity="center_vertical|center_horizontal">
+					<TextView android:text="Còn lại        vnđ" android:id="@+id/textView4"
+						android:textColor="@color/white" android:textSize="12dp"
+						android:textAppearance="?android:attr/textAppearanceSmall"
+						android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
+					<TextView android:text="TextView" android:id="@+id/item_buyer_date_buyprice"
+						android:textAppearance="?android:attr/textAppearanceMedium"
+						android:textStyle="bold" android:textSize="14dp"
+						android:textColor="@color/white" android:layout_width="wrap_content"
+						android:layout_height="wrap_content"></TextView>
+				</LinearLayout>
+			</LinearLayout>
+		</LinearLayout>
+	</LinearLayout>
 </LinearLayout>

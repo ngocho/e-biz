@@ -48,7 +48,8 @@ public class happybirthday_thread extends TimerTask{
 				}};
 				send.start();
 				try {
-					send.sleep(10000);
+					//co van de cho nay
+					Thread.sleep(10000);
 					send.stop();
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
