@@ -157,6 +157,7 @@ public class FoodForm extends ValidatorForm implements Serializable{
         this.name = food.getFoodName();
         this.reviewer = food.getReviewer();
         this.url = food.getUrl();
+        this.urlKey = food.getUrlKey();
         this.number = food.getNumber();
         this.calo = food.getCalo();
         this.detail = food.getDetail();
