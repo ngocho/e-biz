@@ -82,6 +82,6 @@ public class CommonConstant {
     
     
     //DISPLAY PRODUCT DETAIL
-    public final static String FOOD_DETAIL_PRODUCT = "DetailProduct";  
+    public final static String FOOD_DETAIL_PRODUCT = "DetailProduct"; 
     
 }
