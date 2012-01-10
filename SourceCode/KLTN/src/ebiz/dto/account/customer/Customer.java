@@ -73,7 +73,7 @@ public class Customer  implements Serializable{
     @Persistent
     private Boolean isActive;
     @Persistent
-    private Long xuOnline;
+    private Long xuOnline;   // 100000 = 100k 
     
     /**
      * Get value of customerId.
