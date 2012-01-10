@@ -18,8 +18,6 @@
  */
 package ebiz.action.food;
 
-import java.io.PrintWriter;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -29,10 +27,7 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import ebiz.action.BaseAction;
-import ebiz.blo.food.FoodBLO;
-import ebiz.form.FoodForm;
 import ebiz.form.ShoppingCart;
-import ebiz.util.CommonConstant;
 
 /**
  * @author ThuyNT
@@ -46,7 +41,9 @@ public class DisplayShoppingCart extends BaseAction {
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
         
-       
+       HttpSession se = request.getSession();
+       ShoppingCart shop =(ShoppingCart)se.getAttribute("shop");
+       shop.sumMoney();
         return mapping.findForward(SUCCESS);
     }
 
