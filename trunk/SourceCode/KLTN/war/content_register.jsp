@@ -3,6 +3,7 @@
 <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
 <%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic"%>
+
 <div class="home-spot">
                                         <div class="account-create">
 
@@ -11,13 +12,11 @@
     </div>
     <html:form action="/registerAction.vn" method="get">
         <div class="fieldset">
-        <!--   <input type="hidden" name="type" id = "type" value="1" />
- -->            <h2 class="legend">Thông tin đăng nhập</h2>
+           <h2 class="legend">Thông tin đăng nhập</h2>
             
             <ul class="form-list">
             <li class="fields">
               <div class="field">
-           <!--  <input type="button" style="background:url(); background:#00CCFF" onclick="change()" id= "idLogin" value="Dùng email để đăng kí" /> -->
             </div>
             </li>
                 <li class="fields">
@@ -30,39 +29,44 @@
 
     </div>
     <html:errors property="usrinvalid" />
+    </div>
                 </li>
                 
                 <li class="fields">
                     <div class="field">
                         <label for="password" class="required"><em>*</em>Mật khẩu</label>
                         <div class="input-box">
-                            <html:text property="loginPassword" />
+                            <html:password property="loginPassword" />
 
                         </div>
                     </div>
                     <div class="field">
                         <label for="confirmation" class="required"><em>*</em>Nhập lại mật khẩu</label>
                         <div class="input-box">
-                           <html:text property="loginPasswordPre" />
+                           <html:password property="loginPasswordPre" />
                         </div>
                     </div>
 
                 </li>
                 <li>
+                <span style="color:red">
                 <logic:messagesPresent message="true">
    <html:messages id="message" message="true">
      <bean:write name="message"/><br/>
    </html:messages>
 </logic:messagesPresent>
+<html:messages id="error">
+<%= error%>
+</html:messages>
+</span>
                 
                 </li>                                                                   </ul>
         </div>
             <div class="fieldset">
 
-            <h2 class="legend">Thông tin khách hàng </span></h2> <span> 
+            <h2 class="legend">Thông tin khách hàng </h2>
             <ul class="form-list">
             <li class="fields">
-            <!--a href="" style="text-decoration:none; color:#990000"> Rút gọn </a> | <a href="" > Đầy đủ </a-->
             </li>
             <li class="fields">
                     <div class="field">
@@ -74,8 +78,6 @@
                         <label for="confirmation" class="required">Giới tính : </label></br>
                         Nữ  <html:radio property="gender" value="0" />&nbsp &nbsp &nbsp
                         Nam  <html:radio property="gender"  value="1" />
-                       <!-- <input type="radio" name="gender" value="female" checked="true"/>
-                       &nbsp &nbsp &nbsp <input type="radio" name="gender" value="male" /> Nam -->
                       
                     </li>
                 <li class="fields">
@@ -184,43 +186,18 @@
     </div>
 
 </div>
-<script type="text/javascript">
-//<![CDATA[
-    function toggleRememberMepopup(event){
-        if($('remember-me-popup')){
-            var viewportHeight = document.viewport.getHeight(),
-                docHeight      = $$('body')[0].getHeight(),
-                height         = docHeight > viewportHeight ? docHeight : viewportHeight;
-            $('remember-me-popup').toggle();
-            $('window-overlay').setStyle({ height: height + 'px' }).toggle();
-        }
-        Event.stop(event);
-    }
 
-    document.observe("dom:loaded", function() {
-        new Insertion.Bottom($$('body')[0], $('window-overlay'));
-        new Insertion.Bottom($$('body')[0], $('remember-me-popup'));
-
-        $$('.remember-me-popup-close').each(function(element){
-            Event.observe(element, 'click', toggleRememberMepopup);
-        })
-        $$('#remember-me-box a').each(function(element) {
-            Event.observe(element, 'click', toggleRememberMepopup);
-        });
-    });
-//]]>
-</script>
 </div>
  <button type="submit" title="Submit" style="margin-left:200px;" class="button">
     <span><span>Submit</span>
     </span>
   </button>
 <div class="buttons-set1">
-  <p class="buttons-set1 p.required">* Required Fields</p>
+  <p class="buttons-set1 p.required">*Yêu cầu nhập </p>
   <br />
   <p class="buttons-set1 p.back-link">
     <a href="https://demo.magentocommerce.com/customer/account/login/"
-      class="back-link"><small>&laquo; </small>Back</a>
+      class="back-link"><small>&laquo; </small>Trở lại</a>
   </p>
 
 </div>

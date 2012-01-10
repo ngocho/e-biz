@@ -102,7 +102,7 @@
     <logic:present name="Food">
       <logic:iterate id="element" name="Food">
         <a href="/displayProductDetail.vn?id=<bean:write name="element" property="id"/>"><img width="300" height="200"
-          src="<bean:write name="element" property="url"/>"
+          src="/serveImage.vn?urlKey=<bean:write name="element" property="urlKey"/>"
           alt="Slideshow Image 1" class="active" /> </a>
       </logic:iterate>
     </logic:present>

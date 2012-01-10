@@ -27,7 +27,7 @@
     <div class="field name-firstname">
         <label for="billing:firstname" class="required"><em>*</em>Họ và tên</label>
         <div class="input-box">
-        <html:text size="30" property="loginName"/>
+        <html:text size="30" property="nameCustomer"/>
         </div>
     </div>
 </div>
