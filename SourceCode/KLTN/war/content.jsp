@@ -12,12 +12,7 @@
         <div id='body'>
             <div id="bigPic">
             <logic:iterate id="element" name="promotionFood" >
-               <a href=""><img src="/serveImage.vn?urlKey=<bean:write name="element" property="urlKey"/>" alt="" /></a> 
-            <!--      <a href=""><img src="Images/Foods/2.jpg" alt="" /></a>
-                 <a href=""><img src="Images/Foods/3.jpg" alt="" /></a>
-                 <a href=""><img src="Images/Foods/4.jpg" alt="" /></a>
-                 <a href=""><img src="Images/Foods/5.jpg" alt="" /></a>
-                 <a href=""><img src="Images/Foods/6.jpg" alt="" /></a> -->
+               <a href=""><img src="/serveImage.vn?urlKey=<bean:write name="element" property="urlKey"/>" alt=""  /></a> 
             </logic:iterate>
             </div>
             
@@ -25,11 +20,6 @@
             <ul id="thumbs">
             <logic:iterate id="element" name="promotionFood" >
                 <li class='active' rel='1'><img src="/serveImage.vn?urlKey=<bean:write name="element" property="urlKey"/>" alt="" /></li>
-               <!--  <li rel='2'><img src="Images/Foods/2.jpg" alt="" /></li>
-                <li rel='3'><img src="Images/Foods/3.jpg" alt="" /></li>
-                <li rel='4'><img src="Images/Foods/4.jpg" alt="" /></li>
-                <li rel='5'><img src="Images/Foods/5.jpg" alt="" /></li>
-                <li rel='6'><img src="Images/Foods/6.jpg" alt="" /></li> -->
               </logic:iterate>  
             </ul>
         
@@ -98,18 +88,30 @@
 
 <table border="0" cellspacing="0">
     <tbody>
-    <logic:iterate id="element" name="promotionFood" >
+    
+
+     <logic:iterate id="element" name="promotionFood"  >
         <tr class="odd">
-            <td><a href="#"><img class="product-img" src="/serveImage.vn?urlKey=<bean:write name="element" property="urlKey"/>" border="0" height="120" width="160"></a>
-            <div class="product-description">
+       
+         <td><a href="#"><img  class="product-img" src="/serveImage.vn?urlKey=<bean:write name="element" property="urlKey"/>" border="0" height="200" width="300"   style="margin-right: 40px;"></a>
+            <div class="product-description" >
             <p><a href="#"><bean:write name="element" property="name"/>  </a></p>
-            <p><a href="/displayProductDetail.vn?id=<bean:write name="element" property="id" />"><img src="Images/Commons/xem.jpg" width="70"></img></a><!-- a class="link" href="#" >Xem hang </a> --></p>
-            <p><a href="/addShopping.vn?id=<bean:write name="element" property="id"/>"><img src="Images/Commons/mua.jpg" width="70"></img></a>
-            <p>
-            Xem tất cả <a href="#"></a>
+            <p>GIÁ ĐẶC BIỆT  <a href="#"><bean:write name="element" property="name"/>  </a></p>
+            <p><a href="/displayProductDetail.vn?id=<bean:write name="element" property="id" />"><img src="Images/Commons/xem.jpg" width="100"></img></a><!-- a class="link" href="#" >Xem hang </a> --></p>
+            <p><a href="/addShopping.vn?id=<bean:write name="element" property="id"/>"><img src="Images/Commons/mua.jpg" width="100"></img></a>
             </p>
             </div>
-       <!--      </td>
+            </td>
+            </tr>
+       </logic:iterate>  
+          <!--   <p>
+            Xem tất cả <a href="#"></a>
+            </p> -->
+     <%--        </div>
+              </td>
+               </logic:iterate>    
+            <% if((i%2==0)){ %>
+         
           <td><a href="http://localhost/magento/index.php/sony-vaio-vgn-txn27n-b-11-1-notebook-pc.html"><img class="product-img" src="Images/Foods/2.jpg" border="0" height="120" width="160"></a>
             <div class="product-description">
             <p><a href="http://localhost/magento/index.php/sony-vaio-vgn-txn27n-b-11-1-notebook-pc.html">Bí đỏ</a></p>
@@ -119,9 +121,11 @@
             Xem tất cả <a href="http://localhost/magento/index.php/electronics/computers/laptops.html">Rau</a>
             </p>
             </div>
-            </td> -->
-        </tr>
-        </logic:iterate>
+            </td> 
+    <%} %>
+  
+        </tr> --%>
+       
     </tbody>
 </table>
 </logic:present>
