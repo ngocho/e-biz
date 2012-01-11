@@ -103,26 +103,27 @@ ul,ol         { list-style:none; }
 
 
 /* Layout ================================================================================ */
-.wrapper { min-width:954px; }
+.wrapper { min-width:1000px; }
 .page {
     background:url(../Images/Commons/bkg_header.png) no-repeat;
 	position:relative;
+	width: 1000px;
 	/*background-position: 50% 0;*/
-	margin-left:0px;
-	margin-right:0px;
-
+	margin-left:auto;
+	margin-right:auto;
 	
 }
 .page-print { background:#fff; padding:25px 30px; text-align:left; }
 .page-empty { background:#fff; padding:20px; text-align:left; }
 .page-popup { background:#fff; padding:25px 30px; text-align:left; }
 .main-container {
-	
+	width : 1000px;
 	background-image: url(../Images/Commons/bkg_body.gif);
 	background-repeat: no-repeat;
 	background-position: 0% 0;
-	margin-right: 0px;
-	
+	margin-right: auto;
+	margin-left: auto;
+	text-align:left;
 }
 .main {
 	/*width:1000px;*/
@@ -140,10 +141,12 @@ ul,ol         { list-style:none; }
 }
 
 /* Base Columns */
-.col-left { float:left; width:195px; padding:0 0 1px; }
+.col-left { float:left; width:195px; padding:0 0 1px; background: blue; }
 .col-main {
+    margin-left: auto;
+    margin-right: auto;
 	float:left;
-	width:784px;
+	width:550px;
 	margin-top: 0px;
 	padding:0 0 1px;
 }/*685*/
@@ -1926,7 +1929,10 @@ text-decoration:none
 
 }
 .pankuzu {
+background: yellow;
+height : 20px;
 font-size:14px;
+text-align: left;
 font-weight:400;
 }
 .white-text{
@@ -2049,16 +2055,17 @@ div.price-slider li{width:342px;height:161px;float:left;list-style:none;backgrou
 	width:568px;
 	height:200px;
 	padding:1px;
-	border:1px solid #CCC;
+	/*border:1px solid #CCC;*/
 	background-color:#FFF;
 	margin-bottom:10px;
 	
 }
 #bigPic img{
- width:565px;
+    width:400px;
 	height:200px;
 	position:absolute;
 	display:none;
+	margin-left: 70px;
 }
 ul#thumbs li.active{
 	border:2px solid #000;	
