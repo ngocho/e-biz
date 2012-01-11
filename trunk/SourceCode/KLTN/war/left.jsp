@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
   pageEncoding="UTF-8"%>
-<div class="col-left side-col">
+<div class="col-left ">
 <p class="home-callout">
-<a href="#"><img src="Images/Commons/pano.jpg" width="200" height="200" border="0"></a>
+<a href="#"><img src="" width="200" height="200" border="0"></a>
 </p>
 <p class="home-callout">
 <img src="js/ph_callout_left_rebel.jpg" border="0">

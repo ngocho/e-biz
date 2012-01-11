@@ -94,16 +94,16 @@ $(function() {
         <!--div class="header-container"-->
         <tiles:insert attribute="header" />
 
-        <div class="main-container col2-right-layout">
-            <div class="main">
+        <div class="main-container ">
+           <!--  <div class="main"> -->
               <tiles:insert attribute ="pankuzu" />
+                <tiles:insert attribute="left" />
               <div class="col-main">
-                   <div class="std">
-                           <tiles:insert attribute="left" />
+              
                                       <tiles:insert attribute="content" />    
-                                          </div>                </div>
+                                          </div>     
  <tiles:insert attribute ="right" />
-          </div>
+         <!--  </div> -->
         </div>
       <tiles:insert attribute ="footer" />
   </div>
