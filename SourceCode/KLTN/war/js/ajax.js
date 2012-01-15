@@ -18,7 +18,7 @@ function  addToCart(quantity,idProduct){
         });
     
 }
-function  addToCart(quantity,idProduct){
+/*function  addToCart(quantity,idProduct){
     $.ajax({
         type: "GET",
         url: "/addShoppingCart.vn",
@@ -36,7 +36,7 @@ function  addToCart(quantity,idProduct){
         }
         });
     
-}
+}*/
 function  uploadImage(url){
     $.ajax({
         type: "GET",
