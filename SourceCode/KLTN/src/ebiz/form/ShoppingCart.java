@@ -41,8 +41,8 @@ public class ShoppingCart implements Serializable {
     private OrderBillForm order;
     /**
      * [get Food By ID in shopping cart].
-     * @param id				id of Food
-     * @return 					FoodForm
+     * @param id        id of Food
+     * @return          FoodForm
      */
     public FoodForm getFood(Long id) {
         for (FoodForm food : products) {
@@ -54,7 +54,7 @@ public class ShoppingCart implements Serializable {
     }
     /**
      * [isEmpty].
-     * @return					boolean
+     * @return          boolean
      */
     public boolean isEmpty() {
         if (products.isEmpty()) {
@@ -64,7 +64,7 @@ public class ShoppingCart implements Serializable {
     }
     /**
      * [size of Product List in Shopping].
-     * @return					int
+     * @return  int
      */
     public int size() {
         int sum = 0;
@@ -86,8 +86,8 @@ public class ShoppingCart implements Serializable {
     }
     /**
      * [add Food into Shopping Cart].
-     * @param food				FoodForm
-     * @param number			int
+     * @param food      FoodForm
+     * @param number    int
      */
     public void addFood(FoodForm food, int number) {
         food.setSubTotal(food.getPrice() * number);
@@ -96,7 +96,7 @@ public class ShoppingCart implements Serializable {
     }
     /**
      * [remove Food into Shopping Cart].
-     * @param id				Long
+     * @param id        Long
      */
     public void removeFood(Long id) {
        for (FoodForm food : products) {
@@ -124,8 +124,8 @@ public class ShoppingCart implements Serializable {
      }
     /**
      * [updateNumberFood].
-     * @param id	        Long
-     * @param number	    int
+     * @param id        Long
+     * @param number    int
      */
     public void updateNumberFood(Long  id, int number) {
         for (FoodForm food : products) {
@@ -137,8 +137,8 @@ public class ShoppingCart implements Serializable {
     }
     /**
      * [getNumberFood].
-     * @param id				Long
-     * @return 					int
+     * @param id   Long
+     * @return      int
      */
     public int getNumberFood(Long id) {
         for (FoodForm food : products) {
