@@ -18,8 +18,6 @@
  */
 package ebiz.dto.food;
 
-import java.io.Serializable;
-
 import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
@@ -33,20 +31,18 @@ import javax.jdo.annotations.PrimaryKey;
  * xac dinh status cua thuc pham : dang ban , khuyen mai,  het hsd, het hang,..
  * 1 : khuyến mãi
  * 2 : không khuyến mãi
- * 3 : hết hàng 
+ * 3 : hết hàng
  * 4 : upload len nhung chua duoc ban
- //* 5 : hết hạn sử dụng
+ * 5 : hết hạn sử dụng
  */
 @PersistenceCapable
-public class FoodStatus implements Serializable{
-    
-    /**  . */
-    private static final long serialVersionUID = 1L;
+public class FoodStatus {
 
+    /**ID  . */
     @PrimaryKey
     @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
     private String  foodStatusId;
-    
+    /** Name . */
     @Persistent
     private String foodStatusName;
     /**
@@ -77,6 +73,5 @@ public class FoodStatus implements Serializable{
     public void setFoodStatusName(String foodStatusName) {
         this.foodStatusName = foodStatusName;
     }
-    
 
 }

@@ -36,44 +36,51 @@ import ebiz.util.CommonConstant;
 
 /**
  * @author ThuyNT
- *
  */
-    public class AuthenticationUser extends BaseAction {
-       
-        public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
-                HttpServletResponse response) throws Exception {
-//            String type = request.getParameter("type");
-//            System.out.println("TYPE@@@@@"+type);
-//            if(type.equals("0")){ //checkout
-                HttpSession se = request.getSession();
-                ShoppingCart shop  = (ShoppingCart)se.getAttribute(CommonConstant.SHOPPING);
-                LoginForm user = (LoginForm)se.getAttribute("user");
-                if(shop.size() == 0){
-                    return mapping.findForward(FAILURE); 
-                }
-                if(user !=null){
-                    //put attributes into LoginForm
-                    Customer customer = CustomerBLO.getCustomerByID(user.getLoginId());
-                    OrderBillForm orderForm = shop.getOrder();
-                    if(orderForm == null){
-                        orderForm = new OrderBillForm();
-                    }
-                    orderForm.editCustomer(customer);
-                    shop.setOrder(orderForm);
-                    se.setAttribute("bill", orderForm);
-//                    shop.setUser(user);
-                    
-                    return mapping.findForward(SUCCESS); // transfer action : create Bill
-                }
-                else{
-                    // user didn't log-in
-                    System.out.println("REQUIRE LOGIN");
-                    request.setAttribute("type", 1);
-                    return mapping.findForward(INPUT);
-                }
-//            }
-//            return mapping.findForward(FAILURE);
+public class AuthenticationUser extends BaseAction {
+
+    /**
+     * [AuthenticationUser].
+     * @param mapping ActionMapping
+     * @param form ActionForm
+     * @param request HttpServletRequest
+     * @param response HttpServletResponse
+     * @return ActionForward
+     * @throws Exception Exception
+     * @see ActionForward Struts1 Framework
+     */
+    public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
+            HttpServletResponse response) throws Exception {
+        HttpSession se = request.getSession();
+        ShoppingCart shop = (ShoppingCart) se.getAttribute(CommonConstant.SHOPPING);
+        LoginForm user = (LoginForm) se.getAttribute("user");
+        if (shop == null) {
+            return mapping.findForward(FAILURE);
         }
-        
+        if (shop.size() == 0) {
+            return mapping.findForward(FAILURE);
+        }
+        if (user != null) {
+            // put attributes into OrderBillForm
+            Customer customer = CustomerBLO.getCustomerByID(user.getLoginId());
+            OrderBillForm orderForm = shop.getOrder();
+            if (orderForm == null) {
+                orderForm = new OrderBillForm();
+            }
+            // get attr from Customer
+            orderForm.editCustomer(customer);
+            // set Shopping Cart
+            shop.setOrder(orderForm);
+            // set into Session to display = name of bean in strust.config
+            se.setAttribute("order", orderForm);
+            // transfer action : creatRe Bill
+            return mapping.findForward(SUCCESS);
+        } else {
+            // user didn't log-in
+            System.out.println("REQUIRE LOGIN");
+            // request.setAttribute("type", 1);
+            return mapping.findForward(INPUT);
+        }
+    }
 
 }

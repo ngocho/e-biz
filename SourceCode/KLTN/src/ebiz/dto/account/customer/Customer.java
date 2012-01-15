@@ -18,7 +18,6 @@
  */
 package ebiz.dto.account.customer;
 
-import java.io.Serializable;
 import java.util.Date;
 
 import javax.jdo.annotations.IdGeneratorStrategy;
@@ -31,9 +30,8 @@ import javax.jdo.annotations.PrimaryKey;
  *
  */
 @PersistenceCapable
-public class Customer  implements Serializable{
-    /**  . */
-    private static final long serialVersionUID = 1L;
+public class Customer  {
+ 
     //ten dang nhap
     @PrimaryKey
     @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
@@ -55,25 +53,25 @@ public class Customer  implements Serializable{
     @Persistent
     private String customerType;            // khach hang binh thuong, thanh vien, vip
     @Persistent
-    private String customerService;
+    private long customerSumMoney;
     @Persistent
-    private Long customerSumMoney;
+    private int customerMark;           //tich luy diem
     @Persistent
-    private Integer customerMark;           //tich luy diem
+    private boolean isPay;                  // tra tien chua?
     @Persistent
-    private Boolean isPay;                  // tra tien chua?
-    @Persistent
-    private Long accountOnline;
+    private long accountOnline;
     @Persistent
     private String payOnlineType;      //  
     @Persistent
-    private Boolean isAdEmail;
+    private boolean isAdEmail;
     @Persistent
-    private Boolean isAdPhone;
+    private boolean isAdPhone;
     @Persistent
-    private Boolean isActive;
+    private boolean isActive;
     @Persistent
-    private Long xuOnline;   // 100000 = 100k 
+    private long xuOnline;   // 100000 = 100k 
+    @Persistent
+    private Date loginDate;
     
     /**
      * Get value of customerId.
@@ -202,31 +200,17 @@ public class Customer  implements Serializable{
         this.customerType = customerType;
     }
     /**
-     * Get value of customerService.
-     * @return the customerService
-     */
-    public String getCustomerService() {
-        return customerService;
-    }
-    /**
-     * Set the value for customerService.
-     * @param customerService the customerService to set
-     */
-    public void setCustomerService(String customerService) {
-        this.customerService = customerService;
-    }
-    /**
      * Get value of customerSumMoney.
      * @return the customerSumMoney
      */
-    public Long getCustomerSumMoney() {
+    public long getCustomerSumMoney() {
         return customerSumMoney;
     }
     /**
      * Set the value for customerSumMoney.
      * @param customerSumMoney the customerSumMoney to set
      */
-    public void setCustomerSumMoney(Long customerSumMoney) {
+    public void setCustomerSumMoney(long customerSumMoney) {
         this.customerSumMoney = customerSumMoney;
     }
     /**
@@ -247,28 +231,28 @@ public class Customer  implements Serializable{
      * Get value of isPay.
      * @return the isPay
      */
-    public Boolean getIsPay() {
+    public boolean getIsPay() {
         return isPay;
     }
     /**
      * Set the value for isPay.
      * @param isPay the isPay to set
      */
-    public void setIsPay(Boolean isPay) {
+    public void setIsPay(boolean isPay) {
         this.isPay = isPay;
     }
     /**
      * Get value of accountOnline.
      * @return the accountOnline
      */
-    public Long getAccountOnline() {
+    public long getAccountOnline() {
         return accountOnline;
     }
     /**
      * Set the value for accountOnline.
      * @param accountOnline the accountOnline to set
      */
-    public void setAccountOnline(Long accountOnline) {
+    public void setAccountOnline(long accountOnline) {
         this.accountOnline = accountOnline;
     }
     /**
@@ -289,57 +273,106 @@ public class Customer  implements Serializable{
      * Get value of isActive.
      * @return the isActive
      */
-    public Boolean getIsActive() {
+    public boolean getIsActive() {
         return isActive;
     }
     /**
      * Set the value for isActive.
      * @param isActive the isActive to set
      */
-    public void setIsActive(Boolean isActive) {
+    public void setIsActive(boolean isActive) {
         this.isActive = isActive;
     }
     /**
      * Get value of isAdEmail.
      * @return the isAdEmail
      */
-    public Boolean getIsAdEmail() {
+    public boolean getIsAdEmail() {
         return isAdEmail;
     }
     /**
      * Set the value for isAdEmail.
      * @param isAdEmail the isAdEmail to set
      */
-    public void setIsAdEmail(Boolean isAdEmail) {
+    public void setIsAdEmail(boolean isAdEmail) {
         this.isAdEmail = isAdEmail;
     }
     /**
      * Get value of isAdPhone.
      * @return the isAdPhone
      */
-    public Boolean getIsAdPhone() {
+    public boolean getIsAdPhone() {
         return isAdPhone;
     }
     /**
      * Set the value for isAdPhone.
      * @param isAdPhone the isAdPhone to set
      */
-    public void setIsAdPhone(Boolean isAdPhone) {
+    public void setIsAdPhone(boolean isAdPhone) {
         this.isAdPhone = isAdPhone;
     }
     /**
      * Get value of xuOnline.
      * @return the xuOnline
      */
-    public Long getXuOnline() {
+    public long getXuOnline() {
         return xuOnline;
     }
     /**
      * Set the value for xuOnline.
      * @param xuOnline the xuOnline to set
      */
-    public void setXuOnline(Long xuOnline) {
+    public void setXuOnline(long xuOnline) {
         this.xuOnline = xuOnline;
+    }
+    /**
+     * Get value of loginDate.
+     * @return the loginDate
+     */
+    public Date getLoginDate() {
+        return loginDate;
+    }
+    /**
+     * Set the value for loginDate.
+     * @param loginDate the loginDate to set
+     */
+    public void setLoginDate(Date loginDate) {
+        this.loginDate = loginDate;
+    }
+    /**
+     * Set the value for customerMark.
+     * @param customerMark the customerMark to set
+     */
+    public void setCustomerMark(int customerMark) {
+        this.customerMark = customerMark;
+    }
+    /**
+     * Set the value for isPay.
+     * @param isPay the isPay to set
+     */
+    public void setPay(boolean isPay) {
+        this.isPay = isPay;
+    }
+    /**
+     * Set the value for isAdEmail.
+     * @param isAdEmail the isAdEmail to set
+     */
+    public void setAdEmail(boolean isAdEmail) {
+        this.isAdEmail = isAdEmail;
+    }
+    /**
+     * Set the value for isAdPhone.
+     * @param isAdPhone the isAdPhone to set
+     */
+    public void setAdPhone(boolean isAdPhone) {
+        this.isAdPhone = isAdPhone;
+    }
+    /**
+     * Set the value for isActive.
+     * @param isActive the isActive to set
+     */
+    public void setActive(boolean isActive) {
+        this.isActive = isActive;
     }
     
 }

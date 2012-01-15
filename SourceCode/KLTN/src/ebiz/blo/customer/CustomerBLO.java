@@ -21,6 +21,9 @@ package ebiz.blo.customer;
 import java.util.ArrayList;
 import java.util.List;
 
+import mobile.ebiz.xu.IDXU;
+import mobile.ebiz.xu.IDXUBLO;
+
 import com.google.appengine.repackaged.org.json.JSONObject;
 
 import ebiz.dao.gae.CustomerDAO;
@@ -112,6 +115,9 @@ public class CustomerBLO {
      * get Customer by ID
      */
     
+    public static List<Customer> getCustomerList(){
+        return custDao.getCustomerList();
+    }
     public static Customer getCustomerByID(String id){
         return custDao.getCustomerById(id);
         
@@ -259,4 +265,44 @@ public class CustomerBLO {
         }
         return formList;
     }
+    //checkout by Xu account
+    public static boolean checkoutXuOnline(String uid, long money){
+        Customer customer = custDao.getCustomerById(uid);
+        if(customer !=null){
+            long moneyXu = customer.getXuOnline();
+            if(moneyXu >= money){
+                customer.setXuOnline(moneyXu -money);
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public static long updateXuOnline(String idCustomer, String idXu){
+        IDXU xu = IDXUBLO.getXuById(idXu);
+        long money = 0;
+        //chua nap
+        if(xu.getFlag().equals("true")){
+            money = xu.getMoney();
+        }
+        //update xuOnline for customer
+        Customer customer = getCustomerByID(idCustomer);
+        
+        customer.setXuOnline(money);
+        if(updatecustomer(customer)){
+            xu.setFlag("false");
+            IDXUBLO.updateXu(xu);
+        }
+        return money;
+    }
+    
+//    public boolean isCheckoutXuOnline(long money, long moneyXu){
+//       
+//        if(moneyXu>=money){
+//            return true;
+//        }
+//        else{
+//            return false;
+//        }
+//    }
 }

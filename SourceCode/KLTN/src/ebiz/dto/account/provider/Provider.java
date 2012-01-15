@@ -18,7 +18,6 @@
  */
 package ebiz.dto.account.provider;
 
-import java.io.Serializable;
 import java.util.Date;
 
 import javax.jdo.annotations.IdGeneratorStrategy;
@@ -33,9 +32,8 @@ import ebiz.dto.account.customer.Address;
  *
  */
 @PersistenceCapable
-public class Provider  implements Serializable{
-    /**  . */
-    private static final long serialVersionUID = 1L;
+public class Provider {
+  
     //ten dang nhap
     @PrimaryKey
     @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
@@ -57,11 +55,17 @@ public class Provider  implements Serializable{
     @Persistent
     private String providerAccountPayment;   
     @Persistent
-    private Long xuOnline;
+    private long xuOnline;
     @Persistent
     private String authentication;
     @Persistent
     private Date loginDate; 
+    @Persistent
+    private Date dateRegister; 
+    @Persistent
+    private String detail; 
+    @Persistent
+    private boolean isActive;  //required
     /**
      * Get value of providerId.
      * @return the providerId
@@ -192,14 +196,14 @@ public class Provider  implements Serializable{
      * Get value of xuOnline.
      * @return the xuOnline
      */
-    public Long getXuOnline() {
+    public long getXuOnline() {
         return xuOnline;
     }
     /**
      * Set the value for xuOnline.
      * @param xuOnline the xuOnline to set
      */
-    public void setXuOnline(Long xuOnline) {
+    public void setXuOnline(long xuOnline) {
         this.xuOnline = xuOnline;
     }
     /**
@@ -229,6 +233,32 @@ public class Provider  implements Serializable{
      */
     public void setLoginDate(Date loginDate) {
         this.loginDate = loginDate;
+    }
+	public Date getDateRegister() {
+		return dateRegister;
+	}
+	public void setDateRegister(Date dateRegister) {
+		this.dateRegister = dateRegister;
+	}
+	public String getDetail() {
+		return detail;
+	}
+	public void setDetail(String detail) {
+		this.detail = detail;
+	}
+    /**
+     * Get value of isActive.
+     * @return the isActive
+     */
+    public boolean isActive() {
+        return isActive;
+    }
+    /**
+     * Set the value for isActive.
+     * @param isActive the isActive to set
+     */
+    public void setActive(boolean isActive) {
+        this.isActive = isActive;
     }
     
     

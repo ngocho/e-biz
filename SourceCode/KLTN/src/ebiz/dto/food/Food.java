@@ -18,7 +18,6 @@
  */
 package ebiz.dto.food;
 
-import java.io.Serializable;
 import java.util.Date;
 
 import javax.jdo.annotations.IdGeneratorStrategy;
@@ -32,9 +31,8 @@ import javax.jdo.annotations.PrimaryKey;
  */
 
 @PersistenceCapable
-public class Food  implements Serializable{
+public class Food  {
     
-    private static final long serialVersionUID = 1L;
     @PrimaryKey
     @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
     private Long foodId;
@@ -53,9 +51,9 @@ public class Food  implements Serializable{
     @Persistent
     private Date expDate;
     @Persistent
-    private Integer number;
+    private int number;
     @Persistent
-    private Integer numberOrder;
+    private int numberOrder;
     @Persistent
     private String detail;
     @Persistent
@@ -63,9 +61,9 @@ public class Food  implements Serializable{
     @Persistent
     private String calo;
     @Persistent
-    private Long price;
+    private long price;
     @Persistent
-    private Long pricePromotion;
+    private long pricePromotion;
     @Persistent
     private String providerID;  //nha cung cap
     @Persistent
@@ -73,11 +71,11 @@ public class Food  implements Serializable{
     @Persistent
     private String urlKey;   //luu duong dan hinh anh
     @Persistent
-    private Integer reviewer;
+    private int saleProduct;
     @Persistent
-    private Integer uploadDate;
+    private int uploadDate;
     @Persistent
-    private Integer isDisplay;
+    private int isDisplay;      //approved product 
     /**
      * Get value of foodId.
      * @return the foodId
@@ -194,14 +192,14 @@ public class Food  implements Serializable{
      * Get value of number.
      * @return the number
      */
-    public Integer getNumber() {
+    public int getNumber() {
         return number;
     }
     /**
      * Set the value for number.
      * @param number the number to set
      */
-    public void setNumber(Integer number) {
+    public void setNumber(int number) {
         this.number = number;
     }
     /**
@@ -236,14 +234,14 @@ public class Food  implements Serializable{
      * Get value of price.
      * @return the price
      */
-    public Long getPrice() {
+    public long getPrice() {
         return price;
     }
     /**
      * Set the value for price.
      * @param price the price to set
      */
-    public void setPrice(Long price) {
+    public void setPrice(long price) {
         this.price = price;
     }
     /**
@@ -278,15 +276,15 @@ public class Food  implements Serializable{
      * Get value of reviewer.
      * @return the reviewer
      */
-    public Integer getReviewer() {
-        return reviewer;
+    public int getReviewer() {
+        return saleProduct;
     }
     /**
      * Set the value for reviewer.
      * @param reviewer the reviewer to set
      */
-    public void setReviewer(Integer reviewer) {
-        this.reviewer = reviewer;
+    public void setReviewer(int saleProduct) {
+        this.saleProduct = saleProduct;
     }
     /**
      * Get value of cooking.
@@ -306,56 +304,56 @@ public class Food  implements Serializable{
      * Get value of numberOrder.
      * @return the numberOrder
      */
-    public Integer getNumberOrder() {
+    public int getNumberOrder() {
         return numberOrder;
     }
     /**
      * Set the value for numberOrder.
      * @param numberOrder the numberOrder to set
      */
-    public void setNumberOrder(Integer numberOrder) {
+    public void setNumberOrder(int numberOrder) {
         this.numberOrder = numberOrder;
     }
     /**
      * Get value of pricePromotion.
      * @return the pricePromotion
      */
-    public Long getPricePromotion() {
+    public long getPricePromotion() {
         return pricePromotion;
     }
     /**
      * Set the value for pricePromotion.
      * @param pricePromotion the pricePromotion to set
      */
-    public void setPricePromotion(Long pricePromotion) {
+    public void setPricePromotion(long pricePromotion) {
         this.pricePromotion = pricePromotion;
     }
     /**
      * Get value of uploadDate.
      * @return the uploadDate
      */
-    public Integer getUploadDate() {
+    public int getUploadDate() {
         return uploadDate;
     }
     /**
      * Set the value for uploadDate.
      * @param uploadDate the uploadDate to set
      */
-    public void setUploadDate(Integer uploadDate) {
+    public void setUploadDate(int uploadDate) {
         this.uploadDate = uploadDate;
     }
     /**
      * Get value of isDisplay.
      * @return the isDisplay
      */
-    public Integer getIsDisplay() {
+    public int getIsDisplay() {
         return isDisplay;
     }
     /**
      * Set the value for isDisplay.
      * @param isDisplay the isDisplay to set
      */
-    public void setIsDisplay(Integer isDisplay) {
+    public void setIsDisplay(int isDisplay) {
         this.isDisplay = isDisplay;
     }
     /**

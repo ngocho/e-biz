@@ -36,22 +36,16 @@ import ebiz.util.CommonConstant;
  *
  */
 public class DisplayProductDetail extends BaseAction {
-    
-    
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
-        
         String id = request.getParameter("id");
         //! food promotion
-        FoodForm  foodForm= new FoodForm();
+        FoodForm  foodForm = new FoodForm();
         HttpSession se = request.getSession();
         foodForm = FoodBLO.getFoodFormDetail(id);
-        
         //set info of product into session
         se.setAttribute(CommonConstant.FOOD_DETAIL_PRODUCT, foodForm);
-        
         return mapping.findForward(SUCCESS);
-        
     }
 
 }

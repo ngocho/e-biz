@@ -20,7 +20,7 @@ package ebiz.action.account.provider;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import javax.servlet.http.HttpSession;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
@@ -49,9 +49,9 @@ public class Register extends BaseAction {
 
         flag = ProviderBLO.registerProvider(register);
         if (flag) {
-//            HttpSession se = request.getSession();
+            HttpSession se = request.getSession();
             // save value in session
-//            se.setAttribute(CommonConstant.USER, user);
+            se.setAttribute("providerForm", user);
 
             //send mail  --> use task queue
             SendMail.registerSuccess(user.getEmail());

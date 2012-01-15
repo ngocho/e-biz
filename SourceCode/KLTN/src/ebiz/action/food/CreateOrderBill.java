@@ -35,26 +35,43 @@ import ebiz.util.CommonConstant;
 
 /**
  * @author Administrator
- *
  */
 public class CreateOrderBill extends BaseAction {
+    /**
+     * [AuthenticationUser].
+     * @param mapping ActionMapping
+     * @param form ActionForm
+     * @param request HttpServletRequest
+     * @param response HttpServletResponse
+     * @return ActionForward
+     * @throws Exception Exception
+     * @see ActionForward Struts1 Framework
+     */
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
-        System.out.println("CREATE BILL");
-        OrderBillForm orderForm =(OrderBillForm) form;
+        OrderBillForm orderForm;
         OrderBill order = new OrderBill();
         HttpSession se = request.getSession();
-        ShoppingCart shopCart = (ShoppingCart)se.getAttribute(CommonConstant.SHOPPING);
-//        shopCart.setUser(user);
-        //billing
+        ShoppingCart shopCart = (ShoppingCart) se.getAttribute(CommonConstant.SHOPPING);
+        orderForm = shopCart.getOrder();
+        System.out.println("ID"+orderForm.getIdCustomer());
+        orderForm  = (OrderBillForm) form;
+        System.out.println("ID33333333"+orderForm.getIdCustomer());
+        shopCart.setOrder(orderForm);
+        // billing
         order = FoodBLO.billing(shopCart);
-        //transfer OrderBill-> form to display
-        orderForm.editForm(order);
-        //update atrributes
-        orderForm.setNumberProduct(shopCart.size());
-//        orderForm.setNameCustomer(user.getLoginName());
-        //set orderForm into session
-//        se.setAttribute("bill", orderForm);
-        return mapping.findForward(SUCCESS);
-}
+        // transfer OrderBill-> form to display
+        // success
+        if (order != null) {
+            orderForm.editForm(order);
+            System.out.println("DATE BILL" + orderForm.getDateShip());
+            // update atrributes
+            orderForm.setNumberProduct(shopCart.size());
+            // set orderForm into session
+            se.setAttribute("bill", orderForm);
+            se.removeAttribute("shop");
+            return mapping.findForward(SUCCESS);
+        }
+        return mapping.findForward(FAILURE);
+    }
 }

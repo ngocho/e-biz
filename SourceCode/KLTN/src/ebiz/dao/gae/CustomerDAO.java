@@ -53,6 +53,14 @@ public class CustomerDAO implements ICustomerDAO {
 		customer = (Customer) PMF.getObjectById(Customer.class, id);
 		return customer;
 	}
+	
+	@Override
+	public List<Customer> getCustomerList() {
+
+		List<Customer>  customerList = new ArrayList<Customer>();
+		customerList = (List<Customer>) PMF.getObjectList(Customer.class);
+		return customerList;
+	}
 
 //	@Override
 //	public int isCustomerID(String id, String pass) {

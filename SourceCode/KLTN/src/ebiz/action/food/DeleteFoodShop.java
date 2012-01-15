@@ -38,9 +38,11 @@ public class DeleteFoodShop extends BaseAction {
             HttpServletResponse response) throws Exception {
 
        String id = request.getParameter("id");
+       System.out.println("ID"+id);
        HttpSession se = request.getSession();
        ShoppingCart shop = (ShoppingCart)se.getAttribute("shop");
        if(id !=null){
+           System.out.println("size of shop"+shop.size());
            shop.removeFood(Long.parseLong(id));
        }
        return mapping.findForward(SUCCESS);

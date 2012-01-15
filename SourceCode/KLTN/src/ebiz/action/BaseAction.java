@@ -22,12 +22,16 @@ package ebiz.action;
 import org.apache.struts.action.Action;
 
 import ebiz.util.CommonConstant;
-///**
-// * @author ThuyNT
-// *
-// 
-public class BaseAction extends Action{
-    protected final static String SUCCESS = CommonConstant.SUCCESS;
-    protected final static String FAILURE = CommonConstant.FAILURE;
-    protected final static String INPUT = CommonConstant.INPUT;
+
+/**
+ * @author Administrator
+ *
+ */
+public class BaseAction extends Action {
+    /**  . */
+    protected static final String SUCCESS = CommonConstant.SUCCESS;
+    /**  . */
+    protected static final String FAILURE = CommonConstant.FAILURE;
+    /**  . */
+    protected static final String INPUT = CommonConstant.INPUT;
 }
