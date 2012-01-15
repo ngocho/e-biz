@@ -18,6 +18,7 @@
  */
 package ebiz.form;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,121 +28,125 @@ import java.util.List;
  * @author Administrator
  *
  */
-public class ShoppingCart implements java.io.Serializable{
+public class ShoppingCart implements Serializable {
     /**  . */
     private static final long serialVersionUID = 1L;
-   
-    private LoginForm user;
+    /** List<FoodForm> . */
     private List<FoodForm> products;
-    private Integer count;   // number of bought product
-    private Long total;      // paid money
+    /** count int . */
+    private int count;   // number of bought product
+    /**totalMoney long . */
+    private long total;      // paid money
+    /**  . */
     private OrderBillForm order;
-    
-    public FoodForm getFood(Long id){
-        for(FoodForm food : products){
-            if(food.getId().equals(id)){
+    /**
+     * [get Food By ID in shopping cart].
+     * @param id				id of Food
+     * @return 					FoodForm
+     */
+    public FoodForm getFood(Long id) {
+        for (FoodForm food : products) {
+            if (food.getId().equals(id)) {
                 return food;
             }
         }
         return null;
     }
-    
-    public ShoppingCart(LoginForm user){
-        this.user = user;
-    }
-    public ShoppingCart(){
-        products = new ArrayList<FoodForm>();
-        user = new LoginForm();
-        count = 0;
-       
-    }
-    
-    public boolean isEmpty(){
-        if(products.isEmpty()){
+    /**
+     * [isEmpty].
+     * @return					boolean
+     */
+    public boolean isEmpty() {
+        if (products.isEmpty()) {
             return true;
         }
         return false;
     }
-    
-    public int size(){
-        int sum =0;
-        for(FoodForm food :products ){
+    /**
+     * [size of Product List in Shopping].
+     * @return					int
+     */
+    public int size() {
+        int sum = 0;
+        for (FoodForm food : products) {
                 sum  = sum + food.getNumber();
             }
         count = sum;
         return count;
     }
-    
-    public void sumMoney(){
+    /**
+     * [count sum of money].
+     */
+    public void sumMoney() {
         long sumMoney = 0;
-        for(FoodForm food :products ){
-            sumMoney  = sumMoney + food.getPrice()*food.getNumber();
+        for (FoodForm food : products) {
+            sumMoney  = sumMoney + food.getPrice() * food.getNumber();
         }
         this.total = sumMoney;
     }
-    
     /**
-     * add food into shop
-     * @param food
-     * @param number
+     * [add Food into Shopping Cart].
+     * @param food				FoodForm
+     * @param number			int
      */
-    public void addFood(FoodForm food, Integer number){
-        food.setSubTotal(food.getPrice()* number);
+    public void addFood(FoodForm food, int number) {
+        food.setSubTotal(food.getPrice() * number);
         food.setNumber(number);
         products.add(food);
     }
     /**
-     * 
-     * remove food in shop
-     * @param id
+     * [remove Food into Shopping Cart].
+     * @param id				Long
      */
-    public void removeFood(Long id){
-       for(FoodForm food :products ){
-           if(id == food.getId()){
+    public void removeFood(Long id) {
+       for (FoodForm food : products) {
+           if (id == food.getId()) {
+               //remove
                products.remove(food);
+               //recount money
+               sumMoney();
+               break;
            }
        }
-        count = products.size();
+        if (!products.isEmpty()) {
+            count = products.size();
+        } else {
+            count = 0;
+        }
     }
-    
-    public boolean removeFood(FoodForm food){
+    /**
+     * [remove Food into Shopping Cart].
+     * @param food          FoodForm
+     * @return              boolean
+     */
+    public boolean removeFood(FoodForm food) {
        return products.remove(food);
-         
      }
     /**
-     * increase number of product if exist in shop
-     * @param id
-     * @param number
+     * [updateNumberFood].
+     * @param id	        Long
+     * @param number	    int
      */
-    public void updateNumberFood(Long  id, Integer number){
-        for(FoodForm food :products ){
-            if(id == food.getId()){
+    public void updateNumberFood(Long  id, int number) {
+        for (FoodForm food : products) {
+            if (id == food.getId()) {
                food.setNumber(number);
-               food.setSubTotal(number*food.getPrice());
+               food.setSubTotal(number * food.getPrice());
             }
         }
     }
-    public Integer getNumberFood(Long id){
-        for(FoodForm food :products ){
-            if(id == food.getId()){
+    /**
+     * [getNumberFood].
+     * @param id				Long
+     * @return 					int
+     */
+    public int getNumberFood(Long id) {
+        for (FoodForm food : products) {
+            if (id == food.getId()) {
               return food.getNumber();
             }
         }
         return 0;
-    }
-    /**
-     * Get value of user.
-     * @return the user
-     */
-    public LoginForm getUser() {
-        return user;
-    }
-    /**
-     * Set the value for user.
-     * @param user the user to set
-     */
-    public void setUser(LoginForm user) {
-        this.user = user;
     }
     /**
      * Get value of products.
@@ -161,28 +166,28 @@ public class ShoppingCart implements java.io.Serializable{
      * Get value of count.
      * @return the count
      */
-    public Integer getCount() {
+    public int getCount() {
         return count;
     }
     /**
      * Set the value for count.
      * @param count the count to set
      */
-    public void setCount(Integer count) {
+    public void setCount(int count) {
         this.count = count;
     }
     /**
      * Get value of total.
      * @return the total
      */
-    public Long getTotal() {
+    public long getTotal() {
         return total;
     }
     /**
      * Set the value for total.
      * @param total the total to set
      */
-    public void setTotal(Long total) {
+    public void setTotal(long total) {
         this.total = total;
     }
     /**
