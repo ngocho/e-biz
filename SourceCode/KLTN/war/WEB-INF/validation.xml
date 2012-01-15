@@ -51,29 +51,113 @@
                 <arg0 key="login.email"/>
             </field>
         </form>
-        <form name="register">
+        
+        <form name="order">
             <field
-                property="user"
+                property="nameCustomer"
                 depends="required">
-                <arg0 key="register.user"/>
+                <arg0 key="order.nameCustomer"/>
             </field>
             <field
-                property="pass"
+                property="phone"
                 depends="required">
-                <arg0 key="register.pass"/>
-            </field>
-            <field
-                property="repass"
-                depends="required">
-                <arg0 key="register.repass"/>
+                <arg0 key="order.phone"/>
             </field>
             <field
                 property="email"
-                depends="required,email">
-                <arg0 key="register.email"/>
+                depends="email">
+                <arg0 key="order.email"/>
+            </field>
+            <field
+                property="homeNumber"
+                depends="required">
+                <arg0 key="order.homeNumber"/>
+                
+            </field>
+            <field
+                property="streetName"
+                depends="required">
+                <arg0 key="order.streetName"/>
+                
+            </field>
+            <field
+                property="wardName"
+                depends="required">
+                <arg0 key="order.wardName"/>
+                
+            </field>
+             <field
+                property="districtName"
+                depends="required">
+                <arg0 key="order.districtName"/>
+                
+            </field>
+            <field
+                property="districtName"
+                depends="required">
+                <arg0 key="order.districtName"/>
+                
+            </field>
+            <field
+                property="dateShip"
+                depends="required">
+                <arg0 key="order.dateShip"/>
                 
             </field>
         </form>
+        
+          <form name="providerForm">
+            <field
+                property="loginId"
+                depends="required">
+                <arg0 key="providerForm.loginId"/>
+            </field>
+             <field
+                property="loginPassword"
+                depends="required">
+                <arg0 key="providerForm.loginPassword"/>
+            </field>
+             <field
+                property="loginName"
+                depends="required">
+                <arg0 key="providerForm.loginName"/>
+            </field>
+             <field
+                property="email"
+                depends="required">
+                <arg0 key="providerForm.email"/>
+            </field>
+             <field
+                property="homeNumber"
+                depends="required">
+                <arg0 key="providerForm.homeNumber"/>
+            </field>
+              <field
+                property="streetName"
+                depends="required">
+                <arg0 key="providerForm.streetName"/>
+            </field>
+             <field
+                property="wardName"
+                depends="required">
+                <arg0 key="providerForm.wardName"/>
+            </field>
+           <field
+                property="districtName"
+                depends="required">
+                <arg0 key="providerForm.districtName"/>
+            </field>
+             <field
+                property="districtName"
+                depends="required">
+                <arg0 key="providerForm.districtName"/>
+            </field>
+             <field
+                property="phone"
+                depends="required">
+                <arg0 key="providerForm.detail"/>
+            </field>
+          </form>
     </formset>
         
 </form-validation>

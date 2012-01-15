@@ -2,102 +2,90 @@
 <!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
 <struts-config>
 
+	<form-beans>
+		<form-bean name="providerForm" type="ebiz.form.ProviderForm" />
+		<form-bean name="providerFormLogin" type="ebiz.form.ProviderForm" />
+		<form-bean name="foodForm" type="ebiz.form.FoodForm" />
+	</form-beans>
+  
+	<global-exceptions>
 
-  <form-beans>
-    <!-- <form-bean name="login" type="formBean.loginbean" /> -->
-    <form-bean name="providerForm" type="ebiz.form.ProviderForm" />
-     <form-bean name="foodForm" type="ebiz.form.FoodForm" />
-  </form-beans>
-  <global-exceptions>
+	</global-exceptions>
 
-  </global-exceptions>
+	<global-forwards>
 
-  <global-forwards>
-<!--     <forward name="loginCustomer" path="loginLayout"/>
-    <forward name="registerCustomer" path="registerLayout"/> -->
-    <!--  <forward name="/index.jsp" 
-      path="/"/> <forward name="main.page" path="/index.jsp" /> <forward name="success" 
-      path="/index.jsp" /> -->
-  </global-forwards>
+	</global-forwards>
 
+	<action-mappings>
 
-  <action-mappings>
-    <!-- <action path="/loginCustomer" forward="loginLayout">
-    </action>
-    <action path="/registerCustomer" forward="registerLayout">
-    </action> -->
     <action path="/registerProvider" forward="home_provider_register">
     </action>
+	
     <action path="/loginProvider" forward="home_provider_login">
      </action>
+	 
      <action path="/transferUpImage" forward="home_provider_upload">
     </action>
-     <action path="/uploadLink" forward="home_provider_upload">
+	
+    <action path="/uploadLink" forward="home_provider_upload">
     </action>
     
     <action path="/provider" 
-      type="ebiz.action.account.provider.AuthenticationProvider" >
-      <forward name="success" path="/displayProduct.vn" redirect="true" />
-      <forward name="failure" path="home_provider_login" redirect="true" />
+			type="ebiz.action.account.provider.AuthenticationProvider" >
+		<forward name="success" path="/displayProduct.vn" redirect="true" />
+		<forward name="failure" path="home_provider_login" redirect="true" />
     </action>
     
-     <action input="home_provider_login" 
-      path="/loginProviderAcc"
-      type="ebiz.action.account.provider.Login" 
-      name="providerForm"
-      scope="session" validate="true">
-      <forward name="success" path="/displayProduct.vn" redirect="true" />
-      <forward name="failure" path="home_provider_login" redirect="true" />
-     </action>
+    <action input="home_provider_login" 
+			path="/loginProviderAcc"
+			type="ebiz.action.account.provider.Login" 
+			name="providerFormLogin"
+			scope="session" validate="true">
+		<forward name="success" path="/displayProduct.vn" redirect="true" />
+		<forward name="failure" path="home_provider_login" redirect="true" />
+    </action>
      
-     <action input="home_provider_register" 
-      path="/registerProvierAcc"
-      type="ebiz.action.account.provider.Register" 
-      name="providerForm"
-      scope="session" validate="true">
-      <forward name="success" path="home_provider_login" redirect="true" />
-      <forward name="failure" path="home_provider_register" redirect="true" />
-     </action>
+    <action 
+			path="/logoutProviderAcc"
+			type="ebiz.action.account.provider.Logout" >
+		<forward name="success" path="/home.vn" redirect="true" />
+		<forward name="failure" path="home_provider" redirect="true" />
+    </action>
      
-      <action input="home_provider_upload" 
-      path="/uploadProduct"
-      type="ebiz.action.account.provider.UploadProduct" 
-      name="foodForm"
-      scope="session" validate="true">
-      <forward name="success" path="/displayProduct.vn" redirect="true" />
-      <forward name="failure" path="home_provider_upload" redirect="true" />
-     </action>
+    <action input="home_provider_register" 
+			path="/registerProvierAcc"
+			type="ebiz.action.account.provider.Register" 
+			name="providerForm"
+			scope="session" validate="true">
+    <forward name="success" path="home_provider_login" redirect="true" />
+    <forward name="failure" path="home_provider_register" redirect="true" />
+    </action>
      
-      <action
-      path="/uploadImage"
-      type="ebiz.action.UploadImage" 
-      scope="session" validate="true">
-      <forward name="success" path="/transferUpImage.vn" redirect="true" />
-     </action>
-      <action 
-      path="/displayProduct"
-      type="ebiz.action.account.provider.DisplayProduct" 
-      scope="session" validate="true">
-      <forward name="success" path="home_provider" redirect="false" />
-      <forward name="failure" path="home_provider" redirect="false" />
-     </action>
+    <action input="home_provider_upload" 
+			path="/uploadProduct"
+			type="ebiz.action.account.provider.UploadProduct" 
+			name="foodForm"
+			scope="session" validate="true">
+		<forward name="success" path="/displayProduct.vn" redirect="true" />
+		<forward name="failure" path="home_provider_upload" redirect="true" />
+		<forward name="input" path="home_provider_login" redirect="false" />
+    </action>
      
-    <!-- 
-      <action input="loginLayout" 
-      path="/loginAction"
-      type="ebiz.action.account.customer.Login" 
-      name="login"
-      scope="session" validate="true">
-      <forward name="success" path="home" redirect="true" />
-      <forward name="failure" path="loginLayout" redirect="true" />
-    </action> -->
-  
-
-  </action-mappings>
-  <!-- <message-resources parameter="ApplicationResources" />
-  <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
-    <set-property property="pathnames"
-      value="/WEB-INF/validator-rules.xml,/WEB-INF/validation.xml" />
-  </plug-in> -->
+    <action
+			path="/uploadImage"
+			type="ebiz.action.UploadImage" 
+			scope="session" validate="true">
+		<forward name="success" path="/transferUpImage.vn" redirect="true" />
+    </action>
+	
+    <action 
+			path="/displayProduct"
+			type="ebiz.action.account.provider.DisplayProduct" 
+			scope="session" validate="true">
+		<forward name="success" path="home_provider" redirect="false" />
+		<forward name="failure" path="home_provider" redirect="false" />
+    </action>
+     
+	</action-mappings>
 
 </struts-config>

@@ -2,106 +2,70 @@
 <!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
 <struts-config>
 
-
   <form-beans>
-    <!-- <form-bean name="login" type="formBean.loginbean" /> -->
-    <form-bean name="customer" type="ebiz.dto.account.customer.Customer" />
     <form-bean name="login" type="ebiz.form.LoginForm" />
   </form-beans>
+  
   <global-exceptions>
-
   </global-exceptions>
 
   <global-forwards>
-    <forward name="loginCustomer" path="loginLayout"/>
-    <forward name="registerCustomer" path="registerLayout"/>
-    <!--  <forward name="/index.jsp" 
-      path="/"/> <forward name="main.page" path="/index.jsp" /> <forward name="success" 
-      path="/index.jsp" /> -->
   </global-forwards>
-
 
   <action-mappings>
     <action path="/loginCustomer" forward="loginLayout">
     </action>
+	
     <action path="/registerCustomer" forward="registerLayout">
     </action>
 
-    <!-- <action input="/login.jsp" path="/login" type="action.login" name="login" 
-      scope="request" validate="true"> <forward name="success" path="/index.jsp" 
-      redirect="true"/> <forward name="failure" path="/login.jsp" redirect="true"/> 
-      </action> -->
-     <!--  <action input="loginLayout"
-      path="/loginCustomer"
-      type="ebiz.action.account.customer.TransferLogin" 
-      name="login"
-      scope="session" validate="true">
-      <forward name="success" path="loginLayout" redirect="true" />
-    </action> -->
-      <action input="loginLayout" 
-      path="/loginAction"
-      type="ebiz.action.account.customer.Login" 
-      name="login"
-      scope="session" validate="true">
-      <forward name="success" path="home" redirect="true" />
-      <forward name="failure" path="loginLayout" redirect="true" />
+    <action input="loginLayout" 
+			path="/loginAction"
+			type="ebiz.action.account.customer.Login" 
+			name="login"
+			scope="session" validate="true">
+		<forward name="success" path="home" redirect="true" />
+		<forward name="failure" path="loginLayout" redirect="true" />
     </action>
     
     <action input="registerLayout" 
-      path="/registerAction"
-      type="ebiz.action.account.customer.Register" 
-      name="login"
-      scope="session" validate="true">
-      <forward name="success" path="loginLayout" redirect="true" />
-      <forward name="failure" path="registerLayout" redirect="true" />
-      </action>
+			path="/registerAction"
+			type="ebiz.action.account.customer.Register" 
+			name="login"
+			scope="session" validate="true">
+		<forward name="success" path="loginLayout" redirect="true" />
+		<forward name="failure" path="registerLayout" redirect="true" />
+    </action>
       
-     <action 
-      path="/logoutCustomer"
-      type="ebiz.action.account.customer.Logout" >
-      <forward name="success" path="home" redirect="true" />
+    <action 
+			path="/logoutCustomer"
+			type="ebiz.action.account.customer.Logout" >
+		<forward name="success" path="home" redirect="true" />
     </action>
     
     <action 
-      path="/displayBill"
-      type="ebiz.action.account.customer.DisplayBill" >
-      <forward name="success" path="home_content_bill" redirect="true" />
+			path="/displayBill"
+			type="ebiz.action.account.customer.DisplayBill" >
+		<forward name="success" path="home_content_bill" redirect="true" />
     </action>
-      <action 
-      path="/reOrder"
-      type="ebiz.action.account.customer.ResetOldBill" >
-      <forward name="success" path="home_customer_reOrder" redirect="true" />
-      <forward name="failure" path="home_content_bill" redirect="true" />
-      </action>
-        <action 
-      path="/setStatusOrder"
-      type="ebiz.action.account.admin.SetStatusOrder" >
-      <forward name="success" path="home_customer_reOrder" redirect="true" />
-      </action>
-    <!--   <action input="checkout" 
-      path="/getInforBill"
-      type="ebiz.action.account.customer.UpdateCustomer" 
-      name="login"
-      scope="session" validate="true">
-      <forward name="success" path="/createBill.vn" redirect="true" />
-      <forward name="failure" path="shopping" redirect="true" />
-      <forward name="input" path="checkout" redirect="true" />
-    </action>-->
+	
+    <action 
+			path="/reOrder"
+			type="ebiz.action.account.customer.ResetOldBill" >
+		<forward name="success" path="home_customer_reOrder" redirect="true" />
+		<forward name="failure" path="home_content_bill" redirect="true" />
+    </action>
+	
+    <action 
+			path="/setStatusOrder"
+			type="ebiz.action.account.admin.SetStatusOrder" >
+		<forward name="success" path="home_customer_reOrder" redirect="true" />
+    </action>
+	
     <action
-      path="/sendMailRegister"
-      type="ebiz.action.account.customer.SendMailRegister" >
+			path="/sendMailRegister"
+			type="ebiz.action.account.customer.SendMailRegister" >
     </action>
-    
-    <!--  action path="/getPromotion"
-      type="mobile.ebiz.action.Promotion" 
-      scope="session" validate="false">
-    </action>-->
-
+ 
   </action-mappings>
-  <!-- <message-resources parameter="ApplicationResources" />
-  <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
-    <set-property property="pathnames"
-      value="/WEB-INF/validator-rules.xml,/WEB-INF/validation.xml" />
-  </plug-in> -->
-
 </struts-config>
