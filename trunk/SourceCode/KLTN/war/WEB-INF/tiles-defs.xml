@@ -24,6 +24,7 @@
 <!-- Definitions for Tiles documentation   -->
 
 <tiles-definitions>
+<!-- 3 columns -->
     <definition name="baseLayout" path="/baseLayout.jsp">
         <put name="title"  value="Sample Page Title" />
         <put name="header" value="/header.jsp" />
@@ -33,15 +34,16 @@
         <put name="left"   value="/left.jsp" />
         <put name="pankuzu"   value="/pankuzu.jsp" /> 
     </definition>
+<!-- 3 columns -->
+<!-- 1 columns -->
     <definition name="baseLayout1" path="/baseLayout1.jsp">
         <put name="title" value="Shopping Cart" />
         <put name="header" value="/header.jsp" />
-        <put name="left"   value="/blank.jsp" />
         <put name="pankuzu"   value="/pankuzu.jsp" /> 
         <put name="content" value="/blank.jsp" />
         <put name="footer" value="/footer.jsp" />
     </definition>
-    
+<!-- 1 columns -->   
     <definition name="loginLayout" extends="baseLayout">
         <put name="title" value="Checkout" />
         <put name="content" value="/content_login.jsp" />
@@ -101,7 +103,7 @@
       <put name="content" value="/content_provider_productInfo.jsp" />
      </definition>
       <!-- end provider -->
-       <definition name="home_customer" extends="baseLayout1">
+       <definition name="home_customer" extends="baseLayout">
       <put name="title" value="Customer Home" />
       <put name="left"   value="/left_customer.jsp" />
       <put name="content" value="/content_customer_info.jsp" />
