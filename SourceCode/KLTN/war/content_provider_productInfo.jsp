@@ -1,3 +1,4 @@
+<%@page import="ebiz.util.CommonUtil"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
   pageEncoding="UTF-8"%>
 <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
@@ -24,25 +25,25 @@ $(document).ready(function(){
 
 <table  style="font-size: 10pt;margin-left: 10px;" border="1">
 <tbody>
-<tr >
-<th style="font-weight: bold;">HÌNH ĐẠI DIỆN</th>
-<th style="font-weight: bold;">MÃ SẢN PHẨM</th>
-<th style="font-weight: bold;">TÊN SẢN PHẨM</th>
-<th style="font-weight: bold;">NHÓM SẢN PHẨM</th>
-<th style="font-weight: bold;">TÌNH TRẠNG SẢN PHẨM</th>
-<th style="font-weight: bold;">GIÁ</th>
-<th style="font-weight: bold;">GIÁ KHUYỄN MÃI</th>
-<th style="font-weight: bold;">SỐ LƯỢNG</th>
-<th style="font-weight: bold;">CHI TIẾT</th>
-<th style="font-weight: bold;">HƯỚNG DẪN </th>
-<th style="font-weight: bold;">THAY ĐỔI</th>
-<th style="font-weight: bold;">XÓA </th>
+<tr class="pProduct">
+<th >HÌNH </th>
+<th >MSP</th>
+<th >TÊN SẢN PHẨM</th>
+<th >NHÓM SẢN PHẨM</th>
+<th >TÌNH TRẠNG SẢN PHẨM</th>
+<th >GIÁ</th>
+<th >GIÁ KHUYỄN MÃI</th>
+<th >SỐ LƯỢNG</th>
+<th >CHI TIẾT</th>
+<th >HƯỚNG DẪN </th>
+<th >THAY ĐỔI</th>
+<th >XÓA </th>
 </tr>
 <logic:present name="providerProduct" >
 <logic:iterate id="element"  name="providerProduct">
 <tr>
-<td> <img src="<bean:write name="element" property="url"/>" width="30" height="30"/></td>
-<td> <bean:write name="element" property="id"/></td>
+<td> <img src="/serveImage.vn?urlKey=<bean:write name="element" property="urlKey"/>" width="50" height="40"/></td>
+<td style="text-align: center;" ><a href="/reOrder.vn?id=<bean:write name="element" property="id"/>"><bean:write name="element" property="id"/></a></td>
 <td> <bean:write name="element" property="name"/></td>
 <td><bean:write name="element" property="productTypeId"/></td>
 <td><bean:write name="element" property="statusName"/></td>

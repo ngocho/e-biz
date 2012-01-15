@@ -68,6 +68,11 @@
                   <td style="font-weight: bold; color: red"><bean:write
                       name="bill" property="dateShip" /></td>
                 </tr>
+                 <tr>
+                  <th width="150" height="25" style="font-weight: bold">Ghi chú:</th>
+                  <td style="font-weight: bold; color: red"><bean:write
+                      name="bill" property="note" /></td>
+                </tr>
               </tbody>
             </table>
 

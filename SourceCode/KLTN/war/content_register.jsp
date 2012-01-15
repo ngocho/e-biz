@@ -80,6 +80,15 @@
                         Nam  <html:radio property="gender"  value="1" />
                       
                     </li>
+                    <li class="fields">
+                    <div class="field">
+                        <label for="password" class="required">Ngày sinh</label>
+                        <div class="input-box">
+                           <html:text property="birthDate" size="40"/>
+
+                        </div>
+                    </div>
+                    </li>
                 <li class="fields">
                     <div class="field">
                         <label for="password" class="required">Email</label>

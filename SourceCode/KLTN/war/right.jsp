@@ -5,7 +5,7 @@
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
 <%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic"%>
 <%@taglib uri="http://java.sun.com/jstl/core" prefix="c"%>
-<div class="col-right sidebar">
+<div class="col-right">
   <div class="block block-cart">
     <c:if test="${user !=null}">
       <div class="block-title">
@@ -36,7 +36,7 @@
             </li>
             <li><label for="pass" class="required">Password</label>
               <div class="input-box">
-                <html:text property="loginPassword" />
+                <html:password property="loginPassword" />
                 <!--  <input type="password" name="login[password]" class="input-text required-entry validate-password" id="pass" title="Password"> -->
               </div>
             </li>
@@ -70,7 +70,7 @@
       </p>
        <logic:present name="shop" property="products">
         <logic:iterate id="element"  name="shop" property="products" length="3">
-      <p class="empty"><bean:write name="element" property="name"/></p>
+      <p class="empty" style="color:blue;"><bean:write name="element" property="name"/></p>
       </logic:iterate>
       </logic:present>
       <p class="empty" style="text-align: right">
