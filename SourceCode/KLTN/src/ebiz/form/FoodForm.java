@@ -37,19 +37,19 @@ public class FoodForm extends ValidatorForm implements Serializable{
     private static final long serialVersionUID = 1L;
     private Long id;
     private String name;
-    private String productTypeId;
-    private Long price;
-    private Long promoPrice;
-    private Integer reviewer;
+    private String productTypeId;   //so che, nau chin
+    private long price;
+    private long promoPrice;
+    private int reviewer;
     private String status;   // san pham da het, khuyen mai(id)
     private String statusName;  // hien thi name
-    private Integer number;
+    private int number;
     private String calo;
     private String idAttr;
     private String url;
     private String detail;
     private String cooking;
-    private Long subTotal;
+    private long subTotal;
     private String nameProvider;
     private String idProvider;
     private String urlKey;
@@ -73,7 +73,7 @@ public class FoodForm extends ValidatorForm implements Serializable{
         this.calo ="";
         this.cooking ="";
         this.detail ="";
-        this.price = new Long(0);
+        this.price = 0;
         this.number =0;
         this.detail ="";
     
@@ -222,42 +222,42 @@ public class FoodForm extends ValidatorForm implements Serializable{
      * Get value of reviewer.
      * @return the reviewer
      */
-    public Integer getReviewer() {
+    public int getReviewer() {
         return reviewer;
     }
     /**
      * Set the value for reviewer.
      * @param reviewer the reviewer to set
      */
-    public void setReviewer(Integer reviewer) {
+    public void setReviewer(int reviewer) {
         this.reviewer = reviewer;
     }
     /**
      * Get value of price.
      * @return the price
      */
-    public Long getPrice() {
+    public long getPrice() {
         return price;
     }
     /**
      * Set the value for price.
      * @param price the price to set
      */
-    public void setPrice(Long price) {
+    public void setPrice(long price) {
         this.price = price;
     }
     /**
      * Get value of promoPrice.
      * @return the promoPrice
      */
-    public Long getPromoPrice() {
+    public long getPromoPrice() {
         return promoPrice;
     }
     /**
      * Set the value for promoPrice.
      * @param promoPrice the promoPrice to set
      */
-    public void setPromoPrice(Long promoPrice) {
+    public void setPromoPrice(long promoPrice) {
         this.promoPrice = promoPrice;
     }
     /**
@@ -278,14 +278,14 @@ public class FoodForm extends ValidatorForm implements Serializable{
      * Get value of number.
      * @return the number
      */
-    public Integer getNumber() {
+    public int getNumber() {
         return number;
     }
     /**
      * Set the value for number.
      * @param number the number to set
      */
-    public void setNumber(Integer number) {
+    public void setNumber(int number) {
         this.number = number;
         
     }
@@ -349,7 +349,7 @@ public class FoodForm extends ValidatorForm implements Serializable{
      * Get value of subTotal.
      * @return the subTotal
      */
-    public Long getSubTotal() {
+    public long getSubTotal() {
         subTotal =price * number;
         return subTotal;
     }
@@ -357,7 +357,7 @@ public class FoodForm extends ValidatorForm implements Serializable{
      * Set the value for subTotal.
      * @param subTotal the subTotal to set
      */
-    public void setSubTotal(Long subTotal) {
+    public void setSubTotal(long subTotal) {
         this.subTotal = subTotal;
     }
     /**

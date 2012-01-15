@@ -40,6 +40,14 @@ public class ShoppingCart implements Serializable {
     /**  . */
     private OrderBillForm order;
     /**
+     */
+    public ShoppingCart() {
+        products = new ArrayList<FoodForm>();
+        order = new OrderBillForm();
+        count = 0;
+        total = 0;
+    }
+    /**
      * [get Food By ID in shopping cart].
      * @param id        id of Food
      * @return          FoodForm

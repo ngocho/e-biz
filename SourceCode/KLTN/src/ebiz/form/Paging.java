@@ -18,20 +18,24 @@
  */
 package ebiz.form;
 
+import java.io.Serializable;
+
 
 /**
  * @author ThuyNT
  *
  */
-public class Paging {
+public class Paging implements Serializable {
     
-    private Integer id;
+    /**  . */
+    private static final long serialVersionUID = 1L;
+    private int id;
     private String cursorString;
     /**
      * Get value of id.
      * @return the id
      */
-    public Integer getId() {
+    public int getId() {
         return id;
     }
     
@@ -39,7 +43,7 @@ public class Paging {
      * Set the value for id.
      * @param id the id to set
      */
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
     /**

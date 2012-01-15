@@ -18,6 +18,7 @@
  */
 package ebiz.form;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import org.apache.struts.validator.ValidatorForm;
@@ -27,55 +28,84 @@ import ebiz.dto.account.customer.Address;
 import ebiz.dto.account.customer.Customer;
 import ebiz.dto.checkout.OrderBill;
 import ebiz.util.CommonConstant;
+import ebiz.util.CommonUtil;
 
 /**
  * @author Administrator
  *
  */
-public class OrderBillForm extends ValidatorForm{
+public class OrderBillForm extends ValidatorForm implements Serializable {
     /**  . */
     private static final long serialVersionUID = 1L;
+    /** id . */
     private Long id;
+    /**idCustomer  . */
     private String idCustomer;
+    /**  . */
     private String nameCustomer;
+    /**address . */
     private String address;
+    /**email  . */
     private String email;
+    /**phone  . */
     private String phone;
-    private Date dateOrder;
-    private Date dateShip;
-    private Long sumPrice;
-    private Integer status;
-    private Integer numberProduct;
+    /**dateOrder  . */
+    private String dateOrder;
+    /** dateShip . */
+    private String dateShip;
+    /**sumPrice  . */
+    private long sumPrice;
+    /**status  . */
+    private int status;
+    /**numberProduct  . */
+    private int numberProduct;
+    /**phoneWebsite  . */
     private String phoneWebsite;
+    /**idEmployee  . */
     private String idEmployee;
+    /**homeNumber  . */
     private String homeNumber;
+    /** streetName . */
     private String streetName;
+    /**wardName  . */
     private String wardName;
+    /** districtName . */
     private String districtName;
+    /** buildingName . */
     private String buildingName;
-    private String note; //bill 
-    
-    public void editForm(OrderBill order){
+    /** note(OrderBill) . */
+    private String note;
+    /** isPayment . */
+    private int  isPayment;
+    /**
+     * [editForm].
+     * @param order         OrderBill
+     */
+    public void editForm(OrderBill order) {
         id = order.getId();
         idCustomer = order.getIdCustomer();
         address = CustomerBLO.toStringAddres(order.getAddress());
         email = order.getEmail();
         phone = order.getPhone();
-        dateOrder = order.getDateOrder();
-        dateShip = order.getDateShip();
+        dateOrder = CommonUtil.convertDateToString(order.getDateOrder());
+        dateShip = CommonUtil.convertDateToString(order.getDateShip());
         sumPrice = order.getSumPrice();
         status = order.getStatus();
         idEmployee = order.getIdEmployee();
+        isPayment = order.getTypePayment();
     }
-    public OrderBill getOrder(){
+    /**
+     * [getOrder].
+     * @return     OrderBill
+     */
+    public OrderBill getOrder() {
         OrderBill order = new OrderBill();
         order.setIdCustomer(this.idCustomer);
-        order.setIdCustomer(this.address);
-       
         order.setEmail(this.email);
         order.setPhone(this.phone);
         order.setStatus(CommonConstant.BILLSTATUS_1); // chua giao
-        order.setDateOrder(new Date());
+        order.setDateOrder(CommonUtil.formatDateToDate(new Date()));
+        order.setDateShip(CommonUtil.convertStringToDate(this.dateShip));
         Address add = new Address();
         add.setBuildingName(this.buildingName);
         add.setDistrictName(this.districtName);
@@ -83,11 +113,14 @@ public class OrderBillForm extends ValidatorForm{
         add.setStreetName(this.streetName);
         add.setWardName(this.wardName);
         order.setAddress(add);
+        order.setTypePayment(this.isPayment);
         return order;
     }
-    
-    
-    public void editCustomer(Customer user){
+    /**
+     * [editCustomer].
+     * @param user              Customer
+     */
+    public void editCustomer(Customer user) {
         idCustomer = user.getCustomerId();
         nameCustomer = user.getCustomerName();
         phone = user.getCustomerPhone();
@@ -172,56 +205,56 @@ public class OrderBillForm extends ValidatorForm{
      * Get value of dateOrder.
      * @return the dateOrder
      */
-    public Date getDateOrder() {
+    public String getDateOrder() {
         return dateOrder;
     }
     /**
      * Set the value for dateOrder.
      * @param dateOrder the dateOrder to set
      */
-    public void setDateOrder(Date dateOrder) {
+    public void setDateOrder(String dateOrder) {
         this.dateOrder = dateOrder;
     }
     /**
      * Get value of dateShip.
      * @return the dateShip
      */
-    public Date getDateShip() {
+    public String getDateShip() {
         return dateShip;
     }
     /**
      * Set the value for dateShip.
      * @param dateShip the dateShip to set
      */
-    public void setDateShip(Date dateShip) {
+    public void setDateShip(String dateShip) {
         this.dateShip = dateShip;
     }
     /**
      * Get value of sumPrice.
      * @return the sumPrice
      */
-    public Long getSumPrice() {
+    public long getSumPrice() {
         return sumPrice;
     }
     /**
      * Set the value for sumPrice.
      * @param sumPrice the sumPrice to set
      */
-    public void setSumPrice(Long sumPrice) {
+    public void setSumPrice(long sumPrice) {
         this.sumPrice = sumPrice;
     }
     /**
      * Get value of numberProduct.
      * @return the numberProduct
      */
-    public Integer getNumberProduct() {
+    public int getNumberProduct() {
         return numberProduct;
     }
     /**
      * Set the value for numberProduct.
      * @param numberProduct the numberProduct to set
      */
-    public void setNumberProduct(Integer numberProduct) {
+    public void setNumberProduct(int numberProduct) {
         this.numberProduct = numberProduct;
     }
     /**
@@ -256,14 +289,14 @@ public class OrderBillForm extends ValidatorForm{
      * Get value of status.
      * @return the status
      */
-    public Integer getStatus() {
+    public int getStatus() {
         return status;
     }
     /**
      * Set the value for status.
      * @param status the status to set
      */
-    public void setStatus(Integer status) {
+    public void setStatus(int status) {
         this.status = status;
     }
     /**
@@ -364,5 +397,18 @@ public class OrderBillForm extends ValidatorForm{
     public void setNote(String note) {
         this.note = note;
     }
-
+    /**
+     * Get value of isPayment.
+     * @return the isPayment
+     */
+    public int getIsPayment() {
+        return isPayment;
+    }
+    /**
+     * Set the value for isPayment.
+     * @param isPayment the isPayment to set
+     */
+    public void setIsPayment(int isPayment) {
+        this.isPayment = isPayment;
+    }
 }
