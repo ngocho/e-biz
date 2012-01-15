@@ -42,25 +42,21 @@ import ebiz.util.CommonUtil;
  * @author ThuyNT
  */
 public class FoodBLO {
+    /** FoodDAO . */
     private static IFoodDAO foodDao = new FoodDAO();
+    /** OrderDAO. */
     private static IOrderDAO orderDao = new OrderDAO();
-
-    // /**
-    // * ! khuyến mãi get info của sản phẩm khuyến mãi
-    // */
-    // public static FoodPromotion isProductPromotion(Long id) {
-    // // get info cua product
-    // return foodDao.getFoodPromotionById(id);
-    // }
     /**
-     * ! khuyến mãi get info của sản phẩm khuyến mãi
+     * [get Food by ID(Long type)].
+     * @param id Long
+     * @return Food
      */
     public static Food getFoodById(Long id) {
-        // get info cua product
         return foodDao.getFoodById(id);
     }
     /**
-     * ! khuyến mãi get info của sản phẩm khuyến mãi
+     * [Get all food List].
+     * @return List<Food>
      */
     public static List<Food> getFoodListAll() {
         // get info cua product
@@ -68,13 +64,17 @@ public class FoodBLO {
     }
 
     /**
-     * ! khuyến mãi get info của sản phẩm khuyến mãi
+     * [get FoodFormList By Status with limit].
+     * @param limit number of food to get
+     * @param idStatus status of food
+     * @return List<FoodForm> to display
      */
     public static List<FoodForm> getFoodListByStatus(int limit, String idStatus) {
-        // get info cua product
         List<FoodForm> formList = new ArrayList<FoodForm>();
         List<Food> foodList = new ArrayList<Food>();
+        // get Food List
         foodList = (List<Food>) foodDao.getListFoodByValue("foodStatusId", idStatus);
+        // specify size list to get
         if (!foodList.isEmpty()) {
             if (foodList.size() < limit) {
                 limit = foodList.size();
@@ -88,29 +88,27 @@ public class FoodBLO {
                 }
             }
         }
-        /*
-         * for(Food food : foodList){ if(food !=null){ FoodForm form = new FoodForm(); form.editForm(food);
-         * formList.add(form); } }
-         */
+        // transfer FoodForm to display
         return formList;
     }
 
     /**
-     * ! khuyến mãi get info của sản phẩm khuyến mãi
+     * [get Name of Food by ID].
+     * @param id Id of Food
+     * @return String Name of Food
      */
     public static String getNameStatusById(String id) {
-        // get info cua product
         return foodDao.getStatusNameByID(id);
     }
-    // public static String getNameProByID(String id) {
-    // // get info cua product
-    // return foodDao.getFoodById(id);
-    // }
-
     /**
-     * get Food to display category
-     * 
-     * @return
+     * [get FoodForm(paging)].
+     * @param col Name Column
+     * @param paging content list Cursor String
+     * @param order type Order
+     * @param record number of record in 1 page
+     * @param page number page
+     * @param typeProduct type of Food
+     * @return List<FoodForm> to display
      */
     public static List<FoodForm> getFoodFormList(String col, HashMap<Integer, String> paging, String order, int record,
             int page, String typeProduct) {
@@ -118,14 +116,12 @@ public class FoodBLO {
         List<Food> foodList = new ArrayList<Food>();
         String filterCol = CommonConstant.FOOD_TYPE;
 
-        // call method to display product
+        // call method to get FoodList
         foodList = foodDao.diplayPageFood(col, paging, order, record, page, filterCol, typeProduct);
-
         // transfer dto-> form : display
         for (Food food : foodList) {
             FoodForm form = new FoodForm();
             // display
-            System.out.println("IS DISPLAY " + food.getIsDisplay());
             if (food.getIsDisplay() == 1) {
                 form.editForm(food);
                 if (!form.isEmpty()) {
@@ -137,9 +133,11 @@ public class FoodBLO {
     }
 
     /**
-     * init display Food Category
-     * 
-     * @return
+     * [initialize Food Category ].
+     * @param paging Cursor string
+     * @param record record in 1 page
+     * @param typeProduct type of Food
+     * @return List<FoodForm> to display
      */
     public static List<FoodForm> initFoodCategory(HashMap<Integer, String> paging, int record, String typeProduct) {
 
@@ -149,49 +147,34 @@ public class FoodBLO {
     }
 
     // /**
-    // * init display Food Category
-    // *
+    // * [Give the description for method].
+    // * @param key
     // * @return
     // */
-    // public static List<FoodForm> initFoodCategory(
-    // HashMap<Integer, String> paging, int record, String typeProduct) {
+    // public static FoodForm getFoodFormDetail(String key) {
     //
-    // List<FoodForm> formList = new ArrayList<FoodForm>();
-    // formList = getFoodFormList("foodName", paging, "asc", record, 1,
-    // typeProduct);
-    // return formList;
+    // FoodForm form = new FoodForm();
+    // Long id;
+    // if (key != null) {
+    // id = Long.parseLong(key);
+    // form.editFormDetail(getFoodById(id));
+    //
+    // }
+    // if (form.isEmpty()) {
+    // return null;
+    // }
+    // return form;
     // }
 
     /**
-     * get Food to display detail product using String key
-     * 
-     * @return
-     */
-    public static FoodForm getFoodFormDetail(String key) {
-
-        FoodForm form = new FoodForm();
-        Long id;
-        if (key != null) {
-            id = Long.parseLong(key);
-            form.editFormDetail(getFoodById(id));
-
-        }
-        if (form.isEmpty()) {
-            return null;
-        }
-        return form;
-    }
-
-    /**
-     * update status of paging : cursor string
-     * 
-     * @param p
-     * @return
+     * [update Status of paging].
+     * @param p HashMap<Integer, String>
+     * @return List<Paging> Class for cursor String
      */
     public static List<Paging> updateStatusPaging(HashMap<Integer, String> p) {
         List<Paging> pageList = new ArrayList<Paging>();
 
-        for (Integer key : p.keySet()) {
+        for (int key : p.keySet()) {
             Paging page = new Paging();
             page.setId(key);
             page.setCursorString(p.get(key));
@@ -202,10 +185,9 @@ public class FoodBLO {
     }
 
     /**
-     * transfer from List<Paging> -->HashMap<Integer, String>
-     * 
-     * @param p
-     * @return
+     * [transfer HashMap<Integer, String> to List<Paging>].
+     * @param pageList List<Paging>
+     * @return HashMap<Integer, String>
      */
     public static HashMap<Integer, String> toHashMap(List<Paging> pageList) {
 
@@ -216,16 +198,16 @@ public class FoodBLO {
         return paging;
 
     }
-
     /**
-     * add product into shopping cart
-     * 
-     * @param p
-     * @return
+     * [add food into shopping cart].
+     * @param shopCart ShoppingCart
+     * @param key key of food
+     * @param number amount of food
+     * @return boolean
      */
-    public static boolean addShoppingCart(ShoppingCart shopCart, String key, Integer number) {
+    public static boolean addShoppingCart(ShoppingCart shopCart, String key, int number) {
         Long id;
-        Integer numberDB;
+        int numberDB;
         FoodForm food = null;
         if (key != null) {
             id = Long.parseLong(key);
@@ -240,13 +222,11 @@ public class FoodBLO {
                     // exist product in shopping
                     if (id == foodForm.getId()) {
 
-                        Integer numberProduct = foodForm.getNumber() + number;
+                        int numberProduct = foodForm.getNumber() + number;
                         // number product required <= number in database
                         if (numberProduct <= numberDB) {
                             foodForm.setNumber(numberProduct);
                             foodForm.setSubTotal(foodForm.getPrice() * numberProduct);
-                            // update size of product in shop
-                            // shopCart.size();
                             return true;
                         } else {
                             return false;
@@ -258,14 +238,14 @@ public class FoodBLO {
             if (number <= numberDB) {
                 food = new FoodForm();
                 food.editForm(foodDB);
-                // food.setPrice(food.getPrice());
                 // if product is a promotion products -> put into price
                 if ((CommonConstant.FOODPROMOTION).equals(food.getStatus())) {
                     food.setPrice(food.getPromoPrice());
                 }
+                // add shopping
                 shopCart.addFood(food, number);
+                // re-count size of productList in shopping
                 shopCart.size();
-                System.out.println("SIZE" + shopCart.getCount());
             } else {
                 return false;
             }
@@ -275,38 +255,35 @@ public class FoodBLO {
         return true;
     }
 
+//    /**
+//     * [remove Product in Shopping Cart].
+//     * @param shopCart ShoppingCart
+//     * @param idProduct id of Food
+//     * @return boolean
+//     */
+//    public boolean removeProInShop(ShoppingCart shopCart, Long idProduct) {
+//        List<FoodForm> foodList = shopCart.getProducts();
+//        if (!foodList.isEmpty()) {
+//            for (int i = 0; i < foodList.size(); i++) {
+//                if (foodList.get(i).getId() == idProduct) {
+//                    foodList.remove(i);
+//                    return true;
+//                }
+//
+//            }
+//        }
+//        return false;
+//    }
     /**
-     * remove product in shopping
-     * 
-     * @param shopCart
-     * @param idProduct
-     * @return
+     * [test number of food in database with food which add into shop].
+     * @param shopCart ShoppingCart
+     * @param key id of Food
+     * @param number amount of Food
+     * @return if(fail) return number of food indatabse else return 0
      */
-    public boolean removeProInShop(ShoppingCart shopCart, Long idProduct) {
-        List<FoodForm> foodList = shopCart.getProducts();
-        if (!foodList.isEmpty()) {
-            for (int i = 0; i < foodList.size(); i++) {
-                if (foodList.get(i).getId() == idProduct) {
-                    foodList.remove(i);
-                    return true;
-                }
-
-            }
-        }
-        return false;
-    }
-
-    /**
-     * test number of product in database <= number request
-     * 
-     * @param shopCart
-     * @param key
-     * @return number in database (if not)
-     * @return 0 ( if OK)
-     */
-    public static Integer isProNumberShop(ShoppingCart shopCart, String key, Integer number) {
+    public static int isProNumberShop(ShoppingCart shopCart, String key, int number) {
         Long id;
-        Integer numberDB;
+        int numberDB;
         if (key != null) {
             id = Long.parseLong(key);
             Food foodDB = foodDao.getFoodById(id);
@@ -318,37 +295,40 @@ public class FoodBLO {
         return 0; // success
 
     }
+//    /**
+//     * [update SubPrice in shopping ].
+//     * @param shopCart ShoppingCart
+//     * @param key id of Food
+//     * @param number amount of Food
+//     * @return amount of SubPrice
+//     */
+//    public static Long updateSubPriceShop(ShoppingCart shopCart, String key, int number) {
+//        Long id;
+//        Long subPrice = new Long(0);
+//        if (key != null) {
+//            id = Long.parseLong(key);
+//            List<FoodForm> foodList = shopCart.getProducts();
+//            for (FoodForm foodForm : foodList) {
+//                if (id == foodForm.getId()) {
+//                    subPrice = number * foodForm.getPrice();
+//                    // update amount of food
+//                    foodForm.setNumber(number);
+//                    // update subTotal
+//                    foodForm.setSubTotal(subPrice);
+//                }
+//            }
+//        }
+//        return subPrice;
+//
+//    }
 
     /**
-     * update number and subPrice of product in shopping cart
-     * 
-     * @param shopCart
-     * @param key
-     * @return
+     * [decrease amount of FoodNumber, FoodOrder].
+     * @param id id of Food
+     * @param number amount of Food
+     * @return boolean
      */
-    public static Long updateSubPriceShop(ShoppingCart shopCart, String key, Integer number) {
-        Long id;
-        Long subPrice = new Long(0);
-        if (key != null) {
-            id = Long.parseLong(key);
-            List<FoodForm> foodList = shopCart.getProducts();
-            for (FoodForm foodForm : foodList) {
-                if (id == foodForm.getId()) {
-                    subPrice = number * foodForm.getPrice();
-                    foodForm.setNumber(number);
-                    foodForm.setSubTotal(subPrice);
-                }
-            }
-
-        }
-        return subPrice;
-
-    }
-
-    /**
-     * update number of product when status of Bill : finish shiiping
-     */
-    public static boolean downNumberOfFood(Long id, Integer number) {
+    public static boolean downNumberOfFood(Long id, int number) {
 
         Food food = foodDao.getFoodById(id);
         food.setNumber(food.getNumber() - number);
@@ -358,24 +338,26 @@ public class FoodBLO {
     }
 
     /**
-     * update number of product when status of Bill : order
-     * 
-     * @param id
-     * @param number
-     * @return
+     * [increase amount of Food].
+     * @param id id of Food
+     * @param number amount of Food
+     * @return boolean
      */
-    public static boolean upNumberOfFood(Long id, Integer number) {
+    public static boolean upNumberOfFood(Long id, int number) {
 
         Food food = foodDao.getFoodById(id);
-        food.setNumberOrder(food.getNumber() - number);
+        food.setNumberOrder(food.getNumber() + number);
         return foodDao.saveFood(food);
 
     }
 
     /**
-     * update number of product Order when status of Bill : order
+     * [increase amount of FoodOrder(Order column)].
+     * @param id id of Food
+     * @param number amount of Food
+     * @return boolean
      */
-    public static boolean upNumberFoodOrder(Long id, Integer number) {
+    public static boolean upNumberFoodOrder(Long id, int number) {
 
         System.out.println("ID" + number);
         Food food = foodDao.getFoodById(id);
@@ -388,12 +370,11 @@ public class FoodBLO {
 
     }
 
-    /**
-     * [Give the description for method].
-     * 
-     * @param shop
-     * @return OrderBill
-     */
+    // /**
+    // * [Give the description for method].
+    // * @param shop
+    // * @return OrderBill
+    // */
     // public static OrderBill billing(ShoppingCart shop) {
     //
     // //infor shipping ( get from form , did'nt update in Customer)
@@ -441,31 +422,23 @@ public class FoodBLO {
     // return null;// user chua dang nhap
     // }
 
+    /**
+     * [billing for Order].
+     * @param shop ShoppingCart
+     * @return OrderBill
+     */
     public static OrderBill billing(ShoppingCart shop) {
 
-        // infor shipping ( get from form , did'nt update in Customer)
-
         OrderBillForm orderForm = shop.getOrder();
-        if (orderForm.getIdCustomer() != null) {
-            // Customer customer = login.getCustomer();
-            Long moneyOrder = new Long(0);
-            // customer = CustomerBLO.getCustomerByID(shop.getUser().getLoginId());
-
+        if (orderForm != null) {
+            long moneyOrder = 0;
             OrderBill order = orderForm.getOrder();
-            // create OrderBill
-            // order.setIdCustomer(customer.getCustomerId());
-            // order.setAddress(customer.getCustomerAddress());
-            // order.setEmail(customer.getCustomerEmail());
-            // order.setPhone(customer.getCustomerPhone());
-            // order.setStatus(CommonConstant.BILLSTATUS_1); // chua giao
-            // order.setDateOrder(new Date());
-            List<DetailOrder> detailOrderList = new ArrayList<DetailOrder>();
-            // save order
+            // List<DetailOrder> detailOrderList = new ArrayList<DetailOrder>();
             moneyOrder = sumMoneyOrder(shop);
             order.setSumPrice(moneyOrder);
+            // save order
             order = orderDao.save(order);
             Long idOrder = order.getId();
-            // save in shopping
             // create detailOrder --> save in database
 
             for (FoodForm food : shop.getProducts()) {
@@ -475,7 +448,7 @@ public class FoodBLO {
                 detail.setNumber(food.getNumber());
                 detail.setSubPrice(food.getNumber() * food.getPrice());
                 detail.setOrderId(idOrder);
-                detailOrderList.add(detail);
+                // detailOrderList.add(detail);
                 // save DetailOrder
                 orderDao.insertDetailOrder(detail);
 
@@ -485,18 +458,16 @@ public class FoodBLO {
             }
             return order;
         }
-        return null;// user chua dang nhap
+        // user chua dang nhap
+        return null;
     }
 
     /**
-     * get new DetailOrder for ReOrder( for test with old )
-     * 
-     * @param orderID
-     * @return
+     * [getDetailOrderReset(function of Customer)].
+     * @param orderID           Long
+     * @return                  List<DetailOrder>
      */
     public static List<DetailOrder> getDetailOrderRe(Long orderID) {
-        // OrderBill orderBill = new OrderBill();
-        // orderBill = order;
         List<DetailOrder> detailList = new ArrayList<DetailOrder>();
         // get detail Order
         detailList = orderDao.getDetailByIDOrBill(orderID);
@@ -510,10 +481,8 @@ public class FoodBLO {
                 if (tempFood.getNumber() < detail.getNumber()) {
                     detail.setNumber(tempFood.getNumber());
                 }
-
-            }
-            // didn't exist this product
-            else {
+            } else {
+             // didn't exist this product
                 detailList.remove(detail);
             }
         }
@@ -521,22 +490,23 @@ public class FoodBLO {
     }
 
     /**
-     * get detailOrder for Order
-     * 
-     * @param order
-     * @return
+     * [getDetailOrder by Order ID].
+     * @param orderID       Long
+     * @return              List<DetailOrder>
      */
     public static List<DetailOrder> getDetailOrder(Long orderID) {
-        // OrderBill orderBill = new OrderBill();
-        // orderBill = order;
         List<DetailOrder> detailList = new ArrayList<DetailOrder>();
         // get detail Order
         detailList = orderDao.getDetailByIDOrBill(orderID);
-        // test product in order Detail with product current
-
         return detailList;
 
     }
+    /**
+     * [isEqual].
+     * @param list1         List<DetailOrder>
+     * @param list2         List<DetailOrder>
+     * @return              boolean
+     */
     public static boolean isEqual(List<DetailOrder> list1, List<DetailOrder> list2) {
         if (list1.size() != list2.size()) {
             return false;
@@ -548,15 +518,11 @@ public class FoodBLO {
         }
         return true;
     }
-
     /**
-     * cancel bill when status : order
-     * 
-     * @param id
-     * @param number
-     * @return
+     * [cancelOrderBill(set status of OrderBill)].
+     * @param id            Long
+     * @return              boolean
      */
-
     public static boolean cancelOrderBill(Long id) {
         if (updateStatusOrderBill(id, CommonConstant.BILLSTATUS_4)) {
             List<DetailOrder> detailOrderList = new ArrayList<DetailOrder>();
@@ -572,14 +538,12 @@ public class FoodBLO {
     }
 
     /**
-     * set status of OrderBill:
-     * 
-     * @param id
-     * @param number
-     * @return
+     * [updateStatusOrderBill].
+     * @param id                Long
+     * @param status            int
+     * @return                  boolean
      */
-
-    public static boolean updateStatusOrderBill(Long id, Integer status) {
+    public static boolean updateStatusOrderBill(Long id, int status) {
         OrderBill order = orderDao.getOrderBillById(id);
         order.setStatus(status);
         if (orderDao.save(order) != null) {
@@ -589,42 +553,53 @@ public class FoodBLO {
     }
 
     /**
-     * [Give the description for method].
-     * 
-     * @param food
-     * @return boolean
+     * [deleteFood].
+     * @param food          Food
+     * @return              boolean
      */
-
     public static boolean deleteFood(Food food) {
         return PMF.delete(food);
     }
     /**
-     * [Give the description for method].
-     * 
-     * @param shop
-     * @return Long
+     * [sumMoneyOrder].
+     * @param shop          ShoppingCart
+     * @return long
      */
-    public static Long sumMoneyOrder(ShoppingCart shop) {
-        Long moneyOrder = new Long(0);
+    public static long sumMoneyOrder(ShoppingCart shop) {
+        long moneyOrder = 0;
         for (FoodForm food : shop.getProducts()) {
             moneyOrder = moneyOrder + food.getNumber() * food.getPrice();
         }
         return moneyOrder;
     }
-    // upload Food (provider)
+    /**
+     * [upload Food (provider)].
+     * @param food          Food
+     * @return              boolean
+     */
     public static boolean uploadFood(Food food) {
         return foodDao.saveFood(food);
     }
-
+    /**
+     * [getAttributeFoodList].
+     * @return      List<String>
+     */
     public static List<String> getAttributeFoodList() {
         return foodDao.getAttributeList("productAttributeName");
     }
+    /**
+     * [getPriceFoodList].
+     * @return      List<FoodPriceLevel>
+     */
     public static List<FoodPriceLevel> getPriceFoodList() {
         return foodDao.getPriceList();
     }
-
-    public static String getFoodIdPrice(Long money) {
-        // fix
+    /**
+     * [getFoodIdPrice].
+     * @param money         long
+     * @return              String
+     */
+    public static String getFoodIdPrice(long money) {
         List<FoodPriceLevel> formList = new ArrayList<FoodPriceLevel>();
         // call to get list price
         formList = getPriceFoodList();
@@ -635,34 +610,17 @@ public class FoodBLO {
         }
         return null;
     }
+    /**
+     * [shortDisplayText].
+     * @param list          List<FoodForm>
+     * @param len           int
+     */
+    public static void shortDisplay(List<FoodForm> list, int len) {
+        for (FoodForm form : list) {
+            form.setDetail(CommonUtil.shortString(form.getDetail(), len));
+            form.setCooking(CommonUtil.shortString(form.getCooking(), len));
+        }
+    }
 
 }
-// /**
-// *
-// * get detail info of product
-// * @return
-// */
-// public static List<FoodForm> getFoodForm(){
-//
-// List<FoodForm> formList = new ArrayList<FoodForm>();
-// List<Food> foodList = new ArrayList<Food>();
-// foodList = foodDao.getFoodList();
-// for(Food food:foodList ){
-// FoodForm form = new FoodForm();
-//
-// if(CommonConstant.STATUS_2 != food.getFoodStatusId() ){
-// form.editForm(food);
-// }
-// else
-// {
-// //san pham khuyen mai
-// form.editForm(isProductPromotion( food.getFoodId()));
-// }
-// if(!form.isEmpty()){
-// formList.add(form);
-// }
-// }
-// return formList;
-// }
-//
 
