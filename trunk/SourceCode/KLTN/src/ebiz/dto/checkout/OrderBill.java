@@ -10,47 +10,49 @@ import javax.jdo.annotations.PrimaryKey;
 
 import ebiz.dto.account.customer.Address;
 
+/**
+ * @author Administrator
+ *
+ */
 @PersistenceCapable
-public class OrderBill  implements Serializable{
+public class OrderBill  implements Serializable {
     /**  . */
     private static final long serialVersionUID = 1L;
+    /**  . */
     @PrimaryKey
     @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
-	private Long id;
+    private Long id;
+    /**  . */
     @Persistent
-	private String idCustomer;
+    private String idCustomer;
+    /**  . */
     @Persistent
-	private Address address;
+    private Address address;
+    /**  . */
     @Persistent
-	private String email;
+    private String email;
+    /**  . */
     @Persistent
-	private String phone;
+    private String phone;
+    /**  . */
     @Persistent
-	private Integer status;
+    private Integer status;
+    /**  . */
     @Persistent
-	private Date dateOrder;
+    private Date dateOrder;
+    /**  . */
     @Persistent
     private Date dateShip;
+    /**  . */
     @Persistent
-	private Long sumPrice;
+    private Long sumPrice;
+    /**  . */
     @Persistent
-	private String idEmployee;
-//    @Persistent(mappedBy = "orderBill")
-//    private List<DetailOrder> detailOrders;
-    /**
-     * Get value of detailOrders.
-     * @return the detailOrders
-     */
-//    public List<DetailOrder> getDetailOrders() {
-//        return detailOrders;
-//    }
-//    /**
-//     * Set the value for detailOrders.
-//     * @param detailOrders the detailOrders to set
-//     */
-//    public void setDetailOrders(List<DetailOrder> detailOrders) {
-//        this.detailOrders = detailOrders;
-//    }
+    private String idEmployee;
+    /**  . */
+    @Persistent
+    private int typePayment;
+
     /**
      * Get value of id.
      * @return the id
@@ -191,6 +193,19 @@ public class OrderBill  implements Serializable{
     public void setDateShip(Date dateShip) {
         this.dateShip = dateShip;
     }
-	
+    /**
+     * Get value of typePayment.
+     * @return the typePayment
+     */
+    public int getTypePayment() {
+        return typePayment;
+    }
+    /**
+     * Set the value for typePayment.
+     * @param typePayment the typePayment to set
+     */
+    public void setTypePayment(int typePayment) {
+        this.typePayment = typePayment;
+    }
 
 }
