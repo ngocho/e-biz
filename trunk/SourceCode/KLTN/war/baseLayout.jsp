@@ -7,7 +7,7 @@
 <html>
 <title>Home page</title>
 <meta name="description" content="Default Description">
-<meta name="keywords" content="Magento, Varien, E-commerce">
+<meta name="keywords" content="Food E-commerce">
 <meta name="robots" content="*">
 <link rel="icon" href="http://localhost/magento/skin/frontend/default/default/favicon.ico" type="image/x-icon"/>
 <link rel="shortcut icon" href="http://localhost/magento/skin/frontend/default/default/favicon.ico" type="image/x-icon"/>
@@ -20,22 +20,9 @@
 </script>
 <![endif]-->
 <link rel="stylesheet" type="text/css" href="css/styles.css" media="all"/>
-<!-- <link rel="stylesheet" type="text/css" href="css/widgets.css" media="all"/>
-<link rel="stylesheet" type="text/css" href="css/print.css" media="print"/> -->
-<!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-<script type="text/javascript" src="js/ccard.js"></script>
-<script type="text/javascript" src="js/validation.js"></script>
-<script type="text/javascript" src="js/builder.js"></script>
-<script type="text/javascript" src="js/effects.js"></script>
-<script type="text/javascript" src="js/dragdrop.js"></script>
-<script type="text/javascript" src="js/controls.js"></script>
-<script type="text/javascript" src="js/slider.js"></script> -->
 <script type="text/javascript" src="js/js.js"></script>
-<!-- <script type="text/javascript" src="js/form.js"></script>
-<script type="text/javascript" src="js/menu.js"></script> -->
-<!-- <script type="text/javascript" src="js/cookies.js"></script> -->
 <script type="text/javascript" src="js/ajax.js"></script>
-<script type="text/javascript" src="js/jquery-1.2.6.min.js"></script>
+<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
 
 <script type="text/javascript">
 
@@ -83,20 +70,17 @@ $(function() {
 <body class=" cms-index-index cms-home">
 <div class="wrapper">
         <noscript>
-        &lt;div class="noscript"&gt;
-            &lt;div class="noscript-inner"&gt;
-                &lt;p&gt;&lt;strong&gt;JavaScript seem to be disabled in your browser.&lt;/strong&gt;&lt;/p&gt;
-                &lt;p&gt;You must have JavaScript enabled in your browser to utilize the functionality of this website.&lt;/p&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
+        
     </noscript>
-    <div class="page">
-        <!--div class="header-container"-->
+    <div class="page"  >
+        <div class="header-container">
         <tiles:insert attribute="header" />
-
+</div>
+ <tiles:insert attribute ="pankuzu" />
         <div class="main-container ">
+    
            <!--  <div class="main"> -->
-              <tiles:insert attribute ="pankuzu" />
+             
                 <tiles:insert attribute="left" />
               <div class="col-main">
               
@@ -104,8 +88,10 @@ $(function() {
                                           </div>     
  <tiles:insert attribute ="right" />
          <!--  </div> -->
+     
         </div>
-      <tiles:insert attribute ="footer" />
+        
+  <tiles:insert attribute ="footer" />      
   </div>
 </div>
 

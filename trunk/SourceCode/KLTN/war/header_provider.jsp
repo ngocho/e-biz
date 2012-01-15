@@ -30,32 +30,37 @@ Tiếng Anh
       </c:if>
         <li>
             <a href="/registerProvider.vn">Đăng kí</a>        </li>
-        <!--li class="last">
-            <a href="http://foodzie.com/newsletter_signup/" onclick="showNewsletterModal(); return false;">Join Mailing List</a>        </li-->
       </ul>
  </div>
- <div class="header-row2">
-<div class="nav-container">
-<logic:present name="provider">
+ <div class="header-row3">
+<div class="nav-container" >
+
     <ul id="nav">
+    <li>
+      <a
+          href="home.vn"
+          class="level-top">
+<img src="Images/Commons/icon-trang-chu.png" width="20" height="20" style="margin-left:-70px;"><span style="margin-left:10px;margin-top:-10px;" class="nav-text-provider"> Trang chủ</span></img>
+        </a></li>
+        <logic:present name="provider">
         <li class="level0 nav-1 level-top first parent">
 <a href="/displayInfo.vn"
           class="level-top">
 
-<span class="white-text">Thông tin cửa hàng</span>
+<span class="nav-text-provider">Thông tin cửa hàng</span>
         </a>
         <a
           href="/uploadLink.vn"
           class="level-top">
 
-<span class="white-text">Upload sản phẩm</span>
+<span class="nav-text-provider">Upload sản phẩm</span>
         </a>
 </li>
   <li class="level0 nav-4 level-top first parent">
-<a href="category.vn?typeProduct=3"
+<a href="/displayProduct.vn"
           class="level-top">
 
-<span class="white-text">Danh sách sản phẩm</span>
+<span class="nav-text-provider">Danh sách sản phẩm</span>
         </a>
         </li>
           <li class="level0 nav-4 level-top first parent">
@@ -63,10 +68,11 @@ Tiếng Anh
           href="http://localhost/magento/index.php/catalog/category/view/s/furniture/id/10/"
           class="level-top">
 
-<span class="white-text">Đơn hàng</span>
-        </a>
+<span class="nav-text-provider">Đơn hàng</span>
+        </a></li>
+       </logic:present>
 </ul>
-</logic:present>
+
 </div>
 <form id="search_mini_form" action="#" method="get">
 <fieldset class="form-search">

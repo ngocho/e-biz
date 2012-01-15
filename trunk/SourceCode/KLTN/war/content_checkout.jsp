@@ -1,6 +1,8 @@
+<%@page import="ebiz.util.CommonUtil"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
   pageEncoding="UTF-8"%>
-  <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@page import="java.util.Date" %>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
 <%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
 <%@taglib  uri="http://java.sun.com/jstl/core" prefix="c"%>
@@ -18,37 +20,45 @@
         <div id="checkout-step-billing" class="step a-item" > 
         <fieldset>
         <html:form action="/createBill.vn" method="get">
-
+        <html:hidden property="idCustomer" />
     <ul class="form-list">
         <li id="billing-new-address-form">
         <fieldset class="highlight">
             <ul>
                 <li class="fields"><div class="customer-name">
     <div class="field name-firstname">
-        <label for="billing:firstname" class="required"><em>*</em>Họ và tên</label>
+        <label  class="required"><em>*</em>Họ và tên</label>
         <div class="input-box">
-        <html:text size="30" property="nameCustomer"/>
+        <html:text size="30" property="nameCustomer" />
         </div>
     </div>
 </div>
 </li>
                 <li class="fields">
                     <div class="field">
-                        <label for="billing:company" class="required"><em>*</em>Điện thoại</label>
+                        <label  class="required"><em>*</em>Điện thoại</label>
                         <div class="input-box">
                            <html:text size="30" property="phone"/>
                         </div>
                     </div>
                         </li>
+                        <li class="fields">
+                    <div class="field">
+                        <label  class="required"><em>*</em>Email</label>
+                        <div class="input-box">
+                           <html:text size="30" property="email"/>
+                        </div>
+                    </div>
+                        </li>
                 <li class="fields">
                     <div class="field">
-                        <label for="billing:company">Số nhà</label>
+                        <label class="required" ><em>*</em>Số nhà</label>
                         <div class="input-box">
                             <html:text size="30" property="homeNumber"/>
                         </div>
                     </div>
                       <div class="field">
-                        <label for="billing:email" class="required"><em>*</em>Tên đường</label>
+                        <label  class="required"><em>*</em>Tên đường</label>
                         <div class="input-box">
                              <html:text size="30" property="streetName"/>
                         </div>
@@ -56,15 +66,15 @@
                     </li>
                         <li class="fields">
                     <div class="field">
-                        <label for="billing:company">Phường</label>
+                        <label  class="required" ><em>*</em>Phường</label>
                         <div class="input-box">
                               <html:text size="30" property="wardName"/>
                         </div>
                     </div>
                      <div class="field">
-                        <label for="billing:email" class="required"><em>*</em>Quận</label>
+                        <label  class="required" class="required"><em>*</em>Quận</label>
                         <div class="input-box">
-                        <html:select property="districtName">
+                        <html:select property="districtName" >
                           <html:option  value="0"> - - - - - - - - - - - - Chọn quận- - - - - - - - - - - - - </html:option>
      <html:option value="1">1</html:option>
      <html:option value="2">2</html:option>
@@ -94,46 +104,61 @@
                     </li>
                         <li class="fields">
                     <div class="field">
-                        <label for="billing:city" class="required">Tòa nhà</label>
+                        <label  class="required">Tòa nhà</label>
                         <div class="input-box">
                         <html:text size="30" property="buildingName"/>
                         </div>
                     </div>
                   </li>
-                 <%--   <li class="fields">
-                    <div class="field">
-                        <label for="billing:city" class="required">Ngày giao hàng</label>
-                        <div class="input-box">
-                             <html:text size="30" property="buildingName"/>
-                        </div>
-                    </div>
-                  </li> --%>
+
                   <li class="fields">
                     <div class="field">
-                        <label for="billing:city" class="required">Lời nhắn</label>
+                        <label  class="required"><em>*</em>Ngày giao hàng</label>
                         <div class="input-box">
-                            <html:textarea  property="note"/>
+                        <% Date date = new Date(); 
+                        String s_date = CommonUtil.convertDateToString(date);
+                        %>
+                           <html:text size="30" property="dateShip" styleId="datepicker" value="<%=s_date%>"/>
                         </div>
                     </div>
                   </li>
-           
-                                                                    <li class="no-display"><input name="billing[save_in_address_book]" value="1" type="hidden"></li>
+                  <li class="fields">
+                    <div class="field">
+                        <label  class="required">Lời nhắn</label>
+                        <div class="input-box">
+                            <html:textarea style="width:400px;" cols="200" rows="100" property="note" />
+                        </div>
+                    </div>
+                  </li>
                             </ul>
             
 
 
         </fieldset>
      </li>
-          <!--   <li class="control">
-            <input name="billing[use_for_shipping]" id="billing:use_for_shipping_yes" value="1" checked="checked" title="Ship to this address" onclick="$('shipping:same_as_billing').checked = true;" class="radio" type="radio"><label for="billing:use_for_shipping_yes">Thanh toán qua th? ATM</label></li>
+     <li class="fields">
+                    <div class="field">
+                        <label  class="required">Vui lòng chọn hình thức thanh toán</label>
+                       
+                    </div>
+                  </li>
+            <li class="control">
+            <html:radio  property="isPayment" value="0" /><label>   Dùng tài khoản xu để thanh toán</label></li>
         <li class="control">
-            <input name="billing[use_for_shipping]" id="billing:use_for_shipping_no" value="0" title="Ship to different address" onclick="$('shipping:same_as_billing').checked = false;" class="radio" type="radio"><label for="billing:use_for_shipping_no">Thanh toán qua c?ng thanh toán tr?c tuy?n</label>
-        </li> -->
+             <html:radio  property="isPayment" value="1" /><label>   Thanh toán qua thẻ ATM </label></li>
+         <li class="control">
+              <html:radio  property="isPayment" value="2" /><label>   Thanh toán qua ngân lượng</label></li>
+       
         <li>
-        <button type="submit" title="Thanh toán" class="button"  ><span><span>Tiếp tục</span></span></button>
+        <button type="submit" title="Thanh toán" class="button"  ><span><span>Thanh toán</span></span></button>
+        </li>
+         <li>
+        <button type="submit" title="Thanh toán" class="button"  ><span><span>Trở lại</span></span></button>
         </li>
         </ul>
         </html:form>
+       
+        
         <div class="buttons-set" id="billing-buttons-container">
         <p class="required">* Required Fields</p>
         <span class="please-wait" id="billing-please-wait" style="display:none;">
@@ -141,7 +166,7 @@
     </div>
   
 
-</fieldset>
+
 
         </div>
     </li>

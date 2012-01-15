@@ -4,6 +4,16 @@
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
 <%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic"%>
 <%@taglib uri="http://java.sun.com/jstl/core" prefix="c"%>
+<%@page import="ebiz.form.ProductVO" %>
+<script type="text/javascript">
+$(document).ready(function(){
+    $(".addShopping").click(function() {
+        addToCart(1,$(this).attr('name'));
+        return false;
+    });
+});
+</script>
+
 <script type="text/javascript">
     function slideSwitch() {
         var $active = $('#slideshow IMG.active');
@@ -88,11 +98,24 @@
   z-index: 9;
 }
 </style>
-<div class="home-spot">
   <div class="page-title category-title">
 
     <h1>
-      <a href="category.vn?typeProduct=1"></a>Thực phẩm sơ chế
+      <a href="category.vn?typeProduct=1"></a>
+       <% ProductVO vo = (ProductVO)session.getAttribute("productVo");
+       if(vo !=null){
+        String temp = vo.getTypeProduct();
+        if(temp.equals("1")){
+       
+       %>
+      Thực phẩm sơ chế
+      <%}else if(temp.equals("2")) {%>
+      Thức ăn nấu sẵn
+      <%}else if(temp.equals("3")) {%>
+      Rau xanh
+      <%}else if(temp.equals("4")){ %>
+     Gia vị
+      <%}} %>
     </h1>
   </div>
 
@@ -221,7 +244,7 @@
             href="/displayProductDetail.vn?id=<bean:write name="element" property="id"/>"
             title="" class="product-image"><img
               src="/serveImage.vn?urlKey=<bean:write name="element" property="urlKey"/>"
-              alt="Chair" width="260" height="255">
+              alt="Chair" width="240" height="255">
           </a>
             <h2 class="product-name">
               <a
@@ -260,8 +283,8 @@
               <a
                 href="/displayProductDetail.vn?id=<bean:write name="element" property="id" />"><img
                 src="Images/Commons/xem.jpg" width="70"></img>
-              </a> <a
-                href="/addShopping.vn?id=<bean:write name="element" property="id"/>"
+              </a> <a name="<bean:write name="element" property="id"/>" class="addShopping"
+                href=""
                 ><img src="Images/Commons/mua.jpg"
                 width="70"></img>
               </a>
@@ -273,4 +296,3 @@
     </ul>
 
   </div>
-</div>

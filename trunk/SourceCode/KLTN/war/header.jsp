@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
   pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jstl/core" prefix="c"%>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
 <div class="header">
   <div class="header-row1">
 
@@ -51,20 +54,19 @@ Tiếng Anh
         <a
           href="home.vn"
           class="level-top">
-
-<span class="white-text">Trang chủ</span>
+<img src="Images/Commons/icon-trang-chu.png" width="20" height="20" style="margin-left:-70px;"><span style="margin-left:10px;margin-top:-10px;" class="nav-text"> Trang chủ</span></img>
         </a>
 <a
           href="category.vn?typeProduct=1"
           class="level-top">
 
-<span class="white-text">Thực phẩm sơ chế</span>
+<span class="nav-text">Thực phẩm sơ chế</span>
         </a>
         <a
           href="category.vn?typeProduct=2"
           class="level-top">
 
-<span class="white-text">Thức ăn nấu sẵn</span>
+<span class="nav-text">Thức ăn nấu sẵn</span>
         </a>
 </li>
   <li class="level0 nav-4 level-top first parent">
@@ -72,22 +74,22 @@ Tiếng Anh
           href="category.vn?typeProduct=3"
           class="level-top">
 
-<span class="white-text">Rau xanh</span>
+<span class="nav-text">Rau xanh</span>
         </a>
         </li>
           <li class="level0 nav-4 level-top first parent">
 <a
-          href="category.vn?typeProduct=1"
+          href="category.vn?typeProduct=4"
           class="level-top">
 
-<span class="white-text">Gia vị</span>
+<span class="nav-text">Gia vị</span>
         </a>
 
  <li class="level0 nav-2 level-top parent">
 <a
           href="provider.vn"
           class="level-top">
-<span class="white-text">Cửa hàng</span>
+<span class="nav-text">Cửa hàng</span>
         </a>
 
 </li> 
@@ -95,7 +97,7 @@ Tiếng Anh
     <li class="level0 nav-2 level-top parent">
 <a         href="customer.vn"
             class="level-top">
-<span class="white-text">Tài khoản của bạn</span>
+<span class="nav-text">Tài khoản</span>
         </a>
 </li>
 </c:if>

@@ -23,7 +23,8 @@
                 <li class="fields">
                     <div class="customer-name">
     <div class="field name-firstname">
-        <label for="firstname" class="required" id="typeLogin"  ><em>*</em>Tên đăng nhập</label>
+        <label  class="required" id="typeLogin"  ><em>*</em>Tên đăng nhập</label>
+        </div>
         <div class="input-box">
         <html:text property="loginId" /> 
         </div>
@@ -34,16 +35,16 @@
                 
                 <li class="fields">
                     <div class="field">
-                        <label for="password" class="required"><em>*</em>Mật khẩu</label>
+                        <label  class="required"><em>*</em>Mật khẩu</label>
                         <div class="input-box">
-                            <html:text property="loginPassword" />
+                            <html:password property="loginPassword" />
 
                         </div>
                     </div>
                     <div class="field">
-                        <label for="confirmation" class="required"><em>*</em>Nhập lại mật khẩu</label>
+                        <label  class="required"><em>*</em>Nhập lại mật khẩu</label>
                         <div class="input-box">
-                           <html:text property="loginPasswordPre" />
+                           <html:password property="loginPasswordPre" />
                         </div>
                     </div>
 
@@ -59,28 +60,21 @@
         </div>
             <div class="fieldset">
 
-            <h2 class="legend">Thông tin khách hàng </span></h2> <span> 
+            <h2 class="legend"><span>Thông tin cửa hàng</span></h2>
             <ul class="form-list">
             <li class="fields">
-            <!--a href="" style="text-decoration:none; color:#990000"> Rút gọn </a> | <a href="" > Đầy đủ </a-->
             </li>
             <li class="fields">
                     <div class="field">
-                        <label for="password" class="required">Tên </label>
+                        <label  class="required"><em>*</em>Tên cửa hàng</label>
                         <div class="input-box">
                             <html:text property="loginName" size="40"/>
                         </div>
                     </div>
-                        <label for="confirmation" class="required">Giới tính : </label></br>
-                        Nữ  <html:radio property="gender" value="0" />&nbsp &nbsp &nbsp
-                        Nam  <html:radio property="gender"  value="1" />
-                       <!-- <input type="radio" name="gender" value="female" checked="true"/>
-                       &nbsp &nbsp &nbsp <input type="radio" name="gender" value="male" /> Nam -->
-                      
                     </li>
                 <li class="fields">
                     <div class="field">
-                        <label for="password" class="required">Email</label>
+                        <label  class="required"><em>*</em>Email</label>
                         <div class="input-box">
                            <html:text property="email" size="40"/>
 
@@ -89,13 +83,13 @@
                     </li>
                    <li class="fields">
                     <div class="field">
-                        <label for="billing:company">Số nhà</label>
+                        <label  class="required"><em>*</em>Số nhà</label>
                         <div class="input-box">
                          <html:text property="homeNumber"/>
                         </div>
                     </div>
                       <div class="field">
-                        <label for="billing:email" class="required">Tên đường</label>
+                        <label  class="required"><em>*</em>Tên đường</label>
                         <div class="input-box">
                            <html:text property="streetName" size="40"/>
                         </div>
@@ -103,13 +97,13 @@
                     </li>
                      <li class="fields">
                     <div class="field">
-                        <label for="billing:company">Phường</label>
+                        <label class="required"><em>*</em>Phường</label>
                         <div class="input-box">
                            <html:text property="wardName" size="40"/>
                         </div>
                     </div>
                      <div class="field">
-                        <label for="billing:email" class="required">Quận</label>
+                        <label for="billing:email" class="required"><em>*</em>Quận</label>
                         <div class="input-box">
                         <html:select property="districtName">
                         <html:option value="0">- - - - - - - - - - - - Chọn quận- - - - - - - - - - - - -</html:option>
@@ -141,7 +135,7 @@
                     </li>
                      <li class="fields">
                     <div class="field">
-                        <label for="billing:city" class="required">Tòa nhà</label>
+                        <label  class="required">Tòa nhà</label>
                         <div class="input-box">
                         <html:text property="buildingName" size="40"/>
                         </div>
@@ -149,71 +143,45 @@
                   </li>
                     <li>
                     <div class="field">
-                        <label for="confirmation" class="required">Số điện thoại</label>
+                        <label  class="required"><em>*</em>Số điện thoại</label>
                         <div class="input-box">
-                           <html:text property="phone" />
+                           <html:text property="phone" size="40"/>
                         </div>
                     </div>
 
                 </li>
+                <li>
+                    <div class="field">
+                        <label  class="required"><em>*</em>Giới thiệu về cửa hàng</label>
+                        <div class="input-box">
+                           <html:textarea property="detail" />
+                        </div>
+                    </div>
+
+                </li>
+                <li>
+ <html:messages id="error">
+<bean:write name="error"/>
+</html:messages>
+                </li>
                             </ul>
                             
-            <div id="window-overlay" class="window-overlay" style="display:none;"></div>
-<div id="remember-me-popup" class="remember-me-popup" style="display:none;">
-    <div class="remember-me-popup-head">
-        <h3>What's this?</h3>
-        <a href="#" class="remember-me-popup-close" title="Close">Close</a>
-    </div>
 
-    <div class="remember-me-popup-body">
-        <p>Checking &quot;Remember Me&quot; will let you access your shopping cart on this computer when you are logged out</p>
-        <div class="remember-me-popup-close-button a-right">
-            <a href="#" class="remember-me-popup-close button" title="Close"><span>Close</span></a>
-        </div>
-    </div>
 
 </div>
-<script type="text/javascript">
-//<![CDATA[
-    function toggleRememberMepopup(event){
-        if($('remember-me-popup')){
-            var viewportHeight = document.viewport.getHeight(),
-                docHeight      = $$('body')[0].getHeight(),
-                height         = docHeight > viewportHeight ? docHeight : viewportHeight;
-            $('remember-me-popup').toggle();
-            $('window-overlay').setStyle({ height: height + 'px' }).toggle();
-        }
-        Event.stop(event);
-    }
-
-    document.observe("dom:loaded", function() {
-        new Insertion.Bottom($$('body')[0], $('window-overlay'));
-        new Insertion.Bottom($$('body')[0], $('remember-me-popup'));
-
-        $$('.remember-me-popup-close').each(function(element){
-            Event.observe(element, 'click', toggleRememberMepopup);
-        })
-        $$('#remember-me-box a').each(function(element) {
-            Event.observe(element, 'click', toggleRememberMepopup);
-        });
-    });
-//]]>
-</script>
-</div>
- <button type="submit" title="Submit" style="margin-left:200px;" class="button">
+ <button type="submit" title="Submit" style="margin-left:100px;" class="button">
     <span><span>Submit</span>
     </span>
   </button>
-<div class="buttons-set1">
-  <p class="buttons-set1 p.required">* Required Fields</p>
-  <br />
-  <p class="buttons-set1 p.back-link">
-    <a href="https://demo.magentocommerce.com/customer/account/login/"
-      class="back-link"><small>&laquo; </small>Back</a>
-  </p>
-
-</div>
 </html:form>
+</div>
+
+
+<div class="buttons-set1">
+  <p class="buttons-set1 p.required" style="color:red;">* Required Fields</p>
+  <br />
 
 </div>
+
+
 </div>

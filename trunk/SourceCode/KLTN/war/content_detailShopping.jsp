@@ -12,13 +12,13 @@
       <div class="fieldset">
         <h2 class="legend">Thông tin sản phẩm</h2>
 
-<input type="text" name="id" value="<bean:write name="shopFoodDetail" property="id"/>"/>
+<input type="hidden" name="id" value="<bean:write name="shopFoodDetail" property="id"/>"/>
   
       <ul class="form-list">
         <li class="fields">
           <div class="customer-name">
             <div class="field name-firstname">
-              <label for="firstname" class="required" id="typeLogin"><em>*</em>Hình</label>
+              <label for="firstname" class="required" id="typeLogin">Hình</label>
               <div class="input-box">
                   <img src="/serveImage.vn?urlKey=<bean:write name="shopFoodDetail" property="urlKey"/>" width="200"
                     height="150" />
@@ -29,7 +29,7 @@
         <li class="fields">
           <div class="customer-name">
             <div class="field name-firstname">
-              <label for="firstname" class="required" id="typeLogin"><em>*</em>Tên
+              <label for="firstname" class="required" id="typeLogin"> Tên
                 món ăn</label>
               <div class="input-box">
                <bean:write name="shopFoodDetail" property="name"/>
@@ -39,7 +39,7 @@
         <li class="fields">
           <div class="customer-name">
             <div class="field name-firstname">
-              <label for="firstname" class="required" id="typeLogin"><em>*</em>Số
+              <label for="firstname" class="required" id="typeLogin"> Số
                 lượng</label>
               <div class="input-box">
                 <input type="text" name="number" value="<bean:write name="shopFoodDetail" property="number"/>" />
@@ -49,7 +49,7 @@
         <li class="fields">
           <div class="customer-name">
             <div class="field name-firstname">
-              <label for="firstname" class="required" id="typeLogin"><em>*</em>Giá mua</label>
+              <label for="firstname" class="required" id="typeLogin"> Giá mua</label>
               <div class="input-box">
                <bean:write name="shopFoodDetail" property="price"/>
               </div>
@@ -58,7 +58,7 @@
              <li class="fields">
           <div class="customer-name">
             <div class="field name-firstname">
-              <label for="firstname" class="required" id="typeLogin"><em>*</em>Thành tiền</label>
+              <label for="firstname" class="required" id="typeLogin"> Thành tiền</label>
               <div class="input-box">
               <bean:write name="shopFoodDetail" property="subTotal"/>
               </div>

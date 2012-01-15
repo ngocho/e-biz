@@ -49,7 +49,7 @@
             </div></li>
           <li><label for="pass" class="required"><em>*</em>Password</label>
             <div class="input-box">
-              <html:text property="loginPassword" />
+              <html:password property="loginPassword" />
               <!--  <input type="password" name="login[password]" class="input-text required-entry validate-password" id="pass" title="Password"> -->
             </div></li>
           <li>

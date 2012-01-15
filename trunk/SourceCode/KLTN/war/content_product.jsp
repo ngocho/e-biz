@@ -14,14 +14,14 @@ $(document).ready(function(){
     });
 });
 </script>
-<div class="col-main">
-
+<!-- <div class="col-main"> -->
+<div style="width: 770px;">
 
 <div id="messages_product_view"></div>
 <div class="product-view">
     <div class="product-essential">
     <logic:present name="DetailProduct">
-    <form action="http://demo.magentocommerce.com/checkout/cart/add/uenc/aHR0cDovL2RlbW8ubWFnZW50b2NvbW1lcmNlLmNvbS9jaGFpci5odG1sP19fX1NJRD1V/product/52/" method="post" id="product_addtocart_form">
+    <form action="" method="post" id="product_addtocart_form">
         <div class="no-display">
             <input name="product" value="52" type="hidden">
             <input name="related_product" id="related-products-field" value="" type="hidden">
@@ -41,8 +41,6 @@ $(document).ready(function(){
                                 <tr style="color:black;font-weight: bold; font-size: 15px;">
                                     <td width="20%"><span class="txt-price"> <input id="quantity" name="quantity" value="1" type="text" ></span></td>
                                     <td width="60%">x    <span class="price"><bean:write name="DetailProduct" property="price" /></span> </td>
-            <!--                         <td width="25%">
-                                        <div class="qty-prod"><input id="quantity" name="quantity" value="1" class="qty-prod-input spinner-field" type="text"> </div>                                    </td> -->
                                     <td width="25%" align="center">
                                      <a href=""  id="addToCart" ><img alt="" src="Images/Commons/mua.jpg"  width="100" border="0" height="35">  </a>
                                      <input type="hidden" id="id" value="<bean:write name ="DetailProduct" property="id" />"/>
@@ -63,6 +61,10 @@ $(document).ready(function(){
             </div>
             <div class="product_info">      
                 <table border="1" style="border-style:ridge;;border-width:2px; border-color:#98bf21;">
+            <tr>
+            <th >Cửa hàng cung cấp</th>
+            <td width="200" class="price" style="padding:3px;" > <bean:write name="DetailProduct" property="idProvider" /></td>
+            </tr>
             <tr>
             <th >Giá khuyến mãi</th>
             <td width="200" class="price" style="padding:3px;" > <bean:write name="DetailProduct" property="promoPrice" /></td>
@@ -89,7 +91,7 @@ $(document).ready(function(){
 
         <div class="product-img-box">
             <p class="product-image ">
-    <img  width="380" height="400" id="image" src="/serveImage.vn?urlKey=<bean:write name="DetailProduct" property="urlKey"/>" alt="Chair" title="Chair"></p>
+  <a href=""  ><img  width="340" height="310" id="image" src="/serveImage.vn?urlKey=<bean:write name="DetailProduct" property="urlKey"/>" alt="Chair" title="Chair"></a></p>
 <div class="more-views">
   <%--   <h2>Thêm hình</h2>
     <ul>
@@ -180,13 +182,5 @@ $(document).ready(function(){
     </div>
 </div>
 
-<script type="text/javascript">
-    var lifetime = 3600;
-    var expireAt = Mage.Cookies.expires;
-    if (lifetime > 0) {
-        expireAt = new Date();
-        expireAt.setTime(expireAt.getTime() + lifetime * 1000);
-    }
-    Mage.Cookies.set('external_no_cache', 1, expireAt);
-</script>
-                </div>
+</div>
+            <!--     </div> -->
