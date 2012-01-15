@@ -56,7 +56,7 @@ public class UpdateCustomer extends BaseAction{
         Customer customer = user.getCustomer();
         flag = CustomerBLO.updatecustomer(customer);
         if(flag){
-            shop.setUser(user);
+//            shop.setUser(user);
             System.out.println("ID"+ user.getLoginId());
             return mapping.findForward(SUCCESS);
         }

@@ -6,7 +6,6 @@ import java.util.List;
 import ebiz.dto.food.Food;
 import ebiz.dto.food.FoodAttribute;
 import ebiz.dto.food.FoodPriceLevel;
-import ebiz.dto.food.FoodPromotion;
 import ebiz.dto.food.FoodStatus;
 import ebiz.dto.food.FoodType;
 
@@ -22,8 +21,6 @@ public interface IFoodDAO {
 	
 	public List<Food> getFoodListByProviderStatus(String idProvider, String statusFood);
 	
-	public List<FoodPromotion> getListFoodPromotion();
-
 	public List<String> getAttributeList(String col);
 
 	public List<FoodPriceLevel> getPriceList();

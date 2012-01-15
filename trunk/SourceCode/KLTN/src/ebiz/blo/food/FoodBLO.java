@@ -146,25 +146,23 @@ public class FoodBLO {
         return formList;
     }
 
-    // /**
-    // * [Give the description for method].
-    // * @param key
-    // * @return
-    // */
-    // public static FoodForm getFoodFormDetail(String key) {
-    //
-    // FoodForm form = new FoodForm();
-    // Long id;
-    // if (key != null) {
-    // id = Long.parseLong(key);
-    // form.editFormDetail(getFoodById(id));
-    //
-    // }
-    // if (form.isEmpty()) {
-    // return null;
-    // }
-    // return form;
-    // }
+     /**
+     * [Give the description for method].
+     * @param key               String
+     * @return                  FoodForm
+     */
+     public static FoodForm getFoodFormDetail(String key) {
+     FoodForm form = new FoodForm();
+     Long id;
+     if (key != null) {
+     id = Long.parseLong(key);
+     form.editFormDetail(getFoodById(id));
+     }
+     if (form.isEmpty()) {
+     return null;
+     }
+     return form;
+     }
 
     /**
      * [update Status of paging].
@@ -214,7 +212,7 @@ public class FoodBLO {
             // test number of product in database
             Food foodDB = foodDao.getFoodById(id);
             numberDB = foodDB.getNumber();
-
+            System.out.println("NUMBER DATEBASE"+numberDB+" "+number);
             if (!shopCart.isEmpty()) {
                 List<FoodForm> foodList = shopCart.getProducts();
                 // ? exist product in shopping cart
@@ -236,6 +234,7 @@ public class FoodBLO {
             }
             // shopcart is empty or don't exist required product in shop cart
             if (number <= numberDB) {
+                System.out.println("No Product");
                 food = new FoodForm();
                 food.editForm(foodDB);
                 // if product is a promotion products -> put into price
@@ -432,7 +431,9 @@ public class FoodBLO {
         OrderBillForm orderForm = shop.getOrder();
         if (orderForm != null) {
             long moneyOrder = 0;
+            System.out.println("start"+orderForm.getIdCustomer());
             OrderBill order = orderForm.getOrder();
+            System.out.println("end"+order.getIdCustomer());
             // List<DetailOrder> detailOrderList = new ArrayList<DetailOrder>();
             moneyOrder = sumMoneyOrder(shop);
             order.setSumPrice(moneyOrder);
@@ -456,6 +457,7 @@ public class FoodBLO {
                 upNumberFoodOrder(food.getId(), food.getNumber());
 
             }
+            System.out.println("ID Customer"+order.getIdCustomer());
             return order;
         }
         // user chua dang nhap

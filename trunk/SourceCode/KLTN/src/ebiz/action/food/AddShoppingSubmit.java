@@ -18,8 +18,6 @@
  */
 package ebiz.action.food;
 
-import java.io.PrintWriter;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -32,7 +30,6 @@ import ebiz.action.BaseAction;
 import ebiz.blo.food.FoodBLO;
 import ebiz.form.ShoppingCart;
 import ebiz.util.CommonConstant;
-import ebiz.util.CommonUtil;
 
 /**
  * @author ThuyNT
@@ -44,46 +41,43 @@ public class AddShoppingSubmit extends BaseAction {
      */
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
-
-        boolean flag;
+    	
+    	boolean flag;
+    	int count = 1;
+    	String number = request.getParameter("number");
+    	String type = request.getParameter("type");
         HttpSession se = request.getSession();
         ShoppingCart shopCart = (ShoppingCart) se.getAttribute("shop");
         String id = request.getParameter("id");
-        Long key = new Long(0);
-//        String number = request.getParameter("number");
-        Integer count = 1;
-        System.out.println("ID" + id);
-        System.out.println("Number" + count);
-        if (!CommonUtil.isBlankOrNull(id)) {
-            key = Long.parseLong(id);
+        if(number !=null){
+        	count = Integer.parseInt(number);
         }
         if (shopCart == null) {
             shopCart = new ShoppingCart();
         }
-        Integer numberInShop = shopCart.getNumberFood(key);
-
         if (id != null) {
             // if required product > product in shop
-            if (count > numberInShop) {
-                // test in database, then add shopping
+//            if (count > numberInShop) {
+//                // test in database, then add shopping
                 flag = FoodBLO.addShoppingCart(shopCart, id, count);
                 if (flag) {
-
                     shopCart.size();
-
                 }
-            }
+//            }
 
             // if required product < product in shop
-            else {
-                shopCart.updateNumberFood(key, numberInShop);
-                shopCart.size();
-            }
+//            else {
+//                shopCart.updateNumberFood(key, numberInShop);
+//                shopCart.size();
+//            }
             // set info of product into session
             se.setAttribute(CommonConstant.SHOPPING, shopCart);
             System.out.println(se.getAttribute(CommonConstant.FOOD_DETAIL_PRODUCT));
             System.out.println("detail" + shopCart.getCount());
 
+        }
+        if(type.equals("1")){
+        	return mapping.findForward(SUCCESS);
         }
         return mapping.findForward(SUCCESS);
     }

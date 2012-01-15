@@ -59,7 +59,6 @@ public class DisplayCategoryRecord extends BaseAction {
         
         String order = request.getParameter("order");
         System.out.println("CATEGORY"+ order);
-        String order = request.getParameter("order");
         HttpSession se = request.getSession();
         List<FoodForm> foods = new ArrayList<FoodForm>();
         List<Paging> pageList = new ArrayList<Paging>();

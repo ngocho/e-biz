@@ -43,7 +43,9 @@ public class DisplayShoppingCart extends BaseAction {
         
        HttpSession se = request.getSession();
        ShoppingCart shop =(ShoppingCart)se.getAttribute("shop");
+       if(shop != null){
        shop.sumMoney();
+       }
         return mapping.findForward(SUCCESS);
     }
 

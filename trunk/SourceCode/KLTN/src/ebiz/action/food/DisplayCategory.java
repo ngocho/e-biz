@@ -63,11 +63,14 @@ public class DisplayCategory extends BaseAction {
         List<FoodForm> foods = new ArrayList<FoodForm>();
         ProductVO vo = new ProductVO();
         String typeProduct = request.getParameter("typeProduct");
+        System.out.println("typeProduct"+ typeProduct);
         if (typeProduct == null) {
             vo = (ProductVO) se.getAttribute(CommonConstant.PRODUCTVO);
             typeProduct = vo.getTypeProduct();
         }
-        vo.setTypeProduct(typeProduct);
+        else{vo.setTypeProduct(typeProduct);
+        
+        }
 
 //         Initialize.initializeFood();
 //         Initialize.initializeFoodAttribute();

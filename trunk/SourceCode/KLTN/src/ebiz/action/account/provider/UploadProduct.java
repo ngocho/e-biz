@@ -41,28 +41,32 @@ public class UploadProduct extends BaseAction {
             HttpServletResponse response) throws Exception {
         //after check validate 
         System.out.println("UPLOAD" );
-        String url ;
+        String url , urlKey;
         ProviderForm provider;
         HttpSession se = request.getSession();
         url= (String)se.getAttribute("urlImage");
+        urlKey = (String)se.getAttribute("urlImageKey");
         provider = (ProviderForm)se.getAttribute("provider");
         FoodForm foodForm = (FoodForm)form;
         //set atrr into form
         foodForm.setUrl(url);
+        foodForm.setUrlKey(urlKey);
         foodForm.setIdProvider(provider.getLoginId());
-        System.out.println("UPLOAD" +foodForm.getStatus() );
+        System.out.println("UPLOAD" +foodForm.getUrlKey() );
         
         Food food = foodForm.getFood();
-        System.out.println("ID pro"+food.getProviderID());
-        System.out.println("ID pro"+food.getFoodStatusId());
-        food.setIsDisplay(1); //updated ( must edit : 0)
+        System.out.println("ID pro"+food.getFoodTypeId());
+        System.out.println("ID pro"+food.getUrlKey());
+        food.setIsDisplay(1); //display ( must edit : 0)
         food.setNumberOrder(0);
         food.setFoodPriceLevelId(FoodBLO.getFoodIdPrice(food.getPrice()));
-        food.setIsDisplay(0);
+//        food.setIsDisplay(0);
         boolean flagUpload = FoodBLO.uploadFood(food);
         System.out.println("UPLOAD" +flagUpload);
         if(flagUpload){
-           se.removeAttribute("urlImage");
+            foodForm.clear();
+            se.removeAttribute("urlImage");
+            se.removeAttribute("urlImageKey");
            return mapping.findForward(SUCCESS);
         }
         return mapping.findForward(FAILURE);

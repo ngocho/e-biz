@@ -30,6 +30,7 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import ebiz.action.BaseAction;
+import ebiz.blo.food.FoodBLO;
 import ebiz.blo.provider.ProviderBLO;
 import ebiz.form.FoodForm;
 import ebiz.form.ProviderForm;
@@ -58,6 +59,8 @@ public class DisplayProduct extends BaseAction {
         }
         //get FoodFormList to display
         formList = ProviderBLO.getFoodFormList(login.getLoginId(), value);
+        //short display
+        FoodBLO.shortDisplay(formList, 5);
         se.setAttribute("providerProduct", formList);
         return mapping.findForward(SUCCESS);
     }

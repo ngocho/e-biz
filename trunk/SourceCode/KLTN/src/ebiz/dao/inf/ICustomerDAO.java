@@ -13,5 +13,7 @@ public interface ICustomerDAO {
 	public Customer getCustomerById(String id);
 
 	public List<String> getPhoneList();
+	
+	public List<Customer> getCustomerList();
 
 }

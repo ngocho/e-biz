@@ -26,7 +26,6 @@ import ebiz.dao.inf.IFoodDAO;
 import ebiz.dto.food.Food;
 import ebiz.dto.food.FoodAttribute;
 import ebiz.dto.food.FoodPriceLevel;
-import ebiz.dto.food.FoodPromotion;
 import ebiz.dto.food.FoodStatus;
 import ebiz.dto.food.FoodType;
 
@@ -137,16 +136,6 @@ public class FoodDAO implements IFoodDAO {
 
 	}
 
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<FoodPromotion> getListFoodPromotion() {
-
-		List<FoodPromotion> foodProList = new ArrayList<FoodPromotion>();
-		foodProList = (List<FoodPromotion>) PMF
-				.getObjectList(FoodPromotion.class);
-		return foodProList;
-
-	}
 
 	@SuppressWarnings("unchecked")
 	@Override

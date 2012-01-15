@@ -38,7 +38,7 @@ public class ServeImage extends BaseAction {
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
         HttpServletResponse response) throws Exception {
         String urlKey = request.getParameter("urlKey");
-       
+       System.out.println("urlKey"+urlKey);
         if(urlKey != null ){
             if(! urlKey.isEmpty()){
         BlobKey blobKey = new BlobKey(urlKey);
