@@ -18,6 +18,8 @@
  */
 package ebiz.form;
 
+import java.io.Serializable;
+
 import org.apache.struts.validator.ValidatorForm;
 
 import ebiz.dto.account.customer.Address;
@@ -28,7 +30,7 @@ import ebiz.util.CommonUtil;
  * @author Administrator
  *
  */
-public class LoginForm extends ValidatorForm{
+public class LoginForm extends ValidatorForm implements Serializable{
     
     /**  . */
     private static final long serialVersionUID = 1L;
@@ -38,6 +40,7 @@ public class LoginForm extends ValidatorForm{
     private String loginName;
     private String type;            //type of account : customer, admin, employee
     private String gender;
+    private String birthDate;
     private String email;
     private String phone;
     private String homeNumber;
@@ -46,8 +49,8 @@ public class LoginForm extends ValidatorForm{
     private String districtName;
     private String buildingName;
     private String note; //bill 
-    private Boolean isAdEmail; 
-    private Boolean isAdPhone; 
+    private boolean isAdEmail; 
+    private boolean isAdPhone; 
     //select type of bill to display
     private Integer isCustomerBill;
 
@@ -63,6 +66,7 @@ public class LoginForm extends ValidatorForm{
         customer.setCustomerGender(this.gender);
         customer.setCustomerPhone(this.phone);
         customer.setCustomerEmail(this.email);
+        customer.setCustomerBirth(CommonUtil.convertStringToDate(this.birthDate));
         customer.setIsAdEmail(this.isAdEmail);
         customer.setIsAdPhone(this.isAdPhone);
         Address add = new Address();
@@ -304,28 +308,28 @@ public class LoginForm extends ValidatorForm{
      * Get value of isAdPhone.
      * @return the isAdPhone
      */
-    public Boolean getIsAdPhone() {
+    public boolean getIsAdPhone() {
         return isAdPhone;
     }
     /**
      * Set the value for isAdPhone.
      * @param isAdPhone the isAdPhone to set
      */
-    public void setIsAdPhone(Boolean isAdPhone) {
+    public void setIsAdPhone(boolean isAdPhone) {
         this.isAdPhone = isAdPhone;
     }
     /**
      * Get value of isAdEmail.
      * @return the isAdEmail
      */
-    public Boolean getIsAdEmail() {
+    public boolean getIsAdEmail() {
         return isAdEmail;
     }
     /**
      * Set the value for isAdEmail.
      * @param isAdEmail the isAdEmail to set
      */
-    public void setIsAdEmail(Boolean isAdEmail) {
+    public void setIsAdEmail(boolean isAdEmail) {
         this.isAdEmail = isAdEmail;
     }
 
@@ -344,5 +348,21 @@ public class LoginForm extends ValidatorForm{
     public void setIsCustomerBill(Integer isCustomerBill) {
         this.isCustomerBill = isCustomerBill;
     }
+
+	public String getBirthDate() {
+		return birthDate;
+	}
+
+	public void setBirthDate(String birthDate) {
+		this.birthDate = birthDate;
+	}
+
+	public void setAdEmail(boolean isAdEmail) {
+		this.isAdEmail = isAdEmail;
+	}
+
+	public void setAdPhone(boolean isAdPhone) {
+		this.isAdPhone = isAdPhone;
+	}
 
 }

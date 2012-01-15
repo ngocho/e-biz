@@ -49,6 +49,7 @@ public class ProviderForm extends ValidatorForm implements Serializable{
     private String buildingName;
     private String authentication;
     private String accountPayment;
+    private String detail;
     private Date birth;
 
     public boolean isEmpty() {
@@ -72,6 +73,8 @@ public class ProviderForm extends ValidatorForm implements Serializable{
         add.setStreetName(this.streetName);
         add.setWardName(this.wardName);
         provider.setProviderAddress(add);
+        provider.setLoginDate(new Date());
+        provider.setDetail(this.detail);
         return provider;
 
     }
@@ -91,7 +94,7 @@ public class ProviderForm extends ValidatorForm implements Serializable{
         this.homeNumber = provider.getProviderAddress().getHomeNumber();
         this.streetName = provider.getProviderAddress().getStreetName();
         this.wardName = provider.getProviderAddress().getWardName();
-
+        this.detail = provider.getDetail();
     }
     /**
      * Get value of loginId.
@@ -347,5 +350,21 @@ public class ProviderForm extends ValidatorForm implements Serializable{
     public void setAccountPayment(String accountPayment) {
         this.accountPayment = accountPayment;
     }
+
+	public String getDetail() {
+		return detail;
+	}
+
+	public void setDetail(String detail) {
+		this.detail = detail;
+	}
+
+	public Date getBirth() {
+		return birth;
+	}
+
+	public void setBirth(Date birth) {
+		this.birth = birth;
+	}
 
 }

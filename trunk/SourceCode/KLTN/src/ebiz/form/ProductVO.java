@@ -31,13 +31,13 @@ public class ProductVO implements Serializable{
     private static final long serialVersionUID = 1L;
 
     //number of record/page
-    private Integer limit ;
+    private int limit ;
     
     //name of col to set order by
     private String col;
     
     //number of page
-    private Integer  page;
+    private int  page;
     
     //order
     private String order;
@@ -53,7 +53,7 @@ public class ProductVO implements Serializable{
      * Get value of limit.
      * @return the limit
      */
-    public Integer getLimit() {
+    public int getLimit() {
         return limit;
     }
 
@@ -61,7 +61,7 @@ public class ProductVO implements Serializable{
      * Set the value for limit.
      * @param limit the limit to set
      */
-    public void setLimit(Integer limit) {
+    public void setLimit(int limit) {
         this.limit = limit;
     }
 
@@ -85,7 +85,7 @@ public class ProductVO implements Serializable{
      * Get value of page.
      * @return the page
      */
-    public Integer getPage() {
+    public int getPage() {
         return page;
     }
 
@@ -93,7 +93,7 @@ public class ProductVO implements Serializable{
      * Set the value for page.
      * @param page the page to set
      */
-    public void setPage(Integer page) {
+    public void setPage(int page) {
         this.page = page;
     }
 
