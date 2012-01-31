@@ -45,6 +45,16 @@
       scope="session" validate="true">
      </action>
      
+     <action
+			path="/sendMailRegister"
+			type="ebiz.action.mail.SendMailRegister" >
+     </action>
+     
+     <action
+			path="/sendMailHappyBirthday"
+			type="ebiz.action.mail.HappyBirthayCustomer" >
+     </action>
+    
     <action path="/Welcome" forward="/welcomeStruts.jsp" />
   </action-mappings>
 

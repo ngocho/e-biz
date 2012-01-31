@@ -66,9 +66,10 @@
 			type="ebiz.action.account.provider.UploadProduct" 
 			name="foodForm"
 			scope="session" validate="true">
-		<forward name="success" path="/displayProduct.vn" redirect="true" />
+		<forward name="success" path="home_provider_upload" redirect="true" />
+		<forward name="success1" path="/displayProduct.vn" redirect="true" />
 		<forward name="failure" path="home_provider_upload" redirect="true" />
-		<forward name="input" path="home_provider_login" redirect="false" />
+		<forward name="login" path="home_provider_login" redirect="false" />
     </action>
      
     <action
@@ -78,13 +79,35 @@
 		<forward name="success" path="/transferUpImage.vn" redirect="true" />
     </action>
 	
-    <action 
+    <action
 			path="/displayProduct"
 			type="ebiz.action.account.provider.DisplayProduct" 
 			scope="session" validate="true">
 		<forward name="success" path="home_provider" redirect="false" />
 		<forward name="failure" path="home_provider" redirect="false" />
     </action>
+    
+    <action
+			path="/categoryProviderRecord"
+			type="ebiz.action.account.provider.DisplayProductPaging" 
+			scope="session" validate="true">
+		<forward name="success" path="home_provider" redirect="false" />
+		<forward name="failure" path="home_provider" redirect="false" />
+    </action>
+    
+      <action 
+			path="/displayDetailProduct"
+			type="ebiz.action.account.provider.DetailProduct" >
+		<forward name="success" path="home_provider_upload" redirect="false" />
+		<forward name="failure" path="home_provider" redirect="false" />
+    </action>
+    
+     <action 
+			path="/deleteProduct"
+			type="ebiz.action.account.provider.DeleteProduct" >
+		<forward name="success" path="/displayProduct.vn" redirect="false" />
+    </action>
+    
      
 	</action-mappings>
 
