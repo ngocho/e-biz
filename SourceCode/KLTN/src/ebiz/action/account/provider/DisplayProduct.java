@@ -19,6 +19,7 @@
 package ebiz.action.account.provider;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -31,9 +32,11 @@ import org.apache.struts.action.ActionMapping;
 
 import ebiz.action.BaseAction;
 import ebiz.blo.food.FoodBLO;
-import ebiz.blo.provider.ProviderBLO;
 import ebiz.form.FoodForm;
-import ebiz.form.ProviderForm;
+import ebiz.form.Paging;
+import ebiz.form.ProductVO;
+import ebiz.form.ProviderVO;
+import ebiz.util.CommonConstant;
 
 /**
  * @author ThuyNT
@@ -42,26 +45,38 @@ public class DisplayProduct extends BaseAction {
 
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
+        //declare variable
+    	ProductVO vo = new ProductVO();
+        List<Paging> pageList = new ArrayList<Paging>();
+        List<FoodForm> foods = new ArrayList<FoodForm>();
+        //get param
         String value = request.getParameter("value");
-        HttpSession se =request.getSession();
-        ProviderForm login;
-        List<FoodForm> formList = new ArrayList<FoodForm>();
-        login = (ProviderForm)se.getAttribute("provider");
-        System.out.println("USER PRO ID"+value);
-        //required Login
-        if(login == null){
-            return mapping.findForward(FAILURE);
+        System.out.println("typeProduct" + value);
+        HttpSession se = request.getSession();
+        if (value == null) {
+        //get all
+            value = "0";
         }
-       
-        if(value ==null){
-           
-            value="0";
-        }
-        //get FoodFormList to display
-        formList = ProviderBLO.getFoodFormList(login.getLoginId(), value);
+        HashMap<Integer, String> paging = new HashMap<Integer, String>();
+        foods = FoodBLO.initFoodCategoryProvider(paging);
+        pageList = FoodBLO.updateStatusPaging(paging);
+        //set attr into VO
+        vo.setPagingList(pageList);
+        vo.setLimit(CommonConstant.DEFAULT_RECORD);
+        vo.setCol(CommonConstant.DEFAULT_COL);
+        vo.setPage(CommonConstant.DEFAULT_PAGE);
+        vo.setOrder(CommonConstant.DEFAULT_ORDER);
+        vo.setStatus(value);
+        //save in session
+        se.setAttribute(CommonConstant.PROVIDERVO, vo);
         //short display
-        FoodBLO.shortDisplay(formList, 5);
-        se.setAttribute("providerProduct", formList);
+        FoodBLO.shortDisplay(foods,5);
+        // list food to display
+        se.setAttribute(CommonConstant.PROVIDER_CATEGORY_F, foods);
+      //save attr in app scope
+        ProviderVO pvo = new ProviderVO();
+        getServlet().getServletContext().setAttribute("PVO", pvo);
+        System.out.println("PVO");
         return mapping.findForward(SUCCESS);
     }
 

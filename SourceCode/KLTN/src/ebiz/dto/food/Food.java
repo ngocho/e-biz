@@ -32,7 +32,6 @@ import javax.jdo.annotations.PrimaryKey;
 
 @PersistenceCapable
 public class Food  {
-    
     @PrimaryKey
     @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
     private Long foodId;
@@ -66,12 +65,12 @@ public class Food  {
     private long pricePromotion;
     @Persistent
     private String providerID;  //nha cung cap
-    @Persistent
-    private String url;   //luu duong dan hinh anh
+//    @Persistent
+//    private String url;   //luu duong dan hinh anh
     @Persistent
     private String urlKey;   //luu duong dan hinh anh
     @Persistent
-    private int saleProduct;
+    private int saleProduct;	//luong san pham ban duoc
     @Persistent
     private int uploadDate;
     @Persistent
@@ -258,20 +257,20 @@ public class Food  {
     public void setProviderID(String providerID) {
         this.providerID = providerID;
     }
-    /**
-     * Get value of url.
-     * @return the url
-     */
-    public String getUrl() {
-        return url;
-    }
-    /**
-     * Set the value for url.
-     * @param url the url to set
-     */
-    public void setUrl(String url) {
-        this.url = url;
-    }
+//    /**
+//     * Get value of url.
+//     * @return the url
+//     */
+//    public String getUrl() {
+//        return url;
+//    }
+//    /**
+//     * Set the value for url.
+//     * @param url the url to set
+//     */
+//    public void setUrl(String url) {
+//        this.url = url;
+//    }
     /**
      * Get value of reviewer.
      * @return the reviewer

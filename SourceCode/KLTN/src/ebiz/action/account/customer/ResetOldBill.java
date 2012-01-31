@@ -43,7 +43,7 @@ public class ResetOldBill extends BaseAction {
         HttpSession se = request.getSession();
        String id = request.getParameter("id");
        System.out.println("ID"+id);
-       if(id == null){
+       if (id == null) {
            return mapping.findForward(FAILURE);
           
        }

@@ -75,6 +75,7 @@ public class ProviderForm extends ValidatorForm implements Serializable{
         provider.setProviderAddress(add);
         provider.setLoginDate(new Date());
         provider.setDetail(this.detail);
+        provider.setProviderName(this.loginName);
         return provider;
 
     }

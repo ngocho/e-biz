@@ -70,6 +70,7 @@ public class CreateOrderBill extends BaseAction {
             // set orderForm into session
             se.setAttribute("bill", orderForm);
             se.removeAttribute("shop");
+            //call method to pay xu
             return mapping.findForward(SUCCESS);
         }
         return mapping.findForward(FAILURE);

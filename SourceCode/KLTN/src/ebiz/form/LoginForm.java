@@ -53,6 +53,7 @@ public class LoginForm extends ValidatorForm implements Serializable{
     private boolean isAdPhone; 
     //select type of bill to display
     private Integer isCustomerBill;
+    private String url;
 
     public boolean isEmpty(){
         return CommonUtil.isBlankOrNull(loginId);
@@ -76,6 +77,7 @@ public class LoginForm extends ValidatorForm implements Serializable{
         add.setStreetName(this.streetName);
         add.setWardName(this.wardName);
         customer.setCustomerAddress(add);
+        customer.setUrl(this.url);
         return customer;
           
       }
@@ -92,7 +94,7 @@ public class LoginForm extends ValidatorForm implements Serializable{
         this.homeNumber = customer.getCustomerAddress().getHomeNumber();
         this.streetName = customer.getCustomerAddress().getStreetName();
         this.wardName = customer.getCustomerAddress().getWardName();
-      
+        this.url = customer.getUrl();
         
         
     }
@@ -363,6 +365,14 @@ public class LoginForm extends ValidatorForm implements Serializable{
 
 	public void setAdPhone(boolean isAdPhone) {
 		this.isAdPhone = isAdPhone;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
 	}
 
 }

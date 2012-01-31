@@ -30,62 +30,59 @@ import org.apache.struts.action.ActionMessages;
 
 import ebiz.action.BaseAction;
 import ebiz.form.LoginForm;
-import ebiz.form.ShoppingCart;
 import ebiz.util.CommonConstant;
 
 /**
  * @author ThuyNT
  */
 public class Login extends BaseAction {
+
+    /**
+     * [Login(Customer)].
+     * @param mapping ActionMapping
+     * @param form ActionForm
+     * @param request HttpServletRequest
+     * @param response HttpServletResponse
+     * @return ActionForward
+     * @throws Exception Exception
+     * @see ActionForward Struts1 Framework
+     */
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
-
-        System.out.println("LOGIN");
-        // after checked validation using xml file
-        LoginForm login = (LoginForm) form;
-        ShoppingCart shop ;
+        // declare variables
+        int flag = -1;
         ActionMessages messages = new ActionMessages();
         HttpSession se = request.getSession();
-        shop = (ShoppingCart)se.getAttribute("shop");
-        // get type of login
-        String type = request.getParameter("type");
-       if (type == null) {
-           type = "1";
-       }
-        int flag = -1;
-        if ("1".equals(type)) {
-            System.out.println("TEST" + flag);
-            // dung ten de dang nhap
-            // kiem tra trong co so du lieu
-            flag = CustomerBLO.isLoginID(login.getLoginId(), login.getLoginPassword());
-//            login.setLoginName("nguyen thi thuy");
-            System.out.println("TEST" + flag);
-        }
-//        } else {
-//            // dung email de dang nhap
-//            flag = CustomerBLO.testCustomerEmail(login.getEmail(), login.getLoginPassword());
-//        }
+        // after checked validation using xml file
+        LoginForm login = (LoginForm) form;
+        // test exist in database
+        flag = CustomerBLO.isLoginID(login.getLoginId(), login.getLoginPassword());
         if (flag == 1) {
-//            shop.setUser(login);
-            // success
-            // create session
-            // luu user
+            // save user in session
             se.setAttribute(CommonConstant.USER, login);
             // shopping cart
-            if(shop == null){
-                shop = new ShoppingCart();
-            }
-            se.setAttribute(CommonConstant.SHOPPING, shop);
             se.setAttribute(CommonConstant.WELCOME, CommonConstant.WELCOME + login.getLoginId().toUpperCase());
+            // remove LoginForm from session
+            se.removeAttribute("login");
+            String screen = (String) se.getAttribute("screen");
+            if (screen != null) {
+            if (screen.equals(CommonConstant.SCREEN_CHECKOUT)) {
+                se.removeAttribute("screen");
+            //checkout screen
+                return mapping.findForward(SUCCESS1);
+            }
+            }
+            //home screen
             return mapping.findForward(SUCCESS);
         } else if (flag == -1) {
             // add error password wrong
             messages.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage("login.user.existed"));
         } else if (flag == 0) {
-            // user input didn't exist
+            // account didn't exist
             messages.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage("login.password.wrong"));
         }
-        saveMessages(request, messages); // storing messages as request attributes
+        // storing messages as request attributes
+        saveMessages(request, messages);
         return mapping.findForward(FAILURE);
 
     }

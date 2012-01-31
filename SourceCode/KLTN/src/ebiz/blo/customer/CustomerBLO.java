@@ -21,11 +21,6 @@ package ebiz.blo.customer;
 import java.util.ArrayList;
 import java.util.List;
 
-import mobile.ebiz.xu.IDXU;
-import mobile.ebiz.xu.IDXUBLO;
-
-import com.google.appengine.repackaged.org.json.JSONObject;
-
 import ebiz.dao.gae.CustomerDAO;
 import ebiz.dao.gae.OrderDAO;
 import ebiz.dao.inf.ICustomerDAO;
@@ -41,7 +36,6 @@ import ebiz.util.CommonUtil;
  *
  */
 public class CustomerBLO {
-    
     private static ICustomerDAO custDao = new CustomerDAO();
     private static IOrderDAO orderDao = new OrderDAO();
 //    public static JSONObject getCustomerPhone() throws JSONException {
@@ -140,6 +134,10 @@ public class CustomerBLO {
 			return -1; // didn't exist this user
 		}
 
+    }
+    
+    public static boolean isUID(String id){
+        return custDao.isCustomer(id);
     }
 //    /**
 //     * login
@@ -246,12 +244,12 @@ public class CustomerBLO {
         }
         return address;
     }
-    public static List<OrderBillForm> getOrderBillFormList(String userId,Integer value){
+    public static List<OrderBillForm> getOrderBillFormList(String userId,int value){
         
         List<OrderBill> orderList = new ArrayList<OrderBill>();
         List<OrderBillForm> formList = new ArrayList<OrderBillForm>();
         //get all
-        if(value ==0){
+        if(value == 0){
             orderList = orderDao.getOrListByIDCustomer(userId);
         }
         //get by attr
@@ -278,7 +276,7 @@ public class CustomerBLO {
         return false;
     }
     
-    public static long updateXuOnline(String idCustomer, String idXu){
+   /* public static long updateXuOnline(String idCustomer, String idXu){
         IDXU xu = IDXUBLO.getXuById(idXu);
         long money = 0;
         //chua nap
@@ -295,14 +293,14 @@ public class CustomerBLO {
         }
         return money;
     }
+    public boolean isCheckoutXuOnline(long money, long moneyXu){
+       
+        if(moneyXu>=money){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }*/
     
-//    public boolean isCheckoutXuOnline(long money, long moneyXu){
-//       
-//        if(moneyXu>=money){
-//            return true;
-//        }
-//        else{
-//            return false;
-//        }
-//    }
 }

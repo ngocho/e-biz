@@ -46,6 +46,7 @@ public class UploadImage extends BaseAction {
 //      blobstoreService.createUploadUrl(")
         BlobKey blobKey = blobs.get("myFile");
         HttpSession se = request.getSession();
+        if(blobKey != null){
         String urlKey =  blobKey.getKeyString();
 //      BlobKey blobKey1 = new BlobKey(blobKey)
         ImagesService imagesService = ImagesServiceFactory.getImagesService();
@@ -53,8 +54,11 @@ public class UploadImage extends BaseAction {
       
        System.out.println("URLIMAGE : " + urlImage);
         if (blobKey != null) {
-            se.setAttribute("urlImage", urlImage);
+//        	//url for mobile
+//            se.setAttribute("urlImage", urlImage);
+            //display Image(use BlobStore)
             se.setAttribute("urlImageKey", urlKey);
+        }
         }
         return mapping.findForward(SUCCESS);
     }

@@ -26,7 +26,7 @@ public class CommonConstant {
     public final static  String SUCCESS = "success";
     public final static  String SUCCESS1 = "success1";
     public  final static String FAILURE = "failure";
-    public  final static String INPUT   =  "input";
+    public  final static String LOGIN   =  "login";
     
     //save in session
     public  final static String USER    = "user";
@@ -72,6 +72,7 @@ public class CommonConstant {
     public final static Integer BILLSTATUS_5 =5;  //cancel
     //DISPLAY CATEGORY
     public final static String FOOD_TYPE =   "foodTypeId";  
+    public final static String FOOD_STATUS =   "foodStatusId";  
     public final static String FOOD_CATEGORY_A =   "Attribute";  
     public final static String FOOD_CATEGORY_P =   "Price";  
     public final static String FOOD_CATEGORY_F =   "Food";  
@@ -79,10 +80,14 @@ public class CommonConstant {
     public final static Integer DEFAULT_RECORD =   8;  
     public final static String DEFAULT_COL=   "foodName"; 
     public final static Integer DEFAULT_PAGE =   1; 
+    public final static String DEFAULT_ORDER=   "asc"; 
     public final static String PRODUCTVO =  "productVo"; 
-    
+    public final static String PROVIDER_CATEGORY_F =   "providerFood";  
+    public final static String PROVIDERVO=  "providerVo"; 
     
     //DISPLAY PRODUCT DETAIL
     public final static String FOOD_DETAIL_PRODUCT = "DetailProduct"; 
+    //screen
+    public final static String SCREEN_CHECKOUT = "scheckout";
     
 }

@@ -31,11 +31,7 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import ebiz.action.BaseAction;
-import ebiz.blo.common.Initialize;
 import ebiz.blo.food.FoodBLO;
-import ebiz.dao.gae.FoodDAO;
-import ebiz.dao.inf.IFoodDAO;
-import ebiz.dto.food.FoodPriceLevel;
 import ebiz.form.FoodForm;
 import ebiz.form.Paging;
 import ebiz.form.ProductVO;
@@ -57,27 +53,31 @@ public class DisplayCategoryRecord extends BaseAction {
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
         
+        String attr = request.getParameter("attr");
+        String price = request.getParameter("price");
+        System.out.println("ATTR"+attr);
+        System.out.println("PRICE"+price);
         String order = request.getParameter("order");
-        System.out.println("CATEGORY"+ order);
+        System.out.println("ORDER"+order);
         HttpSession se = request.getSession();
         List<FoodForm> foods = new ArrayList<FoodForm>();
         List<Paging> pageList = new ArrayList<Paging>();
         HashMap<Integer, String> paging = new HashMap<Integer, String>();
-        ProductVO vo = new ProductVO();
+        ProductVO vo =  (ProductVO)se.getAttribute(CommonConstant.PRODUCTVO);
         int record = CommonConstant.DEFAULT_RECORD;
         String limit;
         String col;
         if(order == null){
         order = vo.getOrder();
+        System.out.println("ORDER"+order);
         }
         int  page = 1;
        
-        vo = (ProductVO)se.getAttribute(CommonConstant.PRODUCTVO);
         //get info from request
         limit = (String)request.getParameter("limit"); 
         col   = (String)request.getParameter("col"); 
         String p = (String)request.getParameter("page"); 
-        if(limit ==null){
+        if(limit == null){
             record = vo.getLimit();
         }
         else{
@@ -95,23 +95,17 @@ public class DisplayCategoryRecord extends BaseAction {
              pageList = (List<Paging>) vo.getPagingList();
              paging = FoodBLO.toHashMap(pageList);
          }
-        foods = FoodBLO.getFoodFormList(col,paging,order,record,page,vo.getTypeProduct());
+        String filterCol = CommonConstant.FOOD_TYPE;
+        foods = FoodBLO.getFoodListCategory(col,paging,order,record,page,filterCol,vo.getTypeProduct(),attr,price);
         pageList = FoodBLO.updateStatusPaging(paging);
-//        se.setAttribute(CommonConstant.PAGING, paging);
+        //save in Session
         se.setAttribute(CommonConstant.FOOD_CATEGORY_F, foods);
-        
-        //save in session
         vo.setLimit(record);
         vo.setCol(col);
         vo.setPage(page);
         vo.setPagingList(pageList);
         vo.setOrder(order);
-//        se.setAttribute("limit", record);
-//        se.setAttribute("col", col);
-//        se.setAttribute("page", page);
-//        se.setAttribute(CommonConstant.PAGING, pageList);
-        //return display category
-        
+
         return mapping.findForward(SUCCESS);
 
     }

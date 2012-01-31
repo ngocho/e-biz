@@ -22,32 +22,29 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import ebiz.blo.customer.CustomerBLO;
-
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import ebiz.action.BaseAction;
+import ebiz.blo.customer.CustomerBLO;
 import ebiz.dto.account.customer.Customer;
 import ebiz.form.LoginForm;
-import ebiz.form.ShoppingCart;
-import ebiz.util.CommonConstant;
 
 /**
  * @author ThuyNT
  *
  */
-public class UpdateCustomer extends BaseAction{
+public class UpdateCustomer extends BaseAction {
 
     /**
      * [Give the description for method].
      */
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
-        HttpSession se = request.getSession(); 
+        HttpSession se = request.getSession();
         boolean flag;
-        ShoppingCart shop = (ShoppingCart)se.getAttribute(CommonConstant.SHOPPING);
+//        ShoppingCart shop = (ShoppingCart) se.getAttribute(CommonConstant.SHOPPING);
 //        LoginForm  user  = shop.getUser();
 //        user =(LoginForm) form;
         LoginForm user = (LoginForm) form;
@@ -55,7 +52,7 @@ public class UpdateCustomer extends BaseAction{
         System.out.println("ID" + user.getLoginId());
         Customer customer = user.getCustomer();
         flag = CustomerBLO.updatecustomer(customer);
-        if(flag){
+        if (flag) {
 //            shop.setUser(user);
             System.out.println("ID"+ user.getLoginId());
             return mapping.findForward(SUCCESS);
