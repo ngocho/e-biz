@@ -2,12 +2,15 @@
   pageEncoding="UTF-8"%>
 <div class="col-left ">
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
-<!-- <p class="home-callout">
-<a href="#"><img src="" width="195" height="200" border="0"></a>
-</p> -->
-<!-- <p class="home-callout">
-<img src="" border="0">
-</p> -->
+<script type="text/javascript">
+$(document).ready(function(){
+    $("#searchID").focus(function() {
+        $("#searchID").val("");
+    });
+   
+
+});
+</script>
  <div class="block block-cart">
     <div class="block-title">
       <strong><span>TÌM KIẾM</span>
@@ -16,7 +19,7 @@
     <div class="block-content">
     <html:form action="/search.vn" method="GET">
     <ul>
-    <li>Nhập vào:</br><html:text property="searchText" size="32" />
+    <li>Nhập vào:</br><html:text property="searchText" size="32" styleId="searchID"/>
     </li>
     <li>Loại thực phẩm :</br>
     <html:select property="type" style="width: 190px;">
