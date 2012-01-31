@@ -88,13 +88,24 @@ public class FoodDAO implements IFoodDAO {
 	@Override
 	public List<Food> diplayPageFood(String col,
 			HashMap<Integer, String> paging, String order, int record,
-			int page, String filterCol, String typeProduct) {
+			int page, String sql) {
 		List<Food> foodList = new ArrayList<Food>();
-		foodList = (List<Food>) PMF.diplayPageFood(Food.class, col, paging,
-				order, record, page, filterCol, typeProduct);
+		foodList = (List<Food>) PMF.displayPageFood(Food.class, col, paging,
+				order, record, page, sql);
 		return foodList;
 	}
 
+	@SuppressWarnings("unchecked")
+    @Override
+    public List<Food> diplayFoodProviderAll(String col,
+            HashMap<Integer, String> paging, String order, int record,
+            int page) {
+        List<Food> foodList = new ArrayList<Food>();
+        foodList = (List<Food>) PMF.displayPageFoodAll(Food.class, col, paging,
+                order, record, page);
+        return foodList;
+    }
+	
 	@Override
 	public boolean saveFood(Food food) {
 
@@ -192,6 +203,26 @@ public class FoodDAO implements IFoodDAO {
         }
         return null;
     }
+
+    /**
+     * [Explain the description for this method here].
+     * @return
+     * @see ebiz.dao.inf.IFoodDAO#getAttributeList()
+     */
+    @SuppressWarnings("unchecked")
+    @Override
+    public List<FoodAttribute> getAttributeList() {
+        List<FoodAttribute> list = new ArrayList<FoodAttribute>();
+        list = ( List<FoodAttribute>)PMF.getObjectList(FoodAttribute.class);
+        return list;
+    }
+    @SuppressWarnings("unchecked")
+	@Override
+	public List<Food> searchFoodByName(String searchText, String type, String attr, String price, String status){
+    	List<Food> foodList = new ArrayList<Food>();
+		foodList = (List<Food>) PMF.searchListFoodByName(Food.class, searchText, type, attr, price, status);
+		return foodList;
+	}
 
 	// /**
 	// * create bill using transaction : put task into taks queue

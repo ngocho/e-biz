@@ -221,15 +221,16 @@ public final class PMF {
      * @param className
      * @return
      */
- 
-    public static boolean delete( Object obj) {
+ //OK
+    public static boolean delete(Class<?> className,  Long id) {
         PersistenceManager pm = getPMF();
         
         try {
-          pm.deletePersistent(obj);
+          pm.deletePersistent(pm.getObjectById(className , id));
           return true;
         }
           catch (Exception ex) {
+              ex.printStackTrace();
               return false;
           }
         finally {
@@ -237,6 +238,31 @@ public final class PMF {
         }
       
     }
+    
+    /**
+     * delete 1 obj
+     * 
+     * @param className
+     * @return
+     */
+//fail
+    public static boolean delete(Object obj) {
+        PersistenceManager pm = getPMF();
+        
+        try {
+          pm.deletePersistent(obj);
+          return true;
+        }
+          catch (Exception ex) {
+              ex.printStackTrace();
+              return false;
+          }
+        finally {
+           pm.close();
+        }
+      
+    }
+    
     /**
      * get list of object( order by name)
      * 
@@ -245,9 +271,16 @@ public final class PMF {
      */
 
     @SuppressWarnings("unchecked")
-    public static List<?> getObjectList(Class<?> className, String col,HashMap<Integer, String> paging, String order,int record, int page,String filterCol, String typeProduct) {
-        
-		String cursorString = null;
+    public static List<?> getObjectList(Class<?> className, String col,HashMap<Integer, String> paging, String order,int record, int page,String sql) {
+		
+        String cursorString = null;
+		StringBuffer filterSql = new StringBuffer();
+//		if(!("4".equals(typeProduct))){
+//		    filterSql.append("isDisplay == 1");
+//		    filterSql.append(" &&  ");
+//		}
+//		filterSql.append(filterCol + " == \'" + typeProduct + "\'");
+		filterSql.append(sql);
 		PersistenceManager pm = getPMF();
 		Cursor cursor;
 		if (paging.containsKey(page)) {
@@ -256,14 +289,17 @@ public final class PMF {
 		Query query = pm.newQuery(className);
 		query.setRange((record * (page - 1)), record * page);
 		List<Object> results = new ArrayList<Object>();
-		query.setFilter(filterCol + " == param");
-		query.declareParameters("String param");
+		//add
+//		 query.setFilter("isDisplay == 1");
+		 //end
+		query.setFilter(filterSql.toString());
+//		query.declareParameters("String param");
 		query.setOrdering(col + " " + order);
+		System.out.println("QUERY" + query);
 		try {
             if (cursorString == null) { // first page
-                results = (List<Object>) query.execute(typeProduct);
+                results = (List<Object>) query.execute();
                 cursor = JDOCursorHelper.getCursor(results);
-                
             } else {
                 cursor = Cursor.fromWebSafeString(cursorString);
                 Map<String, Object> extensionMap = new HashMap<String, Object>();
@@ -288,12 +324,62 @@ public final class PMF {
      */
 
     @SuppressWarnings("unchecked")
-    public static List<?> diplayPageFood(Class<?> className, String col,HashMap<Integer, String> paging, String order,int record, int page,String filterCol, String typeProduct) {
+    public static List<?> getObjectListAll(Class<?> className, String col,HashMap<Integer, String> paging, String order,int record, int page) {
+        String cursorString = null;
+        PersistenceManager pm = getPMF();
+        Cursor cursor;
+        if (paging.containsKey(page)) {
+            cursorString = paging.get(page);
+        }
+        Query query = pm.newQuery(className);
+        query.setRange((record * (page - 1)), record * page);
+        List<Object> results = new ArrayList<Object>();
+//        query.setFilter("isDisplay == 1");
+        query.setOrdering(col + " " + order);
+        System.out.println("SQL"+query);
+        try {
+            if (cursorString == null) { // first page
+                results = (List<Object>) query.execute();
+                cursor = JDOCursorHelper.getCursor(results);
+            } else {
+                cursor = Cursor.fromWebSafeString(cursorString);
+                Map<String, Object> extensionMap = new HashMap<String, Object>();
+                extensionMap.put(JDOCursorHelper.CURSOR_EXTENSION, cursor);
+                query.setExtensions(extensionMap);
+                results = (List<Object>) query.execute();
+            }
+            cursorString = cursor.toWebSafeString();
+            paging.put(page, cursorString);
+        } finally {
+            query.closeAll();
+        }
+        System.out.println("SQL Result"+results.size());
+        return results;
+    }
+    
+    @SuppressWarnings("unchecked")
+    public static List<?> displayPageFood(Class<?> className, String col,HashMap<Integer, String> paging, String order,int record, int page,String sql) {
         
         List<Object> results = new ArrayList<Object>();
         int count ;
         PersistenceManager pm = getPMF();
-        Query query = pm.newQuery("select count(" + col + ")  from " + className.getName() + " where "+ filterCol +"  == \""+ typeProduct+ "\"" );
+//        StringBuffer sql = new StringBuffer();
+//        sql.append(" ");
+////        if(!("4".equals(typeProduct))){
+////            sql.append(" &&  ");
+////            sql.append("isDisplay == \'" + typeProduct + "\'");
+////        }
+//        if (attr != null) {
+//            sql.append(" &&  ");
+//            sql.append("productAttributeId == \'" + attr + "\'");
+//        }
+//        if (price != null) {
+//            sql.append(" &&  ");
+//            sql.append("foodPriceLevelId == \'" + price + "\'");
+//        }
+        System.out.println("SQL "+sql);
+        //re-count amount of page
+        Query query = pm.newQuery("select count(" + col + ")  from " + className.getName() + " where " + sql );
         try {
                 count = (Integer)query.execute();
                 System.out.println("QUERY" +query.toString());
@@ -304,11 +390,41 @@ public final class PMF {
                     div = div + 1;
                 }
                 
-                //put number of page into HashMap
+         //put number of page into HashMap
                 for( int  i =1; i<= div; i++){
                     paging.put(i, null);
                 }
-                results = (List<Object>) getObjectList(className,col,paging,order,record,page,filterCol, typeProduct);
+                results = (List<Object>) getObjectList(className,col,paging,order,record,page,sql);
+
+        } finally {
+            query.closeAll();
+        }
+        return results;
+    }
+    
+    @SuppressWarnings("unchecked")
+    public static List<?> displayPageFoodAll(Class<?> className, String col,HashMap<Integer, String> paging, String order,int record, int page) {
+        
+        List<Object> results = new ArrayList<Object>();
+        int count ;
+        PersistenceManager pm = getPMF();
+        //re-count amount of page
+        Query query = pm.newQuery("select count(" + col + ")  from " + className.getName() );//+ " where isDisplay == 1"
+        try {
+                count = (Integer)query.execute();
+                System.out.println("QUERY" +query.toString());
+                System.out.println("COUNT"+ count);
+                //count number of page
+                int div = count /record;
+                if(count % record >0){
+                    div = div + 1;
+                }
+                
+         //put number of page into HashMap
+                for( int  i =1; i<= div; i++){
+                    paging.put(i, null);
+                }
+                results = (List<Object>) getObjectListAll(className,col,paging,order,record,page);
 
         } finally {
             query.closeAll();
@@ -502,6 +618,36 @@ public final class PMF {
             q.closeAll();
         }
         return results;
+    }
+    @SuppressWarnings("unchecked")
+    public static List<?> searchListFoodByName(Class<?> className,String searchText, String type, String attr, String price, String status){
+    	 PersistenceManager pm = getPMF();
+    	 StringBuffer sqlSearch = new StringBuffer();
+    	 sqlSearch.append("");
+    	 if(!("0".equals(type))){
+    		 sqlSearch.append(" && ");
+    		 sqlSearch.append("foodStatusId == \'"+ type +"\'" );
+    	 }
+    	 if(!("0".equals(attr))){
+    		 sqlSearch.append(" && ");
+    		 sqlSearch.append("productAttributeId == \'"+ attr +"\'" );
+    	 }
+    	 if(!("0".equals(price))){
+    		 sqlSearch.append(" && ");
+    		 sqlSearch.append("foodPriceLevelId == \'"+ price +"\'" );
+    	 }
+    	 if(!("0".equals(status))){
+    		 sqlSearch.append(" && ");
+    		 sqlSearch.append("foodStatusId == \'"+ status +"\'" );
+    	 }
+    	 System.out.println("SQL SEARCH" +sqlSearch);
+    	 Query q = pm.newQuery(className);
+
+    	  // set the filter and params
+    	  q.setFilter("foodName >= :1 && foodName < :2" + sqlSearch);
+    	  System.out.println("TEXT SEARCH " + searchText);
+    	  // run query with param values and return results
+    	  return (List<Object>) q.execute(searchText , ( searchText + "\ufffd"));
     }
 //    /**
 //     * 

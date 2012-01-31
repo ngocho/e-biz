@@ -72,6 +72,8 @@ public class Customer  {
     private long xuOnline;   // 100000 = 100k 
     @Persistent
     private Date loginDate;
+    @Persistent
+    private String  url;
     
     /**
      * Get value of customerId.
@@ -374,5 +376,11 @@ public class Customer  {
     public void setActive(boolean isActive) {
         this.isActive = isActive;
     }
+	public String getUrl() {
+		return url;
+	}
+	public void setUrl(String url) {
+		this.url = url;
+	}
     
 }

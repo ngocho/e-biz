@@ -46,7 +46,7 @@ public class FoodForm extends ValidatorForm implements Serializable{
     private int number;
     private String calo;
     private String idAttr;
-    private String url;
+//    private String url;
     private String detail;
     private String cooking;
     private long subTotal;
@@ -57,9 +57,10 @@ public class FoodForm extends ValidatorForm implements Serializable{
         Food food = new Food();
         food.setFoodName(this.name);
         food.setPrice(this.price);
-        food.setUrl(this.url);
+//        food.setUrl(this.url);
         food.setUrlKey(this.urlKey);
         food.setPricePromotion(this.promoPrice);
+        food.setProductAttributeId(this.idAttr);
         food.setNumber(this.number);
         food.setDetail(this.detail);
         food.setCooking(this.cooking);
@@ -87,13 +88,15 @@ public class FoodForm extends ValidatorForm implements Serializable{
         this.id = food.getFoodId();
         this.name = food.getFoodName();
         this.reviewer = food.getReviewer();
-        this.url = food.getUrl();
+//        this.url = food.getUrl();
         this.urlKey = food.getUrlKey();
         this.number = food.getNumber();
         this.productTypeId = food.getFoodTypeId();
         this.idProvider = food.getProviderID();
         this.nameProvider = ProviderBLO.getNameProviderByID(this.idProvider);
         this.status = food.getFoodStatusId();
+        this.detail = food.getDetail();
+        this.cooking = food.getCooking();
         //het san pham
         if(food.getNumber()== 0){
             this.statusName = CommonConstant.STATUS_MESSAGE_0;
@@ -156,7 +159,7 @@ public class FoodForm extends ValidatorForm implements Serializable{
         this.id = food.getFoodId();
         this.name = food.getFoodName();
         this.reviewer = food.getReviewer();
-        this.url = food.getUrl();
+//        this.url = food.getUrl();
         this.urlKey = food.getUrlKey();
         this.number = food.getNumber();
         this.calo = food.getCalo();
@@ -303,20 +306,20 @@ public class FoodForm extends ValidatorForm implements Serializable{
     public void setCalo(String calo) {
         this.calo = calo;
     }
-    /**
-     * Get value of url.
-     * @return the url
-     */
-    public String getUrl() {
-        return url;
-    }
-    /**
-     * Set the value for url.
-     * @param url the url to set
-     */
-    public void setUrl(String url) {
-        this.url = url;
-    }
+//    /**
+//     * Get value of url.
+//     * @return the url
+//     */
+//    public String getUrl() {
+//        return url;
+//    }
+//    /**
+//     * Set the value for url.
+//     * @param url the url to set
+//     */
+//    public void setUrl(String url) {
+//        this.url = url;
+//    }
     /**
      * Get value of detail.
      * @return the detail

@@ -59,7 +59,7 @@ public class Initialize {
             food.setStartDate(new Date());
 //            DateFormat df = DateFormat.getDateInstance();
             food.setExpDate(new Date());
-            food.setUrl("Images/Foods/"+ String.valueOf(i+1)+".jpg");
+//            food.setUrl("Images/Foods/"+ String.valueOf(i+1)+".jpg");
           
             foodList.add(food);
             if(i%2==0){
@@ -77,18 +77,25 @@ public class Initialize {
     public static void initializeFoodAttribute() {
         
         FoodAttribute attr0 = new FoodAttribute();
-        attr0.setProductAttributeId("0");
-        attr0.setProductAttributeName("xao");
+        attr0.setProductAttributeId("1");
+        attr0.setProductAttributeName("Kho");
         System.out.println("ATTR: "+ foodDao.insertFoodAttribute(attr0));
         
         FoodAttribute attr1 = new FoodAttribute();
-        attr1.setProductAttributeId("1");
-        attr1.setProductAttributeName("kho");
+        attr1.setProductAttributeId("2");
+        attr1.setProductAttributeName("Canh");
         foodDao.insertFoodAttribute(attr1);
         
         FoodAttribute attr2 = new FoodAttribute();
-        attr2.setProductAttributeId("2");
-        attr2.setProductAttributeName("canh");
+        attr2.setProductAttributeId("3");
+        attr2.setProductAttributeName("Xao");
+        foodDao.insertFoodAttribute(attr2);
+        
+        attr2.setProductAttributeId("4");
+        attr2.setProductAttributeName("Lẩu");
+        foodDao.insertFoodAttribute(attr2);
+        attr2.setProductAttributeId("5");
+        attr2.setProductAttributeName("Khác");
         foodDao.insertFoodAttribute(attr2);
      
     }

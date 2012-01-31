@@ -48,6 +48,7 @@ public class ProductVO implements Serializable{
     private String typeProduct;
     
     private String numberFoodView;
+    private String status;
 
     /**
      * Get value of limit.
@@ -161,4 +162,10 @@ public class ProductVO implements Serializable{
         this.order = order;
     }
 
+    public String getStatus() {
+        return status;
+    }
+    public void setStatus(String status) {
+        this.status = status;
+    }
 }

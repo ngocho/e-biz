@@ -33,8 +33,7 @@ import org.apache.struts.action.ActionMapping;
 import ebiz.action.BaseAction;
 import ebiz.blo.common.Initialize;
 import ebiz.blo.food.FoodBLO;
-import ebiz.dao.gae.FoodDAO;
-import ebiz.dao.inf.IFoodDAO;
+import ebiz.dto.food.FoodAttribute;
 import ebiz.dto.food.FoodPriceLevel;
 import ebiz.form.FoodForm;
 import ebiz.form.Paging;
@@ -45,8 +44,6 @@ import ebiz.util.CommonConstant;
  * @author ThuyNT
  */
 public class DisplayCategory extends BaseAction {
-    
- 
     /* get tên : save all in session
      * attribute của product 
      * type of giá
@@ -57,7 +54,7 @@ public class DisplayCategory extends BaseAction {
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
         HttpSession se = request.getSession();
-        List<String> attrs = new ArrayList<String>();
+        List<FoodAttribute> attrs = new ArrayList<FoodAttribute>();
         List<FoodPriceLevel> prices = new ArrayList<FoodPriceLevel>();
         List<Paging> pageList = new ArrayList<Paging>();
         List<FoodForm> foods = new ArrayList<FoodForm>();
@@ -67,15 +64,10 @@ public class DisplayCategory extends BaseAction {
         if (typeProduct == null) {
             vo = (ProductVO) se.getAttribute(CommonConstant.PRODUCTVO);
             typeProduct = vo.getTypeProduct();
+        } else {
+            vo.setTypeProduct(typeProduct);
         }
-        else{vo.setTypeProduct(typeProduct);
-        
-        }
-
-//         Initialize.initializeFood();
-//         Initialize.initializeFoodAttribute();
-//         Initialize.initializeFoodStatus();
-//         Initialize.initializeFoodPriceLevel();
+        Initialize.initializeFoodAttribute();
         // get attribute --> save in session
         attrs = FoodBLO.getAttributeFoodList();
         se.setAttribute(CommonConstant.FOOD_CATEGORY_A, attrs);
@@ -86,8 +78,8 @@ public class DisplayCategory extends BaseAction {
 
         // getproduct --> save in session
         HashMap<Integer, String> paging = new HashMap<Integer, String>();
-
-        foods = FoodBLO.initFoodCategory(paging, CommonConstant.DEFAULT_RECORD, typeProduct);
+        String filterCol = CommonConstant.FOOD_TYPE;
+        foods = FoodBLO.initFoodCategory(paging, CommonConstant.DEFAULT_RECORD, filterCol, typeProduct, null, null);
         pageList = FoodBLO.updateStatusPaging(paging);
         // paging
         vo.setPagingList(pageList);
@@ -96,7 +88,7 @@ public class DisplayCategory extends BaseAction {
         vo.setLimit(CommonConstant.DEFAULT_RECORD);
         vo.setCol(CommonConstant.DEFAULT_COL);
         vo.setPage(CommonConstant.DEFAULT_PAGE);
-
+        vo.setOrder(CommonConstant.DEFAULT_ORDER);
         se.setAttribute(CommonConstant.PRODUCTVO, vo);
 
 //        System.out.println("SIZE OF FOOD" + foods.size());

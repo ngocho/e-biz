@@ -93,6 +93,26 @@ public class ShoppingCart implements Serializable {
         this.total = sumMoney;
     }
     /**
+     * [Give the description for method].
+     * @param key     String
+     * @return       long
+     */
+    public long subMoney(String key) {
+        long sumMoney = 0;
+        if (key != null) {
+            Long id = Long.parseLong(key);
+            System.out.println("ID product" + id);
+            for (FoodForm food : products) {
+                if (id.equals(food.getId())) {
+                    sumMoney = food.getPrice() * food.getNumber();
+                    System.out.println("sub money" + sumMoney);
+                    break;
+                }
+            }
+        }
+        return sumMoney;
+    }
+    /**
      * [add Food into Shopping Cart].
      * @param food      FoodForm
      * @param number    int
@@ -108,7 +128,7 @@ public class ShoppingCart implements Serializable {
      */
     public void removeFood(Long id) {
        for (FoodForm food : products) {
-           if (id == food.getId()) {
+           if (id.equals(food.getId())) {
                //remove
                products.remove(food);
                //recount money
@@ -137,7 +157,7 @@ public class ShoppingCart implements Serializable {
      */
     public void updateNumberFood(Long  id, int number) {
         for (FoodForm food : products) {
-            if (id == food.getId()) {
+            if (id.equals(food.getId())) {
                food.setNumber(number);
                food.setSubTotal(number * food.getPrice());
             }
@@ -150,7 +170,7 @@ public class ShoppingCart implements Serializable {
      */
     public int getNumberFood(Long id) {
         for (FoodForm food : products) {
-            if (id == food.getId()) {
+            if (id.equals(food.getId())) {
               return food.getNumber();
             }
         }

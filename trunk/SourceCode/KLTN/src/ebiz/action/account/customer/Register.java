@@ -38,34 +38,46 @@ import ebiz.form.LoginForm;
  */
 public class Register extends BaseAction {
 
+    /**
+     * [Register(Customer)].
+     * @param mapping ActionMapping
+     * @param form ActionForm
+     * @param request HttpServletRequest
+     * @param response HttpServletResponse
+     * @return ActionForward
+     * @throws Exception Exception
+     * @see ActionForward Struts1 Framework
+     */
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
 
         // after checked validation using xml file
         LoginForm user = (LoginForm) form;
-
-        // check password
+        // check password with re-password
         if (!user.getLoginPassword().equals(user.getLoginPasswordPre())) {
             ActionMessages messages = new ActionMessages();
             messages.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage("password.notmatch"));
             saveMessages(request, messages); // storing messages as request attributes
             return mapping.findForward(FAILURE);
         }
-        Customer register = user.getCustomer();
-        boolean flag;
+        // don't exist User ID in database
+        if (!CustomerBLO.isUID(user.getLoginId())) {
+            Customer register = user.getCustomer();
+            boolean flag;
 
-        flag = CustomerBLO.registerCustomer(register);
-        if (flag) {
-
-            // send mail --> use task queue
-            SendMail.registerSuccess(user.getEmail());
-
-            return mapping.findForward(SUCCESS);
+            flag = CustomerBLO.registerCustomer(register);
+            if (flag) {
+                if (user.getEmail() != null) {
+                    // send mail --> use task queue
+                    SendMail.registerSuccess(user.getEmail());
+                }
+                return mapping.findForward(SUCCESS);
+            }
         }
-
         ActionMessages messages = new ActionMessages();
         messages.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage("errors.duplicated"));
-        saveMessages(request, messages); // storing messages as request attributes
+        // storing messages as request attributes
+        saveMessages(request, messages);
         return mapping.findForward(FAILURE);
     }
 

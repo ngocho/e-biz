@@ -22,6 +22,7 @@ public interface IFoodDAO {
 	public List<Food> getFoodListByProviderStatus(String idProvider, String statusFood);
 	
 	public List<String> getAttributeList(String col);
+	public List<FoodAttribute> getAttributeList();
 
 	public List<FoodPriceLevel> getPriceList();
 
@@ -41,8 +42,11 @@ public interface IFoodDAO {
 	
 	public List<Food> diplayPageFood(String col,
 			HashMap<Integer, String> paging, String order, int record,
-			int page, String filterCol, String typeProduct);
+			int page, String sql);
+	public List<Food> diplayFoodProviderAll(String col,
+            HashMap<Integer, String> paging, String order, int record,
+            int page);
 
-	
+	public List<Food> searchFoodByName(String searchText, String type, String attr, String price, String status);
 
 }

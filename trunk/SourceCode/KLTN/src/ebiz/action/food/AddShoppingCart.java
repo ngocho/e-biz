@@ -85,7 +85,6 @@ public class AddShoppingCart extends BaseAction {
                 se.setAttribute(CommonConstant.SHOPPING, shopCart);
                 //retured data
                 out.println(shopCart.getCount());
-                return null;
                 }
         } catch (Exception e) {
             e.printStackTrace();
