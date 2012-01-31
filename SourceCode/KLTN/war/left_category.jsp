@@ -3,8 +3,8 @@
 <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
 <%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
-<div class="col-left sidebar"><div class="block block-currency">
-    <div class="block-title">
+<div class="col-left sidebar"><!--  <div class="block block-currency">
+   <div class="block-title">
         <strong><span>Select Your Currency</span></strong>    </div>
     <div class="block-content">
         <select name="currency" title="Select Your Currency" onchange="setLocation(this.value)">
@@ -13,8 +13,8 @@
                     <option value="#">
                  Việt Nam - VNĐ           </option>
                 </select>
-    </div>
-</div>
+    </div> 
+</div>-->
 <div class="block block-layered-nav">
     <div style="background:#009900" >
         <strong><span style="text-transform:uppercase">MENU</span></strong>    </div>
@@ -25,11 +25,15 @@
                                                                     
                     <dd class="odd">
 <ol>
+ <li>
+                <a href="/categoryRecord.vn">Tất cả
+                </a>
+               </li>
 <logic:present name="Attribute">
 <logic:iterate id="element" name="Attribute">
     <li>
-                <a href="#">
-                <bean:write name="element"/>
+                <a href="/categoryRecord.vn?attr=<bean:write name="element" property="productAttributeId"/>">
+                <bean:write name="element"  property="productAttributeName" />
                 </a>
                </li>
 </logic:iterate>
@@ -39,6 +43,9 @@
                                                                     <dt class="even">GIÁ TIỀN</dt>
                     <dd class="even">
 <ol>
+    <li>
+                <a href="#">Tất cả</a>
+                </li>
 <logic:present name="Price">
 <logic:iterate id="element" name="Price">
     <li>
