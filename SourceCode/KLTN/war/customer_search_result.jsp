@@ -16,7 +16,6 @@ $(document).ready(function(){
       <div class="pager">
         <p class="amount">
           <strong>Page: &nbsp;</strong> <span> 
-          <%System.out.println("DIV" + 2 %10); %>
           <%-- <input
             type="hidden" name="page" id="status"
             value="<bean:write name="pageList"/>"></input>
@@ -95,6 +94,8 @@ $(document).ready(function(){
 <li style="margin-left:10px;"> 
 <img src="/serveImage.vn?urlKey=<bean:write name="element" property="urlKey"/>" width="50" height="40"/>
 <a href="/reOrder.vn?id=<bean:write name="element" property="id"/>"><bean:write name="element" property="name"/></a> 
+<a id="" href="/displayDetailProduct.vn?id=<bean:write name="element" property="id"/>"><img src="Images/Commons/xem.jpg" width="50" /></a>
+<a id="" href="/displayDetailProduct.vn?id=<bean:write name="element" property="id"/>"><img src="Images/Commons/mua.jpg" width="50" /></a>
 <br>
 <bean:write name="element" property="detail"/>
 </li>
