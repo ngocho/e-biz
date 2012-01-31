@@ -22,7 +22,7 @@
     </global>
 
     <formset>
-        <!-- An example form -->
+        <!-- Customer : Login -->
         <form name="login">
             <field
                 property="loginId"
@@ -33,6 +33,11 @@
                 property="loginPassword"
                 depends="required">
                 <arg0 key="login.loginPassword"/>
+            </field>
+             <field
+                property="loginPasswordPre"
+                depends="required">
+                <arg0 key="login.loginPasswordPre"/>
             </field>
             <field
                 property="loginPassword"
@@ -45,13 +50,26 @@
                 </var>
                 <arg0 key="login.loginPassword"/>
             </field>
-            <field
+     		<field
+                property="loginPasswordPre"
+                depends="minlength">
+                <var>
+                    <var-name>minlength
+                    </var-name>
+                    <var-value>8
+                    </var-value>
+                </var>
+                <arg0 key="login.loginPasswordPre"/>
+            </field>
+		 <!--	<field
                 property="email"
                 depends="email">
-                <arg0 key="login.email"/>
-            </field>
+                <arg0 key="order.email"/>
+            </field>-->
         </form>
-        
+        <!-- Customer : Login -->
+		
+		<!-- start Customer : Order -->
         <form name="order">
             <field
                 property="nameCustomer"
@@ -63,11 +81,11 @@
                 depends="required">
                 <arg0 key="order.phone"/>
             </field>
-            <field
+       <!-- <field
                 property="email"
                 depends="email">
                 <arg0 key="order.email"/>
-            </field>
+            </field> -->
             <field
                 property="homeNumber"
                 depends="required">
@@ -105,7 +123,9 @@
                 
             </field>
         </form>
-        
+		<!--end  Customer : Order -->
+		
+        <!-- start Provider : register -->
           <form name="providerForm">
             <field
                 property="loginId"
@@ -158,6 +178,46 @@
                 <arg0 key="providerForm.detail"/>
             </field>
           </form>
+            <!-- end Provider : register -->  
+		<!-- start Provider : upload Product -->
+		 <form name="foodForm">
+            <field
+                property="name"
+                depends="required">
+                <arg0 key="foodForm.name"/>
+            </field>
+			<field
+                property="productTypeId"
+                depends="required">
+                <arg0 key="foodForm.productTypeId"/>
+            </field>
+			<field
+                property="idAttr"
+                depends="required">
+                <arg0 key="foodForm.idAttr"/>
+            </field>
+			<field
+                property="status"
+                depends="required">
+                <arg0 key="foodForm.status"/>
+            </field>
+			<field
+                property="number"
+                depends="required">
+                <arg0 key="foodForm.number"/>
+            </field>
+			<field
+                property="promoPrice"
+                depends="required">
+                <arg0 key="foodForm.promoPrice"/>
+            </field>
+			<field
+                property="detail"
+                depends="required">
+                <arg0 key="foodForm.detail"/>
+            </field>
+			</form>
+			<!-- end Provider : upload Product -->
     </formset>
-        
+    
 </form-validation>

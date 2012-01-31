@@ -103,6 +103,10 @@
       <put name="content" value="/content_provider_productInfo.jsp" />
      </definition>
       <!-- end provider -->
+     <definition name="search_result" extends="baseLayout1">
+      <put name="title" value="Provider Home" />
+      <put name="content" value="/customer_search_result.jsp" />
+     </definition>
        <definition name="home_customer" extends="baseLayout">
       <put name="title" value="Customer Home" />
       <put name="left"   value="/left_customer.jsp" />

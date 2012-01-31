@@ -24,7 +24,8 @@
 			type="ebiz.action.account.customer.Login" 
 			name="login"
 			scope="session" validate="true">
-		<forward name="success" path="home" redirect="true" />
+		<forward name="success" path="/home.vn" redirect="true" />
+		<forward name="success1" path="checkout" redirect="true" />
 		<forward name="failure" path="loginLayout" redirect="true" />
     </action>
     
@@ -40,7 +41,7 @@
     <action 
 			path="/logoutCustomer"
 			type="ebiz.action.account.customer.Logout" >
-		<forward name="success" path="home" redirect="true" />
+		<forward name="success" path="/home.vn" redirect="true" />
     </action>
     
     <action 
@@ -64,7 +65,7 @@
 	
     <action
 			path="/sendMailRegister"
-			type="ebiz.action.account.customer.SendMailRegister" >
+			type="ebiz.action.mail.SendMailRegister" >
     </action>
  
   </action-mappings>

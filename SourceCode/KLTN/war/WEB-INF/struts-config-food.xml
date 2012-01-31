@@ -4,6 +4,7 @@
 
   <form-beans>
     <form-bean name="order" type="ebiz.form.OrderBillForm" />
+    <form-bean name="searchForm" type="ebiz.form.SearchForm" />
   </form-beans>
   
   <global-exceptions>
@@ -81,7 +82,7 @@
 			path="/checkAuthentication"
 			type="ebiz.action.food.AuthenticationUser" >
 		<forward name="success" path="checkout" redirect="true" />
-		<forward name="input" path="loginLayout" redirect="true" />
+		<forward name="login" path="loginLayout" redirect="true" />
 		<forward name="failure" path="shopping" redirect="true" />
     </action>
 	
@@ -93,6 +94,16 @@
 		<forward name="success" path="bill" redirect="true" />
 		<forward name="failure" path="checkout" redirect="true" />
     </action>
+    
+    <action input="home"
+			path="/search"
+			type="ebiz.action.food.Search" 
+			name="searchForm"
+			scope="session" validate="true">
+		<forward name="success" path="search_result" redirect="true" />
+		<forward name="failure" path="/home.vn" redirect="true" />
+    </action>
+    
 
 	</action-mappings>
 </struts-config>
