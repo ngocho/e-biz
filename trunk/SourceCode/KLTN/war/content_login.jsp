@@ -6,19 +6,16 @@
 <%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic"%>
 <%@taglib uri="http://java.sun.com/jstl/core" prefix="c"%>
 <!-- <script type="text/javascript">
-    function change() {
-        var i = document.getElementById("type").value;
-        if (i == 1) {
-            document.getElementById("type").value = '0';
-            document.getElementById("typeLogin").innerHTML = "<em>*</em>Email đăng nhập";
-            document.getElementById("idLogin").value = 'Dùng tên tài khoản để đăng nhập';
-        } else {
-            document.getElementById("type").value = '1';
-            document.getElementById("typeLogin").innerHTML = "<em>*</em>Tên đăng nhập";
-            document.getElementById("idLogin").value = 'Dùng email để đăng nhập';
-
-        }
-    }
+$(document).ready(function(){
+    $("#reset").click(function(){
+        resetForm("/resetForm.vn");
+        alert('reset');
+       // $('#loginForm')[0].reset();
+        $('#loginForm').find('input, select, textarea').not(':button, :submit, :reset, :hidden').val('').removeAttr('checked').removeAttr('selected');
+        $('#id').val('');
+        alert($('#id').val());
+    });
+});
 </script> -->
 <div class="home-spot">
   <div class="col-2 registered-users" class="login">
@@ -31,20 +28,11 @@
       <h2>ĐĂNG NHẬP</h2>
       <!--p>If you have an account with us, please log in.</p-->
       <ul class="form-list">
-        <html:form action="/loginAction.vn" method="get">
-          <!-- <li class="fields">
-
-            <div class="field">
-              <input type="hidden" name="type" id="type" value="1" /> <input
-                type="button"
-                style="background: url(); background: #00CCFF"
-                onclick="change()" id="idLogin"
-                value="Dùng email để đăng nhập" />
-            </div></li> -->
+        <html:form action="/loginAction.vn" method="get" styleId="loginForm">
           <li><label for="email" class="required" id="typeLogin"><em>*</em>Tên
               đăng nhâp</label>
             <div class="input-box">
-              <html:text property="loginId" />
+              <html:text property="loginId" styleId="id" />
             </div>
           </li>
           <li><label for="pass" class="required"><em>*</em>Password</label>
@@ -54,9 +42,9 @@
           </li>
           <li>
             <div class="input-box">
-              <input type="submit" name="OK" id="pass" title="Password"
-                value="Đăng nhập"> <input type="reset" name="OK"
-                id="reset" title="Password" value="Xóa hết">
+              <input type="submit" class="buttonBG" name="OK" id="pass" title="Password" value="Đăng nhập">
+               <input type="reset"  class="buttonBG" name="OK"
+                id="reset" title="Password" value="Xóa hết" onclick="setLocation('/resetForm.vn')" >
             </div>
           </li>
           <li>

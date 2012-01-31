@@ -198,7 +198,7 @@
 
 </div>
  <button type="submit" title="Submit" style="margin-left:200px;" class="button">
-    <span><span>Submit</span>
+    <span><span>Đăng kí</span>
     </span>
   </button>
 <div class="buttons-set1">

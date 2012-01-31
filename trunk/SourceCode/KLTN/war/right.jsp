@@ -42,8 +42,13 @@
             </li>
             <li>
               <div class="input-box">
-                <input type="submit" name="OK" id="pass"
+                <input type="submit" name="OK" id="pass"  class="buttonBG"
                   title="Password" value="Đăng nhập">
+              </div>
+            </li>
+            <li>
+              <div class="input-box">
+                <a href="/registerCustomer.vn">Đăng kí nếu chưa có tài khoản</a>
               </div>
             </li>
             <li>
@@ -54,30 +59,55 @@
       </div>
         </c:if>
   </div>
-
-  <div class="block block-cart">
+   <div class="block block-cart">
     <div class="block-title">
 
-      <a href="/displayShoppingCart.vn"><strong><span>GIỎ HÀNG</span> </strong> </a>
+      <strong><span>GIỎ HÀNG</span> </strong> 
     </div>
     <div class="block-content">
-      <p class="empty">
-        Bạn đã mua <span id="countShop"
+      <p >
+      <span class="empty1" > Bạn đã mua </span><div class="block-cart_header">
+     <a id="current_cart_items_count" href="/displayShoppingCart.vn"
+        class="count"> <logic:present name="shop">
+          <bean:write name="shop" property="count" />
+        </logic:present> </a> món hàng
+     <!--  <h3>
+        <a href="/displayShoppingCart.vn"></a>
+      </h3>
+    <a href="/checkAuthentication.vn"" class="link-checkout"></a> -->
+    </div>
+        <%-- <span id="countShop"
           style="color: red; font-weight: bold; font-size: 15pt">
           <logic:present name="shop">
             <bean:write name="shop" property="count" />
-          </logic:present> </span> món hàng
+          </logic:present> </span> --%>
       </p>
-       <logic:present name="shop" property="products">
+      <%--  <logic:present name="shop" property="products">
         <logic:iterate id="element"  name="shop" property="products" length="3">
       <p class="empty" style="color:blue;"><bean:write name="element" property="name"/></p>
       </logic:iterate>
-      </logic:present>
+      </logic:present> --%>
+       <p class="empty" style="text-align: left">
+        <a href="/displayShoppingCart.vn">...xem giỏ hàng</a>
+      </p>
       <p class="empty" style="text-align: right">
         <a href="/checkAuthentication.vn">...thanh toán</a>
       </p>
     </div>
   </div>
+ <div class="block block-cart">
+    <div class="block-title">
+
+      <a href="/displayShoppingCart.vn"><strong><span>NẠP XU</span> </strong> </a>
+    </div>
+		<div class="block-content">
+			<form name="money" action="" method="get">
+				Nhập mã nạp xu :<input type="text" name="xu" /><input  class="buttonBG"
+					type="submit" value="Nạp xu"/>
+			</form>
+		</div>
+	</div>
+ 
   <div class="block block-cart">
     <div class="block-title" style="background: red">
       <strong style="color: white; font-size: 16px;"><span>ĐỔI
@@ -190,7 +220,7 @@
         </ul>
         <div class="actions">
           <button type="submit" title="Vote" class="button">
-            <span><span>Vote</span> </span>
+            <span><span>Xem kết quả</span> </span>
           </button>
         </div>
       </div>

@@ -38,7 +38,7 @@ Tiếng Anh
     <ul id="nav">
     <li>
       <a
-          href="home.vn"
+          href="/home.vn"
           class="level-top">
 <img src="Images/Commons/icon-trang-chu.png" width="20" height="20" style="margin-left:-70px;"><span style="margin-left:10px;margin-top:-10px;" class="nav-text-provider"> Trang chủ</span></img>
         </a></li>

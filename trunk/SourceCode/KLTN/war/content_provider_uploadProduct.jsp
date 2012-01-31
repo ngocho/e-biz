@@ -8,13 +8,29 @@
 <%
     BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
 %>
+
+<!-- <script type="text/javascript">
+$(document).ready(function(){
+    $(".uploadAction").click(function() {
+        var index = $(this).attr('rel');
+        var id = $(this).attr('name');
+        var number = $("#"+index).val();
+        updateNumberProduct(id,number,index);
+        return false;
+    });
+});
+</script> -->
+
 <div class="home-spot">
   <div class="account-create">
 
     <div class="page-title">
       <h1>Upload sản phẩm</h1>
     </div>
-    <logic:empty name="urlImage">
+    <logic:present name="fUpload" scope="request">
+    <span style="color:red;">Upload thành công, tiếp tục upload</span><br>
+    </logic:present>
+    <logic:empty name="urlImageKey">
       <form name="uploadImage"
         action="<%=blobstoreService.createUploadUrl("/uploadImage.vn")%>"
         method="post" enctype="multipart/form-data">
@@ -25,8 +41,7 @@
     </logic:empty>
     <html:form action="/uploadProduct.vn" method="get">
     <html:hidden property="idProvider"/>
-      <%-- <html:hidden property="idProvider" value="<bean:write name="provider" property="loginId"/>"/>
-      <html:hidden property="url"  value="<bean:write name="url"/>"/> --%>
+      <html:hidden property="id"/>
       <div class="fieldset">
         <h2 class="legend">Thông tin sản phẩm</h2>
 
@@ -66,7 +81,7 @@
      </html:option>
                   <html:option value="4"> Lẩu
      </html:option>
-      <html:option value="4"> Khác
+      <html:option value="5"> Khác
      </html:option>
                 </html:select>
               </div>
@@ -80,7 +95,7 @@
                 <html:select property="status">
                   <html:option value="1"> Thực phẩm khuyến mãi
      </html:option>
-                  <html:option value="1"> Thực phẩm bình thường
+                  <html:option value="2"> Thực phẩm bình thường
      </html:option>
                 
                   </html:select>
@@ -152,7 +167,7 @@
         <li class="fields">
           <div class="customer-name">
             <div class="field name-firstname">
-              <label for="firstname" class="required" id="typeLogin"><em>*</em>Hướng
+              <label for="firstname" class="required" id="typeLogin">Hướng
                 dẫn cách nấu</label>
               <div class="input-box">
                 <html:textarea property="cooking" />
@@ -173,15 +188,15 @@
 
 
   <button type="submit" title="Submit" style="margin-left: 200px;"
-    class="button">
-    <span><span>Submit</span> </span>
+    class="button" id="upload">
+    <span><span>Upload</span> </span>
   </button>
   <div class="buttons-set1">
-    <p class="buttons-set1 p.required">* Required Fields</p>
+    <p class="buttons-set1 p.required">* Yêu cầu phải nhập</p>
     <br />
     <p class="buttons-set1 p.back-link">
-      <a href="https://demo.magentocommerce.com/customer/account/login/"
-        class="back-link"><small>&laquo; </small>Back</a>
+      <a href=""
+        class="back-link"><small>&laquo; </small>Trang trước</a>
     </p>
 
   </div>

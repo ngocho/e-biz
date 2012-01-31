@@ -15,7 +15,7 @@ $(document).ready(function(){
 });
 </script>
 <!-- <div class="col-main"> -->
-<div style="width: 770px;">
+<div style="width: 750px;">
 
 <div id="messages_product_view"></div>
 <div class="product-view">
@@ -57,33 +57,39 @@ $(document).ready(function(){
 </div>
 
             <div class="product-name">
-                <h1><bean:write name ="DetailProduct" property="name" /></h1>
+                <h1>Mã món ăn  : <bean:write name ="DetailProduct" property="id" /></h1>
             </div>
             <div class="product_info">      
                 <table border="1" style="border-style:ridge;;border-width:2px; border-color:#98bf21;">
             <tr>
+            <th >Tên món ăn</th>
+            <td width="200" class="price" style="padding:3px;" > <bean:write name="DetailProduct" property="name" /></td>
+            </tr>
+            <tr>
             <th >Cửa hàng cung cấp</th>
             <td width="200" class="price" style="padding:3px;" > <bean:write name="DetailProduct" property="idProvider" /></td>
             </tr>
-            <tr>
-            <th >Giá khuyến mãi</th>
-            <td width="200" class="price" style="padding:3px;" > <bean:write name="DetailProduct" property="promoPrice" /></td>
+             <tr>
+            <th class="old-price">Giá bình thường:</th>
+            <td width="200"  style="padding:3px;" > <span style="text-decoration:line-through;color:black;" class="price" id="old-price-52"> <bean:write name="DetailProduct" property="price" /> </span></td>
             </tr>
             <tr>
-            <th >Giá gốc</th>
-            <td width="200"  class="price" style="padding:3px;" > <bean:write name="DetailProduct" property="price" /></td>
+            <th  class="price-label">Giá khuyến mãi</th>
+            <td width="200" class="price" style="padding:3px;" >  <span
+                  class="price" id="product-price-52"> <bean:write
+                    name="DetailProduct" property="promoPrice" /> </span></td>
             </tr>
-          <!--   <tr>
-            <th > Thành phần </th>
-            <td class= "info">Thông tin sơ lược về sản phẩm</td>
-            </tr> -->
-            <tr>
+       <%--      <tr>
             <th > Cung cấp năng lượng  </th>
             <td width="200" style="padding:3px;"  > <bean:write name="DetailProduct" property="calo" /></td>
-            </tr>
+            </tr> --%>
             <tr>
             <th > Số lượng </th>
             <td  width="200" style="padding:3px;" > <bean:write name="DetailProduct" property="number" /></td>
+            </tr>
+            <tr>
+            <th > Cửa hàng  </th>
+            <td  width="200" style="padding:3px;" > <bean:write name="DetailProduct" property="nameProvider" /></td>
             </tr>
             </table>
             </div>
@@ -91,18 +97,8 @@ $(document).ready(function(){
 
         <div class="product-img-box">
             <p class="product-image ">
-  <a href=""  ><img  width="340" height="310" id="image" src="/serveImage.vn?urlKey=<bean:write name="DetailProduct" property="urlKey"/>" alt="Chair" title="Chair"></a></p>
+  <a href ="#"  ><img  width="335" height="335" id="image" src="/serveImage.vn?urlKey=<bean:write name="DetailProduct" property="urlKey"/>" alt="Chair" title="Chair"></a></p>
 <div class="more-views">
-  <%--   <h2>Thêm hình</h2>
-    <ul>
-    <logic:present name="promotionFood">
-      <logic:iterate id="element" name="promotionFood" >
-            <li>
-            <a href="#" title=""><img src="/serveImage.vn?urlKey=<bean:write name="element" property="urlKey"/>" alt="" width="56" height="56"></a>
-        </li>
-        </logic:iterate>
-        </logic:present>
-        </ul> --%>
 </div>
         </div>
 
@@ -121,18 +117,18 @@ $(document).ready(function(){
         </div>
         <div class="box-collateral box-additional">
                             <h2>Hướng dẫn nấu </h2>
-                            thông tin hướng dẫn nấu ăn
+                            <bean:write name="DetailProduct" property="cooking" />  
    
  
         </div>
         <div class="box-collateral box-up-sell">
-    <h2>Có lẽ bạn quan tâm đến những sản phẩm này ?</h2>
+    <h2>Bạn quan tâm đến những sản phẩm này ?</h2>
     <table class="products-grid" id="upsell-product-table">
                     <tbody><tr class=""> 
                      <logic:present name="promotionFood">
             <logic:iterate id="element" name="promotionFood" length="2" >
                                 <td>
-                <a href="" title="Hình ảnh" class="product-image"><img src="/serveImage.vn?urlKey=<bean:write name="element" property="urlKey"/>" width="250" height="250"></a>
+                <a href="/displayProductDetail.vn?id=<bean:write name="element" property="id" />" title="Hình ảnh" class="product-image"><img src="/serveImage.vn?urlKey=<bean:write name="element" property="urlKey"/>" width="250" height="250"></a>
                 <h3 class="product-name"><a href="" title="Magento Red Furniture Set"><bean:write name="element" property="name"/></a></h3>
                 
 
@@ -140,18 +136,13 @@ $(document).ready(function(){
             <p class="minimal-price">
                 <span class="price-label">Giá:</span>
                                                     <span class="price" id="product-minimal-price-54-upsell">
-                   <bean:write name="element" property="price"/>              </span>
+                   <bean:write name="element" property="promoPrice"/>              </span>
                             </p>
         </div>
                         <div class="ratings">
                     <div class="rating-box">
                 <div class="rating" style="width: 93%;"></div>
             </div>
-                <p class="rating-links">
-            <a href="http://demo.magentocommerce.com/review/product/list/id/54/category/10/">2 Review(s)</a>
-            <span class="separator">|</span>
-            <a href="http://demo.magentocommerce.com/review/product/list/id/54/category/10/#review-form">Add Your Review</a>
-        </p>
     </div>
             </td>
             </logic:iterate>

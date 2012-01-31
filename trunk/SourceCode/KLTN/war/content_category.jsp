@@ -15,31 +15,31 @@ $(document).ready(function(){
 </script>
 
 <script type="text/javascript">
-    function slideSwitch() {
-        var $active = $('#slideshow IMG.active');
+function slideSwitch() {
+    var $active = $('#slideshow IMG.active');
 
-        if ($active.length == 0)
-            $active = $('#slideshow IMG:last');
+    if ($active.length == 0)
+        $active = $('#slideshow  IMG:last');
 
-        // use this to pull the images in the order they appear in the markup
-        var $next = $active.next().length ? $active.next() : $('#slideshow IMG:first');
+    // use this to pull the images in the order they appear in the markup
+    var $next = $active.next().length ? $active.next() : $('#slideshow IMG:first');
 
-        // uncomment the 3 lines below to pull the images in random order
+    // uncomment the 3 lines below to pull the images in random order
 
-        // var $sibs  = $active.siblings();
-        // var rndNum = Math.floor(Math.random() * $sibs.length );
-        // var $next  = $( $sibs[ rndNum ] );
+    // var $sibs  = $active.siblings();
+    // var rndNum = Math.floor(Math.random() * $sibs.length );
+    // var $next  = $( $sibs[ rndNum ] );
 
-        $active.addClass('last-active');
+    $active.addClass('last-active');
 
-        $next.css({
-            opacity : 0.0
-        }).addClass('active').animate({
-            opacity : 1.0
-        }, 1000, function() {
-            $active.removeClass('active last-active');
-        });
-    }
+    $next.css({
+        opacity : 0.0
+    }).addClass('active').animate({
+        opacity : 1.0
+    }, 1000, function() {
+        $active.removeClass('active last-active');
+    });
+}
 
     $(function() {
         setInterval("slideSwitch()", 5000);
@@ -62,7 +62,7 @@ $(document).ready(function(){
 
     });
 </script>
-<script type="text/javascript">
+<!-- script type="text/javascript">
     $(document).ready(function() {
         $("#addToCart").click(function() {
             var quantity = $("#quantity").val();
@@ -71,17 +71,18 @@ $(document).ready(function(){
             return false;
         });
     });
-</script>
+</script> -->
 <style type="text/css">
 
 /*** set the width and height to match your images **/
+
 #slideshow {
   position: relative;
   height: 220px;
   margin-left: 130px;
 }
 
-#slideshow IMG {
+#slideshow  IMG {
   position: absolute;
   top: 0;
   left: 0;
@@ -94,28 +95,31 @@ $(document).ready(function(){
   opacity: 1.0;
 }
 
-#slideshow IMG.last-active {
+#slideshow  IMG.last-active {
   z-index: 9;
 }
+
 </style>
   <div class="page-title category-title">
 
     <h1>
       <a href="category.vn?typeProduct=1"></a>
-       <% ProductVO vo = (ProductVO)session.getAttribute("productVo");
-       if(vo !=null){
-        String temp = vo.getTypeProduct();
-        if(temp.equals("1")){
-       
-       %>
-      Thực phẩm sơ chế
-      <%}else if(temp.equals("2")) {%>
-      Thức ăn nấu sẵn
-      <%}else if(temp.equals("3")) {%>
-      Rau xanh
-      <%}else if(temp.equals("4")){ %>
-     Gia vị
-      <%}} %>
+      <logic:present name="productVo" property="typeProduct">
+       <c:choose>
+                  <c:when test="${productVo.typeProduct == '1'}">
+                  Thực phẩm sơ chế
+                  </c:when>
+                  <c:when test="${productVo.typeProduct == 2}">
+                 Thức ăn nấu sẵn
+                  </c:when>
+                  <c:when test="${productVo.typeProduct == 3}">
+                  Rau xanh
+                  </c:when>
+                  <c:when test="${productVo.typeProduct == 4}">
+                  Rau xanh
+                  </c:when>
+      </c:choose>
+      </logic:present>
     </h1>
   </div>
 
@@ -123,10 +127,20 @@ $(document).ready(function(){
   <p class="category-image">
   <div id="slideshow">
     <logic:present name="Food">
-      <logic:iterate id="element" name="Food">
-        <a href="/displayProductDetail.vn?id=<bean:write name="element" property="id"/>"><img width="300" height="200"
-          src="/serveImage.vn?urlKey=<bean:write name="element" property="urlKey"/>"
-          alt="Slideshow Image 1" class="active" /> </a>
+      <logic:iterate id="element" name="Food" indexId="index" >
+        <%-- <a href="/displayProductDetail.vn?id=<bean:write name="element" property="id"/>">
+        --%>
+           <c:choose>
+                  <c:when test="${index == 0}">
+                     <img  width="300" height="200" src="/serveImage.vn?urlKey=<bean:write name="element" property="urlKey"/>"
+          alt="Slideshow Image 1" class="active" /> 
+                  </c:when>
+                  <c:otherwise>
+                   <img  width="300" height="200" src="/serveImage.vn?urlKey=<bean:write name="element" property="urlKey"/>"
+          alt="Slideshow Image 1" /> 
+                  </c:otherwise>
+                </c:choose>
+       <!--    </a> -->
       </logic:iterate>
     </logic:present>
   </div>
@@ -142,16 +156,16 @@ $(document).ready(function(){
               <logic:iterate id="element" name="productVo"
                 property="pagingList">
                 <c:choose>
-                  <c:when test="${element.id ==1}">
+                  <c:when test="${element.id == 1}">
                     <a
                       href="/categoryRecord.vn?page=<bean:write name="element" property="id"/>"><bean:write
-                        name="element" property="id" /> | </a>
+                        name="element" property="id" /></a>
 
                   </c:when>
                   <c:otherwise>
-                    <a
+                   |  <a
                       href="/categoryRecord.vn?page=<bean:write name="element" property="id"/>"><bean:write
-                        name="element" property="id" /> | </a>
+                        name="element" property="id" /> </a>
                   </c:otherwise>
                 </c:choose>
 
@@ -165,7 +179,7 @@ $(document).ready(function(){
             value="<bean:write name="productVo" property="limit"/>"></input>
           <select id="record" onchange="setLocation(this.value)">
             <option value="/categoryRecord.vn?limit=8"
-              selected="selected">8</option>
+              >8</option>
             <option value="/categoryRecord.vn?limit=14">14</option>
             <option value="/categoryRecord.vn?limit=30">30</option>
           </select> sản phẩm mỗi trang
@@ -174,9 +188,6 @@ $(document).ready(function(){
 
       <div class="sorter">
         <p class="view-mode">
-          <!-- <label>6 món ăn</label> -->
-          <!--  <strong title="Grid" class="grid">Grid</strong>&nbsp;
-                                                                <a href="http://demo.magentocommerce.com/catalog/category/view/s/bed-and-bath/id/10/?mode=list" title="List" class="list">List</a>&nbsp;                -->
         </p>
 
         <div class="sort-by">
@@ -186,7 +197,7 @@ $(document).ready(function(){
                 <label>Sắp xếp tăng dần theo</label>
               </c:when>
               <c:when test="${productVo.order == 'desc'}">
-                <label>Sắp xếp giảm dần dần theo</label>
+                <label>Sắp xếp giảm dần  theo</label>
               </c:when>
               <c:otherwise>
                <label>Sắp xếp tăng dần theo</label>
@@ -200,8 +211,8 @@ $(document).ready(function(){
               selected="selected">Tên</option>
             <option value="/categoryRecord.vn?col=price">Giá
               tiền</option>
-            <option value="/categoryRecord.vn?col=reviewer">
-              Lượt người xem</option>
+            <option value="/categoryRecord.vn?col=saleProduct">
+              Lượt người mua</option>
           </select>
           
            <logic:present name="productVo">
@@ -209,25 +220,19 @@ $(document).ready(function(){
               <c:when test="${productVo.order == 'asc'}">
                  <a style="text-decoration: none;"
               href="/categoryRecord.vn?order=desc"
-              title="Set Descending Direction"><img
-              src="Furniture%20-%20Magento%20Commerce%20Demo%20Store_files/i_asc_arrow.gif"
-              alt="Sắp xếp giảm dần" class="v-middle">
+              title="Set Descending Direction">Sắp xếp giảm dần
             </a>
               </c:when>
               <c:when test="${productVo.order == 'desc'}">
                 <a style="text-decoration: none;"
-              href="/categoryRecord.vn?order=desc"
-              title="Set Descending Direction"><img
-              src="Furniture%20-%20Magento%20Commerce%20Demo%20Store_files/i_asc_arrow.gif"
-              alt="Sắp xếp tăng dần " class="v-middle">
+              href="/categoryRecord.vn?order=asc"
+              title="Set Descending Direction">Sắp xếp tăng dần
             </a>
               </c:when>
                <c:otherwise>
                <a style="text-decoration: none;"
               href="/categoryRecord.vn?order=desc"
-              title="Set Descending Direction"><img
-              src="Furniture%20-%20Magento%20Commerce%20Demo%20Store_files/i_asc_arrow.gif"
-              alt="Sắp xếp giảm dần" class="v-middle">
+              title="Set Descending Direction">Sắp xếp giảm dần
             </a>
                </c:otherwise>
             </c:choose>
@@ -256,9 +261,9 @@ $(document).ready(function(){
               <div class="rating-box">
                 <div class="rating" style="width: 87%;"></div>
               </div>
-              Lượt xem: <span class="amount" style="color: red;">
+              Mã món ăn: <span class="amount" style="color: red;">
                 <!-- <a href="#" onclick="var t = opener ? opener.window : window; t.location.href='http://demo.magentocommerce.com/review/product/list/id/52/category/10/'; return false;"> -->
-                <bean:write name="element" property="reviewer" /> </span>
+                <bean:write name="element" property="id" /> </span>
             </div>
             <div class="price-box">
 

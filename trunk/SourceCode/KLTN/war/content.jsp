@@ -25,7 +25,7 @@ $(document).ready(function(){
             
             
             <ul id="thumbs">
-            <logic:iterate id="element" name="promotionFood" indexId="index">
+            <logic:iterate id="element" name="promotionFood" indexId="index" length="6">
                 <li  rel='<%=index+1%>'><img src="/serveImage.vn?urlKey=<bean:write name="element" property="urlKey"/>" alt="" /></li>
               </logic:iterate>  
             </ul>
@@ -90,9 +90,19 @@ $(document).ready(function(){
        
          <td><a href="/displayProductDetail.vn?id=<bean:write name="element" property="id" />"><img  class="product-img" src="/serveImage.vn?urlKey=<bean:write name="element" property="urlKey"/>" border="0" height="200" width="300"   style="margin-right: 40px;"></a>
             <div class="product-description" >
-            <p>MÃ SẢN PHẨM :<a href="#"><bean:write name="element" property="id"/></a></p>
-            <p>TÊN   :<bean:write name="element" property="name"/>  </p>
-            <p>GIÁ ĐẶC BIỆT  <a href="#"><bean:write name="element" property="name"/>  </a></p>
+            <p>Mã sản phẩm:<a href="#"><bean:write name="element" property="id"/></a></p>
+            <p>Tên  :<bean:write name="element" property="name"/>  </p>
+           <p class="old-price">
+                <span class="price-label">Giá bình thường:</span> <span
+                  class="price" id="old-price-52"> <bean:write
+                    name="element" property="price" /> </span>
+              </p>
+
+              <p class="special-price">
+                <span class="price-label">Giá khuyến mãi:</span> <span
+                  class="price" id="product-price-52"> <bean:write
+                    name="element" property="promoPrice" /> </span>
+              </p>
             <p><a href="/displayProductDetail.vn?id=<bean:write name="element" property="id" />"><img src="Images/Commons/xem.jpg" width="100"></img></a><!-- a class="link" href="#" >Xem hang </a> --></p>
             <p><a  class="addShopping" name="<bean:write name="element" property="id"/>" href=""   ><img src="Images/Commons/mua.jpg" width="100"></img></a>
             </p>

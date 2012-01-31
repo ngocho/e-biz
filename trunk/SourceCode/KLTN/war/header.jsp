@@ -7,11 +7,11 @@
 <div class="header">
   <div class="header-row1">
 
-    <div class="logo-sidenote">
+    <!-- <div class="logo-sidenote">
       <p>
         <a href="/registerCustomer.vn">Hãy đăng kí để thuận tiện khi mua hàng!</a>
       </p>
-    </div>
+    </div> -->
     <ul class="super-links" style="" id="customer_super_links">
       <li>Lựa chọn ngôn ngữ 
 <select>
@@ -25,26 +25,26 @@ Tiếng Anh
 </select>
 </li>
 
-      <li></li>
-      <c:if test="${user ==null}">
-      <li class="first"><a href="/loginCustomer.vn">Đăng nhập</a>        </li>
-      </c:if>
+  
+<%--       <c:if test="${user ==null}">
+      <li class="first" style=""><a href="/loginCustomer.vn">Đăng nhập</a>        </li> --%>
+<%--  <%--      </c:if> 
       <c:if test="${user !=null}">
       <li class="first"><a href="/logoutCustomer.vn">Đăng xuất</a>        </li>
       </c:if>
         <li>
-            <a href="/registerCustomer.vn">Đăng kí</a>        </li>
+            <a href="/registerCustomer.vn">Đăng kí</a>        </li> --%>
       </ul>
-<div class="block-cart_header">
+<%-- <div class="block-cart_header">
       <a id="current_cart_items_count" href="/displayShoppingCart.vn"
         class="count"> <logic:present name="shop">
           <bean:write name="shop" property="count" />
         </logic:present> </a>
-      <h3>
+     <!--  <h3>
         <a href="/displayShoppingCart.vn"></a>
       </h3>
-    <a href="/checkAuthentication.vn"" class="link-checkout"></a>
-    </div>
+    <a href="/checkAuthentication.vn"" class="link-checkout"></a> -->
+    </div> --%>
  </div>
  <div class="header-row2">
                 
