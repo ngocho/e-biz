@@ -104,6 +104,13 @@
 		<forward name="failure" path="/home.vn" redirect="true" />
     </action>
     
+    <action
+            path="/searchPaging"
+            type="ebiz.action.food.SearchPaging" 
+            scope="session" validate="true">
+        <forward name="success" path="search_result" redirect="true" />
+    </action>
+    
 
 	</action-mappings>
 </struts-config>
