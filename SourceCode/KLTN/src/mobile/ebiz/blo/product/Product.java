@@ -38,7 +38,7 @@ public class Product {
         JSONArray foodList = new JSONArray();
         List<FoodPromotion> foods = new ArrayList<FoodPromotion>();
         FoodDAO dao = new FoodDAO();
-        foods = dao.getListFoodPromotion();
+        //foods = dao.getListFoodPromotion();
         for (FoodPromotion food : foods) {
             JSONObject obj = new JSONObject();
             obj.put("id", food.getProductId());
@@ -54,7 +54,7 @@ public class Product {
         JSONArray foodList = new JSONArray();
         List<FoodPromotion> foods = new ArrayList<FoodPromotion>();
         FoodDAO dao = new FoodDAO();
-        foods = dao.getListFoodPromotion();
+        //foods = dao.getListFoodPromotion();
         for (FoodPromotion food : foods) {
             JSONObject obj = new JSONObject();
             obj.put("id", food.getProductId());
