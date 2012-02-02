@@ -30,6 +30,7 @@ import ebiz.util.CommonConstant;
 public class BaseAction extends Action {
     /**  . */
     protected static final String SUCCESS = CommonConstant.SUCCESS;
+    /**  . */
     protected static final String SUCCESS1 = CommonConstant.SUCCESS1;
     /**  . */
     protected static final String FAILURE = CommonConstant.FAILURE;
