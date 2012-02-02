@@ -1,0 +1,612 @@
+ 
+ 
+ 
+ 
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<title>Home page</title>
+<meta name="description" content="Default Description">
+<meta name="keywords" content="Food E-commerce">
+<meta name="robots" content="*">
+<link rel="icon" href="http://localhost/magento/skin/frontend/default/default/favicon.ico" type="image/x-icon"/>
+<link rel="shortcut icon" href="http://localhost/magento/skin/frontend/default/default/favicon.ico" type="image/x-icon"/>
+<!--[if lt IE 7]>
+<script type="text/javascript">
+//<![CDATA[
+    var BLANK_URL = 'http://localhost/magento/js/blank.html';
+    var BLANK_IMG = 'http://localhost/magento/js/spacer.gif';
+//]]>
+</script>
+<![endif]-->
+<link rel="stylesheet" type="text/css" href="css/styles.css" media="all"/>
+<script type="text/javascript" src="js/js.js"></script>
+<script type="text/javascript" src="js/ajax.js"></script>
+<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+ 
+<script type="text/javascript"> 
+ 
+function slideSwitch() {
+    var $active = $('#slideshow IMG.active');
+ 
+    if ( $active.length == 0 ) $active = $('#slideshow IMG:last');
+ 
+    // use this to pull the images in the order they appear in the markup
+    var $next =  $active.next().length ? $active.next()
+        : $('#slideshow IMG:first');
+ 
+    // uncomment the 3 lines below to pull the images in random order
+    
+    // var $sibs  = $active.siblings();
+    // var rndNum = Math.floor(Math.random() * $sibs.length );
+    // var $next  = $( $sibs[ rndNum ] );
+ 
+ 
+    $active.addClass('last-active');
+ 
+    $next.css({opacity: 0.0})
+        .addClass('active')
+        .animate({opacity: 1.0}, 1000, function() {
+            $active.removeClass('active last-active');
+        });
+}
+ 
+$(function() {
+    setInterval( "slideSwitch()", 2000 );
+});
+ 
+</script>
+ 
+<!--[if lt IE 8]>
+<link rel="stylesheet" type="text/css" href="http://localhost/magento/skin/frontend/default/default/css/styles-ie.css" media="all" />
+<![endif]-->
+<!--[if lt IE 7]>
+<script type="text/javascript" src="http://localhost/magento/js/lib/ds-sleight.js"></script>
+<script type="text/javascript" src="http://localhost/magento/skin/frontend/base/default/js/ie6.js"></script>
+<![endif]-->
+ 
+ 
+</head>
+<body class=" cms-index-index cms-home">
+<div class="wrapper">
+        <noscript>
+        
+    </noscript>
+    <div class="page"  >
+        <div class="header-container">
+        
+ 
+ 
+ 
+ 
+<div class="header">
+  <div class="header-row1">
+ 
+    <div class="logo-sidenote">
+      <p>
+        <a href="/registerCustomer.vn">Hãy dang kí d? thu?n ti?n khi mua hàng!</a>
+      </p>
+    </div>
+    <ul class="super-links" style="" id="customer_super_links">
+      <li>L?a ch?n ngôn ng? 
+<select>
+<option>
+Ti?ng Vi?t
+</option>
+<option >
+Ti?ng Anh
+</option>
+ 
+</select>
+</li>
+ 
+      <li></li>
+      
+      <li class="first"><a href="/loginCustomer.vn">Ðang nh?p</a>        </li>
+      
+      
+        <li>
+            <a href="/registerCustomer.vn">Ðang kí</a>        </li>
+      </ul>
+<div class="block-cart_header">
+      <a id="current_cart_items_count" href="/displayShoppingCart.vn"
+        class="count">  </a>
+      <h3>
+        <a href="/displayShoppingCart.vn"></a>
+      </h3>
+    <a href="/checkAuthentication.vn"" class="link-checkout"></a>
+    </div>
+ </div>
+ <div class="header-row2">
+                
+<div class="nav-container">
+    <ul id="nav">
+        <li class="level0 nav-1 level-top first parent">
+        <a
+          href="home.vn"
+          class="level-top">
+<img src="Images/Commons/icon-trang-chu.png" width="20" height="20" style="margin-left:-70px;"><span style="margin-left:10px;margin-top:-10px;" class="nav-text"> Trang ch?</span></img>
+        </a>
+<a
+          href="category.vn?typeProduct=1"
+          class="level-top">
+ 
+<span class="nav-text">Th?c ph?m so ch?</span>
+        </a>
+        <a
+          href="category.vn?typeProduct=2"
+          class="level-top">
+ 
+<span class="nav-text">Th?c an n?u s?n</span>
+        </a>
+</li>
+  <li class="level0 nav-4 level-top first parent">
+<a
+          href="category.vn?typeProduct=3"
+          class="level-top">
+ 
+<span class="nav-text">Rau xanh</span>
+        </a>
+        </li>
+          <li class="level0 nav-4 level-top first parent">
+<a
+          href="category.vn?typeProduct=1"
+          class="level-top">
+ 
+<span class="nav-text">Gia v?</span>
+        </a>
+ 
+ <li class="level0 nav-2 level-top parent">
+<a
+          href="provider.vn"
+          class="level-top">
+<span class="nav-text">C?a hàng</span>
+        </a>
+ 
+</li> 
+  
+ 
+</ul>
+</div>
+<form id="search_mini_form" action="#" method="get">
+<fieldset class="form-search">
+    <legend>Search Site</legend>
+   <p>
+          <input class="input-text input-reset inactive" name="q"
+            value="Nh?p tên th?c an" onfocus=" this.value='' ;"
+            type="text" />
+    <input src="Images/Commons/btn_go.png" alt="Tìm ki?m" class="btn"
+            type="image" onclick ="" />
+        </p>
+</fieldset>
+</form> 
+            </div>
+      </div>
+ 
+</div>
+ 
+<div class="pankuzu">
+			<!-- <p><a href ="">Home</a></p> -->
+			</div>
+        <div class="main-container ">
+    
+           <!--  <div class="main"> -->
+             
+                
+ 
+              <div class="col-main">
+              
+                                      
+  
+ 
+ 
+ 
+<script type="text/javascript"> 
+$(document).ready(function(){
+    $("#addToCart").click(function() {
+        var quantity = $("#quantity").val();
+        var idProduct = $("#id").val();
+        addToCart(quantity,idProduct);
+        return false;
+    });
+});
+</script>
+<!-- <div class="col-main"> -->
+<div style="width: 770px;">
+ 
+<div id="messages_product_view"></div>
+<div class="product-view">
+    <div class="product-essential">
+    
+    <form action="" method="post" id="product_addtocart_form">
+        <div class="no-display">
+            <input name="product" value="52" type="hidden">
+            <input name="related_product" id="related-products-field" value="" type="hidden">
+        </div>
+ 
+ 
+       <div class="product-shop">
+       <div id="price-slider-4913" class="price-slider">
+    <ul style="width: 1368px;">
+        <li>
+            <div class="box-add-bag">
+                <div class="box-add-bag-int">
+                    <div class="box-add-bag-int-title"></div>
+                    <div class="box-buble-cart">
+                        <table class="spinnerHolder" width="100%" border="0">
+                            <tbody>
+                                <tr style="color:black;font-weight: bold; font-size: 15px;">
+                                    <td width="20%"><span class="txt-price"> <input id="quantity" name="quantity" value="1" type="text" ></span></td>
+                                    <td width="60%">x    <span class="price">1000</span> </td>
+            <!--                         <td width="25%">
+                                        <div class="qty-prod"><input id="quantity" name="quantity" value="1" class="qty-prod-input spinner-field" type="text"> </div>                                    </td> -->
+                                    <td width="25%" align="center">
+                                     <a href=""  id="addToCart" ><img alt="" src="Images/Commons/mua.jpg"  width="100" border="0" height="35">  </a>
+                                     <input type="hidden" id="id" value="37"/>
+                                     </td>                                                                           
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="box-add-bag-int-desc"></div>
+                </div>
+            </div>
+        </li>
+</ul>
+</div>
+ 
+            <div class="product-name">
+                <h1>12</h1>
+            </div>
+            <div class="product_info">      
+                <table border="1" style="border-style:ridge;;border-width:2px; border-color:#98bf21;">
+            <tr>
+            <th >Giá khuy?n mãi</th>
+            <td width="200" class="price" style="padding:3px;" > 2000</td>
+            </tr>
+            <tr>
+            <th >Giá g?c</th>
+            <td width="200"  class="price" style="padding:3px;" > 1000</td>
+            </tr>
+          <!--   <tr>
+            <th > Thành ph?n </th>
+            <td class= "info">Thông tin so lu?c v? s?n ph?m</td>
+            </tr> -->
+            <tr>
+            <th > Cung c?p nang lu?ng  </th>
+            <td width="200" style="padding:3px;"  > </td>
+            </tr>
+            <tr>
+            <th > S? lu?ng </th>
+            <td  width="200" style="padding:3px;" > 2</td>
+            </tr>
+            </table>
+            </div>
+            </div>
+ 
+        <div class="product-img-box">
+            <p class="product-image ">
+  <a href=""  ><img  width="340" height="310" id="image" src="/serveImage.vn?urlKey=GBKibh-1ujNg5ySa_1qNrg" alt="Chair" title="Chair"></a></p>
+<div class="more-views">
+  
+</div>
+        </div>
+ 
+        <div class="clearer"></div>
+            </form>
+            
+            
+   
+    </div>
+ 
+    <div class="product-collateral">
+        <div class="box-collateral box-description">
+                            <h2>Thông tin chi ti?t</h2>
+    <div class="std">
+       123    </div>
+        </div>
+        <div class="box-collateral box-additional">
+                            <h2>Hu?ng d?n n?u </h2>
+                            thông tin hu?ng d?n n?u an
+   
+ 
+        </div>
+        <div class="box-collateral box-up-sell">
+    <h2>Có l? b?n quan tâm d?n nh?ng s?n ph?m này ?</h2>
+    <table class="products-grid" id="upsell-product-table">
+                    <tbody><tr class=""> 
+                     
+            
+                                <td>
+                <a href="" title="Hình ?nh" class="product-image"><img src="/serveImage.vn?urlKey=D96SPsIc2sbYFK7goQnVfg" width="250" height="250"></a>
+                <h3 class="product-name"><a href="" title="Magento Red Furniture Set">12</a></h3>
+                
+ 
+                <div class="price-box">
+            <p class="minimal-price">
+                <span class="price-label">Giá:</span>
+                                                    <span class="price" id="product-minimal-price-54-upsell">
+                   1000              </span>
+                            </p>
+        </div>
+                        <div class="ratings">
+                    <div class="rating-box">
+                <div class="rating" style="width: 93%;"></div>
+            </div>
+                <p class="rating-links">
+            <a href="http://demo.magentocommerce.com/review/product/list/id/54/category/10/">2 Review(s)</a>
+            <span class="separator">|</span>
+            <a href="http://demo.magentocommerce.com/review/product/list/id/54/category/10/#review-form">Add Your Review</a>
+        </p>
+    </div>
+            </td>
+            
+                                <td>
+                <a href="" title="Hình ?nh" class="product-image"><img src="/serveImage.vn?urlKey=GBKibh-1ujNg5ySa_1qNrg" width="250" height="250"></a>
+                <h3 class="product-name"><a href="" title="Magento Red Furniture Set">12</a></h3>
+                
+ 
+                <div class="price-box">
+            <p class="minimal-price">
+                <span class="price-label">Giá:</span>
+                                                    <span class="price" id="product-minimal-price-54-upsell">
+                   1000              </span>
+                            </p>
+        </div>
+                        <div class="ratings">
+                    <div class="rating-box">
+                <div class="rating" style="width: 93%;"></div>
+            </div>
+                <p class="rating-links">
+            <a href="http://demo.magentocommerce.com/review/product/list/id/54/category/10/">2 Review(s)</a>
+            <span class="separator">|</span>
+            <a href="http://demo.magentocommerce.com/review/product/list/id/54/category/10/#review-form">Add Your Review</a>
+        </p>
+    </div>
+            </td>
+            
+            
+                                            <!--td class="empty">&nbsp;</td>
+                                            <td class="empty last">&nbsp;</td-->
+                            </tr>
+        </tbody></table>
+ 
+</div>
+            <div class="box-collateral box-tags">
+ 
+    <!--     <form id="addTagForm" action="http://demo.magentocommerce.com/tag/index/save/product/52/uenc/aHR0cDovL2RlbW8ubWFnZW50b2NvbW1lcmNlLmNvbS9jaGFpci5odG1s/" method="get">
+        <div class="form-add">
+            <label for="productTagName">Add Your Tags:</label>
+            <div class="input-box">
+                <input class="input-text required-entry" name="productTagName" id="productTagName" type="text">
+            </div>
+            <button type="button" title="Add Tags" class="button" onclick="submitTagForm()">
+                <span>
+                    <span>Add Tags</span>
+                </span>
+            </button>
+        </div>
+    </form> -->
+    
+</div>
+    </div>
+</div>
+ 
+</div>
+            <!--     </div> -->    
+                                          </div>     
+ 
+ 
+ 
+ 
+ 
+ 
+<div class="col-right">
+  <div class="block block-cart">
+    
+    
+      <div class="block-title">
+        <a href="/loginCustomer.vn"><strong><span>ÐANG NH?P</span>
+        </strong>
+        </a>
+      </div>
+      <div class="block-content">
+        <ul>
+ 
+ 
+          <form name="login" method="get" action="/loginAction.vn">
+            <li><label for="email" class="required" id="typeLogin">Tên
+                dang nhâp</label>
+              <div class="input-box">
+                <input type="text" name="loginId" value="">
+                <!--  <input type="text" name="login[username]" value="" id="email" class="input-text required-entry validate-email" title="Email Address"> -->
+              </div>
+            </li>
+            <li><label for="pass" class="required">Password</label>
+              <div class="input-box">
+                <input type="password" name="loginPassword" value="">
+                <!--  <input type="password" name="login[password]" class="input-text required-entry validate-password" id="pass" title="Password"> -->
+              </div>
+            </li>
+            <li>
+              <div class="input-box">
+                <input type="submit" name="OK" id="pass"
+                  title="Password" value="Ðang nh?p">
+              </div>
+            </li>
+            <li>
+          </form>
+ 
+ 
+        </ul>
+      </div>
+        
+  </div>
+ 
+  <div class="block block-cart">
+    <div class="block-title">
+ 
+      <a href="/displayShoppingCart.vn"><strong><span>GI? HÀNG</span> </strong> </a>
+    </div>
+    <div class="block-content">
+      <p class="empty">
+        B?n dã mua <span id="countShop"
+          style="color: red; font-weight: bold; font-size: 15pt">
+           </span> món hàng
+      </p>
+       
+      <p class="empty" style="text-align: right">
+        <a href="/checkAuthentication.vn">...thanh toán</a>
+      </p>
+    </div>
+  </div>
+  <div class="block block-cart">
+    <div class="block-title" style="background: red">
+      <strong style="color: white; font-size: 16px;"><span>Ð?I
+          TI?N </span> </strong>
+    </div>
+    <div class="block-content" style="background: white">
+      <!--p class="empty">You have no items in your shopping cart.</p-->
+      <form name="money">
+        <table>
+          <tr>
+            <th>Nh?p s? ti?n:</th>
+          </tr>
+          <tr>
+            <td><input type="text" size="32" name="money" /></td>
+          </tr>
+          <tr>
+            <td>Ðon
+              v?&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select>
+                <option>U.S Dollar(USD)</option>
+                <option>Euro(EUR)</option>
+                <option>VNÐ</option>
+            </select>
+            <td>
+          </tr>
+          <tr>
+          <tr>
+            <td>Ð?i thành ti?n&nbsp;&nbsp;<select>
+                <option>VNÐ</option>
+                <option>U.S Dollar(USD)</option>
+                <option>Euro(EUR)</option>
+ 
+            </select>
+            <td>
+          </tr>
+          <tr>
+            <td>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp; <input type="submit"
+              style="width: 100px" onclick="" name="changeMoney"
+              value="Ð?i" />
+            <td>
+          </tr>
+ 
+        </table>
+ 
+      </form>
+ 
+    </div>
+  </div>
+ 
+  <!-- <div class="block block-banner">
+    <div class="block-content">
+      <img src="./resource_files/col_right_callout.jpg"
+        title="Thông tin qu?ng cáo"
+        alt="Hi?n th? thông tin qu?ng cáo">
+    </div>
+  </div> -->
+  <script type="text/javascript"> 
+//<![CDATA[
+    function validatePollAnswerIsSelected()
+    {
+        var options = $$('input.poll_vote');
+        for( i in options ) {
+            if( options[i].checked == true ) {
+                return true;
+            }
+        }
+        return false;
+    }
+//]]>
+</script>
+ 
+ 
+  <div class="block block-poll">
+    <div class="block-title">
+      <strong><span>ÐÁNH GIÁ</span> </strong>
+    </div>
+    <form id="pollForm"
+      action="http://localhost/magento/index.php/poll/vote/add/poll_id/2/"
+      method="post" onsubmit="return validatePollAnswerIsSelected();">
+      <div class="block-content">
+        <p class="block-subtitle">B?n thích gì ? trang web chúng
+          tôi?</p>
+        <ul id="poll-answers">
+          <li class="odd"><input type="radio" name="vote"
+            class="radio poll_vote" id="vote_5" value="5"> <span
+            class="label"><label for="vote_5">Món an da
+                d?ng</label> </span>
+          </li>
+          <li class="even"><input type="radio" name="vote"
+            class="radio poll_vote" id="vote_6" value="6"> <span
+            class="label"><label for="vote_6">Giá c? ph?i
+                chang</label> </span>
+          </li>
+          <li class="odd"><input type="radio" name="vote"
+            class="radio poll_vote" id="vote_7" value="7"> <span
+            class="label"><label for="vote_7">Giao di?n
+                d? s? d?ng</label> </span>
+          </li>
+          <li class="last even"><input type="radio" name="vote"
+            class="radio poll_vote" id="vote_8" value="8"> <span
+            class="label"><label for="vote_8">Thanh toán
+                d?m b?o</label> </span>
+          </li>
+          <li class="last even"><input type="radio" name="vote"
+            class="radio poll_vote" id="vote_8" value="8"> <span
+            class="label"><label for="vote_8">Giao hàng
+                t?n tình</label> </span>
+          </li>
+        </ul>
+        <div class="actions">
+          <button type="submit" title="Vote" class="button">
+            <span><span>Vote</span> </span>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="paypal-logo">
+    <a href="#"
+      onclick="javascript:window.open(&#39;https://www.paypal.com/us/cgi-bin/webscr?cmd=xpt/Marketing/popup/OLCWhatIsPayPal-outside&#39;,&#39;paypal&#39;,&#39;width=600,height=350,left=0,top=0,location=no,status=yes,scrollbars=yes,resizable=yes&#39;); return false;"><img
+      src="Images/Commons/bnr_nowAccepting_150x60.gif"
+      alt="Các ngân hàng tr?c tuy?n có th? thanh toán"
+      title="Additional Options"> </a>
+  </div>
+</div>
+         <!--  </div> -->
+     
+        </div>
+        
+  <div class="footer-container">
+    <div class="footer">
+        <ul>
+<li><a href="http://localhost/magento/index.php/about-magento-demo-store">About Us</a></li>
+<li class="last"><a href="http://localhost/magento/index.php/customer-service">Customer Service</a></li>
+</ul><ul class="links">
+                        <li class="first"><a href="http://localhost/magento/index.php/catalog/seo_sitemap/category/" title="Site Map">Site Map</a></li>
+                                <li><a href="http://localhost/magento/index.php/catalogsearch/term/popular/" title="Search Terms">Search Terms</a></li>
+                                <li><a href="http://localhost/magento/index.php/catalogsearch/advanced/" title="Advanced Search">Advanced Search</a></li>
+                                <li><a href="http://localhost/magento/index.php/sales/guest/form/" title="Orders and Returns">Orders and Returns</a></li>
+                                <li class=" last"><a href="http://localhost/magento/index.php/contacts/" title="Contact Us">Contact Us</a></li>
+            </ul>
+        <p class="bugs">Help Us to Keep Magento Healthy - <a href="http://www.magentocommerce.com/bug-tracking" onclick="this.target=&#39;_blank&#39;"><strong>Report All Bugs</strong></a> (ver. 1.6.0.0)</p>
+        <address>© 2008 Magento Demo Store. All Rights Reserved.</address>
+    </div>
+</div>      
+  </div>
+</div>
+ 
+ 
+</body></html>

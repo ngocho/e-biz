@@ -37,7 +37,8 @@ public class MobileBLO {
 
 			for(int i =0; i< temp; i++){
 				JSONObject json = new JSONObject();
-				json.put("url", foodList.get(i).getUrl());
+				//urlImage = url(chương trình) + /serveImage.vn?urlKey=getUrlKey
+				json.put("url", foodList.get(i).getUrlKey());
 				json.put("id", foodList.get(i).getFoodId());
 				json.put("name", foodList.get(i).getFoodName());
 				json.put("price", foodList.get(i).getPrice());
