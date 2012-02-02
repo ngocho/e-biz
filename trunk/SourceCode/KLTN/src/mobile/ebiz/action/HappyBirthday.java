@@ -47,10 +47,10 @@ public class HappyBirthday extends BaseAction {
 			HttpServletResponse response) throws Exception {
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out;
-		List<JSONObject> objList = new ArrayList<JSONObject>();
+		JSONObject objList = new JSONObject();
 		try {
 
-			objList = MobileBLO.createHappyBirth();
+			objList = MobileBLO.createListHappyBirth();
 			out = response.getWriter();
 			out.println(objList);
 			out.flush();

@@ -24,8 +24,8 @@ import java.io.PrintWriter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import mobile.ebiz.blo.product.Product;
-import mobile.ebiz.blo.user.CustomerBLO;
+import mobile.ebiz.blo.MobileBLO;
+import mobile.ebiz.blo.PromotionBLO;
 
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
@@ -55,9 +55,9 @@ public class Promotion extends BaseAction {
 
         try {
             
-            jsonPhone = CustomerBLO.createCustomerPhone();
+            jsonPhone = MobileBLO.createCustomerPhone();
             json.put(CommonConstant.PHONECUSTOMER, jsonPhone);
-            jsonFood = Product.createFoodPromotion();
+            jsonFood = PromotionBLO.createFoodPromotion();
             json.put(CommonConstant.NAMEFOOD_PRO, jsonFood);
             out = response.getWriter();
             out.println(json);

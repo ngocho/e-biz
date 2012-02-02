@@ -32,14 +32,14 @@ public final class PMF {
      * Kiem tra su ton tai cua object trong database
      * 
      * @param className
-     * @param key
+     * @param string
      * @return boolean
      */
-    public static boolean isObject(Class<?> className, String key) {
+    public static boolean isObject(Class<?> className, String string) {
         PersistenceManager pm = getPMF();
         try {
 
-            pm.getObjectById(className, key);
+            pm.getObjectById(className, string);
         } catch (JDOObjectNotFoundException e) {
             return false;
         } finally {

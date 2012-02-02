@@ -15,6 +15,10 @@
     
     <action path="/getActiveXU" type="mobile.ebiz.action.ActiveXU" scope="session" validate="false">
     </action>
+    <action path="/getPromotion" type="mobile.ebiz.action.Promotion" scope="session" validate="false">
+    </action>
+    <action path="/getHappyBirth" type="mobile.ebiz.action.HappyBirthday" scope="session" validate="false">
+    </action>
  
   </action-mappings>
 </struts-config>
