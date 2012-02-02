@@ -3,11 +3,23 @@ package mobile.ebiz.blo;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.jdo.PersistenceManager;
+import javax.jdo.Query;
+
+import mobile.ebiz.dao.gae.IdxuDAO;
+import mobile.ebiz.dao.inf.IIdxuDAO;
+
 import com.google.appengine.repackaged.org.json.JSONException;
 import com.google.appengine.repackaged.org.json.JSONObject;
 
+import ebiz.blo.customer.CustomerBLO;
 import ebiz.blo.food.FoodBLO;
+import ebiz.dao.gae.CustomerDAO;
+import ebiz.dao.gae.PMF;
+import ebiz.dao.inf.ICustomerDAO;
+import ebiz.dto.account.customer.Customer;
 import ebiz.dto.food.Food;
+import ebiz.util.CommonConstant;
 
 public class MobileBLO {
 	public static List<JSONObject> getFoodListAll() throws JSONException {
@@ -37,19 +49,7 @@ public class MobileBLO {
 		}
 		return objList;
 	}
-	public static List<JSONObject> createHappyBirth() throws JSONException {
-		List<JSONObject> objList = new ArrayList<JSONObject>();
-		JSONObject json = new JSONObject();
-		JSONObject json1 = new JSONObject();
-		//add data
-		json.put("phone", "0978349998");
-		json.put("name", " ChÃºc má»«ng sinh nháº­t Mr A! Tháº­t nhiá»�u may máº¯n vÃ  thÃ nh cÃ´ng");
-		objList.add(json);
-		json1.put("phone", "0978349999");
-		json1.put("name", "ChÃºc má»«ng sinh nháº­t Mrs B!  Tháº­t nhiá»�u may máº¯n vÃ  thÃ nh cÃ´ng");
-		objList.add(json1);
-		return objList;
-	}
+	
 	public static JSONObject createCustomerPhone() throws JSONException {
 		JSONObject json = new JSONObject();
 		List<String> phones = new ArrayList<String>();
@@ -60,6 +60,16 @@ public class MobileBLO {
 		json.put("data", phones);
 		return json;
 	}
+	//
+	//	KÍNH CHÚC QUÝ KHÁCH SINH NHẬT TRÀN NGẬP HẠNH PHÚC VÀ MAY MẮN!
+	public static JSONObject createListHappyBirth() throws JSONException{
+		JSONObject obj=new JSONObject();
+		List<Customer> listphone=new ArrayList<Customer>();
+		listphone=(List<Customer>)PMF.getObjectList(Customer.class);
+		obj.put("data", listphone);
+		return obj;
+	}
+	
 	public static List<JSONObject> createEmployeeInfo() throws JSONException {
 		List<JSONObject> objList = new ArrayList<JSONObject>();
 
