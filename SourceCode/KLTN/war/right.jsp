@@ -110,49 +110,14 @@
  
   <div class="block block-cart">
     <div class="block-title" style="background: red">
-      <strong style="color: white; font-size: 16px;"><span>ĐỔI
-          TIỀN </span> </strong>
+      <strong style="color: white; font-size: 16px;"><span>NHẬN XÉT CỦA BẠN </span> </strong>
     </div>
     <div class="block-content" style="background: white">
       <!--p class="empty">You have no items in your shopping cart.</p-->
-      <form name="money">
-        <table>
-          <tr>
-            <th>Nhập số tiền:</th>
-          </tr>
-          <tr>
-            <td><input type="text" size="32" name="money" /></td>
-          </tr>
-          <tr>
-            <td>Đơn
-              vị&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select>
-                <option>U.S Dollar(USD)</option>
-                <option>Euro(EUR)</option>
-                <option>VNĐ</option>
-            </select>
-            <td>
-          </tr>
-          <tr>
-          <tr>
-            <td>Đổi thành tiền&nbsp;&nbsp;<select>
-                <option>VNĐ</option>
-                <option>U.S Dollar(USD)</option>
-                <option>Euro(EUR)</option>
-
-            </select>
-            <td>
-          </tr>
-          <tr>
-            <td>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              &nbsp;&nbsp;&nbsp; <input type="submit"
-              style="width: 100px" onclick="" name="changeMoney"
-              value="Đổi" />
-            <td>
-          </tr>
-
-        </table>
-
+      <form name="comment" action="/uploadComment.vn"><!-- /* rows="10" cols="25"*/ -->
+       <textarea  rows="10" style="width:98%;text-align: left; " name="content" >
+	   </textarea><br>
+   <input type="submit" value="Gởi ý kiến" class="buttonBG"></input>
       </form>
 
     </div>
