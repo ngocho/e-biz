@@ -39,7 +39,7 @@ public class SetStatusOrder extends BaseAction {
         String type = request.getParameter("type");
         System.out.println("ID"+id);
         if(id == null ||type ==null){
-         
+        	
             return mapping.findForward(SUCCESS);
            
         }
