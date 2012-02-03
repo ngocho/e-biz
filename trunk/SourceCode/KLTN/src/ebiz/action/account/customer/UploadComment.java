@@ -27,37 +27,40 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import ebiz.action.BaseAction;
-import ebiz.blo.customer.CustomerBLO;
-import ebiz.dto.account.customer.Customer;
+import ebiz.dto.account.customer.Comment;
 import ebiz.form.LoginForm;
 
 /**
  * @author ThuyNT
- *
  */
-public class UpdateCustomer extends BaseAction {
+public class UploadComment extends BaseAction {
 
     /**
-     * [Give the description for method].
+     * [Login(Customer)].
+     * @param mapping ActionMapping
+     * @param form ActionForm
+     * @param request HttpServletRequest
+     * @param response HttpServletResponse
+     * @return ActionForward
+     * @throws Exception Exception
+     * @see ActionForward Struts1 Framework
      */
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
-//        HttpSession se = request.getSession();
-        boolean flag;
-//        ShoppingCart shop = (ShoppingCart) se.getAttribute(CommonConstant.SHOPPING);
-//        LoginForm  user  = shop.getUser();
-//        user =(LoginForm) form;
-        LoginForm user = (LoginForm) form;
-        System.out.println("NAME" + user.getLoginName());
-        System.out.println("ID" + user.getLoginId());
-        Customer customer = user.getCustomer();
-        flag = CustomerBLO.updatecustomer(customer);
-        if (flag) {
-//            shop.setUser(user);
-            System.out.println("ID"+ user.getLoginId());
-            return mapping.findForward(SUCCESS);
-        }
-       return mapping.findForward(FAILURE);
+       String comment = request.getParameter("content");
+       if(comment != null){
+       String uid = null;
+       HttpSession se = request.getSession();
+       LoginForm user =(LoginForm) se.getAttribute("user");
+       if(user != null){
+    	   uid = user.getLoginId();
+       }
+       Comment userComment = new Comment();
+	   userComment.setComment(comment);
+	   userComment.setUid(uid);
+       }
+        return mapping.findForward(SUCCESS);
+
     }
 
 }
