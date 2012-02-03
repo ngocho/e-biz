@@ -11,8 +11,7 @@ import com.google.appengine.repackaged.org.json.JSONObject;
 import ebiz.blo.food.FoodBLO;
 import ebiz.dao.gae.FoodDAO;
 import ebiz.dto.food.Food;
-import ebiz.dto.food.FoodPromotion;
-import ebiz.util.CommonConstant;
+import ebiz.form.FoodForm;
 /**
  * @author nthanhphong
  *
@@ -21,13 +20,13 @@ public class PromotionBLO {
     public static JSONObject getFoodPromotion() throws JSONException{
         JSONObject json = new JSONObject();
         JSONArray foodList = new JSONArray();
-        List<FoodPromotion> foods = new ArrayList<FoodPromotion>();
+        List<FoodForm> formList = new ArrayList<FoodForm>();
+        formList = FoodBLO.getFoodListByStatus(30, "1");
         FoodDAO dao = new FoodDAO();
-        //foods = dao.getListFoodPromotion();
-        for (FoodPromotion food : foods) {
+        for (FoodForm food : formList) {
             JSONObject obj = new JSONObject();
-            obj.put("id", food.getProductId());
-            obj.put("name", food.getProductName());
+            obj.put("id", food.getId());
+            obj.put("name", food.getName());
             foodList.put(obj);
         }
 //        json.put("info", CommonConstant.CODEFOOD_1);
@@ -35,19 +34,19 @@ public class PromotionBLO {
         json.put("data", foodList);
         return json;
     }
-    public static JSONArray getFoodPromotionList() throws JSONException{
-        JSONArray foodList = new JSONArray();
-        List<FoodPromotion> foods = new ArrayList<FoodPromotion>();
-        FoodDAO dao = new FoodDAO();
-        //foods = dao.getListFoodPromotion();
-        for (FoodPromotion food : foods) {
-            JSONObject obj = new JSONObject();
-            obj.put("id", food.getProductId());
-            obj.put("name", food.getProductName());
-            foodList.put(obj);
-        }
-        return foodList;
-    }
+//    public static JSONArray getFoodPromotionList() throws JSONException{
+//        JSONArray foodList = new JSONArray();
+//        List<FoodPromotion> foods = new ArrayList<FoodPromotion>();
+//        FoodDAO dao = new FoodDAO();
+//        //foods = dao.getListFoodPromotion();
+//        for (FoodPromotion food : foods) {
+//            JSONObject obj = new JSONObject();
+//            obj.put("id", food.getProductId());
+//            obj.put("name", food.getProductName());
+//            foodList.put(obj);
+//        }
+//        return foodList;
+//    }
     public static JSONObject createFoodPromotion() throws JSONException{
         JSONObject json = new JSONObject();
         json.put("data", getFoodListAll());
