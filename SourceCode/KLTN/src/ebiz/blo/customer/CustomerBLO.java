@@ -25,12 +25,13 @@ import ebiz.dao.gae.CustomerDAO;
 import ebiz.dao.gae.OrderDAO;
 import ebiz.dao.inf.ICustomerDAO;
 import ebiz.dao.inf.IOrderDAO;
-import ebiz.dto.checkout.*;
 import ebiz.dto.account.customer.Address;
+import ebiz.dto.account.customer.Comment;
 import ebiz.dto.account.customer.Customer;
+import ebiz.dto.checkout.DetailOrder;
+import ebiz.dto.checkout.OrderBill;
 import ebiz.form.OrderBillForm;
 import ebiz.util.CommonUtil;
-
 /**
  * @author ThuyNT
  *
@@ -195,6 +196,10 @@ public class CustomerBLO {
          }
          return false;
    }
+    public static boolean saveComment(Comment  comment){
+    	return custDao.saveComment(comment);
+    }
+        
   
    
 //    public static int testCustomerID(String id, String pass) {
