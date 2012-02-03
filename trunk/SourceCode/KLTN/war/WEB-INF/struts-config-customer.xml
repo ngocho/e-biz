@@ -67,6 +67,13 @@
 			path="/sendMailRegister"
 			type="ebiz.action.mail.SendMailRegister" >
     </action>
+    
+    <action
+			path="/uploadComment"
+			type="ebiz.action.account.customer.UploadComment" >
+			<forward name="success" path="/home.vn" redirect="true" />
+    </action>
+    
  
   </action-mappings>
 </struts-config>
