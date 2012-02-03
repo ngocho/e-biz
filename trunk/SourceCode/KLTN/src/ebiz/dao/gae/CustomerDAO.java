@@ -23,7 +23,7 @@ import java.util.List;
 
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
-
+import ebiz.dto.account.customer.Comment;
 import ebiz.dao.inf.ICustomerDAO;
 import ebiz.dto.account.customer.Customer;
 import ebiz.util.CommonConstant;
@@ -37,6 +37,12 @@ public class CustomerDAO implements ICustomerDAO {
 	public boolean saveCustomer(Customer customer) {
 
 		return PMF.insertObject(customer);
+	}
+	
+	@Override
+	public boolean saveComment(Comment comment) {
+
+		return PMF.insertObject(comment);
 	}
 
 	@Override
