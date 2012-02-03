@@ -2,12 +2,15 @@ package ebiz.dao.inf;
 
 import java.util.List;
 
+import ebiz.dto.account.customer.Comment;
 import ebiz.dto.account.customer.Customer;
 
 public interface ICustomerDAO {
 
 	public boolean saveCustomer(Customer customer);
-
+	
+	public boolean saveComment(Comment comment);
+	
 	public boolean isCustomer(String id);
 
 	public Customer getCustomerById(String id);
