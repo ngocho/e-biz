@@ -1,0 +1,11 @@
+<!-- Indices written at Sun, 5 Feb 2012 15:30:17 UTC -->
+
+<datastore-indexes>
+
+    <!-- Used 1 time in query history -->
+    <datastore-index kind="Food" ancestor="false" source="auto">
+        <property name="isDisplay" direction="asc"/>
+        <property name="foodName" direction="asc"/>
+    </datastore-index>
+
+</datastore-indexes>
