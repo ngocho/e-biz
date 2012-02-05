@@ -82,7 +82,7 @@ public class LoginForm extends ValidatorForm implements Serializable{
           
       }
     
-    public void  editForm(Customer customer){
+    public LoginForm  editForm(Customer customer){
         this.loginId = customer.getCustomerId();
         this.loginName = customer.getCustomerName();
         this.loginPassword = customer.getCustomerPassword();
@@ -96,7 +96,7 @@ public class LoginForm extends ValidatorForm implements Serializable{
         this.wardName = customer.getCustomerAddress().getWardName();
         this.url = customer.getUrl();
         
-        
+        return this;
     }
     /**
      * Get value of loginId.

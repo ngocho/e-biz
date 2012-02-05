@@ -95,12 +95,10 @@ public class SearchBLO {
 	public static List<String> paging(int size){
 		List<String> list = new ArrayList<String>();
 		int div = size /10;
-		  System.out.println("DIV :"  +div + " :" + div % 10);
-		if(size % 10 > 0){
-		  
+		if(div % 10 > 0){
 			div = div + 1;
 		}
-		System.out.println("DIV" + 2 %10 + " : " +div);
+		System.out.println("DIV" + 2 %10);
 		for(int i =1; i<= div; i++){
 			list.add(String.valueOf(i));
 		}

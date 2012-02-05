@@ -22,6 +22,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import ebiz.blo.food.FoodBLO;
+
 
 
 /**
@@ -82,6 +84,19 @@ public class ShoppingCart implements Serializable {
         count = sum;
         return count;
     }
+    
+    public int remainNumber(Long id) {
+    	
+    	int numberDB = (FoodBLO.getFoodById(id)).getNumber();
+    	int result = numberDB;
+        for (FoodForm food : products) {
+        	if(food.getId().equals(id))
+               result = numberDB - food.getNumber();
+            }
+        
+        return result;
+    }
+    
     /**
      * [count sum of money].
      */

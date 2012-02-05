@@ -42,8 +42,7 @@ public class DeleteShoppingCart extends BaseAction {
        ShoppingCart shop = (ShoppingCart)se.getAttribute("shop");
        if(shop !=null){
            se.removeAttribute("shop");
-           return mapping.findForward(SUCCESS);
        }
-       return mapping.findForward(FAILURE);
+       return mapping.findForward(SUCCESS);
     }
 }

@@ -32,14 +32,14 @@ public final class PMF {
      * Kiem tra su ton tai cua object trong database
      * 
      * @param className
-     * @param string
+     * @param key
      * @return boolean
      */
-    public static boolean isObject(Class<?> className, String string) {
+    public static boolean isObject(Class<?> className, String key) {
         PersistenceManager pm = getPMF();
         try {
 
-            pm.getObjectById(className, string);
+            pm.getObjectById(className, key);
         } catch (JDOObjectNotFoundException e) {
             return false;
         } finally {
@@ -271,15 +271,13 @@ public final class PMF {
      */
 
     @SuppressWarnings("unchecked")
-    public static List<?> getObjectList(Class<?> className, String col,HashMap<Integer, String> paging, String order,int record, int page,String sql) {
+    public static List<?> getObjectList(Class<?> className, String col,HashMap<Integer, String> paging, String order,int record, int page,String filterCol, String typeProduct, String sql) {
 		
         String cursorString = null;
 		StringBuffer filterSql = new StringBuffer();
-//		if(!("4".equals(typeProduct))){
-//		    filterSql.append("isDisplay == 1");
-//		    filterSql.append(" &&  ");
-//		}
-//		filterSql.append(filterCol + " == \'" + typeProduct + "\'");
+		filterSql.append("isDisplay == 1");
+		filterSql.append(" &&  ");
+		filterSql.append(filterCol + " == \'" + typeProduct + "\'");
 		filterSql.append(sql);
 		PersistenceManager pm = getPMF();
 		Cursor cursor;
@@ -334,7 +332,7 @@ public final class PMF {
         Query query = pm.newQuery(className);
         query.setRange((record * (page - 1)), record * page);
         List<Object> results = new ArrayList<Object>();
-//        query.setFilter("isDisplay == 1");
+        query.setFilter("isDisplay == 1");
         query.setOrdering(col + " " + order);
         System.out.println("SQL"+query);
         try {
@@ -358,28 +356,24 @@ public final class PMF {
     }
     
     @SuppressWarnings("unchecked")
-    public static List<?> displayPageFood(Class<?> className, String col,HashMap<Integer, String> paging, String order,int record, int page,String sql) {
+    public static List<?> displayPageFood(Class<?> className, String col,HashMap<Integer, String> paging, String order,int record, int page,String filterCol, String typeProduct, String attr, String price) {
         
         List<Object> results = new ArrayList<Object>();
         int count ;
         PersistenceManager pm = getPMF();
-//        StringBuffer sql = new StringBuffer();
-//        sql.append(" ");
-////        if(!("4".equals(typeProduct))){
-////            sql.append(" &&  ");
-////            sql.append("isDisplay == \'" + typeProduct + "\'");
-////        }
-//        if (attr != null) {
-//            sql.append(" &&  ");
-//            sql.append("productAttributeId == \'" + attr + "\'");
-//        }
-//        if (price != null) {
-//            sql.append(" &&  ");
-//            sql.append("foodPriceLevelId == \'" + price + "\'");
-//        }
+        StringBuffer sql = new StringBuffer();
+        sql.append(" ");
+        if (attr != null) {
+            sql.append(" &&  ");
+            sql.append("productAttributeId == \'" + attr + "\'");
+        }
+        if (price != null) {
+            sql.append(" &&  ");
+            sql.append("foodPriceLevelId == \'" + price + "\'");
+        }
         System.out.println("SQL "+sql);
         //re-count amount of page
-        Query query = pm.newQuery("select count(" + col + ")  from " + className.getName() + " where " + sql );
+        Query query = pm.newQuery("select count(" + col + ")  from " + className.getName() + " where "+ filterCol +"  == \""+ typeProduct+ "\"  &&  isDisplay == 1 " +sql );
         try {
                 count = (Integer)query.execute();
                 System.out.println("QUERY" +query.toString());
@@ -394,7 +388,7 @@ public final class PMF {
                 for( int  i =1; i<= div; i++){
                     paging.put(i, null);
                 }
-                results = (List<Object>) getObjectList(className,col,paging,order,record,page,sql);
+                results = (List<Object>) getObjectList(className,col,paging,order,record,page,filterCol, typeProduct,sql.toString());
 
         } finally {
             query.closeAll();
@@ -409,7 +403,7 @@ public final class PMF {
         int count ;
         PersistenceManager pm = getPMF();
         //re-count amount of page
-        Query query = pm.newQuery("select count(" + col + ")  from " + className.getName() );//+ " where isDisplay == 1"
+        Query query = pm.newQuery("select count(" + col + ")  from " + className.getName()+ " where isDisplay == 1" );
         try {
                 count = (Integer)query.execute();
                 System.out.println("QUERY" +query.toString());

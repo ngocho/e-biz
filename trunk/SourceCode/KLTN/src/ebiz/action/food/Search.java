@@ -44,6 +44,7 @@ public class Search extends BaseAction {
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
     		SearchForm searchForm = (SearchForm)form;
+    		if(searchForm.getSearchText() != null){
     		HttpSession se = request.getSession();
 //    	    HashMap<Integer, String> paging = new HashMap<Integer, String>();
 //    	    String page = request.getParameter("page");
@@ -63,6 +64,7 @@ public class Search extends BaseAction {
     		if(!formList.isEmpty()){
     		se.setAttribute("searchResult", formList);
     		return mapping.findForward(SUCCESS);
+    		}
     		}
     		return mapping.findForward(FAILURE);
     }

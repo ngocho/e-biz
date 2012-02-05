@@ -88,10 +88,10 @@ public class FoodDAO implements IFoodDAO {
 	@Override
 	public List<Food> diplayPageFood(String col,
 			HashMap<Integer, String> paging, String order, int record,
-			int page, String sql) {
+			int page, String filterCol, String typeProduct, String attr, String price) {
 		List<Food> foodList = new ArrayList<Food>();
 		foodList = (List<Food>) PMF.displayPageFood(Food.class, col, paging,
-				order, record, page, sql);
+				order, record, page, filterCol, typeProduct, attr, price);
 		return foodList;
 	}
 

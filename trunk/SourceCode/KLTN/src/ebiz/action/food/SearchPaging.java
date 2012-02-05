@@ -40,28 +40,23 @@ import ebiz.form.SearchForm;
  */
 public class SearchPaging extends BaseAction {
 
-    @SuppressWarnings("unchecked")
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
-            HttpSession se = request.getSession();
-//          HashMap<Integer, String> paging = new HashMap<Integer, String>();
-    		SearchForm searchForm = (SearchForm) se.getAttribute("searchForm");
+    		HttpSession se = request.getSession();
+//    	    HashMap<Integer, String> paging = new HashMap<Integer, String>();
+    		SearchForm searchForm = (SearchForm)se.getAttribute("searchForm");
     	    String page = request.getParameter("page");
     	    int pageIndex = Integer.parseInt(page);
     		List<FoodForm> formList = new ArrayList<FoodForm>();
     		Cache cache = SearchBLO.getMemcache();
-    		formList = (List<FoodForm>) cache.get("searchData");
-    		//had
-    		if (formList == null) {
+    		formList = (List<FoodForm>)cache.get("resultData");
+    		//had 
+    		if(formList.isEmpty() || formList == null){
     			formList = SearchBLO.searchFullText(searchForm);
-    			List<String> pageList = new ArrayList<String>();
-    			pageList = SearchBLO.paging(formList.size());
-    			se.setAttribute("pageList", pageList);
     		}
     		formList = SearchBLO.getPage(formList, pageIndex);
-    		if (!formList.isEmpty()) {
+    		if(!formList.isEmpty()){
     		se.setAttribute("searchResult", formList);
-    		se.setAttribute("pageIndex", page);
     		return mapping.findForward(SUCCESS);
     		}
     		return mapping.findForward(FAILURE);

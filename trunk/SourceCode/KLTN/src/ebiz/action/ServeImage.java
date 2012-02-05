@@ -33,17 +33,19 @@ import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
  * @author ThuyNT
  */
 public class ServeImage extends BaseAction {
+    /**
+     * 
+     */
     private BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
 
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
         HttpServletResponse response) throws Exception {
         String urlKey = request.getParameter("urlKey");
-       System.out.println("urlKey"+urlKey);
         if(urlKey != null ){
             if(! urlKey.isEmpty()){
-        BlobKey blobKey = new BlobKey(urlKey);
-        blobstoreService.serve(blobKey, response);
-        }
+                BlobKey blobKey = new BlobKey(urlKey);
+                blobstoreService.serve(blobKey, response);
+            }
         }
         return null;
     }
