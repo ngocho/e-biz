@@ -27,7 +27,9 @@
      <action path="/transferUpImage" forward="home_provider_upload">
     </action>
 	
-    <action path="/uploadLink" forward="home_provider_upload">
+    <action path="/uploadLink" 
+            type="ebiz.action.account.provider.UploadLink" >
+        <forward name="success" path="home_provider_upload" redirect="true" />
     </action>
     
     <action path="/provider" 
@@ -48,7 +50,7 @@
     <action 
 			path="/logoutProviderAcc"
 			type="ebiz.action.account.provider.Logout" >
-		<forward name="success" path="/home.vn" redirect="true" />
+		<forward name="success" path="home_provider_login" redirect="true" />
 		<forward name="failure" path="home_provider" redirect="true" />
     </action>
      
@@ -106,6 +108,12 @@
 			path="/deleteProduct"
 			type="ebiz.action.account.provider.DeleteProduct" >
 		<forward name="success" path="/displayProduct.vn" redirect="false" />
+    </action>
+    
+    <action 
+			path="/resetForm"
+			type="ebiz.action.account.provider.ResetForm" >
+		<forward name="success" path="/resetForm.vn" redirect="false" />
     </action>
     
      

@@ -30,8 +30,7 @@
    <action path="/admin" forward="home_admin">
     </action>
     
-     <action path="/customer" forward="home_customer">
-    </action>
+   
       
        <action
       path="/home"

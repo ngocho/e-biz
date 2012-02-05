@@ -73,6 +73,11 @@
     </action>
     
     <action 
+			path="/updateShoppingCart"
+			type="ebiz.action.food.UpdateShoppingCart" >
+    </action>
+    
+    <action 
 			path="/addShopping"
 			type="ebiz.action.food.AddShoppingSubmit" >
 		<forward name="success" path="category" redirect="true" />
@@ -102,13 +107,6 @@
 			scope="session" validate="true">
 		<forward name="success" path="search_result" redirect="true" />
 		<forward name="failure" path="/home.vn" redirect="true" />
-    </action>
-    
-    <action
-            path="/searchPaging"
-            type="ebiz.action.food.SearchPaging" 
-            scope="session" validate="true">
-        <forward name="success" path="search_result" redirect="true" />
     </action>
     
 
