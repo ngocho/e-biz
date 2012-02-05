@@ -8,6 +8,7 @@
 <script type="text/javascript">
 $(document).ready(function(){
     $(".addShopping").click(function() {
+    	alert("add");
         addToCart(1,$(this).attr('name'));
         return false;
     });

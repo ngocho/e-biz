@@ -3,18 +3,91 @@
 <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
 <%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
-<div class="col-left sidebar"><!--  <div class="block block-currency">
-   <div class="block-title">
-        <strong><span>Select Your Currency</span></strong>    </div>
+<div class="col-left sidebar">
+
+<script type="text/javascript">
+$(document).ready(function(){
+    $("#searchID").focus(function() {
+        $("#searchID").val("");
+    });
+    $("#submitSearch").click(function() {
+        if($("#searchID").val() == ""){
+        alert("Nhập thông tin tìm kiếm");
+        return false;
+        }
+    });
+    
+    $("#resetSearch").click(function() {
+        $("#searchID").val("");
+        $("#type option:selected").removeAttr('selected');
+        $("#type").val("0").attr('selected', true);
+        
+        $("#attr option:selected").removeAttr('selected');
+        $("#attr").val("0").attr('selected', true);
+        
+        $("#price option:selected").removeAttr('selected');
+        $("#price").val("0").attr('selected', true);
+        
+        $("#status option:selected").removeAttr('selected');
+        $("#status").val("1").attr('selected', true);
+        
+    });
+
+});
+</script>
+
+ <div class="block block-cart">
+    <div class="block-title">
+      <strong><span>TÌM KIẾM</span>
+      </strong>
+    </div>
     <div class="block-content">
-        <select name="currency" title="Select Your Currency" onchange="setLocation(this.value)">
-                    <option value="#" selected="selected">
-                US Dollar - USD            </option>
-                    <option value="#">
-                 Việt Nam - VNĐ           </option>
-                </select>
-    </div> 
-</div>-->
+    <html:form action="/search.vn" method="GET">
+    <ul>
+    <li>Nhập vào:<br><html:text property="searchText" style="width:98%;" styleId="searchID"/>
+    </li>
+    <li>Loại thực phẩm :<br>
+    <html:select property="type" style="width: 190px;" styleId="type">
+    <html:option value="0">Tất cả</html:option>
+    <html:option value="1">Thực phẩm sơ chế</html:option>
+    <html:option value="2">Thức ăn nấu sẵn</html:option>
+    <html:option value="3">Rau xanh</html:option>
+    <html:option value="4">Gia vị</html:option>
+    </html:select>
+    </li>
+    <li>Kiểu thực phẩm:<br>
+    <html:select property="attr" style="width: 190px;" styleId="attr">
+    <html:option value="0">Tất cả</html:option>
+    <html:option value="1">Kho</html:option>
+    <html:option value="2">Canh, luộc</html:option>
+    <html:option value="3">Xào</html:option>
+    <html:option value="4">Lẩu</html:option>
+    <html:option value="5">Khác</html:option>
+    </html:select>
+    </li>
+    <li>Giá tiền: <br>
+    <html:select property="price" style="width: 190px;" styleId="price">
+    <html:option value="0">Tất cả</html:option>
+    <html:option value="1">Dưới 30.000</html:option>
+    <html:option value="2">30.000 - 100.000</html:option>
+    <html:option value="3">100.000 - 200.000</html:option>
+    <html:option value="4">Trên 200.000</html:option>
+   </html:select>
+    </li>
+    <li>Thực phẩm:<br>
+    <html:select property="status" style="width: 190px;" styleId="status">
+    <html:option value="1">Khuyến mãi</html:option>
+    <html:option value="2">Bình thường</html:option>
+    <html:option value="0">Tất cả</html:option>
+   </html:select>
+    </li>
+    <li><input type="submit" value="Tìm kiếm" class="buttonBG" id="submitSearch" size="30px"/>
+    <input type="button" value="Xóa" class="buttonBG" id="resetSearch" size="30px" />
+    </li>
+    </ul>
+   </html:form>
+    </div>
+  </div>
 <div class="block block-layered-nav">
     <div style="background:#009900" >
         <strong><span style="text-transform:uppercase">MENU</span></strong>    </div>
@@ -58,12 +131,5 @@
 </dd>
                                             </dl>
             </div>
-</div>
-<div class="block block-banner">
-    <div class="block-content">
-                    <a href="#" title="Điện thoại số">
-                    <img src="resource_files/col_left_callout.jpg" alt=""> </a>            </div>
-</div>
-<div class="block block-tags">
 </div>
 </div>

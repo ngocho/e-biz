@@ -5,10 +5,10 @@
 <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
 <%@taglib uri="http://java.sun.com/jstl/core" prefix="c"%>
 <div class="header" >
-  <div class="header-row1" id="headerFocus">
+  <div class="header-row1" id="headerFocus" >
     <div class="logo-sidenote">
     </div>
-    <ul class="super-links"  id="customer_super_links">
+    <ul class="super-links" style="" id="customer_super_links">
       <li>Lựa chọn ngôn ngữ 
 <select>
 <option>
@@ -32,7 +32,7 @@ Tiếng Anh
             <a href="/registerProvider.vn">Đăng kí</a>        </li>
       </ul>
  </div>
- <div class="header-row3"  >
+ <div class="header-row3" style="background:green;" >
 <div class="nav-container" >
 
     <ul id="nav">
@@ -42,39 +42,32 @@ Tiếng Anh
           class="level-top">
 <img src="Images/Commons/icon-trang-chu.png" width="20" height="20" style="margin-left:-70px;"><span style="margin-left:10px;margin-top:-10px;" class="nav-text-provider"> Trang chủ</span></img>
         </a></li>
-        <logic:present name="provider">
+        <logic:present name="user">
         <li class="level0 nav-1 level-top first parent">
-<a href="#"
+<a href="customer.vn"
           class="level-top">
 
-<span class="nav-text-provider">Thông tin cửa hàng</span>
+<span class="nav-text-provider">Thông tin cá nhân</span>
         </a>
         <a
-          href="/uploadLink.vn"
+          href="changePass.vn"
           class="level-top">
 
-<span class="nav-text-provider">Upload sản phẩm</span>
+<span class="nav-text-provider">Đổi mật khẩu</span>
         </a>
 </li>
   <li class="level0 nav-4 level-top first parent">
-<a href="/displayProduct.vn"
+<a href="/displayBill.vn?value=0"
           class="level-top">
 
-<span class="nav-text-provider">Danh sách sản phẩm</span>
+<span class="nav-text-provider">Danh sách hóa đơn</span>
         </a>
         </li>
-          <li class="level0 nav-4 level-top first parent">
-<a
-          href="#"
-          class="level-top">
-
-<span class="nav-text-provider">Đơn hàng</span>
-        </a></li>
        </logic:present>
 </ul>
 
 </div>
-<form id="search_mini_form" action="#" method="get">
+<!-- <form id="search_mini_form" action="#" method="get">
 <fieldset class="form-search">
     <legend>Search Site</legend>
    <p>
@@ -85,7 +78,7 @@ Tiếng Anh
             type="image" onclick ="" />
         </p>
 </fieldset>
-</form> 
+</form>  -->
             </div>
       </div>
         <!-- ends .header -->
