@@ -1,5 +1,6 @@
 
 function  addToCart(quantity,idProduct){
+    var result;
     $.ajax({
         type: "GET",
         url: "/addShoppingCart.vn",
@@ -7,28 +8,47 @@ function  addToCart(quantity,idProduct){
         dataType: "html",
         async: false,
         success: function(data){
-            if(data == 0){
+            var temp = new Array();
+            if(data != 0){
+            temp = data.split(' ');
+            if(temp[0] == 0){
                 alert("Sản phẩm không đủ")
             }
             else{
-            $("#countShop").html(data) ;
-            $("#current_cart_items_count").html(data) ;
+            $("#countShop").html(temp[0]) ;
+            $("#current_cart_items_count").html(temp[0]);
+            result =  temp[1];
             }
-        }
+        }}
         });
+    return result;
     
 }
 
-function  resetForm(path){
+function  resetFormCustomer(){
     $.ajax({
         type: "GET",
-        url: path,
+        url: "/resetFormCustomer.vn",
         dataType: "html",
         async: false,
         success: function(data){
+            $("#message").html('');
         }
         });
-    
+}
+
+function resetFormProvider(type){
+$.ajax({
+    type: "GET",
+    url: "/resetForm.vn",
+    data: "type="+type,
+    dataType: "html",
+    async: false,
+    success: function(){
+        $("#message").html('');
+    }
+    });
+
 }
 
 /*function  addToCart(quantity,idProduct){
@@ -50,7 +70,7 @@ function  resetForm(path){
         });
     
 }*/
-function  uploadImage(url){
+/*function  uploadImage(url){
     $.ajax({
         type: "GET",
         url: "/addShoppingCart.vn",
@@ -58,17 +78,18 @@ function  uploadImage(url){
         dataType: "html",
         async: false,
         success: function(data){
+        
             if(data == 0){
                 alert("Sản phẩm không đủ");
             }
             else{
-            $("#countShop").html(data) ;
-            $("#current_cart_items_count").html(data) ;
+            $("#countShop").html(temp[0]) ;
+            $("#current_cart_items_count").html(temp[0]) ;
             }
         }
         });
     
-}
+}*/
 
 
 function  updateNumberProduct(idUpdate,numberUpdate, index){
@@ -82,7 +103,6 @@ function  updateNumberProduct(idUpdate,numberUpdate, index){
         async: false,
         success: function(data){
             var temp = new Array();
-            alert(data);
             if(data != 0){
             temp = data.split(' ');
                 if(temp[0] == 0){
