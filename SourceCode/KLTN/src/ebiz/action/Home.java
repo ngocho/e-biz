@@ -41,11 +41,11 @@ public class Home extends BaseAction {
         HttpServletResponse response) throws Exception {
         HttpSession se = request.getSession();
         List<FoodForm> formList = new ArrayList<FoodForm>();
-        formList = FoodBLO.getFoodListByStatus(8, "1");
+        formList = FoodBLO.getFoodListByStatus(8,"1");
         if (!formList.isEmpty()) {
             se.setAttribute("promotionFood", formList);
         }
-      return mapping.findForward(SUCCESS);
+            return mapping.findForward(SUCCESS);
     }
 
 

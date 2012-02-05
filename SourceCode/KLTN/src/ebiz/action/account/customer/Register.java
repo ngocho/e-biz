@@ -20,6 +20,7 @@ package ebiz.action.account.customer;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
@@ -67,10 +68,12 @@ public class Register extends BaseAction {
 
             flag = CustomerBLO.registerCustomer(register);
             if (flag) {
+                HttpSession se = request.getSession();
                 if (user.getEmail() != null) {
                     // send mail --> use task queue
                     SendMail.registerSuccess(user.getEmail());
                 }
+                se.setAttribute("login", user);
                 return mapping.findForward(SUCCESS);
             }
         }

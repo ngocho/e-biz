@@ -57,7 +57,6 @@ public class Register extends BaseAction {
             SendMail.registerSuccess(user.getEmail());
           //  save in session to transfer to login
             se.setAttribute("providerFormLogin", user);
-            se.setAttribute("providerFormLogin", user);
             return mapping.findForward(SUCCESS);
         }
         //account is Exsist

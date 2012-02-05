@@ -75,7 +75,7 @@ public class AddShoppingCart extends BaseAction {
                 // add shopping
                 flag = FoodBLO.addShoppingCart(shopCart, id, count);
                 if (!flag) { //failed
-                        out.println("0");
+                        out.println("0" + " ");
                         return null;
                 }
                 //success
@@ -83,8 +83,10 @@ public class AddShoppingCart extends BaseAction {
                 shopCart.size();
                 // set info of product into session
                 se.setAttribute(CommonConstant.SHOPPING, shopCart);
+                int num = shopCart.remainNumber(Long.parseLong(id));
+                se.setAttribute("numberDisplay",num);
                 //retured data
-                out.println(shopCart.getCount());
+                out.println(shopCart.getCount() + " " + num);
                 }
         } catch (Exception e) {
             e.printStackTrace();

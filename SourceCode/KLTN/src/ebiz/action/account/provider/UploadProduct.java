@@ -49,7 +49,7 @@ public class UploadProduct extends BaseAction {
 //        url = (String) se.getAttribute("urlImage");
 		 urlKey = (String) se.getAttribute("urlImageKey");
         if((urlKey != null)){
-//        urlKey = (String) se.getAttribute("urlImageKey");
+        urlKey = (String) se.getAttribute("urlImageKey");
 //        foodForm.setUrl(url);
         foodForm.setUrlKey(urlKey);
         
@@ -86,12 +86,13 @@ public class UploadProduct extends BaseAction {
 			Food food = foodForm.getFood();
 			food.setFoodId(foodForm.getId());
 			boolean flag;
-	        flag = FoodBLO.updateFood(food);
+	        flag = FoodBLO.uploadFood(food);
 			if (flag) {
 			    //remove attr 
 				se.removeAttribute("urlImage");
 				se.removeAttribute("urlImageKey");
 				se.removeAttribute("foodForm");
+				se.removeAttribute("flagUpload");
 				request.setAttribute("fUpload", "1");
 				return mapping.findForward(SUCCESS1);
 			}

@@ -46,20 +46,21 @@ public class Login extends BaseAction {
 //        ShoppingCart shop = new ShoppingCart();
         ActionMessages messages = new ActionMessages();
         HttpSession se = request.getSession();
-        // get type of login
-        String type = request.getParameter("type");
-       if (type == null) {
-           type = "1";
-       }
         int flag = -1;
-        if ("1".equals(type)) {
+        // get type of login
+//        String type = request.getParameter("type");
+//       if (type == null) {
+//           type = "1";
+//       }
+//        int flag = -1;
+//        if ("1".equals(type)) {
             System.out.println("TEST" + flag);
             // dung ten de dang nhap
             // kiem tra trong co so du lieu
             flag = ProviderBLO.isLoginID(login.getLoginId(), login.getLoginPassword());
 //            login.setLoginName("nguyen thi thuy");
             System.out.println("TEST" + flag);
-        }
+//        }
 //        } else {
 //            // dung email de dang nhap
 //            flag = CustomerBLO.testCustomerEmail(login.getEmail(), login.getLoginPassword());

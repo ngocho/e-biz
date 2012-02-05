@@ -48,8 +48,9 @@ public class DetailProduct extends BaseAction {
         //set form to display
         se.setAttribute("foodForm", foodForm);
         //display
-        se.setAttribute("urlImage", "");
+//        se.setAttribute("urlImage", "");
         se.setAttribute("urlImageKey", foodForm.getUrlKey());
+        se.setAttribute("flagUpload", 1);
         return mapping.findForward(SUCCESS);
         }
         return mapping.findForward(FAILURE);

@@ -45,6 +45,7 @@ public class DisplayProductDetail extends BaseAction {
         foodForm = FoodBLO.getFoodFormDetail(id);
         //set info of product into session
         se.setAttribute(CommonConstant.FOOD_DETAIL_PRODUCT, foodForm);
+        se.setAttribute("numberDisplay",foodForm.getNumber());
         return mapping.findForward(SUCCESS);
     }
 

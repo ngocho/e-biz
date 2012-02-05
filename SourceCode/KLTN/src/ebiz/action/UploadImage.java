@@ -42,7 +42,8 @@ public class UploadImage extends BaseAction {
 
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
         HttpServletResponse response) throws Exception {
-        Map<String, BlobKey> blobs = blobstoreService.getUploadedBlobs(request);
+        @SuppressWarnings("deprecation")
+        Map<String, BlobKey> blobs = blobstoreService.getUploadedBlobs(request);//.getUploadedBlobs(request);
 //      blobstoreService.createUploadUrl(")
         BlobKey blobKey = blobs.get("myFile");
         HttpSession se = request.getSession();

@@ -42,7 +42,7 @@ public interface IFoodDAO {
 	
 	public List<Food> diplayPageFood(String col,
 			HashMap<Integer, String> paging, String order, int record,
-			int page, String sql);
+			int page, String filterCol, String typeProduct, String attr, String price);
 	public List<Food> diplayFoodProviderAll(String col,
             HashMap<Integer, String> paging, String order, int record,
             int page);
