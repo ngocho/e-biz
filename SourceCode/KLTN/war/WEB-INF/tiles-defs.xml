@@ -103,18 +103,25 @@
       <put name="content" value="/content_provider_productInfo.jsp" />
      </definition>
       <!-- end provider -->
-     <definition name="search_result" extends="baseLayout">
+     <definition name="search_result" extends="baseLayout1">
       <put name="title" value="Provider Home" />
       <put name="content" value="/customer_search_result.jsp" />
-      <put name="left"   value="/blank.jsp" />
      </definition>
-       <definition name="home_customer" extends="baseLayout">
+       <definition name="home_customer" extends="baseLayout1">
       <put name="title" value="Customer Home" />
-      <put name="left"   value="/left_customer.jsp" />
+     <put name="header" value="/customer_header.jsp" />
       <put name="content" value="/content_customer_info.jsp" />
      </definition>
+     <!-- start Customer changePass 04/02/2012 -->
+      <definition name="home_customer_changepass" extends="baseLayout1">
+      <put name="title" value="Customer Home" />
+      <put name="header" value="/customer_header.jsp" />
+      <put name="content" value="/content_customer_changepass.jsp" />
+     </definition>
+      <!-- end Customer changePass 04/02/2012 -->
      <definition name="home_content_bill" extends="baseLayout1">
       <put name="title" value="Customer Bill" />
+       <put name="header" value="/customer_header.jsp" />
       <put name="content" value="/content_customer_bill.jsp" />
      </definition>
       <definition name="home_customer_reOrder" extends="baseLayout1">

@@ -22,9 +22,9 @@
     </global>
 
     <formset>
-        <!-- Customer : Login -->
-        <form name="login">
-            <field
+        <!-- start Customer login  04/02/2012-->
+         <form name="login">
+          <field
                 property="loginId"
                 depends="required">
                 <arg0 key="login.loginId"/>
@@ -34,10 +34,41 @@
                 depends="required">
                 <arg0 key="login.loginPassword"/>
             </field>
-             <field
+            <field
+                property="loginPassword"
+                depends="minlength">
+                <var>
+                    <var-name>minlength
+                    </var-name>
+                    <var-value>8
+                    </var-value>
+                </var>
+                <arg0 key="login.loginPassword"/>
+            </field>
+         </form>
+        <!-- end Customer login  04/02/2012-->
+        
+         <!-- start Customer register  04/02/2012-->
+         <form name="register">
+          <field
+                property="loginId"
+                depends="required">
+                <arg0 key="register.loginId"/>
+            </field>
+            <field
+                property="loginPassword"
+                depends="required">
+                <arg0 key="register.loginPassword"/>
+            </field>
+            <field
                 property="loginPasswordPre"
                 depends="required">
-                <arg0 key="login.loginPasswordPre"/>
+                <arg0 key="register.loginPasswordPre"/>
+            </field>
+            <field
+                property="email"
+                depends="email">
+                <arg0 key="register.email"/>
             </field>
             <field
                 property="loginPassword"
@@ -50,7 +81,7 @@
                 </var>
                 <arg0 key="login.loginPassword"/>
             </field>
-     		<field
+              <field
                 property="loginPasswordPre"
                 depends="minlength">
                 <var>
@@ -61,13 +92,8 @@
                 </var>
                 <arg0 key="login.loginPasswordPre"/>
             </field>
-		 <!--	<field
-                property="email"
-                depends="email">
-                <arg0 key="order.email"/>
-            </field>-->
-        </form>
-        <!-- Customer : Login -->
+         </form>
+        <!-- end Customer register  04/02/2012-->
 		
 		<!-- start Customer : Order -->
         <form name="order">
@@ -81,11 +107,11 @@
                 depends="required">
                 <arg0 key="order.phone"/>
             </field>
-       <!-- <field
+       <field
                 property="email"
                 depends="email">
                 <arg0 key="order.email"/>
-            </field> -->
+            </field>
             <field
                 property="homeNumber"
                 depends="required">
@@ -125,7 +151,33 @@
         </form>
 		<!--end  Customer : Order -->
 		
-        <!-- start Provider : register -->
+		  <!-- start Provider login  04/02/2012 -->
+		 <form name="providerFormLogin">
+            <field
+                property="loginId"
+                depends="required">
+                <arg0 key="providerFormLogin.loginId"/>
+            </field>
+            <field
+                property="loginPassword"
+                depends="required">
+                <arg0 key="providerFormLogin.loginPassword"/>
+            </field>
+            <field
+                property="loginPassword"
+                depends="minlength">
+                <var>
+                    <var-name>minlength
+                    </var-name>
+                    <var-value>8
+                    </var-value>
+                </var>
+                <arg0 key="providerFormLogin.loginPassword"/>
+            </field>
+            </form>
+              <!-- end Provider login 04/02/2012 -->
+              
+         <!-- start Provider register 04/02/2012 -->
           <form name="providerForm">
             <field
                 property="loginId"
@@ -178,7 +230,7 @@
                 <arg0 key="providerForm.detail"/>
             </field>
           </form>
-            <!-- end Provider : register -->  
+            <!-- start Provider register 04/02/2012 -->
 		<!-- start Provider : upload Product -->
 		 <form name="foodForm">
             <field

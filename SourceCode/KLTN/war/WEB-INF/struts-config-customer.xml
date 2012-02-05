@@ -4,6 +4,7 @@
 
   <form-beans>
     <form-bean name="login" type="ebiz.form.LoginForm" />
+     <form-bean name="register" type="ebiz.form.LoginForm" />
   </form-beans>
   
   <global-exceptions>
@@ -32,7 +33,7 @@
     <action input="registerLayout" 
 			path="/registerAction"
 			type="ebiz.action.account.customer.Register" 
-			name="login"
+			name="register"
 			scope="session" validate="true">
 		<forward name="success" path="loginLayout" redirect="true" />
 		<forward name="failure" path="registerLayout" redirect="true" />
@@ -72,6 +73,26 @@
 			path="/uploadComment"
 			type="ebiz.action.account.customer.UploadComment" >
 			<forward name="success" path="/home.vn" redirect="true" />
+    </action>
+    
+    <action
+            path="/resetFormCustomer"
+            type="ebiz.action.account.customer.ResetForm" >
+    </action>
+    
+     <action
+            path="/customer"
+            type="ebiz.action.account.customer.CustomerInfo">
+            <forward name="success" path="home_customer" redirect="true" />
+    </action>
+    
+     <action
+            path="/changePassword"
+            type="ebiz.action.account.customer.ChangePassword">
+            <forward name="success" path="home_customer" redirect="true" />
+            <forward name="failure" path="home_customer_changepass" redirect="true" />
+    </action>
+    <action path="/changePass" forward="home_customer_changepass">
     </action>
     
  
