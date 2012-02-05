@@ -9,8 +9,8 @@
 <meta name="description" content="Default Description">
 <meta name="keywords" content="Food E-commerce">
 <meta name="robots" content="*">
-<link rel="icon" href="http://localhost/magento/skin/frontend/default/default/favicon.ico" type="image/x-icon"/>
-<link rel="shortcut icon" href="http://localhost/magento/skin/frontend/default/default/favicon.ico" type="image/x-icon"/>
+<link rel="icon" href="#" type="image/x-icon"/>
+<link rel="shortcut icon" href="#" type="image/x-icon"/>
 <!--[if lt IE 7]>
 <script type="text/javascript">
 //<![CDATA[
@@ -22,6 +22,7 @@
 <link rel="stylesheet" type="text/css" href="css/styles.css" media="all"/>
 <script type="text/javascript" src="js/js.js"></script>
 <script type="text/javascript" src="js/ajax.js"></script>
+<script type="text/javascript" src="js/validation.js"></script>
 <script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
 
 <script type="text/javascript">

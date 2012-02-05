@@ -20,9 +20,11 @@ $(document).ready(function(){
 <option value="/displayBill.vn?value=3"> Hóa đơn đã thanh toán</option>
 <option value="/displayBill.vn?value=4"> Hóa đơn đã nhận hàng </option>
 </select>
+<br>
+<span> <strong>Page: &nbsp;</strong> </span> 
 </div>
 
-<table  style="font-size: 10pt;margin-left: 10px;" border="1">
+<table  style="font-size: 10pt;margin-left: 0px;" border="1">
 <tbody>
 <tr>
 <th>MÃ HÓA ĐƠN</th>

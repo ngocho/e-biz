@@ -9,7 +9,8 @@ $(document).ready(function(){
     $("#addToCart").click(function() {
         var quantity = $("#quantity").val();
         var idProduct = $("#id").val();
-        addToCart(quantity,idProduct);
+        var value =  addToCart(quantity,idProduct);
+        $("#numberID").html(value);
         return false;
     });
 });
@@ -85,7 +86,7 @@ $(document).ready(function(){
             </tr> --%>
             <tr>
             <th > Số lượng </th>
-            <td  width="200" style="padding:3px;" > <bean:write name="DetailProduct" property="number" /></td>
+            <td  width="200" style="padding:3px;" > <span id="numberID" ><bean:write name="numberDisplay"  /></span></td>
             </tr>
             <tr>
             <th > Cửa hàng  </th>

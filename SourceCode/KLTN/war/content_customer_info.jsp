@@ -8,11 +8,11 @@
 <table style="font-size: 10pt;margin-left: 10px;">
   <tbody>
     <logic:present name="user">
-    <tr height="22px">
+    <%-- <tr height="22px">
         <th>Hình đại diện</th>
         <td><bean:write name="user" property="url" />
         </td>
-      </tr>
+      </tr> --%>
       <tr height="22px">
         <th>Tên đăng nhập:</th>
         <td><bean:write name="user" property="loginId" />

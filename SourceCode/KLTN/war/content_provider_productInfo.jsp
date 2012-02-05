@@ -48,13 +48,6 @@ $(document).ready(function(){
                  </c:otherwise>
                 </c:choose>
 </logic:iterate> 
-
-<!-- <option value="/categoryProviderRecord.vn?value=0">Tất cả </option>
-<option value="/categoryProviderRecord.vn?value=1"> Sản phẩm khuyến mãi</option>
-<option value="/categoryProviderRecord.vn?value=2"> Sản phẩm không khuyến mãi</option>
-<option value="/categoryProviderRecord.vn?value=3"> Sản phẩm đã hết </option>
-<option value="/categoryProviderRecord.vn?value=4"> Sản phẩm chưa bán</option>
- -->
 </select>
 </logic:present>
 </div>
@@ -93,14 +86,6 @@ $(document).ready(function(){
           <label>Hiển thị </label> <input type="hidden" id="limit"
             value="<bean:write name="providerVo" property="limit"/>"></input>
           <select id="record" onchange="setLocation(this.value)">
-       <%--            <%String strPage[] = new String[3];
-          strPage[0] = "8";
-          strPage[1] = "14";
-          strPage[2] = "30";
-          String s = session.getAttribute("providerVo").getLimit();;
-          for(int i = 0; i<3; i++){
-        	  
-          %> --%>
             <logic:present name="providerVo">
             <c:choose>
             <c:when test="${providerVo.limit == 14}">
@@ -171,47 +156,26 @@ $(document).ready(function(){
 </c:otherwise>
                 </c:choose>
 </logic:iterate> 
-
-<!-- <option value="/categoryProviderRecord.vn?value=0">Tất cả </option>
-<option value="/categoryProviderRecord.vn?value=1"> Sản phẩm khuyến mãi</option>
-<option value="/categoryProviderRecord.vn?value=2"> Sản phẩm không khuyến mãi</option>
-<option value="/categoryProviderRecord.vn?value=3"> Sản phẩm đã hết </option>
-<option value="/categoryProviderRecord.vn?value=4"> Sản phẩm chưa bán</option>
- -->
 </select>
 </logic:present>
-            <!-- <option value="/categoryProviderRecord.vn?col=foodName"
-              selected="selected">Tên</option>
-            <option value="/categoryProviderRecord.vn?col=price">Giá
-              tiền</option>
-            <option value="/categoryProviderRecord.vn?col=saleProduct">
-              Lượt người mua</option> -->
-        <!--   </select>
-           -->
            <logic:present name="providerVo">
             <c:choose>
               <c:when test="${providerVo.order == 'asc'}">
             <a style="text-decoration: none;"
               href="/categoryProviderRecord.vn?order=desc"
-              title="Set Descending Direction"><img
-              src=""
-              alt="Sắp xếp giảm dần" class="v-middle">
+              title="Set Descending Direction">Sắp xếp giảm dần
             </a>
               </c:when>
               <c:when test="${providerVo.order == 'desc'}">
                 <a style="text-decoration: none;"
               href="/categoryProviderRecord.vn?order=asc"
-              title="Set Descending Direction"><img
-              src=""
-              alt="Sắp xếp tăng dần " class="v-middle">
+              title="Set Descending Direction">Sắp xếp tăng dần
             </a>
               </c:when>
                <c:otherwise>
                <a style="text-decoration: none;"
               href="/categoryProviderRecord.vn?order=desc"
-              title="Set Descending Direction"><img
-              src=""
-              alt="Sắp xếp giảm dần" class="v-middle">
+              title="Set Descending Direction">Sắp xếp giảm dần
             </a>
                </c:otherwise>
             </c:choose>

@@ -16,18 +16,25 @@ $(document).ready(function(){
       <div class="pager">
         <p class="amount">
           <strong>Page: &nbsp;</strong> <span> 
+          <%System.out.println("DIV" + 2 %10); %>
+          <%-- <input
+            type="hidden" name="page" id="status"
+            value="<bean:write name="pageList"/>"></input>
+          <input
+            type="hidden" name="page" id="page"
+            value="<bean:write name="providerVo" property="page"/>"></input> --%>
             <logic:present name="pageList" >
               <logic:iterate id="element"  name="pageList">
                 <c:choose>
-                  <c:when test="${element == pageIndex}">
-                    <a style="color:green;font-weight: bold;"
-                      href="/searchPaging.vn?page=<bean:write name="element" />"><bean:write
-                        name="element"  /></a> 
+                  <c:when test="${element ==1}">
+                    <a
+                      href="/categoryProviderRecord.vn?page=<bean:write name="element" />"><bean:write
+                        name="element" /></a>
 
                   </c:when>
                   <c:otherwise>
-                    <a
-                      href="/searchPaging.vn?page=<bean:write name="element" />"><bean:write
+                   |  <a
+                      href="/categoryProviderRecord.vn?page=<bean:write name="element" />"><bean:write
                         name="element" /> </a>
                   </c:otherwise>
                 </c:choose>
@@ -40,23 +47,57 @@ $(document).ready(function(){
        
       </div>
 
+     <%--  <!-- hidden fields -->
+          <input type="hidden" name="col" id="col"
+            value="<bean:write name="providerVo" property="col"/>"></input>
+            <input type="hidden" id="limit"
+            value="<bean:write name="providerVo" property="limit"/>"></input>
+            <input
+            type="hidden" name="page" id="page"
+            value="<bean:write name="providerVo" property="page"/>"></input>
+              --%>
+    
+<%-- <table  style="font-size: 10pt;margin-left: 10px;" border="1">
+<tbody>
+<tr class="pProduct">
+<th >HÌNH </th>
+<th >MSP</th>
+<th >TÊN SẢN PHẨM</th>
+<th >GIÁ</th>
+<th >GIÁ KHUYỄN MÃI</th>
+<th >SỐ LƯỢNG</th>
+<th >CHI TIẾT</th>
+<th >HƯỚNG DẪN </th>
+<th >MUA</th>
+<th >XEM</th>
+</tr>
+<logic:present name="searchResult" >
+<logic:iterate id="element"  name="searchResult">
+<tr>
+<td> <img src="/serveImage.vn?urlKey=<bean:write name="element" property="urlKey"/>" width="50" height="40"/></td>
+<td style="text-align: center;" ><a href="/reOrder.vn?id=<bean:write name="element" property="id"/>"><bean:write name="element" property="id"/></a></td>
+<td> <bean:write name="element" property="name"/></td>
+<td><bean:write name="element"  property="price"/></td>
+<td><bean:write name="element"  property="promoPrice"/></td>
+<td><bean:write name="element"  property="number"/></td>
+<td><bean:write name="element"  property="detail"/></td>
+<td><bean:write name="element"  property="cooking"/></td>
+<td><a id="" href="/displayDetailProduct.vn?id=<bean:write name="element" property="id"/>"><img src="Images/Commons/mua.jpg" width="50" /></a></td>
+<td><a id="delBill" href="/deleteProduct.vn?id=<bean:write name="element" property="id"/>"><img src="Images/Commons/.jpg" width="50" /></a></td>
+</tr>
+</logic:iterate>
+</logic:present>
+</tbody>
+</table> --%>
 <ul>
 <logic:present name="searchResult" >
 <logic:iterate id="element"  name="searchResult">
-<li style="margin-left:10px;"> <a
-            href="/displayProductDetail.vn?id=<bean:write name="element" property="id"/>"
-            title="" class="product-image">
-<img src="/serveImage.vn?urlKey=<bean:write name="element" property="urlKey"/>" width="50" height="40"/></a>
-<a href="/displayProductDetail.vn?id=<bean:write name="element" property="id"/>"><bean:write name="element" property="name"/></a> 
-
+<li style="margin-left:10px;"> 
+<img src="/serveImage.vn?urlKey=<bean:write name="element" property="urlKey"/>" width="50" height="40"/>
+<a href="/reOrder.vn?id=<bean:write name="element" property="id"/>"><bean:write name="element" property="name"/></a> 
 <br>
 <bean:write name="element" property="detail"/>
-<div style="margin-right: 90px;">
-<a  href="/displayProductDetail.vn?id=<bean:write name="element" property="id"/>"><img src="Images/Commons/xem.jpg" width="50" /></a>
-<a  href="/displayProductDetail.vn?id=<bean:write name="element" property="id"/>"><img src="Images/Commons/mua.jpg" width="50" /></a>
-</div>
 </li>
-<div style="height:15px;"></div>
 </logic:iterate>
 </logic:present>
 </ul>

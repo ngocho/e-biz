@@ -8,10 +8,10 @@
       </strong>
     </div>
      <ul id="ul_format">
-     <li style="font-size: 10pt;font-weight: bold;height:20px;"><a href="#" > Xem thông tin</a></li>
-     <li style="font-size: 10pt;font-weight: bold;height:20px;" ><a href="#"> Đổi mật khẩu</a></li>
-     <li style="font-size: 10pt;font-weight: bold;height:20px;" ><a href="#"> Đổi hình đại diện</a></li>
-     <li style="font-size: 10pt;font-weight: bold;height:20px;" ><a href="#">Lịch sử giao dịch</a></li>
+     <li style="font-size: 10pt;font-weight: bold;height:20px;"><a href="customer.vn" > Xem thông tin</a></li>
+     <li style="font-size: 10pt;font-weight: bold;height:20px;" ><a href="changePass.vn"> Đổi mật khẩu</a></li>
+   <!--   <li style="font-size: 10pt;font-weight: bold;height:20px;" ><a href="#"> Đổi hình đại diện</a></li>
+     <li style="font-size: 10pt;font-weight: bold;height:20px;" ><a href="#">Lịch sử giao dịch</a></li> -->
     </ul>
    <div class="block-title">
       <strong><span>THÔNG TIN HÓA ĐƠN</span>

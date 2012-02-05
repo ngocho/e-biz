@@ -3,14 +3,57 @@
 <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
 <%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic"%>
+<script type="text/javascript">
+$(document).ready(function(){
+    //submit
+     $("#register").click(function() {
+        var flag =  validateCustomerRegister();
+        if(flag){
+            $("#registerForm").submit();
+        }
+        else{
+            return false;
+        }
+    });
+     
+    $("#reset").click(function() {
+        resetFormCustomer();
+        $("#loginIdR").val("");
+        $("#loginPasswordR").val("");
+        $("#loginPasswordPreR").val("");
+        //focus
+        $("#headerHome").focus();
+        $("#loginIdR").focus();
 
+    });
+    
+    $("#loginIdR").blur(function() {
+        if($(this).val() != ""){
+            $(this).css("background", "#FFF");
+        }
+    });
+    
+    $("#loginPasswordR").blur(function() {
+        if($(this).val() != ""){
+            $(this).css("background", "#FFF");
+        }
+    });
+    
+    $("#loginPasswordPreR").blur(function() {
+        if($(this).val() != ""){
+            $(this).css("background", "#FFF");
+        }
+    });
+    
+});
+</script>
 <div class="home-spot">
                                         <div class="account-create">
 
     <div class="page-title">
         <h1>Tạo một tài khoản mới</h1>
     </div>
-    <html:form action="/registerAction.vn" method="get">
+    <html:form action="/registerAction.vn" method="get" styleId="registerForm">
         <div class="fieldset">
            <h2 class="legend">Thông tin đăng nhập</h2>
             
@@ -24,7 +67,7 @@
     <div class="field name-firstname">
         <label for="firstname" class="required" id="typeLogin"  ><em>*</em>Tên đăng nhập</label>
         <div class="input-box">
-        <html:text property="loginId" /> 
+        <html:text property="loginId" styleId="loginIdR"/> 
         </div>
 
     </div>
@@ -36,28 +79,42 @@
                     <div class="field">
                         <label for="password" class="required"><em>*</em>Mật khẩu</label>
                         <div class="input-box">
-                            <html:password property="loginPassword" />
+                            <html:password property="loginPassword" styleId="loginPasswordR"/>
 
                         </div>
                     </div>
                     <div class="field">
                         <label for="confirmation" class="required"><em>*</em>Nhập lại mật khẩu</label>
                         <div class="input-box">
-                           <html:password property="loginPasswordPre" />
+                           <html:password property="loginPasswordPre" styleId="loginPasswordPreR"/>
                         </div>
                     </div>
 
                 </li>
                 <li>
-                <span style="color:red">
-                <logic:messagesPresent message="true">
-   <html:messages id="message" message="true">
-     <bean:write name="message"/><br/>
-   </html:messages>
-</logic:messagesPresent>
-<html:messages id="error">
-<%= error%>
-</html:messages>
+                <span style="color:red" >
+                <logic:messagesPresent >  
+    <script type="text/javascript">
+    $(document).ready(function(){
+    $("#headerHome").focus();
+    }
+    );
+</script>
+        <logic:messagesNotPresent property="email">
+         <html:messages id="error"  header="providerForm.registerMadatory" >
+        </html:messages>
+        </logic:messagesNotPresent>
+        <html:messages id="error"  property="email" >
+        <br>
+        <span style="color:red" > Địa chỉ mail không hợp lệ !</span>
+         <script type="text/javascript">
+    $(document).ready(function(){
+    $("#email").focus();
+    }
+    );
+</script>
+        </html:messages>
+      </logic:messagesPresent>
 </span>
                 
                 </li>                                                                   </ul>
@@ -75,8 +132,8 @@
                             <html:text property="loginName" size="40"/>
                         </div>
                     </div>
-                        <label for="confirmation" class="required">Giới tính : </label></br>
-                        Nữ  <html:radio property="gender" value="0" />&nbsp &nbsp &nbsp
+                        <label for="confirmation" class="required">Giới tính : </label><br>
+                        Nữ  <html:radio property="gender" value="0" />
                         Nam  <html:radio property="gender"  value="1" />
                       
                     </li>
@@ -91,9 +148,9 @@
                     </li>
                 <li class="fields">
                     <div class="field">
-                        <label for="password" class="required">Email</label>
+                        <label for="password" class="required" >Email</label>
                         <div class="input-box">
-                           <html:text property="email" size="40"/>
+                           <html:text property="email" size="40" styleId="email"/>
 
                         </div>
                     </div>
@@ -181,7 +238,7 @@
                             </ul>
                             
             <div id="window-overlay" class="window-overlay" style="display:none;"></div>
-<div id="remember-me-popup" class="remember-me-popup" style="display:none;">
+<!-- <div id="remember-me-popup" class="remember-me-popup" style="display:none;">
     <div class="remember-me-popup-head">
         <h3>What's this?</h3>
         <a href="#" class="remember-me-popup-close" title="Close">Close</a>
@@ -194,13 +251,19 @@
         </div>
     </div>
 
-</div>
+</div>  -->
 
 </div>
- <button type="submit" title="Submit" style="margin-left:200px;" class="button">
+ <button type="submit" title="Submit" style="margin-left:200px;" id="register" class="button">
     <span><span>Đăng kí</span>
     </span>
   </button>
+  
+   <button type="button" title="Reset" style="margin-left:50px;" id="reset" class="button">
+    <span><span>Xóa hết</span>
+    </span>
+  </button>
+  
 <div class="buttons-set1">
   <p class="buttons-set1 p.required">*Yêu cầu nhập </p>
   <br />

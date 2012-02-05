@@ -2,29 +2,42 @@
   pageEncoding="UTF-8"%>
 <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
 <%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic"%>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
 <div class="page-title category-title">
-  <h1>Đổi mật khẩu</h1> 
+  <h1>Đổi mật khẩu</h1>
 </div>
-<table style="font-size: 10pt;margin-left: 10px;">
-  <tbody>
-    
-      <tr height="22px">
-        <th>Nhập mật khẩu cũ:</th>
-        <td><input type="text" name="oldPass"/>
-        </td>
-      </tr>
-      <tr height="22px">
-        <th>Nhập mật khẩu mới</th>
-        <td><input type="text" name="newPass"/>
-        </td>
-      </tr>
-      <tr height="22px">
-        <th>Giới tính:</th>
-        <td><input type="text" name="reNew"/>
-        </td>
-      </tr>
-       <tr height="22px">
-        <th>Đổi mật khẩu</th>
-      </tr>
-  </tbody>
-</table>
+<form action="/changePassword.vn" method="GET">
+  <ul class="form-list">
+
+    <li><label for="email" class="required" id="typeLogin"><em>*</em>
+        Nhập mật khẩu cũ:</label>
+      <div class="input-box">
+        <input type="password" name="oldPass" />
+      </div></li>
+    <li><label for="email" class="required" id="typeLogin"><em>*</em>
+        Nhập mật khẩu mới:</label>
+      <div class="input-box">
+        <input type="password" name="newPass" />
+      </div></li>
+    <li><label for="email" class="required" id="typeLogin"><em>*</em>
+        Nhập lại mật khẩu mới:</label>
+      <div class="input-box">
+        <input type="password" name="reNew" />
+      </div></li>
+      <li>
+            <div class="input-box">
+              <input type="submit" class="buttonBG" name="change" id="login" title="Password" value="Thay đổi">
+        <!--        <input type="button"  class="buttonBG" name="reset"
+                id="reset" title="Password" value="Xóa hết"  > -->
+            </div>
+          </li>
+       <li><span style="color: red;" id="message"> 
+          <logic:messagesPresent message="true">
+                <!-- display message return by action-->
+                <html:messages id="message" message="true">
+                  <bean:write name="message" />
+                </html:messages>
+          </logic:messagesPresent> 
+          </span></li>
+  </ul>
+</form>
