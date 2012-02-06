@@ -38,14 +38,14 @@ public class SetStatusOrder extends BaseAction {
         String id = request.getParameter("id");
         String type = request.getParameter("type");
         System.out.println("ID"+id);
-        if(id == null ||type ==null){
+        if (id == null ||type ==null){
         	
             return mapping.findForward(SUCCESS);
            
         }
-        Integer status = Integer.parseInt(type);
+//        Integer status = Integer.parseInt(type);
         Long  orderID = Long.parseLong(id);
-        if(FoodBLO.updateStatusOrderBill(orderID, status))
+        if(FoodBLO.updateStatusOrderBill(orderID, type))
         {
             request.setAttribute("flag",true );
             return mapping.findForward(SUCCESS);
