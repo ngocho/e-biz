@@ -117,7 +117,7 @@ function slideSwitch() {
                   Rau xanh
                   </c:when>
                   <c:when test="${productVo.typeProduct == 4}">
-                  Rau xanh
+                  Trái cây
                   </c:when>
       </c:choose>
       </logic:present>

@@ -36,17 +36,15 @@
         });
         
         //submit form
-         $("#upload").click(function() {
+        $("#upload").click(function() {
         var flag =  validateProviderFood();
-        if(flag){
-            $("#uploadForm").submit();
-        }
-        else{
+        if(!flag){
             return false;
+          //  $("#uploadForm").submit();
         }
         });
         
-        //reset Form
+         //reset Form
         $("#reset").click(function() {
             resetFormProvider(2);
 
@@ -87,9 +85,9 @@
         
         $("textarea[name=detail]").blur(function() {
             if($(this).val() != "" ){
-                $(this).recss("background", "#FFF");
+                $(this).css("background", "#FFF");
             }
-        });
+        }); 
         
     });
 </script>
@@ -98,7 +96,7 @@
   <div class="account-create">
 
     <div class="page-title" id="focus">
-      <logic:empty name="flagUpload">
+      <logic:empty name="flagUpload" >
         <h1>Upload sản phẩm</h1>
       </logic:empty>
       <logic:present name="flagUpload">
@@ -110,19 +108,6 @@
         upload</span>
       <br>
     </logic:present>
-    <%--  <logic:empty name="urlImageKey">
-    <script type="text/javascript"> 
-     $("#uploadImage").show();
-    </script>
-    </logic:empty>
-    <logic:present name="urlImageKey">
-    <script type="text/javascript"> 
-    $(document).ready(function(){
-    $("#divPrice").hide();
-    }
-    );
-    </script>
-    </logic:present> --%>
     <form name="uploadImage"
       action="<%=blobstoreService.createUploadUrl("/uploadImage.vn")%>"
       method="post" enctype="multipart/form-data">
@@ -143,7 +128,7 @@
           <li class="fields">
             <div class="customer-name">
               <div class="field name-firstname">
-                <label for="firstname" class="required" id="typeLogin"><em>*</em>Lựa
+                <label for="firstname" class="required" ><em>*</em>Lựa
                   chọn loại sản phẩm</label>
                 <div class="input-box">
                   <html:select property="productTypeId"
@@ -164,7 +149,7 @@
           <li class="fields">
             <div class="customer-name">
               <div class="field name-firstname">
-                <label for="firstname" class="required" id="typeLogin"><em>*</em>Chọn
+                <label for="firstname" class="required" ><em>*</em>Chọn
                   nhóm sản phẩm</label>
                 <div class="input-box">
                   <html:select property="idAttr" styleId="idAttr">
@@ -186,7 +171,7 @@
           <li class="fields">
             <div class="customer-name">
               <div class="field name-firstname">
-                <label for="firstname" class="required" id="typeLogin"><em>*</em>Lựa
+                <label for="firstname" class="required" ><em>*</em>Lựa
                   chọn trạng thái của sản phẩm</label>
                 <div class="input-box">
                   <html:select property="status" styleId="status">
@@ -203,7 +188,7 @@
           <li class="fields">
             <div class="customer-name">
               <div class="field name-firstname">
-                <label for="firstname" class="required" id="typeLogin"><em>*</em>Hình</label>
+                <label for="firstname" class="required" ><em>*</em>Hình</label>
                 <div class="input-box">
                   <logic:present name="urlImageKey">
                     <img
@@ -222,10 +207,10 @@
           <li class="fields">
             <div class="customer-name">
               <div class="field name-firstname">
-                <label for="firstname" class="required" id="typeLogin"><em>*</em>Tên
+                <label for="firstname" class="required" ><em>*</em>Tên
                   món ăn</label>
                 <div class="input-box">
-                  <html:text property="name" styleId="name" size="45%" />
+                  <html:text property="name" styleId="name" size="45%"/>
                 </div>
               </div>
             </div>
@@ -233,7 +218,7 @@
           <li class="fields">
             <div class="customer-name">
               <div class="field name-firstname">
-                <label for="firstname" class="required" id="typeLogin"><em>*</em>Số
+                <label for="firstname" class="required" ><em>*</em>Số
                   lượng</label>
                 <div class="input-box">
                   <html:text property="number" styleId="number"   size="45%" styleClass="zero"/>
@@ -244,7 +229,7 @@
           <li class="fields">
             <div class="customer-name">
               <div class="field name-firstname">
-                <label for="firstname" class="required" id="typeLogin"><em>*</em>Giá</label>
+                <label for="firstname" class="required" ><em>*</em>Giá</label>
                 <div class="input-box">
                   <html:text property="price" styleId="price"  size="45%" styleClass="zero"/>
                 </div>
@@ -254,7 +239,7 @@
           <li class="fields">
             <div class="customer-name" id="divPrice">
               <div class="field name-firstname">
-                <label for="firstname" class="required" id="typeLogin">Giá
+                <label for="firstname" class="required" >Giá
                   khuyến mãi</label>
                 <div class="input-box">
                   <html:text property="promoPrice" styleId="promoPrice"  size="45%" styleClass="zero"/>
@@ -265,7 +250,7 @@
           <li class="fields">
             <div class="customer-name">
               <div class="field name-firstname">
-                <label for="firstname" class="required" id="typeLogin"><em>*</em>Giới
+                <label for="firstname" class="required" ><em>*</em>Giới
                   thiệu về sản phẩm</label>
                 <div class="input-box">
                   <html:textarea property="detail" styleId="detail" />
@@ -276,7 +261,7 @@
           <li class="fields">
             <div class="customer-name">
               <div class="field name-firstname">
-                <label for="firstname" class="required" id="typeLogin">Hướng
+                <label for="firstname" class="required" >Hướng
                   dẫn cách nấu</label>
                 <div class="input-box">
                   <html:textarea property="cooking" styleId="cooking" />
@@ -295,25 +280,21 @@
               </html:messages>
           </span>
           </li>
-
-        </ul>
+<li>
+          <div class="input-box">
         <logic:empty name="flagUpload">
-          <button type="submit" title="Submit"
-            style="margin-left: 50px;" class="button" id="upload">
-            <span><span>Upload</span> </span>
-          </button>
-          <button type="button" title="Submit"
-            style="margin-left: 50px;" class="button" id="reset">
-            <span><span>Xóa hết</span> </span>
-          </button>
+          <input type=submit title="Submit" class="buttonBG"
+            id="upload" value="Upload"/>
+          <input type="button" title="Reset" class="buttonBG"
+             id="reset" value="Xóa hết"/> 
         </logic:empty>
         <logic:present name="flagUpload" >
-          <button type="submit" title="Submit"
-            style="margin-left: 50px;" class="button" id="upload">
-            <span><span>Cập nhật</span> </span>
-          </button>
+          <input type="submit" title="Submit" class="buttonBG"
+            id="upload" value="Cập nhật"/>
         </logic:present>
-
+        </div>
+        </li>
+</ul>
         <div class="buttons-set1">
           <p class="buttons-set1 p.required">* Yêu cầu phải nhập</p>
           <br />

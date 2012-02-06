@@ -16,7 +16,6 @@ $(document).ready(function(){
       <div class="pager">
         <p class="amount">
           <strong>Page: &nbsp;</strong> <span> 
-          <%System.out.println("DIV" + 2 %10); %>
           <%-- <input
             type="hidden" name="page" id="status"
             value="<bean:write name="pageList"/>"></input>

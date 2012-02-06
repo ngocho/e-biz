@@ -17,10 +17,7 @@
 		
 		   $("#login").click(function() {
 		        var flag =  validateProviderLogin();
-		        if(flag){
-		            $("#loginForm").submit();
-		        }
-		        else{
+		        if(!flag){
 		            return false;
 		        }
 		    });
