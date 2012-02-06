@@ -16,6 +16,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		/WEB-INF/struts-config-provider.xml,
 		/WEB-INF/struts-config.xml,
 		/WEB-INF/struts-config-customer.xml,
+		/WEB-INF/struts-config-admin.xml,
 		/WEB-INF/struts-config-food.xml,
 		/WEB-INF/struts-config-mobile.xml
       </param-value>
