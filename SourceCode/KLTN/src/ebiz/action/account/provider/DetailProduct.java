@@ -35,23 +35,31 @@ import ebiz.form.FoodForm;
  */
 public class DetailProduct extends BaseAction {
 
+    /**
+     * [display DetailProduct].
+     * @param mapping ActionMapping
+     * @param form ActionForm
+     * @param request HttpServletRequest
+     * @param response HttpServletResponse
+     * @return ActionForward
+     * @throws Exception Exception
+     * @see ActionForward Struts1 Framework
+     */
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
-        HttpServletResponse response) throws Exception {
-    	//get id of product
-    	HttpSession se = request.getSession();
-        String id =(String) request.getParameter("id");
-        System.out.println("Updated");
+            HttpServletResponse response) throws Exception {
+        HttpSession se = request.getSession();
+        // get ID from request
+        String id = (String) request.getParameter("id");
+        // get FoodForm
         FoodForm foodForm = FoodBLO.getFoodFormDetail(id);
         if (foodForm != null) {
-        //set Form to display
-        System.out.println("foodform"+foodForm.getId());
-        //set form to display
-        se.setAttribute("foodForm", foodForm);
-        //display
-//        se.setAttribute("urlImage", "");
-        se.setAttribute("urlImageKey", foodForm.getUrlKey());
-        se.setAttribute("flagUpload", 1);
-        return mapping.findForward(SUCCESS);
+            // set form to display
+            se.setAttribute("foodForm", foodForm);
+            // set Url of image
+            se.setAttribute("urlImageKey", foodForm.getUrlKey());
+            // flag for Updated Product
+            se.setAttribute("flagUpload", 1);
+            return mapping.findForward(SUCCESS);
         }
         return mapping.findForward(FAILURE);
     }

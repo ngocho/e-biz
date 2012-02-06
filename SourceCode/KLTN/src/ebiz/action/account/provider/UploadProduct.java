@@ -30,80 +30,68 @@ import ebiz.action.BaseAction;
 import ebiz.blo.food.FoodBLO;
 import ebiz.dto.food.Food;
 import ebiz.form.FoodForm;
-import ebiz.form.ProviderForm;
 import ebiz.util.CommonUtil;
 
 /**
  * @author ThuyNT
  */
 public class UploadProduct extends BaseAction {
+    /**
+     * [UploadProduct ].
+     * @param mapping ActionMapping
+     * @param form ActionForm
+     * @param request HttpServletRequest
+     * @param response HttpServletResponse
+     * @return ActionForward
+     * @throws Exception Exception
+     * @see ActionForward Struts1 Framework
+     */
 
-	public ActionForward execute(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		// after check validate
-		FoodForm foodForm = (FoodForm) form;
-		HttpSession se = request.getSession();
-		String url, urlKey;
-		//get url
-//        url = (String) se.getAttribute("urlImage");
-		 urlKey = (String) se.getAttribute("urlImageKey");
-        if((urlKey != null)){
-        urlKey = (String) se.getAttribute("urlImageKey");
-//        foodForm.setUrl(url);
-        foodForm.setUrlKey(urlKey);
-        
-        System.out.println("FOOD ID"+ foodForm.getId());
-		// upload product
-		if (CommonUtil.isBlankOrZero(foodForm.getId())) {
-			ProviderForm provider;
-			provider = (ProviderForm) se.getAttribute("provider");
+    public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
+            HttpServletResponse response) throws Exception {
+        // after check validate
+        FoodForm foodForm = (FoodForm) form;
+        HttpSession se = request.getSession();
+        String urlKey = (String) se.getAttribute("urlImageKey");
+        // have image
+        if ((urlKey != null)) {
+            foodForm.setUrlKey(urlKey);
 
-			// set atrr into form
-			
-			foodForm.setIdProvider(provider.getLoginId());
-			System.out.println("UPLOAD" + foodForm.getUrlKey());
+            // upload product
+            if (CommonUtil.isBlankOrZero(foodForm.getId())) {
+                // get idProvider
+                String idProvider = (String) se.getAttribute("idProvider");
+                // put idProvider into FoodForm
+                foodForm.setIdProvider(idProvider);
+                // get Food from FoodForm
+                Food food = foodForm.getFood();
+                // upload Food
+                boolean flagUpload = FoodBLO.uploadFood(food);
+                // success
+                if (flagUpload) {
+                    // remove attr from session
+                    se.removeAttribute("foodForm");
+                    se.removeAttribute("urlImageKey");
+                    // set flag to display in next screen
+                    request.setAttribute("fUpload", "1");
+                }
+                return mapping.findForward(SUCCESS);
+            } else {
+                // updated product
+                Food food = foodForm.getFood();
+                food.setFoodId(foodForm.getId());
+                boolean flag = FoodBLO.uploadFood(food);
+                if (flag) {
+                    // remove attr
+                    se.removeAttribute("urlImageKey");
+                    se.removeAttribute("foodForm");
+                    se.removeAttribute("flagUpload");
+                    return mapping.findForward(SUCCESS1);
+                }
 
-			Food food = foodForm.getFood();
-			System.out.println("ID pro" + food.getFoodTypeId());
-			System.out.println("ID pro" + food.getUrlKey());
-//			food.setIsDisplay(1); // display ( must edit : 0)
-//			food.setNumberOrder(0);
-//			food.setFoodPriceLevelId(FoodBLO.getFoodIdPrice(food.getPrice()));
-			// food.setIsDisplay(0);
-			boolean flagUpload = FoodBLO.uploadFood(food);
-			System.out.println("UPLOAD" + flagUpload);
-			if (flagUpload) {
-			    System.out.println(" Remove atrr" + flagUpload);
-			   // se.setAttribute("foodForm", foodForm);
-				//remove attr
-			    //foodForm.clear();
-				se.removeAttribute("foodForm");
-				se.removeAttribute("urlImage");
-				se.removeAttribute("urlImageKey");
-				request.setAttribute("fUpload", "1");
-				System.out.println(" 111111111111Remove atrr" + flagUpload);
-			}
-			return mapping.findForward(SUCCESS);
-		}
-		// updated product
-		else {
-			Food food = foodForm.getFood();
-			food.setFoodId(foodForm.getId());
-			boolean flag;
-	        flag = FoodBLO.uploadFood(food);
-			if (flag) {
-			    //remove attr 
-				se.removeAttribute("urlImage");
-				se.removeAttribute("urlImageKey");
-				se.removeAttribute("foodForm");
-				se.removeAttribute("flagUpload");
-				return mapping.findForward(SUCCESS1);
-			}
-
-		}
+            }
         }
-		return mapping.findForward(FAILURE);
-	}
-        
+        return mapping.findForward(FAILURE);
+    }
+
 }

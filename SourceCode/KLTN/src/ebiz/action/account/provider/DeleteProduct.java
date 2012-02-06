@@ -33,17 +33,25 @@ import ebiz.blo.food.FoodBLO;
  */
 public class DeleteProduct extends BaseAction {
 
+    /**
+     * [DeleteProduct].
+     * @param mapping ActionMapping
+     * @param form ActionForm
+     * @param request HttpServletRequest
+     * @param response HttpServletResponse
+     * @return ActionForward
+     * @throws Exception Exception
+     * @see ActionForward Struts1 Framework
+     */
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
-       String id = request.getParameter("id");
-       Long key;
-       boolean flag;
-       if (id != null) {
-           key = Long.parseLong(id);
-           flag = FoodBLO.deleteFood(key);
-          System.out.println("Delete" + flag +"\n"+  key);
-       }
-       return mapping.findForward(SUCCESS);
+        String id = request.getParameter("id");
+        Long key;
+        if (id != null) {
+            key = Long.parseLong(id);
+            FoodBLO.deleteFood(key);
+        }
+        return mapping.findForward(SUCCESS);
     }
 
 }

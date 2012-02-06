@@ -37,29 +37,34 @@ import ebiz.form.ProviderForm;
  * @author ThuyNT
  */
 public class Register extends BaseAction {
-
+    /**
+     * [Register ].
+     * @param mapping ActionMapping
+     * @param form ActionForm
+     * @param request HttpServletRequest
+     * @param response HttpServletResponse
+     * @return ActionForward
+     * @throws Exception Exception
+     * @see ActionForward Struts1 Framework
+     */
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
-        System.out.println("REGISTER PRO");
-       
         // after checked validation using xml file
         ProviderForm user = (ProviderForm) form;
         Provider register = user.getProvider();
         boolean flag;
-
         flag = ProviderBLO.registerProvider(register);
         if (flag) {
             HttpSession se = request.getSession();
             // save value in session
             se.setAttribute("providerForm", user);
-
-            //send mail  --> use task queue
+            // send mail --> use task queue
             SendMail.registerSuccess(user.getEmail());
-          //  save in session to transfer to login
+            // save in session to transfer to login
             se.setAttribute("providerFormLogin", user);
             return mapping.findForward(SUCCESS);
         }
-        //account is Exsist
+        // account is exsist
         ActionMessages messages = new ActionMessages();
         messages.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage("errors.duplicated"));
         saveMessages(request, messages); // storing messages as request attributes

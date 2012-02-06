@@ -33,16 +33,25 @@ import ebiz.form.ProviderForm;
  * @author Administrator
  */
 public class AuthenticationProvider extends BaseAction {
+
+    /**
+     * [AuthenticationProvider].
+     *
+     * @param mapping ActionMapping
+     * @param form ActionForm
+     * @param request HttpServletRequest
+     * @param response HttpServletResponse
+     * @return ActionForward
+     * @throws Exception Exception
+     * @see ActionForward Struts1 Framework
+     */
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
-        System.out.println("AuthenticationProvider");
         HttpSession se = request.getSession();
         ProviderForm provider = (ProviderForm) se.getAttribute("provider");
         if (provider == null) {
-            System.out.println("NULL");
             return mapping.findForward(FAILURE);
         }
-        System.out.println("AuthenticationProvider + NOT NULL");
         return mapping.findForward(SUCCESS);
     }
 }
