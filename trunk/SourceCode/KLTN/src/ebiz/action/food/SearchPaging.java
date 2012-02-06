@@ -59,8 +59,7 @@ public class SearchPaging extends BaseAction {
     		formList = (List<FoodForm>)SearchBLO.getPage(formList, pageIndex);
     		if(!formList.isEmpty()){
     		se.setAttribute("searchResult", formList);
-    		return mapping.findForward(SUCCESS);
     		}
-    		return mapping.findForward(FAILURE);
+    		return mapping.findForward(SUCCESS);
     }
 }

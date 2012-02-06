@@ -87,9 +87,16 @@ public class DisplayCategoryRecord extends BaseAction {
          if(col ==null){
              col = vo.getCol();
          }
+         if(attr == null){
+        	 attr = vo.getAttr();
+         }
+         if(price == null){
+        	 price = vo.getPriceId();
+         }
          if(p!=null){
              page = Integer.parseInt(p);
          }
+         
   
          if(page >1){ //get old 
              pageList = (List<Paging>) vo.getPagingList();
@@ -106,7 +113,8 @@ public class DisplayCategoryRecord extends BaseAction {
         vo.setPage(page);
         vo.setPagingList(pageList);
         vo.setOrder(order);
-
+        vo.setAttr(attr);
+        vo.setPriceId(price);
         return mapping.findForward(SUCCESS);
 
     }
