@@ -28,38 +28,62 @@ import ebiz.util.CommonUtil;
 
 /**
  * @author Administrator
- *
  */
-public class LoginForm extends ValidatorForm implements Serializable{
-    
-    /**  . */
+public class LoginForm extends ValidatorForm implements Serializable {
+    /** . */
     private static final long serialVersionUID = 1L;
+    /** . */
     private String loginId;
+    /** . */
     private String loginPassword;
+    /** . */
     private String loginPasswordPre;
+    /** . */
     private String loginName;
-    private String type;            //type of account : customer, admin, employee
+    /** . */
+    private String type; // type of account : customer, admin, employee
+    /** . */
     private String gender;
+    /** . */
     private String birthDate;
+    /** . */
     private String email;
+    /** . */
     private String phone;
+    /** . */
     private String homeNumber;
+    /** . */
     private String streetName;
+    /** . */
     private String wardName;
+    /** . */
     private String districtName;
+    /** . */
     private String buildingName;
-    private String note; //bill 
-    private boolean isAdEmail; 
-    private boolean isAdPhone; 
-    //select type of bill to display
-    private Integer isCustomerBill;
+    /** . note for OrderBill*/
+    private String note;
+    /** . */
+    private boolean isAdEmail;
+    /** . */
+    private boolean isAdPhone;
+    /** . select type of bill to display*/
+    private int isCustomerBill;
+    /** . */
     private String url;
-
-    public boolean isEmpty(){
+    /**
+     * IsEmpty.
+     *
+     * @return boolean
+     */
+    public boolean isEmpty() {
         return CommonUtil.isBlankOrNull(loginId);
     }
-    
-    public  Customer getCustomer(){
+
+    /**
+     * [getCustomer].
+     * @return Customer
+     */
+    public Customer getCustomer() {
         Customer customer = new Customer();
         customer.setCustomerId(this.loginId);
         customer.setCustomerPassword(this.loginPassword);
@@ -79,10 +103,14 @@ public class LoginForm extends ValidatorForm implements Serializable{
         customer.setCustomerAddress(add);
         customer.setUrl(this.url);
         return customer;
-          
-      }
-    
-    public LoginForm  editForm(Customer customer){
+
+    }
+
+    /**
+     * [get Form from Customer object].
+     * @param customer Customer
+     */
+    public void editForm(Customer customer) {
         this.loginId = customer.getCustomerId();
         this.loginName = customer.getCustomerName();
         this.loginPassword = customer.getCustomerPassword();
@@ -95,11 +123,11 @@ public class LoginForm extends ValidatorForm implements Serializable{
         this.streetName = customer.getCustomerAddress().getStreetName();
         this.wardName = customer.getCustomerAddress().getWardName();
         this.url = customer.getUrl();
-        
-        return this;
+        // return this;
     }
     /**
      * Get value of loginId.
+     *
      * @return the loginId
      */
     public String getLoginId() {
@@ -108,6 +136,7 @@ public class LoginForm extends ValidatorForm implements Serializable{
 
     /**
      * Set the value for loginId.
+     *
      * @param loginId the loginId to set
      */
     public void setLoginId(String loginId) {
@@ -116,6 +145,7 @@ public class LoginForm extends ValidatorForm implements Serializable{
 
     /**
      * Get value of loginPassword.
+     *
      * @return the loginPassword
      */
     public String getLoginPassword() {
@@ -124,6 +154,7 @@ public class LoginForm extends ValidatorForm implements Serializable{
 
     /**
      * Set the value for loginPassword.
+     *
      * @param loginPassword the loginPassword to set
      */
     public void setLoginPassword(String loginPassword) {
@@ -132,6 +163,7 @@ public class LoginForm extends ValidatorForm implements Serializable{
 
     /**
      * Get value of loginName.
+     *
      * @return the loginName
      */
     public String getLoginName() {
@@ -140,6 +172,7 @@ public class LoginForm extends ValidatorForm implements Serializable{
 
     /**
      * Set the value for loginName.
+     *
      * @param loginName the loginName to set
      */
     public void setLoginName(String loginName) {
@@ -148,6 +181,7 @@ public class LoginForm extends ValidatorForm implements Serializable{
 
     /**
      * Get value of type.
+     *
      * @return the type
      */
     public String getType() {
@@ -156,6 +190,7 @@ public class LoginForm extends ValidatorForm implements Serializable{
 
     /**
      * Set the value for type.
+     *
      * @param type the type to set
      */
     public void setType(String type) {
@@ -164,6 +199,7 @@ public class LoginForm extends ValidatorForm implements Serializable{
 
     /**
      * Get value of phone.
+     *
      * @return the phone
      */
     public String getPhone() {
@@ -172,15 +208,16 @@ public class LoginForm extends ValidatorForm implements Serializable{
 
     /**
      * Set the value for phone.
+     *
      * @param phone the phone to set
      */
     public void setPhone(String phone) {
         this.phone = phone;
     }
 
-
     /**
      * Get value of note.
+     *
      * @return the note
      */
     public String getNote() {
@@ -189,6 +226,7 @@ public class LoginForm extends ValidatorForm implements Serializable{
 
     /**
      * Set the value for note.
+     *
      * @param note the note to set
      */
     public void setNote(String note) {
@@ -196,6 +234,7 @@ public class LoginForm extends ValidatorForm implements Serializable{
     }
     /**
      * Get value of homeNumber.
+     *
      * @return the homeNumber
      */
     public String getHomeNumber() {
@@ -203,6 +242,7 @@ public class LoginForm extends ValidatorForm implements Serializable{
     }
     /**
      * Set the value for homeNumber.
+     *
      * @param homeNumber the homeNumber to set
      */
     public void setHomeNumber(String homeNumber) {
@@ -210,6 +250,7 @@ public class LoginForm extends ValidatorForm implements Serializable{
     }
     /**
      * Get value of streetName.
+     *
      * @return the streetName
      */
     public String getStreetName() {
@@ -217,6 +258,7 @@ public class LoginForm extends ValidatorForm implements Serializable{
     }
     /**
      * Set the value for streetName.
+     *
      * @param streetName the streetName to set
      */
     public void setStreetName(String streetName) {
@@ -224,6 +266,7 @@ public class LoginForm extends ValidatorForm implements Serializable{
     }
     /**
      * Get value of wardName.
+     *
      * @return the wardName
      */
     public String getWardName() {
@@ -231,6 +274,7 @@ public class LoginForm extends ValidatorForm implements Serializable{
     }
     /**
      * Set the value for wardName.
+     *
      * @param wardName the wardName to set
      */
     public void setWardName(String wardName) {
@@ -238,6 +282,7 @@ public class LoginForm extends ValidatorForm implements Serializable{
     }
     /**
      * Get value of districtName.
+     *
      * @return the districtName
      */
     public String getDistrictName() {
@@ -245,6 +290,7 @@ public class LoginForm extends ValidatorForm implements Serializable{
     }
     /**
      * Set the value for districtName.
+     *
      * @param districtName the districtName to set
      */
     public void setDistrictName(String districtName) {
@@ -252,6 +298,7 @@ public class LoginForm extends ValidatorForm implements Serializable{
     }
     /**
      * Get value of buildingName.
+     *
      * @return the buildingName
      */
     public String getBuildingName() {
@@ -259,6 +306,7 @@ public class LoginForm extends ValidatorForm implements Serializable{
     }
     /**
      * Set the value for buildingName.
+     *
      * @param buildingName the buildingName to set
      */
     public void setBuildingName(String buildingName) {
@@ -266,6 +314,7 @@ public class LoginForm extends ValidatorForm implements Serializable{
     }
     /**
      * Get value of loginPasswordPre.
+     *
      * @return the loginPasswordPre
      */
     public String getLoginPasswordPre() {
@@ -273,6 +322,7 @@ public class LoginForm extends ValidatorForm implements Serializable{
     }
     /**
      * Set the value for loginPasswordPre.
+     *
      * @param loginPasswordPre the loginPasswordPre to set
      */
     public void setLoginPasswordPre(String loginPasswordPre) {
@@ -280,6 +330,7 @@ public class LoginForm extends ValidatorForm implements Serializable{
     }
     /**
      * Get value of gender.
+     *
      * @return the gender
      */
     public String getGender() {
@@ -287,6 +338,7 @@ public class LoginForm extends ValidatorForm implements Serializable{
     }
     /**
      * Set the value for gender.
+     *
      * @param gender the gender to set
      */
     public void setGender(String gender) {
@@ -294,6 +346,7 @@ public class LoginForm extends ValidatorForm implements Serializable{
     }
     /**
      * Get value of email.
+     *
      * @return the email
      */
     public String getEmail() {
@@ -301,6 +354,7 @@ public class LoginForm extends ValidatorForm implements Serializable{
     }
     /**
      * Set the value for email.
+     *
      * @param email the email to set
      */
     public void setEmail(String email) {
@@ -308,6 +362,7 @@ public class LoginForm extends ValidatorForm implements Serializable{
     }
     /**
      * Get value of isAdPhone.
+     *
      * @return the isAdPhone
      */
     public boolean getIsAdPhone() {
@@ -315,6 +370,7 @@ public class LoginForm extends ValidatorForm implements Serializable{
     }
     /**
      * Set the value for isAdPhone.
+     *
      * @param isAdPhone the isAdPhone to set
      */
     public void setIsAdPhone(boolean isAdPhone) {
@@ -322,6 +378,7 @@ public class LoginForm extends ValidatorForm implements Serializable{
     }
     /**
      * Get value of isAdEmail.
+     *
      * @return the isAdEmail
      */
     public boolean getIsAdEmail() {
@@ -329,6 +386,7 @@ public class LoginForm extends ValidatorForm implements Serializable{
     }
     /**
      * Set the value for isAdEmail.
+     *
      * @param isAdEmail the isAdEmail to set
      */
     public void setIsAdEmail(boolean isAdEmail) {
@@ -337,6 +395,7 @@ public class LoginForm extends ValidatorForm implements Serializable{
 
     /**
      * Get value of isCustomerBill.
+     *
      * @return the isCustomerBill
      */
     public Integer getIsCustomerBill() {
@@ -345,34 +404,59 @@ public class LoginForm extends ValidatorForm implements Serializable{
 
     /**
      * Set the value for isCustomerBill.
+     *
      * @param isCustomerBill the isCustomerBill to set
      */
-    public void setIsCustomerBill(Integer isCustomerBill) {
+    public void setIsCustomerBill(int isCustomerBill) {
         this.isCustomerBill = isCustomerBill;
     }
 
-	public String getBirthDate() {
-		return birthDate;
-	}
+    /**
+     * [Set the value for birthDate].
+     * @return String
+     */
+    public String getBirthDate() {
+        return birthDate;
+    }
 
-	public void setBirthDate(String birthDate) {
-		this.birthDate = birthDate;
-	}
+    /**
+     * [Set the value for birthDate].
+     * @param birthDate String
+     */
+    public void setBirthDate(String birthDate) {
+        this.birthDate = birthDate;
+    }
 
-	public void setAdEmail(boolean isAdEmail) {
-		this.isAdEmail = isAdEmail;
-	}
+    /**
+     * [Set the value for isAdEmail].
+     * @param isAdEmail boolean
+     */
+    public void setAdEmail(boolean isAdEmail) {
+        this.isAdEmail = isAdEmail;
+    }
 
-	public void setAdPhone(boolean isAdPhone) {
-		this.isAdPhone = isAdPhone;
-	}
+    /**
+     * [Set the value for isAdPhone].
+     * @param isAdPhone boolean
+     */
+    public void setAdPhone(boolean isAdPhone) {
+        this.isAdPhone = isAdPhone;
+    }
 
-	public String getUrl() {
-		return url;
-	}
+    /**
+     * [Get the value of url].
+     * @return String
+     */
+    public String getUrl() {
+        return url;
+    }
 
-	public void setUrl(String url) {
-		this.url = url;
-	}
+    /**
+     * [Set the value for url].
+     * @param url String
+     */
+    public void setUrl(String url) {
+        this.url = url;
+    }
 
 }
