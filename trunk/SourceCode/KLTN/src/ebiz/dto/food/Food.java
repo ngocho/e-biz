@@ -27,54 +27,72 @@ import javax.jdo.annotations.PrimaryKey;
 
 /**
  * @author ThuyNT
- *
+ * Food
  */
 
 @PersistenceCapable
-public class Food  {
+public class Food {
+    /** . foodId*/
     @PrimaryKey
     @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
     private Long foodId;
+    /** . foodName*/
     @Persistent
     private String foodName;
+    /** . foodPriceLevelId*/
     @Persistent
     private String foodPriceLevelId;
+    /** . productAttributeId*/
     @Persistent
     private String productAttributeId;
+    /** . foodStatusId*/
     @Persistent
     private String foodStatusId;
+    /** . foodTypeId*/
     @Persistent
     private String foodTypeId;
+    /** . startDate*/
     @Persistent
     private Date startDate;
+    /** . expDate*/
     @Persistent
     private Date expDate;
+    /** . number*/
     @Persistent
     private int number;
+    /** . numberOrder*/
     @Persistent
     private int numberOrder;
+    /** . detail*/
     @Persistent
     private String detail;
+    /** . cooking*/
     @Persistent
     private String cooking;
+    /** . calo*/
     @Persistent
     private String calo;
+    /** . price*/
     @Persistent
     private long price;
+    /** . pricePromotion*/
     @Persistent
     private long pricePromotion;
+    /** . providerID*/
     @Persistent
-    private String providerID;  //nha cung cap
-//    @Persistent
-//    private String url;   //luu duong dan hinh anh
+    private String providerID;
+    /** . urlImage */
     @Persistent
-    private String urlKey;   //luu duong dan hinh anh
+    private String urlKey;
+    /** . saleProduct */
     @Persistent
-    private int saleProduct;	//luong san pham ban duoc
+    private int saleProduct;
+    /** . uploadDate*/
     @Persistent
     private int uploadDate;
+    /** . approved product */
     @Persistent
-    private int isDisplay;      //approved product 
+    private int isDisplay;
     /**
      * Get value of foodId.
      * @return the foodId
@@ -154,13 +172,14 @@ public class Food  {
     }
     /**
      * Set the value for productTypeId.
-     * @param productTypeId the productTypeId to set
+     * @param foodTypeId the foodTypeId to set
      */
     public void setFoodTypeId(String foodTypeId) {
         this.foodTypeId = foodTypeId;
     }
     /**
      * Get value of startDate.
+     *
      * @return the startDate
      */
     public Date getStartDate() {
@@ -168,6 +187,7 @@ public class Food  {
     }
     /**
      * Set the value for startDate.
+     *
      * @param startDate the startDate to set
      */
     public void setStartDate(Date startDate) {
@@ -175,6 +195,7 @@ public class Food  {
     }
     /**
      * Get value of expDate.
+     *
      * @return the expDate
      */
     public Date getExpDate() {
@@ -182,6 +203,7 @@ public class Food  {
     }
     /**
      * Set the value for expDate.
+     *
      * @param expDate the expDate to set
      */
     public void setExpDate(Date expDate) {
@@ -189,6 +211,7 @@ public class Food  {
     }
     /**
      * Get value of number.
+     *
      * @return the number
      */
     public int getNumber() {
@@ -196,6 +219,7 @@ public class Food  {
     }
     /**
      * Set the value for number.
+     *
      * @param number the number to set
      */
     public void setNumber(int number) {
@@ -203,6 +227,7 @@ public class Food  {
     }
     /**
      * Get value of detail.
+     *
      * @return the detail
      */
     public String getDetail() {
@@ -210,6 +235,7 @@ public class Food  {
     }
     /**
      * Set the value for detail.
+     *
      * @param detail the detail to set
      */
     public void setDetail(String detail) {
@@ -217,6 +243,7 @@ public class Food  {
     }
     /**
      * Get value of calo.
+     *
      * @return the calo
      */
     public String getCalo() {
@@ -224,6 +251,7 @@ public class Food  {
     }
     /**
      * Set the value for calo.
+     *
      * @param calo the calo to set
      */
     public void setCalo(String calo) {
@@ -231,6 +259,7 @@ public class Food  {
     }
     /**
      * Get value of price.
+     *
      * @return the price
      */
     public long getPrice() {
@@ -238,6 +267,7 @@ public class Food  {
     }
     /**
      * Set the value for price.
+     *
      * @param price the price to set
      */
     public void setPrice(long price) {
@@ -245,6 +275,7 @@ public class Food  {
     }
     /**
      * Get value of providerID.
+     *
      * @return the providerID
      */
     public String getProviderID() {
@@ -252,27 +283,15 @@ public class Food  {
     }
     /**
      * Set the value for providerID.
+     *
      * @param providerID the providerID to set
      */
     public void setProviderID(String providerID) {
         this.providerID = providerID;
     }
-//    /**
-//     * Get value of url.
-//     * @return the url
-//     */
-//    public String getUrl() {
-//        return url;
-//    }
-//    /**
-//     * Set the value for url.
-//     * @param url the url to set
-//     */
-//    public void setUrl(String url) {
-//        this.url = url;
-//    }
     /**
      * Get value of reviewer.
+     *
      * @return the reviewer
      */
     public int getReviewer() {
@@ -280,13 +299,15 @@ public class Food  {
     }
     /**
      * Set the value for reviewer.
-     * @param reviewer the reviewer to set
+     *
+     * @param saleProduct the reviewer to set
      */
     public void setReviewer(int saleProduct) {
         this.saleProduct = saleProduct;
     }
     /**
      * Get value of cooking.
+     *
      * @return the cooking
      */
     public String getCooking() {
@@ -294,6 +315,7 @@ public class Food  {
     }
     /**
      * Set the value for cooking.
+     *
      * @param cooking the cooking to set
      */
     public void setCooking(String cooking) {
@@ -301,6 +323,7 @@ public class Food  {
     }
     /**
      * Get value of numberOrder.
+     *
      * @return the numberOrder
      */
     public int getNumberOrder() {
@@ -308,6 +331,7 @@ public class Food  {
     }
     /**
      * Set the value for numberOrder.
+     *
      * @param numberOrder the numberOrder to set
      */
     public void setNumberOrder(int numberOrder) {
@@ -315,6 +339,7 @@ public class Food  {
     }
     /**
      * Get value of pricePromotion.
+     *
      * @return the pricePromotion
      */
     public long getPricePromotion() {
@@ -322,6 +347,7 @@ public class Food  {
     }
     /**
      * Set the value for pricePromotion.
+     *
      * @param pricePromotion the pricePromotion to set
      */
     public void setPricePromotion(long pricePromotion) {
@@ -329,6 +355,7 @@ public class Food  {
     }
     /**
      * Get value of uploadDate.
+     *
      * @return the uploadDate
      */
     public int getUploadDate() {
@@ -336,6 +363,7 @@ public class Food  {
     }
     /**
      * Set the value for uploadDate.
+     *
      * @param uploadDate the uploadDate to set
      */
     public void setUploadDate(int uploadDate) {
@@ -343,6 +371,7 @@ public class Food  {
     }
     /**
      * Get value of isDisplay.
+     *
      * @return the isDisplay
      */
     public int getIsDisplay() {
@@ -350,6 +379,7 @@ public class Food  {
     }
     /**
      * Set the value for isDisplay.
+     *
      * @param isDisplay the isDisplay to set
      */
     public void setIsDisplay(int isDisplay) {
@@ -357,6 +387,7 @@ public class Food  {
     }
     /**
      * Get value of urlKey.
+     *
      * @return the urlKey
      */
     public String getUrlKey() {
@@ -364,12 +395,11 @@ public class Food  {
     }
     /**
      * Set the value for urlKey.
+     *
      * @param urlKey the urlKey to set
      */
     public void setUrlKey(String urlKey) {
         this.urlKey = urlKey;
     }
-    
-    
 
 }
