@@ -36,7 +36,7 @@ public class OrderBill  implements Serializable {
     private String phone;
     /**  . */
     @Persistent
-    private Integer status;
+    private String status;
     /**  . */
     @Persistent
     private Date dateOrder;
@@ -45,13 +45,19 @@ public class OrderBill  implements Serializable {
     private Date dateShip;
     /**  . */
     @Persistent
-    private Long sumPrice;
+    private long sumPrice;
     /**  . */
     @Persistent
     private String idEmployee;
     /**  . */
     @Persistent
+    private String note;
+    /**  . */
+    @Persistent
     private int typePayment;
+    /**  . */
+    @Persistent
+    private boolean isDeleted;
 
     /**
      * Get value of id.
@@ -127,14 +133,14 @@ public class OrderBill  implements Serializable {
      * Get value of status.
      * @return the status
      */
-    public Integer getStatus() {
+    public String getStatus() {
         return status;
     }
     /**
      * Set the value for status.
      * @param status the status to set
      */
-    public void setStatus(Integer status) {
+    public void setStatus(String status) {
         this.status = status;
     }
     /**
@@ -155,14 +161,14 @@ public class OrderBill  implements Serializable {
      * Get value of sumPrice.
      * @return the sumPrice
      */
-    public Long getSumPrice() {
+    public long getSumPrice() {
         return sumPrice;
     }
     /**
      * Set the value for sumPrice.
      * @param sumPrice the sumPrice to set
      */
-    public void setSumPrice(Long sumPrice) {
+    public void setSumPrice(long sumPrice) {
         this.sumPrice = sumPrice;
     }
     /**
@@ -206,6 +212,34 @@ public class OrderBill  implements Serializable {
      */
     public void setTypePayment(int typePayment) {
         this.typePayment = typePayment;
+    }
+    /**
+     * Get value of isDeleted.
+     * @return the isDeleted
+     */
+    public boolean isDeleted() {
+        return isDeleted;
+    }
+    /**
+     * Set the value for isDeleted.
+     * @param isDeleted the isDeleted to set
+     */
+    public void setDeleted(boolean isDeleted) {
+        this.isDeleted = isDeleted;
+    }
+    /**
+     * Get value of note.
+     * @return the note
+     */
+    public String getNote() {
+        return note;
+    }
+    /**
+     * Set the value for note.
+     * @param note the note to set
+     */
+    public void setNote(String note) {
+        this.note = note;
     }
 
 }
