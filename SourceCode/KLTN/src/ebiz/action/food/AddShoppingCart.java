@@ -50,7 +50,7 @@ public class AddShoppingCart extends BaseAction {
      */
     public ActionForward execute(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
-            throws Exception {
+        throws Exception {
 
         PrintWriter out = response.getWriter();
         boolean flag;
@@ -84,7 +84,7 @@ public class AddShoppingCart extends BaseAction {
                 // set info of product into session
                 se.setAttribute(CommonConstant.SHOPPING, shopCart);
                 int num = shopCart.remainNumber(Long.parseLong(id));
-                se.setAttribute("numberDisplay",num);
+                se.setAttribute("numberDisplay", num);
                 //retured data
                 out.println(shopCart.getCount() + " " + num);
                 }

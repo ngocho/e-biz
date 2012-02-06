@@ -49,14 +49,11 @@ public class CreateOrderBill extends BaseAction {
      */
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
-        OrderBillForm orderForm;
         OrderBill order = new OrderBill();
         HttpSession se = request.getSession();
         ShoppingCart shopCart = (ShoppingCart) se.getAttribute(CommonConstant.SHOPPING);
-        orderForm = shopCart.getOrder();
-        System.out.println("ID"+orderForm.getIdCustomer());
-        orderForm  = (OrderBillForm) form;
-        System.out.println("ID33333333"+orderForm.getIdCustomer());
+        //OrderBillForm orderForm = shopCart.getOrder();
+        OrderBillForm  orderForm = (OrderBillForm) form;
         shopCart.setOrder(orderForm);
         // billing
         order = FoodBLO.billing(shopCart);
@@ -70,7 +67,7 @@ public class CreateOrderBill extends BaseAction {
             // set orderForm into session
             se.setAttribute("bill", orderForm);
             se.removeAttribute("shop");
-            //call method to pay xu
+            // call method to pay xu
             return mapping.findForward(SUCCESS);
         }
         return mapping.findForward(FAILURE);

@@ -18,6 +18,9 @@
  */
 package ebiz.action.food;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -25,17 +28,11 @@ import javax.servlet.http.HttpSession;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
-import net.sf.jsr107cache.Cache;
-import net.sf.jsr107cache.CacheException;
-import net.sf.jsr107cache.CacheFactory;
-import net.sf.jsr107cache.CacheManager;
 
-import java.util.List;
-import java.util.ArrayList;
 import ebiz.action.BaseAction;
 import ebiz.blo.food.SearchBLO;
 import ebiz.form.FoodForm;
-import ebiz.form.SearchForm;;
+import ebiz.form.SearchForm;
 /**
  * @author ThuyNT
  */
@@ -64,9 +61,8 @@ public class Search extends BaseAction {
     		se.setAttribute("pageIndex", 1);
     		if(!formList.isEmpty()){
     		se.setAttribute("searchResult", formList);
+    		}
+    		}
     		return mapping.findForward(SUCCESS);
-    		}
-    		}
-    		return mapping.findForward(FAILURE);
     }
 }

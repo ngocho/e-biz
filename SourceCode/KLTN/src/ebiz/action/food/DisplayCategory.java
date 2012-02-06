@@ -37,6 +37,7 @@ import ebiz.dto.food.FoodAttribute;
 import ebiz.dto.food.FoodPriceLevel;
 import ebiz.form.FoodForm;
 import ebiz.form.Paging;
+import ebiz.form.FoodPriceForm;
 import ebiz.form.ProductVO;
 import ebiz.util.CommonConstant;
 
@@ -55,7 +56,7 @@ public class DisplayCategory extends BaseAction {
             HttpServletResponse response) throws Exception {
         HttpSession se = request.getSession();
         List<FoodAttribute> attrs = new ArrayList<FoodAttribute>();
-        List<FoodPriceLevel> prices = new ArrayList<FoodPriceLevel>();
+        List<FoodPriceForm> prices = new ArrayList<FoodPriceForm>();
         List<Paging> pageList = new ArrayList<Paging>();
         List<FoodForm> foods = new ArrayList<FoodForm>();
         ProductVO vo = new ProductVO();
@@ -72,9 +73,14 @@ public class DisplayCategory extends BaseAction {
         attrs = FoodBLO.getAttributeFoodList();
         se.setAttribute(CommonConstant.FOOD_CATEGORY_A, attrs);
 
-        // get type of price --> save in session
-        prices = FoodBLO.getPriceFoodList();
-        se.setAttribute(CommonConstant.FOOD_CATEGORY_P, prices);
+        // get type of price from session
+        prices = ( List<FoodPriceForm>)se.getAttribute(CommonConstant.FOOD_CATEGORY_P);
+        if(prices == null){
+        	List<FoodPriceLevel> listLevel = FoodBLO.getPriceFoodList();
+        	prices = FoodBLO.format(listLevel);
+            se.setAttribute(CommonConstant.FOOD_CATEGORY_P, prices);
+        }
+        
 
         // getproduct --> save in session
         HashMap<Integer, String> paging = new HashMap<Integer, String>();
@@ -89,6 +95,8 @@ public class DisplayCategory extends BaseAction {
         vo.setCol(CommonConstant.DEFAULT_COL);
         vo.setPage(CommonConstant.DEFAULT_PAGE);
         vo.setOrder(CommonConstant.DEFAULT_ORDER);
+        vo.setAttr("0");
+        vo.setPriceId("0");
         se.setAttribute(CommonConstant.PRODUCTVO, vo);
 
 //        System.out.println("SIZE OF FOOD" + foods.size());
