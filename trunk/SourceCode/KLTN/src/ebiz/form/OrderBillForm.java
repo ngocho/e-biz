@@ -56,7 +56,9 @@ public class OrderBillForm extends ValidatorForm implements Serializable {
     /**sumPrice  . */
     private long sumPrice;
     /**status  . */
-    private int status;
+    private String status;
+    /**status  Name. */
+    private String nameStatus;
     /**numberProduct  . */
     private int numberProduct;
     /**phoneWebsite  . */
@@ -91,7 +93,9 @@ public class OrderBillForm extends ValidatorForm implements Serializable {
         dateShip = CommonUtil.convertDateToString(order.getDateShip());
         sumPrice = order.getSumPrice();
         status = order.getStatus();
+        nameStatus = CustomerBLO.getNameStatusByID(order.getStatus());
         idEmployee = order.getIdEmployee();
+        note = order.getNote();
         isPayment = order.getTypePayment();
     }
     /**
@@ -113,6 +117,7 @@ public class OrderBillForm extends ValidatorForm implements Serializable {
         add.setStreetName(this.streetName);
         add.setWardName(this.wardName);
         order.setAddress(add);
+        order.setNote(this.note);
         order.setTypePayment(this.isPayment);
         return order;
     }
@@ -121,10 +126,10 @@ public class OrderBillForm extends ValidatorForm implements Serializable {
      * @param user              Customer
      */
     public void editCustomer(Customer user) {
-        idCustomer = user.getCustomerId();
-        nameCustomer = user.getCustomerName();
-        phone = user.getCustomerPhone();
-        email = user.getCustomerEmail();
+        this.idCustomer = user.getCustomerId();
+        this.nameCustomer = user.getCustomerName();
+        this.phone = user.getCustomerPhone();
+        this.email = user.getCustomerEmail();
         this.buildingName = user.getCustomerAddress().getBuildingName();
         this.districtName = user.getCustomerAddress().getDistrictName();
         this.homeNumber = user.getCustomerAddress().getHomeNumber();
@@ -289,14 +294,14 @@ public class OrderBillForm extends ValidatorForm implements Serializable {
      * Get value of status.
      * @return the status
      */
-    public int getStatus() {
+    public String getStatus() {
         return status;
     }
     /**
      * Set the value for status.
      * @param status the status to set
      */
-    public void setStatus(int status) {
+    public void setStatus(String status) {
         this.status = status;
     }
     /**
@@ -410,5 +415,19 @@ public class OrderBillForm extends ValidatorForm implements Serializable {
      */
     public void setIsPayment(int isPayment) {
         this.isPayment = isPayment;
+    }
+    /**
+     * Get value of nameStatus.
+     * @return the nameStatus
+     */
+    public String getNameStatus() {
+        return nameStatus;
+    }
+    /**
+     * Set the value for nameStatus.
+     * @param nameStatus the nameStatus to set
+     */
+    public void setNameStatus(String nameStatus) {
+        this.nameStatus = nameStatus;
     }
 }
