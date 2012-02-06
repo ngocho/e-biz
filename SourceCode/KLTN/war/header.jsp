@@ -82,7 +82,7 @@ Tiếng Anh
           href="category.vn?typeProduct=4"
           class="level-top">
 
-<span class="nav-text">Gia vị</span>
+<span class="nav-text">Trái cây</span>
         </a>
 
  <li class="level0 nav-2 level-top parent">

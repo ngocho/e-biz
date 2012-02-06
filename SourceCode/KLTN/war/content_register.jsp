@@ -8,10 +8,7 @@ $(document).ready(function(){
     //submit
      $("#register").click(function() {
         var flag =  validateCustomerRegister();
-        if(flag){
-            $("#registerForm").submit();
-        }
-        else{
+        if(!flag){
             return false;
         }
     });

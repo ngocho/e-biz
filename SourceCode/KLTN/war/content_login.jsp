@@ -7,15 +7,12 @@
 <%@taglib uri="http://java.sun.com/jstl/core" prefix="c"%>
 <script type="text/javascript">
 $(document).ready(function(){
-  /*   $("#login").click(function() {
+     $("#login").click(function() {
         var flag =  validateProviderLogin();
-        if(flag){
-            $("#loginForm").submit();
-        }
-        else{
+        if(!flag){
             return false;
         }
-    }); */
+    });
     
     $("#reset").click(function() {
         resetFormCustomer();
