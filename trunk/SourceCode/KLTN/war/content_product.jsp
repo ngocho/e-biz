@@ -15,7 +15,6 @@ $(document).ready(function(){
     });
 });
 </script>
-<!-- <div class="col-main"> -->
 <div style="width: 750px;">
 
 <div id="messages_product_view"></div>
@@ -23,11 +22,11 @@ $(document).ready(function(){
     <div class="product-essential">
     <logic:present name="DetailProduct">
     <form action="" method="post" id="product_addtocart_form">
-        <div class="no-display">
+<!--         <div class="no-display">
             <input name="product" value="52" type="hidden">
             <input name="related_product" id="related-products-field" value="" type="hidden">
         </div>
-
+ -->
 
        <div class="product-shop">
        <div id="price-slider-4913" class="price-slider">
@@ -58,35 +57,57 @@ $(document).ready(function(){
 </div>
 
             <div class="product-name">
-                <h1>Mã món ăn  : <bean:write name ="DetailProduct" property="id" /></h1>
+                <h1>Mã món ăn  : <span class="impressionText" ><bean:write name ="DetailProduct" property="id" /></span></h1>
             </div>
-            <div class="product_info">      
-                <table border="1" style="border-style:ridge;;border-width:2px; border-color:#98bf21;">
+            <div class="product_info" style="margin-top:0px;">      
+                <table border="1" style="border-style:ridge;;border-width:2px; border-color:black;">
             <tr>
             <th >Tên món ăn</th>
-            <td width="200" class="price" style="padding:3px;" > <bean:write name="DetailProduct" property="name" /></td>
+            <td width="200" style="padding:3px;" > <bean:write name="DetailProduct" property="name" /></td>
             </tr>
             <tr>
-            <th >Cửa hàng cung cấp</th>
-            <td width="200" class="price" style="padding:3px;" > <bean:write name="DetailProduct" property="idProvider" /></td>
+            <th >Cửa hàng:</th>
+            <td width="200" style="padding:3px;" > <bean:write name="DetailProduct" property="idProvider" /></td>
             </tr>
              <tr>
             <th class="old-price">Giá bình thường:</th>
-            <td width="200"  style="padding:3px;" > <span style="text-decoration:line-through;color:black;" class="price" id="old-price-52"> <bean:write name="DetailProduct" property="price" /> </span></td>
+            <td width="200"  style="padding:3px;" >
+              <c:choose>
+                  <c:when test="${DetailProduct.promoPrice != 0}">
+                   <span style="text-decoration:line-through;color:black;" class="price" id="old-price-52"> 
+                  </c:when>
+                  <c:otherwise>
+                   <span style="color:black;" class="price" id="old-price-52"> 
+                  </c:otherwise>
+                  </c:choose>
+             <bean:write name="DetailProduct" property="price" /> </span></td>
             </tr>
-            <tr>
+             <tr>
             <th  class="price-label">Giá khuyến mãi</th>
-            <td width="200" class="price" style="padding:3px;" >  <span
+            <c:choose>
+                  <c:when test="${DetailProduct.promoPrice != 0}">
+                  <td width="200" class="price" style="padding:3px;" >  <span
                   class="price" id="product-price-52"> <bean:write
                     name="DetailProduct" property="promoPrice" /> </span></td>
+                  </c:when>
+                  <c:otherwise>
+                 <td> <span style="text-decoration:line-through;color:black;color:red;"> Hết khuyến mãi</span></td>
+                  </c:otherwise>
+                  </c:choose>
             </tr>
-       <%--      <tr>
-            <th > Cung cấp năng lượng  </th>
-            <td width="200" style="padding:3px;"  > <bean:write name="DetailProduct" property="calo" /></td>
-            </tr> --%>
             <tr>
             <th > Số lượng </th>
-            <td  width="200" style="padding:3px;" > <span id="numberID" ><bean:write name="numberDisplay"  /></span></td>
+             <c:choose>
+                  <c:when test="${DetailProduct.number != 0}">
+                   <td  width="200" style="padding:3px;" > <span id="numberID" ><bean:write name="numberDisplay"  /></span></td>
+                  </c:when>
+                  <c:otherwise>
+                    <td  width="200" style="padding:3px;" > <span id="numberID" style="text-decoration:line-through;color:black;color:red;">Hết hàng</span></td>
+                  </c:otherwise>
+                  </c:choose>
+          
+            
+            
             </tr>
             <tr>
             <th > Cửa hàng  </th>
@@ -98,7 +119,7 @@ $(document).ready(function(){
 
         <div class="product-img-box">
             <p class="product-image ">
-  <a href ="#"  ><img  width="335" height="335" id="image" src="/serveImage.vn?urlKey=<bean:write name="DetailProduct" property="urlKey"/>" alt="Chair" title="Chair"></a></p>
+  <a href ="#"  ><img  width="335" height="315" id="image" src="/serveImage.vn?urlKey=<bean:write name="DetailProduct" property="urlKey"/>" alt="Chair" title="Chair"></a></p>
 <div class="more-views">
 </div>
         </div>

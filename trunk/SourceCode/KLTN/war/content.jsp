@@ -7,7 +7,7 @@
 <script type="text/javascript">
 $(document).ready(function(){
     $(".addShopping").click(function() {
-        addToCart(1,$(this).attr('name'));
+         addToCart(1,$(this).attr('name'));
         return false;
     });
 });

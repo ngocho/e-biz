@@ -3,6 +3,7 @@
 <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
 <%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@taglib uri="http://java.sun.com/jstl/core" prefix="c"%>
 <div class="col-left sidebar">
 
 <script type="text/javascript">
@@ -98,15 +99,31 @@ $(document).ready(function(){
                                                                     
                     <dd class="odd">
 <ol>
- <li>
-                <a href="/categoryRecord.vn">Tất cả
+  <li>
+  
+                <a href="/categoryRecord.vn?attr=0">
+                 <c:choose>
+                  <c:when test="${productVo.attr == '0'}">
+                  <span class="keepLink">Tất cả</span>
+                  </c:when>
+                  <c:otherwise>
+               Tất cả
+               </c:otherwise>
+               </c:choose>
                 </a>
                </li>
 <logic:present name="Attribute">
 <logic:iterate id="element" name="Attribute">
     <li>
                 <a href="/categoryRecord.vn?attr=<bean:write name="element" property="productAttributeId"/>">
-                <bean:write name="element"  property="productAttributeName" />
+                <c:choose>
+                 <c:when test="${productVo.attr == element.productAttributeId}">
+              	 <span class="keepLink"> <bean:write name="element"  property="productAttributeName" /></span>
+               	</c:when>
+               <c:otherwise>
+               <bean:write name="element"  property="productAttributeName" />
+               </c:otherwise>
+               </c:choose>
                 </a>
                </li>
 </logic:iterate>
@@ -117,13 +134,34 @@ $(document).ready(function(){
                     <dd class="even">
 <ol>
     <li>
-                <a href="#">Tất cả</a>
+                <a href="/categoryRecord.vn?price=0">
+                <c:choose>
+                  <c:when test="${productVo.priceId == '0'}">
+                  <span class="keepLink">Tất cả</span>
+                  </c:when>
+                  <c:otherwise>
+               Tất cả
+               </c:otherwise>
+               </c:choose>
+                </a>
                 </li>
 <logic:present name="Price">
 <logic:iterate id="element" name="Price">
     <li>
-                <a href="#"><span class="price"><bean:write name="element" property="startPrice"/></span> - <span class="price">
-<span class="price"><bean:write name="element" property="endPrice"/></span></a>
+                <a href="/categoryRecord.vn?price=<bean:write name="element" property="id"/>">
+                <c:choose>
+                 <c:when test="${productVo.priceId == element.id}">
+              	 <span  class="keepLink"><bean:write name="element" property="startPrice"/></span> - 
+<span   class="keepLink"><bean:write name="element" property="endPrice"/></span>
+               	</c:when>
+               <c:otherwise>
+               <span class="price" ><bean:write name="element" property="startPrice"/></span> - <span class="price">
+<span class="price"><bean:write name="element" property="endPrice"/></span>
+               </c:otherwise>
+               </c:choose>
+               
+
+</a>
                 </li>
 </logic:iterate>
 </logic:present > 

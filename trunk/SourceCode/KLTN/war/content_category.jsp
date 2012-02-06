@@ -8,7 +8,6 @@
 <script type="text/javascript">
 $(document).ready(function(){
     $(".addShopping").click(function() {
-    	alert("add");
         addToCart(1,$(this).attr('name'));
         return false;
     });
@@ -23,7 +22,7 @@ function slideSwitch() {
         $active = $('#slideshow  IMG:last');
 
     // use this to pull the images in the order they appear in the markup
-    var $next = $active.next().length ? $active.next() : $('#slideshow IMG:first');
+    var $next = $active.next().length ? $active.next() : $('#slideshow  IMG:first');
 
     // uncomment the 3 lines below to pull the images in random order
 
@@ -91,7 +90,7 @@ function slideSwitch() {
   opacity: 0.0;
 }
 
-#slideshow IMG.active {
+#slideshow  IMG.active {
   z-index: 10;
   opacity: 1.0;
 }
@@ -129,19 +128,16 @@ function slideSwitch() {
   <div id="slideshow">
     <logic:present name="Food">
       <logic:iterate id="element" name="Food" indexId="index" >
-        <%-- <a href="/displayProductDetail.vn?id=<bean:write name="element" property="id"/>">
-        --%>
            <c:choose>
                   <c:when test="${index == 0}">
-                     <img  width="300" height="200" src="/serveImage.vn?urlKey=<bean:write name="element" property="urlKey"/>"
+                    <img  width="300" height="200" src="/serveImage.vn?urlKey=<bean:write name="element" property="urlKey"/>"
           alt="Slideshow Image 1" class="active" /> 
                   </c:when>
                   <c:otherwise>
-                   <img  width="300" height="200" src="/serveImage.vn?urlKey=<bean:write name="element" property="urlKey"/>"
-          alt="Slideshow Image 1" /> 
+                 <img  width="300" height="200" src="/serveImage.vn?urlKey=<bean:write name="element" property="urlKey"/>"
+          alt="Slideshow Image 1" />
                   </c:otherwise>
                 </c:choose>
-       <!--    </a> -->
       </logic:iterate>
     </logic:present>
   </div>

@@ -5,6 +5,21 @@
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
 <%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic"%>
 <%@taglib uri="http://java.sun.com/jstl/core" prefix="c"%>
+<script type="text/javascript">
+$(document).ready(function(){
+    $("#uploadComment").click(function() {
+    	alert('uploadComment');
+    	updateComment($("#content").val());
+        return false;
+    });
+    
+    $("#content").focus(function() {
+    	//alert('js');
+    	 //$("#content").css(text-algin,left);
+    });
+    
+});
+</script>
 <div class="col-right">
   <div class="block block-cart">
     <c:if test="${user !=null}">
@@ -59,7 +74,7 @@
       </div>
         </c:if>
   </div>
-   <div class="block block-cart">
+   <div class="block" >
     <div class="block-title">
 
       <strong><span>GIỎ HÀNG</span> </strong> 
@@ -101,8 +116,8 @@
       <a href="/displayShoppingCart.vn"><strong><span>NẠP XU</span> </strong> </a>
     </div>
 		<div class="block-content">
-			<form name="money" action="" method="get">
-				Nhập mã nạp xu :<input type="text" name="xu" /><input  class="buttonBG"
+			<form name="money" action="" method="get" >
+				Nhập mã nạp xu :<br><input type="text" name="xu" /><input  class="buttonBG"
 					type="submit" value="Nạp xu"/>
 			</form>
 		</div>
@@ -114,10 +129,10 @@
     </div>
     <div class="block-content" style="background: white">
       <!--p class="empty">You have no items in your shopping cart.</p-->
-      <form name="comment" action="/uploadComment.vn"><!-- /* rows="10" cols="25"*/ -->
-       <textarea  rows="10" style="width:98%;text-align: left; " name="content" >
+      <form name="comment" action="/uploadComment.vn" style="clear: both">
+      <textarea id="content"  rows="10"  style="width:98%;vertical-align:left;padding-right: 0px;padding-left: 0px;" align=left name="content" >
 	   </textarea><br>
-   <input type="submit" value="Gởi ý kiến" class="buttonBG"></input>
+   <input type="submit" id="uploadComment" value="Gởi ý kiến" class="buttonBG"></input>
       </form>
 
     </div>
@@ -130,7 +145,7 @@
         alt="Hiển thị thông tin quảng cáo">
     </div>
   </div> -->
-  <script type="text/javascript">
+  <!-- <script type="text/javascript">
 //<![CDATA[
     function validatePollAnswerIsSelected()
     {
@@ -143,7 +158,7 @@
         return false;
     }
 //]]>
-</script>
+</script> -->
 
 
   <div class="block block-poll">
@@ -191,11 +206,11 @@
       </div>
     </form>
   </div>
-  <div class="paypal-logo">
+  <!-- <div class="paypal-logo">
     <a href="#"
       onclick="javascript:window.open(&#39;https://www.paypal.com/us/cgi-bin/webscr?cmd=xpt/Marketing/popup/OLCWhatIsPayPal-outside&#39;,&#39;paypal&#39;,&#39;width=600,height=350,left=0,top=0,location=no,status=yes,scrollbars=yes,resizable=yes&#39;); return false;"><img
       src="Images/Commons/bnr_nowAccepting_150x60.gif"
       alt="Các ngân hàng trực tuyến có thể thanh toán"
       title="Additional Options"> </a>
-  </div>
+  </div> -->
 </div>
