@@ -26,6 +26,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import ebiz.blo.customer.CustomerBLO;
+import ebiz.blo.food.SearchBLO;
+
+import net.sf.jsr107cache.Cache;
 
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
@@ -38,26 +41,51 @@ import ebiz.util.CommonConstant;
 
 /**
  * @author Administrator
- *
  */
 public class DisplayBill extends BaseAction {
+    /**
+     * [DisplayBill(Customer Account)].
+     *
+     * @param mapping ActionMapping
+     * @param form ActionForm
+     * @param request HttpServletRequest
+     * @param response HttpServletResponse
+     * @return ActionForward
+     * @throws Exception Exception
+     * @see ActionForward Struts1 Framework
+     */
+    @SuppressWarnings("unchecked")
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
-        HttpSession se =request.getSession();
-        LoginForm login;
-        String value = (String)request.getParameter("value");
-        login = (LoginForm)se.getAttribute("user");
+        HttpSession se = request.getSession();
+        String value = (String) request.getParameter("value");
+        String page = (String) request.getParameter("page");
+        LoginForm login = (LoginForm) se.getAttribute(CommonConstant.USER);
         int status = 0;
+        int pageIndex = 1;
+        List<String> pageList = new ArrayList<String>();
         List<OrderBillForm> formList = new ArrayList<OrderBillForm>();
-        if(value !=null){
+        if (page != null) {
+            pageIndex = Integer.parseInt(page);
+        }
+        if (value != null) {
             status = Integer.parseInt(value);
         }
-        //get form list
-        formList = CustomerBLO.getOrderBillFormList(login.getLoginId(),status);
-        //update status of OrderBill
-        login.setIsCustomerBill(status);
+        // get form list from Memcache
+        Cache cache = SearchBLO.getMemcache();
+        formList = (List<OrderBillForm>) cache.get("customerBillData");
+
+        if (formList == null || formList.isEmpty()) {
+            formList = CustomerBLO.getOrderBillFormList(login.getLoginId(), status);
+        }
+        pageList = SearchBLO.paging(formList.size());
+        formList = (List<OrderBillForm>) SearchBLO.getPage(formList, pageIndex);
+//        // update status of OrderBill
+//        login.setIsCustomerBill(status);
+        //save Bill in session to display
         se.setAttribute(CommonConstant.BILL, formList);
-        
+        //save PagingList in session to display
+        se.setAttribute("pagingList", pageList);
         return mapping.findForward(SUCCESS);
     }
 

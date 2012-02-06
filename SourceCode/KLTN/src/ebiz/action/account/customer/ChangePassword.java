@@ -40,8 +40,8 @@ import ebiz.util.CommonConstant;
 public class ChangePassword extends BaseAction {
 
     /**
-     * [Logout(Customer)].
-     * 
+     * [ChangePassword Action].
+     *
      * @param mapping ActionMapping
      * @param form ActionForm
      * @param request HttpServletRequest
@@ -54,15 +54,15 @@ public class ChangePassword extends BaseAction {
             HttpServletResponse response) throws Exception {
 
         HttpSession se = request.getSession();
-        ActionMessages messages = new ActionMessages();
         boolean flag = true;
+        ActionMessages messages = new ActionMessages();
         String oldPass = request.getParameter("oldPass");
         String newPass = request.getParameter("newPass");
         String reNew = request.getParameter("reNew");
         LoginForm user = (LoginForm) se.getAttribute(CommonConstant.USER);
-        // check validation
         String pass = user.getLoginPassword();
-        if(oldPass.equals("") || newPass.equals("")||reNew.equals("")){
+        // check validation
+        if (oldPass.equals("") || newPass.equals("") || reNew.equals("")) {
             messages.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage("changePassword.madatory"));
             saveMessages(request, messages);
             return mapping.findForward(FAILURE);
@@ -75,12 +75,12 @@ public class ChangePassword extends BaseAction {
             messages.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage("changePassword.duplicated"));
             flag = false;
         }
-        if(flag){
-        Customer customer = user.getCustomer();
-        flag = CustomerBLO.updatecustomer(customer);
         if (flag) {
-            return mapping.findForward(SUCCESS);
-        } 
+            Customer customer = user.getCustomer();
+            flag = CustomerBLO.updatecustomer(customer);
+            if (flag) {
+                return mapping.findForward(SUCCESS);
+            }
         }
         saveMessages(request, messages);
         return mapping.findForward(FAILURE);
