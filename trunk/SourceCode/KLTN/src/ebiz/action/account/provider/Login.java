@@ -71,6 +71,7 @@ public class Login extends BaseAction {
             // create session
             // luu user
             se.setAttribute(CommonConstant.PROVIDER, login);
+            se.setAttribute("idProvider", login.getLoginId());
             // shopping cart
 //            se.setAttribute(CommonConstant.SHOPPING, shop);
             se.setAttribute(CommonConstant.WELCOME, CommonConstant.WELCOME + login.getLoginId().toUpperCase());
