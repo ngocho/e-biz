@@ -74,7 +74,7 @@ Tiếng Anh
 </ul>
 
 </div>
-<form id="search_mini_form" action="#" method="get">
+<!-- <form id="search_mini_form" action="#" method="get">
 <fieldset class="form-search">
     <legend>Search Site</legend>
    <p>
@@ -85,7 +85,7 @@ Tiếng Anh
             type="image" onclick ="" />
         </p>
 </fieldset>
-</form> 
+</form>  -->
             </div>
       </div>
         <!-- ends .header -->
