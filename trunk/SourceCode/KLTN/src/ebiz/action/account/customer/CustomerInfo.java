@@ -30,6 +30,7 @@ import ebiz.action.BaseAction;
 import ebiz.blo.customer.CustomerBLO;
 import ebiz.dto.account.customer.Customer;
 import ebiz.form.LoginForm;
+import ebiz.util.CommonConstant;
 
 /**
  * @author ThuyNT
@@ -50,9 +51,12 @@ public class CustomerInfo extends BaseAction {
             HttpServletResponse response) throws Exception {
 
         HttpSession se = request.getSession();
-        LoginForm login = (LoginForm) se.getAttribute("user");
+        LoginForm login = (LoginForm) se.getAttribute(CommonConstant.USER);
+        //get Customer
         Customer customer = CustomerBLO.getCustomerByID(login.getLoginId());
-        login = login.editForm(customer);
+        //display Form
+        login.editForm(customer);
+        //set Form in session
         se.setAttribute("user", login);
         return mapping.findForward(SUCCESS);
     }

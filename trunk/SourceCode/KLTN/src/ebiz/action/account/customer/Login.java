@@ -39,6 +39,7 @@ public class Login extends BaseAction {
 
     /**
      * [Login(Customer)].
+     *
      * @param mapping ActionMapping
      * @param form ActionForm
      * @param request HttpServletRequest
@@ -49,12 +50,10 @@ public class Login extends BaseAction {
      */
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
-        // declare variables
+        HttpSession se = request.getSession();
+        LoginForm login = (LoginForm) form;
         int flag = -1;
         ActionMessages messages = new ActionMessages();
-        HttpSession se = request.getSession();
-        // after checked validation using xml file
-        LoginForm login = (LoginForm) form;
         // test exist in database
         flag = CustomerBLO.isLoginID(login.getLoginId(), login.getLoginPassword());
         if (flag == 1) {
@@ -66,13 +65,13 @@ public class Login extends BaseAction {
             se.removeAttribute("login");
             String screen = (String) se.getAttribute("screen");
             if (screen != null) {
-            if (screen.equals(CommonConstant.SCREEN_CHECKOUT)) {
-                se.removeAttribute("screen");
-            //checkout screen
-                return mapping.findForward(SUCCESS1);
+                if (screen.equals(CommonConstant.SCREEN_CHECKOUT)) {
+                    se.removeAttribute("screen");
+                    // checkout screen
+                    return mapping.findForward(SUCCESS1);
+                }
             }
-            }
-            //home screen
+            // home screen
             return mapping.findForward(SUCCESS);
         } else if (flag == -1) {
             // add error password wrong
