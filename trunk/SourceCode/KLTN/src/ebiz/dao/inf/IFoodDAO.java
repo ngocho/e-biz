@@ -38,6 +38,8 @@ public interface IFoodDAO {
 	
 	public boolean deleteFood(Food food);
 	
+	public boolean deleteFoodAll(Class<?> className);
+	
 	public boolean isFood(Long id);
 	
 	public List<Food> diplayPageFood(String col,
