@@ -27,8 +27,10 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import ebiz.action.BaseAction;
+import ebiz.blo.customer.CustomerBLO;
 import ebiz.dto.account.customer.Comment;
 import ebiz.form.LoginForm;
+import ebiz.util.CommonConstant;
 
 /**
  * @author ThuyNT
@@ -47,18 +49,21 @@ public class UploadComment extends BaseAction {
      */
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
-       String comment = request.getParameter("content");
-       if(comment != null){
-       String uid = null;
-       HttpSession se = request.getSession();
-       LoginForm user =(LoginForm) se.getAttribute("user");
-       if(user != null){
-    	   uid = user.getLoginId();
-       }
-       Comment userComment = new Comment();
-	   userComment.setComment(comment);
-	   userComment.setUid(uid);
-       }
+        String comment = request.getParameter("content");
+        if (comment != null) {
+            String uid = null;
+            HttpSession se = request.getSession();
+            LoginForm user = (LoginForm) se.getAttribute(CommonConstant.USER);
+            if (user != null) {
+                uid = user.getLoginId();
+            }
+            //create Comment
+            Comment userComment = new Comment();
+            userComment.setComment(comment);
+            userComment.setUid(uid);
+            //insert comment into database
+            CustomerBLO.saveComment(userComment);
+        }
         return mapping.findForward(SUCCESS);
 
     }

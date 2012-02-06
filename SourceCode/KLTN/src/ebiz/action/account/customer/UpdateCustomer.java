@@ -20,7 +20,6 @@ package ebiz.action.account.customer;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
@@ -33,31 +32,30 @@ import ebiz.form.LoginForm;
 
 /**
  * @author ThuyNT
- *
  */
 public class UpdateCustomer extends BaseAction {
 
     /**
-     * [Give the description for method].
+     * [UpdateCustomer].
+     *
+     * @param mapping ActionMapping
+     * @param form ActionForm
+     * @param request HttpServletRequest
+     * @param response HttpServletResponse
+     * @return ActionForward
+     * @throws Exception Exception
+     * @see ActionForward Struts1 Framework
      */
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
-//        HttpSession se = request.getSession();
         boolean flag;
-//        ShoppingCart shop = (ShoppingCart) se.getAttribute(CommonConstant.SHOPPING);
-//        LoginForm  user  = shop.getUser();
-//        user =(LoginForm) form;
         LoginForm user = (LoginForm) form;
-        System.out.println("NAME" + user.getLoginName());
-        System.out.println("ID" + user.getLoginId());
         Customer customer = user.getCustomer();
         flag = CustomerBLO.updatecustomer(customer);
         if (flag) {
-//            shop.setUser(user);
-            System.out.println("ID"+ user.getLoginId());
             return mapping.findForward(SUCCESS);
         }
-       return mapping.findForward(FAILURE);
+        return mapping.findForward(FAILURE);
     }
 
 }
