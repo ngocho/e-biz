@@ -24,7 +24,7 @@
 <!-- Definitions for Tiles documentation   -->
 
 <tiles-definitions>
-<!-- 3 columns -->
+<!-- start 3 columns base Layout -->
     <definition name="baseLayout" path="/baseLayout.jsp">
         <put name="title"  value="Sample Page Title" />
         <put name="header" value="/header.jsp" />
@@ -34,143 +34,181 @@
         <put name="left"   value="/left.jsp" />
         <put name="pankuzu"   value="/pankuzu.jsp" /> 
     </definition>
-<!-- 3 columns -->
-<!-- 1 columns -->
+<!-- end 3 columns base Layout -->
+
+<!-- start 1 columns baseLayout1-->
     <definition name="baseLayout1" path="/baseLayout1.jsp">
-        <put name="title" value="Shopping Cart" />
+        <put name="title" value="baseLayout1" />
         <put name="header" value="/header.jsp" />
         <put name="pankuzu"   value="/pankuzu.jsp" /> 
         <put name="content" value="/blank.jsp" />
         <put name="footer" value="/footer.jsp" />
     </definition>
-<!-- 1 columns -->   
+<!-- end 1 columns baseLayout1-->
+<!-- START CUSTOMER -->
+<!-- start Home  --> 
+    <definition name="home" extends="baseLayout">
+    </definition>
+<!-- end Home  --> 
+
+<!-- start Customer.Home Account --> 
+    <definition name="home_customer" extends="baseLayout1">
+		<put name="title" value="Customer Home" />
+		<put name="header" value="/customer_header.jsp" />
+		<put name="content" value="/content_customer_info.jsp" />
+    </definition>
+<!-- start Customer.Home --> 
+
+<!-- start Customer.login -->
     <definition name="loginLayout" extends="baseLayout">
-        <put name="title" value="Checkout" />
+        <put name="title" value="Login" />
         <put name="content" value="/content_login.jsp" />
     </definition>
+<!-- end Customer login -->
+
+<!-- start Customer.register -->
     <definition name="registerLayout" extends="baseLayout">
-        <put name="title" value="Checkout" />
+        <put name="title" value="Register" />
         <put name="content" value="/content_register.jsp" />
     </definition>
+<!-- end Customer.register -->
+
+<!-- start Customer.category -->
     <definition name="category" extends="baseLayout">
         <put name="title" value="Category" />
         <put name="left" value="/left_category.jsp" />
         <put name="content" value="/content_category.jsp" />
     </definition>
-    
+<!-- end Customer.category -->
+
+<!-- start Customer.shopping -->
     <definition name="shopping" extends="baseLayout1">
-     <put name="content" value="/content_shopping.jsp" />
+		<put name="title" value="Shopping" />
+		<put name="content" value="/content_shopping.jsp" />
     </definition>
-    
-      <definition name="shopping_detail" extends="baseLayout">
-      <put name="title" value="Provider Home" />
-      <put name="content" value="/content_detailShopping.jsp" />
-     </definition>
-     
-     <definition name="uploadImage" extends="baseLayout1">
-        <put name="title" value="Shopping Cart" />
-        <put name="content" value="/content_provider_uploadProduct.jsp" />
+<!-- end Customer.shopping -->
+
+<!-- start Customer.shopping_detail -->    
+    <definition name="shopping_detail" extends="baseLayout">
+		<put name="title" value="Detail Shopping" />
+		<put name="content" value="/content_detailShopping.jsp" />
     </definition>
-     <!-- start admin -->
-     <definition name="home_admin" extends="baseLayout1">
-      <put name="title" value="Admin Home" />
-      <put name="header" value="/header_admin.jsp" />
-      <put name="content" value="/content_login.jsp" />
-     </definition>
-     <!-- end admin -->
-      <!-- start provider -->
-      <definition name="home_provider_login" extends="baseLayout1">
-      <put name="title" value="Provider Login" />
-      <put name="left"   value="/left_provider.jsp" />
-      <put name="header" value="/header_provider.jsp" />
-      <put name="content" value="/content_provider_login.jsp" />
-     </definition>
-     <definition name="home_provider_register" extends="baseLayout1">
-      <put name="title" value="Provider Login" />
-      <put name="left"   value="/left_provider.jsp" />
-      <put name="header" value="/header_provider.jsp" />
-      <put name="content" value="/content_provider_register.jsp" />
-     </definition>
-       <definition name="home_provider_upload" extends="baseLayout1">
-      <put name="title" value="Provider Home" />
-      <put name="left"   value="/left_provider.jsp" />
-      <put name="header" value="/header_provider.jsp" />
-      <put name="content" value="/content_provider_uploadProduct.jsp" />
-     </definition>
-       <definition name="home_provider" extends="baseLayout1">
-      <put name="title" value="Provider Home" />
-      <put name="header" value="/header_provider.jsp" />
-      <put name="content" value="/content_provider_productInfo.jsp" />
-     </definition>
-      <!-- end provider -->
-     <definition name="search_result" extends="baseLayout1">
-      <put name="title" value="Provider Home" />
+<!-- end Customer.shopping_detail -->
+
+<!-- start Customer.Search Result --> 
+    <definition name="search_result" extends="baseLayout1">
+      <put name="title" value="Search Result" />
       <put name="content" value="/customer_search_result.jsp" />
-     </definition>
-       <definition name="home_customer" extends="baseLayout1">
-      <put name="title" value="Customer Home" />
-     <put name="header" value="/customer_header.jsp" />
-      <put name="content" value="/content_customer_info.jsp" />
-     </definition>
-     <!-- start Customer changePass 04/02/2012 -->
+    </definition>
+<!-- start Customer.Search Result -->
+
+<!-- start Customer.changePass -->
       <definition name="home_customer_changepass" extends="baseLayout1">
-      <put name="title" value="Customer Home" />
+      <put name="title" value="Customer Change Password" />
       <put name="header" value="/customer_header.jsp" />
       <put name="content" value="/content_customer_changepass.jsp" />
      </definition>
-      <!-- end Customer changePass 04/02/2012 -->
+<!-- end Customer.changePass -->
+<!-- start Customer.Bill List -->
      <definition name="home_content_bill" extends="baseLayout1">
       <put name="title" value="Customer Bill" />
        <put name="header" value="/customer_header.jsp" />
       <put name="content" value="/content_customer_bill.jsp" />
      </definition>
-      <definition name="home_customer_reOrder" extends="baseLayout1">
-      <put name="title" value="Customer ReOrder" />
-      <put name="content" value="/content_customer_reOrder.jsp" />
-     </definition>
-       
+<!-- end  Customer.Bill List -->
+
+<!-- start Customer.Checkout -->
     <definition name="checkout" extends="baseLayout">
         <put name="title" value="Checkout" />
         <put name="content" value="/content_checkout.jsp" />
     </definition>
+<!-- end Customer.Checkout -->
+
+<!-- start Customer.Bill -->
     <definition name="bill" extends="baseLayout">
-        <put name="title" value="Checkout" />
+        <put name="title" value="Bill" />
         <put name="content" value="/content_bill.jsp" />
     </definition>
-    <definition name="bill" extends="baseLayout">
-        <put name="title" value="Checkout" />
-        <put name="content" value="/content_bill.jsp" />
-    </definition>
+<!-- end Customer.Bill -->
+
+<!-- start Customer.Detail Product -->
     <definition name="product" extends="baseLayout">
         <put name="title"  value="Detail Product" />
         <put name="content"   value="/content_product.jsp" />
         <put name="left"   value="/blank.jsp" />
     </definition>
-    <definition name="home" extends="baseLayout">
+<!-- end Customer.Detail Product -->
+<!-- END CUSTOMER -->
+
+<!-- START PROVIDER -->
+<!-- start Provider.Home --> 
+	<definition name="home_provider" extends="baseLayout1">
+		<put name="title" value="Provider Home" />
+		<put name="header" value="/header_provider.jsp" />
+		<put name="content" value="/content_provider_productInfo.jsp" />
     </definition>
-    
-    
-   <!--  <definition name="baseLayout_product" path="/baseLayout_product.jsp">
-        <put name="header" value="/header.jsp" />
-        <put name="content"   value="/content_product.jsp" />
-        <put name="footer" value="/footer.jsp" />
-        <put name="right"   value="/right.jsp" />
-        <put name="pankuzu"   value="/pankuzu.jsp" /> 
-    </definition>-->
-    
- <!--   <definition name="baseLayout1" path="/ShoppingCart.jsp">
-        <put name="title" value="Shopping Cart" />
-        <put name="header" value="/header.jsp" />
-        <put name="content" value="/content_shopping.jsp" />
-    </definition> --> 
-   <!--  <definition name="shopping" extends="baseLayout">
-        <put name="content"   value="/content_shopping.jsp" />
-        <put name="left"   value="/blank.jsp" />
-        </definition>--> 
-    <!-- <definition name="shopping" extends="baseLayout1">
-    </definition>-->
-   
-    <!-- admin -->
-    
+<!-- end Provider.Home --> 
+
+<!-- start Provider.Login -->
+    <definition name="home_provider_login" extends="baseLayout1">
+		<put name="title" value="Provider Login" />
+		<put name="left"   value="/left_provider.jsp" />
+		<put name="header" value="/header_provider.jsp" />
+		<put name="content" value="/content_provider_login.jsp" />
+    </definition>
+<!-- start Provider.Login -->
+
+<!-- start Provider.Register -->
+     <definition name="home_provider_register" extends="baseLayout1">
+      <put name="title" value="Provider Register" />
+      <put name="left"   value="/left_provider.jsp" />
+      <put name="header" value="/header_provider.jsp" />
+      <put name="content" value="/content_provider_register.jsp" />
+     </definition>
+<!-- end Provider.Register -->
+
+<!-- start Provider.uploadImage -->   
+    <definition name="uploadImage" extends="baseLayout1">
+        <put name="title" value="Upload Image" />
+        <put name="content" value="/content_provider_uploadProduct.jsp" />
+    </definition>
+	
+<!-- end Provider.uploadImage --> 
+
+<!-- start Provider.uploadProduct --> 
+    <definition name="home_provider_upload" extends="baseLayout1">
+		<put name="title" value="Provider Upload Product" />
+		<put name="left"   value="/left_provider.jsp" />
+		<put name="header" value="/header_provider.jsp" />
+		<put name="content" value="/content_provider_uploadProduct.jsp" />
+    </definition>
+<!-- end Provider.uploadProduct --> 
+<!-- END PROVIDER -->
+
+
+
+<!-- START ADMIN -->
+<!-- start Admin.Login -->
+    <definition name="admin_login" extends="baseLayout1">
+		<put name="title" value="Admin Home" />
+		<put name="header" value="/admin_header.jsp" />
+		<put name="content" value="/admin_login.jsp" />
+    </definition>
+<!-- end Admin.Login -->
+
+<!-- start Admin.Home -->
+  <definition name="admin_home" extends="baseLayout1">
+		<put name="title" value="Admin Home" />
+		<put name="header" value="/admin_header.jsp" />
+		<put name="content" value="/admin_content_product.jsp" />
+    </definition>
+<!-- start Admin.Home -->
+<!-- END ADMIN -->
+
+    <definition name="home_customer_reOrder" extends="baseLayout1">
+		<put name="title" value="Customer ReOrder" />
+		<put name="content" value="/content_customer_reOrder.jsp" />
+    </definition>
+
 
 </tiles-definitions>

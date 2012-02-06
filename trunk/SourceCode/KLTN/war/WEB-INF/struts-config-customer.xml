@@ -21,6 +21,12 @@
     <action path="/registerCustomer" forward="registerLayout">
     </action>
 
+	<action path="/home" type="ebiz.action.Home" scope="session"
+		validate="false">
+		<forward name="success" path="home" redirect="true" />
+	</action>
+     
+
     <action input="loginLayout" 
 			path="/loginAction"
 			type="ebiz.action.account.customer.Login" 
