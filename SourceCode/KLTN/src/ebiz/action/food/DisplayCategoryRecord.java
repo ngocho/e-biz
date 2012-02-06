@@ -96,8 +96,9 @@ public class DisplayCategoryRecord extends BaseAction {
              paging = FoodBLO.toHashMap(pageList);
          }
         String filterCol = CommonConstant.FOOD_TYPE;
-        foods = FoodBLO.getFoodFormList(col,paging,order,record,page,filterCol,vo.getTypeProduct(),attr,price);
+        foods = FoodBLO.getFoodListCategory(col,paging,order,record,page,filterCol,vo.getTypeProduct(),attr,price);
         pageList = FoodBLO.updateStatusPaging(paging);
+        System.out.println("PAGE LIST" + pageList.size());
         //save in Session
         se.setAttribute(CommonConstant.FOOD_CATEGORY_F, foods);
         vo.setLimit(record);
