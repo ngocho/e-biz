@@ -41,6 +41,7 @@ import ebiz.form.SearchForm;;
  */
 public class Search extends BaseAction {
 
+    @SuppressWarnings("unchecked")
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
     		SearchForm searchForm = (SearchForm)form;
@@ -57,7 +58,7 @@ public class Search extends BaseAction {
     		pageList = SearchBLO.paging(formList.size());
     		System.out.println("pageList" + pageList.size());
     		//display first page
-    		formList = SearchBLO.getPage(formList, pageIndex);
+    		formList = (List<FoodForm>)SearchBLO.getPage(formList, pageIndex);
     		se.setAttribute("pageList", pageList);
     		se.setAttribute("searchForm",searchForm);
     		se.setAttribute("pageIndex", 1);

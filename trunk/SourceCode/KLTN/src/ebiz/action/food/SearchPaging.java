@@ -40,6 +40,7 @@ import ebiz.form.SearchForm;
  */
 public class SearchPaging extends BaseAction {
 
+    @SuppressWarnings("unchecked")
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
     		HttpSession se = request.getSession();
@@ -49,12 +50,13 @@ public class SearchPaging extends BaseAction {
     	    int pageIndex = Integer.parseInt(page);
     		List<FoodForm> formList = new ArrayList<FoodForm>();
     		Cache cache = SearchBLO.getMemcache();
-    		formList = (List<FoodForm>)cache.get("resultData");
+    		formList = (List<FoodForm>)cache.get("searchData");
+    		System.out.println("searchData"+formList.size());
     		//had 
-    		if(formList.isEmpty() || formList == null){
+    		if(formList == null || formList.isEmpty() ){
     			formList = SearchBLO.searchFullText(searchForm);
     		}
-    		formList = SearchBLO.getPage(formList, pageIndex);
+    		formList = (List<FoodForm>)SearchBLO.getPage(formList, pageIndex);
     		if(!formList.isEmpty()){
     		se.setAttribute("searchResult", formList);
     		return mapping.findForward(SUCCESS);
