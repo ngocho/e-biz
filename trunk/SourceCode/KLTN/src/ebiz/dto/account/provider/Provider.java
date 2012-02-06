@@ -28,42 +28,56 @@ import javax.jdo.annotations.PrimaryKey;
 import ebiz.dto.account.customer.Address;
 
 /**
- * @author ThuyNT
  *
+ * @author ThuyNT
+ * Provider
  */
 @PersistenceCapable
 public class Provider {
-  
-    //ten dang nhap
+    /**  . providerId*/
     @PrimaryKey
     @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
     private String providerId;
+    /**  . providerPassword*/
     @Persistent
     private String providerPassword;
+    /**  . providerName*/
     @Persistent
     private String providerName;
+    /**  . providerGender*/
     @Persistent
     private String providerGender;
+    /**  . providerBirth*/
     @Persistent
-    private Date providerBirth; 
+    private Date providerBirth;
+    /**  . providerEmail*/
     @Persistent
-    private String providerEmail;           //bat buoc
+    private String providerEmail;
+    /**  . providerPhone*/
     @Persistent
-    private String providerPhone;           //bat buoc
+    private String providerPhone;
+    /**  . providerAddress*/
     @Persistent(defaultFetchGroup = "true")
-    private Address providerAddress;        //bat buoc
+    private Address providerAddress;
+    /**  . providerAccountPayment*/
     @Persistent
-    private String providerAccountPayment;   
+    private String providerAccountPayment;
+    /**  . xuOnline*/
     @Persistent
     private long xuOnline;
+    /**  . authentication*/
     @Persistent
     private String authentication;
+    /**  . loginDate*/
     @Persistent
-    private Date loginDate; 
+    private Date loginDate;
+    /**  . dateRegister*/
     @Persistent
-    private Date dateRegister; 
+    private Date dateRegister;
+    /**  . detail*/
     @Persistent
-    private String detail; 
+    private String detail;
+    /**  . isActive*/
     @Persistent
     private boolean isActive;  //required
     /**
@@ -234,18 +248,7 @@ public class Provider {
     public void setLoginDate(Date loginDate) {
         this.loginDate = loginDate;
     }
-	public Date getDateRegister() {
-		return dateRegister;
-	}
-	public void setDateRegister(Date dateRegister) {
-		this.dateRegister = dateRegister;
-	}
-	public String getDetail() {
-		return detail;
-	}
-	public void setDetail(String detail) {
-		this.detail = detail;
-	}
+
     /**
      * Get value of isActive.
      * @return the isActive
@@ -260,6 +263,32 @@ public class Provider {
     public void setActive(boolean isActive) {
         this.isActive = isActive;
     }
-    
-    
+    /**
+     * Get value of dateRegister.
+     * @return the dateRegister
+     */
+    public Date getDateRegister() {
+        return dateRegister;
+    }
+    /**
+     * Set the value for dateRegister.
+     * @param dateRegister the dateRegister to set
+     */
+    public void setDateRegister(Date dateRegister) {
+        this.dateRegister = dateRegister;
+    }
+    /**
+     * Get value of detail.
+     * @return the detail
+     */
+    public String getDetail() {
+        return detail;
+    }
+    /**
+     * Set the value for detail.
+     * @param detail the detail to set
+     */
+    public void setDetail(String detail) {
+        this.detail = detail;
+    }
 }
