@@ -33,23 +33,30 @@ import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
  * @author ThuyNT
  */
 public class ServeImage extends BaseAction {
-    /**
-     * 
-     */
+    /** . declare BlobstoreService */
     private BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
+    /**
+     * [ServeImage(Display Image dynamic)].
+     *
+     * @param mapping ActionMapping
+     * @param form ActionForm
+     * @param request HttpServletRequest
+     * @param response HttpServletResponse
+     * @return ActionForward
+     * @throws Exception Exception
+     * @see ActionForward Struts1 Framework
+     */
 
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
-        HttpServletResponse response) throws Exception {
+            HttpServletResponse response) throws Exception {
         String urlKey = request.getParameter("urlKey");
-        if(urlKey != null ){
-            if(! urlKey.isEmpty()){
+        if (urlKey != null) {
+            if (!urlKey.isEmpty()) {
                 BlobKey blobKey = new BlobKey(urlKey);
                 blobstoreService.serve(blobKey, response);
             }
         }
         return null;
     }
-
-
 
 }

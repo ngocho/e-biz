@@ -31,38 +31,39 @@ import org.apache.struts.action.ActionMapping;
 import com.google.appengine.api.blobstore.BlobKey;
 import com.google.appengine.api.blobstore.BlobstoreService;
 import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
-import com.google.appengine.api.images.ImagesService;
-import com.google.appengine.api.images.ImagesServiceFactory;
 
 /**
  * @author ThuyNT
  */
 public class UploadImage extends BaseAction {
+    /** . declare BlobstoreService */
     private BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
-
+    /**
+     * [UploadImage Action].
+     *
+     * @param mapping ActionMapping
+     * @param form ActionForm
+     * @param request HttpServletRequest
+     * @param response HttpServletResponse
+     * @return ActionForward
+     * @throws Exception Exception
+     * @see ActionForward Struts1 Framework
+     */
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
-        HttpServletResponse response) throws Exception {
+            HttpServletResponse response) throws Exception {
         @SuppressWarnings("deprecation")
-        Map<String, BlobKey> blobs = blobstoreService.getUploadedBlobs(request);//.getUploadedBlobs(request);
-//      blobstoreService.createUploadUrl(")
+        Map<String, BlobKey> blobs = blobstoreService.getUploadedBlobs(request);
         BlobKey blobKey = blobs.get("myFile");
         HttpSession se = request.getSession();
-        if(blobKey != null){
-        String urlKey =  blobKey.getKeyString();
-//      BlobKey blobKey1 = new BlobKey(blobKey)
-        ImagesService imagesService = ImagesServiceFactory.getImagesService();
-       String urlImage =  imagesService.getServingUrl(blobKey);
-      
-       System.out.println("URLIMAGE : " + urlImage);
         if (blobKey != null) {
-//        	//url for mobile
-//            se.setAttribute("urlImage", urlImage);
-            //display Image(use BlobStore)
-            se.setAttribute("urlImageKey", urlKey);
-        }
+            // get Key
+            String urlKey = blobKey.getKeyString();
+            if (urlKey != null) {
+                // save in session
+                se.setAttribute("urlImageKey", urlKey);
+            }
         }
         return mapping.findForward(SUCCESS);
     }
-
 
 }
