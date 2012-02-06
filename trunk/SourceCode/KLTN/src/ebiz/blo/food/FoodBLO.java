@@ -34,6 +34,7 @@ import ebiz.dto.food.Food;
 import ebiz.dto.food.FoodAttribute;
 import ebiz.dto.food.FoodPriceLevel;
 import ebiz.form.FoodForm;
+import ebiz.form.FoodPriceForm;
 import ebiz.form.OrderBillForm;
 import ebiz.form.Paging;
 import ebiz.form.ShoppingCart;
@@ -143,11 +144,11 @@ public class FoodBLO {
             sql.append(" isDisplay == 1 ");
             sql.append(" &&  ");
             sql.append(colFilter + "== \'" + typeProduct + "\'");
-        if (attr != null) {
+        if (!attr.equals("0")) {
             sql.append(" &&  ");
             sql.append("productAttributeId == \'" + attr + "\'");
         }
-        if (price != null) {
+        if (!price.equals("0")) {
             sql.append(" &&  ");
             sql.append("foodPriceLevelId == \'" + price + "\'");
         }
@@ -722,6 +723,7 @@ public class FoodBLO {
        
         food.setNumberOrder(0);
         food.setFoodPriceLevelId(FoodBLO.getFoodIdPrice(food.getPrice()));
+        System.out.println("SETFOODPRICELEVELID" + food.getFoodPriceLevelId());
         return foodDao.saveFood(food);
     }
     
@@ -760,6 +762,28 @@ public class FoodBLO {
     public static List<FoodPriceLevel> getPriceFoodList() {
         return foodDao.getPriceList();
     }
+    public static String format(String s, int len){
+    	String result = s;
+    	
+    	if(s.length() - len > 0){
+    	result = s.substring(0, s.length() - len);
+    	System.out.println("Subtring" + result);
+    	result = result + "," + "000";
+    	}
+    	return result;
+    }
+    
+    public static List<FoodPriceForm> format(List<FoodPriceLevel> listLevel){
+    	List<FoodPriceForm> formList = new ArrayList<FoodPriceForm>();
+    	for(FoodPriceLevel level: listLevel){
+    		FoodPriceForm form = new FoodPriceForm();
+    		form.editForm(level);
+    		System.out.println("FOODFORM" + form.getId());
+    		formList.add(form);
+    	}
+    	return formList;
+    }
+    
     /**
      * [getFoodIdPrice].
      * @param money         long
