@@ -16,7 +16,8 @@
   <action-mappings>
     <action path="/loginCustomer" forward="loginLayout">
     </action>
-	
+	 <action path="/changePass" forward="home_customer_changepass">
+    </action>
     <action path="/registerCustomer" forward="registerLayout">
     </action>
 
@@ -92,7 +93,11 @@
             <forward name="success" path="home_customer" redirect="true" />
             <forward name="failure" path="home_customer_changepass" redirect="true" />
     </action>
-    <action path="/changePass" forward="home_customer_changepass">
+    
+     <action
+            path="/deleteBill"
+            type="ebiz.action.account.customer.BillStatus">
+            <forward name="success" path="home_customer" redirect="true" />
     </action>
     
  
