@@ -197,9 +197,9 @@ ul,ol         { list-style:none; }
 
 /* Global Styles ========================================================================= */
 /* Form Elements */
-input,select,textarea,button { font:12px/15px Arial, Helvetica, sans-serif; vertical-align:middle; color:#2f2f2f; }
+input,select,button { font:12px/15px Arial, Helvetica, sans-serif; vertical-align:middle; color:#2f2f2f; }
 input.input-text,select,textarea { background:#fff; border:1px solid #b6b6b6; }
-input.input-text,textarea { padding:2px; }
+input.input-text{ padding:2px; }
 select { padding:1px; }
 select option { padding-right:10px; }
 select.multiselect option { border-bottom:1px solid #b6b6b6; padding:2px 5px; }
@@ -760,7 +760,6 @@ tr.summary-details-excluded { font-style:italic; }
 .block .block-title {
     border-bottom:1px solid #ddd;
     padding:2px 9px;
-    background-color: url;
     background-image: url(../Images/Commons/bkg_header.jpg);
     background-repeat: repeat-x;
     background-position: 0 0;
@@ -1170,7 +1169,7 @@ tr.summary-details-excluded { font-style:italic; }
 .product-collateral .box-collateral { margin:0 0 25px; }
 
 /* Product Images */
-.product-view .product-img-box {height:345px; float:left; width:335px; border-style: ridge;border-color: red;}/*267 picture :306.337px; left: -20.6683px; top: -20.6683px;*/
+.product-view .product-img-box {height:315px; float:left; width:335px; border-style: ridge;border-color: red;}/*267 picture :306.337px; left: -20.6683px; top: -20.6683px;*/
 .col3-layout .product-view .product-img-box { float:none; margin:0 auto;  }
 .product-view .product-img-box .product-image {  margin-top :0px; }/*margin:0 0 5px;*/
 /*.product-view .product-img-box .product-image-zoom { position:relative; width:265px; height:265px; overflow:hidden; z-index:9; }*/
@@ -1194,13 +1193,14 @@ tr.summary-details-excluded { font-style:italic; }
 .product-image-popup .image-label { font-size:13px; font-weight:bold; margin:0 0 10px; color:#2f2f2f; }
 
 /* Product Shop */
-.product-view .product-shop { float:right; width:340px;height:345px; background:#80FFFF;border:2px solid #ddd;
+.product-view .product-shop { float:right; width:340px;height:320px; background:#80FFFF;border:2px solid #ddd;
 background:url(../Images/Commons/paper-heart-bg-500-1.jpg) 0 0 repeat-x;
 }
 /*display info of product*/
 .product-view .product-shop .product_info{
 font-size:17px;
-background:#33CC66;
+/* background:#33CC66; */
+margin-bottom: 0px;
 }
 .product-view .product-shop .product_info th {
   width:150px;
@@ -2003,8 +2003,8 @@ font-size: 13px;
   }
 /* thuynt add*/
 div.price-slider{width:342px;overflow:hidden;position:relative;}
-div.price-slider ul{position:relative;margin:0;padding:0;}
-div.price-slider li{width:342px;height:161px;float:left;list-style:none;background-color:transparent;text-align:center;margin:0;padding:0;}
+div.price-slider ul{position:relative;margin:0;padding:0;}/*161*/
+div.price-slider li{width:342px;height:140px;float:left;list-style:none;background-color:transparent;text-align:center;margin:0;padding:0;}
 .box-add-bag{background-image:url(../Images/Commons/"../images/bkg-add.png");background-position:left top;background-repeat:no-repeat;float:left;height:100px;width:342px;margin:0px 0 0 0;padding:0 0 0 0px;}
 .box-add-bag-int{float:left;height:100px;width:310px;margin:12px 0 0 15px;padding:0 0 0 0px;}
 .box-add-bag-int-title{float:left;height:20px;width:310px;margin:0px 0 0 0px;padding:0 0 0 0px;color:#ffffff;font:16px Georgia,Arial,sans-serif;font-style: italic;text-align: center;}
@@ -2180,3 +2180,12 @@ ul#thumbs img{
 .buttonBG {
  background:url(../Images/Commons/button_bg.gif);
 }
+.keepLink {
+	color:black;
+	font-weight: bold;
+}
+.impressionText {
+	color:red;
+	font-weight: bold;
+}
+	
