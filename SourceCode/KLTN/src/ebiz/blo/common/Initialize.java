@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import ebiz.blo.food.FoodBLO;
 import ebiz.dao.gae.FoodDAO;
 import ebiz.dao.inf.IFoodDAO;
 import ebiz.dto.food.Food;
@@ -118,17 +119,30 @@ public class Initialize {
 
     }
     public static void initializeFoodPriceLevel() {
+    	
+    	foodDao.deleteFoodAll(FoodPriceLevel.class);
+    	
         FoodPriceLevel level0 = new FoodPriceLevel();
-        level0.setFoodPriceLevelId("0");
-        level0.setStartPrice(new Long("1000"));
-        level0.setEndPrice(new Long("2000"));
+        level0.setFoodPriceLevelId("1");
+        level0.setStartPrice(0);
+        level0.setEndPrice(30000);
         foodDao.insertFoodPriceLevel(level0);
-       
-        FoodPriceLevel level1 = new FoodPriceLevel();
-        level1.setFoodPriceLevelId("1");
-        level1.setStartPrice(new Long("1000"));
-        level1.setEndPrice(new Long("2000"));
-        foodDao.insertFoodPriceLevel(level1);
+        
+        level0.setFoodPriceLevelId("2");
+        level0.setStartPrice(30000);
+        level0.setEndPrice(100000);
+        foodDao.insertFoodPriceLevel(level0);
+        
+        level0.setFoodPriceLevelId("3");
+        level0.setStartPrice(100000);
+        level0.setEndPrice(200000);
+        foodDao.insertFoodPriceLevel(level0);
+        
+        level0.setFoodPriceLevelId("4");
+        level0.setStartPrice(200000);
+        foodDao.insertFoodPriceLevel(level0);
+        
+        
     }
 //    public static void initializeFoodPromotion() {
 //        List<Food> foodList = new ArrayList<Food>();
