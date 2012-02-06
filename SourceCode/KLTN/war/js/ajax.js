@@ -25,6 +25,19 @@ function  addToCart(quantity,idProduct){
     
 }
 
+function  updateComment(content){
+    $.ajax({
+        type: "GET",
+        url: "/uploadComment.vn",
+        data: "content="+content,
+        dataType: "html",
+        async: false,
+        success: function(data){
+        	$("#content").val('');
+        }
+        });
+}
+
 function  resetFormCustomer(){
     $.ajax({
         type: "GET",
