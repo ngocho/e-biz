@@ -53,12 +53,13 @@ public class DisplayProduct extends BaseAction {
         String value = request.getParameter("value");
         System.out.println("typeProduct" + value);
         HttpSession se = request.getSession();
+        String idProvider = (String)se.getAttribute("idProvider");
         if (value == null) {
         //get all
             value = "0";
         }
         HashMap<Integer, String> paging = new HashMap<Integer, String>();
-        foods = FoodBLO.initFoodCategoryProvider(paging);
+        foods = FoodBLO.initFoodCategoryProvider(paging,idProvider);
         pageList = FoodBLO.updateStatusPaging(paging);
         //set attr into VO
         vo.setPagingList(pageList);

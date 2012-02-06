@@ -60,6 +60,7 @@ public class UploadProduct extends BaseAction {
 			provider = (ProviderForm) se.getAttribute("provider");
 
 			// set atrr into form
+			
 			foodForm.setIdProvider(provider.getLoginId());
 			System.out.println("UPLOAD" + foodForm.getUrlKey());
 
@@ -73,11 +74,15 @@ public class UploadProduct extends BaseAction {
 			boolean flagUpload = FoodBLO.uploadFood(food);
 			System.out.println("UPLOAD" + flagUpload);
 			if (flagUpload) {
+			    System.out.println(" Remove atrr" + flagUpload);
+			   // se.setAttribute("foodForm", foodForm);
 				//remove attr
+			    //foodForm.clear();
 				se.removeAttribute("foodForm");
 				se.removeAttribute("urlImage");
 				se.removeAttribute("urlImageKey");
 				request.setAttribute("fUpload", "1");
+				System.out.println(" 111111111111Remove atrr" + flagUpload);
 			}
 			return mapping.findForward(SUCCESS);
 		}
@@ -93,7 +98,6 @@ public class UploadProduct extends BaseAction {
 				se.removeAttribute("urlImageKey");
 				se.removeAttribute("foodForm");
 				se.removeAttribute("flagUpload");
-				request.setAttribute("fUpload", "1");
 				return mapping.findForward(SUCCESS1);
 			}
 

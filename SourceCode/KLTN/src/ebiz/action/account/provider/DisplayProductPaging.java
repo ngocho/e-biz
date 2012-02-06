@@ -67,6 +67,7 @@ public class DisplayProductPaging extends BaseAction {
 		status = (String) request.getParameter("value");
 		// session
 		HttpSession se = request.getSession();
+		String idProvider = (String)se.getAttribute("idProvider");
 		ProductVO vo = (ProductVO) se.getAttribute(CommonConstant.PROVIDERVO);
 		if (status == null) {
 			status = vo.getStatus();
@@ -93,7 +94,7 @@ public class DisplayProductPaging extends BaseAction {
 		}
 		// display FoodCategory
 		foods = FoodBLO.displayFoodCategoryProvider(col, paging, order, record,
-				page, filterCol, status,null,null);
+				page, filterCol, status,idProvider);
 		System.out.println("RESULT" + foods.size());
 		// update status of paging
 		pageList = FoodBLO.updateStatusPaging(paging);
