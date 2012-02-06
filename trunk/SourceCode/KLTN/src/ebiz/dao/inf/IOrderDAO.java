@@ -10,7 +10,7 @@ public interface IOrderDAO {
 	public boolean insertDetailOrder(DetailOrder order);
 
 	public OrderBill getOrderBillById(Long id);
-
+	public String getOrderStatusById(String id);
 //	public List<DetailOrder> getDetailOrderList(Long id);
 
 	public boolean deleteDetailOrderList(List<DetailOrder> list);
