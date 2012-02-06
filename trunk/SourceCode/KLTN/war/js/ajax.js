@@ -93,7 +93,6 @@ $.ajax({
 
 
 function  updateNumberProduct(idUpdate,numberUpdate, index){
-    alert("ajax");
     $.ajax({
         type: "GET",
         url: "/updateShoppingCart.vn",
