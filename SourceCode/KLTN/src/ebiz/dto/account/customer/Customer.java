@@ -27,54 +27,72 @@ import javax.jdo.annotations.PrimaryKey;
 
 /**
  * @author ThuyNT
- *
+ * Customer
  */
 @PersistenceCapable
 public class Customer  {
- 
     //ten dang nhap
+    /**  . customerId*/
     @PrimaryKey
     @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
     private String customerId;
+    /**  . customerPassword*/
     @Persistent
     private String customerPassword;
+    /**  . customerName*/
     @Persistent
     private String customerName;
+    /**  . customerGender*/
     @Persistent
     private String customerGender;
+    /**  . customerBirth*/
     @Persistent
-    private Date customerBirth; 
+    private Date customerBirth;
+    /**  . customerEmail*/
     @Persistent
     private String customerEmail;           //bat buoc
+    /**  . customerPhone*/
     @Persistent
     private String customerPhone;
+    /**  . customerAddress*/
     @Persistent(defaultFetchGroup = "true")
     private Address customerAddress;
+    /**  . customerType*/
     @Persistent
-    private String customerType;            // khach hang binh thuong, thanh vien, vip
+    private String customerType;
+    /**  . customerSumMoney*/
     @Persistent
     private long customerSumMoney;
+    /**  . customerMark*/
     @Persistent
-    private int customerMark;           //tich luy diem
+    private int customerMark;
+    /**  . isPay*/
     @Persistent
-    private boolean isPay;                  // tra tien chua?
+    private boolean isPay;
+    /**  . accountOnline*/
     @Persistent
     private long accountOnline;
+    /**  . payOnlineType*/
     @Persistent
-    private String payOnlineType;      //  
+    private String payOnlineType;
+    /**  . isAdEmail*/
     @Persistent
     private boolean isAdEmail;
+    /**  . isAdPhone*/
     @Persistent
     private boolean isAdPhone;
+    /**  . isActive*/
     @Persistent
     private boolean isActive;
+    /**  . xuOnline*/
     @Persistent
-    private long xuOnline;   // 100000 = 100k 
+    private long xuOnline;
+    /**  . loginDate*/
     @Persistent
     private Date loginDate;
+    /**  . url*/
     @Persistent
     private String  url;
-    
     /**
      * Get value of customerId.
      * @return the customerId
@@ -376,11 +394,18 @@ public class Customer  {
     public void setActive(boolean isActive) {
         this.isActive = isActive;
     }
-	public String getUrl() {
-		return url;
-	}
-	public void setUrl(String url) {
-		this.url = url;
-	}
-    
+    /**
+     * Get value of url.
+     * @return the url
+     */
+    public String getUrl() {
+        return url;
+    }
+    /**
+     * Set the value for url.
+     * @param url the url to set
+     */
+    public void setUrl(String url) {
+        this.url = url;
+    }
 }
