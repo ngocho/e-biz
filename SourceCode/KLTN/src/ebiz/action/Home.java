@@ -31,17 +31,27 @@ import org.apache.struts.action.ActionMapping;
 
 import ebiz.blo.food.FoodBLO;
 import ebiz.form.FoodForm;
+import ebiz.util.CommonConstant;
 
 /**
  * @author ThuyNT
  */
 public class Home extends BaseAction {
-
+    /**
+     * [Home action].
+     * @param mapping ActionMapping
+     * @param form ActionForm
+     * @param request HttpServletRequest
+     * @param response HttpServletResponse
+     * @return ActionForward
+     * @throws Exception Exception
+     * @see ActionForward Struts1 Framework
+     */
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
         HttpServletResponse response) throws Exception {
         HttpSession se = request.getSession();
         List<FoodForm> formList = new ArrayList<FoodForm>();
-        formList = FoodBLO.getFoodListByStatus(8,"1");
+        formList = FoodBLO.getFoodListByStatus(CommonConstant.HOME_NUMBER_DEFAUL, "1");
         if (!formList.isEmpty()) {
             se.setAttribute("promotionFood", formList);
         }
