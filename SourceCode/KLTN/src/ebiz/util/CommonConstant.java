@@ -30,10 +30,13 @@ public class CommonConstant {
     
     //save in session
     public  final static String USER    = "user";
+    public  final static String ADMIN    = "admin";
     public  final static String PROVIDER    = "provider";
     public  final static String SHOPPING    = "shop";
     public  final static String WELCOME    = "Chào mừng ";
     public final static String BILL ="bill";
+    public final static int SHORTDISPLAY =5;
+    
     //CUSTOMER for sending message prmotion
     public  final static String CODECUSTOMER_0    = "0";
     public  final static String PHONECUSTOMER   = "phone";
