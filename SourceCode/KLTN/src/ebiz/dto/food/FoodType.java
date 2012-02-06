@@ -24,28 +24,25 @@ import javax.jdo.annotations.PrimaryKey;
 
 /**
  * @author ThuyNT
- */
-
-/**
  * xac dinh loai thuc pham: rau xanh, sơ chế, nấu sẵn,..
  * 1 : prepared food
  * 2 : cooked food
  * 3 : vegetable
- * 4 : gia vi
+ * 4 : trai cay
  */
 @PersistenceCapable
 public class FoodType {
 
+    /** . */
     @PrimaryKey
     @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
     private String productTypeId;
-   
+    /** . */
     @Persistent
     private String productTypeName;
-   
     /**
      * Get value of productTypeId.
-     * 
+     *
      * @return the productTypeId
      */
     public String getProductTypeId() {
@@ -53,7 +50,7 @@ public class FoodType {
     }
     /**
      * Set the value for productTypeId.
-     * 
+     *
      * @param productTypeId the productTypeId to set
      */
     public void setProductTypeId(String productTypeId) {
@@ -61,7 +58,7 @@ public class FoodType {
     }
     /**
      * Get value of productTypeName.
-     * 
+     *
      * @return the productTypeName
      */
     public String getProductTypeName() {
@@ -69,7 +66,7 @@ public class FoodType {
     }
     /**
      * Set the value for productTypeName.
-     * 
+     *
      * @param productTypeName the productTypeName to set
      */
     public void setProductTypeName(String productTypeName) {
