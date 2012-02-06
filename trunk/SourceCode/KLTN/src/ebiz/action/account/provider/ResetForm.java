@@ -34,43 +34,50 @@ import ebiz.form.FoodForm;
  * @author ThuyNT
  */
 public class ResetForm extends BaseAction {
-	public ActionForward execute(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
+    /**
+     * [ResetForm ].
+     * @param mapping ActionMapping
+     * @param form ActionForm
+     * @param request HttpServletRequest
+     * @param response HttpServletResponse
+     * @return ActionForward
+     * @throws Exception Exception
+     * @see ActionForward Struts1 Framework
+     */
+    public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
+            HttpServletResponse response) throws Exception {
 
-		System.out.println("RESET");
-		response.setHeader("Cache-Control", "no-cache");
-		response.setContentType("text/xml; charset=utf-8");
-		response.setCharacterEncoding("utf-8");
-		String type = request.getParameter("type");
-		HttpSession se = request.getSession();
-        System.out.println("urlImageKey");
+        // set attr for response
+        response.setHeader("Cache-Control", "no-cache");
+        response.setContentType("text/xml; charset=utf-8");
+        response.setCharacterEncoding("utf-8");
+
+        String type = request.getParameter("type");
+        HttpSession se = request.getSession();
         se.removeAttribute("urlImageKey");
-		if ("0".equals(type)) {
-			ProviderForm pro = (ProviderForm) se.getAttribute("providerFormLogin");
-			System.out.println("providerForm" + pro);
-			if (pro != null) {
-				System.out.println(" remove providerForm");
-				se.removeAttribute("providerFormLogin");
-				pro = (ProviderForm) se.getAttribute("providerFormLogin");
-				System.out.println("FORM" + pro);
-			}
-		} else if("2".equals(type)) {
-			FoodForm food = (FoodForm) se.getAttribute("foodForm");
-			if (food != null) {
-				se.removeAttribute("foodForm");
-			}
-		} else if("1".equals(type)){
-		    System.out.println("providerForm");
-			ProviderForm food = (ProviderForm) se.getAttribute("providerForm");
-			//remove url Image
+        // reset form Login
+        if ("0".equals(type)) {
+            ProviderForm pro = (ProviderForm) se.getAttribute("providerFormLogin");
+            if (pro != null) {
+                se.removeAttribute("providerFormLogin");
+                pro = (ProviderForm) se.getAttribute("providerFormLogin");
+            }
+        } else if ("2".equals(type)) {
+            // reset form food
+            FoodForm food = (FoodForm) se.getAttribute("foodForm");
+            if (food != null) {
+                se.removeAttribute("foodForm");
+                se.removeAttribute("urlImageKey");
+            }
+        } else if ("1".equals(type)) {
+            // reset form register
+            ProviderForm food = (ProviderForm) se.getAttribute("providerForm");
+            if (food != null) {
+                se.removeAttribute("providerForm");
+            }
+        }
+        return null;
 
-			if (food != null) {
-				se.removeAttribute("providerForm");
-			}
-		}
-		return null;
-
-	}
+    }
 
 }

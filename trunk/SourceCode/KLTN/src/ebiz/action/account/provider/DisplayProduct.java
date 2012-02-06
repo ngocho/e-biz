@@ -42,42 +42,54 @@ import ebiz.util.CommonConstant;
  * @author ThuyNT
  */
 public class DisplayProduct extends BaseAction {
-
+    /**
+     * [DisplayProduct].
+     * @param mapping ActionMapping
+     * @param form ActionForm
+     * @param request HttpServletRequest
+     * @param response HttpServletResponse
+     * @return ActionForward
+     * @throws Exception Exception
+     * @see ActionForward Struts1 Framework
+     */
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
-        //declare variable
-    	ProductVO vo = new ProductVO();
+        // get param from request
+        String value = request.getParameter("value");
+        HttpSession se = request.getSession();
+        String idProvider = (String) se.getAttribute("idProvider");
+        // declare variable
+        ProductVO vo = new ProductVO();
         List<Paging> pageList = new ArrayList<Paging>();
         List<FoodForm> foods = new ArrayList<FoodForm>();
-        //get param
-        String value = request.getParameter("value");
-        System.out.println("typeProduct" + value);
-        HttpSession se = request.getSession();
-        String idProvider = (String)se.getAttribute("idProvider");
+        // get all
         if (value == null) {
-        //get all
             value = "0";
         }
         HashMap<Integer, String> paging = new HashMap<Integer, String>();
-        foods = FoodBLO.initFoodCategoryProvider(paging,idProvider);
+        // call method to display when first click
+        foods = FoodBLO.initFoodCategoryProvider(paging, idProvider);
+        // updated status of paging
         pageList = FoodBLO.updateStatusPaging(paging);
-        //set attr into VO
+        // set attrs into VO -> save in session
         vo.setPagingList(pageList);
         vo.setLimit(CommonConstant.DEFAULT_RECORD);
         vo.setCol(CommonConstant.DEFAULT_COL);
         vo.setPage(CommonConstant.DEFAULT_PAGE);
         vo.setOrder(CommonConstant.DEFAULT_ORDER);
         vo.setStatus(value);
-        //save in session
+        // save in session
         se.setAttribute(CommonConstant.PROVIDERVO, vo);
-        //short display
-        FoodBLO.shortDisplay(foods,5);
+        // short display
+        FoodBLO.shortDisplay(foods, CommonConstant.SHORTDISPLAY);
         // list food to display
         se.setAttribute(CommonConstant.PROVIDER_CATEGORY_F, foods);
-      //save attr in app scope
-        ProviderVO pvo = new ProviderVO();
-        getServlet().getServletContext().setAttribute("PVO", pvo);
-        System.out.println("PVO");
+        // save attr in app scope
+        ProviderVO pvo = (ProviderVO) getServlet().getServletContext().getAttribute("PVO");
+        if (pvo == null) {
+            pvo = new ProviderVO();
+            getServlet().getServletContext().setAttribute("PVO", pvo);
+        }
         return mapping.findForward(SUCCESS);
     }
 

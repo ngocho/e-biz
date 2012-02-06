@@ -33,14 +33,24 @@ import ebiz.form.ProviderForm;
  * @author ThuyNT
  */
 public class Logout extends BaseAction {
+    /**
+     * [Logout ].
+     * @param mapping ActionMapping
+     * @param form ActionForm
+     * @param request HttpServletRequest
+     * @param response HttpServletResponse
+     * @return ActionForward
+     * @throws Exception Exception
+     * @see ActionForward Struts1 Framework
+     */
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
         HttpSession se = request.getSession();
-        ProviderForm login = (ProviderForm)se.getAttribute("provider");
-       if(login != null){
-           se.invalidate();
-           return mapping.findForward(SUCCESS);
-       }
+        ProviderForm login = (ProviderForm) se.getAttribute("provider");
+        if (login != null) {
+            se.invalidate();
+            return mapping.findForward(SUCCESS);
+        }
         return mapping.findForward(FAILURE);
 
     }

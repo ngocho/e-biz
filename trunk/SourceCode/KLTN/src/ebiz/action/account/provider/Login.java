@@ -37,43 +37,30 @@ import ebiz.util.CommonConstant;
  * @author ThuyNT
  */
 public class Login extends BaseAction {
+    /**
+     * [Login ].
+     * @param mapping ActionMapping
+     * @param form ActionForm
+     * @param request HttpServletRequest
+     * @param response HttpServletResponse
+     * @return ActionForward
+     * @throws Exception Exception
+     * @see ActionForward Struts1 Framework
+     */
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
 
-        System.out.println("LOGIN");
         // after checked validation using xml file
         ProviderForm login = (ProviderForm) form;
-//        ShoppingCart shop = new ShoppingCart();
         ActionMessages messages = new ActionMessages();
         HttpSession se = request.getSession();
         int flag = -1;
-        // get type of login
-//        String type = request.getParameter("type");
-//       if (type == null) {
-//           type = "1";
-//       }
-//        int flag = -1;
-//        if ("1".equals(type)) {
-            System.out.println("TEST" + flag);
-            // dung ten de dang nhap
-            // kiem tra trong co so du lieu
-            flag = ProviderBLO.isLoginID(login.getLoginId(), login.getLoginPassword());
-//            login.setLoginName("nguyen thi thuy");
-            System.out.println("TEST" + flag);
-//        }
-//        } else {
-//            // dung email de dang nhap
-//            flag = CustomerBLO.testCustomerEmail(login.getEmail(), login.getLoginPassword());
-//        }
+        // test exist in database
+        flag = ProviderBLO.isLoginID(login.getLoginId(), login.getLoginPassword());
         if (flag == 1) {
-//            shop.setUser(login);
-            // success
-            // create session
-            // luu user
+            // save in session
             se.setAttribute(CommonConstant.PROVIDER, login);
             se.setAttribute("idProvider", login.getLoginId());
-            // shopping cart
-//            se.setAttribute(CommonConstant.SHOPPING, shop);
             se.setAttribute(CommonConstant.WELCOME, CommonConstant.WELCOME + login.getLoginId().toUpperCase());
             return mapping.findForward(SUCCESS);
         } else if (flag == -1) {
