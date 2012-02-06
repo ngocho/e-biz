@@ -54,7 +54,7 @@ public class CreateOrderBill extends BaseAction {
         ShoppingCart shopCart = (ShoppingCart) se.getAttribute(CommonConstant.SHOPPING);
         //OrderBillForm orderForm = shopCart.getOrder();
         OrderBillForm  orderForm = (OrderBillForm) form;
-        shopCart.setOrder(orderForm);
+       // shopCart.setOrder(orderForm);
         // billing
         order = FoodBLO.billing(shopCart);
         // transfer OrderBill-> form to display
