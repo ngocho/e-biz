@@ -29,6 +29,7 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
+import ebiz.blo.common.Initialize;
 import ebiz.blo.food.FoodBLO;
 import ebiz.form.FoodForm;
 import ebiz.util.CommonConstant;
@@ -52,6 +53,7 @@ public class Home extends BaseAction {
         HttpSession se = request.getSession();
         List<FoodForm> formList = new ArrayList<FoodForm>();
         formList = FoodBLO.getFoodListByStatus(CommonConstant.HOME_NUMBER_DEFAUL, "1");
+        Initialize.initializeFoodPriceLevel();
         if (!formList.isEmpty()) {
             se.setAttribute("promotionFood", formList);
         }
