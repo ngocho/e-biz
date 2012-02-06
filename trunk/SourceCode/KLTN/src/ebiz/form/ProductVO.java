@@ -49,6 +49,9 @@ public class ProductVO implements Serializable{
     
     private String numberFoodView;
     private String status;
+    
+    private String priceId;
+    private String attr;
 
     /**
      * Get value of limit.
@@ -168,4 +171,21 @@ public class ProductVO implements Serializable{
     public void setStatus(String status) {
         this.status = status;
     }
+
+	public String getPriceId() {
+		return priceId;
+	}
+
+	public void setPriceId(String priceId) {
+		this.priceId = priceId;
+	}
+
+	public String getAttr() {
+		return attr;
+	}
+
+	public void setAttr(String attr) {
+		this.attr = attr;
+	}
+
 }
