@@ -94,7 +94,9 @@ public class SearchBLO {
 	//count number of page
 	public static List<String> paging(int size){
 		List<String> list = new ArrayList<String>();
-		int div = size /10;
+		int div = 1;
+		if(size >10){
+		 div = size /10;
 		if(div % 10 > 0){
 			div = div + 1;
 		}
@@ -102,11 +104,15 @@ public class SearchBLO {
 		for(int i =1; i<= div; i++){
 			list.add(String.valueOf(i));
 		}
+		}
+		else{
+		    list.add(String.valueOf(1));
+		}
 		return list;
 	}
 	
-	public static List<FoodForm> getPage(List<FoodForm> foodList, int pageIndex){
-		List<FoodForm> resultList = new ArrayList<FoodForm>();
+	public static List<?> getPage(List<?> foodList, int pageIndex){
+		List<Object> resultList = new ArrayList<Object>();
 		int temp = pageIndex - 1;
 		int size = pageIndex * 10;
 		if(size > foodList.size()){
