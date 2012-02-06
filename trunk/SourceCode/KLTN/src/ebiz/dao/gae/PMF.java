@@ -32,14 +32,14 @@ public final class PMF {
      * Kiem tra su ton tai cua object trong database
      * 
      * @param className
-     * @param key
+     * @param string
      * @return boolean
      */
-    public static boolean isObject(Class<?> className, String key) {
+    public static boolean isObject(Class<?> className, String string) {
         PersistenceManager pm = getPMF();
         try {
 
-            pm.getObjectById(className, key);
+            pm.getObjectById(className, string);
         } catch (JDOObjectNotFoundException e) {
             return false;
         } finally {
@@ -271,13 +271,15 @@ public final class PMF {
      */
 
     @SuppressWarnings("unchecked")
-    public static List<?> getObjectList(Class<?> className, String col,HashMap<Integer, String> paging, String order,int record, int page,String filterCol, String typeProduct, String sql) {
+    public static List<?> getObjectList(Class<?> className, String col,HashMap<Integer, String> paging, String order,int record, int page,String sql) {
 		
         String cursorString = null;
 		StringBuffer filterSql = new StringBuffer();
-		filterSql.append("isDisplay == 1");
-		filterSql.append(" &&  ");
-		filterSql.append(filterCol + " == \'" + typeProduct + "\'");
+//		if(!("4".equals(typeProduct))){
+//		    filterSql.append("isDisplay == 1");
+//		    filterSql.append(" &&  ");
+//		}
+//		filterSql.append(filterCol + " == \'" + typeProduct + "\'");
 		filterSql.append(sql);
 		PersistenceManager pm = getPMF();
 		Cursor cursor;
@@ -322,7 +324,7 @@ public final class PMF {
      */
 
     @SuppressWarnings("unchecked")
-    public static List<?> getObjectListAll(Class<?> className, String col,HashMap<Integer, String> paging, String order,int record, int page) {
+    public static List<?> getObjectListAll(Class<?> className, String col,HashMap<Integer, String> paging, String order,int record, int page, String idProvider) {
         String cursorString = null;
         PersistenceManager pm = getPMF();
         Cursor cursor;
@@ -332,7 +334,7 @@ public final class PMF {
         Query query = pm.newQuery(className);
         query.setRange((record * (page - 1)), record * page);
         List<Object> results = new ArrayList<Object>();
-        query.setFilter("isDisplay == 1");
+        query.setFilter("providerID == \'" + idProvider +"\'");
         query.setOrdering(col + " " + order);
         System.out.println("SQL"+query);
         try {
@@ -356,24 +358,28 @@ public final class PMF {
     }
     
     @SuppressWarnings("unchecked")
-    public static List<?> displayPageFood(Class<?> className, String col,HashMap<Integer, String> paging, String order,int record, int page,String filterCol, String typeProduct, String attr, String price) {
+    public static List<?> displayPageFood(Class<?> className, String col,HashMap<Integer, String> paging, String order,int record, int page,String sql) {
         
         List<Object> results = new ArrayList<Object>();
         int count ;
         PersistenceManager pm = getPMF();
-        StringBuffer sql = new StringBuffer();
-        sql.append(" ");
-        if (attr != null) {
-            sql.append(" &&  ");
-            sql.append("productAttributeId == \'" + attr + "\'");
-        }
-        if (price != null) {
-            sql.append(" &&  ");
-            sql.append("foodPriceLevelId == \'" + price + "\'");
-        }
+//        StringBuffer sql = new StringBuffer();
+//        sql.append(" ");
+////        if(!("4".equals(typeProduct))){
+////            sql.append(" &&  ");
+////            sql.append("isDisplay == \'" + typeProduct + "\'");
+////        }
+//        if (attr != null) {
+//            sql.append(" &&  ");
+//            sql.append("productAttributeId == \'" + attr + "\'");
+//        }
+//        if (price != null) {
+//            sql.append(" &&  ");
+//            sql.append("foodPriceLevelId == \'" + price + "\'");
+//        }
         System.out.println("SQL "+sql);
         //re-count amount of page
-        Query query = pm.newQuery("select count(" + col + ")  from " + className.getName() + " where "+ filterCol +"  == \""+ typeProduct+ "\"  &&  isDisplay == 1 " +sql );
+        Query query = pm.newQuery("select count(" + col + ")  from " + className.getName() + " where " + sql );
         try {
                 count = (Integer)query.execute();
                 System.out.println("QUERY" +query.toString());
@@ -388,7 +394,7 @@ public final class PMF {
                 for( int  i =1; i<= div; i++){
                     paging.put(i, null);
                 }
-                results = (List<Object>) getObjectList(className,col,paging,order,record,page,filterCol, typeProduct,sql.toString());
+                results = (List<Object>) getObjectList(className,col,paging,order,record,page,sql);
 
         } finally {
             query.closeAll();
@@ -397,13 +403,13 @@ public final class PMF {
     }
     
     @SuppressWarnings("unchecked")
-    public static List<?> displayPageFoodAll(Class<?> className, String col,HashMap<Integer, String> paging, String order,int record, int page) {
+    public static List<?> displayPageFoodAll(Class<?> className, String col,HashMap<Integer, String> paging, String order,int record, int page, String idProvider) {
         
         List<Object> results = new ArrayList<Object>();
         int count ;
         PersistenceManager pm = getPMF();
         //re-count amount of page
-        Query query = pm.newQuery("select count(" + col + ")  from " + className.getName()+ " where isDisplay == 1" );
+        Query query = pm.newQuery("select count(" + col + ")  from " + className.getName() + " where providerID == \'" + idProvider + "\'") ;
         try {
                 count = (Integer)query.execute();
                 System.out.println("QUERY" +query.toString());
@@ -418,7 +424,7 @@ public final class PMF {
                 for( int  i =1; i<= div; i++){
                     paging.put(i, null);
                 }
-                results = (List<Object>) getObjectListAll(className,col,paging,order,record,page);
+                results = (List<Object>) getObjectListAll(className,col,paging,order,record,page, idProvider);
 
         } finally {
             query.closeAll();

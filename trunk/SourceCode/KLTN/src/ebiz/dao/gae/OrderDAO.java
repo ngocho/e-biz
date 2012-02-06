@@ -120,5 +120,20 @@ public class OrderDAO implements IOrderDAO {
             orderList = (List<OrderBill>)PMF.getObjectList(OrderBill.class);
             return orderList;
         }
+        /**
+         * [Explain the description for this method here].
+         * @param id
+         * @return
+         * @see ebiz.dao.inf.IOrderDAO#getOrderStatusById(java.lang.String)
+         */
+        @Override
+        public String getOrderStatusById(String id) {
+            OrderStatus orderStatus ;
+            orderStatus = (OrderStatus)PMF.getObjectById(OrderStatus.class, id);
+            if(orderStatus != null){
+                return orderStatus.getName();
+            }
+            return null;
+        }
         
 }

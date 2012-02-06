@@ -34,223 +34,192 @@ import ebiz.dto.food.FoodType;
  */
 public class FoodDAO implements IFoodDAO {
 
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<Food> getListFoodByValue(String col, String id) {
-		List<Food> foodList = new ArrayList<Food>();
-		foodList = (List<Food>) PMF.getObjectListByValue(Food.class, col, id);
-		return foodList;
-	}
-
-	@Override
-	public Food getFoodById(String key) {
-		Food food = null;
-		food = (Food) PMF.getObjectById(Food.class, key);
-		return food;
-	}
-
-	@Override
-	public Food getFoodById(Long key) {
-		Food food = null;
-		food = (Food) PMF.getObjectById(Food.class, key);
-		return food;
-	}
-
-	public static boolean upNumberFood(Long id, Integer number) {
-		Food food = null;
-		food = (Food) PMF.getObjectById(Food.class, id);
-		if (food != null) {
-			food.setNumber(food.getNumber() + number);
-			return true;
-		}
-		return false;
-	}
-
-	public static boolean downNumberFood(Long id, Integer number) {
-		Food food = null;
-		food = (Food) PMF.getObjectById(Food.class, id);
-		if (food != null) {
-			food.setNumber(food.getNumber() - number);
-			return true;
-		}
-		return false;
-	}
-
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<Food> getFoodListAll() {
-		List<Food> foodList = new ArrayList<Food>();
-		foodList = (List<Food>) PMF.getObjectList(Food.class);
-		return foodList;
-	}
-
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<Food> diplayPageFood(String col,
-			HashMap<Integer, String> paging, String order, int record,
-			int page, String filterCol, String typeProduct, String attr, String price) {
-		List<Food> foodList = new ArrayList<Food>();
-		foodList = (List<Food>) PMF.displayPageFood(Food.class, col, paging,
-				order, record, page, filterCol, typeProduct, attr, price);
-		return foodList;
-	}
-
-	@SuppressWarnings("unchecked")
+    @SuppressWarnings("unchecked")
     @Override
-    public List<Food> diplayFoodProviderAll(String col,
-            HashMap<Integer, String> paging, String order, int record,
-            int page) {
+    public List<Food> getListFoodByValue(String col, String id) {
         List<Food> foodList = new ArrayList<Food>();
-        foodList = (List<Food>) PMF.displayPageFoodAll(Food.class, col, paging,
-                order, record, page);
+        foodList = (List<Food>) PMF.getObjectListByValue(Food.class, col, id);
         return foodList;
     }
-	
-	@Override
-	public boolean saveFood(Food food) {
 
-		return PMF.insertObject(food);
+    @Override
+    public Food getFoodById(String key) {
+        Food food = null;
+        food = (Food) PMF.getObjectById(Food.class, key);
+        return food;
+    }
 
-	}
-
-	@Override
-	public boolean insertFoodAttribute(FoodAttribute food) {
-
-		return PMF.insertObject(food);
-
-	}
-
-	@Override
-	public boolean insertFoodStatus(FoodStatus food) {
-
-		return PMF.insertObject(food);
-
-	}
-
-	@Override
-	public boolean insertFoodType(FoodType food) {
-
-		return PMF.insertObject(food);
-
-	}
-
-	@Override
-	public boolean insertFoodPriceLevel(FoodPriceLevel food) {
-
-		return PMF.insertObject(food);
-
-	}
-
-	@Override
-	public boolean deleteFood(Food food) {
-		return PMF.delete(food);
-
-	}
-
-
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<String> getAttributeList(String col) {
-		List<String> foodProList = new ArrayList<String>();
-		foodProList = (List<String>) PMF.getColList(FoodAttribute.class, col);
-		return foodProList;
-
-	}
-
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<FoodPriceLevel> getPriceList() {
-
-		List<FoodPriceLevel> foodProList = new ArrayList<FoodPriceLevel>();
-		foodProList = (List<FoodPriceLevel>) PMF
-				.getObjectList(FoodPriceLevel.class);
-		return foodProList;
-
-	}
-
-	@Override
-	public boolean isFood(Long id) {
-		if (id != null) {
-			return PMF.isObject(Food.class, String.valueOf(id));
-		}
-		return false;
-	}
+    @Override
+    public Food getFoodById(Long key) {
+        Food food = null;
+        food = (Food) PMF.getObjectById(Food.class, key);
+        return food;
+    }
 
     /**
-     * [Explain the description for this method here].
-     * @return
+     * [upNumberFood].
+     * @param id Long
+     * @param number int
+     * @return boolean
+     */
+    public static boolean upNumberFood(Long id, int number) {
+        Food food = null;
+        food = (Food) PMF.getObjectById(Food.class, id);
+        if (food != null) {
+            food.setNumber(food.getNumber() + number);
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * [downNumberFood].
+     * @param id    Long
+     * @param number   int
+     * @return   boolean
+     */
+    public static boolean downNumberFood(Long id, int number) {
+        Food food = null;
+        food = (Food) PMF.getObjectById(Food.class, id);
+        if (food != null) {
+            food.setNumber(food.getNumber() - number);
+            return true;
+        }
+        return false;
+    }
+
+    @SuppressWarnings("unchecked")
+    @Override
+    public List<Food> getFoodListAll() {
+        List<Food> foodList = new ArrayList<Food>();
+        foodList = (List<Food>) PMF.getObjectList(Food.class);
+        return foodList;
+    }
+
+    @SuppressWarnings("unchecked")
+    @Override
+    public List<Food> diplayPageFood(String col, HashMap<Integer, String> paging, String order, int record, int page,
+            String sql) {
+        List<Food> foodList = new ArrayList<Food>();
+        foodList = (List<Food>) PMF.displayPageFood(Food.class, col, paging, order, record, page, sql);
+        return foodList;
+    }
+
+    @SuppressWarnings("unchecked")
+    @Override
+    public List<Food> diplayFoodProviderAll(String col, HashMap<Integer, String> paging, String order, int record,
+            int page, String idProvider) {
+        List<Food> foodList = new ArrayList<Food>();
+        foodList = (List<Food>) PMF.displayPageFoodAll(Food.class, col, paging, order, record, page, idProvider);
+        return foodList;
+    }
+
+    @Override
+    public boolean saveFood(Food food) {
+
+        return PMF.insertObject(food);
+
+    }
+
+    @Override
+    public boolean insertFoodAttribute(FoodAttribute food) {
+
+        return PMF.insertObject(food);
+
+    }
+
+    @Override
+    public boolean insertFoodStatus(FoodStatus food) {
+
+        return PMF.insertObject(food);
+
+    }
+
+    @Override
+    public boolean insertFoodType(FoodType food) {
+
+        return PMF.insertObject(food);
+
+    }
+
+    @Override
+    public boolean insertFoodPriceLevel(FoodPriceLevel food) {
+
+        return PMF.insertObject(food);
+
+    }
+
+    @Override
+    public boolean deleteFood(Food food) {
+        return PMF.delete(food);
+
+    }
+
+    @SuppressWarnings("unchecked")
+    @Override
+    public List<String> getAttributeList(String col) {
+        List<String> foodProList = new ArrayList<String>();
+        foodProList = (List<String>) PMF.getColList(FoodAttribute.class, col);
+        return foodProList;
+
+    }
+
+    @SuppressWarnings("unchecked")
+    @Override
+    public List<FoodPriceLevel> getPriceList() {
+
+        List<FoodPriceLevel> foodProList = new ArrayList<FoodPriceLevel>();
+        foodProList = (List<FoodPriceLevel>) PMF.getObjectList(FoodPriceLevel.class);
+        return foodProList;
+
+    }
+
+    @Override
+    public boolean isFood(Long id) {
+        if (id != null) {
+            return PMF.isObject(Food.class, String.valueOf(id));
+        }
+        return false;
+    }
+
+    /**
+     * [getFoodListByProviderStatus].
+     * @param idProvider String
+     * @param statusFood String
+     * @return  @SuppressWarnings("unchecked")
      * @see ebiz.dao.inf.IFoodDAO#getFoodListByProviderStatus()
+     * @SuppressWarnings
      */
     @SuppressWarnings("unchecked")
     @Override
     public List<Food> getFoodListByProviderStatus(String idProvider, String statusFood) {
         List<Food> foodList = new ArrayList<Food>();
-        foodList = (List<Food>)PMF.getObjectListByTwoValues(Food.class, "providerID", idProvider, "foodStatusId", statusFood);
+        foodList = (List<Food>) PMF.getObjectListByTwoValues(Food.class, "providerID", idProvider, "foodStatusId",
+                statusFood);
         return foodList;
     }
 
-    /**
-     * [Explain the description for this method here].
-     * @param id
-     * @return
-     * @see ebiz.dao.inf.IFoodDAO#getStatusNameByID(java.lang.String)
-     */
     @Override
     public String getStatusNameByID(String id) {
-        FoodStatus status = (FoodStatus)PMF.getObjectById(FoodStatus.class, id);
-        if(status !=null){
+        FoodStatus status = (FoodStatus) PMF.getObjectById(FoodStatus.class, id);
+        if (status != null) {
             return status.getFoodStatusName();
         }
         return null;
     }
 
-    /**
-     * [Explain the description for this method here].
-     * @return
-     * @see ebiz.dao.inf.IFoodDAO#getAttributeList()
-     */
     @SuppressWarnings("unchecked")
     @Override
     public List<FoodAttribute> getAttributeList() {
         List<FoodAttribute> list = new ArrayList<FoodAttribute>();
-        list = ( List<FoodAttribute>)PMF.getObjectList(FoodAttribute.class);
+        list = (List<FoodAttribute>) PMF.getObjectList(FoodAttribute.class);
         return list;
     }
     @SuppressWarnings("unchecked")
-	@Override
-	public List<Food> searchFoodByName(String searchText, String type, String attr, String price, String status){
-    	List<Food> foodList = new ArrayList<Food>();
-		foodList = (List<Food>) PMF.searchListFoodByName(Food.class, searchText, type, attr, price, status);
-		return foodList;
-	}
-
-	// /**
-	// * create bill using transaction : put task into taks queue
-	// * @param key
-	// * @return
-	// * @see ebiz.dao.inf.IFoodDAO#billing(ebiz.form.ShoppingCart)
-	// */
-	// @Override
-	// public boolean billing(ShoppingCart key) {
-	//
-	// DatastoreService ds = DatastoreServiceFactory.getDatastoreService();
-	// Queue queue = QueueFactory.getDefaultQueue();
-	// Transaction txn = ds.beginTransaction();
-	// try {
-	//
-	//
-	// // ...
-	//
-	// queue.add(TaskOptions.Builder.withUrl("/path/to/my/worker"));
-	//
-	// // ...
-	// txn.commit();
-	// } catch (DatastoreFailureException e) {
-	// txn.rollback();
-	// }
-	//
-	// return false;
-	// }
-
-
+    @Override
+    public List<Food> searchFoodByName(String searchText, String type, String attr, String price, String status) {
+        List<Food> foodList = new ArrayList<Food>();
+        foodList = (List<Food>) PMF.searchListFoodByName(Food.class, searchText, type, attr, price, status);
+        return foodList;
+    }
 }
