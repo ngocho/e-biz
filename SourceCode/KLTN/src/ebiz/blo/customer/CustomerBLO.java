@@ -21,15 +21,21 @@ package ebiz.blo.customer;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.sf.jsr107cache.Cache;
+
+import ebiz.blo.food.SearchBLO;
 import ebiz.dao.gae.CustomerDAO;
 import ebiz.dao.gae.OrderDAO;
+import ebiz.dao.gae.PMF;
 import ebiz.dao.inf.ICustomerDAO;
 import ebiz.dao.inf.IOrderDAO;
 import ebiz.dto.account.customer.Address;
 import ebiz.dto.account.customer.Comment;
 import ebiz.dto.account.customer.Customer;
+import ebiz.dto.account.provider.Provider;
 import ebiz.dto.checkout.DetailOrder;
 import ebiz.dto.checkout.OrderBill;
+import ebiz.dto.food.Food;
 import ebiz.form.OrderBillForm;
 import ebiz.util.CommonUtil;
 /**
@@ -105,6 +111,52 @@ public class CustomerBLO {
 //        objList.add(json1);
 //        return objList;
 //    }
+    /**
+     * [deleteFood].
+     * @param food          Food
+     * @return              boolean
+     */
+    public static boolean deleteBill(Long idBill) {
+        if (idBill != null) {
+            OrderBill bill = getBillById(idBill);
+            if (bill != null) {
+                bill.setDeleted(true);
+                System.out.println("DELETE");
+                if (saveBillById(bill) != null) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    
+    /**
+     * [deleteFood].
+     * @param food          Food
+     * @return              boolean
+     */
+    public static boolean deleteBill(OrderBill bill) {
+        return PMF.delete(OrderBill.class, bill.getId());
+    }
+    
+    /**
+     * [get Food by ID(Long type)].
+     * @param id Long
+     * @return Food
+     */
+    public static OrderBill getBillById(Long id) {
+        return orderDao.getOrderBillById(id);
+    }
+    
+    /**
+     * [get Food by ID(Long type)].
+     * @param id Long
+     * @return Food
+     */
+    public static OrderBill saveBillById(OrderBill bill) {
+        return orderDao.save(bill);
+    }
+
     
     /**
      * get Customer by ID
@@ -261,11 +313,18 @@ public class CustomerBLO {
         else{
         orderList = orderDao.getOrListByStatus(userId,value);
         }
+        
         for(OrderBill order :orderList ){
             OrderBillForm form = new OrderBillForm();
+            System.out.println("Danh sach "+orderList.size() + " status "+ order.isDeleted());
+            //display
+            if(!order.isDeleted()){
             form.editForm(order);
             formList.add(form);
+            }
         }
+        Cache cache = SearchBLO.getMemcache();
+        cache.put("customerBillData", formList);
         return formList;
     }
     //checkout by Xu account
@@ -279,6 +338,9 @@ public class CustomerBLO {
             }
         }
         return false;
+    }
+    public static String getNameStatusByID(String id){
+        return orderDao.getOrderStatusById(id);
     }
     
    /* public static long updateXuOnline(String idCustomer, String idXu){
