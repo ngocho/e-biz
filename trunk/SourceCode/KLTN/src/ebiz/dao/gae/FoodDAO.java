@@ -222,4 +222,12 @@ public class FoodDAO implements IFoodDAO {
         foodList = (List<Food>) PMF.searchListFoodByName(Food.class, searchText, type, attr, price, status);
         return foodList;
     }
+    
+    @SuppressWarnings("unchecked")
+    @Override
+    public boolean deleteFoodAll(Class<?> className) {
+        List<Object> list = new ArrayList<Object>();
+        list = ( List<Object>)PMF.getObjectList(className);
+;       return PMF.deleteAll(list);
+    }
 }
