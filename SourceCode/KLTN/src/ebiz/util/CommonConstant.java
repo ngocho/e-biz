@@ -64,12 +64,12 @@ public class CommonConstant {
     public final static String TYPE_2  = "2";       //cooked food
     public final static String TYPE_3  = "3";      //vegatable
     //BILL STATUS
-    public final static Integer BILLSTATUS_0 = 0;  //assign for employee
-    public final static Integer BILLSTATUS_1 = 1;  //not paid money(order) or reOrder
-    public final static Integer BILLSTATUS_2 = 2;  //not rececive (paid money)
-    public final static Integer BILLSTATUS_3 = 3;  // paid money
-    public final static Integer BILLSTATUS_4 =4;  //rececive
-    public final static Integer BILLSTATUS_5 =5;  //cancel
+    public final static String BILLSTATUS_0 = "0";  //assign for employee
+    public final static String BILLSTATUS_1 = "1";  //not paid money(order) or reOrder
+    public final static String BILLSTATUS_2 = "2";  //not rececive (paid money)
+    public final static String BILLSTATUS_3 = "3";  // paid money
+    public final static String BILLSTATUS_4 ="4";  //rececive
+    public final static String BILLSTATUS_5 ="5";  //cancel
     //DISPLAY CATEGORY
     public final static String FOOD_TYPE =   "foodTypeId";  
     public final static String FOOD_STATUS =   "foodStatusId";  
@@ -84,7 +84,8 @@ public class CommonConstant {
     public final static String PRODUCTVO =  "productVo"; 
     public final static String PROVIDER_CATEGORY_F =   "providerFood";  
     public final static String PROVIDERVO=  "providerVo"; 
-    
+    //Home Action
+    public final static int HOME_NUMBER_DEFAUL = 8;
     //DISPLAY PRODUCT DETAIL
     public final static String FOOD_DETAIL_PRODUCT = "DetailProduct"; 
     //screen
