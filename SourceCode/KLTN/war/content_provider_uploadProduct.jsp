@@ -111,8 +111,8 @@
     <form name="uploadImage"
       action="<%=blobstoreService.createUploadUrl("/uploadImage.vn")%>"
       method="post" enctype="multipart/form-data">
-      <input type="file" name="myFile" class="buttonBG"> <input
-        id="uploadAction" type="submit" value="Upload Hình"
+      <input type="file" name="myFile" class="buttonBG"> 
+      <input  id="uploadAction" type="submit" value="Upload Hình"
         class="buttonBG">
     </form>
 

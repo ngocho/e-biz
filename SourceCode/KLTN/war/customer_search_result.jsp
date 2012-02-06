@@ -13,6 +13,10 @@ $(document).ready(function(){
 });
 </script>
 <h1>KẾT QUẢ TÌM KIẾM</h1>
+<logic:empty name="searchResult">
+<span style="color:red;">Không có kết quả nào</span>
+</logic:empty>
+<logic:notEmpty name="searchResult">
       <div class="pager">
         <p class="amount">
           <strong>Page: &nbsp;</strong> <span> 
@@ -25,14 +29,14 @@ $(document).ready(function(){
             <logic:present name="pageList" >
               <logic:iterate id="element"  name="pageList">
                 <c:choose>
-                  <c:when test="${element ==1}">
+                  <c:when test="${element == pageIndex}">
                     <a
-                      href="/categoryProviderRecord.vn?page=<bean:write name="element" />"><bean:write
-                        name="element" /></a>
+                      href="/categoryProviderRecord.vn?page=<bean:write name="element" />"><span style="color:blue"><bean:write
+                        name="element" /></span></a>
 
                   </c:when>
                   <c:otherwise>
-                   |  <a
+                    <a
                       href="/categoryProviderRecord.vn?page=<bean:write name="element" />"><bean:write
                         name="element" /> </a>
                   </c:otherwise>
@@ -45,6 +49,7 @@ $(document).ready(function(){
 
        
       </div>
+      </logic:notEmpty> 
 
      <%--  <!-- hidden fields -->
           <input type="hidden" name="col" id="col"

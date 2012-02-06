@@ -6,12 +6,6 @@
 <%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
 <div class="header">
   <div class="header-row1" id="headerHome">
-
-    <!-- <div class="logo-sidenote">
-      <p>
-        <a href="/registerCustomer.vn">Hãy đăng kí để thuận tiện khi mua hàng!</a>
-      </p>
-    </div> -->
     <ul class="super-links" style="" id="customer_super_links">
       <li>Lựa chọn ngôn ngữ 
 <select>
@@ -24,27 +18,6 @@ Tiếng Anh
 
 </select>
 </li>
-
-  
-<%--       <c:if test="${user ==null}">
-      <li class="first" style=""><a href="/loginCustomer.vn">Đăng nhập</a>        </li> --%>
-<%--  <%--      </c:if> 
-      <c:if test="${user !=null}">
-      <li class="first"><a href="/logoutCustomer.vn">Đăng xuất</a>        </li>
-      </c:if>
-        <li>
-            <a href="/registerCustomer.vn">Đăng kí</a>        </li> --%>
-      </ul>
-<%-- <div class="block-cart_header">
-      <a id="current_cart_items_count" href="/displayShoppingCart.vn"
-        class="count"> <logic:present name="shop">
-          <bean:write name="shop" property="count" />
-        </logic:present> </a>
-     <!--  <h3>
-        <a href="/displayShoppingCart.vn"></a>
-      </h3>
-    <a href="/checkAuthentication.vn"" class="link-checkout"></a> -->
-    </div> --%>
  </div>
  <div class="header-row2">
                 
@@ -104,17 +77,20 @@ Tiếng Anh
 
 </ul>
 </div>
-<form id="search_mini_form" action="#" method="get">
+ <html:form action="/search.vn" method="GET">
 <fieldset class="form-search">
     <legend>Search Site</legend>
    <p>
-          <input class="input-text input-reset inactive" name="q"
-            value="Nhập tên thức ăn" onfocus=" this.value='' ;"
-            type="text" />
+   <html:text property="searchText" size="32" value="Nhập tên thức ăn" onfocus="this.value='' ;" styleClass="input-text input-reset inactive" />
+            <html:hidden property="type" value="0"/>
+             <html:hidden property="attr" value="0"/>
+              <html:hidden property="price" value="0"/>
+               <html:hidden property="status" value="0"/>
+
     <input src="Images/Commons/btn_go.png" alt="Tìm kiếm" class="btn"
             type="image" onclick ="" />
         </p>
 </fieldset>
-</form> 
+</html:form>
             </div>
       </div>
