@@ -89,7 +89,7 @@ public class Food {
     private int saleProduct;
     /** . uploadDate*/
     @Persistent
-    private int uploadDate;
+    private Date uploadDate;
     /** . approved product */
     @Persistent
     private int isDisplay;
@@ -358,7 +358,7 @@ public class Food {
      *
      * @return the uploadDate
      */
-    public int getUploadDate() {
+    public Date getUploadDate() {
         return uploadDate;
     }
     /**
@@ -366,7 +366,7 @@ public class Food {
      *
      * @param uploadDate the uploadDate to set
      */
-    public void setUploadDate(int uploadDate) {
+    public void setUploadDate(Date uploadDate) {
         this.uploadDate = uploadDate;
     }
     /**
