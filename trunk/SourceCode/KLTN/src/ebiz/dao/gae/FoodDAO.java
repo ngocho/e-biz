@@ -98,19 +98,19 @@ public class FoodDAO implements IFoodDAO {
 
     @SuppressWarnings("unchecked")
     @Override
-    public List<Food> diplayPageFood(String col, HashMap<Integer, String> paging, String order, int record, int page,
+    public List<Food> diplayPageFood(String col, List<String> numberPageList, String order, int record, int page,
             String sql) {
         List<Food> foodList = new ArrayList<Food>();
-        foodList = (List<Food>) PMF.displayPageFood(Food.class, col, paging, order, record, page, sql);
+        foodList = (List<Food>) PMF.displayPageFood(Food.class, col, numberPageList, order, record, page, sql);
         return foodList;
     }
 
     @SuppressWarnings("unchecked")
     @Override
-    public List<Food> diplayFoodProviderAll(String col, HashMap<Integer, String> paging, String order, int record,
-            int page, String idProvider) {
+    public List<Food> diplayFoodCategoryAll(String col, List<String> numberPageList, String order, int record,
+            int page, String sql) {
         List<Food> foodList = new ArrayList<Food>();
-        foodList = (List<Food>) PMF.displayPageFoodAll(Food.class, col, paging, order, record, page, idProvider);
+        foodList = (List<Food>) PMF.displayPageFoodAll(Food.class, col, numberPageList, order, record, page, sql);
         return foodList;
     }
 
@@ -204,6 +204,16 @@ public class FoodDAO implements IFoodDAO {
         FoodStatus status = (FoodStatus) PMF.getObjectById(FoodStatus.class, id);
         if (status != null) {
             return status.getFoodStatusName();
+        }
+        return null;
+    }
+    
+    @Override
+    public String getNameTypeById(String id) {
+        FoodType type = (FoodType) PMF.getObjectById(FoodType.class, id);
+        System.out.println("FOODTYPE" + type);
+        if (type != null) {
+            return type.getProductTypeName();
         }
         return null;
     }

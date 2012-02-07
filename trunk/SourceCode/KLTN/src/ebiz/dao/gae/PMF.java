@@ -1,19 +1,13 @@
 package ebiz.dao.gae;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.jdo.JDOHelper;
 import javax.jdo.JDOObjectNotFoundException;
 import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Query;
-
-import org.datanucleus.store.appengine.query.JDOCursorHelper;
-
-import com.google.appengine.api.datastore.Cursor;
 public final class PMF {
     public static final PersistenceManagerFactory pmfInstance = JDOHelper
             .getPersistenceManagerFactory("transactions-optional");
@@ -271,44 +265,16 @@ public final class PMF {
      */
 
     @SuppressWarnings("unchecked")
-    public static List<?> getObjectList(Class<?> className, String col,HashMap<Integer, String> paging, String order,int record, int page,String sql) {
-		
-        String cursorString = null;
-		StringBuffer filterSql = new StringBuffer();
-//		if(!("4".equals(typeProduct))){
-//		    filterSql.append("isDisplay == 1");
-//		    filterSql.append(" &&  ");
-//		}
-//		filterSql.append(filterCol + " == \'" + typeProduct + "\'");
-		filterSql.append(sql);
+    public static List<?> getObjectList(Class<?> className, String col, String order,int record, int page,String sql) {
 		PersistenceManager pm = getPMF();
-		Cursor cursor;
-		if (paging.containsKey(page)) {
-			cursorString = paging.get(page);
-		}
 		Query query = pm.newQuery(className);
 		query.setRange((record * (page - 1)), record * page);
 		List<Object> results = new ArrayList<Object>();
-		//add
-//		 query.setFilter("isDisplay == 1");
-		 //end
-		query.setFilter(filterSql.toString());
-//		query.declareParameters("String param");
+		query.setFilter(sql);
 		query.setOrdering(col + " " + order);
-		System.out.println("QUERY" + query);
+		System.out.println("QUERY !!!!!!!!!!!!!!" + query);
 		try {
-            if (cursorString == null) { // first page
                 results = (List<Object>) query.execute();
-                cursor = JDOCursorHelper.getCursor(results);
-            } else {
-                cursor = Cursor.fromWebSafeString(cursorString);
-                Map<String, Object> extensionMap = new HashMap<String, Object>();
-                extensionMap.put(JDOCursorHelper.CURSOR_EXTENSION, cursor);
-                query.setExtensions(extensionMap);
-                results = (List<Object>) query.execute();
-            }
-            cursorString = cursor.toWebSafeString();
-            paging.put(page, cursorString);
 
         } finally {
             query.closeAll();
@@ -324,32 +290,18 @@ public final class PMF {
      */
 
     @SuppressWarnings("unchecked")
-    public static List<?> getObjectListAll(Class<?> className, String col,HashMap<Integer, String> paging, String order,int record, int page, String idProvider) {
-        String cursorString = null;
+    public static List<?> getObjectListAll(Class<?> className, String col,List<String> numberPageList, String order,int record, int page, String sql) {
         PersistenceManager pm = getPMF();
-        Cursor cursor;
-        if (paging.containsKey(page)) {
-            cursorString = paging.get(page);
-        }
         Query query = pm.newQuery(className);
         query.setRange((record * (page - 1)), record * page);
         List<Object> results = new ArrayList<Object>();
-        query.setFilter("providerID == \'" + idProvider +"\'");
+        if(!sql.equals("")){
+        	 query.setFilter(sql);
+        }
         query.setOrdering(col + " " + order);
         System.out.println("SQL"+query);
         try {
-            if (cursorString == null) { // first page
                 results = (List<Object>) query.execute();
-                cursor = JDOCursorHelper.getCursor(results);
-            } else {
-                cursor = Cursor.fromWebSafeString(cursorString);
-                Map<String, Object> extensionMap = new HashMap<String, Object>();
-                extensionMap.put(JDOCursorHelper.CURSOR_EXTENSION, cursor);
-                query.setExtensions(extensionMap);
-                results = (List<Object>) query.execute();
-            }
-            cursorString = cursor.toWebSafeString();
-            paging.put(page, cursorString);
         } finally {
             query.closeAll();
         }
@@ -358,32 +310,20 @@ public final class PMF {
     }
     
     @SuppressWarnings("unchecked")
-    public static List<?> displayPageFood(Class<?> className, String col,HashMap<Integer, String> paging, String order,int record, int page,String sql) {
+    public static List<?> displayPageFood(Class<?> className, String col,List<String> numberPageList, String order,int record, int page,String sql) {
         
         List<Object> results = new ArrayList<Object>();
         int count ;
+        String tempSql ="";
         PersistenceManager pm = getPMF();
-//        StringBuffer sql = new StringBuffer();
-//        sql.append(" ");
-////        if(!("4".equals(typeProduct))){
-////            sql.append(" &&  ");
-////            sql.append("isDisplay == \'" + typeProduct + "\'");
-////        }
-//        if (attr != null) {
-//            sql.append(" &&  ");
-//            sql.append("productAttributeId == \'" + attr + "\'");
-//        }
-//        if (price != null) {
-//            sql.append(" &&  ");
-//            sql.append("foodPriceLevelId == \'" + price + "\'");
-//        }
+        if(!sql.equals("")){
+        	tempSql = " where " + sql;
+        }
         System.out.println("SQL "+sql);
         //re-count amount of page
-        Query query = pm.newQuery("select count(" + col + ")  from " + className.getName() + " where " + sql );
+        Query query = pm.newQuery("select count(" + col + ")  from " + className.getName() + tempSql );
         try {
                 count = (Integer)query.execute();
-                System.out.println("QUERY" +query.toString());
-                System.out.println("COUNT"+ count);
                 //count number of page
                 int div = count /record;
                 if(count % record >0){
@@ -392,9 +332,9 @@ public final class PMF {
                 
          //put number of page into HashMap
                 for( int  i =1; i<= div; i++){
-                    paging.put(i, null);
+                	numberPageList.add(String.valueOf(i));
                 }
-                results = (List<Object>) getObjectList(className,col,paging,order,record,page,sql);
+                results = (List<Object>) getObjectList(className,col,order,record,page,sql);
 
         } finally {
             query.closeAll();
@@ -403,13 +343,18 @@ public final class PMF {
     }
     
     @SuppressWarnings("unchecked")
-    public static List<?> displayPageFoodAll(Class<?> className, String col,HashMap<Integer, String> paging, String order,int record, int page, String idProvider) {
+    public static List<?> displayPageFoodAll(Class<?> className, String col,List<String> numberPageList, String order,int record, int page, String sql) {
         
         List<Object> results = new ArrayList<Object>();
         int count ;
+        String tempSql ="";
         PersistenceManager pm = getPMF();
+        if(!sql.equals("")){
+        	tempSql = " where " + sql;
+        	System.out.println("sql"+sql);
+        }
         //re-count amount of page
-        Query query = pm.newQuery("select count(" + col + ")  from " + className.getName() + " where providerID == \'" + idProvider + "\'") ;
+        Query query = pm.newQuery("select count(" + col + ")  from " + className.getName() + tempSql) ;
         try {
                 count = (Integer)query.execute();
                 System.out.println("QUERY" +query.toString());
@@ -422,9 +367,9 @@ public final class PMF {
                 
          //put number of page into HashMap
                 for( int  i =1; i<= div; i++){
-                    paging.put(i, null);
+                	numberPageList.add(String.valueOf(i));
                 }
-                results = (List<Object>) getObjectListAll(className,col,paging,order,record,page, idProvider);
+                results = (List<Object>) getObjectListAll(className,col,numberPageList,order,record,page, sql);
 
         } finally {
             query.closeAll();
