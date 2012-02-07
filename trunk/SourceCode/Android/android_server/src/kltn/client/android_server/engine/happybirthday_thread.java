@@ -31,6 +31,7 @@ public class happybirthday_thread extends TimerTask{
 	/* (non-Javadoc)
 	 * @see java.util.TimerTask#run()
 	 */
+	@SuppressWarnings("static-access")
 	@Override
 	public void run() {
 		ParseJSON_birthday(Query_URL(QueryURL_Happybirthday));
@@ -49,7 +50,7 @@ public class happybirthday_thread extends TimerTask{
 				send.start();
 				try {
 					//co van de cho nay
-					Thread.sleep(10000);
+					send.sleep(10000);
 					send.stop();
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block

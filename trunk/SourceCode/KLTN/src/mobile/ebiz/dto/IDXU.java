@@ -26,7 +26,7 @@ import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
 /**
- * @author Administrator
+ * @author nthanhphong
  *
  */
 @PersistenceCapable

@@ -3,7 +3,18 @@
  */
 package kltn.client.android_server.engine;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
 import java.util.ArrayList;
+
+import org.apache.http.HttpEntity;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -76,7 +87,7 @@ public class SmsReceiver extends BroadcastReceiver{
 		listmenhgia.add("50");
 		listmenhgia.add("100");
 		if(listmenhgia.contains(menhgia)){
-			sendsms.sendMessage(phone, "So dien thoai " + phone+" duoc nap "+menhgia+".000đ! Soan <sta mahang> gui 8755 de mua hang.");
+			sendsms.sendMessage(phone, "So dien thoai " + phone+" duoc nap "+menhgia+".000đ! Soan <sta mahang> gui 0122 de mua hang.");
 		}else{
 			//sendsms.sendMessage(phone, xu_false);
 		}
@@ -132,6 +143,7 @@ public class SmsReceiver extends BroadcastReceiver{
 		listmenhgia.add("100");
 		if(listmenhgia.contains(menhgia)){
 			sendsms.sendMessage(phone, "Tai khoan " + username+" cua ban duoc nap "+menhgia+".000đ!");
+			Query_URL("http://10.uit-kltn.appspot.com/getActiveXU.vn?flag=sca&content="+username+"@"+menhgia);
 		}else{
 			//sendsms.sendMessage(phone, xu_false);
 		}
@@ -148,7 +160,8 @@ public class SmsReceiver extends BroadcastReceiver{
 		product_key=split_result[2];
 		username=split_result[1];
 		if(product_key.length()==15){
-			sendsms.sendMessage(phone, "Tai khoan " + username+" cua ban duoc nap 50XU!");
+			sendsms.sendMessage(phone, "Tai khoan " + username+" cua ban duoc nap 50.000VND!");
+			Query_URL("http://10.uit-kltn.appspot.com/getActiveXU.vn?flag=stp&content="+username+"@"+product_key);
 		}else{
 			sendsms.sendMessage(phone, xu_false);
 		}
@@ -176,6 +189,33 @@ public class SmsReceiver extends BroadcastReceiver{
 		else if(item.toLowerCase().equals("scn"))
 			result=5;
 		return result;
+	}
+	private String Query_URL(String q){
+		String qResult = null;
+		String qString =q;
+		HttpClient httpClient = new DefaultHttpClient();
+		HttpGet httpGet = new HttpGet(qString);
+		try {
+			HttpEntity httpEntity = httpClient.execute(httpGet).getEntity();
+			if (httpEntity != null){
+				InputStream inputStream = httpEntity.getContent();
+				Reader in = new InputStreamReader(inputStream);
+				BufferedReader bufferedreader = new BufferedReader(in);
+				StringBuilder stringBuilder = new StringBuilder();
+				String stringReadLine = null;
+				while ((stringReadLine = bufferedreader.readLine()) != null) {
+					stringBuilder.append(stringReadLine + "\n");
+				}
+				qResult = stringBuilder.toString();
+			}
+		} catch (ClientProtocolException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return qResult;
 	}
 
 	//product ke XU gom 15 chu so
