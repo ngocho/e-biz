@@ -32,7 +32,7 @@ import javax.jdo.annotations.PrimaryKey;
  * 1 : khuyến mãi
  * 2 : không khuyến mãi
  * 3 : hết hàng
- * 4 : upload len nhung chua duoc ban
+ * 4 : upload len nhung chua duoc ban( chua approved)
  * 5 : hết hạn sử dụng
  */
 @PersistenceCapable
