@@ -27,9 +27,9 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import ebiz.action.BaseAction;
-import ebiz.form.AdminForm;
+import ebiz.blo.admin.AdminBLO;
+import ebiz.dto.account.admin.Admin;
 import ebiz.util.CommonConstant;
-
 /**
  * @author Administrator
  */
@@ -47,14 +47,15 @@ public class AdminAuthentication extends BaseAction {
      */
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
-        System.out.println("AuthenticationProvider");
         HttpSession se = request.getSession();
-        AdminForm admin = (AdminForm) se.getAttribute(CommonConstant.ADMIN);
+        String admin = (String) se.getAttribute(CommonConstant.ADMIN);
         if (admin == null) {
-            System.out.println("NULL");
+            Admin ad = new Admin();
+            ad.setId("admin123");
+            ad.setPassword("12345678");
+            AdminBLO.registerAdmin(ad);
             return mapping.findForward(FAILURE);
         }
-        System.out.println("AuthenticationProvider + NOT NULL");
         return mapping.findForward(SUCCESS);
     }
 }
