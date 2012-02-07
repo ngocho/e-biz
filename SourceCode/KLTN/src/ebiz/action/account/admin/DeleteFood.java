@@ -20,25 +20,21 @@ package ebiz.action.account.admin;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
-import org.apache.struts.action.ActionMessage;
-import org.apache.struts.action.ActionMessages;
 
 import ebiz.action.BaseAction;
-import ebiz.blo.admin.AdminBLO;
-import ebiz.form.AdminForm;
-import ebiz.util.CommonConstant;
+import ebiz.blo.food.FoodBLO;
 
 /**
- * @author Administrator
+ * @author ThuyNT
  */
-public class Login extends BaseAction {
+public class DeleteFood extends BaseAction {
+
     /**
-     * [Register].
+     * [DeleteProduct].
      * @param mapping ActionMapping
      * @param form ActionForm
      * @param request HttpServletRequest
@@ -49,29 +45,13 @@ public class Login extends BaseAction {
      */
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
-        AdminForm adminForm = (AdminForm) form;
-        ActionMessages messages = new ActionMessages();
-        // check exsists
-        HttpSession se = request.getSession();
-        int flag = -1;
-        // test exist in database
-        flag = AdminBLO.isLoginID(adminForm.getId(), adminForm.getPass());
-        if (flag == 1) {
-            // save user in session
-            se.setAttribute(CommonConstant.ADMIN, adminForm.getId());
-            se.removeAttribute("adminForm");
-            // home screen
-            return mapping.findForward(SUCCESS);
-        } else if (flag == -1) {
-            // add error password wrong
-            messages.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage("login.user.existed"));
-        } else if (flag == 0) {
-            // account didn't exist
-            messages.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage("login.password.wrong"));
+        String id = request.getParameter("id");
+        Long key;
+        if (id != null) {
+            key = Long.parseLong(id);
+            FoodBLO.deleteFood(key);
         }
-        // storing messages as request attributes
-        saveMessages(request, messages);
-        return mapping.findForward(FAILURE);
-
+        return mapping.findForward(SUCCESS);
     }
+
 }
