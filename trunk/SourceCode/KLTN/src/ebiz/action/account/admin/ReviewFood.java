@@ -34,6 +34,7 @@ import ebiz.blo.food.FoodBLO;
 public class ReviewFood extends BaseAction {
     /**
      * [Register].
+     *
      * @param mapping ActionMapping
      * @param form ActionForm
      * @param request HttpServletRequest
@@ -44,11 +45,11 @@ public class ReviewFood extends BaseAction {
      */
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
-    	String id = request.getParameter("id");
-    	if(id != null){
-    		Long key = Long.parseLong(id);
-    		FoodBLO.displayFood(key);
-    	}
+        String id = request.getParameter("id");
+        if (id != null) {
+            Long key = Long.parseLong(id);
+            FoodBLO.displayFood(key);
+        }
         return mapping.findForward(SUCCESS);
 
     }

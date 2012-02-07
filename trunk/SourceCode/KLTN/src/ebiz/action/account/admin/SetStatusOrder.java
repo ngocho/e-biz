@@ -30,28 +30,35 @@ import ebiz.blo.food.FoodBLO;
 
 /**
  * @author Administrator
- *
  */
 public class SetStatusOrder extends BaseAction {
+    /**
+     * [SetStatusOrder].
+     *
+     * @param mapping ActionMapping
+     * @param form ActionForm
+     * @param request HttpServletRequest
+     * @param response HttpServletResponse
+     * @return ActionForward
+     * @throws Exception Exception
+     * @see ActionForward Struts1 Framework
+     */
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
         String id = request.getParameter("id");
         String type = request.getParameter("type");
-        System.out.println("ID"+id);
-        if (id == null ||type ==null){
-        	
+        if (id == null || type == null) {
+
             return mapping.findForward(SUCCESS);
-           
+
         }
-//        Integer status = Integer.parseInt(type);
-        Long  orderID = Long.parseLong(id);
-        if(FoodBLO.updateStatusOrderBill(orderID, type))
-        {
-            request.setAttribute("flag",true );
+        Long orderID = Long.parseLong(id);
+        if (FoodBLO.updateStatusOrderBill(orderID, type)) {
+            request.setAttribute("flag", true);
             return mapping.findForward(SUCCESS);
         }
-        
+
         return mapping.findForward(SUCCESS);
-     }
+    }
 
 }
