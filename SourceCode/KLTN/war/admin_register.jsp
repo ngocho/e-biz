@@ -37,9 +37,9 @@
 <div class="home-spot">
 	<div class="col-2 registered-users" class="login">
 		<div class="content">
-			<h2>ĐĂNG NHẬP</h2>
+			<h2>ĐĂNG KÍ TÀI KHOẢN ADMIN</h2>
 			<ul class="form-list">
-				<html:form action="/loginAdmin.vn" method="get" styleId="loginForm">
+				<html:form action="/registerAdmin.vn" method="get" styleId="loginForm">
 					<li><label for="email" class="required" id="typeLogin"><em>*</em>Tên
 							đăng nhâp</label>
 						<div class="input-box">
@@ -54,7 +54,7 @@
 					</li>
 					<li>
 						<div class="input-box">
-							<input type="submit" name="OK" id="login" title="Password" value="Đăng nhập" class="buttonBG"/> 
+							<input type="submit" name="OK" id="login" title="Password" value="Đăng kí" class="buttonBG"/> 
 							<input type="button" name="Reset" id="reset" title="Password" value="Xóa hết" class="buttonBG"/>
 						</div>
 					</li>

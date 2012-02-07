@@ -153,16 +153,16 @@ function slideSwitch() {
               <logic:iterate id="element" name="productVo"
                 property="pagingList">
                 <c:choose>
-                  <c:when test="${element.id == 1}">
+                  <c:when test="${element == productVo.page}">
                     <a
-                      href="/categoryRecord.vn?page=<bean:write name="element" property="id"/>"><bean:write
-                        name="element" property="id" /></a>
+                      href="/categoryRecord.vn?page=<bean:write name="element" />">
+                      <span class ="keepLink"><bean:write name="element" /></span></a>
 
                   </c:when>
                   <c:otherwise>
                    |  <a
-                      href="/categoryRecord.vn?page=<bean:write name="element" property="id"/>"><bean:write
-                        name="element" property="id" /> </a>
+                      href="/categoryRecord.vn?page=<bean:write name="element" />"><bean:write
+                        name="element"  /> </a>
                   </c:otherwise>
                 </c:choose>
 

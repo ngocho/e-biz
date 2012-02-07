@@ -31,7 +31,7 @@ $(document).ready(function(){
                 <c:choose>
                   <c:when test="${element == pageIndex}">
                     <a
-                      href="/categoryProviderRecord.vn?page=<bean:write name="element" />"><span style="color:blue"><bean:write
+                      href="/categoryProviderRecord.vn?page=<bean:write name="element" />"><span class="impressionText"><bean:write
                         name="element" /></span></a>
 
                   </c:when>

@@ -61,19 +61,18 @@ $(document).ready(function(){
             type="hidden" name="page" id="page"
             value="<bean:write name="providerVo" property="page"/>"></input>
             <logic:present name="providerVo" property="pagingList">
-              <logic:iterate id="element" name="providerVo"
-                property="pagingList">
+              <logic:iterate id="element" name="providerVo" property="pagingList">
                 <c:choose>
-                  <c:when test="${element.id ==1}">
+                   <c:when test="${element == providerVo.page}">
                     <a
-                      href="/categoryProviderRecord.vn?page=<bean:write name="element" property="id"/>"><bean:write
-                        name="element" property="id" /></a>
+                      href="/categoryProviderRecord.vn?page=<bean:write name="element" />">
+                      <span class ="keepLink"><bean:write name="element"/></span></a>
 
                   </c:when>
                   <c:otherwise>
-                   |  <a
-                      href="/categoryProviderRecord.vn?page=<bean:write name="element" property="id"/>"><bean:write
-                        name="element" property="id" /> </a>
+                    <a
+                      href="/categoryProviderRecord.vn?page=<bean:write name="element"/>"><bean:write
+                        name="element" /> </a>
                   </c:otherwise>
                 </c:choose>
 
@@ -198,7 +197,6 @@ $(document).ready(function(){
 <th >MSP</th>
 <th >TÊN SẢN PHẨM</th>
 <th >NHÓM SẢN PHẨM</th>
-<th >TÌNH TRẠNG SẢN PHẨM</th>
 <th >GIÁ</th>
 <th >GIÁ KHUYỄN MÃI</th>
 <th >SỐ LƯỢNG</th>
@@ -213,8 +211,8 @@ $(document).ready(function(){
 <td> <img src="/serveImage.vn?urlKey=<bean:write name="element" property="urlKey"/>" width="50" height="40"/></td>
 <td style="text-align: center;" ><a href="/reOrder.vn?id=<bean:write name="element" property="id"/>"><bean:write name="element" property="id"/></a></td>
 <td> <bean:write name="element" property="name"/></td>
-<td><bean:write name="element"  property="productTypeId"/></td>
-<td><bean:write name="element"  property="statusName"/></td>
+<td><bean:write name="element"  property="nameTypeId"/></td>
+<%-- <td><bean:write name="element"  property="statusName"/></td> --%>
 <td><bean:write name="element"  property="price"/></td>
 <td><bean:write name="element"  property="promoPrice"/></td>
 <td><bean:write name="element"  property="number"/></td>
