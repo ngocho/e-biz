@@ -59,6 +59,7 @@ public class DisplayCategory extends BaseAction {
         List<FoodPriceForm> prices = new ArrayList<FoodPriceForm>();
         List<Paging> pageList = new ArrayList<Paging>();
         List<FoodForm> foods = new ArrayList<FoodForm>();
+        List<String> numberPageList = new ArrayList<String>();
         ProductVO vo = new ProductVO();
         String typeProduct = request.getParameter("typeProduct");
         System.out.println("typeProduct"+ typeProduct);
@@ -85,10 +86,10 @@ public class DisplayCategory extends BaseAction {
         // getproduct --> save in session
         HashMap<Integer, String> paging = new HashMap<Integer, String>();
         String filterCol = CommonConstant.FOOD_TYPE;
-        foods = FoodBLO.initFoodCategory(paging, CommonConstant.DEFAULT_RECORD, filterCol, typeProduct, null, null);
+        foods = FoodBLO.initFoodCategory(numberPageList, CommonConstant.DEFAULT_RECORD, filterCol, typeProduct, null, null);
         pageList = FoodBLO.updateStatusPaging(paging);
         // paging
-        vo.setPagingList(pageList);
+        vo.setPagingList(numberPageList);
         // se.setAttribute(CommonConstant.PAGING, pageList);
         // number display in 1 page
         vo.setLimit(CommonConstant.DEFAULT_RECORD);
