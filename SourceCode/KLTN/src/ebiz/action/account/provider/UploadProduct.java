@@ -69,6 +69,8 @@ public class UploadProduct extends BaseAction {
                 boolean flagUpload = FoodBLO.uploadFood(food);
                 // success
                 if (flagUpload) {
+                	//clear Form
+                	foodForm.clear();
                     // remove attr from session
                     se.removeAttribute("foodForm");
                     se.removeAttribute("urlImageKey");
@@ -80,7 +82,7 @@ public class UploadProduct extends BaseAction {
                 // updated product
                 Food food = foodForm.getFood();
                 food.setFoodId(foodForm.getId());
-                boolean flag = FoodBLO.uploadFood(food);
+                boolean flag = FoodBLO.updateFood(food);
                 if (flag) {
                     // remove attr
                     se.removeAttribute("urlImageKey");

@@ -52,8 +52,7 @@ public class Register extends BaseAction {
         // after checked validation using xml file
         ProviderForm user = (ProviderForm) form;
         Provider register = user.getProvider();
-        boolean flag;
-        flag = ProviderBLO.registerProvider(register);
+        boolean flag = ProviderBLO.registerProvider(register);
         if (flag) {
             HttpSession se = request.getSession();
             // save value in session
