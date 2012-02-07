@@ -32,6 +32,8 @@ import com.google.appengine.api.blobstore.BlobKey;
 import com.google.appengine.api.blobstore.BlobstoreService;
 import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
 
+import ebiz.form.FoodForm;
+
 /**
  * @author ThuyNT
  */
@@ -61,6 +63,8 @@ public class UploadImage extends BaseAction {
             if (urlKey != null) {
                 // save in session
                 se.setAttribute("urlImageKey", urlKey);
+                FoodForm foodForm = (FoodForm)se.getAttribute("foodForm");
+                System.out.println("FoodForm" + foodForm.getName());
             }
         }
         return mapping.findForward(SUCCESS);
