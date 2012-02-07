@@ -27,8 +27,9 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import ebiz.action.BaseAction;
+import ebiz.blo.provider.ProviderBLO;
 import ebiz.form.ProviderForm;
-
+import ebiz.dto.account.provider.Provider;
 /**
  * @author Administrator
  */
@@ -50,6 +51,10 @@ public class AuthenticationProvider extends BaseAction {
         HttpSession se = request.getSession();
         ProviderForm provider = (ProviderForm) se.getAttribute("provider");
         if (provider == null) {
+        	Provider pro = new Provider();
+        	pro.setProviderId("3");
+        	pro.setProviderPassword("12345678");
+        	ProviderBLO.registerProvider(pro);
             return mapping.findForward(FAILURE);
         }
         return mapping.findForward(SUCCESS);

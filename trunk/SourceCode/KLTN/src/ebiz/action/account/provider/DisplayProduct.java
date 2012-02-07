@@ -19,7 +19,6 @@
 package ebiz.action.account.provider;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -33,7 +32,6 @@ import org.apache.struts.action.ActionMapping;
 import ebiz.action.BaseAction;
 import ebiz.blo.food.FoodBLO;
 import ebiz.form.FoodForm;
-import ebiz.form.Paging;
 import ebiz.form.ProductVO;
 import ebiz.form.ProviderVO;
 import ebiz.util.CommonConstant;
@@ -44,6 +42,7 @@ import ebiz.util.CommonConstant;
 public class DisplayProduct extends BaseAction {
     /**
      * [DisplayProduct].
+     * 
      * @param mapping ActionMapping
      * @param form ActionForm
      * @param request HttpServletRequest
@@ -60,19 +59,17 @@ public class DisplayProduct extends BaseAction {
         String idProvider = (String) se.getAttribute("idProvider");
         // declare variable
         ProductVO vo = new ProductVO();
-        List<Paging> pageList = new ArrayList<Paging>();
         List<FoodForm> foods = new ArrayList<FoodForm>();
+        List<String> numberPageList = new ArrayList<String>();
         // get all
         if (value == null) {
             value = "0";
         }
-        HashMap<Integer, String> paging = new HashMap<Integer, String>();
         // call method to display when first click
-        foods = FoodBLO.initFoodCategoryProvider(paging, idProvider);
-        // updated status of paging
-        pageList = FoodBLO.updateStatusPaging(paging);
+        foods = FoodBLO.initFoodCategoryProvider(numberPageList, idProvider);
+
         // set attrs into VO -> save in session
-        vo.setPagingList(pageList);
+        vo.setPagingList(numberPageList);
         vo.setLimit(CommonConstant.DEFAULT_RECORD);
         vo.setCol(CommonConstant.DEFAULT_COL);
         vo.setPage(CommonConstant.DEFAULT_PAGE);
