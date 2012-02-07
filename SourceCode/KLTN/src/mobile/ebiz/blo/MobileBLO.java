@@ -1,6 +1,10 @@
 package mobile.ebiz.blo;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.jdo.PersistenceManager;
@@ -51,23 +55,35 @@ public class MobileBLO {
 		return objList;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public static JSONObject createCustomerPhone() throws JSONException {
-		JSONObject json = new JSONObject();
+		JSONObject obj=new JSONObject();
+		List<Customer> listphone=new ArrayList<Customer>();
+		listphone=(List<Customer>)PMF.getObjectList(Customer.class);
 		List<String> phones = new ArrayList<String>();
-		//add data
-		phones.add("0978354952");
-		phones.add("0978354950");
-		phones.add("0978354951");
-		json.put("data", phones);
-		return json;
+		for(int i=0;i<listphone.size();i++){
+			if(!listphone.get(i).getCustomerPhone().equals(""))
+				phones.add(listphone.get(i).getCustomerPhone());
+		}
+		obj.put("data", phones);
+		return obj;
 	}
 	//
 	//	KÍNH CHÚC QUÝ KHÁCH SINH NHẬT TRÀN NGẬP HẠNH PHÚC VÀ MAY MẮN!
+	@SuppressWarnings("unchecked")
 	public static JSONObject createListHappyBirth() throws JSONException{
 		JSONObject obj=new JSONObject();
 		List<Customer> listphone=new ArrayList<Customer>();
 		listphone=(List<Customer>)PMF.getObjectList(Customer.class);
-		obj.put("data", listphone);
+		List<String> phones = new ArrayList<String>();
+		for(int i=0;i<listphone.size();i++){
+			SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+			String today=formatter.format(Calendar.getInstance().getTime());
+			String birthday=formatter.format(listphone.get(i).getCustomerBirth());
+			if(!listphone.get(i).getCustomerPhone().equals("")&&today.equals(birthday))
+				phones.add(listphone.get(i).getCustomerPhone());
+		}
+		obj.put("data", phones);
 		return obj;
 	}
 	

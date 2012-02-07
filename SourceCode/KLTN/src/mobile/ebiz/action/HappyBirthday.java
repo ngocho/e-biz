@@ -39,7 +39,7 @@ import com.google.appengine.repackaged.org.json.JSONObject;
 import ebiz.action.BaseAction;
 
 /**
- * @author ThuyNT
+ * @author nthanhphong
  */
 public class HappyBirthday extends BaseAction {
 
