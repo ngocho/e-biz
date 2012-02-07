@@ -15,6 +15,7 @@ public interface IFoodDAO {
 	
 	public Food getFoodById(Long key);
 	public String getStatusNameByID(String id);
+	public String getNameTypeById(String id);
 	public List<Food> getListFoodByValue(String col, String id);
 
 	public List<Food> getFoodListAll();
@@ -43,11 +44,11 @@ public interface IFoodDAO {
 	public boolean isFood(Long id);
 	
 	public List<Food> diplayPageFood(String col,
-			HashMap<Integer, String> paging, String order, int record,
+			 List<String> numberPageList, String order, int record,
 			int page, String sql);
-	public List<Food> diplayFoodProviderAll(String col,
-            HashMap<Integer, String> paging, String order, int record,
-            int page, String idProvider);
+	public List<Food> diplayFoodCategoryAll(String col,
+            List<String> numberPageList, String order, int record,
+            int page, String sql);
 
 	public List<Food> searchFoodByName(String searchText, String type, String attr, String price, String status);
 
