@@ -190,18 +190,26 @@
 <!-- START ADMIN -->
 <!-- start Admin.Login -->
     <definition name="admin_login" extends="baseLayout1">
-		<put name="title" value="Admin Home" />
+		<put name="title" value="Admin Login" />
 		<put name="header" value="/admin_header.jsp" />
 		<put name="content" value="/admin_login.jsp" />
     </definition>
 <!-- end Admin.Login -->
 
+<!-- start Admin.Register -->
+    <definition name="admin_register" extends="baseLayout1">
+		<put name="title" value="Admin Register" />
+		<put name="header" value="/admin_header.jsp" />
+		<put name="content" value="/admin_register.jsp" />
+    </definition>
+<!-- end Admin.Register -->
+
 <!-- start Admin.Home -->
-  <definition name="admin_home" extends="baseLayout1">
+  	<definition name="admin_home" extends="baseLayout1">
 		<put name="title" value="Admin Home" />
 		<put name="header" value="/admin_header.jsp" />
 		<put name="content" value="/admin_content_product.jsp" />
-    </definition>
+   	</definition>
 <!-- start Admin.Home -->
 <!-- END ADMIN -->
 

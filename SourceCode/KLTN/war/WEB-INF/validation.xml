@@ -48,6 +48,32 @@
          </form>
         <!-- end Customer login  04/02/2012-->
         
+         <!-- start Admin login  04/02/2012-->
+         <form name="adminForm">
+          	<field
+                property="id"
+                depends="required">
+                <arg0 key="adminForm.id"/>
+            </field>
+            <field
+                property="pass"
+                depends="required">
+                <arg0 key="adminForm.pass"/>
+            </field>
+            <field
+                property="pass"
+                depends="minlength">
+                <var>
+                    <var-name>minlength
+                    </var-name>
+                    <var-value>8
+                    </var-value>
+                </var>
+                <arg0 key="adminForm.pass"/>
+            </field>
+         </form>
+        <!-- end Admin login  04/02/2012-->
+        
          <!-- start Customer register  04/02/2012-->
          <form name="register">
           <field
@@ -79,7 +105,7 @@
                     <var-value>8
                     </var-value>
                 </var>
-                <arg0 key="login.loginPassword"/>
+                <arg0 key="register.loginPassword"/>
             </field>
               <field
                 property="loginPasswordPre"
@@ -90,7 +116,7 @@
                     <var-value>8
                     </var-value>
                 </var>
-                <arg0 key="login.loginPasswordPre"/>
+                <arg0 key="register.loginPasswordPre"/>
             </field>
          </form>
         <!-- end Customer register  04/02/2012-->
