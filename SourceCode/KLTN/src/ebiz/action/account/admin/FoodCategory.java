@@ -42,6 +42,7 @@ import ebiz.util.CommonConstant;
 public class FoodCategory extends BaseAction {
     /**
      * [Display FoodCategory for Admin].
+     *
      * @param mapping ActionMapping
      * @param form ActionForm
      * @param request HttpServletRequest
@@ -50,48 +51,45 @@ public class FoodCategory extends BaseAction {
      * @throws Exception Exception
      * @see ActionForward Struts1 Framework
      */
-	public ActionForward execute(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		// get param from request
-		String value = request.getParameter("value");
-		HttpSession se = request.getSession();
-		// String idAdmin = (String) se.getAttribute(CommonConstant.ADMIN);
-		// declare variable
-		ProductVO vo = new ProductVO();
-		List<FoodForm> foods = new ArrayList<FoodForm>();
-		List<String> numberPageList = new ArrayList<String>();
-		// get all
-		if (value == null) {
-			value = "4";
-		}
-		// call method to display when first click
-		foods = FoodBLO.displayFoodCategoryPaging(CommonConstant.DEFAULT_COL,
-				numberPageList, CommonConstant.DEFAULT_ORDER,
-				CommonConstant.DEFAULT_RECORD, 1, CommonConstant.FOOD_STATUS,
-				value, null);
-		// updated status of paging
-		// set attrs into VO -> save in session
-		vo.setPagingList(numberPageList);
-		vo.setLimit(CommonConstant.DEFAULT_RECORD);
-		vo.setCol(CommonConstant.DEFAULT_COL);
-		vo.setPage(CommonConstant.DEFAULT_PAGE);
-		vo.setOrder(CommonConstant.DEFAULT_ORDER);
-		vo.setStatus(value);
-		// save in session
-		se.setAttribute(CommonConstant.ADMINRVO, vo);
-		// short display
-		FoodBLO.shortDisplay(foods, CommonConstant.SHORTDISPLAY);
-		// list food to display
-		se.setAttribute(CommonConstant.ADMIN_CATEGORY_F, foods);
-		// save attr in app scope
-		ProviderVO pvo = (ProviderVO) getServlet().getServletContext()
-				.getAttribute("PVO");
-		if (pvo == null) {
-			pvo = new ProviderVO();
-			getServlet().getServletContext().setAttribute("PVO", pvo);
-		}
-		return mapping.findForward(SUCCESS);
-	}
+    public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
+            HttpServletResponse response) throws Exception {
+        // get param from request
+        String value = request.getParameter("value");
+        HttpSession se = request.getSession();
+        // String idAdmin = (String) se.getAttribute(CommonConstant.ADMIN);
+        // declare variable
+        ProductVO vo = new ProductVO();
+        List<FoodForm> foods = new ArrayList<FoodForm>();
+        List<String> numberPageList = new ArrayList<String>();
+        // get all
+        if (value == null) {
+            value = "4";
+        }
+        // call method to display when first click
+        foods = FoodBLO
+                .displayFoodCategoryPaging(CommonConstant.DEFAULT_COL, numberPageList, CommonConstant.DEFAULT_ORDER,
+                        CommonConstant.DEFAULT_RECORD, 1, CommonConstant.FOOD_STATUS, value, null);
+        // updated status of paging
+        // set attrs into VO -> save in session
+        vo.setPagingList(numberPageList);
+        vo.setLimit(CommonConstant.DEFAULT_RECORD);
+        vo.setCol(CommonConstant.DEFAULT_COL);
+        vo.setPage(CommonConstant.DEFAULT_PAGE);
+        vo.setOrder(CommonConstant.DEFAULT_ORDER);
+        vo.setStatus(value);
+        // save in session
+        se.setAttribute(CommonConstant.ADMINRVO, vo);
+        // short display
+        FoodBLO.shortDisplay(foods, CommonConstant.SHORTDISPLAY);
+        // list food to display
+        se.setAttribute(CommonConstant.ADMIN_CATEGORY_F, foods);
+        // save attr in app scope
+        ProviderVO pvo = (ProviderVO) getServlet().getServletContext().getAttribute("PVO");
+        if (pvo == null) {
+            pvo = new ProviderVO();
+            getServlet().getServletContext().setAttribute("PVO", pvo);
+        }
+        return mapping.findForward(SUCCESS);
+    }
 
 }
