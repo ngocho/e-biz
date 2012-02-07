@@ -63,7 +63,7 @@ public class UploadImage extends BaseAction {
             if (urlKey != null) {
                 // save in session
                 se.setAttribute("urlImageKey", urlKey);
-                FoodForm foodForm = (FoodForm)se.getAttribute("foodForm");
+                FoodForm foodForm = (FoodForm) se.getAttribute("foodForm");
                 System.out.println("FoodForm" + foodForm.getName());
             }
         }
