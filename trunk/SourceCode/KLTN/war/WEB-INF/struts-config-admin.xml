@@ -22,7 +22,7 @@
 	</global-exceptions>
 
 	<global-forwards>
-		<forward name="ad" path="/adminAuthentication.vn" />
+		<forward name="homeAdmin" path="/displayFoodCateAdmin.vn" />
 	</global-forwards>
 
 	<action-mappings>
@@ -32,7 +32,7 @@
 	<action 
 			path="/adminAuthentication"
 			type="ebiz.action.account.admin.AdminAuthentication" >
-		<forward name="success" path="admin_home" redirect="true" />
+		<forward name="success" path="/displayFoodCateAdmin.vn" redirect="true" />
 		<forward name="failure" path="admin_login" redirect="true" />
     </action>
     
@@ -41,9 +41,34 @@
 			type="ebiz.action.account.admin.Login" 
 			name="adminForm"
 			scope="session" validate="true">
-		<forward name="success" path="admin_home" redirect="true" />
+		<forward name="success" path="/displayFoodCateAdmin.vn" redirect="true" />
 		<forward name="failure" path="admin_login" redirect="true" />
     </action>
+    
+    <action 
+			path="/displayFoodCateAdmin"
+			type="ebiz.action.account.admin.FoodCategory" >
+		<forward name="success" path="admin_home" redirect="true" />
+    </action>
+    
+    <action 
+			path="/displayFoodCateAdminPaging"
+			type="ebiz.action.account.admin.FoodCategoryPaging" >
+		<forward name="success" path="admin_home" redirect="true" />
+    </action>
+    
+    <action 
+			path="/reviewFood"
+			type="ebiz.action.account.admin.ReviewFood" >
+		<forward name="success" path="/displayFoodCateAdminPaging.vn" redirect="true" />
+    </action>
+    
+    <action 
+			path="/deleteFood"
+			type="ebiz.action.account.admin.DeleteFood" >
+		<forward name="success" path="/displayFoodCateAdminPaging.vn" redirect="true" />
+    </action>
+    
     
 	</action-mappings>
 
