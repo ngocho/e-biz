@@ -43,7 +43,7 @@ public class ProductVO implements Serializable{
     private String order;
     
     //save paging
-    private List<Paging> pagingList;
+    private List<String> pagingList;
     
     private String typeProduct;
     
@@ -105,7 +105,7 @@ public class ProductVO implements Serializable{
      * Get value of pagingList.
      * @return the pagingList
      */
-    public List<Paging> getPagingList() {
+    public List<String> getPagingList() {
         return pagingList;
     }
 
@@ -113,7 +113,7 @@ public class ProductVO implements Serializable{
      * Set the value for pagingList.
      * @param pagingList the pagingList to set
      */
-    public void setPagingList(List<Paging> pagingList) {
+    public void setPagingList(List<String> pagingList) {
         this.pagingList = pagingList;
     }
 

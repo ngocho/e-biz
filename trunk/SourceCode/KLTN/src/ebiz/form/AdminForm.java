@@ -8,7 +8,7 @@ public class AdminForm  extends ValidatorForm implements Serializable{
     private static final long serialVersionUID = 1L;
 	private String id ;
 	private String pass;
-	private String rePass;
+//	private String rePass;
 	
 	public void editForm(Admin admin){
 		this.id = admin.getId();
@@ -34,11 +34,11 @@ public class AdminForm  extends ValidatorForm implements Serializable{
 	public void setPass(String pass) {
 		this.pass = pass;
 	}
-	public String getRePass() {
-		return rePass;
-	}
-	public void setRePass(String rePass) {
-		this.rePass = rePass;
-	}
+//	public String getRePass() {
+//		return rePass;
+//	}
+//	public void setRePass(String rePass) {
+//		this.rePass = rePass;
+//	}
 
 }
