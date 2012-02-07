@@ -19,5 +19,14 @@ public class AdminBLO {
 				return -1; // didn't exist this user
 			}
 	    }
+	    
+	    public static boolean registerAdmin(Admin admin) {
+
+	        boolean flag = adminDao.isAdmin(admin.getId());
+	        if (!flag) {
+	            return adminDao.saveAdmin(admin);
+	        }
+	        return false;
+	    }
 
 }
