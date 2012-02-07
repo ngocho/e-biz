@@ -8,7 +8,6 @@
 <script type="text/javascript">
 $(document).ready(function(){
     $("#uploadComment").click(function() {
-    	alert('uploadComment');
     	updateComment($("#content").val());
         return false;
     });

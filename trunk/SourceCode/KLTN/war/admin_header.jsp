@@ -32,7 +32,7 @@ Tiếng Anh
             <a href="/registerProvider.vn">Đăng kí</a>        </li>
       </ul>
  </div>
- <div class="header-row3"  style="background:black;">
+ <div class="header-row3"  style="background:green">
 <div class="nav-container"  >
 
     <ul id="nav">
@@ -42,7 +42,7 @@ Tiếng Anh
           class="level-top">
 <img src="Images/Commons/icon-trang-chu.png" width="20" height="20" style="margin-left:-70px;"><span style="margin-left:10px;margin-top:-10px;" class="nav-text-provider"> Trang chủ</span></img>
         </a></li>
-        <logic:present name="provider">
+        <logic:present name="admin">
         <li class="level0 nav-1 level-top first parent">
 <a href="#"
           class="level-top">
@@ -50,17 +50,17 @@ Tiếng Anh
 <span class="nav-text-provider">Đăng kí Admin</span>
         </a>
         <a
-          href="/uploadLink.vn"
+          href="/adminAuthentication.vn"
           class="level-top">
 
-<span class="nav-text-provider">Quản lý sản phẩm</span>
+<span class="nav-text-provider">Sản phẩm</span>
         </a>
 </li>
   <li class="level0 nav-4 level-top first parent">
 <a href="/displayProduct.vn"
           class="level-top">
 
-<span class="nav-text-provider">Quản lý Nhà cung cấp</span>
+<span class="nav-text-provider">Nhà cung cấp</span>
         </a>
         </li>
           <li class="level0 nav-4 level-top first parent">
@@ -68,14 +68,14 @@ Tiếng Anh
           href="#"
           class="level-top">
 
-<span class="nav-text-provider">Quản lý Khách hàng</span>
+<span class="nav-text-provider">Khách hàng</span>
         </a></li>
                   <li class="level0 nav-4 level-top first parent">
 <a
           href="#"
           class="level-top">
 
-<span class="nav-text-provider">Quản lý Nhân viên</span>
+<span class="nav-text-provider">Nhân viên</span>
         </a></li>
        </logic:present>
 </ul>
