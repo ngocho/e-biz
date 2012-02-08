@@ -91,20 +91,20 @@ public class SearchBLO {
         return cache;
 	}
 	
-    // count number of page
-    public static List<String> paging(int size) {
-        List<String> list = new ArrayList<String>();
-        int div = 1;
-        div = size / 10;
+	//count number of page
+	public static List<String> paging(int size){
+		List<String> list = new ArrayList<String>();
+		int div = 1;
+		 div = size /10;
         if (size % 10 > 0) {
-            div = div + 1;
-        }
+			div = div + 1;
+		}
         System.out.println("DIV" + size % 10);
-        for (int i = 1; i <= div; i++) {
-            list.add(String.valueOf(i));
-        }
-        return list;
-    }
+		for(int i =1; i<= div; i++){
+			list.add(String.valueOf(i));
+		}
+		return list;
+	}
 	
 	public static List<?> getPage(List<?> foodList, int pageIndex){
 		List<Object> resultList = new ArrayList<Object>();
