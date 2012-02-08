@@ -49,6 +49,7 @@ public class FoodForm extends ValidatorForm implements Serializable {
 	private int number;
 	private String calo;
 	private String idAttr;
+	private String nameAttr;
 	// private String url;
 	private String detail;
 	private String cooking;
@@ -107,9 +108,8 @@ public class FoodForm extends ValidatorForm implements Serializable {
 		this.cooking = food.getCooking();
 		this.uploadDate = CommonUtil.convertDateToString(food.getUploadDate());
 	
-		this.nameTypeId = FoodBLO.getNameTypeById(food.getFoodTypeId());
-		System.out.println("ID" + food.getFoodTypeId() );
-		System.out.println("NAME" +  this.nameTypeId);
+		this.nameTypeId = FoodBLO.getNameTypeById(this.productTypeId);
+		this.nameAttr = FoodBLO.getNameAtrrById(this.idAttr);
 		// het san pham
 		if (food.getNumber() == 0) {
 			this.statusName = CommonConstant.STATUS_MESSAGE_0;
@@ -123,44 +123,6 @@ public class FoodForm extends ValidatorForm implements Serializable {
 
 	}
 
-	// /**
-	// *
-	// * san pham dang khuyen mai
-	// * @param food
-	// * @return
-	// */
-	// public FoodForm editForm(FoodPromotion food){
-	// if(food!=null){
-	// this.id = food.getProductId();
-	// this.name = food.getProductName();
-	// this.reviewer = food.getReviewer();
-	// this.price = food.getPrice();
-	// this.promoPrice = food.getPricePromo();
-	// this.url = food.getUrl();
-	// this.number = food.getNumber();
-	// }
-	// return this;
-	// }
-	// /**
-	// *
-	// * san pham dang khuyen mai (detail)
-	// * @param food
-	// * @return
-	// */
-	// public FoodForm editFormDetail(FoodPromotion food){
-	// if(food!=null){
-	// this.id = food.getProductId();
-	// this.name = food.getProductName();
-	// this.reviewer = food.getReviewer();
-	// this.price = food.getPrice();
-	// this.promoPrice = food.getPricePromo();
-	// this.calo = food.getCalo();
-	// this.url = food.getUrl();
-	// this.detail = food.getDetail();
-	// this.cooking = food.getCooking();
-	// }
-	// return this;
-	// }
 	/**
 	 * 
 	 * san pham dang khuyen mai (detail)
@@ -567,6 +529,20 @@ public class FoodForm extends ValidatorForm implements Serializable {
 	 */
 	public void setNameTypeId(String nameTypeId) {
 		this.nameTypeId = nameTypeId;
+	}
+
+	/**
+	 * @return the nameAttr
+	 */
+	public String getNameAttr() {
+		return nameAttr;
+	}
+
+	/**
+	 * @param nameAttr the nameAttr to set
+	 */
+	public void setNameAttr(String nameAttr) {
+		this.nameAttr = nameAttr;
 	}
 
 }
