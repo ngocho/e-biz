@@ -123,6 +123,8 @@ public class LoginForm extends ValidatorForm implements Serializable {
         this.streetName = customer.getCustomerAddress().getStreetName();
         this.wardName = customer.getCustomerAddress().getWardName();
         this.url = customer.getUrl();
+        this.isAdEmail = customer.getIsAdEmail();
+        this.isAdPhone = customer.getIsAdPhone();
         // return this;
     }
     /**
