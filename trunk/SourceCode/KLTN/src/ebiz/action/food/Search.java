@@ -37,32 +37,41 @@ import ebiz.form.SearchForm;
  * @author ThuyNT
  */
 public class Search extends BaseAction {
-
+    /**
+     * [Search Food ].
+     *
+     * @param mapping ActionMapping
+     * @param form ActionForm
+     * @param request HttpServletRequest
+     * @param response HttpServletResponse
+     * @return ActionForward
+     * @throws Exception Exception
+     * @see ActionForward Struts1 Framework
+     */
     @SuppressWarnings("unchecked")
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
-    		SearchForm searchForm = (SearchForm)form;
-    		if(searchForm.getSearchText() != null){
-    		HttpSession se = request.getSession();
-//    	    HashMap<Integer, String> paging = new HashMap<Integer, String>();
-//    	    String page = request.getParameter("page");
-    	    int pageIndex = 1;
-    		List<FoodForm> formList = new ArrayList<FoodForm>();
-    		List<String> pageList = new ArrayList<String>();
-//    		Cache cache = SearchBLO.getMemcache();
-    		
-    		formList = SearchBLO.searchFullText(searchForm);
-    		pageList = SearchBLO.paging(formList.size());
-    		System.out.println("pageList" + pageList.size());
-    		//display first page
-    		formList = (List<FoodForm>)SearchBLO.getPage(formList, pageIndex);
-    		se.setAttribute("pageList", pageList);
-    		se.setAttribute("searchForm",searchForm);
-    		se.setAttribute("pageIndex", 1);
-    		if(!formList.isEmpty()){
-    		se.setAttribute("searchResult", formList);
-    		}
-    		}
-    		return mapping.findForward(SUCCESS);
+        SearchForm searchForm = (SearchForm) form;
+        if (searchForm.getSearchText() != null) {
+            HttpSession se = request.getSession();
+            // HashMap<Integer, String> paging = new HashMap<Integer, String>();
+            // String page = request.getParameter("page");
+            int pageIndex = 1;
+            List<FoodForm> formList = new ArrayList<FoodForm>();
+            List<String> pageList = new ArrayList<String>();
+            // Cache cache = SearchBLO.getMemcache();
+
+            formList = SearchBLO.searchFullText(searchForm);
+            pageList = SearchBLO.paging(formList.size());
+            // display first page
+            formList = (List<FoodForm>) SearchBLO.getPage(formList, pageIndex);
+            se.setAttribute("pageList", pageList);
+            se.setAttribute("searchForm", searchForm);
+            se.setAttribute("pageIndex", 1);
+            if (!formList.isEmpty()) {
+                se.setAttribute("searchResult", formList);
+            }
+        }
+        return mapping.findForward(SUCCESS);
     }
 }

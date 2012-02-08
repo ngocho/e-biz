@@ -34,15 +34,25 @@ import ebiz.form.ShoppingCart;
  */
 public class DeleteShoppingCart extends BaseAction {
 
-
+    /**
+     * [DeleteShoppingCart].
+     *
+     * @param mapping ActionMapping
+     * @param form ActionForm
+     * @param request HttpServletRequest
+     * @param response HttpServletResponse
+     * @return ActionForward
+     * @throws Exception Exception
+     * @see ActionForward Struts1 Framework
+     */
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
 
-       HttpSession se = request.getSession();
-       ShoppingCart shop = (ShoppingCart)se.getAttribute("shop");
-       if(shop !=null){
-           se.removeAttribute("shop");
-       }
-       return mapping.findForward(SUCCESS);
+        HttpSession se = request.getSession();
+        ShoppingCart shop = (ShoppingCart) se.getAttribute("shop");
+        if (shop != null) {
+            se.removeAttribute("shop");
+        }
+        return mapping.findForward(SUCCESS);
     }
 }

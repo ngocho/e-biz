@@ -39,27 +39,36 @@ import ebiz.form.SearchForm;
  * @author ThuyNT
  */
 public class SearchPaging extends BaseAction {
-
+    /**
+     * [Search Food Paging].
+     *
+     * @param mapping ActionMapping
+     * @param form ActionForm
+     * @param request HttpServletRequest
+     * @param response HttpServletResponse
+     * @return ActionForward
+     * @throws Exception Exception
+     * @see ActionForward Struts1 Framework
+     */
     @SuppressWarnings("unchecked")
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
-    		HttpSession se = request.getSession();
-//    	    HashMap<Integer, String> paging = new HashMap<Integer, String>();
-    		SearchForm searchForm = (SearchForm)se.getAttribute("searchForm");
-    	    String page = request.getParameter("page");
-    	    int pageIndex = Integer.parseInt(page);
-    		List<FoodForm> formList = new ArrayList<FoodForm>();
-    		Cache cache = SearchBLO.getMemcache();
-    		formList = (List<FoodForm>)cache.get("searchData");
-    		System.out.println("searchData"+formList.size());
-    		//had 
-    		if(formList == null || formList.isEmpty() ){
-    			formList = SearchBLO.searchFullText(searchForm);
-    		}
-    		formList = (List<FoodForm>)SearchBLO.getPage(formList, pageIndex);
-    		if(!formList.isEmpty()){
-    		se.setAttribute("searchResult", formList);
-    		}
-    		return mapping.findForward(SUCCESS);
+        HttpSession se = request.getSession();
+        // HashMap<Integer, String> paging = new HashMap<Integer, String>();
+        SearchForm searchForm = (SearchForm) se.getAttribute("searchForm");
+        String page = request.getParameter("page");
+        int pageIndex = Integer.parseInt(page);
+        List<FoodForm> formList = new ArrayList<FoodForm>();
+        Cache cache = SearchBLO.getMemcache();
+        formList = (List<FoodForm>) cache.get("searchData");
+        // had
+        if (formList == null || formList.isEmpty()) {
+            formList = SearchBLO.searchFullText(searchForm);
+        }
+        formList = (List<FoodForm>) SearchBLO.getPage(formList, pageIndex);
+        if (!formList.isEmpty()) {
+            se.setAttribute("searchResult", formList);
+        }
+        return mapping.findForward(SUCCESS);
     }
 }
