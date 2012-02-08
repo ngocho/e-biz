@@ -41,6 +41,7 @@ public class Register extends BaseAction {
 
     /**
      * [Register(Customer)].
+     *
      * @param mapping ActionMapping
      * @param form ActionForm
      * @param request HttpServletRequest
