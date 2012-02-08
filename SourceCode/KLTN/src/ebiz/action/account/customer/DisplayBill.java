@@ -58,18 +58,14 @@ public class DisplayBill extends BaseAction {
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
         HttpSession se = request.getSession();
-        String value = (String) request.getParameter("value");
+        String status = (String) request.getParameter("value");
         String page = (String) request.getParameter("page");
         LoginForm login = (LoginForm) se.getAttribute(CommonConstant.USER);
-        int status = 0;
         int pageIndex = 1;
         List<String> pageList = new ArrayList<String>();
         List<OrderBillForm> formList = new ArrayList<OrderBillForm>();
         if (page != null) {
             pageIndex = Integer.parseInt(page);
-        }
-        if (value != null) {
-            status = Integer.parseInt(value);
         }
         // get form list from Memcache
         Cache cache = SearchBLO.getMemcache();

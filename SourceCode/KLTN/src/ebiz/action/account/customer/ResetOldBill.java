@@ -35,40 +35,38 @@ import ebiz.dto.checkout.DetailOrder;
 
 /**
  * @author Administrator
- *
  */
 public class ResetOldBill extends BaseAction {
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
         HttpSession se = request.getSession();
-       String id = request.getParameter("id");
-       System.out.println("ID"+id);
-       if (id == null) {
-           return mapping.findForward(FAILURE);
-          
-       }
-       Long  orderID = Long.parseLong(id);
-       System.out.println("CREATE BILL");
-       List<DetailOrder> detailList1 = new ArrayList<DetailOrder>();
-       List<DetailOrder> detailList2 = new ArrayList<DetailOrder>();
-       boolean flag;
-       //get detailOrder of old Order(update DetailOrder)
-       detailList2 = FoodBLO.getDetailOrderRe(orderID);
-       //get detailOrder of old Order
-       detailList1 = FoodBLO.getDetailOrder(orderID);
-       //compare (for test number in db is enough)
-       flag = FoodBLO.isEqual(detailList1, detailList2);
-       se.setAttribute("idBill", id);
-       if(flag){
-           se.setAttribute("detailBill", detailList1);
-       }
-       else{
-           //let user compare to decide
-           se.setAttribute("detailFlag", flag);
-           se.setAttribute("detailBill", detailList1);
-           se.setAttribute("detailBill2", detailList2);
-       }
-       return mapping.findForward(SUCCESS);
+        String id = request.getParameter("id");
+        System.out.println("ID" + id);
+        if (id == null) {
+            return mapping.findForward(FAILURE);
+
+        }
+        Long orderID = Long.parseLong(id);
+        System.out.println("CREATE BILL");
+        List<DetailOrder> detailList1 = new ArrayList<DetailOrder>();
+        List<DetailOrder> detailList2 = new ArrayList<DetailOrder>();
+        boolean flag;
+        // get detailOrder of old Order(update DetailOrder)
+        detailList2 = FoodBLO.getDetailOrderRe(orderID);
+        // get detailOrder of old Order
+        detailList1 = FoodBLO.getDetailOrder(orderID);
+        // compare (for test number in db is enough)
+        flag = FoodBLO.isEqual(detailList1, detailList2);
+        se.setAttribute("idBill", id);
+        if (flag) {
+            se.setAttribute("detailBill", detailList1);
+        } else {
+            // let user compare to decide
+            se.setAttribute("detailFlag", flag);
+            se.setAttribute("detailBill", detailList1);
+            se.setAttribute("detailBill2", detailList2);
+        }
+        return mapping.findForward(SUCCESS);
     }
 
 }
