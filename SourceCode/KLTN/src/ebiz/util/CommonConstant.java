@@ -35,6 +35,8 @@ public class CommonConstant {
     public  final static String SHOPPING    = "shop";
     public  final static String WELCOME    = "Chào mừng ";
     public final static String BILL ="bill";
+    public final static String ADMIN_BILL ="billAdmin";
+    public final static String ADMIN_CUSTOMER ="customerAdmin";
     public final static int SHORTDISPLAY =5;
     //CUSTOMER for sending message prmotion
     public  final static String CODECUSTOMER_0    = "0";
@@ -72,6 +74,7 @@ public class CommonConstant {
     public final static String BILLSTATUS_3 = "3";  // paid money
     public final static String BILLSTATUS_4 ="4";  //rececive
     public final static String BILLSTATUS_5 ="5";  //cancel
+    public final static String BILLSTATUS_6 ="6"; 
     //DISPLAY CATEGORY
     public final static String FOOD_TYPE =   "foodTypeId";  
     public final static String FOOD_STATUS =   "foodStatusId";  
