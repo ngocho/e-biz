@@ -3,13 +3,14 @@
  */
 package employee.ebiz.blo;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import ebiz.dao.gae.CustomerDAO;
 import ebiz.dao.gae.OrderDAO;
-import ebiz.dao.inf.ICustomerDAO;
 import ebiz.dao.inf.IOrderDAO;
-import ebiz.dto.account.customer.Customer;
+import ebiz.dto.checkout.OrderBill;
+import ebiz.form.OrderBillForm;
+import ebiz.util.CommonConstant;
 import employee.ebiz.dao.gae.EmployeeDAO;
 import employee.ebiz.dao.inf.IEmployeeDAO;
 import employee.ebiz.dto.Employee;
@@ -20,7 +21,7 @@ import employee.ebiz.dto.Employee;
  */
 public class EmployeeBLO {
 	private static IEmployeeDAO custDao = new EmployeeDAO();
-	
+	private static IOrderDAO orderDao = new OrderDAO();
     public static List<Employee> getEmployeeList(){
         return custDao.getEmployeeList();
     }
@@ -59,5 +60,35 @@ public class EmployeeBLO {
         	return  custDao.deleteEmployee(username);
         }
         return false;
+    }
+    
+    public static int assignJob(String idEmployee,int numberJob) {
+        List<OrderBill> orderList = orderDao.getOrderListByStatus(CommonConstant.BILLSTATUS_6);
+        if (!orderList.isEmpty()) {
+            if (orderList.size() < numberJob) {
+                numberJob = orderList.size();
+            }
+            for (int i = 0; i < numberJob; i++) {
+                // assgin task
+                orderList.get(i).setStatus(CommonConstant.BILLSTATUS_0);
+                orderList.get(i).setIdEmployee(idEmployee);
+                orderDao.save(orderList.get(i));
+            }
+        }
+        return numberJob;
+
+    }
+    
+    public static List<OrderBillForm> getListBillAssigned(String id){
+        List<OrderBill> orderList = orderDao.getOrListByIDEmployee(id);
+        List<OrderBillForm> orderFormList =  new ArrayList<OrderBillForm>();
+        for(OrderBill bill : orderList){
+            if(bill != null){
+                OrderBillForm form = new OrderBillForm();
+                form.editForm(bill);
+                orderFormList.add(form);
+            }
+        }
+        return orderFormList;
     }
 }
