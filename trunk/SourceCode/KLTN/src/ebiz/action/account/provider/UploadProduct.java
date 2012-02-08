@@ -38,6 +38,7 @@ import ebiz.util.CommonUtil;
 public class UploadProduct extends BaseAction {
     /**
      * [UploadProduct ].
+     *
      * @param mapping ActionMapping
      * @param form ActionForm
      * @param request HttpServletRequest
@@ -69,8 +70,8 @@ public class UploadProduct extends BaseAction {
                 boolean flagUpload = FoodBLO.uploadFood(food);
                 // success
                 if (flagUpload) {
-                	//clear Form
-                	foodForm.clear();
+                    // clear Form
+                    foodForm.clear();
                     // remove attr from session
                     se.removeAttribute("foodForm");
                     se.removeAttribute("urlImageKey");
@@ -83,6 +84,7 @@ public class UploadProduct extends BaseAction {
                 Food food = foodForm.getFood();
                 food.setFoodId(foodForm.getId());
                 boolean flag = FoodBLO.updateFood(food);
+                System.out.println("STAUS UPDATED PRODUCT " + flag + " status" + food.getFoodTypeId());
                 if (flag) {
                     // remove attr
                     se.removeAttribute("urlImageKey");
