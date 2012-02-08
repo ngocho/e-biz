@@ -5,9 +5,14 @@
 <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
 <%@taglib uri="http://java.sun.com/jstl/core" prefix="c"%>
 <div class="header" >
-  <div class="header-row1" id="headerFocus">
-    <div class="logo-sidenote">
+<div >
+      <c:if test="${admin !=null}"> <span class="impressionText"> Admin : 
+       <bean:write name="admin"/>
+        </span>
+        </c:if>
     </div>
+  <div class="header-row1" id="headerFocus">
+    
     <ul class="super-links"  id="customer_super_links">
       <li>Lựa chọn ngôn ngữ 
 <select>
@@ -22,14 +27,10 @@ Tiếng Anh
 </li>
 
       <li></li>
-      <c:if test="${admin ==null}">
-      <li class="first"><a href="/loginProvider.vn">Đăng nhập</a>        </li>
-      </c:if>
       <c:if test="${admin !=null}">
-      <li class="first"><a href="/logoutProviderAcc.vn">Đăng xuất</a>        </li>
+      <li class="first"><a href="/logoutAdmin.vn"><span  style="color:white;">Đăng xuất</span></a>        </li>
+     
       </c:if>
-        <li>
-            <a href="/registerProvider.vn">Đăng kí</a>        </li>
       </ul>
  </div>
  <div class="header-row3"  style="background:green">
@@ -44,7 +45,7 @@ Tiếng Anh
         </a></li>
         <logic:present name="admin">
         <li class="level0 nav-1 level-top first parent">
-<a href="#"
+<a href="/registerAd.vn"
           class="level-top">
 
 <span class="nav-text-provider">Đăng kí Admin</span>
@@ -57,7 +58,7 @@ Tiếng Anh
         </a>
 </li>
   <li class="level0 nav-4 level-top first parent">
-<a href="/displayProduct.vn"
+<a href="#"
           class="level-top">
 
 <span class="nav-text-provider">Nhà cung cấp</span>
@@ -65,7 +66,7 @@ Tiếng Anh
         </li>
           <li class="level0 nav-4 level-top first parent">
 <a
-          href="#"
+          href="/displayCustomerCategory.vn"
           class="level-top">
 
 <span class="nav-text-provider">Khách hàng</span>
@@ -76,6 +77,12 @@ Tiếng Anh
           class="level-top">
 
 <span class="nav-text-provider">Nhân viên</span>
+        </a></li>
+        <li class="level0 nav-4 level-top first parent">
+<a
+          href="/displayCustomerCategory.vn"
+          class="level-top">
+<span class="nav-text-provider">Hóa đơn</span>
         </a></li>
        </logic:present>
 </ul>

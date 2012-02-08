@@ -211,7 +211,7 @@
 			<th>HƯỚNG DẪN</th>
 			<th>THỜI GIAN UPLOAD</th>
 			<c:if test="${adminVo.status == '4'}">
-			<th>REVIEW</th>
+			<th>DISPLAY</th>
 			</c:if>
 			<th>XÓA</th>
 		</tr>
@@ -223,7 +223,7 @@
 						width="50" height="40" />
 					</td>
 					<td style="text-align: center;"><a
-						href="#"><bean:write
+						href="/displayFoodDetail.vn?id=<bean:write name="element" property="id" />"><bean:write
 								name="element" property="id" />
 					</a>
 					</td>
@@ -245,7 +245,7 @@
 					</td>
 					<c:if test="${adminVo.status == '4'}">
 					<td><a id=""
-						href="/reviewFood.vn?id=<bean:write name="element" property="id"/>">Review</a>
+						href="/reviewFood.vn?id=<bean:write name="element" property="id"/>">Hiển thị</a>
 					</td>
 					</c:if>
 					<td><a id="delBill"
