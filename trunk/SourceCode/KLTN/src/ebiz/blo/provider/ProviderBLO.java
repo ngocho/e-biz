@@ -55,7 +55,11 @@ public class ProviderBLO {
     
     public static int isLoginID(String id, String pass) {
         Provider provider = proDao.getProviderById(id);
+        
         if (provider != null) {
+        	if(!provider.isActive()){
+            	return 2; //not yet authentication
+            }
             // get password
             String passCust = provider.getProviderPassword();
             if (pass.equals(passCust)) {
@@ -66,6 +70,7 @@ public class ProviderBLO {
         } else {
             return -1; // didn't exist this user
         }
+        
 
     }
  public static List<FoodForm> getFoodFormList(String idProvider,String statusFood){
