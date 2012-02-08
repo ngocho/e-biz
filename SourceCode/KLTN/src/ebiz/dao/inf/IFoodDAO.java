@@ -1,6 +1,5 @@
 package ebiz.dao.inf;
 
-import java.util.HashMap;
 import java.util.List;
 
 import ebiz.dto.food.Food;
@@ -16,6 +15,7 @@ public interface IFoodDAO {
 	public Food getFoodById(Long key);
 	public String getStatusNameByID(String id);
 	public String getNameTypeById(String id);
+	public String getNameAttrById(String id);
 	public List<Food> getListFoodByValue(String col, String id);
 
 	public List<Food> getFoodListAll();
