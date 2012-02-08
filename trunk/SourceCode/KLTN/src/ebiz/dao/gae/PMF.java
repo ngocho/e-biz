@@ -8,6 +8,8 @@ import javax.jdo.JDOObjectNotFoundException;
 import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Query;
+
+
 public final class PMF {
     public static final PersistenceManagerFactory pmfInstance = JDOHelper
             .getPersistenceManagerFactory("transactions-optional");
@@ -266,11 +268,17 @@ public final class PMF {
 
     @SuppressWarnings("unchecked")
     public static List<?> getObjectList(Class<?> className, String col, String order,int record, int page,String sql) {
+//		StringBuffer filterSql = new StringBuffer();
+//		filterSql.append(sql);
 		PersistenceManager pm = getPMF();
 		Query query = pm.newQuery(className);
 		query.setRange((record * (page - 1)), record * page);
 		List<Object> results = new ArrayList<Object>();
+		//add
+//		 query.setFilter("isDisplay == 1");
+		 //end
 		query.setFilter(sql);
+//		query.declareParameters("String param");
 		query.setOrdering(col + " " + order);
 		System.out.println("QUERY !!!!!!!!!!!!!!" + query);
 		try {

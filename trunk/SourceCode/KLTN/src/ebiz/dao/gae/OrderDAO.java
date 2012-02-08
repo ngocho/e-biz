@@ -18,11 +18,13 @@
  */
 package ebiz.dao.gae;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 import ebiz.dao.inf.IOrderDAO;
-import ebiz.dto.checkout.*;
+import ebiz.dto.checkout.DetailOrder;
+import ebiz.dto.checkout.OrderBill;
+import ebiz.dto.checkout.OrderStatus;
 
 /**
  * @author ThuyNT
@@ -105,7 +107,7 @@ public class OrderDAO implements IOrderDAO {
          */
         @SuppressWarnings("unchecked")
         @Override
-        public List<OrderBill> getOrListByStatus(String userID, Integer status){
+        public List<OrderBill> getOrListByStatus(String userID, String status){
             List<OrderBill> orderList = new ArrayList<OrderBill>();
             orderList = (List<OrderBill>)PMF.getObjectListByTwoValues(OrderBill.class,"idCustomer",userID, "status", status);
             return orderList;
@@ -134,6 +136,13 @@ public class OrderDAO implements IOrderDAO {
                 return orderStatus.getName();
             }
             return null;
+        }
+        @SuppressWarnings("unchecked")
+        @Override
+        public List<OrderBill> getOrderListByStatus(String idStatus) {
+            List<OrderBill> orderList = new ArrayList<OrderBill>();
+            orderList = (List<OrderBill>)PMF.getObjectListByValue(OrderBill.class, "status", idStatus);
+            return orderList;
         }
         
 }

@@ -19,7 +19,6 @@
 package ebiz.dao.gae;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import ebiz.dao.inf.IFoodDAO;
@@ -214,6 +213,15 @@ public class FoodDAO implements IFoodDAO {
         System.out.println("FOODTYPE" + type);
         if (type != null) {
             return type.getProductTypeName();
+        }
+        return null;
+    }
+    
+    @Override
+    public String getNameAttrById(String id) {
+        FoodAttribute type = (FoodAttribute) PMF.getObjectById(FoodAttribute.class, id);
+        if (type != null) {
+            return type.getProductAttributeName();
         }
         return null;
     }
