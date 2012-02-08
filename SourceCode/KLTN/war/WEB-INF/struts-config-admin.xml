@@ -29,6 +29,9 @@
 	 <action path="/admin" forward="/adminAuthentication.vn">
     </action>
     
+    <action path="/registerAd" forward="admin_register">
+    </action>
+    
 	<action 
 			path="/adminAuthentication"
 			type="ebiz.action.account.admin.AdminAuthentication" >
@@ -43,6 +46,21 @@
 			scope="session" validate="true">
 		<forward name="success" path="/displayFoodCateAdmin.vn" redirect="true" />
 		<forward name="failure" path="admin_login" redirect="true" />
+    </action>
+    
+     <action input="admin_register" 
+			path="/registerAdmin"
+			type="ebiz.action.account.admin.Register" 
+			name="adminForm"
+			scope="session" validate="true">
+		<forward name="success" path="admin_register" redirect="true" />
+    </action>
+    
+     <action 
+			path="/logoutAdmin"
+			type="ebiz.action.account.admin.Logout" 
+			scope="session" validate="true">
+		<forward name="success" path="admin_login" redirect="true" />
     </action>
     
     <action 
@@ -69,6 +87,23 @@
 		<forward name="success" path="/displayFoodCateAdminPaging.vn" redirect="true" />
     </action>
     
+     <action 
+            path="/displayBillCategory"
+            type="ebiz.action.account.admin.BillCategory" >
+        <forward name="success" path="admin_content_bill" redirect="true" />
+    </action>
+    
+    <action 
+            path="/displayCustomerCategory"
+            type="ebiz.action.account.admin.CustomerCategory" >
+        <forward name="success" path="admin_content_customer" redirect="true" />
+    </action>
+    
+     <action 
+            path="/displayFoodDetail"
+            type="ebiz.action.account.admin.FoodDetail" >
+        <forward name="success" path="admin_content_detailFood" redirect="true" />
+    </action>
     
 	</action-mappings>
 

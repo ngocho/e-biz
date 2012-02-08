@@ -33,7 +33,7 @@
 			name="login"
 			scope="session" validate="true">
 		<forward name="success" path="/home.vn" redirect="true" />
-		<forward name="success1" path="checkout" redirect="true" />
+		<forward name="success1" path="/checkAuthentication.vn" redirect="true" />
 		<forward name="failure" path="loginLayout" redirect="true" />
     </action>
     
