@@ -89,6 +89,87 @@ function validateProviderRegister() {
 
 }
 
+function validateCheckoutInfo() {
+    var flag = true;
+    var temp = false;
+    if($('input[name=nameCustomer]').val() == ""){
+        $('input[name=nameCustomer]').css("background", "#FC0");
+       if(temp == false){
+           $('input[name=nameCustomer]').focus();
+           temp = true;
+       }
+    }
+    
+    if($('input[name=phone]').val() == ""){
+        $('input[name=phone]').css("background", "#FC0");
+       if(temp == false){
+           $('input[name=phone]').focus();
+           temp = true;
+       }
+    }
+    
+    if($('input[name=email]').val() == ""){
+        $('input[name=email]').css("background", "#FC0");
+       if(temp == false){
+           $('input[name=email]').focus();
+           temp = true;
+       }
+    }
+    
+    if($('input[name=homeNumber]').val() == ""){
+        $('input[name=homeNumber]').css("background", "#FC0");
+       if(temp == false){
+           $('input[name=homeNumber]').focus();
+           temp = true;
+       }
+    }
+    
+    if($('input[name=streetName]').val() == ""){
+        $('input[name=streetName]').css("background", "#FC0");
+       if(temp == false){
+           $('input[name=streetName]').focus();
+           temp = true;
+       }
+    }
+    
+    if($('input[name=wardName]').val() == ""){
+        $('input[name=wardName]').css("background", "#FC0");
+       if(temp == false){
+           $('input[name=wardName]').focus();
+           temp = true;
+       }
+    }
+    
+    if($('input[name=dateShip]').val() == ""){
+        $('input[name=dateShip]').css("background", "#FC0");
+       if(temp == false){
+           $('input[name=dateShip]').focus();
+           temp = true;
+       }
+    }
+    if($('textarea').val()==""){
+        $('textarea').css("background", "#FC0");
+        if(temp == false){
+            $('textarea').focus();
+            temp = true;
+        } 
+    }
+    if($("#districtName option:selected").val() == '0'){
+        $('#districtName option:selected').css("background", "#FC0");
+        if(temp == false){
+            $('#districtName option:selected').focus();
+            temp = true;
+        } 
+    }
+    if(temp == true){
+        flag = false;
+        $("#message").html('');
+        alert('Vui lòng nhập các thông tin yêu cầu!');
+    }
+    return flag;
+    
+}
+
 // start Provider login 04/02/2012
 function validateProviderLogin() {
     var flag = true;
