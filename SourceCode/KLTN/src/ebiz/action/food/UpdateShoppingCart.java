@@ -38,8 +38,16 @@ import ebiz.util.CommonConstant;
  */
 
 public class UpdateShoppingCart extends BaseAction {
-    /*
-     * update product in shopping
+    /**
+     * [UpdateShoppingCart(ajax) ].
+     *
+     * @param mapping ActionMapping
+     * @param form ActionForm
+     * @param request HttpServletRequest
+     * @param response HttpServletResponse
+     * @return ActionForward
+     * @throws Exception Exception
+     * @see ActionForward Struts1 Framework
      */
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {

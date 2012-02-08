@@ -19,7 +19,6 @@
 package ebiz.action.food;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -36,7 +35,6 @@ import ebiz.blo.food.FoodBLO;
 import ebiz.dto.food.FoodAttribute;
 import ebiz.dto.food.FoodPriceLevel;
 import ebiz.form.FoodForm;
-import ebiz.form.Paging;
 import ebiz.form.FoodPriceForm;
 import ebiz.form.ProductVO;
 import ebiz.util.CommonConstant;
@@ -45,24 +43,28 @@ import ebiz.util.CommonConstant;
  * @author ThuyNT
  */
 public class DisplayCategory extends BaseAction {
-    /* get tên : save all in session
-     * attribute của product 
-     * type of giá
-     * list product (form)
-     * phân trang ( lưu trang đầu tiên vào session)
-     * 
+    /**
+     * [DisplayCategory].
+     *
+     * @param mapping ActionMapping
+     * @param form ActionForm
+     * @param request HttpServletRequest
+     * @param response HttpServletResponse
+     * @return ActionForward
+     * @throws Exception Exception
+     * @see ActionForward Struts1 Framework
      */
+    @SuppressWarnings("unchecked")
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
         HttpSession se = request.getSession();
         List<FoodAttribute> attrs = new ArrayList<FoodAttribute>();
         List<FoodPriceForm> prices = new ArrayList<FoodPriceForm>();
-        List<Paging> pageList = new ArrayList<Paging>();
         List<FoodForm> foods = new ArrayList<FoodForm>();
         List<String> numberPageList = new ArrayList<String>();
         ProductVO vo = new ProductVO();
         String typeProduct = request.getParameter("typeProduct");
-        System.out.println("typeProduct"+ typeProduct);
+        System.out.println("typeProduct" + typeProduct);
         if (typeProduct == null) {
             vo = (ProductVO) se.getAttribute(CommonConstant.PRODUCTVO);
             typeProduct = vo.getTypeProduct();
@@ -75,19 +77,17 @@ public class DisplayCategory extends BaseAction {
         se.setAttribute(CommonConstant.FOOD_CATEGORY_A, attrs);
 
         // get type of price from session
-        prices = ( List<FoodPriceForm>)se.getAttribute(CommonConstant.FOOD_CATEGORY_P);
-        if(prices == null){
-        	List<FoodPriceLevel> listLevel = FoodBLO.getPriceFoodList();
-        	prices = FoodBLO.format(listLevel);
+        prices = (List<FoodPriceForm>) se.getAttribute(CommonConstant.FOOD_CATEGORY_P);
+        if (prices == null) {
+            List<FoodPriceLevel> listLevel = FoodBLO.getPriceFoodList();
+            prices = FoodBLO.format(listLevel);
             se.setAttribute(CommonConstant.FOOD_CATEGORY_P, prices);
         }
-        
 
         // getproduct --> save in session
-        HashMap<Integer, String> paging = new HashMap<Integer, String>();
         String filterCol = CommonConstant.FOOD_TYPE;
-        foods = FoodBLO.initFoodCategory(numberPageList, CommonConstant.DEFAULT_RECORD, filterCol, typeProduct, null, null);
-        pageList = FoodBLO.updateStatusPaging(paging);
+        foods = FoodBLO.initFoodCategory(numberPageList, CommonConstant.DEFAULT_RECORD, filterCol, typeProduct, null,
+                null);
         // paging
         vo.setPagingList(numberPageList);
         // se.setAttribute(CommonConstant.PAGING, pageList);
@@ -100,7 +100,7 @@ public class DisplayCategory extends BaseAction {
         vo.setPriceId("0");
         se.setAttribute(CommonConstant.PRODUCTVO, vo);
 
-//        System.out.println("SIZE OF FOOD" + foods.size());
+        // System.out.println("SIZE OF FOOD" + foods.size());
         // list food
         se.setAttribute(CommonConstant.FOOD_CATEGORY_F, foods);
 

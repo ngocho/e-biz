@@ -57,6 +57,7 @@ public class CreateOrderBill extends BaseAction {
        // shopCart.setOrder(orderForm);
         // billing
         order = FoodBLO.billing(shopCart);
+        //update Customer
         // transfer OrderBill-> form to display
         // success
         if (order != null) {
