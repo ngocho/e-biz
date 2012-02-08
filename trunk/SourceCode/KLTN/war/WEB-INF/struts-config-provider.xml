@@ -44,13 +44,14 @@
 			name="providerFormLogin"
 			scope="session" validate="true">
 		<forward name="success" path="/displayProduct.vn" redirect="true" />
+		<forward name="success1" path="home_provider_authentication" redirect="true" />
 		<forward name="failure" path="home_provider_login" redirect="true" />
     </action>
      
     <action 
 			path="/logoutProviderAcc"
 			type="ebiz.action.account.provider.Logout" >
-		<forward name="success" path="home_provider_login" redirect="true" />
+		<forward name="success" path="home_provider_authentication" redirect="true" />
 		<forward name="failure" path="home_provider" redirect="true" />
     </action>
      
@@ -114,6 +115,12 @@
 			path="/resetForm"
 			type="ebiz.action.account.provider.ResetForm" >
 		<forward name="success" path="/resetForm.vn" redirect="false" />
+    </action>
+    
+    <action 
+			path="/authenticationProvider"
+			type="ebiz.action.account.provider.Authentication" >
+		<forward name="success" path="home_provider_login" redirect="false" />
     </action>
     
      

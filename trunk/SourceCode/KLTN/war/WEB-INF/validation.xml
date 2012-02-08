@@ -93,8 +93,13 @@
             </field>
             <field
                 property="email"
-                depends="email">
+                depends="required">
                 <arg0 key="register.email"/>
+            </field>
+            <field
+                property="phone"
+                depends="required">
+                <arg0 key="register.phone"/>
             </field>
             <field
                 property="loginPassword"
@@ -135,7 +140,7 @@
             </field>
        <field
                 property="email"
-                depends="email">
+                depends="required, email">
                 <arg0 key="order.email"/>
             </field>
             <field
@@ -172,6 +177,11 @@
                 property="dateShip"
                 depends="required">
                 <arg0 key="order.dateShip"/>
+            </field>
+             <field
+                property="note"
+                depends="required">
+                <arg0 key="order.note"/>
                 
             </field>
         </form>

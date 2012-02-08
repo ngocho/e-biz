@@ -167,6 +167,15 @@
      </definition>
 <!-- end Provider.Register -->
 
+<!-- start Provider.Authentication -->
+     <definition name="home_provider_authentication" extends="baseLayout1">
+      <put name="title" value="Provider Register" />
+      <put name="left"   value="/left_provider.jsp" />
+      <put name="header" value="/header_provider.jsp" />
+      <put name="content" value="/provider_content_authentication.jsp" />
+     </definition>
+<!-- end Provider.Authentication -->
+
 <!-- start Provider.uploadImage -->   
     <definition name="uploadImage" extends="baseLayout1">
         <put name="title" value="Upload Image" />
@@ -210,7 +219,29 @@
 		<put name="header" value="/admin_header.jsp" />
 		<put name="content" value="/admin_content_product.jsp" />
    	</definition>
-<!-- start Admin.Home -->
+<!-- end Admin.Home -->
+
+<!-- start Admin.Bill -->
+    <definition name="admin_content_bill" extends="baseLayout1">
+        <put name="title" value="Admin Bill" />
+        <put name="header" value="/admin_header.jsp" />
+        <put name="content" value="/admin_content_bill.jsp" />
+    </definition>
+<!-- end Admin.Bill -->
+   
+     <definition name="admin_content_customer" extends="baseLayout1">
+        <put name="title" value="Admin Bill" />
+        <put name="header" value="/admin_header.jsp" />
+        <put name="content" value="/admin_content_customer.jsp" />
+    </definition>
+    
+    <definition name="admin_content_detailFood" extends="baseLayout1">
+        <put name="title" value="Admin Detail Food" />
+        <put name="header" value="/admin_header.jsp" />
+        <put name="content" value="/admin_content_foodDetail.jsp" />
+    </definition>
+    
+    
 <!-- END ADMIN -->
 
     <definition name="home_customer_reOrder" extends="baseLayout1">
