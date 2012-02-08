@@ -39,6 +39,7 @@ import ebiz.util.CommonConstant;
 public class Login extends BaseAction {
     /**
      * [Login ].
+     *
      * @param mapping ActionMapping
      * @param form ActionForm
      * @param request HttpServletRequest
@@ -57,7 +58,9 @@ public class Login extends BaseAction {
         int flag = -1;
         // test exist in database
         flag = ProviderBLO.isLoginID(login.getLoginId(), login.getLoginPassword());
-        if (flag == 1) {
+        if (flag == 2) { // don't authentication
+            return mapping.findForward(SUCCESS1);
+        } else if (flag == 1) {
             // save in session
             se.setAttribute(CommonConstant.PROVIDER, login);
             se.setAttribute("idProvider", login.getLoginId());

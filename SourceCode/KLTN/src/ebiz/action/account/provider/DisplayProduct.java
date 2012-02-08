@@ -42,7 +42,7 @@ import ebiz.util.CommonConstant;
 public class DisplayProduct extends BaseAction {
     /**
      * [DisplayProduct].
-     * 
+     *
      * @param mapping ActionMapping
      * @param form ActionForm
      * @param request HttpServletRequest

@@ -33,7 +33,7 @@ import ebiz.dto.account.provider.Provider;
 /**
  * @author Administrator
  */
-public class AuthenticationProvider extends BaseAction {
+public class Authentication extends BaseAction {
 
     /**
      * [AuthenticationProvider].
@@ -52,9 +52,8 @@ public class AuthenticationProvider extends BaseAction {
         ProviderForm provider = (ProviderForm) se.getAttribute("provider");
         if (provider == null) {
             Provider pro = new Provider();
-            pro.setProviderId("4");
+            pro.setProviderId("3");
             pro.setProviderPassword("12345678");
-            pro.setActive(true);
             ProviderBLO.registerProvider(pro);
             return mapping.findForward(FAILURE);
         }

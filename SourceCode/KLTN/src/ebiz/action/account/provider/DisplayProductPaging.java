@@ -42,6 +42,7 @@ public class DisplayProductPaging extends BaseAction {
 
     /**
      * [DisplayProduct when click paging].
+     *
      * @param mapping ActionMapping
      * @param form ActionForm
      * @param request HttpServletRequest
@@ -50,59 +51,58 @@ public class DisplayProductPaging extends BaseAction {
      * @throws Exception Exception
      * @see ActionForward Struts1 Framework
      */
-	public ActionForward execute(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		// declare varible
-		int record;
-		int page = 1;
-		String limit, col, status;
-		String filterCol = CommonConstant.FOOD_STATUS;
-		System.out.println("STATUS" + filterCol);
-		List<FoodForm> foods = new ArrayList<FoodForm>();
-		List<String> numberPageList = new ArrayList<String>();
-		// get param
-		String order = request.getParameter("order");
-		limit = (String) request.getParameter("limit");
-		col = (String) request.getParameter("col");
-		String p = (String) request.getParameter("page");
-		status = (String) request.getParameter("value");
-		// session
-		HttpSession se = request.getSession();
-		String idProvider = (String) se.getAttribute("idProvider");
-		ProductVO vo = (ProductVO) se.getAttribute(CommonConstant.PROVIDERVO);
-		if (status == null) {
-			status = vo.getStatus();
-		}
-		if (order == null) {
-			order = vo.getOrder();
-		}
-		if (limit == null) {
-			record = vo.getLimit();
-		} else {
-			record = Integer.parseInt(limit);
-		}
+    public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
+            HttpServletResponse response) throws Exception {
+        // declare varible
+        int record;
+        int page = 1;
+        String limit, col, status;
+        String filterCol = CommonConstant.FOOD_STATUS;
+        System.out.println("STATUS" + filterCol);
+        List<FoodForm> foods = new ArrayList<FoodForm>();
+        List<String> numberPageList = new ArrayList<String>();
+        // get param
+        String order = request.getParameter("order");
+        limit = (String) request.getParameter("limit");
+        col = (String) request.getParameter("col");
+        String p = (String) request.getParameter("page");
+        status = (String) request.getParameter("value");
+        // session
+        HttpSession se = request.getSession();
+        String idProvider = (String) se.getAttribute("idProvider");
+        ProductVO vo = (ProductVO) se.getAttribute(CommonConstant.PROVIDERVO);
+        if (status == null) {
+            status = vo.getStatus();
+        }
+        if (order == null) {
+            order = vo.getOrder();
+        }
+        if (limit == null) {
+            record = vo.getLimit();
+        } else {
+            record = Integer.parseInt(limit);
+        }
 
-		if (col == null) {
-			col = vo.getCol();
-		}
-		if (p != null) {
-			page = Integer.parseInt(p);
-		}
-		// display FoodCategory
-		foods = FoodBLO.displayFoodCategoryPaging(col, numberPageList, order,
-				record, page, filterCol, status, idProvider);
-		// update status of paging
-		// save in Session
-		se.setAttribute(CommonConstant.PROVIDER_CATEGORY_F, foods);
-		vo.setLimit(record);
-		vo.setCol(col);
-		vo.setPage(page);
-		vo.setPagingList(numberPageList);
-		vo.setOrder(order);
-		vo.setStatus(status);
-		return mapping.findForward(SUCCESS);
+        if (col == null) {
+            col = vo.getCol();
+        }
+        if (p != null) {
+            page = Integer.parseInt(p);
+        }
+        // display FoodCategory
+        foods = FoodBLO.displayFoodCategoryPaging(col, numberPageList, order, record, page, filterCol, status,
+                idProvider);
+        // update status of paging
+        // save in Session
+        se.setAttribute(CommonConstant.PROVIDER_CATEGORY_F, foods);
+        vo.setLimit(record);
+        vo.setCol(col);
+        vo.setPage(page);
+        vo.setPagingList(numberPageList);
+        vo.setOrder(order);
+        vo.setStatus(status);
+        return mapping.findForward(SUCCESS);
 
-	}
+    }
 
 }
