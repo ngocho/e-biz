@@ -18,27 +18,31 @@
  */
 package ebiz.action.account.admin;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import net.sf.jsr107cache.Cache;
+
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
-import org.apache.struts.action.ActionMessage;
-import org.apache.struts.action.ActionMessages;
 
 import ebiz.action.BaseAction;
 import ebiz.blo.admin.AdminBLO;
-import ebiz.dto.account.admin.Admin;
-import ebiz.form.AdminForm;
+import ebiz.blo.food.SearchBLO;
+import ebiz.form.OrderBillForm;
+import ebiz.util.CommonConstant;
 
 /**
- * @author ThuyNT
+ * @author Administrator
  */
-public class Register extends BaseAction {
+public class BillCategory extends BaseAction {
     /**
-     * [Register ].
+     * [DisplayBill(Customer Account)].
      *
      * @param mapping ActionMapping
      * @param form ActionForm
@@ -48,25 +52,34 @@ public class Register extends BaseAction {
      * @throws Exception Exception
      * @see ActionForward Struts1 Framework
      */
+    @SuppressWarnings("unchecked")
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
-        // after checked validation using xml file
-        AdminForm user = (AdminForm) form;
-        Admin admin = user.getAdmin();
-        boolean flag = AdminBLO.registerAdmin(admin);
         HttpSession se = request.getSession();
-        if (flag) {
-            // save value in session
-            // se.setAttribute("adminForm", user);
-            se.removeAttribute("adminForm");
-
-        } else {
-            se.removeAttribute("aFlagRegister");
-            // account is exsist
-            ActionMessages messages = new ActionMessages();
-            messages.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage("errors.duplicated"));
-            saveMessages(request, messages); // storing messages as request attributes
+        String status = (String) request.getParameter("value");
+        String page = (String) request.getParameter("page");
+        int pageIndex = 1;
+        List<String> pageList = new ArrayList<String>();
+        List<OrderBillForm> formList = new ArrayList<OrderBillForm>();
+        if (page != null) {
+            pageIndex = Integer.parseInt(page);
         }
+        // get form list from Memcache
+        Cache cache = SearchBLO.getMemcache();
+        formList = (List<OrderBillForm>) cache.get("adminBillData");
+
+        if (formList == null || formList.isEmpty()) {
+            formList = AdminBLO.getOrderBillFormList(status);
+        }
+        pageList = SearchBLO.paging(formList.size());
+        formList = (List<OrderBillForm>) SearchBLO.getPage(formList, pageIndex);
+        // // update status of OrderBill
+        // login.setIsCustomerBill(status);
+        // save Bill in session to display
+        se.setAttribute(CommonConstant.ADMIN_BILL, formList);
+        // save PagingList in session to display
+        se.setAttribute("aPagingList", pageList);
+        se.setAttribute("aPageIndex", pageIndex);
         return mapping.findForward(SUCCESS);
     }
 

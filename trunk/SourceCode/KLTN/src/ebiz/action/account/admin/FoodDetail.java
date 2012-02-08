@@ -25,21 +25,18 @@ import javax.servlet.http.HttpSession;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
-import org.apache.struts.action.ActionMessage;
-import org.apache.struts.action.ActionMessages;
 
 import ebiz.action.BaseAction;
-import ebiz.blo.admin.AdminBLO;
-import ebiz.dto.account.admin.Admin;
-import ebiz.form.AdminForm;
+import ebiz.blo.food.FoodBLO;
+import ebiz.form.FoodForm;
 
 /**
  * @author ThuyNT
  */
-public class Register extends BaseAction {
+public class FoodDetail extends BaseAction {
+
     /**
-     * [Register ].
-     *
+     * [display DetailProduct - Admin].
      * @param mapping ActionMapping
      * @param form ActionForm
      * @param request HttpServletRequest
@@ -50,24 +47,21 @@ public class Register extends BaseAction {
      */
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
-        // after checked validation using xml file
-        AdminForm user = (AdminForm) form;
-        Admin admin = user.getAdmin();
-        boolean flag = AdminBLO.registerAdmin(admin);
         HttpSession se = request.getSession();
-        if (flag) {
-            // save value in session
-            // se.setAttribute("adminForm", user);
-            se.removeAttribute("adminForm");
-
-        } else {
-            se.removeAttribute("aFlagRegister");
-            // account is exsist
-            ActionMessages messages = new ActionMessages();
-            messages.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage("errors.duplicated"));
-            saveMessages(request, messages); // storing messages as request attributes
+        // get ID from request
+        String id = (String) request.getParameter("id");
+        // get FoodForm
+        FoodForm foodForm = FoodBLO.getFoodFormDetail(id);
+        if (foodForm != null) {
+            // set form to display
+            se.setAttribute("aFoodForm", foodForm);
+            // set Url of image
+           // se.setAttribute("AurlImageKey", foodForm.getUrlKey());
+            // flag for Updated Product
+            se.setAttribute("flagUpload", 1);
+            return mapping.findForward(SUCCESS);
         }
-        return mapping.findForward(SUCCESS);
+        return mapping.findForward(FAILURE);
     }
 
 }
