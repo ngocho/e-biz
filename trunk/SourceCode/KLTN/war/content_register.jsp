@@ -5,6 +5,9 @@
 <%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic"%>
 <script type="text/javascript">
 $(document).ready(function(){
+	
+	$("#isAdEmail").attr('checked', true);
+	$("#isAdPhone").attr('checked', true);
     //submit
      $("#register").click(function() {
         var flag =  validateCustomerRegister();
@@ -52,7 +55,7 @@ $(document).ready(function(){
     </div>
     <html:form action="/registerAction.vn" method="get" styleId="registerForm">
         <div class="fieldset">
-           <h2 class="legend">Thông tin đăng nhập</h2>
+           <h2 class="legend">Thông tin bắt buộc</h2>
             
             <ul class="form-list">
             <li class="fields">
@@ -64,7 +67,7 @@ $(document).ready(function(){
     <div class="field name-firstname">
         <label for="firstname" class="required" id="typeLogin"  ><em>*</em>Tên đăng nhập</label>
         <div class="input-box">
-        <html:text property="loginId" styleId="loginIdR"/> 
+        <html:text property="loginId" styleId="loginIdR" styleClass="validate"/> 
         </div>
 
     </div>
@@ -76,32 +79,53 @@ $(document).ready(function(){
                     <div class="field">
                         <label for="password" class="required"><em>*</em>Mật khẩu</label>
                         <div class="input-box">
-                            <html:password property="loginPassword" styleId="loginPasswordR"/>
-
+                            <html:password property="loginPassword" styleId="loginPasswordR" styleClass="validate"/> <span style="color:red;">
+                        ít nhất 8 kí tự
+</span>
                         </div>
                     </div>
                     <div class="field">
                         <label for="confirmation" class="required"><em>*</em>Nhập lại mật khẩu</label>
-                        <div class="input-box">
-                           <html:password property="loginPasswordPre" styleId="loginPasswordPreR"/>
+                        <div class="input-box"> 
+                           <html:password property="loginPasswordPre" styleId="loginPasswordPreR" styleClass="validate"/>
+                           <span style="color:red;">
+                        ít nhất 8 kí tự</span>
                         </div>
                     </div>
 
                 </li>
+                 <li>
+                 <div class="field">
+                        <label for="confirmation" class="required"><em>*</em>Số điện thoại</label>
+                        <div class="input-box">
+                           <html:text property="phone" size="40"/>
+                        </div>
+                    </div>
+
+                </li>
+                 <li class="fields">
+                    <div class="field">
+                        <label for="password" class="required" ><em>*</em>Email</label>
+                        <div class="input-box">
+                           <html:text property="email" size="40" styleId="email"/>
+
+                        </div>
+                    </div>
+                    </li>
                 <li>
                 <span style="color:red" >
-                <logic:messagesPresent >  
+<%--                 <logic:messagesPresent >  
     <script type="text/javascript">
     $(document).ready(function(){
     $("#headerHome").focus();
     }
     );
-</script>
-        <logic:messagesNotPresent property="email">
+</script> --%>
+        <logic:messagesPresent >
          <html:messages id="error"  header="providerForm.registerMadatory" >
         </html:messages>
-        </logic:messagesNotPresent>
-        <html:messages id="error"  property="email" >
+         </logic:messagesPresent>
+<%--         <html:messages id="error"  property="email" >
         <br>
         <span style="color:red" > Địa chỉ mail không hợp lệ !</span>
          <script type="text/javascript">
@@ -110,8 +134,8 @@ $(document).ready(function(){
     }
     );
 </script>
-        </html:messages>
-      </logic:messagesPresent>
+        </html:messages> --%>
+    
 </span>
                 
                 </li>                                                                   </ul>
@@ -143,15 +167,7 @@ $(document).ready(function(){
                         </div>
                     </div>
                     </li>
-                <li class="fields">
-                    <div class="field">
-                        <label for="password" class="required" >Email</label>
-                        <div class="input-box">
-                           <html:text property="email" size="40" styleId="email"/>
-
-                        </div>
-                    </div>
-                    </li>
+               
                    <li class="fields">
                     <div class="field">
                         <label for="billing:company">Số nhà</label>
@@ -212,43 +228,21 @@ $(document).ready(function(){
                         </div>
                     </div>
                   </li>
-                    <li>
-                    <div class="field">
-                        <label for="confirmation" class="required">Số điện thoại</label>
-                        <div class="input-box">
-                           <html:text property="phone" />
-                        </div>
-                    </div>
-
-                </li>
+                   
                 <li>
                     <div class="field">
-                      <html:checkbox property="isAdEmail" />   Nhận thông tin khuyến mãi qua email 
+                      <html:checkbox property="isAdEmail" styleId="isAdEmail" />   Nhận thông tin khuyến mãi qua email 
                     </div>
 
                 </li>
                  <li>
                     <div class="field">
-                      <html:checkbox property="isAdPhone" />   Nhận thông tin khuyến mãi qua di động
+                      <html:checkbox property="isAdPhone"  styleId="isAdPhone"/>   Nhận thông tin khuyến mãi qua di động
                     </div>
                 </li>
                             </ul>
                             
             <div id="window-overlay" class="window-overlay" style="display:none;"></div>
-<!-- <div id="remember-me-popup" class="remember-me-popup" style="display:none;">
-    <div class="remember-me-popup-head">
-        <h3>What's this?</h3>
-        <a href="#" class="remember-me-popup-close" title="Close">Close</a>
-    </div>
-
-    <div class="remember-me-popup-body">
-        <p>Checking &quot;Remember Me&quot; will let you access your shopping cart on this computer when you are logged out</p>
-        <div class="remember-me-popup-close-button a-right">
-            <a href="#" class="remember-me-popup-close button" title="Close"><span>Close</span></a>
-        </div>
-    </div>
-
-</div>  -->
 
 </div>
  <button type="submit" title="Submit" style="margin-left:200px;" id="register" class="button">

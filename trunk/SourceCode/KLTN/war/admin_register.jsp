@@ -59,7 +59,9 @@
 						</div>
 					</li>
 					<li>
-					<li><span style="color: red;" id="message"> <logic:messagesPresent
+					<li><span style="color: red;" id="message"> 
+					<logic:messagesNotPresent> Đăng kí thành công!</logic:messagesNotPresent>
+					<logic:messagesPresent
                 message="true">
                 <html:messages id="message" message="true">
                   <bean:write name="message" />

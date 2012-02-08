@@ -6,6 +6,28 @@
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
 <%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
 <%@taglib  uri="http://java.sun.com/jstl/core" prefix="c"%>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#checkout").click(function() {
+            var flag = validateCheckoutInfo();
+            if (!flag) {
+                return false;
+                // $("#registerForm").submit();
+            }
+        });
+
+        $(".validated").blur(function() {
+            if ($(this).val() != "") {
+                $(this).css("background", "#FFF");
+            }
+        });
+        
+        $("#note").focusout(function() {
+            $(this).val('Nhập thời gian giao thực phẩm, yêu cầu');
+        });
+        
+    });
+</script>
 
 <div class="home-spot">
                                         <div class="page-title">
@@ -18,7 +40,6 @@
         <h2>Nhập thông tin cần thiết:</h2>
         </div>
         <div id="checkout-step-billing" class="step a-item" > 
-        <fieldset>
         <html:form action="/createBill.vn" method="get">
         <html:hidden property="idCustomer" />
     <ul class="form-list">
@@ -29,7 +50,7 @@
     <div class="field name-firstname">
         <label  class="required"><em>*</em>Họ và tên</label>
         <div class="input-box">
-        <html:text size="30" property="nameCustomer" />
+        <html:text size="30" property="nameCustomer" styleClass="validated"/>
         </div>
     </div>
 </div>
@@ -38,7 +59,7 @@
                     <div class="field">
                         <label  class="required"><em>*</em>Điện thoại</label>
                         <div class="input-box">
-                           <html:text size="30" property="phone"/>
+                           <html:text size="30" property="phone" styleClass="validated"/>
                         </div>
                     </div>
                         </li>
@@ -46,7 +67,7 @@
                     <div class="field">
                         <label  class="required"><em>*</em>Email</label>
                         <div class="input-box">
-                           <html:text size="30" property="email"/>
+                           <html:text size="30" property="email" styleClass="validated"/>
                         </div>
                     </div>
                         </li>
@@ -54,13 +75,13 @@
                     <div class="field">
                         <label class="required" ><em>*</em>Số nhà</label>
                         <div class="input-box">
-                            <html:text size="30" property="homeNumber"/>
+                            <html:text size="30" property="homeNumber" styleClass="validated"/>
                         </div>
                     </div>
                       <div class="field">
                         <label  class="required"><em>*</em>Tên đường</label>
                         <div class="input-box">
-                             <html:text size="30" property="streetName"/>
+                             <html:text size="30" property="streetName" styleClass="validated"/>
                         </div>
                       </div>
                     </li>
@@ -68,13 +89,13 @@
                     <div class="field">
                         <label  class="required" ><em>*</em>Phường</label>
                         <div class="input-box">
-                              <html:text size="30" property="wardName"/>
+                              <html:text size="30" property="wardName" styleClass="validated"/>
                         </div>
                     </div>
                      <div class="field">
                         <label  class="required" class="required"><em>*</em>Quận</label>
                         <div class="input-box">
-                        <html:select property="districtName" >
+                        <html:select property="districtName"  styleId="districtName">
                           <html:option  value="0"> - - - - - - - - - - - - Chọn quận- - - - - - - - - - - - - </html:option>
      <html:option value="1">1</html:option>
      <html:option value="2">2</html:option>
@@ -118,18 +139,30 @@
                         <% Date date = new Date(); 
                         String s_date = CommonUtil.convertDateToString(date);
                         %>
-                           <html:text size="30" property="dateShip" styleId="datepicker" value="<%=s_date%>"/>
+                           <html:text size="30" property="dateShip" styleId="datepicker" value="<%=s_date%>" styleClass="validated"/>
                         </div>
                     </div>
                   </li>
                   <li class="fields">
                     <div class="field">
-                        <label  class="required">Lời nhắn</label>
+                        <label  class="required"><em>*</em>Lời nhắn</label>
                         <div class="input-box">
-                            <html:textarea style="width:400px;" cols="200" rows="100" property="note" />
+                            <html:textarea style="width:400px;"  styleId="note" styleClass="validated"
+                            value="Nhập thời gian giao thực phẩm, yêu cầu" onfocus="this.value='';"
+                            cols="200" rows="100" property="note" />
                         </div>
                     </div>
                   </li>
+                   <li><span style="color: red" id="errorID"> <logic:messagesPresent>
+                <script type="text/javascript">
+                                                                    $(document).ready(function() {
+                                                                        $("#checkout").focus();
+                                                                    });
+                                                                </script>
+                <html:messages id="error"
+                  header="providerForm.registerMadatory">
+                </html:messages>
+              </logic:messagesPresent> </span></li>
                             </ul>
             
 
@@ -138,7 +171,7 @@
      </li>
      <li class="fields">
                     <div class="field">
-                        <label  class="required">Vui lòng chọn hình thức thanh toán</label>
+                        <label  class="required" >Vui lòng chọn hình thức thanh toán</label>
                        
                     </div>
                   </li>
@@ -150,7 +183,7 @@
               <html:radio  property="isPayment" value="2" /><label>   Thanh toán qua ngân lượng</label></li>
        
         <li>
-        <button type="submit" title="Thanh toán" class="button"  ><span><span>Thanh toán</span></span></button>
+        <button type="submit" title="Thanh toán" class="button" id="checkout" ><span><span>Thanh toán</span></span></button>
         </li>
          <li>
         <button type="submit" title="Thanh toán" class="button"  ><span><span>Trở lại</span></span></button>
@@ -162,7 +195,7 @@
         <div class="buttons-set" id="billing-buttons-container">
         <p class="required">* Required Fields</p>
         <span class="please-wait" id="billing-please-wait" style="display:none;">
-            <img src="Checkout%20-%20Magento%20Commerce%20Demo%20Store_files/opc-ajax-loader.gif" alt="Loading next step..." title="Loading next step..." class="v-middle"> Loading next step...        </span>
+            <img src="#" alt="Loading next step..." title="Loading next step..." class="v-middle"> Loading next step...        </span>
     </div>
   
 

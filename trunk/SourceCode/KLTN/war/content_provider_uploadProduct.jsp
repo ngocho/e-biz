@@ -96,9 +96,9 @@
   <div class="account-create">
 
     <div class="page-title" id="focus">
-      <logic:empty name="flagUpload" >
+    <logic:notPresent name="flagUpload">
         <h1>Upload sản phẩm</h1>
-      </logic:empty>
+     </logic:notPresent>
       <logic:present name="flagUpload">
         <h1>Chỉnh sửa sản phẩm</h1>
       </logic:present>
@@ -131,15 +131,14 @@
                 <label for="firstname" class="required" ><em>*</em>Lựa
                   chọn loại sản phẩm</label>
                 <div class="input-box">
-                  <html:select property="productTypeId"
-                    styleId="productTypeId">
+                  <html:select property="productTypeId" styleId="productTypeId">
                     <html:option value="1"> Thực phẩm sơ chế
      </html:option>
                     <html:option value="2"> Thực phẩm nấu sẵn
      </html:option>
                     <html:option value="3"> Rau xanh
      </html:option>
-                    <html:option value="4"> Gia vị
+                    <html:option value="4"> Trái cây
      </html:option>
                   </html:select>
                 </div>
@@ -149,8 +148,7 @@
           <li class="fields">
             <div class="customer-name">
               <div class="field name-firstname">
-                <label for="firstname" class="required" ><em>*</em>Chọn
-                  nhóm sản phẩm</label>
+                <label for="firstname" class="required" ><em>*</em>Chọn nhóm sản phẩm</label>
                 <div class="input-box">
                   <html:select property="idAttr" styleId="idAttr">
                     <html:option value="1"> Kho
