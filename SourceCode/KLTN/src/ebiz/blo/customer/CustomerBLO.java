@@ -32,10 +32,8 @@ import ebiz.dao.inf.IOrderDAO;
 import ebiz.dto.account.customer.Address;
 import ebiz.dto.account.customer.Comment;
 import ebiz.dto.account.customer.Customer;
-import ebiz.dto.account.provider.Provider;
 import ebiz.dto.checkout.DetailOrder;
 import ebiz.dto.checkout.OrderBill;
-import ebiz.dto.food.Food;
 import ebiz.form.OrderBillForm;
 import ebiz.util.CommonUtil;
 /**
@@ -301,12 +299,12 @@ public class CustomerBLO {
         }
         return address;
     }
-    public static List<OrderBillForm> getOrderBillFormList(String userId,int value){
+    public static List<OrderBillForm> getOrderBillFormList(String userId,String value){
         
         List<OrderBill> orderList = new ArrayList<OrderBill>();
         List<OrderBillForm> formList = new ArrayList<OrderBillForm>();
         //get all
-        if(value == 0){
+        if(value == null){
             orderList = orderDao.getOrListByIDCustomer(userId);
         }
         //get by attr
@@ -341,6 +339,15 @@ public class CustomerBLO {
     }
     public static String getNameStatusByID(String id){
         return orderDao.getOrderStatusById(id);
+    }
+    public static boolean deleteFoodCustomer(Long id){
+        OrderBill bill = orderDao.getOrderBillById(id);
+        if(bill != null){
+            bill.setDeleted(true);
+            orderDao.save(bill);
+            return true;
+        }
+        return false;
     }
     
    /* public static long updateXuOnline(String idCustomer, String idXu){
