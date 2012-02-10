@@ -3,7 +3,8 @@
  */
 package kltn.client.android_client.activity;
 
-import kltn.android.client.R;
+
+import kltn.client.android_client.R;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
