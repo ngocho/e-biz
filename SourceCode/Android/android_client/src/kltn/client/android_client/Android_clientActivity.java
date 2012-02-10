@@ -1,7 +1,7 @@
 package kltn.client.android_client;
 
-import kltn.android.client.R;
 import kltn.client.android_client.activity.MainActivity;
+import kltn.client.android_client.activity.MenuActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,7 +12,7 @@ public class Android_clientActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        Intent i=new Intent(this,MainActivity.class);
+        Intent i=new Intent(this,MenuActivity.class);
         startActivity(i);
     }
 }

@@ -18,4 +18,24 @@
     <string name="login_register">Đăng Ký</string>
     <string name="login_login">Đăng Nhập</string>
     <string name="exit">Bạn có muốn thoát khỏi chương trình?</string>
+    <string name="about_school">Trường Đại Học Công Nghệ Thông Tin</string>
+    <string name="about_doan">Luận văn:</string>
+    <string name="about_name">Xây dựng ứng dụng thương mại điện tử trên nền tảng điện toán đám mây và Android.</string>
+    <string name="about_ownera">Nguyễn Thanh Phong 07520440</string>
+    <string name="about_ownerb">Nguyễn Thị Thúy</string>
+    <string name="about_teachera">Ths.Phạm Thi Vương</string>
+    <string name="about_teacherb">Ths.Lê Ngọc Thạch</string>
+    <string name="about_khoa">Khoa Mạng Máy Tính &amp; Truyền Thông</string>
+    <string name="account_add_title">Nạp Xu</string>
+    <string name="account_add_ok">Nạp Xu</string>
+    <string name="menu_search">Saved searches</string>
+    <string name="menu_favorite">Favourite</string>
+    <string name="menu_reminder">Reminders</string>
+    <string name="menu_message">Messages</string>
+    <string name="menu_setting">Settings</string>
+    <string name="menu_account">My account</string>
+    <string name="menu_payment">Payment</string>
+    <string name="menu_DEAL">Top Deals</string>
+    <string name="menu_best">Best Sellers</string>
+    <string name="menu_browser">Browse</string>
 </resources>
