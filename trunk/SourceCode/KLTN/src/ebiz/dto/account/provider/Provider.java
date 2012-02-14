@@ -80,6 +80,8 @@ public class Provider {
     /**  . isActive*/
     @Persistent
     private boolean isActive;  //required
+    @Persistent
+    private String activeCode;  //required
     /**
      * Get value of providerId.
      * @return the providerId
@@ -290,5 +292,11 @@ public class Provider {
      */
     public void setDetail(String detail) {
         this.detail = detail;
+    }
+    public String getActiveCode() {
+        return activeCode;
+    }
+    public void setActiveCode(String activeCode) {
+        this.activeCode = activeCode;
     }
 }
