@@ -34,7 +34,8 @@
     
 	<action 
 			path="/adminAuthentication"
-			type="ebiz.action.account.admin.AdminAuthentication" >
+			type="ebiz.action.account.admin.AdminAuthentication" 
+			scope="session" validate="true">
 		<forward name="success" path="/displayFoodCateAdmin.vn" redirect="true" />
 		<forward name="failure" path="admin_login" redirect="true" />
     </action>

@@ -120,7 +120,8 @@
     <action 
 			path="/authenticationProvider"
 			type="ebiz.action.account.provider.Authentication" >
-		<forward name="success" path="home_provider_login" redirect="false" />
+		<forward name="success" path="/displayProduct.vn" redirect="false" />
+		<forward name="failure" path="home_provider_authentication" redirect="false" />
     </action>
     
      
