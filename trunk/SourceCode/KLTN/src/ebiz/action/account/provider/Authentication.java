@@ -29,6 +29,7 @@ import org.apache.struts.action.ActionMapping;
 import ebiz.action.BaseAction;
 import ebiz.blo.provider.ProviderBLO;
 import ebiz.form.ProviderForm;
+import ebiz.util.CommonConstant;
 import ebiz.dto.account.provider.Provider;
 /**
  * @author Administrator
@@ -37,7 +38,7 @@ public class Authentication extends BaseAction {
 
     /**
      * [AuthenticationProvider].
-     *
+     * 
      * @param mapping ActionMapping
      * @param form ActionForm
      * @param request HttpServletRequest
@@ -48,15 +49,32 @@ public class Authentication extends BaseAction {
      */
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
-        HttpSession se = request.getSession();
-        ProviderForm provider = (ProviderForm) se.getAttribute("provider");
-        if (provider == null) {
-            Provider pro = new Provider();
-            pro.setProviderId("3");
-            pro.setProviderPassword("12345678");
-            ProviderBLO.registerProvider(pro);
-            return mapping.findForward(FAILURE);
+        String code = request.getParameter("valueAuthen");
+        if (code != null) {
+            if (!code.equals("")) {
+                HttpSession se = request.getSession();
+                String providerId = (String) se.getAttribute("idProvider");
+                if (providerId != null) {
+                    Provider pro = ProviderBLO.getProviderById(providerId);
+                    if (pro != null) {
+                        String codeSecret = pro.getActiveCode();
+                        if (codeSecret.equals(code)) {
+                            // success
+                            pro.setActive(true);
+                            boolean flag = ProviderBLO.updateProvider(pro);
+                            if (flag) {
+                                ProviderForm login = new ProviderForm();
+                                login.setLoginId(providerId);
+                                se.setAttribute(CommonConstant.PROVIDER, login);
+                                se.setAttribute(CommonConstant.WELCOMEP, CommonConstant.WELCOMEP + login.getLoginId().toUpperCase());
+                                return mapping.findForward(SUCCESS);
+                            }
+                        }
+                    }
+                    return mapping.findForward(FAILURE);
+                }
+            }
         }
-        return mapping.findForward(SUCCESS);
+        return mapping.findForward(FAILURE);
     }
 }
