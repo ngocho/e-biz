@@ -33,7 +33,9 @@ import ebiz.dto.account.customer.Address;
 import ebiz.dto.account.customer.Comment;
 import ebiz.dto.account.customer.Customer;
 import ebiz.dto.checkout.DetailOrder;
+import ebiz.dto.checkout.VoucherBill;
 import ebiz.dto.checkout.OrderBill;
+import ebiz.form.LoginForm;
 import ebiz.form.OrderBillForm;
 import ebiz.util.CommonUtil;
 /**
@@ -154,6 +156,10 @@ public class CustomerBLO {
     public static OrderBill saveBillById(OrderBill bill) {
         return orderDao.save(bill);
     }
+    
+    public static VoucherBill saveVoucher(VoucherBill voucher) {
+        return orderDao.saveVoucherBill(voucher);
+    }
 
     
     /**
@@ -189,6 +195,13 @@ public class CustomerBLO {
     
     public static boolean isUID(String id){
         return custDao.isCustomer(id);
+    }
+    
+    public static void getLoginVoucher(LoginForm login){
+    	if(isUID(login.getLoginId())){
+    		Customer customer = getCustomerByID(login.getLoginId());
+    		login.editForm(customer);
+    	}
     }
 //    /**
 //     * login
@@ -299,6 +312,26 @@ public class CustomerBLO {
         }
         return address;
     }
+    
+    public static String toStringAddres(String homeNumber , String buildingName , String streetName, String wardName, String districtName){
+    	 String address ="";
+    	 if(!CommonUtil.isBlankOrNull(homeNumber)){
+             address = address + homeNumber + ", ";
+         }
+    	 if(!CommonUtil.isBlankOrNull(buildingName)){
+             address = address + buildingName + ", ";
+         }
+    	 if(!CommonUtil.isBlankOrNull(streetName)){
+             address = address + streetName + ", ";
+         }
+    	 if(!CommonUtil.isBlankOrNull(wardName)){
+             address = address + wardName + ", ";
+         }
+    	 if(!CommonUtil.isBlankOrNull(districtName)){
+             address = address + districtName + ", ";
+         }
+    	 return address;
+    }
     public static List<OrderBillForm> getOrderBillFormList(String userId,String value){
         
         List<OrderBill> orderList = new ArrayList<OrderBill>();
@@ -325,18 +358,53 @@ public class CustomerBLO {
         cache.put("customerBillData", formList);
         return formList;
     }
+    
     //checkout by Xu account
     public static boolean checkoutXuOnline(String uid, long money){
         Customer customer = custDao.getCustomerById(uid);
+        System.out.println("customer money " + customer.getXuOnline());
         if(customer !=null){
             long moneyXu = customer.getXuOnline();
             if(moneyXu >= money){
                 customer.setXuOnline(moneyXu -money);
+                updatecustomer(customer);
                 return true;
             }
         }
         return false;
     }
+    
+  //checkout by Xu account
+    public static boolean isXuOnline(String uid, long money){
+        Customer customer = custDao.getCustomerById(uid);
+        if(customer !=null){
+            long moneyXu = customer.getXuOnline();
+            if(moneyXu >= money){
+                return true;
+            }
+        }
+        return false;
+    }
+    
+//    add Xu
+	public static long  addXuOnline(String uid, long money) {
+		Customer customer = custDao.getCustomerById(uid);
+		if (customer != null) {
+			customer.setXuOnline(customer.getXuOnline() + money);
+			updatecustomer(customer);
+			return customer.getXuOnline();
+		}
+		return 0;
+	}
+    
+	 public static long getXuOnline(String uid){
+		 Customer customer = custDao.getCustomerById(uid);
+			if (customer != null) {
+				return customer.getXuOnline();
+			}
+			return 0;
+	 }
+	 
     public static String getNameStatusByID(String id){
         return orderDao.getOrderStatusById(id);
     }
