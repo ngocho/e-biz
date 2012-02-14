@@ -2,7 +2,7 @@ package ebiz.dao.gae;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Date;
 import javax.jdo.JDOHelper;
 import javax.jdo.JDOObjectNotFoundException;
 import javax.jdo.PersistenceManager;
@@ -437,6 +437,37 @@ public final class PMF {
         }
         return results;
     }
+    
+    @SuppressWarnings("unchecked")
+    public static List<?> getObjectListByValue(Class<?> className, String col, Date key) {
+        PersistenceManager pm = getPMF();
+        Query query = pm.newQuery(className);
+        List<Object> results = new ArrayList<Object>();
+        query.setFilter(col + " == param");
+        query.declareParameters("Date param");
+        try {
+            results = (List<Object>) query.execute(key);
+        } finally {
+            query.closeAll();
+        }
+        return results;
+    }
+    @SuppressWarnings("unchecked")
+    public static List<?> getObjectListByValueOrder(Class<?> className, String col, Date key, String orderCol, String order) {
+        PersistenceManager pm = getPMF();
+        Query query = pm.newQuery(className);
+        List<Object> results = new ArrayList<Object>();
+        query.setFilter(col + " == param");
+        query.setOrdering(orderCol + " " + order);
+        query.declareParameters("Date param");
+        try {
+            results = (List<Object>) query.execute(key);
+        } finally {
+            query.closeAll();
+        }
+        return results;
+    }
+    
     /**
      * get list of object by input value order column (search, display
      * @param className
