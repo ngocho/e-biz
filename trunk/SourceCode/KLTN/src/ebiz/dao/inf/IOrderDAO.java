@@ -1,9 +1,9 @@
 package ebiz.dao.inf;
 
 import java.util.List;
-
+import java.util.Date;
 import ebiz.dto.checkout.*;
-
+import ebiz.form.*;
 public interface IOrderDAO {
     public OrderBill save(OrderBill order);
 
@@ -27,6 +27,8 @@ public interface IOrderDAO {
      */
 	public List<OrderBill> getOrderList();
 	public List<OrderBill> getOrderListByStatus(String idStatus);
-	//end Admin
+	public List<OrderBill> getOrderListByDate(Date date);
+	public VoucherBill saveVoucherBill(VoucherBill voucher);
+	
 
 }
