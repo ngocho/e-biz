@@ -59,12 +59,13 @@ public class Login extends BaseAction {
         // test exist in database
         flag = ProviderBLO.isLoginID(login.getLoginId(), login.getLoginPassword());
         if (flag == 2) { // don't authentication
+            se.setAttribute("idProvider", login.getLoginId());
             return mapping.findForward(SUCCESS1);
         } else if (flag == 1) {
             // save in session
             se.setAttribute(CommonConstant.PROVIDER, login);
             se.setAttribute("idProvider", login.getLoginId());
-            se.setAttribute(CommonConstant.WELCOME, CommonConstant.WELCOME + login.getLoginId().toUpperCase());
+            se.setAttribute(CommonConstant.WELCOMEP, CommonConstant.WELCOMEP + login.getLoginId().toUpperCase());
             return mapping.findForward(SUCCESS);
         } else if (flag == -1) {
             // add error password wrong

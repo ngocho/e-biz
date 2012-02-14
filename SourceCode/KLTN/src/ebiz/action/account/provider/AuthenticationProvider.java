@@ -51,11 +51,11 @@ public class AuthenticationProvider extends BaseAction {
         HttpSession se = request.getSession();
         ProviderForm provider = (ProviderForm) se.getAttribute("provider");
         if (provider == null) {
-            Provider pro = new Provider();
-            pro.setProviderId("4");
-            pro.setProviderPassword("12345678");
-            pro.setActive(true);
-            ProviderBLO.registerProvider(pro);
+//            Provider pro = new Provider();
+//            pro.setProviderId("4");
+//            pro.setProviderPassword("12345678");
+//            pro.setActive(true);
+//            ProviderBLO.registerProvider(pro);
             return mapping.findForward(FAILURE);
         }
         return mapping.findForward(SUCCESS);
