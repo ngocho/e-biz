@@ -686,7 +686,7 @@ tr.summary-details-excluded { font-style:italic; }
     /*background:url(../Images/Commons/header_row2_bg.gif) no-repeat; ) no-repeat; */
 }
 
-#nav { width:718px; margin:0 auto; padding:0 16px; font-size:13px; color:#FFFFFF; margin-left:0px;}
+#nav { width:738px; margin:0 auto; padding:0 8px; font-size:13px; color:#FFFFFF; margin-left:0px; }
 .shop-by { float:left; width:76px; height:15px; margin:8px 10px 0 0; no-repeat 0 -6px; text-indent:-9999em; }
 
 /* All Levels */ /* Style consistent throughout all nav levels */
