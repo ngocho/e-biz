@@ -21,7 +21,7 @@ package ebiz.action.account.customer;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import ebiz.blo.customer.CustomerBLO;
+
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
@@ -29,6 +29,7 @@ import org.apache.struts.action.ActionMessage;
 import org.apache.struts.action.ActionMessages;
 
 import ebiz.action.BaseAction;
+import ebiz.blo.customer.CustomerBLO;
 import ebiz.form.LoginForm;
 import ebiz.util.CommonConstant;
 
@@ -57,6 +58,7 @@ public class Login extends BaseAction {
         // test exist in database
         flag = CustomerBLO.isLoginID(login.getLoginId(), login.getLoginPassword());
         if (flag == 1) {
+        	login.setXuOnline(CustomerBLO.getXuOnline(login.getLoginId()));
             // save user in session
             se.setAttribute(CommonConstant.USER, login);
             // shopping cart
@@ -64,11 +66,17 @@ public class Login extends BaseAction {
             // remove LoginForm from session
             se.removeAttribute("login");
             String screen = (String) se.getAttribute("screen");
+            System.out.println("SCREEN" + screen);
             if (screen != null) {
                 if (screen.equals(CommonConstant.SCREEN_CHECKOUT)) {
                     se.removeAttribute("screen");
                     // checkout screen
                     return mapping.findForward(SUCCESS1);
+                }
+                else if(screen.equals("voucher_optional")){
+                	ActionForward forward =   mapping.getInputForward();
+                	forward.setPath(screen);
+                	return forward;
                 }
             }
             // home screen

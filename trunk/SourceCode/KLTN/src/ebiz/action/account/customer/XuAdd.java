@@ -18,10 +18,66 @@
  */
 package ebiz.action.account.customer;
 
+import java.io.PrintWriter;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import mobile.ebiz.blo.IDXUBLO;
+
+import org.apache.struts.action.ActionForm;
+import org.apache.struts.action.ActionForward;
+import org.apache.struts.action.ActionMapping;
+
+import ebiz.action.BaseAction;
+import ebiz.blo.customer.CustomerBLO;
+import ebiz.util.CommonConstant;
+import ebiz.form.LoginForm;
+import mobile.ebiz.dto.IDXU;
 /**
  * @author Administrator
  *
  */
-public class XuAdd {
+public class XuAdd  extends BaseAction {
+	public ActionForward execute(ActionMapping mapping, ActionForm form,
+			HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		PrintWriter out = response.getWriter();
+		 // set attr for reponse
+        response.setHeader("Cache-Control", "no-cache");
+        response.setContentType("text/xml; charset=utf-8");
+        response.setCharacterEncoding("utf-8");
+		String value = request.getParameter("value");
+		System.out.println("ma so nap xu" + value);
+		if(value != null || !("".equals(value))){
+		    value = value.trim();
+            long money = IDXUBLO.getMoneyByID(value);
+//			long money = Long.parseLong(value);
+			HttpSession se = request.getSession();
+			LoginForm user = (LoginForm)se.getAttribute(CommonConstant.USER);
+			if(user!= null){
+			String uid = user.getLoginId();
+			long  result = CustomerBLO.addXuOnline(uid, money);
+			System.out.println("result add xu" + result + "money" + money);
+			if(result >0){
+				user.setXuOnline(result);
+				out.println("1" + " " + String.valueOf(result));
+			}
+			else{//fail
+				out.println("0" + " " + String.valueOf(result));
+			}
+			}
+			else{ //required login
+				out.println("2" + " " + "2");
+			}
+		}
+		else{
+		    //required mandatory
+		out.println("3" + " " + "3");
+		}
+		return null;
+	}
+	
 
 }
