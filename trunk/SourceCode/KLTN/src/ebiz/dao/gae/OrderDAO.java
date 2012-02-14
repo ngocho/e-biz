@@ -19,12 +19,14 @@
 package ebiz.dao.gae;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import ebiz.dao.inf.IOrderDAO;
 import ebiz.dto.checkout.DetailOrder;
 import ebiz.dto.checkout.OrderBill;
 import ebiz.dto.checkout.OrderStatus;
+import ebiz.dto.checkout.VoucherBill;
 
 /**
  * @author ThuyNT
@@ -36,6 +38,13 @@ public class OrderDAO implements IOrderDAO {
         
         return (OrderBill)PMF.save(order);
         
+    }
+    
+    @Override
+    public VoucherBill saveVoucherBill(VoucherBill voucher) {
+
+        return (VoucherBill)PMF.save(voucher);
+
     }
         public boolean insertDetailOrder(DetailOrder order){
         
@@ -142,6 +151,14 @@ public class OrderDAO implements IOrderDAO {
         public List<OrderBill> getOrderListByStatus(String idStatus) {
             List<OrderBill> orderList = new ArrayList<OrderBill>();
             orderList = (List<OrderBill>)PMF.getObjectListByValue(OrderBill.class, "status", idStatus);
+            return orderList;
+        }
+        
+        @SuppressWarnings("unchecked")
+        @Override
+        public List<OrderBill> getOrderListByDate(Date date){
+            List<OrderBill> orderList = new ArrayList<OrderBill>();
+            orderList = (List<OrderBill>)PMF.getObjectListByValueOrder(OrderBill.class, "dateShip", date,"status","asc");
             return orderList;
         }
         

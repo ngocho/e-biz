@@ -27,7 +27,7 @@ import ebiz.dto.food.FoodAttribute;
 import ebiz.dto.food.FoodPriceLevel;
 import ebiz.dto.food.FoodStatus;
 import ebiz.dto.food.FoodType;
-
+import ebiz.dto.checkout.*;
 /**
  * @author ThuyNT
  */
@@ -119,6 +119,8 @@ public class FoodDAO implements IFoodDAO {
         return PMF.insertObject(food);
 
     }
+    
+   
 
     @Override
     public boolean insertFoodAttribute(FoodAttribute food) {
