@@ -38,6 +38,35 @@ function  updateComment(content){
         });
 }
 
+function  addXu(value){
+    $.ajax({
+        type: "GET",
+        url: "/addXu.vn",
+        data: "value="+value,
+        dataType: "html",
+        async: false,
+        success: function(data){
+        	var temp = new Array();
+            if(data != 0){
+            temp = data.split(' ');
+            if(temp[0] == '1'){
+                $("#xuOnline").html(temp[1]);
+                $("#valueXu").val('');
+                alert('Bạn đã nạp tiền thành công! Số tiền của bạn là : '+temp[1]);
+            }
+            else if(temp[0] == '2'){
+                alert('Bạn phải đăng nhập trước khi nạp tiền');
+            }
+            else if(temp[0] == '3'){
+            	alert('Vui lòng nạp mã xu');
+            }
+            }
+        }
+    });
+}
+
+
+
 function  resetFormCustomer(){
     $.ajax({
         type: "GET",
@@ -59,6 +88,31 @@ $.ajax({
     async: false,
     success: function(){
         $("#message").html('');
+    }
+    });
+}
+function updateCustomerInfo() {
+    var name = $('input[name=nameCustomer]').val();
+    var phone = $('input[name=phone]').val();
+    var mail = $('input[name=email]').val();
+    var homeNumber = $('input[name=homeNumber]').val();
+    var wardName = $('input[name=wardName]').val();
+    var dateShip = $('input[name=dateShip]').val();
+    var districtName =  $("#districtName option:selected").val();
+    var streetName = $('input[name=streetName]').val();
+    var buildingName = $('input[name=buildingName]').val();
+    var param = "name=" + name + "&phone=" + phone + "&mail=" + mail + "&homeNumber=" + homeNumber + "&streetName="
+            + streetName + "&wardName=" + wardName + "&districtName=" + districtName + "&buildingName=" + buildingName;
+    $.ajax({
+        type : "GET",
+        url : "/updateCustomerInfo.vn",
+        data : param,
+        dataType : "html",
+        async : false,
+        success : function(data) {
+            if (data == 1) {
+                alert('Đã lưu thành công');
+            }
     }
     });
 

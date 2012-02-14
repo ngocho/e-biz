@@ -99,7 +99,6 @@ function validateCheckoutInfo() {
            temp = true;
        }
     }
-    
     if($('input[name=phone]').val() == ""){
         $('input[name=phone]').css("background", "#FC0");
        if(temp == false){
@@ -107,7 +106,6 @@ function validateCheckoutInfo() {
            temp = true;
        }
     }
-    
     if($('input[name=email]').val() == ""){
         $('input[name=email]').css("background", "#FC0");
        if(temp == false){
@@ -115,15 +113,13 @@ function validateCheckoutInfo() {
            temp = true;
        }
     }
-    
     if($('input[name=homeNumber]').val() == ""){
         $('input[name=homeNumber]').css("background", "#FC0");
        if(temp == false){
            $('input[name=homeNumber]').focus();
            temp = true;
        }
-    }
-    
+	}
     if($('input[name=streetName]').val() == ""){
         $('input[name=streetName]').css("background", "#FC0");
        if(temp == false){
@@ -131,7 +127,6 @@ function validateCheckoutInfo() {
            temp = true;
        }
     }
-    
     if($('input[name=wardName]').val() == ""){
         $('input[name=wardName]').css("background", "#FC0");
        if(temp == false){
@@ -139,7 +134,6 @@ function validateCheckoutInfo() {
            temp = true;
        }
     }
-    
     if($('input[name=dateShip]').val() == ""){
         $('input[name=dateShip]').css("background", "#FC0");
        if(temp == false){
@@ -167,9 +161,7 @@ function validateCheckoutInfo() {
         alert('Vui lòng nhập các thông tin yêu cầu!');
     }
     return flag;
-    
 }
-
 // start Provider login 04/02/2012
 function validateProviderLogin() {
     var flag = true;
@@ -201,6 +193,60 @@ function validateProviderLogin() {
 }
 //end  Provider login 04/02/2012
 
+//start voucher Form
+function validateVoucherForm() {
+    var flag = true;
+    var temp = false;
+    if($('input[name=phone]').val() == ""){
+        $('input[name=phone]').css("background", "#FC0");
+        if(temp == false){
+            $('input[name=phone]').focus();
+            temp = true;
+        } 
+    }
+    
+    if($('input[name=homeNumber]').val() == ""){
+        $('input[name=homeNumber]').css("background", "#FC0");
+        if(temp == false){
+            $('input[name=homeNumber]').focus();
+            temp = true;
+        } 
+    }
+    
+    if($('input[name=streetName]').val() == ""){
+        $('input[name=streetName]').css("background", "#FC0");
+        if(temp == false){
+            $('input[name=streetName]').focus();
+            temp = true;
+        } 
+    }
+    
+    if($('input[name=wardName]').val() == ""){
+        $('input[name=wardName]').css("background", "#FC0");
+        if(temp == false){
+            $('input[name=wardName]').focus();
+            temp = true;
+        } 
+    }
+    
+    if($('input[name=districtName]').val() == ""){
+        $('input[name=districtName]').css("background", "#FC0");
+        if(temp == false){
+            $('input[name=districtName]').focus();
+            temp = true;
+        } 
+    }
+    
+    if(temp == true){
+        flag = false;
+        //$("#message").html('');
+        alert('Vui lòng nhập các thông tin yêu cầu!');
+    }
+    
+    return flag;
+    
+}
+//end Voucher Form
 //start Customer register 04/02/2012
 function validateCustomerRegister() {
     var flag = true;
@@ -229,6 +275,23 @@ function validateCustomerRegister() {
             temp = true;
         } 
     }
+    
+    if($('#loginPhoneR').val() == ""){
+        $('#loginPhoneR').css("background", "#FC0");
+        if(temp == false){
+            $('#loginPhoneR').focus();
+            temp = true;
+        } 
+    }
+    
+    if($('#loginEmailR').val() == ""){
+        $('#loginEmailR').css("background", "#FC0");
+        if(temp == false){
+            $('#loginEmailR').focus();
+            temp = true;
+        } 
+    }
+    
     if(temp == true){
         flag = false;
         $("#message").html('');
