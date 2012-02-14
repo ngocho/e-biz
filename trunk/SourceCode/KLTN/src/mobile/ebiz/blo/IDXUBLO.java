@@ -40,4 +40,17 @@ public class IDXUBLO {
 	public static boolean updateXu(IDXU idxu){
 		return custDao.saveXu(idxu);
 	}
+	public static long getMoneyByID(String id) {
+        // TODO Auto-generated method stub
+	    IDXU xu = (IDXU) IDXUBLO.getXuById(id);
+        long money = 0;
+        if (xu != null) {
+            if (xu.getFlag().equals("true")) {
+                money = xu.getMoney();
+                xu.setFlag("false");
+                IDXUBLO.updateXu(xu);
+            }
+        }
+        return money;
+    }
 }
