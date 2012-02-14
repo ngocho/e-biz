@@ -5,9 +5,9 @@
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
 <%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
 <div class="header">
-  <div class="header-row1" id="headerHome">
+  <div class="header-row1" >
     <ul class="super-links" style="" id="customer_super_links">
-      <li>Lựa chọn ngôn ngữ 
+      <li><span style="color:black;">Lựa chọn ngôn ngữ </span>
 <select>
 <option>
 Tiếng Việt
@@ -18,16 +18,17 @@ Tiếng Anh
 
 </select>
 </li>
+</ul>
  </div>
- <div class="header-row2">
+ <div class="header-row2" id="headerNav">
                 
-<div class="nav-container">
-    <ul id="nav">
+<div class="nav-container" id="headerHome">
+    <ul id="nav" style="width:738px;" >
         <li class="level0 nav-1 level-top first parent">
         <a
           href="home.vn"
           class="level-top">
-<img src="Images/Commons/icon-trang-chu.png" width="20" height="20" style="margin-left:-70px;"><span style="margin-left:10px;margin-top:-10px;" class="nav-text"> Trang chủ</span></img>
+<img src="Images/Commons/icon-trang-chu.png" width="20" height="20" style="margin-left:-70px;" /><span style="margin-left:10px;margin-top:-10px;" class="nav-text"> Trang chủ</span>
         </a>
 <a
           href="category.vn?typeProduct=1"

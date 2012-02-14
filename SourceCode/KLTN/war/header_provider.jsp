@@ -40,7 +40,7 @@ Tiếng Anh
       <a
           href="/home.vn"
           class="level-top">
-<img src="Images/Commons/icon-trang-chu.png" width="20" height="20" style="margin-left:-70px;"><span style="margin-left:10px;margin-top:-10px;" class="nav-text-provider"> Trang chủ</span></img>
+<img src="Images/Commons/icon-trang-chu.png" width="20" height="20" style="margin-left:-70px;"/><span style="margin-left:10px;margin-top:-10px;" class="nav-text-provider"> Trang chủ</span>
         </a></li>
         <logic:present name="provider">
         <li class="level0 nav-1 level-top first parent">
