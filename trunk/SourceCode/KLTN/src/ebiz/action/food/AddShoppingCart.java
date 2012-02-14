@@ -81,6 +81,8 @@ public class AddShoppingCart extends BaseAction {
                 //success
                 // count size of Shopping Cart
                 shopCart.size();
+                //count money
+                shopCart.sumMoney();
                 // set info of product into session
                 se.setAttribute(CommonConstant.SHOPPING, shopCart);
                 int num = shopCart.remainNumber(Long.parseLong(id));
