@@ -48,7 +48,7 @@ public class SendMailRegister extends Action {//send mail thong bao dang ki than
         msg.setFrom(new InternetAddress("uit.mmt@gmail.com", "Food.com"));
         msg.addRecipient(Message.RecipientType.TO,
                          new InternetAddress(email, "User"));
-            msg.setSubject("Dang ki thanh vien");
+        msg.setSubject("Đăng kí thành viên");
         msg.setText(msgBody);
         Transport.send(msg);
         

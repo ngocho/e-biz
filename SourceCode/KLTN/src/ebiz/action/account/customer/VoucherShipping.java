@@ -27,33 +27,50 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import ebiz.action.BaseAction;
-import ebiz.blo.customer.CustomerBLO;
-import ebiz.form.LoginForm;
 
 /**
  * @author ThuyNT
  */
-public class BillStatus extends BaseAction {
+public class VoucherShipping extends BaseAction {
 
-    /**
-     * [Logout(Customer)].
-     * @param mapping ActionMapping
-     * @param form ActionForm
-     * @param request HttpServletRequest
-     * @param response HttpServletResponse
-     * @return ActionForward
-     * @throws Exception Exception
-     * @see ActionForward Struts1 Framework
-     */
-    public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
-            HttpServletResponse response) throws Exception {
-
-        String id = (String)request.getParameter("id");
-        if (id != null) {
-            Long key = Long.parseLong(id);
-            CustomerBLO.deleteBill(key);
-        }
-        return mapping.findForward(SUCCESS);
-    }
+	/**
+	 * [VoucherShipping].
+	 * 
+	 * @param mapping
+	 *            ActionMapping
+	 * @param form
+	 *            ActionForm
+	 * @param request
+	 *            HttpServletRequest
+	 * @param response
+	 *            HttpServletResponse
+	 * @return ActionForward
+	 * @throws Exception
+	 *             Exception
+	 * @see ActionForward Struts1 Framework
+	 */
+	public ActionForward execute(ActionMapping mapping, ActionForm form,
+			HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		
+		String type = request.getParameter("typeShipping");
+		String screen;
+		HttpSession se = request.getSession();
+		if(type.equals("home")){
+			screen  = "voucher_info";
+		}
+		else if(type.equals("message")){
+			screen  = "voucher_type";
+			se.setAttribute("voucherType", "message");
+		}
+		else{
+			screen  = "voucher_type";
+			se.setAttribute("voucherType", "mail");
+		}
+		System.out.println("checkoutOption" + screen);
+		ActionForward forward =   mapping.getInputForward();
+    	forward.setPath(screen);
+    	return forward;
+	}
 
 }

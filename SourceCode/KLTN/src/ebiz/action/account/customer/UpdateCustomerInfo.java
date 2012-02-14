@@ -18,6 +18,8 @@
  */
 package ebiz.action.account.customer;
 
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -25,22 +27,20 @@ import javax.servlet.http.HttpSession;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
-import org.apache.struts.action.ActionMessage;
-import org.apache.struts.action.ActionMessages;
 
 import ebiz.action.BaseAction;
-import ebiz.blo.common.SendMail;
 import ebiz.blo.customer.CustomerBLO;
 import ebiz.dto.account.customer.Customer;
 import ebiz.form.LoginForm;
+import ebiz.util.CommonConstant;
 
 /**
  * @author ThuyNT
  */
-public class Register extends BaseAction {
+public class UpdateCustomerInfo extends BaseAction {
 
     /**
-     * [Register(Customer)].
+     * [Login(Customer)].
      * @param mapping ActionMapping
      * @param form ActionForm
      * @param request HttpServletRequest
@@ -51,36 +51,29 @@ public class Register extends BaseAction {
      */
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
-
-        // after checked validation using xml file
-        LoginForm user = (LoginForm) form;
-        // check password with re-password
-        if (!user.getLoginPassword().equals(user.getLoginPasswordPre())) {
-            ActionMessages messages = new ActionMessages();
-            messages.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage("password.notmatch"));
-            saveMessages(request, messages); // storing messages as request attributes
-            return mapping.findForward(FAILURE);
+        PrintWriter out = response.getWriter();
+        response.setHeader("Cache-Control", "no-cache");
+        response.setContentType("text/xml; charset=utf-8");
+        response.setCharacterEncoding("utf-8");
+        HttpSession se = request.getSession();
+        LoginForm user = (LoginForm) se.getAttribute(CommonConstant.USER);
+        Customer customer = CustomerBLO.getCustomerByID(user.getLoginId());
+        //set value
+        System.out.println("NAME District"+ request.getParameter("districtName"));
+        customer.setCustomerName(request.getParameter("name"));
+        customer.setCustomerEmail(request.getParameter("mail"));
+        customer.setCustomerPhone(request.getParameter("phone"));
+        customer.getCustomerAddress().setBuildingName(request.getParameter("buildingName"));
+        customer.getCustomerAddress().setDistrictName(request.getParameter("districtName"));
+        customer.getCustomerAddress().setHomeNumber(request.getParameter("homeNumber"));
+        customer.getCustomerAddress().setStreetName(request.getParameter("streetName"));
+        customer.getCustomerAddress().setWardName(request.getParameter("wardName"));
+        //update
+        boolean flag =  CustomerBLO.updatecustomer(customer);
+        if(flag){
+            out.println("1");
         }
-        // don't exist User ID in database
-        if (!CustomerBLO.isUID(user.getLoginId())) {
-            Customer register = user.getCustomer();
-            boolean flag;
-            flag = CustomerBLO.registerCustomer(register);
-            if (flag) {
-                HttpSession se = request.getSession();
-                if (user.getEmail() != null) {
-                    // send mail --> use task queue
-                    SendMail.registerSuccess(user.getEmail());
-                }
-                se.setAttribute("login", user);
-                return mapping.findForward(SUCCESS);
-            }
-        }
-        ActionMessages messages = new ActionMessages();
-        messages.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage("errors.duplicated"));
-        // storing messages as request attributes
-        saveMessages(request, messages);
-        return mapping.findForward(FAILURE);
+        return null;
+        
     }
-
 }
