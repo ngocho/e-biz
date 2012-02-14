@@ -104,6 +104,18 @@ public class FoodBLO {
         return formList;
     }
 
+	public static boolean getVoucherFood(Long id, int number) {
+		Food food = getFoodById(id);
+		if (food != null) {
+			int num_temp = food.getNumber();
+			if (number <= num_temp) {
+				return true;
+			}
+
+		}
+		return false;
+	}
+    
     /**
      * [get Name of Food by ID].
 	 * 
@@ -615,7 +627,7 @@ public class FoodBLO {
 	 *            ShoppingCart
 	 * @return OrderBill
 	 */
-	public static OrderBill billing(ShoppingCart shop) {
+	public static OrderBill billing(ShoppingCart shop,String typePayment) {
 
 		OrderBillForm orderForm = shop.getOrder();
 		if (orderForm != null) {
@@ -631,8 +643,7 @@ public class FoodBLO {
 			// return null;
 			// }
 			order.setSumPrice(moneyOrder);
-			//set status
-			order.setStatus(CommonConstant.BILLSTATUS_6);
+			order.setStatus(typePayment);
 			// save order
 			order = orderDao.save(order);
 			Long idOrder = order.getId();
