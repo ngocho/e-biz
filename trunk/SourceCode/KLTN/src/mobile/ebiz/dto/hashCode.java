@@ -17,7 +17,7 @@ public class hashCode {
 	 * 
 	 * @return random ID Code, lenght 6 char
 	 */
-	public String hashID() {
+	public static String hashID(int len) {
 		Random random = new Random();
 		String inhash = String
 				.valueOf(Calendar.getInstance().getTimeInMillis())
@@ -46,6 +46,6 @@ public class hashCode {
 		// hex string to uppercase
 		m_szUniqueID = m_szUniqueID.toUpperCase();
 		result = m_szUniqueID;
-		return result.substring(result.length() - 6, result.length());
+		return result.substring(result.length() - len, result.length());
 	}
 }
