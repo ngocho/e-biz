@@ -27,8 +27,10 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import ebiz.action.BaseAction;
+import ebiz.blo.customer.CustomerBLO;
 import ebiz.blo.food.FoodBLO;
 import ebiz.dto.checkout.OrderBill;
+import ebiz.form.LoginForm;
 import ebiz.form.OrderBillForm;
 import ebiz.form.ShoppingCart;
 import ebiz.util.CommonConstant;
@@ -52,15 +54,36 @@ public class CreateOrderBill extends BaseAction {
         OrderBill order = new OrderBill();
         HttpSession se = request.getSession();
         ShoppingCart shopCart = (ShoppingCart) se.getAttribute(CommonConstant.SHOPPING);
-        //OrderBillForm orderForm = shopCart.getOrder();
         OrderBillForm  orderForm = (OrderBillForm) form;
-       // shopCart.setOrder(orderForm);
+        //checkout is Pay money
+        boolean flag = true;
+        String typePayment ="0";
+        LoginForm user = (LoginForm)se.getAttribute(CommonConstant.USER);
+        if(orderForm.getIsPayment() == 0){
+            //user Xu account
+            String uid = user.getLoginId();
+            flag = CustomerBLO.checkoutXuOnline(uid, shopCart.getTotal());
+            //paid money
+           typePayment = CommonConstant.BILLSTATUS_2;
+        }else if(orderForm.getIsPayment() == 1) {
+            //will pay in home
+            typePayment =  CommonConstant.BILLSTATUS_1;
+            
+        }
+        else
+        {
+            typePayment = CommonConstant.BILLSTATUS_2;
+        }
+       if(flag){
+           //save in session
+         user.setXuOnline(CustomerBLO.getXuOnline(user.getLoginId()));
         // billing
-        order = FoodBLO.billing(shopCart);
+        order = FoodBLO.billing(shopCart,typePayment);
         //update Customer
         // transfer OrderBill-> form to display
         // success
         if (order != null) {
+            
             orderForm.editForm(order);
             System.out.println("DATE BILL" + orderForm.getDateShip());
             // update atrributes
@@ -69,8 +92,10 @@ public class CreateOrderBill extends BaseAction {
             se.setAttribute("bill", orderForm);
             se.removeAttribute("shop");
             // call method to pay xu
+            
             return mapping.findForward(SUCCESS);
         }
+       }
         return mapping.findForward(FAILURE);
     }
 }

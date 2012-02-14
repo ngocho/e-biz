@@ -34,32 +34,25 @@ import ebiz.form.ShoppingCart;
  * @author ThuyNT
  */
 public class ShoppingFoodDetail extends BaseAction {
-    /**
-     * [ShoppingFoodDetail ].
-     *
-     * @param mapping ActionMapping
-     * @param form ActionForm
-     * @param request HttpServletRequest
-     * @param response HttpServletResponse
-     * @return ActionForward
-     * @throws Exception Exception
-     * @see ActionForward Struts1 Framework
+
+    /*
+     * using ajax to call this action
      */
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
 
-        String id = request.getParameter("id");
-        long key;
-        HttpSession se = request.getSession();
-        ShoppingCart shop = (ShoppingCart) se.getAttribute("shop");
-        if (id != null) {
-            key = Long.parseLong(id);
-
-            FoodForm foodForm = shop.getFood(key);
-            if (foodForm != null) {
-                se.setAttribute("shopFoodDetail", foodForm);
-            }
-        }
-        return mapping.findForward(SUCCESS);
+       String id = request.getParameter("id");
+       long  key ;
+       HttpSession se = request.getSession();
+       ShoppingCart shop = (ShoppingCart)se.getAttribute("shop");
+       if(id!= null){
+           key = Long.parseLong(id);
+       
+       FoodForm foodForm = shop.getFood(key);
+       if(foodForm!=null){
+           se.setAttribute("shopFoodDetail", foodForm);
+       }
+       }
+       return mapping.findForward(SUCCESS);
     }
 }
