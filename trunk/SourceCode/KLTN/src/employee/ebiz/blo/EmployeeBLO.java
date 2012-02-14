@@ -63,14 +63,15 @@ public class EmployeeBLO {
     }
     
     public static int assignJob(String idEmployee,int numberJob) {
-        List<OrderBill> orderList = orderDao.getOrderListByStatus(CommonConstant.BILLSTATUS_6);
+        List<OrderBill> orderList = orderDao.getOrderListByStatus(CommonConstant.BILLSTATUS_1);
+        orderList.addAll(orderDao.getOrderListByStatus(CommonConstant.BILLSTATUS_2));
         if (!orderList.isEmpty()) {
             if (orderList.size() < numberJob) {
                 numberJob = orderList.size();
             }
             for (int i = 0; i < numberJob; i++) {
                 // assgin task
-                orderList.get(i).setStatus(CommonConstant.BILLSTATUS_0);
+                orderList.get(i).setStatus(CommonConstant.BILLSTATUS_5);
                 orderList.get(i).setIdEmployee(idEmployee);
                 orderDao.save(orderList.get(i));
             }
