@@ -37,18 +37,13 @@
 <div class="home-spot">
 	<div class="col-2 registered-users" class="login">
 		<div class="content">
-			<logic:present name="type" scope="request">
-				<c:if test="${type ==1}">
-					<b> Hãy đăng kí trước khi thanh toán đơn hàng</b>
-				</c:if>
-			</logic:present>
-			<h2>ĐĂNG NHẬP</h2>
+			<h2>CHỨNG THỰC</h2>
+        <form action="/authenticationProvider.vn" method="get" id="loginForm">
 			<ul class="form-list">
-				<form action="/loginProviderAcc.vn" method="get" styleId="loginForm">
 					<li><label for="email" class="required" id="typeLogin"><em>*</em>Nhập
-							vào mã chứng thực</label>
+							vào mã chứng thực: </label>
 						<div class="input-box">
-							<input type="text" name="idAuthen" value="" />
+							<input type="text" name="valueAuthen"  value=""/>
 						</div></li>
 					<li><input type="submit" value="Gởi" /></li>
 
@@ -63,9 +58,9 @@
 							</html:messages> </span>
 					</li>
 
-				</form>
+			
 			</ul>
-
+    </form>
 			<p class="required">* Bắt buộc phải nhập</p>
 		</div>
 	</div>

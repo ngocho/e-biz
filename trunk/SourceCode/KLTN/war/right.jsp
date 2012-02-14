@@ -8,9 +8,24 @@
 <script type="text/javascript">
 $(document).ready(function(){
     $("#uploadComment").click(function() {
-    	updateComment($("#content").val());
-        return false;
+    	/* alert('123');
+    	window.open('/home.vn'
+                , '_blank'
+                , 'location=yes,menubar=yes,status=no,toolbar=no,scrollbars=yes,titlebar=yes,top=0,left=0,width=1024,height=768,resizable=yes'); */
+     	updateComment($("#content").val());
+        return false; 
     });
+    
+    $("#addXu").click(function() {
+    	if($("#valueXu").val() !=''){
+    	addXu($("#valueXu").val());
+    	}
+    	else{
+    		alert('Vui lòng nhập mã thẻ Xu');
+    	}
+    	return false;
+    });
+    
     
     $("#content").focus(function() {
     	//alert('js');
@@ -27,7 +42,10 @@ $(document).ready(function(){
         </strong>
         </a>
       </div>
-      <strong><span><bean:write name="<%=CommonConstant.WELCOME %>" scope="session" /></span></strong></br>
+      <strong><span><bean:write name="<%=CommonConstant.WELCOME%>" scope="session" /></span></strong>
+      <br>
+        <strong><span >Tài khoản Xu : <span class="impressionText" id="xuOnline"><bean:write name="user" property="xuOnline" scope="session" /></span> </span></strong>
+      <br>
       <a href="/logoutCustomer.vn" style="margin-left:130px;"><b> Đăng xuất</b></a>
     </c:if>
     <c:if test="${user ==null}">
@@ -115,9 +133,9 @@ $(document).ready(function(){
       <a href="/displayShoppingCart.vn"><strong><span>NẠP XU</span> </strong> </a>
     </div>
 		<div class="block-content">
-			<form name="money" action="" method="get" >
-				Nhập mã nạp xu :<br><input type="text" name="xu" /><input  class="buttonBG"
-					type="submit" value="Nạp xu"/>
+			<form name="money" action="/addXu" method="get" >
+				Nhập mã nạp xu :<br><input type="text" name="valueXu"  value="" id="valueXu" /><input  class="buttonBG"
+					type="submit" value="Nạp xu" id="addXu"/>
 			</form>
 		</div>
 	</div>
@@ -131,7 +149,8 @@ $(document).ready(function(){
       <form name="comment" action="/uploadComment.vn" style="clear: both">
       <textarea id="content"  rows="10"  style="width:98%;vertical-align:left;padding-right: 0px;padding-left: 0px;" align=left name="content" >
 	   </textarea><br>
-   <input type="submit" id="uploadComment" value="Gởi ý kiến" class="buttonBG"></input>
+	   <!-- id="uploadComment" -->
+   <input type="submit" id="uploadComment" value="Gởi ý kiến" class="buttonBG" ></input>
       </form>
 
     </div>
