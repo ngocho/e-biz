@@ -11,6 +11,41 @@ $(document).ready(function(){
 
 });
 </script>
+
+<logic:notEmpty name="customerAdmin">
+      <div class="pager">
+        <p class="amount">
+          <strong>Page: &nbsp;</strong> <span> 
+          <%-- <input
+            type="hidden" name="page" id="status"
+            value="<bean:write name="pageList"/>"></input>
+          <input
+            type="hidden" name="page" id="page"
+            value="<bean:write name="providerVo" property="page"/>"></input> --%>
+            <logic:present name="aPagingList" >
+              <logic:iterate id="element"  name="aPagingList">
+                <c:choose>
+                  <c:when test="${element == aPageIndex}">
+                    <a
+                      href="/categoryProviderRecord.vn?page=<bean:write name="element" />"><span class="impressionText"><bean:write
+                        name="element" /></span></a>
+
+                  </c:when>
+                  <c:otherwise>
+                    <a
+                      href="/categoryProviderRecord.vn?page=<bean:write name="element" />"><bean:write
+                        name="element" /> </a>
+                  </c:otherwise>
+                </c:choose>
+
+
+              </logic:iterate>
+            </logic:present> </span>
+        </p>
+
+       
+      </div>
+      </logic:notEmpty> 
 <table  style="font-size: 10pt;margin-left: 0px;" border="1">
 <tbody>
 <tr>

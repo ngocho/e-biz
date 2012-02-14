@@ -45,6 +45,18 @@ $(document).ready(function(){
         }
     });
     
+    $("#loginPhoneR").blur(function() {
+        if($(this).val() != ""){
+            $(this).css("background", "#FFF");
+        }
+    });
+    
+    $("#loginEmailR").blur(function() {
+        if($(this).val() != ""){
+            $(this).css("background", "#FFF");
+        }
+    });
+    
 });
 </script>
 <div class="home-spot">
@@ -86,7 +98,7 @@ $(document).ready(function(){
                     </div>
                     <div class="field">
                         <label for="confirmation" class="required"><em>*</em>Nhập lại mật khẩu</label>
-                        <div class="input-box"> 
+                        <div class="input-box">
                            <html:password property="loginPasswordPre" styleId="loginPasswordPreR" styleClass="validate"/>
                            <span style="color:red;">
                         ít nhất 8 kí tự</span>
@@ -96,9 +108,9 @@ $(document).ready(function(){
                 </li>
                  <li>
                  <div class="field">
-                        <label for="confirmation" class="required"><em>*</em>Số điện thoại</label>
+                        <label for="confirmation" class="required" ><em>*</em>Số điện thoại</label>
                         <div class="input-box">
-                           <html:text property="phone" size="40"/>
+                           <html:text property="phone" size="40" styleId="loginPhoneR"/>
                         </div>
                     </div>
 
@@ -107,7 +119,7 @@ $(document).ready(function(){
                     <div class="field">
                         <label for="password" class="required" ><em>*</em>Email</label>
                         <div class="input-box">
-                           <html:text property="email" size="40" styleId="email"/>
+                           <html:text property="email" size="40" styleId="email" styleId="loginEmailR"/>
 
                         </div>
                     </div>
@@ -193,29 +205,29 @@ $(document).ready(function(){
                         <label for="billing:email" class="required">Quận</label>
                         <div class="input-box">
                         <html:select property="districtName">
-                        <html:option value="0">- - - - - - - - - - - - Chọn quận- - - - - - - - - - - - -</html:option>
-    <html:option value="18">1</html:option>
-    <html:option value="42">2</html:option>
-    <html:option value="17">3</html:option>
-   <html:option value="21">4</html:option>
-   <html:option value="20">5</html:option>
-   <html:option value="25">6</html:option>
-   <html:option value="41">7</html:option>
-   <html:option value="37">8</html:option>
-   <html:option value="43">9</html:option>
-   <html:option value="19">10</html:option>
-   <html:option value="24">11</html:option>
-   <html:option value="44">12</html:option>
-   <html:option value="36">Bình Chánh</html:option>
-   <html:option value="39">Bình Tân</html:option>
-   <html:option value="31">Bình Thạnh</html:option>
-   <html:option value="38">Gò Vấp</html:option>
-   <html:option value="61">Hóc Môn</html:option>
-   <html:option value="63">Nhà Bè</html:option>
-   <html:option value="32">Phú Nhuận</html:option>
-   <html:option value="22">Tân Bình</html:option>
-   <html:option value="40">Tân Phú</html:option>
-   <html:option value="45">Thủ Đức</html:option>
+    <html:option value="">- - - - - - - - - - - - Chọn quận- - - - - - - - - - - - -</html:option>
+    <html:option value="1">1</html:option>
+    <html:option value="2">2</html:option>
+    <html:option value="3">3</html:option>
+   <html:option value="4">4</html:option>
+   <html:option value="5">5</html:option>
+   <html:option value="6">6</html:option>
+   <html:option value="7">7</html:option>
+   <html:option value="8">8</html:option>
+   <html:option value="9">9</html:option>
+   <html:option value="10">10</html:option>
+   <html:option value="11">11</html:option>
+   <html:option value="12">12</html:option>
+   <html:option value="Bình Chánh">Bình Chánh</html:option>
+   <html:option value="Bình Tân">Bình Tân</html:option>
+   <html:option value="Bình Thạnh">Bình Thạnh</html:option>
+   <html:option value="Gò Vấp">Gò Vấp</html:option>
+   <html:option value="Hóc Môn">Hóc Môn</html:option>
+   <html:option value="Nhà Bè">Nhà Bè</html:option>
+   <html:option value="Phú Nhuận">Phú Nhuận</html:option>
+   <html:option value="Tân Bình">Tân Bình</html:option>
+   <html:option value="Tân Phú">Tân Phú</html:option>
+   <html:option value="Thủ Đức">Thủ Đức</html:option>
 </html:select>
                         </div>
                       </div>
@@ -256,12 +268,8 @@ $(document).ready(function(){
   </button>
   
 <div class="buttons-set1">
-  <p class="buttons-set1 p.required">*Yêu cầu nhập </p>
+  <p class="buttons-set1 p.required required">*Yêu cầu nhập </p>
   <br />
-  <p class="buttons-set1 p.back-link">
-    <a href="https://demo.magentocommerce.com/customer/account/login/"
-      class="back-link"><small>&laquo; </small>Trở lại</a>
-  </p>
 
 </div>
 </html:form>

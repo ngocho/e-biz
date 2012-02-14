@@ -131,53 +131,74 @@ $(document).ready(function(){
    
     </div>
 
-    <div class="product-collateral">
-        <div class="box-collateral box-description">
-                            <h2>Thông tin chi tiết</h2>
-    <div class="std">
-       <bean:write name="DetailProduct" property="detail" />    </div>
-        </div>
-        <div class="box-collateral box-additional">
-                            <h2>Hướng dẫn nấu </h2>
-                            <bean:write name="DetailProduct" property="cooking" />  
-   
- 
-        </div>
-        <div class="box-collateral box-up-sell">
-    <h2>Bạn quan tâm đến những sản phẩm này ?</h2>
-    <table class="products-grid" id="upsell-product-table">
-                    <tbody><tr class=""> 
-                     <logic:present name="promotionFood">
-            <logic:iterate id="element" name="promotionFood" length="2" >
-                                <td>
-                <a href="/displayProductDetail.vn?id=<bean:write name="element" property="id" />" title="Hình ảnh" class="product-image"><img src="/serveImage.vn?urlKey=<bean:write name="element" property="urlKey"/>" width="250" height="250"></a>
-                <h3 class="product-name"><a href="" title="Magento Red Furniture Set"><bean:write name="element" property="name"/></a></h3>
-                
+		<div class="product-collateral">
+			<c:if test="${DetailProduct.productTypeId == 2}">
+				<div class="box-collateral box-description">
+					<h2>Nhận Voucher để thưởng thức món ăn tại cửa hàng với mức giá rẻ hơn</h2>
+					<div class="std">
+					<form action="/getVoucher.vn" name="voucher">
+					Số Voucher bạn muốn mua : <input type="text"  name="numVoucher"/>
+					<input type="submit" value="Lấy Voucher" class="buttonBG"/>
+					</form>
+					</div>
+				</div>
+			</c:if>
+			<div class="box-collateral box-description">
+				<h2>Thông tin chi tiết</h2>
+				<div class="std">
+					<bean:write name="DetailProduct" property="detail" />
+				</div>
+			</div>
+			<div class="box-collateral box-additional">
+				<h2>Hướng dẫn nấu</h2>
+				<bean:write name="DetailProduct" property="cooking" />
 
-                <div class="price-box">
-            <p class="minimal-price">
-                <span class="price-label">Giá:</span>
-                                                    <span class="price" id="product-minimal-price-54-upsell">
-                   <bean:write name="element" property="promoPrice"/>              </span>
-                            </p>
-        </div>
-                        <div class="ratings">
-                    <div class="rating-box">
-                <div class="rating" style="width: 93%;"></div>
-            </div>
-    </div>
-            </td>
-            </logic:iterate>
-            </logic:present>
-                                            <!--td class="empty">&nbsp;</td>
+
+			</div>
+			<div class="box-collateral box-up-sell">
+				<h2>Bạn quan tâm đến những sản phẩm này ?</h2>
+				<table class="products-grid" id="upsell-product-table">
+					<tbody>
+						<tr class="">
+							<logic:present name="promotionFood">
+								<logic:iterate id="element" name="promotionFood" length="2">
+									<td><a
+										href="/displayProductDetail.vn?id=<bean:write name="element" property="id" />"
+										title="Hình ảnh" class="product-image"><img
+											src="/serveImage.vn?urlKey=<bean:write name="element" property="urlKey"/>"
+											width="250" height="250">
+									</a>
+										<h3 class="product-name">
+											<a href="" title="Magento Red Furniture Set"><bean:write
+													name="element" property="name" />
+											</a>
+										</h3>
+
+
+										<div class="price-box">
+											<p class="minimal-price">
+												<span class="price-label">Giá:</span> <span class="price"
+													id="product-minimal-price-54-upsell"> <bean:write
+														name="element" property="promoPrice" /> </span>
+											</p>
+										</div>
+										<div class="ratings">
+											<div class="rating-box">
+												<div class="rating" style="width: 93%;"></div>
+											</div>
+										</div></td>
+								</logic:iterate>
+							</logic:present>
+							<!--td class="empty">&nbsp;</td>
                                             <td class="empty last">&nbsp;</td-->
-                            </tr>
-        </tbody></table>
- 
-</div>
-            <div class="box-collateral box-tags">
+						</tr>
+					</tbody>
+				</table>
 
-    <!--     <form id="addTagForm" action="http://demo.magentocommerce.com/tag/index/save/product/52/uenc/aHR0cDovL2RlbW8ubWFnZW50b2NvbW1lcmNlLmNvbS9jaGFpci5odG1s/" method="get">
+			</div>
+			<div class="box-collateral box-tags">
+
+				<!--     <form id="addTagForm" action="http://demo.magentocommerce.com/tag/index/save/product/52/uenc/aHR0cDovL2RlbW8ubWFnZW50b2NvbW1lcmNlLmNvbS9jaGFpci5odG1s/" method="get">
         <div class="form-add">
             <label for="productTagName">Add Your Tags:</label>
             <div class="input-box">
@@ -190,10 +211,10 @@ $(document).ready(function(){
             </button>
         </div>
     </form> -->
-    
-</div>
-    </div>
-</div>
+
+			</div>
+		</div>
+	</div>
 
 </div>
             <!--     </div> -->

@@ -13,13 +13,29 @@ $(document).ready(function(){
 </script>
 <div class="page-title category-title">
   <h1>DANH SACH HOA DON</h1>
-<select id="customer_bill" name="choose"  onchange="setLocation(this.value)">
-<option value="/displayBillCategory.vn?value=0" selected="selected">All </option>
-<option value="/displayBillCategory.vn?value=1"> Hóa đơn chưa thanh toán</option>
-<option value="/displayBillCategory.vn?value=2"> Hóa đơn chưa nhận hàng </option>
+<!-- <select id="customer_bill" name="choose"  onchange="setLocation(this.value)">
+<option value="/displayBillCategory.vn?value=5"  selected="selected"> Hóa đơn giao hàng trong ngày</option>
+<option value="/displayBillCategory.vn?value=0">All </option>
+<option value="/displayBillCategory.vn?value=4"> Hóa đơn đã giao hàng  </option>
+<option value="/displayBillCategory.vn?value=5"> Hóa đơn cần giao hàng </option>
 <option value="/displayBillCategory.vn?value=3"> Hóa đơn đã thanh toán</option>
 <option value="/displayBillCategory.vn?value=4"> Hóa đơn đã nhận hàng </option>
+</select> -->
+<logic:present name="BVO"  property="billNameList" >
+<select id="provider_product" name="choose"  onchange="setLocation(this.value)">
+<logic:iterate id="element"  name="BVO" property="billNameList">
+<c:choose>
+ <c:when test="${element.id == aStatusBill}">
+    <option value="/displayBillCategory.vn?value=<bean:write name="element" property="id"/>" selected="selected"><bean:write name="element" property="name"/> </option>               
+ </c:when>                
+                  <c:otherwise>
+
+<option value="/displayBillCategory.vn?value=<bean:write name="element" property="id"/>"><bean:write name="element" property="name"/></option>               
+                 </c:otherwise>
+                </c:choose>
+</logic:iterate> 
 </select>
+</logic:present>
 <br>
 <span> <strong>Page: &nbsp;</strong> </span> 
  <logic:present name="aPagingList" >
