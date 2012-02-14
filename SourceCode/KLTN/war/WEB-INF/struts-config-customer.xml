@@ -5,6 +5,7 @@
   <form-beans>
     <form-bean name="login" type="ebiz.form.LoginForm" />
      <form-bean name="register" type="ebiz.form.LoginForm" />
+      <form-bean name="voucherForm" type="ebiz.form.OrderBillForm" />
   </form-beans>
   
   <global-exceptions>
@@ -105,6 +106,43 @@
             type="ebiz.action.account.customer.BillStatus">
             <forward name="success" path="home_customer" redirect="true" />
     </action>
+    
+    <action
+            path="/getVoucher" 
+            type="ebiz.action.account.customer.Voucher">
+            <forward name="login" path="loginLayout" redirect="true" />
+            <forward name="success" path="voucher_optional" redirect="true" />
+            <forward name="failure" path="product" redirect="true" />
+    </action>
+    
+     <action
+            path="/getVoucherFilter" 
+            type="ebiz.action.account.customer.VoucherProcess">
+    </action>
+    
+     <action
+            path="/createVoucher" 
+            name="voucherForm"
+            type="ebiz.action.account.customer.VoucherCreation">
+             <forward name="success" path="/home.vn" redirect="true" />
+    </action>
+    
+     <action
+            path="/getVoucherType" 
+            name="voucherForm"
+            type="ebiz.action.account.customer.VoucherShipping">
+    </action>
+    
+    <action
+            path="/addXu" 
+            type="ebiz.action.account.customer.XuAdd">
+    </action>
+    
+    <action
+            path="/updateCustomerInfo" 
+            type="ebiz.action.account.customer.UpdateCustomerInfo">
+    </action>
+    
     
  
   </action-mappings>

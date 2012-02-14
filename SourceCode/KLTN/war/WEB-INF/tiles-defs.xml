@@ -138,6 +138,34 @@
         <put name="left"   value="/blank.jsp" />
     </definition>
 <!-- end Customer.Detail Product -->
+
+<!-- start Customer.VOUCHER_OPTIONAL -->
+ 	<definition name="voucher_optional" extends="baseLayout">
+        <put name="title"  value="Voucher Optional" />
+        <put name="content"   value="/voucher_optional.jsp" />
+        <put name="left"   value="/blank.jsp" />
+    </definition>
+<!-- end Customer.VOUCHER_OPTIONAL -->
+
+ 	<definition name="voucher_info" extends="baseLayout">
+        <put name="title"  value="Voucher Infomation" />
+        <put name="content"   value="/voucher_info.jsp" />
+        <put name="left"   value="/blank.jsp" />
+    </definition>
+    
+    	<definition name="voucher_shipping" extends="baseLayout">
+        <put name="title"  value="Voucher Infomation" />
+        <put name="content"   value="/voucher_shipping.jsp" />
+        <put name="left"   value="/blank.jsp" />
+    </definition>
+    
+    <definition name="voucher_type" extends="baseLayout">
+        <put name="title"  value="Voucher Infomation" />
+        <put name="content"   value="/voucher_type.jsp" />
+        <put name="left"   value="/blank.jsp" />
+    </definition>
+    
+    
 <!-- END CUSTOMER -->
 
 <!-- START PROVIDER -->
