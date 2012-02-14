@@ -21,6 +21,7 @@ package ebiz.form;
 import java.io.Serializable;
 import java.util.List;
 import java.util.ArrayList;
+import ebiz.dto.checkout.*;
 /**
  * @author ThuyNT
  *
@@ -31,6 +32,8 @@ public class ProviderVO implements Serializable{
     private static final long serialVersionUID = 1L;
     private List<ProviderStatus> fStatusList ;
     private List<PFoodName> fNameList ;
+    private List<OrderStatus> billNameList ;
+    
     
     public ProviderVO() {
     	
@@ -76,6 +79,29 @@ public class ProviderVO implements Serializable{
     	fNameList.add(food2);
     	
 	}
+    public ProviderVO(int i) {
+    	billNameList = new ArrayList<OrderStatus>();
+    	OrderStatus status = new OrderStatus();
+    	status.setId("5");
+    	status.setName("Hóa đơn giao hàng trong ngày");
+    	billNameList.add(status);
+    	
+    	OrderStatus status1 = new OrderStatus();
+    	status1.setId("0");
+    	status1.setName("Tất cả");
+    	billNameList.add(status1);
+    	
+    	OrderStatus status2 = new OrderStatus();
+    	status2.setId("4");
+    	status2.setName("Hóa đơn đã chuyển hàng");
+    	billNameList.add(status2);
+    	
+//    	status.setId("4");
+//    	status.setName("Hóa đơn trả tiền tại nhà");
+//    	billNameList.add(status);
+    	
+    	
+    }
 
 	public List<ProviderStatus> getfStatusList() {
 		return fStatusList;
@@ -91,5 +117,19 @@ public class ProviderVO implements Serializable{
 
 	public void setfNameList(List<PFoodName> fNameList) {
 		this.fNameList = fNameList;
+	}
+
+	/**
+	 * @return the billNameList
+	 */
+	public List<OrderStatus> getBillNameList() {
+		return billNameList;
+	}
+
+	/**
+	 * @param billNameList the billNameList to set
+	 */
+	public void setBillNameList(List<OrderStatus> billNameList) {
+		this.billNameList = billNameList;
 	}
 }

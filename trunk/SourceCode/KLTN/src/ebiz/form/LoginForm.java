@@ -70,6 +70,7 @@ public class LoginForm extends ValidatorForm implements Serializable {
     private int isCustomerBill;
     /** . */
     private String url;
+    private long xuOnline;
     /**
      * IsEmpty.
      *
@@ -102,6 +103,7 @@ public class LoginForm extends ValidatorForm implements Serializable {
         add.setWardName(this.wardName);
         customer.setCustomerAddress(add);
         customer.setUrl(this.url);
+        customer.setXuOnline(this.xuOnline);
         return customer;
 
     }
@@ -125,8 +127,11 @@ public class LoginForm extends ValidatorForm implements Serializable {
         this.url = customer.getUrl();
         this.isAdEmail = customer.getIsAdEmail();
         this.isAdPhone = customer.getIsAdPhone();
+        this.xuOnline = customer.getXuOnline();
         // return this;
     }
+    
+   
     /**
      * Get value of loginId.
      *
@@ -460,5 +465,19 @@ public class LoginForm extends ValidatorForm implements Serializable {
     public void setUrl(String url) {
         this.url = url;
     }
+
+	/**
+	 * @return the xuOnline
+	 */
+	public long getXuOnline() {
+		return xuOnline;
+	}
+
+	/**
+	 * @param xuOnline the xuOnline to set
+	 */
+	public void setXuOnline(long xuOnline) {
+		this.xuOnline = xuOnline;
+	}
 
 }
