@@ -81,7 +81,7 @@ public class SearchBLO {
 	public static Cache  getMemcache(){
 		Cache cache = null;
 		Map props = new HashMap();
-        props.put(GCacheFactory.EXPIRATION_DELTA, 3600);
+        props.put(GCacheFactory.EXPIRATION_DELTA, 180);
 		try {
             CacheFactory cacheFactory = CacheManager.getInstance().getCacheFactory();
             cache = cacheFactory.createCache(Collections.emptyMap());
