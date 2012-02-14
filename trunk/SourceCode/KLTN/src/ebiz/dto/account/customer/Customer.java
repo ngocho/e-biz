@@ -69,9 +69,6 @@ public class Customer  {
     /**  . isPay*/
     @Persistent
     private boolean isPay;
-    /**  . accountOnline*/
-    @Persistent
-    private long accountOnline;
     /**  . payOnlineType*/
     @Persistent
     private String payOnlineType;
@@ -260,20 +257,6 @@ public class Customer  {
      */
     public void setIsPay(boolean isPay) {
         this.isPay = isPay;
-    }
-    /**
-     * Get value of accountOnline.
-     * @return the accountOnline
-     */
-    public long getAccountOnline() {
-        return accountOnline;
-    }
-    /**
-     * Set the value for accountOnline.
-     * @param accountOnline the accountOnline to set
-     */
-    public void setAccountOnline(long accountOnline) {
-        this.accountOnline = accountOnline;
     }
     /**
      * Get value of payOnlineType.
