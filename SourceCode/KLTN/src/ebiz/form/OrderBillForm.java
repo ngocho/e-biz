@@ -24,12 +24,13 @@ import java.util.Date;
 import org.apache.struts.validator.ValidatorForm;
 
 import ebiz.blo.customer.CustomerBLO;
+import ebiz.blo.food.FoodBLO;
 import ebiz.dto.account.customer.Address;
 import ebiz.dto.account.customer.Customer;
 import ebiz.dto.checkout.OrderBill;
+import ebiz.dto.checkout.VoucherBill;
 import ebiz.util.CommonConstant;
 import ebiz.util.CommonUtil;
-
 /**
  * @author Administrator
  *
@@ -80,6 +81,11 @@ public class OrderBillForm extends ValidatorForm implements Serializable {
     /** isPayment . */
     private int  isPayment;
     /**
+     *  numberVoucher
+     */
+    private int numberVoucher;
+    private Long idFood;
+    /**
      * [editForm].
      * @param order         OrderBill
      */
@@ -97,6 +103,32 @@ public class OrderBillForm extends ValidatorForm implements Serializable {
         idEmployee = order.getIdEmployee();
         note = order.getNote();
         isPayment = order.getTypePayment();
+    }
+    public void editFormLogin(LoginForm form) {
+    	this.idCustomer = form.getLoginId();
+    	this.homeNumber = form.getHomeNumber();
+    	this.districtName = form.getDistrictName();
+    	this.wardName = form.getWardName();
+    	this.buildingName = form.getBuildingName();
+    	this.streetName = form.getStreetName();
+    	this.email = form.getEmail();
+    	this.phone = form.getPhone();
+    }
+    
+    public void sumVoucherMoney(){
+    	long money = FoodBLO.getFoodById(this.idFood).getPrice() * this.numberVoucher;
+    	this.sumPrice = money;
+    	
+    }
+    public VoucherBill getVoucher() {
+    	VoucherBill voucher = new VoucherBill();
+    	voucher.setIdCustomer(this.idCustomer);
+    	voucher.setIdFood(this.idFood);
+    	voucher.setSumMoney(this.sumPrice);
+    	voucher.setNumber(this.numberVoucher);
+    	String add = CustomerBLO.toStringAddres(homeNumber, buildingName, streetName, wardName, districtName);
+    	voucher.setAddress(add);
+    	return voucher;
     }
     /**
      * [getOrder].
@@ -135,6 +167,11 @@ public class OrderBillForm extends ValidatorForm implements Serializable {
         this.homeNumber = user.getCustomerAddress().getHomeNumber();
         this.streetName = user.getCustomerAddress().getStreetName();
         this.wardName = user.getCustomerAddress().getWardName();
+        System.out.println("value!!!!!!!!!!!!!");
+        System.out.println(this.buildingName);
+        System.out.println(this.districtName);
+        System.out.println( "home" + this.homeNumber);
+        System.out.println(this.wardName);
     }
     /**
      * Get value of id.
@@ -430,4 +467,28 @@ public class OrderBillForm extends ValidatorForm implements Serializable {
     public void setNameStatus(String nameStatus) {
         this.nameStatus = nameStatus;
     }
+	/**
+	 * @return the numberVoucher
+	 */
+	public int getNumberVoucher() {
+		return numberVoucher;
+	}
+	/**
+	 * @param numberVoucher the numberVoucher to set
+	 */
+	public void setNumberVoucher(int numberVoucher) {
+		this.numberVoucher = numberVoucher;
+	}
+	/**
+	 * @return the idFood
+	 */
+	public Long getIdFood() {
+		return idFood;
+	}
+	/**
+	 * @param idFood the idFood to set
+	 */
+	public void setIdFood(Long idFood) {
+		this.idFood = idFood;
+	}
 }
