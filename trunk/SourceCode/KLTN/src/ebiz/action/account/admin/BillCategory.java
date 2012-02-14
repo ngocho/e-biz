@@ -1,5 +1,5 @@
 /**
- * Licensed to Open-Ones Group under one or more contributor license
+ 																																											* Licensed to Open-Ones Group under one or more contributor license
  * agreements. See the NOTICE file distributed with this work
  * for additional information regarding copyright ownership.
  * Open-Ones Group licenses this file to you under the Apache License,
@@ -25,8 +25,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import net.sf.jsr107cache.Cache;
-
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
@@ -35,6 +33,7 @@ import ebiz.action.BaseAction;
 import ebiz.blo.admin.AdminBLO;
 import ebiz.blo.food.SearchBLO;
 import ebiz.form.OrderBillForm;
+import ebiz.form.ProviderVO;
 import ebiz.util.CommonConstant;
 
 /**
@@ -43,7 +42,7 @@ import ebiz.util.CommonConstant;
 public class BillCategory extends BaseAction {
     /**
      * [DisplayBill(Customer Account)].
-     *
+     * 
      * @param mapping ActionMapping
      * @param form ActionForm
      * @param request HttpServletRequest
@@ -64,13 +63,22 @@ public class BillCategory extends BaseAction {
         if (page != null) {
             pageIndex = Integer.parseInt(page);
         }
-        // get form list from Memcache
-        Cache cache = SearchBLO.getMemcache();
-        formList = (List<OrderBillForm>) cache.get("adminBillData");
-
-        if (formList == null || formList.isEmpty()) {
-            formList = AdminBLO.getOrderBillFormList(status);
+        System.out.println("STATUS BILL" + status);
+        if(status == null){
+        	status = "5";
         }
+//        // get form list from Memcache
+//        Cache cache = SearchBLO.getMemcache();
+//        formList = (List<OrderBillForm>) cache.get("adminBillData");
+
+//        if (formList == null || formList.isEmpty()) {
+        	if("5".equals(status)){
+        		formList = AdminBLO.getOrderBillFormListDaily();
+        	}
+        	else{
+            formList = AdminBLO.getOrderBillFormList(status);
+        	}
+//        }
         pageList = SearchBLO.paging(formList.size());
         formList = (List<OrderBillForm>) SearchBLO.getPage(formList, pageIndex);
         // // update status of OrderBill
@@ -80,6 +88,16 @@ public class BillCategory extends BaseAction {
         // save PagingList in session to display
         se.setAttribute("aPagingList", pageList);
         se.setAttribute("aPageIndex", pageIndex);
+        se.setAttribute("aStatusBill", status);
+        ProviderVO pvo = (ProviderVO) getServlet().getServletContext().getAttribute("BVO");
+		if (pvo == null) {
+			pvo = new ProviderVO(1);
+			getServlet().getServletContext().setAttribute("BVO", pvo);
+		}
+		for(int i = 0 ; i<pvo.getBillNameList().size(); i++){
+			System.out.println("PVO" + pvo.getBillNameList().get(i).getName());
+		}
+		System.out.println("add " + pvo.getBillNameList().size());
         return mapping.findForward(SUCCESS);
     }
 
