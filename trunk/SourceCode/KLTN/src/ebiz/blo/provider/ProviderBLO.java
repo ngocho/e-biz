@@ -45,6 +45,12 @@ public class ProviderBLO {
         }
         return false;
     }
+    public static boolean updateProvider(Provider provider){
+        return proDao.saveProvider(provider);
+    }
+    public static Provider getProviderById(String id){
+        return proDao.getProviderById(id);
+    }
     public static String getNameProviderByID(String id){
         Provider provider = proDao.getProviderById(id);
         if(provider !=null){
