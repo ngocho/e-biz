@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" android:background="@drawable/my_background"
+	android:layout_height="fill_parent" android:orientation="vertical">
+	<LinearLayout android:id="@+id/linearLayout1"
+		android:background="@drawable/theme_activity_title_bar"
+		android:layout_marginBottom="5dp" android:layout_height="40dp"
+		android:layout_width="fill_parent" android:gravity="center_vertical">
+		<Button android:id="@+id/accountinfo_back" android:background="@drawable/btn_back"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+			android:gravity="left" android:layout_gravity="left"></Button>
+		<LinearLayout android:layout_width="fill_parent"
+			android:id="@+id/linearLayout4" android:layout_height="fill_parent"
+			android:gravity="center_vertical|center_horizontal">
+			<TextView android:textStyle="bold" android:gravity="center_horizontal"
+				android:id="@+id/textView1" android:textColor="@color/white"
+				android:layout_marginRight="40dp" android:layout_height="wrap_content"
+				android:textSize="18dp" android:layout_width="wrap_content"
+				android:textAppearance="?android:attr/textAppearanceMedium"
+				android:text="@string/accountinfo_title"></TextView>
+		</LinearLayout>
+	</LinearLayout>
+	<LinearLayout android:layout_width="fill_parent"
+		android:layout_margin="10dp" android:background="@drawable/button_bg_us"
+		android:id="@+id/linearLayout5" android:layout_height="wrap_content"
+		android:orientation="vertical">
+		<TextView android:layout_marginTop="10dp"
+			android:id="@+id/account_add_xu_username" android:textStyle="bold"
+			android:textSize="16dp" android:layout_marginLeft="10dp"
+			android:textAppearance="?android:attr/textAppearanceMedium"
+			android:layout_height="wrap_content" android:textColor="@color/black"
+			android:layout_width="wrap_content" android:text="@string/accountinfo_taba"></TextView>
+		<LinearLayout android:id="@+id/linearLayout2"
+			android:layout_marginLeft="10dp" android:layout_width="fill_parent"
+			android:layout_height="wrap_content" android:gravity="center_vertical">
+			<ImageView android:src="@drawable/icon_person"
+				android:layout_width="wrap_content" android:layout_height="wrap_content"
+				android:id="@+id/imageView2"></ImageView>
+			<TextView android:id="@+id/accountinfo_username"
+				android:layout_marginLeft="10dp" android:textAppearance="?android:attr/textAppearanceMedium"
+				android:layout_height="wrap_content" android:text="TextView"
+				android:textColor="@color/black" android:layout_width="wrap_content"></TextView>
+		</LinearLayout>
+		<LinearLayout android:id="@+id/linearLayout3"
+			android:layout_margin="10dp" android:layout_width="fill_parent"
+			android:layout_height="wrap_content" android:gravity="center_vertical">
+			<ImageView android:src="@drawable/icon_money"
+				android:layout_width="wrap_content" android:layout_height="wrap_content"
+				android:id="@+id/imageView3"></ImageView>
+			<TextView android:id="@+id/accountinfo_money"
+				android:textAppearance="?android:attr/textAppearanceMedium"
+				android:layout_height="wrap_content" android:text="TextView"
+				android:layout_marginLeft="10dp" android:textColor="@color/black"
+				android:layout_width="wrap_content"></TextView>
+			<TextView android:id="@+id/textView1"
+				android:textAppearance="?android:attr/textAppearanceMedium"
+				android:layout_height="wrap_content" android:text=" Xu"
+				android:textColor="@color/black" android:layout_width="wrap_content"></TextView>
+		</LinearLayout>
+	</LinearLayout>
+	<LinearLayout android:layout_width="fill_parent"
+		android:layout_margin="10dp" android:background="@drawable/button_bg_us"
+		android:id="@+id/linearLayout5" android:layout_height="wrap_content"
+		android:orientation="vertical">
+		<TextView android:layout_marginTop="10dp"
+			android:id="@+id/account_add_xu_username" android:textStyle="bold"
+			android:textSize="16dp" android:layout_marginLeft="10dp"
+			android:textAppearance="?android:attr/textAppearanceMedium"
+			android:layout_height="wrap_content" android:textColor="@color/black"
+			android:layout_width="wrap_content" android:text="@string/accountinfo_titleb"></TextView>
+		<LinearLayout android:id="@+id/linearLayout2"
+			android:layout_marginLeft="10dp" android:layout_width="fill_parent"
+			android:layout_height="wrap_content" android:gravity="center_vertical">
+			<ImageView android:src="@drawable/icon_arrowslideright"
+				android:layout_width="wrap_content" android:layout_height="wrap_content"
+				android:id="@+id/imageView2"></ImageView>
+			<TextView android:id="@+id/accountinfo_fullname"
+				android:layout_marginLeft="10dp" android:textAppearance="?android:attr/textAppearanceMedium"
+				android:layout_height="wrap_content" android:text="TextView"
+				android:textColor="@color/black" android:layout_width="wrap_content"></TextView>
+		</LinearLayout>
+		<LinearLayout android:id="@+id/linearLayout3"
+			android:layout_marginLeft="10dp" android:layout_marginRight="10dp"
+			android:layout_width="fill_parent" android:layout_height="wrap_content"
+			android:gravity="center_vertical">
+			<ImageView android:src="@drawable/icon_arrowslideright"
+				android:layout_width="wrap_content" android:layout_height="wrap_content"
+				android:id="@+id/imageView3"></ImageView>
+			<TextView android:id="@+id/accountinfo_email"
+				android:textAppearance="?android:attr/textAppearanceMedium"
+				android:layout_height="wrap_content" android:text="TextView"
+				android:layout_marginLeft="10dp" android:textColor="@color/black"
+				android:layout_width="wrap_content"></TextView>
+		</LinearLayout>
+		<LinearLayout android:id="@+id/linearLayout3"
+			android:layout_marginLeft="10dp" android:layout_marginRight="10dp"
+			android:layout_width="fill_parent" android:layout_height="wrap_content"
+			android:gravity="center_vertical">
+			<ImageView android:src="@drawable/icon_arrowslideright"
+				android:layout_width="wrap_content" android:layout_height="wrap_content"
+				android:id="@+id/imageView3"></ImageView>
+			<TextView android:id="@+id/accountinfo_phone"
+				android:textAppearance="?android:attr/textAppearanceMedium"
+				android:layout_height="wrap_content" android:text="TextView"
+				android:layout_marginLeft="10dp" android:textColor="@color/black"
+				android:layout_width="wrap_content"></TextView>
+		</LinearLayout>
+		<LinearLayout android:id="@+id/linearLayout3"
+			android:layout_marginBottom="5dp" android:layout_marginLeft="10dp"
+			android:layout_marginRight="10dp" android:layout_width="fill_parent"
+			android:layout_height="wrap_content" android:gravity="center_vertical">
+			<ImageView android:src="@drawable/icon_arrowslideright"
+				android:layout_width="wrap_content" android:layout_height="wrap_content"
+				android:id="@+id/imageView3"></ImageView>
+			<TextView android:id="@+id/accountinfo_address"
+				android:textAppearance="?android:attr/textAppearanceMedium"
+				android:layout_height="wrap_content" android:text="TextView"
+				android:layout_marginLeft="10dp" android:textColor="@color/black"
+				android:layout_width="wrap_content"></TextView>
+		</LinearLayout>
+	</LinearLayout>
+	<LinearLayout android:layout_height="wrap_content"
+		android:layout_weight="1.0" android:layout_width="fill_parent"
+		android:id="@+id/linearLayout7" android:orientation="vertical"></LinearLayout>
+	<LinearLayout android:layout_height="wrap_content"
+		android:layout_width="fill_parent" android:id="@+id/linearLayout6"
+		android:gravity="center_horizontal">
+		<Button android:id="@+id/accountinfo_payment"
+			android:layout_height="40dp" android:layout_gravity="center_horizontal"
+			android:background="@drawable/button_menu" android:textStyle="bold"
+			android:textColor="@color/white" android:layout_width="120dp"
+			android:text="@string/account_add_title"></Button>
+		<Button android:layout_marginLeft="10dp" android:id="@+id/accountinfo_update"
+			android:layout_height="40dp" android:layout_gravity="center_horizontal"
+			android:background="@drawable/button_menu" android:textStyle="bold"
+			android:textColor="@color/white" android:layout_width="120dp"
+			android:text="@string/accountinfo_update"></Button>
+	</LinearLayout>
+</LinearLayout>

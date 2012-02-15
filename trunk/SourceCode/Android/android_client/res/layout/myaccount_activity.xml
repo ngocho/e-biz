@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" android:background="@drawable/my_background"
+	android:layout_height="fill_parent" android:orientation="vertical">
+	<LinearLayout android:id="@+id/linearLayout1"
+		android:background="@drawable/theme_activity_title_bar"
+		android:layout_marginBottom="5dp" android:layout_height="40dp"
+		android:layout_width="fill_parent" android:gravity="center_vertical">
+		<Button android:id="@+id/myaccount_back" android:background="@drawable/btn_back"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+			android:gravity="left" android:layout_gravity="left"></Button>
+		<LinearLayout android:layout_width="fill_parent"
+			android:id="@+id/linearLayout4" android:layout_height="fill_parent"
+			android:gravity="center_vertical|center_horizontal">
+			<TextView android:textStyle="bold" android:gravity="center_horizontal"
+				android:id="@+id/textView1" android:textColor="@color/white"
+				android:layout_marginRight="40dp" android:layout_height="wrap_content"
+				android:textSize="18dp" android:layout_width="wrap_content"
+				android:textAppearance="?android:attr/textAppearanceMedium"
+				android:text="@string/myaccount_title"></TextView>
+		</LinearLayout>
+	</LinearLayout>
+	<LinearLayout android:layout_width="fill_parent"
+		android:layout_margin="10dp" android:background="@drawable/button_bg_us"
+		android:id="@+id/linearLayout5" android:layout_height="wrap_content"
+		android:orientation="vertical">
+		<LinearLayout android:id="@+id/myaccount_info"
+			android:clickable="true" android:background="@drawable/button_menu_small"
+
+			android:layout_width="fill_parent" android:layout_height="wrap_content"
+			android:gravity="center_vertical">
+			<ImageView android:src="@drawable/icon_person"
+				android:layout_width="wrap_content" android:layout_height="wrap_content"
+				android:id="@+id/imageView2"></ImageView>
+			<TextView android:id="@+id/ufffsername"
+				android:layout_weight="1.0" android:layout_marginLeft="10dp"
+				android:textAppearance="?android:attr/textAppearanceMedium"
+				android:layout_height="wrap_content" android:textColor="@color/black"
+				android:layout_width="wrap_content" android:text="@string/myaccount_info"></TextView>
+			<ImageView android:src="@drawable/icon_arrowslideright"
+				android:layout_marginRight="10dp" android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:id="@+id/imageView4"></ImageView>
+		</LinearLayout>
+		<LinearLayout android:layout_height="1dp"
+			android:background="@drawable/footer_menu" android:layout_width="fill_parent"
+			android:id="@+id/linearLayout5" android:orientation="vertical"></LinearLayout>
+		<LinearLayout android:id="@+id/myaccount_changepass"
+			android:clickable="true" android:background="@drawable/button_menu_small"
+			android:layout_width="fill_parent" android:layout_height="wrap_content"
+			android:gravity="center_vertical">
+			<ImageView android:src="@drawable/icon_money"
+				android:layout_width="wrap_content" android:layout_height="wrap_content"
+				android:id="@+id/imageView3"></ImageView>
+			<TextView android:id="@+id/ffmoney" android:textAppearance="?android:attr/textAppearanceMedium"
+				android:layout_height="wrap_content" android:layout_marginLeft="10dp"
+				android:layout_weight="1.0" android:textColor="@color/black"
+				android:layout_width="wrap_content" android:text="@string/myaccount_changepass"></TextView>
+			<ImageView android:src="@drawable/icon_arrowslideright"
+				android:layout_marginRight="10dp" android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:id="@+id/imageView4"></ImageView>
+		</LinearLayout>
+	</LinearLayout>
+	<LinearLayout android:layout_width="fill_parent"
+		android:layout_margin="10dp" android:background="@drawable/button_bg_us"
+		android:id="@+id/linearLayout5" android:layout_height="wrap_content"
+		android:orientation="vertical">
+		<LinearLayout android:id="@+id/myaccount_payment"
+			android:clickable="true" android:background="@drawable/button_menu_small"
+			android:layout_width="fill_parent" android:layout_height="wrap_content"
+			android:gravity="center_vertical">
+			<ImageView android:src="@drawable/icon_person"
+				android:layout_width="wrap_content" android:layout_height="wrap_content"
+				android:id="@+id/imageView2"></ImageView>
+			<TextView android:id="@+id/ufffsername"
+				android:layout_weight="1.0" android:layout_marginLeft="10dp"
+				android:textAppearance="?android:attr/textAppearanceMedium"
+				android:layout_height="wrap_content" android:textColor="@color/black"
+				android:layout_width="wrap_content" android:text="@string/myaccount_payment"></TextView>
+			<ImageView android:src="@drawable/icon_arrowslideright"
+				android:layout_marginRight="10dp" android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:id="@+id/imageView4"></ImageView>
+		</LinearLayout>
+		<LinearLayout android:layout_height="1dp"
+			android:background="@drawable/footer_menu" android:layout_width="fill_parent"
+			android:id="@+id/linearLayout5" android:orientation="vertical"></LinearLayout>
+		<LinearLayout android:id="@+id/myaccount_history"
+			android:clickable="true" android:background="@drawable/button_menu_small"
+			android:layout_width="fill_parent" android:layout_height="wrap_content"
+			android:gravity="center_vertical">
+			<ImageView android:src="@drawable/icon_money"
+				android:layout_width="wrap_content" android:layout_height="wrap_content"
+				android:id="@+id/imageView3"></ImageView>
+			<TextView android:id="@+id/ffmoney" android:textAppearance="?android:attr/textAppearanceMedium"
+				android:layout_height="wrap_content" android:layout_marginLeft="10dp"
+				android:layout_weight="1.0" android:textColor="@color/black"
+				android:layout_width="wrap_content" android:text="@string/myaccount_history"></TextView>
+			<ImageView android:src="@drawable/icon_arrowslideright"
+				android:layout_marginRight="10dp" android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:id="@+id/imageView4"></ImageView>
+		</LinearLayout>
+		<LinearLayout android:layout_height="1dp"
+			android:background="@drawable/footer_menu" android:layout_width="fill_parent"
+			android:id="@+id/linearLayout5" android:orientation="vertical"></LinearLayout>
+		<LinearLayout android:id="@+id/myaccount_order"
+			android:clickable="true" android:background="@drawable/button_menu_small"
+			android:layout_width="fill_parent" android:layout_height="wrap_content"
+			android:gravity="center_vertical">
+			<ImageView android:src="@drawable/icon_money"
+				android:layout_width="wrap_content" android:layout_height="wrap_content"
+				android:id="@+id/imageView3"></ImageView>
+			<TextView android:id="@+id/ffmoney" android:textAppearance="?android:attr/textAppearanceMedium"
+				android:layout_height="wrap_content" android:layout_marginLeft="10dp"
+				android:layout_weight="1.0" android:textColor="@color/black"
+				android:layout_width="wrap_content" android:text="@string/myaccount_order"></TextView>
+			<ImageView android:src="@drawable/icon_arrowslideright"
+				android:layout_marginRight="10dp" android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:id="@+id/imageView4"></ImageView>
+		</LinearLayout>
+	</LinearLayout>
+	<TextView android:layout_weight="1.0" android:id="@+id/textView3"
+		android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
+	<LinearLayout android:id="@+id/linearLayout2"
+		android:background="@drawable/footer_menu" android:layout_width="fill_parent"
+		android:layout_height="wrap_content" android:gravity="clip_horizontal"
+		android:layout_gravity="center_horizontal">
+		<LinearLayout android:id="@+id/myaccount_home"
+			android:layout_weight="1.0" android:background="@drawable/button_menu"
+			android:layout_width="fill_parent" android:layout_height="fill_parent"
+			android:orientation="vertical" android:gravity="center_horizontal">
+			<ImageView android:src="@drawable/icon_menu_home"
+				android:layout_marginTop="1dp" android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:id="@+id/imageView2"></ImageView>
+			<TextView android:id="@+id/textView2" android:textSize="12dp"
+				android:textColor="@color/white" android:textAppearance="?android:attr/textAppearanceMedium"
+				android:layout_height="wrap_content" android:text="@string/menu_home"
+				android:layout_width="wrap_content"></TextView>
+		</LinearLayout>
+		<LinearLayout android:id="@+id/myaccount_deal"
+			android:layout_weight="1.0" android:background="@drawable/button_menu"
+			android:layout_width="fill_parent" android:layout_height="fill_parent"
+			android:orientation="vertical" android:gravity="center_horizontal">
+			<ImageView android:src="@drawable/icon_deals"
+				android:layout_marginTop="1dp" android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:id="@+id/imageView2"></ImageView>
+			<TextView android:id="@+id/textView2" android:textSize="12dp"
+				android:textColor="@color/white" android:textAppearance="?android:attr/textAppearanceMedium"
+				android:layout_height="wrap_content" android:text="@string/menu_DEAL"
+				android:layout_width="wrap_content"></TextView>
+		</LinearLayout>
+		<LinearLayout android:id="@+id/myaccount_best"
+			android:clickable="true" android:layout_weight="1.0"
+			android:background="@drawable/button_menu" android:layout_width="fill_parent"
+			android:layout_height="fill_parent" android:orientation="vertical"
+			android:gravity="center_horizontal">
+			<ImageView android:src="@drawable/icon_listanitem"
+				android:layout_marginTop="1dp" android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:id="@+id/imageView2"></ImageView>
+			<TextView android:id="@+id/textView2" android:textSize="12dp"
+				android:textAppearance="?android:attr/textAppearanceMedium"
+				android:layout_height="wrap_content" android:text="@string/menu_best"
+				android:textColor="@color/white" android:layout_width="wrap_content"></TextView>
+		</LinearLayout>
+		<LinearLayout android:id="@+id/myaccount_browse"
+			android:clickable="true" android:layout_weight="1.0"
+			android:background="@drawable/button_menu" android:layout_width="fill_parent"
+			android:layout_height="fill_parent" android:orientation="vertical"
+			android:gravity="center_horizontal">
+			<ImageView android:src="@drawable/icon_browsecategory"
+				android:layout_marginTop="1dp" android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:id="@+id/imageView2"></ImageView>
+			<TextView android:id="@+id/textView2" android:textSize="12dp"
+				android:textAppearance="?android:attr/textAppearanceMedium"
+				android:layout_height="wrap_content" android:text="@string/menu_browser"
+				android:textColor="@color/white" android:layout_width="wrap_content"></TextView>
+		</LinearLayout>
+	</LinearLayout>
+</LinearLayout>

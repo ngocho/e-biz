@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical" android:background="@drawable/my_background"
+	android:layout_width="fill_parent" android:layout_height="fill_parent">
+	<LinearLayout android:id="@+id/linearLayout1"
+		android:background="@drawable/theme_activity_title_bar"
+		android:layout_width="fill_parent" android:layout_height="wrap_content"
+		android:layout_gravity="center_vertical" android:gravity="center_vertical">
+		<Button android:id="@+id/account_tramsfer_xu_back"
+			android:background="@drawable/btn_back" android:layout_width="wrap_content"
+			android:layout_height="wrap_content" android:gravity="left"
+			android:layout_gravity="left"></Button>
+		<LinearLayout android:layout_width="fill_parent"
+			android:id="@+id/linearLayout4" android:layout_height="fill_parent"
+			android:gravity="center_vertical|center_horizontal">
+			<TextView android:textStyle="bold" android:gravity="center_horizontal"
+				android:id="@+id/textView1" android:text="@string/account_transfer_title"
+				android:textColor="@color/white" android:layout_marginRight="40dp"
+				android:layout_height="wrap_content" android:textSize="18dp"
+				android:layout_width="wrap_content" android:textAppearance="?android:attr/textAppearanceMedium"></TextView>
+		</LinearLayout>
+	</LinearLayout>
+	<LinearLayout android:layout_width="fill_parent"
+		android:layout_margin="10dp" android:background="@drawable/button_bg_us"
+		android:id="@+id/linearLayout5" android:layout_height="wrap_content"
+		android:orientation="vertical">
+		<TextView android:layout_marginTop="10dp"
+			android:id="@+id/account_add_xu_username" android:textStyle="bold"
+			android:textSize="16dp" android:layout_marginLeft="10dp"
+			android:textAppearance="?android:attr/textAppearanceMedium"
+			android:layout_height="wrap_content" android:text="@string/account_transfer_owner"
+			android:textColor="@color/black" android:layout_width="wrap_content"></TextView>
+		<LinearLayout android:id="@+id/linearLayout2"
+			android:layout_marginLeft="10dp" android:layout_width="fill_parent"
+			android:layout_height="wrap_content" android:gravity="center_vertical">
+			<ImageView android:src="@drawable/icon_person"
+				android:layout_width="wrap_content" android:layout_height="wrap_content"
+				android:id="@+id/imageView2"></ImageView>
+			<TextView android:id="@+id/account_tramsfer_xu_owner"
+				android:layout_marginLeft="10dp" android:textAppearance="?android:attr/textAppearanceMedium"
+				android:layout_height="wrap_content" android:text="TextView"
+				android:textColor="@color/black" android:layout_width="wrap_content"></TextView>
+		</LinearLayout>
+		<LinearLayout android:id="@+id/linearLayout3"
+			android:layout_margin="10dp" android:layout_width="fill_parent"
+			android:layout_height="wrap_content" android:gravity="center_vertical">
+			<ImageView android:src="@drawable/icon_money"
+				android:layout_width="wrap_content" android:layout_height="wrap_content"
+				android:id="@+id/imageView3"></ImageView>
+			<TextView android:id="@+id/account_tramsfer_xu_money"
+				android:textAppearance="?android:attr/textAppearanceMedium"
+				android:layout_height="wrap_content" android:text="TextView"
+				android:layout_marginLeft="10dp" android:textColor="@color/black"
+				android:layout_width="wrap_content"></TextView>
+			<TextView android:id="@+id/textView1"
+				android:textAppearance="?android:attr/textAppearanceMedium"
+				android:layout_height="wrap_content" android:text=" Xu"
+				android:textColor="@color/black" android:layout_width="wrap_content"></TextView>
+		</LinearLayout>
+	</LinearLayout>
+	<LinearLayout android:layout_width="fill_parent"
+		android:layout_margin="10dp" android:background="@drawable/button_bg_us"
+		android:id="@+id/linearLayout5" android:layout_height="wrap_content"
+		android:orientation="vertical">
+		<TextView android:layout_marginTop="10dp"
+			android:id="@+id/account_add_xu_username" android:textStyle="bold"
+			android:textSize="16dp" android:layout_marginLeft="10dp"
+			android:textAppearance="?android:attr/textAppearanceMedium"
+			android:layout_height="wrap_content" android:text="@string/account_transfer_user"
+			android:textColor="@color/black" android:layout_width="wrap_content"></TextView>
+		<LinearLayout android:id="@+id/linearLayout2"
+			android:layout_margin="10dp" android:layout_width="fill_parent"
+			android:layout_height="wrap_content" android:gravity="center_vertical">
+			<EditText android:id="@+id/account_tramsfer_xu_username" android:text="@string/account_transfer_user"
+				android:textSize="15dp" android:background="@drawable/nm_edittext"
+				android:layout_height="wrap_content" android:layout_width="fill_parent">
+				<requestFocus></requestFocus>
+			</EditText>
+		</LinearLayout>
+		<LinearLayout android:layout_width="fill_parent"
+			android:id="@+id/linearLayout6" android:layout_height="fill_parent"
+			android:orientation="vertical">
+			<EditText android:layout_margin="10dp" android:textSize="15dp"
+				android:text="@string/account_transfer_number" android:id="@+id/account_tramsfer_xu_number"
+				android:background="@drawable/nm_edittext" android:layout_height="wrap_content"
+				android:layout_width="fill_parent" android:inputType="number">
+				<requestFocus></requestFocus>
+			</EditText>
+		</LinearLayout>
+	</LinearLayout>
+	<TextView android:id="@+id/textView2" android:layout_weight="1.0"
+		android:layout_height="wrap_content" android:layout_width="wrap_content"
+		android:textAppearance="?android:attr/textAppearanceSmall"></TextView>
+	<Button android:text="@string/account_transfer_ok" android:id="@+id/account_transfer_submit" android:layout_marginBottom="10dp" android:paddingLeft="10dp" android:paddingRight="10dp" android:textColor="@color/white" android:textStyle="bold"
+		android:background="@drawable/button_menu" android:layout_width="wrap_content"
+		android:layout_height="wrap_content" android:layout_gravity="center_horizontal"></Button>
+</LinearLayout>

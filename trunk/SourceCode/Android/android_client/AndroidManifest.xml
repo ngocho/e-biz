@@ -16,7 +16,14 @@
 		<activity android:name="kltn.client.android_client.activity.MainActivity"></activity>
 		<activity android:name="kltn.client.android_client.activity.registerActivity"></activity>
 		<activity android:name="kltn.client.android_client.activity.imageActivity"></activity>
-		<activity android:name=".activity.MenuActivity"></activity>
+		<activity android:name=".activity.MenuActivity" android:theme="@android:style/Theme.NoTitleBar" android:configChanges="keyboardHidden|orientation"></activity>
+		<activity android:name=".activity.PaymentActivity"></activity>
+		<activity android:name=".activity.AccountAddXuActivity"></activity>
+		<activity android:name=".activity.AccountTransferXuActivity"></activity>
+		<activity android:name=".activity.myAccountActivity" android:theme="@android:style/Theme.NoTitleBar" android:configChanges="keyboardHidden|orientation"></activity>
+		<activity android:name=".activity.TabDealsActivity" android:theme="@android:style/Theme.NoTitleBar" android:configChanges="keyboardHidden|orientation"></activity>
+		<activity android:name=".activity.TabBestActivity" android:theme="@android:style/Theme.NoTitleBar" android:configChanges="keyboardHidden|orientation"></activity>
+		<activity android:name=".activity.TabBrowserActivity" android:theme="@android:style/Theme.NoTitleBar" android:configChanges="keyboardHidden|orientation"></activity>
 
 	</application>
 </manifest>
