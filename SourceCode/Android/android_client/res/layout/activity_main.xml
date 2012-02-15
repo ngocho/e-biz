@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical" android:layout_width="fill_parent"
+	android:layout_height="fill_parent">
+	<LinearLayout android:layout_height="wrap_content"
+		android:background="@drawable/nm_city_bg" android:id="@+id/linearLayout4"
+		android:layout_width="fill_parent" android:gravity="center_vertical">
+		<TextView android:id="@+id/textView1"
+			android:layout_marginLeft="10dp" android:textColor="@color/black"
+			android:textAppearance="?android:attr/textAppearanceSmall"
+			android:layout_height="wrap_content" android:layout_width="wrap_content"
+			android:text="Thành Phố:"></TextView>
+		<Button android:id="@+id/button6" android:text="Hồ Chí Minh"
+			android:layout_margin="5dp" android:textColor="@color/blue"
+			android:layout_height="wrap_content" android:layout_width="fill_parent"
+			android:background="@drawable/title_background_button"
+			android:gravity="center_vertical|center_horizontal"></Button>
+	</LinearLayout>
+	<LinearLayout android:layout_height="wrap_content"
+		android:id="@+id/linearLayout3" android:layout_width="fill_parent"
+		android:background="@drawable/nm_tabbottom">
+	</LinearLayout>
+	<LinearLayout android:layout_height="wrap_content"
+		android:layout_width="fill_parent" android:id="@+id/linearLayout1">
+		<LinearLayout android:layout_height="fill_parent"
+			android:layout_marginLeft="5dp" android:layout_marginRight="5dp"
+			android:layout_weight="1.0" android:layout_width="wrap_content"
+			android:id="@+id/linearLayout2" android:gravity="center_horizontal">
+			<Button android:text="Nearest" android:id="@+id/btn_main_nearest"
+				android:textStyle="bold" android:textColor="@color/orange_red"
+				android:layout_weight="1.0" android:background="@drawable/nm_tabunselect"
+				android:layout_width="wrap_content" android:layout_height="wrap_content"
+				android:layout_gravity="center_vertical"></Button>
+			<Button android:text="Lastest" android:id="@+id/btn_main_lastest"
+				android:textStyle="bold" android:textColor="@color/white"
+				android:layout_weight="1.0" android:background="@drawable/nm_tabselect"
+				android:layout_width="wrap_content" android:layout_height="wrap_content"
+				android:layout_gravity="center_vertical"></Button>
+			<Button android:text="Best" android:id="@+id/btn_main_best"
+				android:textStyle="bold" android:textColor="@color/orange_red"
+				android:layout_weight="1.0" android:background="@drawable/nm_tabunselect"
+				android:layout_width="wrap_content" android:layout_height="wrap_content"
+				android:layout_gravity="center_vertical"></Button>
+		</LinearLayout>
+	</LinearLayout>
+	<LinearLayout android:layout_height="fill_parent"
+		android:layout_weight="1" android:orientation="vertical" android:id="@+id/layout_tab_host"
+		android:layout_width="fill_parent">
+	</LinearLayout>
+	<LinearLayout android:layout_height="wrap_content"
+		android:background="@drawable/map_menubar" android:id="@+id/linearLayout5"
+		android:layout_width="fill_parent" android:gravity="center_horizontal">
+		<Button android:id="@+id/button7" android:layout_width="wrap_content"
+			android:layout_height="wrap_content" android:background="@drawable/search"></Button>
+		<Button android:layout_marginLeft="10dp" android:id="@+id/menu_login" android:layout_width="wrap_content"
+			android:layout_height="wrap_content" android:background="@drawable/person_icon"></Button>
+		<Button android:layout_marginLeft="10dp" android:id="@+id/button7" android:layout_width="wrap_content"
+			android:layout_height="wrap_content" android:background="@drawable/icon_favarous"></Button>
+		<Button android:layout_marginLeft="10dp" android:id="@+id/menu_setting" android:layout_width="wrap_content"
+			android:layout_height="wrap_content" android:background="@drawable/icon_setting"></Button>
+	</LinearLayout>
+</LinearLayout>

@@ -56,6 +56,4 @@
     <string name="accountinfo_title">Thông tin tài khoản</string>
     <string name="accountinfo_taba">Thông tin cơ bản:</string>
     <string name="accountinfo_tabb">Thông tin chi tiết:</string>
-    <string name="accountinfo_titleb">Thông tin chi tiết:</string>
-    <string name="accountinfo_update">Sửa thông tin</string>
 </resources>

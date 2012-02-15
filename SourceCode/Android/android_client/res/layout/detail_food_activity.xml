@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical" android:background="@color/white_smoke"
+	android:layout_width="fill_parent" android:layout_height="fill_parent">
+	<LinearLayout android:id="@+id/linearLayout1"
+		android:background="@drawable/map_menubar"
+		android:layout_marginBottom="5dp" android:layout_height="40dp"
+		android:layout_width="fill_parent" android:gravity="center_vertical">
+		<LinearLayout android:layout_width="wrap_content"
+			android:id="@+id/linearLayout2" android:layout_height="fill_parent">
+			<Button android:id="@+id/detail_back" android:background="@drawable/btn_back"
+				android:layout_width="wrap_content" android:layout_height="wrap_content"
+				android:gravity="left" android:layout_gravity="left"></Button>
+		</LinearLayout>
+		<LinearLayout android:layout_width="fill_parent"
+			android:layout_marginRight="50dp" android:id="@+id/linearLayout3"
+			android:layout_height="fill_parent" android:gravity="center_vertical|center_horizontal">
+			<TextView android:id="@+id/detail_title"
+				android:textAppearance="?android:attr/textAppearanceMedium"
+				android:layout_height="wrap_content" android:textStyle="bold"
+				android:layout_width="wrap_content" android:text="@string/register_title"
+				android:gravity="center_horizontal"></TextView>
+		</LinearLayout>
+	</LinearLayout>
+	<LinearLayout android:layout_width="fill_parent"
+		android:background="@drawable/nm_city_bg" android:id="@+id/linearLayout4"
+		android:layout_height="wrap_content">
+		<TextView android:layout_width="wrap_content"
+			android:textColor="@color/black" android:textAppearance="?android:attr/textAppearanceSmall"
+			android:text="Thời gian còn lại:" android:id="@+id/textView1"
+			android:layout_height="wrap_content"></TextView>
+		<LinearLayout android:layout_width="wrap_content"
+			android:id="@+id/linearLayout5" android:layout_height="fill_parent">
+			<LinearLayout android:layout_width="wrap_content"
+				android:id="@+id/linearLayout6" android:layout_height="fill_parent"
+				android:orientation="vertical">
+				<LinearLayout android:layout_width="fill_parent"
+					android:id="@+id/linearLayout8" android:layout_height="wrap_content">
+					<TextView android:layout_width="wrap_content"
+						android:textColor="@color/black" android:textAppearance="?android:attr/textAppearanceMedium"
+						android:text="0" android:id="@+id/detail_food_hour"
+						android:textStyle="bold" android:layout_height="wrap_content"></TextView>
+					<TextView android:layout_width="wrap_content"
+						android:textStyle="bold" android:textColor="@color/black"
+						android:textAppearance="?android:attr/textAppearanceMedium"
+						android:text="0" android:id="@+id/detail_food_minute"
+						android:layout_height="wrap_content"></TextView>
+					<TextView android:layout_width="wrap_content"
+						android:textStyle="bold" android:textColor="@color/black"
+						android:textAppearance="?android:attr/textAppearanceMedium"
+						android:text="0" android:id="@+id/detail_food_second"
+						android:layout_height="wrap_content"></TextView>
+				</LinearLayout>
+				<LinearLayout android:layout_width="fill_parent"
+					android:id="@+id/linearLayout7" android:layout_height="wrap_content">
+					<TextView android:layout_width="wrap_content"
+						android:textSize="12dp" android:textColor="@color/black"
+						android:textAppearance="?android:attr/textAppearanceSmall"
+						android:text="giờ" android:id="@+id/textView5"
+						android:layout_height="wrap_content"></TextView>
+					<TextView android:layout_width="wrap_content"
+						android:textSize="12dp" android:textColor="@color/black"
+						android:textAppearance="?android:attr/textAppearanceSmall"
+						android:text="phút" android:id="@+id/textView5"
+						android:layout_height="wrap_content"></TextView>
+					<TextView android:layout_width="wrap_content"
+						android:textSize="12dp" android:textColor="@color/black"
+						android:textAppearance="?android:attr/textAppearanceSmall"
+						android:text="giây" android:id="@+id/textView5"
+						android:layout_height="wrap_content"></TextView>
+				</LinearLayout>
+
+			</LinearLayout>
+		</LinearLayout>
+	</LinearLayout>
+	<LinearLayout android:id="@+id/linearLayout9"
+		android:layout_margin="5dp" android:background="@drawable/button_bg_s"
+		android:layout_width="fill_parent" android:layout_height="wrap_content"
+		android:orientation="vertical">
+		<LinearLayout android:id="@+id/linearLayout10"
+			android:layout_width="fill_parent" android:layout_height="wrap_content">
+			<LinearLayout android:id="@+id/linearLayout11"
+				android:layout_width="wrap_content" android:layout_height="fill_parent"
+				android:orientation="vertical">
+				<TextView android:id="@+id/textView6" android:layout_width="wrap_content"
+					android:textColor="@color/black" android:layout_height="wrap_content"
+					android:textAppearance="?android:attr/textAppearanceSmall"
+					android:text="Giá trị:"></TextView>
+				<TextView android:id="@+id/detail_food_price"
+					android:layout_width="wrap_content" android:textColor="@color/black"
+					android:layout_height="wrap_content" android:textAppearance="?android:attr/textAppearanceSmall"
+					android:textStyle="bold" android:text="TextView"></TextView>
+			</LinearLayout>
+			<LinearLayout android:id="@+id/linearLayout12"
+				android:layout_width="wrap_content" android:layout_height="fill_parent"
+				android:orientation="vertical">
+				<TextView android:id="@+id/textView6" android:layout_width="wrap_content"
+					android:textColor="@color/black" android:layout_height="wrap_content"
+					android:textAppearance="?android:attr/textAppearanceSmall"
+					android:text="Tiết kiệm:"></TextView>
+				<TextView android:id="@+id/detail_food_sub"
+					android:layout_width="wrap_content" android:textStyle="bold"
+					android:textColor="@color/black" android:layout_height="wrap_content"
+					android:textAppearance="?android:attr/textAppearanceSmall"
+					android:text="TextView"></TextView>
+			</LinearLayout>
+			<LinearLayout android:id="@+id/linearLayout13"
+				android:layout_width="wrap_content" android:layout_height="fill_parent"
+				android:orientation="vertical"></LinearLayout>
+		</LinearLayout>
+		<LinearLayout android:id="@+id/linearLayout14"
+			android:background="@drawable/nm_giaca" android:layout_width="fill_parent"
+			android:layout_height="wrap_content" android:gravity="center_vertical|center_horizontal">
+			<LinearLayout android:id="@+id/linearLayout15"
+				android:layout_width="wrap_content" android:layout_height="fill_parent"
+				android:orientation="vertical" android:gravity="center_vertical|center_horizontal">
+				<TextView android:id="@+id/textView2" android:layout_width="wrap_content"
+					android:textColor="@color/white" android:layout_height="wrap_content"
+					android:textAppearance="?android:attr/textAppearanceSmall"
+					android:text="Còn lại            vnđ"></TextView>
+				<TextView android:id="@+id/detail_food_buyprice"
+					android:textStyle="bold" android:layout_width="wrap_content"
+					android:layout_height="wrap_content" android:textAppearance="?android:attr/textAppearanceMedium"
+					android:text="TextView"></TextView>
+			</LinearLayout>
+			<LinearLayout android:id="@+id/linearLayout16"
+				android:layout_marginLeft="20dp" android:layout_width="wrap_content"
+				android:layout_height="fill_parent" android:orientation="vertical"
+				android:gravity="center_vertical">
+				<Button android:text="Mua" android:textSize="18dp"
+					android:textColor="@color/white" android:textStyle="bold"
+					android:id="@+id/detail_food_ok" android:background="@drawable/nm_buy_btn"
+					android:layout_width="wrap_content" android:layout_height="wrap_content"></Button>
+			</LinearLayout>
+		</LinearLayout>
+
+		<LinearLayout android:layout_width="fill_parent"
+			android:layout_marginTop="5dp" android:layout_marginBottom="5dp"
+			android:id="@+id/linearLayout17" android:layout_height="wrap_content">
+			<TextView android:layout_width="wrap_content" android:id="@+id/textView4"
+				android:textColor="@color/black" android:textAppearance="?android:attr/textAppearanceSmall"
+				android:text="TextView" android:layout_height="wrap_content"></TextView>
+			<TextView android:textColor="@color/black"
+				android:textStyle="bold" android:layout_width="wrap_content"
+				android:id="@+id/detail_food_count" android:textAppearance="?android:attr/textAppearanceSmall"
+				android:text="TextView" android:layout_height="wrap_content"></TextView>
+		</LinearLayout>
+	</LinearLayout>
+	<LinearLayout android:layout_height="wrap_content"
+		android:layout_width="fill_parent" android:id="@+id/linearLayout1">
+		<LinearLayout android:layout_height="fill_parent"
+			android:layout_marginBottom="-5dp" android:layout_weight="1.0"
+			android:layout_width="wrap_content" android:id="@+id/linearLayout2"
+			android:gravity="center_horizontal">
+			<Button android:text="Giới thiệu" android:id="@+id/detail_food_tab_content"
+				android:textColor="@color/white" android:background="@drawable/detail_tabselect"
+				android:textSize="12dp" android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:layout_gravity="center_vertical"></Button>
+			<Button android:text="Hình ảnh" android:id="@+id/detail_food_tab_image" 
+				android:layout_marginLeft="-20dp" android:layout_marginRight="-20dp"
+				android:textColor="@color/black" android:textSize="12dp"
+				android:background="@drawable/detail_tabunselect"
+				android:layout_width="wrap_content" android:layout_height="wrap_content"
+				android:layout_gravity="center_vertical"></Button>
+			<Button android:text="Lời bình" android:id="@+id/detail_food_tab_comment"
+				android:textColor="@color/black" android:background="@drawable/detail_tabunselect"
+				android:textSize="12dp" android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:layout_gravity="center_vertical"></Button>
+			<Button android:text="Cửa hàng" android:id="@+id/detail_food_tab_contact"
+				android:textColor="@color/black" android:layout_marginLeft="-20dp"
+				android:background="@drawable/detail_tabunselect" android:textSize="12dp"
+				android:layout_width="wrap_content" android:layout_height="wrap_content"
+				android:layout_gravity="center_vertical"></Button>
+		</LinearLayout>
+	</LinearLayout>
+	<LinearLayout android:layout_height="wrap_content"
+		android:id="@+id/linearLayout3" android:layout_width="fill_parent"
+		android:background="@drawable/detail_tabbottom">
+	</LinearLayout>
+</LinearLayout>

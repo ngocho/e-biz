@@ -8,10 +8,13 @@ import kltn.client.android_client.R;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -37,29 +40,44 @@ public class registerActivity extends Activity{
 		address=(EditText)findViewById(R.id.register_address);
 		birthday=(EditText)findViewById(R.id.register_birthday);
 		back=(Button)findViewById(R.id.register_back);
-		ok=(Button)findViewById(R.id.register_back);
+		ok=(Button)findViewById(R.id.register_ok);
 		male=(CheckBox)findViewById(R.id.register_male);
 		female=(CheckBox)findViewById(R.id.register_female);
 		check=(CheckBox)findViewById(R.id.register_check);
-		//password=(EditText)findViewById(R.id.)
 		back.setOnClickListener(backAction);
 		ok.setOnClickListener(OkAction);
+		male.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				male.setChecked(true);
+				female.setChecked(false);
+			}
+		});
+		female.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				male.setChecked(false);
+				female.setChecked(true);
+			}
+		});
 	}
 	private OnClickListener backAction=new OnClickListener() {
-		
+
 		@Override
 		public void onClick(View v) {
 			finish();
-			Intent i=new Intent(registerActivity.this,MainActivity.class);
+			Intent i=new Intent(registerActivity.this,MenuActivity.class);
 			startActivity(i);
 		}
 	};
 	private OnClickListener OkAction=new OnClickListener() {
-		
+
 		@Override
 		public void onClick(View v) {
 			Toast.makeText(registerActivity.this, "", Toast.LENGTH_LONG);
-			Intent i=new Intent(registerActivity.this,MainActivity.class);
+			Intent i=new Intent(registerActivity.this,MenuActivity.class);
 			startActivity(i);
 			finish();
 		}

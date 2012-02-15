@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical" android:background="@color/black"
+	android:layout_width="fill_parent" android:layout_height="fill_parent">
+
+	<Gallery xmlns:android="http://schemas.android.com/apk/res/android"
+
+		android:id="@+id/image_activity_gallery" android:layout_width="fill_parent"
+
+		android:layout_height="wrap_content" />
+
+	<ImageView android:id="@+id/image_activity_content"
+		android:layout_marginLeft="20dp" android:layout_marginRight="20dp"
+		android:layout_weight="1.0" android:layout_width="fill_parent"
+		android:layout_height="wrap_content" />
+	<LinearLayout android:layout_width="fill_parent"
+		android:background="@drawable/map_menubar" android:layout_height="35dp"
+		android:id="@+id/linearLayout1" android:gravity="center_vertical">
+		<LinearLayout android:layout_width="wrap_content"
+			android:id="@+id/linearLayout2" android:layout_height="fill_parent"
+			android:orientation="vertical" android:gravity="left">
+			<Button android:id="@+id/image_activity_back"
+				android:background="@drawable/btn_back" android:layout_width="wrap_content"
+				android:layout_height="wrap_content"></Button>
+		</LinearLayout>
+		<LinearLayout android:layout_width="wrap_content" android:layout_weight="1.0"
+			android:id="@+id/linearLayout4" android:layout_height="fill_parent" android:gravity="center_horizontal">
+			<Button android:text="Lưu Hình" android:id="@+id/image_activity_save"
+				 android:textStyle="bold" android:textColor="@color/white"
+				android:textSize="17dp" android:background="@drawable/button_save"
+				android:layout_width="wrap_content" android:layout_height="fill_parent"></Button>
+		</LinearLayout>
+
+		<LinearLayout android:layout_width="wrap_content"
+			android:id="@+id/linearLayout3" android:layout_height="fill_parent"
+			android:orientation="vertical" android:gravity="center_vertical">
+			<TextView android:id="@+id/image_activity_number" android:layout_marginRight="10dp"
+				android:textColor="@color/white" android:layout_width="50dp"
+				android:layout_height="wrap_content" android:textAppearance="?android:attr/textAppearanceMedium"
+				android:text="0/1"></TextView>
+		</LinearLayout>
+	</LinearLayout>
+</LinearLayout>
