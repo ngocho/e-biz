@@ -52,6 +52,7 @@ public class MenuActivity extends Activity{
 		mDeal.setOnClickListener(Deals_Action);
 		mBest.setOnClickListener(Best_Action);
 		mBrowser.setOnClickListener(Browser_Action);
+		mFavorite.setOnClickListener(favourite);
 	}
 	public OnClickListener Browser_Action=new OnClickListener() {
 		
@@ -73,7 +74,6 @@ public class MenuActivity extends Activity{
 
 		@Override
 		public void onClick(View v) {
-			finish();
 			Intent deals=new Intent(MenuActivity.this,TabDealsActivity.class);
 			startActivity(deals);
 		}
@@ -129,6 +129,14 @@ public class MenuActivity extends Activity{
 				}
 			});
 			mDialog.show();
+		}
+	};
+	public OnClickListener favourite =new OnClickListener() {
+		
+		@Override
+		public void onClick(View v) {
+			Intent favourite=new Intent(MenuActivity.this,FavouriteActivity.class);
+			startActivity(favourite);
 		}
 	};
 

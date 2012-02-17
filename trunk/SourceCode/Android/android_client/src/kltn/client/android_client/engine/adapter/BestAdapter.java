@@ -85,10 +85,6 @@ public class BestAdapter extends MCursorAdapter{
 			viewHolder.image = (ImageView) convertView.findViewById(R.id.item_buyer_date_image);
 			viewHolder.name = ((TextView) convertView.findViewById(R.id.item_buyer_date_name));
 			viewHolder.buyprice=(TextView)convertView.findViewById(R.id.item_buyer_date_buyprice);
-			viewHolder.price=(TextView)convertView.findViewById(R.id.item_buyer_best_price);
-			viewHolder.date=(TextView)convertView.findViewById(R.id.item_buyer_best_date);
-			viewHolder.sub=(TextView)convertView.findViewById(R.id.item_buyer_best_pricesub);
-			viewHolder.buycount=(TextView)convertView.findViewById(R.id.item_buyer_best_buycount);
 			
 		}else{
 			viewHolder = (ViewHolder)convertView.getTag();

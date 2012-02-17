@@ -29,9 +29,6 @@ public class detail_food extends Activity{
 		price=(TextView)findViewById(R.id.detail_food_price);
 		buyprice=(TextView)findViewById(R.id.detail_food_buyprice);
 		title=(TextView)findViewById(R.id .detail_title);
-		hour=(TextView)findViewById(R.id.detail_food_hour);
-		minute=(TextView)findViewById(R.id.detail_food_minute);
-		second=(TextView)findViewById(R.id.detail_food_second);
 		countbuy=(TextView)findViewById(R.id.detail_food_count);
 		back=(Button)findViewById(R.id.detail_back);
 		ok=(Button)findViewById(R.id.detail_food_ok);
