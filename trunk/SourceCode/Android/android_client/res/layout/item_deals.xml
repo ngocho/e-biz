@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	android:orientation="vertical" android:layout_width="fill_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" 
+	android:orientation="vertical" android:layout_width="fill_parent" android:background="@drawable/button_bg_s"
 	android:layout_height="fill_parent">
 	<ImageView android:layout_height="fill_parent"
-		android:layout_marginLeft="20dp" android:layout_marginRight="20dp"
+		android:layout_margin="5dp" android:scaleType="fitXY"
 		android:layout_width="fill_parent" android:src="@drawable/btn_ads_close"
 		android:id="@+id/item_deals_image"></ImageView>
 </LinearLayout>

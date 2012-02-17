@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical" android:background="@drawable/my_background"
+	android:layout_width="fill_parent" android:layout_height="fill_parent">
+	<LinearLayout android:id="@+id/linearLayout1"
+		android:background="@drawable/theme_activity_title_bar"
+		android:layout_width="fill_parent" android:layout_height="wrap_content"
+		android:layout_gravity="center_vertical" android:gravity="center_vertical">
+		<Button android:id="@+id/favourite_back" android:background="@drawable/btn_back"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+			android:gravity="left" android:layout_gravity="left"></Button>
+		<LinearLayout android:layout_width="fill_parent"
+			android:id="@+id/linearLayout4" android:layout_height="fill_parent"
+			android:gravity="center_vertical|center_horizontal">
+			<TextView android:textStyle="bold" android:gravity="center_horizontal"
+				android:id="@+id/textView1" android:textColor="@color/white"
+				android:layout_marginRight="40dp" android:layout_height="wrap_content"
+				android:textSize="18dp" android:layout_width="wrap_content"
+				android:textAppearance="?android:attr/textAppearanceMedium"
+				android:text="@string/favourite_title"></TextView>
+		</LinearLayout>
+	</LinearLayout>
+	<LinearLayout android:id="@+id/linearLayout2"
+		android:layout_height="wrap_content" android:layout_width="fill_parent">
+		<TextView android:textColor="@color/black" android:paddingLeft="10dp" android:layout_weight="1.0"
+			android:textAppearance="?android:attr/textAppearanceSmall"
+			android:layout_height="wrap_content" android:layout_width="wrap_content"
+			android:id="@+id/favourite_count" android:text="TextView"></TextView>
+		<Button android:text="Advanced" android:id="@+id/favourite_advance" android:background="@drawable/button_menu"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"></Button>
+	</LinearLayout>
+	<ListView android:background="@color/white" android:listSelector="@color/transparent" android:layout_height="fill_parent" android:cacheColorHint="#00000000" android:layout_width="fill_parent" android:id="@+id/favourite_listView"></ListView>
+</LinearLayout>
