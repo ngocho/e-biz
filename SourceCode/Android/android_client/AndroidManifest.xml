@@ -3,6 +3,7 @@
 	android:versionCode="1" android:versionName="1.0"
 	package="kltn.client.android_client">
 	<uses-sdk android:minSdkVersion="4" />
+	<uses-permission android:name="android.permission.INTERNET"></uses-permission>
 
 	<application android:icon="@drawable/icon" android:label="@string/app_name"
 		android:debuggable="true" android:name="App">
@@ -24,6 +25,7 @@
 		<activity android:name=".activity.TabDealsActivity" android:theme="@android:style/Theme.NoTitleBar" android:configChanges="keyboardHidden|orientation"></activity>
 		<activity android:name=".activity.TabBestActivity" android:theme="@android:style/Theme.NoTitleBar" android:configChanges="keyboardHidden|orientation"></activity>
 		<activity android:name=".activity.TabBrowserActivity" android:theme="@android:style/Theme.NoTitleBar" android:configChanges="keyboardHidden|orientation"></activity>
+		<activity android:name=".activity.FavouriteActivity" android:theme="@android:style/Theme.NoTitleBar"></activity>
 
 	</application>
 </manifest>
