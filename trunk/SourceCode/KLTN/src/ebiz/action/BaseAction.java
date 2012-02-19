@@ -18,23 +18,22 @@
  */
 package ebiz.action;
 
-
 import org.apache.struts.action.Action;
 
 import ebiz.util.CommonConstant;
 
 /**
  * @author Administrator
- *
  */
 public class BaseAction extends Action {
-    /**  . */
+    /** SUCCESS. */
     protected static final String SUCCESS = CommonConstant.SUCCESS;
-    /**  . */
+    /** SUCCESS1. */
     protected static final String SUCCESS1 = CommonConstant.SUCCESS1;
+    /** SUCCESS2. */
     protected static final String SUCCESS2 = CommonConstant.SUCCESS2;
-    /**  . */
+    /** FAILURE. */
     protected static final String FAILURE = CommonConstant.FAILURE;
-    /**  . */
+    /** LOGIN. */
     protected static final String LOGIN = CommonConstant.LOGIN;
 }
