@@ -59,6 +59,7 @@ public class Login extends BaseAction {
         if (flag == 1) {
             // save user in session
             se.setAttribute(CommonConstant.ADMIN, adminForm.getId());
+//            se.setAttribute("AD", adminForm);
             se.removeAttribute("adminForm");
             // home screen
             return mapping.findForward(SUCCESS);

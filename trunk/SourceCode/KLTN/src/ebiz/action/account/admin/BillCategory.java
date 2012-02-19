@@ -1,5 +1,5 @@
 /**
- 																																											* Licensed to Open-Ones Group under one or more contributor license
+ * Licensed to Open-Ones Group under one or more contributor license
  * agreements. See the NOTICE file distributed with this work
  * for additional information regarding copyright ownership.
  * Open-Ones Group licenses this file to you under the Apache License,
@@ -42,7 +42,7 @@ import ebiz.util.CommonConstant;
 public class BillCategory extends BaseAction {
     /**
      * [DisplayBill(Customer Account)].
-     * 
+     *
      * @param mapping ActionMapping
      * @param form ActionForm
      * @param request HttpServletRequest
@@ -64,25 +64,17 @@ public class BillCategory extends BaseAction {
             pageIndex = Integer.parseInt(page);
         }
         System.out.println("STATUS BILL" + status);
-        if(status == null){
-        	status = "5";
+        if (status == null) {
+            status = "5";
         }
-//        // get form list from Memcache
-//        Cache cache = SearchBLO.getMemcache();
-//        formList = (List<OrderBillForm>) cache.get("adminBillData");
-
-//        if (formList == null || formList.isEmpty()) {
-        	if("5".equals(status)){
-        		formList = AdminBLO.getOrderBillFormListDaily();
-        	}
-        	else{
+        if ("5".equals(status)) {
+            formList = AdminBLO.getOrderBillFormListDaily();
+        } else {
             formList = AdminBLO.getOrderBillFormList(status);
-        	}
-//        }
+        }
+        // }
         pageList = SearchBLO.paging(formList.size());
         formList = (List<OrderBillForm>) SearchBLO.getPage(formList, pageIndex);
-        // // update status of OrderBill
-        // login.setIsCustomerBill(status);
         // save Bill in session to display
         se.setAttribute(CommonConstant.ADMIN_BILL, formList);
         // save PagingList in session to display
@@ -90,14 +82,10 @@ public class BillCategory extends BaseAction {
         se.setAttribute("aPageIndex", pageIndex);
         se.setAttribute("aStatusBill", status);
         ProviderVO pvo = (ProviderVO) getServlet().getServletContext().getAttribute("BVO");
-		if (pvo == null) {
-			pvo = new ProviderVO(1);
-			getServlet().getServletContext().setAttribute("BVO", pvo);
-		}
-		for(int i = 0 ; i<pvo.getBillNameList().size(); i++){
-			System.out.println("PVO" + pvo.getBillNameList().get(i).getName());
-		}
-		System.out.println("add " + pvo.getBillNameList().size());
+        if (pvo == null) {
+            pvo = new ProviderVO(1);
+            getServlet().getServletContext().setAttribute("BVO", pvo);
+        }
         return mapping.findForward(SUCCESS);
     }
 
