@@ -19,6 +19,8 @@
 package ebiz.blo.food;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -102,6 +104,82 @@ public class FoodBLO {
         }
         // transfer FoodForm to display
         return formList;
+    }
+    public static List<FoodForm> getFoodListByStatus(String idStatus) {
+        List<FoodForm> formList = new ArrayList<FoodForm>();
+        List<Food> foodList = new ArrayList<Food>();
+        // get Food List
+        foodList = (List<Food>) foodDao.getListFoodByValue("foodStatusId", idStatus);
+        // specify size list to get
+           for(Food food: foodList){
+                if(food.getIsDisplay() ==1){
+                FoodForm form = new FoodForm();
+                form.editForm(food);
+                if (form != null ) {
+                    formList.add(form);
+                }
+                }
+        }
+        // transfer FoodForm to display
+        return formList;
+    }
+    
+    /**
+     * [get ProductList by atrr(kho, xao, canh)].
+     * @param limit
+     * @param idStatus
+     * @return
+     */
+    public static List<FoodForm> getFoodListByAttr(int limit, String idStatus) {
+        List<FoodForm> formList = new ArrayList<FoodForm>();
+        List<Food> foodList = new ArrayList<Food>();
+        // get Food List
+        foodList = (List<Food>) foodDao.getListFoodByValue("productAttributeId", idStatus);
+        // specify size list to get
+        if (!foodList.isEmpty()) {
+            if (foodList.size() < limit) {
+                limit = foodList.size();
+            }
+
+            for (int i = 0; i < limit; i++) {
+                if(foodList.get(i).getIsDisplay() ==1){
+                FoodForm form = new FoodForm();
+                form.editForm(foodList.get(i));
+                if (form != null ) {
+                    formList.add(form);
+                }
+                }
+            }
+        }
+        // transfer FoodForm to display
+        return formList;
+    }
+    public static List<FoodForm> getFoodListPromotionBest(int limit) {
+        long value = 1;
+        // get Promotin food
+        List<FoodForm> formList = getFoodListByStatus("1");
+        List<FoodForm> resultList = new ArrayList<FoodForm>();
+        //long valueCopare = formList.get(0).getPrice() -
+//        List<Long> sortList1 = new ArrayList<Long>();
+        List<Long> sortList2 = new ArrayList<Long>();
+        for (FoodForm form : formList) {
+//            sortList1.add(form.getId());
+            sortList2.add(form.getPrice() - form.getPromoPrice());
+        }
+        Collections.sort(sortList2,Collections.reverseOrder());
+        if(limit >= sortList2.size()){
+            limit = sortList2.size();
+            value = sortList2.get(limit -1);
+        }
+        else{
+            value = sortList2.get(limit);
+        }
+        for(int i = 0; i<limit; i++){
+            if(formList.get(i).getPrice() - formList.get(i).getPromoPrice()>=value){
+                resultList.add(formList.get(i));
+            }
+        }
+        return resultList;
     }
 
 	public static boolean getVoucherFood(Long id, int number) {
@@ -314,14 +392,6 @@ public class FoodBLO {
         }
         return formList;
     }
-
-    // public static List<FoodForm> initFoodProviderCategory(HashMap<Integer,
-    // String> paging, int record, String colFilter, String typeProduct) {
-	// List<FoodForm> formList = new ArrayList<FoodForm>();
-	// formList = getFoodFormList("foodName", paging, "asc", record,
-	// 1,colFilter, typeProduct);
-	// return formList;
-	// }
 
 	/**
 	 * [Give the description for method].
@@ -557,13 +627,11 @@ public class FoodBLO {
 	 */
 	public static boolean upNumberFoodOrder(Long id, int number) {
 
-		System.out.println("ID" + number);
 		Food food = foodDao.getFoodById(id);
-		if (food == null) {
-			System.out.println("NULL");
-		}
-		System.out.println("Number" + food.getNumberOrder());
+		if (food != null) {
 		food.setNumberOrder(food.getNumberOrder() + number);
+		food.setSaleProduct(food.getSaleProduct() + number);
+		}
 		return foodDao.saveFood(food);
 
 	}
