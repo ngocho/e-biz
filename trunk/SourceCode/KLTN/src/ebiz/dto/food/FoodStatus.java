@@ -18,6 +18,8 @@
  */
 package ebiz.dto.food;
 
+import java.io.Serializable;
+
 import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
@@ -36,8 +38,9 @@ import javax.jdo.annotations.PrimaryKey;
  * 5 : hết hạn sử dụng
  */
 @PersistenceCapable
-public class FoodStatus {
-
+public class FoodStatus implements Serializable{
+	/** . */
+    private static final long serialVersionUID = 1L;
     /**ID  . */
     @PrimaryKey
     @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
