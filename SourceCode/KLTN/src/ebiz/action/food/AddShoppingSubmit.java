@@ -41,43 +41,43 @@ public class AddShoppingSubmit extends BaseAction {
      */
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
-    	
-    	boolean flag;
-    	int count = 1;
-    	String number = request.getParameter("number");
-    	String type = request.getParameter("type");
+
+        boolean flag;
+        int count = 1;
+        String number = request.getParameter("number");
+        String type = request.getParameter("type");
         HttpSession se = request.getSession();
         ShoppingCart shopCart = (ShoppingCart) se.getAttribute("shop");
         String id = request.getParameter("id");
-        if(number !=null){
-        	count = Integer.parseInt(number);
+        if (number != null) {
+            count = Integer.parseInt(number);
         }
         if (shopCart == null) {
             shopCart = new ShoppingCart();
         }
         if (id != null) {
             // if required product > product in shop
-//            if (count > numberInShop) {
-//                // test in database, then add shopping
-                flag = FoodBLO.addShoppingCart(shopCart, id, count);
-                if (flag) {
-                    shopCart.size();
-                }
-//            }
+            // if (count > numberInShop) {
+            // // test in database, then add shopping
+            flag = FoodBLO.addShoppingCart(shopCart, id, count);
+            if (flag) {
+                shopCart.size();
+            }
+            // }
 
             // if required product < product in shop
-//            else {
-//                shopCart.updateNumberFood(key, numberInShop);
-//                shopCart.size();
-//            }
+            // else {
+            // shopCart.updateNumberFood(key, numberInShop);
+            // shopCart.size();
+            // }
             // set info of product into session
             se.setAttribute(CommonConstant.SHOPPING, shopCart);
             System.out.println(se.getAttribute(CommonConstant.FOOD_DETAIL_PRODUCT));
             System.out.println("detail" + shopCart.getCount());
 
         }
-        if(type.equals("1")){
-        	return mapping.findForward(SUCCESS);
+        if (type.equals("1")) {
+            return mapping.findForward(SUCCESS);
         }
         return mapping.findForward(SUCCESS);
     }
