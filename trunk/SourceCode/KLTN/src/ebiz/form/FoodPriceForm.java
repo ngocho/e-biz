@@ -7,6 +7,8 @@ import ebiz.dto.food.FoodPriceLevel;
 
 public class FoodPriceForm implements Serializable {
 	
+	/** . */
+	private static final long serialVersionUID = 1L;
 	private String id;
 	private String startPrice;
 	private String endPrice;
