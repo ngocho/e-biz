@@ -30,6 +30,7 @@ import ebiz.dao.gae.PMF;
 import ebiz.dao.inf.ICustomerDAO;
 import ebiz.dao.inf.IOrderDAO;
 import ebiz.dto.account.customer.Address;
+import ebiz.dto.account.customer.Assessment;
 import ebiz.dto.account.customer.Comment;
 import ebiz.dto.account.customer.Customer;
 import ebiz.dto.checkout.DetailOrder;
@@ -45,83 +46,16 @@ import ebiz.util.CommonUtil;
 public class CustomerBLO {
     private static ICustomerDAO custDao = new CustomerDAO();
     private static IOrderDAO orderDao = new OrderDAO();
-//    public static JSONObject getCustomerPhone() throws JSONException {
-//        JSONObject json = new JSONObject();
-//        List<String> phones = new ArrayList<String>();
-//        // JSONArray phoneList = new JSONArray();
-//        CustomerDAO dao = new CustomerDAO();
-//        phones = dao.getPhoneList();
-//
-////        json.put("info", CommonConstant.CODECUSTOMER_0);
-//
-//        json.put("data", phones);
-//
-//        return json;
-//    }
-//    public static JSONObject createCustomerPhone() throws JSONException {
-//        JSONObject json = new JSONObject();
-//        List<String> phones = new ArrayList<String>();
-//        //add data
-//        phones.add("0978354952");
-//        phones.add("0978354950");
-//        phones.add("0978354951");
-//        json.put("data", phones);
-//
-//        return json;
-//    }
-//    public static JSONObject createName() throws JSONException {
-//        JSONObject json = new JSONObject();
-//        List<String> names = new ArrayList<String>();
-//        //add data
-//        names.add("Mr A");
-//        names.add("Mrs B ");
-//        names.add("Mss C");
-//        json.put("name", names);
-//
-//        return json;
-//    }
-//    public static List<JSONObject> createHappyBirth() throws JSONException {
-//        List<JSONObject> objList = new ArrayList<JSONObject>();
-//        JSONObject json = new JSONObject();
-//        JSONObject json1 = new JSONObject();
-//        //add data
-//        json.put("phone", "0978349998");
-//        json.put("name", " ChÃºc má»«ng sinh nháº­t Mr A! Tháº­t nhiá»�u may máº¯n vÃ  thÃ nh cÃ´ng");
-//        objList.add(json);
-//        json1.put("phone", "0978349999");
-//        json1.put("name", "ChÃºc má»«ng sinh nháº­t Mrs B!  Tháº­t nhiá»�u may máº¯n vÃ  thÃ nh cÃ´ng");
-//        objList.add(json1);
-//        return objList;
-//    }
-//    public static List<JSONObject> createEmployeeInfo() throws JSONException {
-//        List<JSONObject> objList = new ArrayList<JSONObject>();
-//        
-//        JSONObject json = new JSONObject();
-//        JSONObject json1 = new JSONObject();
-//        //add data
-//        json.put("id", "123");
-//        json.put("name", "Mr A");
-//        json.put("x", "1");
-//        json.put("y", "2");
-//        objList.add(json);
-//        json1.put("id", "123");
-//        json1.put("name", "Mr B");
-//        json1.put("x", "1");
-//        json1.put("y", "2");
-//        objList.add(json1);
-//        return objList;
-//    }
     /**
-     * [deleteFood].
+     * [deleteFood by Customer].
      * @param food          Food
      * @return              boolean
      */
-    public static boolean deleteBill(Long idBill) {
+    public static boolean deleteBillCustomer(Long idBill) {
         if (idBill != null) {
             OrderBill bill = getBillById(idBill);
             if (bill != null) {
                 bill.setDeleted(true);
-                System.out.println("DELETE");
                 if (saveBillById(bill) != null) {
                     return true;
                 }
@@ -131,7 +65,7 @@ public class CustomerBLO {
     }
     
     /**
-     * [deleteFood].
+     * [deleteFood by Admin, System].
      * @param food          Food
      * @return              boolean
      */
@@ -140,7 +74,7 @@ public class CustomerBLO {
     }
     
     /**
-     * [get Food by ID(Long type)].
+     * [get Food by ID(Long)].
      * @param id Long
      * @return Food
      */
@@ -149,34 +83,43 @@ public class CustomerBLO {
     }
     
     /**
-     * [get Food by ID(Long type)].
-     * @param id Long
-     * @return Food
+     * [saveBillBy].
+     * @param bill OrderBill
+     * @return OrderBill
      */
     public static OrderBill saveBillById(OrderBill bill) {
         return orderDao.save(bill);
     }
-    
+    /**
+     * [saveVoucher].
+     * @param voucher VoucherBill
+     * @return VoucherBill
+     */
     public static VoucherBill saveVoucher(VoucherBill voucher) {
         return orderDao.saveVoucherBill(voucher);
     }
-
-    
     /**
-     * get Customer by ID
+     * [getCustomerList].
+     * @return List<Customer>
      */
-    
     public static List<Customer> getCustomerList(){
         return custDao.getCustomerList();
     }
+    /**
+     * [getCustomerByID].
+     * @param id getCustomerByID
+     * @return Customer
+     */
     public static Customer getCustomerByID(String id){
         return custDao.getCustomerById(id);
         
     }
-   /**
-    * login
-    * 
-    */
+    /**
+     * [isLoginID].
+     * @param id String
+     * @param pass String
+     * @return flag int
+     */
     public static int isLoginID(String id, String pass){
     	Customer customer = custDao.getCustomerById(id);
     	if (null != customer) {
@@ -192,65 +135,29 @@ public class CustomerBLO {
 		}
 
     }
-    
+    /**
+     * [isUID].
+     * @param id String
+     * @return flag boolean
+     */
     public static boolean isUID(String id){
         return custDao.isCustomer(id);
     }
-    
+    /**
+     * [getLoginVoucher].
+     * @param login LoginForm
+     */
     public static void getLoginVoucher(LoginForm login){
     	if(isUID(login.getLoginId())){
     		Customer customer = getCustomerByID(login.getLoginId());
     		login.editForm(customer);
     	}
     }
-//    /**
-//     * login
-//     * 
-//     */
-//     public static int isLoginMailID(String id, String pass){
-//     	Customer customer = custDao.getCustomerById(id);
-//     	if (null != customer) {
-// 			// get password
-// 			String passCust = customer.getCustomerPassword();
-// 			if (pass.equals(passCust)) {
-// 				return 1; // success
-// 			} else {
-// 				return 0; // didn't match
-// 			}
-// 		} else {
-// 			return -1; // didn't exist this user
-// 		}
-//
-//     }
-    
-//    public static Customer getObject(LoginForm user){
-//      Customer customer = new Customer();
-//      customer.setCustomerId(user.getLoginId());
-//      customer.setCustomerPassword(user.getLoginPassword());
-//      customer.setCustomerName(user.getLoginName());
-//      customer.setCustomerGender(user.getGender());
-//      customer.setCustomerPhone(user.getPhone());
-//      customer.setCustomerEmail(user.getEmail());
-//      customer.setIsAdEmail(user.getIsAdEmail());
-//      customer.setIsAdPhone(user.getIsAdPhone());
-//      Address add = new Address();
-//      add.setBuildingName(user.getBuildingName());
-//      add.setDistrictName(user.getDistrictName());
-//      add.setHomeNumber(user.getHomeNumber());
-//      add.setStreetName(user.getStreetName());
-//      add.setWardName(user.getWardName());
-//      customer.setCustomerAddress(add);
-//      return customer;
-//        
-//    }
-    
-//    public static LoginForm editForm(Customer customer){
-//        LoginForm form  = new LoginForm();
-//    }
     /**
-     * get Customer by ID
+     * [registerCustomer].
+     * @param customer Customer
+     * @return flag boolean
      */
-    
     public static boolean registerCustomer(Customer customer){
       
       boolean   flag = custDao.isCustomer(customer.getCustomerId());
@@ -259,40 +166,69 @@ public class CustomerBLO {
          }
          return false;
    }
+    /**
+     * [saveComment].
+     * @param comment Comment
+     * @return flag boolean
+     */
     public static boolean saveComment(Comment  comment){
     	return custDao.saveComment(comment);
     }
-        
-  
-   
-//    public static int testCustomerID(String id, String pass) {
-//
-//        return custDao.isCustomerID(id, pass);
-//    }
-//    public static int testCustomerEmail(String email, String pass) {
-//
-//        return custDao.isCustomerMail(email, pass);
-//    }
     /**
-     * 
-     * if duplicate primarikey = over write
-     * @param customer
-     * @return
+     * [saveAss].
+     * @param content Assessment
+     * @return flag boolean
      */
-    public static boolean updatecustomer(Customer customer) {
+    public static boolean saveAss(Assessment  content){
+    	return custDao.saveAss(content);
+    }
+    /**
+     * [getAss].
+     * @param id String
+     * @return Assessment
+     */
+    public static Assessment getAss(String  id){
+    	return custDao.getAssByID(id);
+    }
+    /**
+     * [getAssList].
+     * @return List<Assessment>
+     */
+    public static List<Assessment> getAssList(){
+    	return custDao.getAssList();
+    }
+    /**
+     * [updateCustomer].
+     * @param customer Customer
+     * @return flag boolean
+     */
+    public static boolean updateCustomer(Customer customer) {
        return custDao.saveCustomer(customer);
     }
-    
+    /**
+     * [viewOrderHistory].
+     * @param  idCustomer String
+     * @return List<OrderBill>
+     */
     public List<OrderBill> viewOrderHistory(String idCustomer){
     	
     	return orderDao.getOrListByIDCustomer(idCustomer);
     }
     
+    /**
+     * [viewOrderDetailHistory].
+     * @param  idOrder Long
+     * @return List<DetailOrder>
+     */
     public List<DetailOrder> viewOrderDetailHistory(Long idOrder){
     	
     	return orderDao.getDetailByIDOrBill(idOrder);
     }
-    
+    /**
+     * [toStringAddres].
+     * @param  add Address
+     * @return String
+     */
     public static String toStringAddres(Address add){
         String address ="";
         if(!CommonUtil.isBlankOrNull(add.getHomeNumber())){
@@ -312,7 +248,6 @@ public class CustomerBLO {
         }
         return address;
     }
-    
     public static String toStringAddres(String homeNumber , String buildingName , String streetName, String wardName, String districtName){
     	 String address ="";
     	 if(!CommonUtil.isBlankOrNull(homeNumber)){
@@ -347,7 +282,6 @@ public class CustomerBLO {
         
         for(OrderBill order :orderList ){
             OrderBillForm form = new OrderBillForm();
-            System.out.println("Danh sach "+orderList.size() + " status "+ order.isDeleted());
             //display
             if(!order.isDeleted()){
             form.editForm(order);
@@ -362,19 +296,35 @@ public class CustomerBLO {
     //checkout by Xu account
     public static boolean checkoutXuOnline(String uid, long money){
         Customer customer = custDao.getCustomerById(uid);
-        System.out.println("customer money " + customer.getXuOnline());
         if(customer !=null){
             long moneyXu = customer.getXuOnline();
             if(moneyXu >= money){
                 customer.setXuOnline(moneyXu -money);
-                updatecustomer(customer);
+                updateCustomer(customer);
                 return true;
             }
         }
         return false;
     }
     
-  //checkout by Xu account
+    //transfer Xu account
+    public static boolean transferXuOnline(String uidFrom, String uidTo,long money){
+    	long result = 0;
+    	boolean flag = false;
+    	//down money of uidFrom
+    	flag = CustomerBLO.checkoutXuOnline(uidFrom, money);
+    	//up money of uidTo
+		if(flag){
+			result = CustomerBLO.addXuOnline(uidTo, money);
+		}
+		//up money is Error -> roll back
+		if(result == 0){
+			CustomerBLO.addXuOnline(uidFrom, money);
+			flag = false;
+		}
+		return true;
+		
+    }
     public static boolean isXuOnline(String uid, long money){
         Customer customer = custDao.getCustomerById(uid);
         if(customer !=null){
@@ -391,7 +341,7 @@ public class CustomerBLO {
 		Customer customer = custDao.getCustomerById(uid);
 		if (customer != null) {
 			customer.setXuOnline(customer.getXuOnline() + money);
-			updatecustomer(customer);
+			updateCustomer(customer);
 			return customer.getXuOnline();
 		}
 		return 0;
@@ -404,6 +354,8 @@ public class CustomerBLO {
 			}
 			return 0;
 	 }
+	 
+//	 public boolean isXuOnline()
 	 
     public static String getNameStatusByID(String id){
         return orderDao.getOrderStatusById(id);
