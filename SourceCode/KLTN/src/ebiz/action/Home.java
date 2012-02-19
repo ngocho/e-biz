@@ -32,9 +32,6 @@ import org.apache.struts.action.ActionMapping;
 import ebiz.blo.food.FoodBLO;
 import ebiz.form.FoodForm;
 import ebiz.util.CommonConstant;
-import mobile.ebiz.blo.IDXUBLO;
-//import com.google.appengine.api.backends.BackendService; 
-//import com.google.appengine.api.backends.BackendServiceFactory;
 /**
  * @author ThuyNT
  */
@@ -51,10 +48,8 @@ public class Home extends BaseAction {
      */
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
         HttpServletResponse response) throws Exception {
-//    	 BackendService backendsApi = BackendServiceFactory.getBackendService();  // Get the backend handling the current
-//    	String currentBackendName = backendsApi.getCurrentBackend(); // Get the backend instance handling the current 
-//    	int currentInstance = backendsApi.getCurrentInstance();
-         HttpSession se = request.getSession();
+        System.out.println("HOME");
+        HttpSession se = request.getSession();
         List<FoodForm> formList = new ArrayList<FoodForm>();
         formList = FoodBLO.getFoodListByStatus(CommonConstant.HOME_NUMBER_DEFAUL, "1");
 //       IDXUBLO.CreateListXu();
