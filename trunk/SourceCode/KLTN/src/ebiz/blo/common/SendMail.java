@@ -39,5 +39,12 @@ public class SendMail {
       url.param("email", email);
       queue.add(url);
     }
+    
+    public static void createOrderBill(String idOrder){
+
+        TaskOptions url=TaskOptions.Builder.withUrl("/sendMailOrderBill.vn");
+        url.param("idOrder", idOrder);
+        queue.add(url);
+      }
 
 }
