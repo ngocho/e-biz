@@ -205,7 +205,12 @@
         </li>
         </ul>
         </html:form>
-       
+        <logic:messagesPresent message="true">
+                <!-- display message return by action-->
+                <html:messages id="message" message="true">
+                  <bean:write name="message" />
+                </html:messages>
+          </logic:messagesPresent> 
         
         <div class="buttons-set" id="billing-buttons-container">
         <p class="required">* Required Fields</p>

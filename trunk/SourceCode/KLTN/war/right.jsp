@@ -26,6 +26,19 @@ $(document).ready(function(){
     	return false;
     });
     
+    $("#transferXu").click(function() {
+    	if($("#idUser").val() =='' || $("#valueMoney").val() ==''){
+    		alert('Vui lòng nhập tên tài khoản người nhận');
+    	}
+    	else if($("#valueMoney").val() =='' ||$("#valueMoney").val() =='0'){
+    		alert('Vui lòng nhập số tiền');
+    	}
+    	else{
+    		
+    		transferXu($("#idUser").val(),$("#valueMoney").val());
+    	}
+    	return false;
+    });
     
     $("#content").focus(function() {
     	//alert('js');
@@ -38,11 +51,11 @@ $(document).ready(function(){
   <div class="block block-cart">
     <c:if test="${user !=null}">
       <div class="block-title">
-        <a href="/customer.vn"><strong><span>TÀI KHOẢN CỦA BẠN</span>
+        <a href="/customer.vn"><strong><span class="whiteImPression"> TÀI KHOẢN CỦA BẠN</span>
         </strong>
         </a>
       </div>
-      <strong><span><bean:write name="<%=CommonConstant.WELCOME%>" scope="session" /></span></strong>
+      <strong><span><bean:write name="<%=CommonConstant.WELCOME %>" scope="session" /></span></strong>
       <br>
         <strong><span >Tài khoản Xu : <span class="impressionText" id="xuOnline"><bean:write name="user" property="xuOnline" scope="session" /></span> </span></strong>
       <br>
@@ -50,9 +63,8 @@ $(document).ready(function(){
     </c:if>
     <c:if test="${user ==null}">
       <div class="block-title">
-        <a href="/loginCustomer.vn"><strong><span>ĐĂNG NHẬP</span>
+       <strong><span class="whiteImPression">ĐĂNG NHẬP</span>
         </strong>
-        </a>
       </div>
       <div class="block-content">
         <ul>
@@ -94,7 +106,7 @@ $(document).ready(function(){
    <div class="block" >
     <div class="block-title">
 
-      <strong><span>GIỎ HÀNG</span> </strong> 
+      <strong><span class="whiteImPression">GIỎ HÀNG</span> </strong> 
     </div>
     <div class="block-content">
       <p >
@@ -103,22 +115,8 @@ $(document).ready(function(){
         class="count"> <logic:present name="shop">
           <bean:write name="shop" property="count" />
         </logic:present> </a> món hàng
-     <!--  <h3>
-        <a href="/displayShoppingCart.vn"></a>
-      </h3>
-    <a href="/checkAuthentication.vn"" class="link-checkout"></a> -->
     </div>
-        <%-- <span id="countShop"
-          style="color: red; font-weight: bold; font-size: 15pt">
-          <logic:present name="shop">
-            <bean:write name="shop" property="count" />
-          </logic:present> </span> --%>
       </p>
-      <%--  <logic:present name="shop" property="products">
-        <logic:iterate id="element"  name="shop" property="products" length="3">
-      <p class="empty" style="color:blue;"><bean:write name="element" property="name"/></p>
-      </logic:iterate>
-      </logic:present> --%>
        <p class="empty" style="text-align: left">
         <a href="/displayShoppingCart.vn">...xem giỏ hàng</a>
       </p>
@@ -130,19 +128,32 @@ $(document).ready(function(){
  <div class="block block-cart">
     <div class="block-title">
 
-      <a href="/displayShoppingCart.vn"><strong><span>NẠP XU</span> </strong> </a>
+      <a href="/displayShoppingCart.vn"><strong><span class="whiteImPression">NẠP XU</span> </strong> </a>
     </div>
 		<div class="block-content">
-			<form name="money" action="/addXu" method="get" >
+			<form name="money" action="/addXu.vn" method="get" >
 				Nhập mã nạp xu :<br><input type="text" name="valueXu"  value="" id="valueXu" /><input  class="buttonBG"
 					type="submit" value="Nạp xu" id="addXu"/>
 			</form>
 		</div>
 	</div>
+	<div class="block block-cart">
+    <div class="block-title">
+      <strong><span class="whiteImPression">CHUYỂN XU</span> </strong> 
+    </div>
+		<div class="block-content">
+			<form name="moveMoney" action="/transferXu.vn" method="get" >
+				Nhập tài khoản chuyển đến:<br><input type="text" name="name"  value="" id="idUser" /><br>
+				Nhập số tiền chuyển : <br><input type="text" name="money"  value=""  id="valueMoney" />
+				<input  class="buttonBG"
+					type="submit" value="Chuyển" id="transferXu"/>
+			</form>
+		</div>
+	</div>
  
   <div class="block block-cart">
-    <div class="block-title" style="background: red">
-      <strong style="color: white; font-size: 16px;"><span>NHẬN XÉT CỦA BẠN </span> </strong>
+    <div class="block-title" >
+      <strong><span class="whiteImPression">NHẬN XÉT CỦA BẠN </span> </strong>
     </div>
     <div class="block-content" style="background: white">
       <!--p class="empty">You have no items in your shopping cart.</p-->
@@ -181,37 +192,37 @@ $(document).ready(function(){
 
   <div class="block block-poll">
     <div class="block-title">
-      <strong><span>ĐÁNH GIÁ</span> </strong>
+      <strong><span class="whiteImPression">ĐÁNH GIÁ</span> </strong>
     </div>
     <form id="pollForm"
-      action="http://localhost/magento/index.php/poll/vote/add/poll_id/2/"
-      method="post" onsubmit="return validatePollAnswerIsSelected();">
+      action="/displayAss.vn"
+      method="get" >
       <div class="block-content">
         <p class="block-subtitle">Bạn thích gì ở trang web chúng
           tôi?</p>
         <ul id="poll-answers">
           <li class="odd"><input type="radio" name="vote"
-            class="radio poll_vote" id="vote_5" value="5"> <span
+            class="radio poll_vote" id="vote_5" value="1"> <span
             class="label"><label for="vote_5">Món ăn đa
                 dạng</label> </span>
           </li>
           <li class="even"><input type="radio" name="vote"
-            class="radio poll_vote" id="vote_6" value="6"> <span
+            class="radio poll_vote" id="vote_6" value="2"> <span
             class="label"><label for="vote_6">Giá cả phải
                 chăng</label> </span>
           </li>
           <li class="odd"><input type="radio" name="vote"
-            class="radio poll_vote" id="vote_7" value="7"> <span
+            class="radio poll_vote" id="vote_7" value="3"> <span
             class="label"><label for="vote_7">Giao diện
                 dễ sử dụng</label> </span>
           </li>
           <li class="last even"><input type="radio" name="vote"
-            class="radio poll_vote" id="vote_8" value="8"> <span
+            class="radio poll_vote" id="vote_8" value="4"> <span
             class="label"><label for="vote_8">Thanh toán
                 đảm bảo</label> </span>
           </li>
           <li class="last even"><input type="radio" name="vote"
-            class="radio poll_vote" id="vote_8" value="8"> <span
+            class="radio poll_vote" id="vote_8" value="5"> <span
             class="label"><label for="vote_8">Giao hàng
                 tận tình</label> </span>
           </li>

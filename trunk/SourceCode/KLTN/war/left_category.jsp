@@ -39,7 +39,7 @@ $(document).ready(function(){
 
  <div class="block block-cart">
     <div class="block-title">
-      <strong><span>TÌM KIẾM</span>
+      <strong><span class="whiteImPression">TÌM KIẾM</span>
       </strong>
     </div>
     <div class="block-content">
@@ -91,7 +91,7 @@ $(document).ready(function(){
   </div>
 <div class="block block-layered-nav">
     <div style="background:#009900" >
-        <strong><span style="text-transform:uppercase">MENU</span></strong>    </div>
+        <strong><span style="text-transform:uppercase" class="whiteImPression">MENU</span></strong>    </div>
     <div class="block-content">
                             <p class="block-subtitle">TÙY CHỌN</p>
             <dl id="narrow-by-list">

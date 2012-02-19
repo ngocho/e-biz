@@ -10,7 +10,9 @@
 	<div class="col-2 registered-users" class="login">
 		<div class="content">
 			
-			<h2 >LỰA CHỌN HÌNH THỨC THANH TOÁN</h2>
+			<h2>LỰA CHỌN HÌNH THỨC THANH TOÁN</h2>
+			Bạn đã mua <bean:write name="voucherForm" property="numberVoucher"/> Voucher món ăn<br>
+			Số tiền là : <bean:write name="voucherForm" property="sumPrice"/> 
 			<ul style="margin-top:20px;" >
 				<form action="/getVoucherFilter.vn" method="get" styleId="loginForm">
 					<li><span style="color: red;" id="message"> <logic:messagesPresent

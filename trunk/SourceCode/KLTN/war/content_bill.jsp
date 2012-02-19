@@ -20,6 +20,11 @@
           <logic:present name="bill">
             <table>
               <tbody id="bill">
+               <tr>
+                  <th width="150" height="25" style="font-weight: bold">Tổng tiền:</th>
+                  <td style="font-weight: bold; color: red"><bean:write
+                      name="bill" property="sumPrice" /></td>
+                </tr>
                 <tr>
                   <th width="150" height="25" style="font-weight: bold">Mã hóa
                     đơn :</th>
