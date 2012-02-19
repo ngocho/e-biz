@@ -65,6 +65,41 @@ function  addXu(value){
     });
 }
 
+function  transferXu(uid,money){
+    $.ajax({
+        type: "GET",
+        url: "/transferXu.vn",
+        data: "name="+uid+"&money="+money,
+        dataType: "html",
+        async: false,
+        success: function(data){
+        	var temp = new Array();
+            if(data != 0){
+            temp = data.split(' ');
+            if(temp[0] == '1'){
+                $("#xuOnline").html(temp[1]);
+                $("#idUser").val('');
+                $("#valueMoney").val('');
+                alert('Bạn đã chuyển tiền thành công! Số tiền hiện tại của bạn là : '+temp[1]);
+            }
+            else if(temp[0]== '2'){
+            	alert('Tài khoản chuyến đến không tồn tại');
+            }
+            else if(temp[0]== '3'){
+            	alert('Số tiền trong tài khoản không đủ');
+            }
+            else if(temp[0] == '4'){
+                alert('Bạn phải đăng nhập trước khi nạp tiền');
+            }
+            else if(temp[0] == '5'){
+            	alert('Vui lòng nhập giá trị');
+            }
+            }
+        }
+    });
+}
+
+
 
 
 function  resetFormCustomer(){
