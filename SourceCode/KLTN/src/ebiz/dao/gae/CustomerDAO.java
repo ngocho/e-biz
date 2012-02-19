@@ -23,6 +23,8 @@ import java.util.List;
 
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
+
+import ebiz.dto.account.customer.Assessment;
 import ebiz.dto.account.customer.Comment;
 import ebiz.dao.inf.ICustomerDAO;
 import ebiz.dto.account.customer.Customer;
@@ -42,6 +44,19 @@ public class CustomerDAO implements ICustomerDAO {
     public boolean saveComment(Comment comment) {
 
         return PMF.insertObject(comment);
+    }
+    @Override
+    public boolean saveAss(Assessment content) {
+
+        return PMF.insertObject(content);
+    }
+    
+    @Override
+    public Assessment getAssByID(String id) {
+
+    	Assessment ass = (Assessment)PMF.getObjectById(Assessment.class, id);
+    	return ass;
+    	
     }
 
     @Override
@@ -65,6 +80,15 @@ public class CustomerDAO implements ICustomerDAO {
         List<Customer> customerList = new ArrayList<Customer>();
         customerList = (List<Customer>) PMF.getObjectList(Customer.class);
         return customerList;
+    }
+    
+    @SuppressWarnings("unchecked")
+    @Override
+    public List<Assessment> getAssList() {
+
+        List<Assessment> assList = new ArrayList<Assessment>();
+        assList = (List<Assessment>) PMF.getObjectList(Assessment.class);
+        return assList;
     }
 
     @SuppressWarnings("unchecked")
