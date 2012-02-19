@@ -22,9 +22,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import ebiz.blo.food.FoodBLO;
+import ebiz.blo.customer.CustomerBLO;
 import ebiz.dao.gae.FoodDAO;
 import ebiz.dao.inf.IFoodDAO;
+import ebiz.dto.account.customer.Assessment;
 import ebiz.dto.food.Food;
 import ebiz.dto.food.FoodAttribute;
 import ebiz.dto.food.FoodPriceLevel;
@@ -56,7 +57,6 @@ public class Initialize {
             food.setIsDisplay(1);
             food.setProductAttributeId("1");
             food.setProviderID("NCC1");
-            food.setReviewer(123);
             food.setStartDate(new Date());
 //            DateFormat df = DateFormat.getDateInstance();
             food.setExpDate(new Date());
@@ -144,17 +144,36 @@ public class Initialize {
         
         
     }
-//    public static void initializeFoodPromotion() {
-//        List<Food> foodList = new ArrayList<Food>();
-//        foodList = initializeFood();
-//        FoodPromotionType f = new FoodPromotionType();
-//        System.out.println("%%%%%%%%%%%%");
-//        for(Food food: foodList){
-//            System.out.println("1");
-//            FoodBLO.updateFoodPromotion(food);
-////           foodDao.insertFoodPromotion(food)
-//        }
-//    }
+    public static void createAss(){
+    	Assessment a1= new Assessment();
+    	a1.setId("1");
+    	a1.setName("Món ăn đa dạng");
+    	a1.setNumber(12);
+    	CustomerBLO.saveAss(a1);
+    	
+    	Assessment a2= new Assessment();
+    	a2.setId("2");
+    	a2.setName("Giá cả phải chăng");
+    	a2.setNumber(12);
+    	CustomerBLO.saveAss(a2);
+    	
+    	Assessment a3= new Assessment();
+    	a3.setId("3");
+    	a3.setName("Giao diện dễ sử dụng");
+    	a3.setNumber(12);
+    	CustomerBLO.saveAss(a3);
+    	Assessment a4= new Assessment();
+    	a4.setId("4");
+    	a4.setName("Thanh toán đảm bảo");
+    	a4.setNumber(12);
+    	CustomerBLO.saveAss(a4);
+    	Assessment a5= new Assessment();
+    	a5.setId("5");
+    	a5.setName("Giao hàng tận tình");
+    	a5.setNumber(12);
+    	CustomerBLO.saveAss(a5);
+    	
+    }
     
     
 
