@@ -82,11 +82,11 @@ public class DisplayProduct extends BaseAction {
         // list food to display
         se.setAttribute(CommonConstant.PROVIDER_CATEGORY_F, foods);
         // save attr in app scope
-        ProviderVO pvo = (ProviderVO) getServlet().getServletContext().getAttribute("PVO");
-        if (pvo == null) {
-            pvo = new ProviderVO();
-            getServlet().getServletContext().setAttribute("PVO", pvo);
-        }
+//        ProviderVO pvo = (ProviderVO) getServlet().getServletContext().getAttribute("PVO");
+//        if (pvo == null) {
+//            pvo = new ProviderVO();
+//            getServlet().getServletContext().setAttribute("PVO", pvo);
+//        }
         return mapping.findForward(SUCCESS);
     }
 

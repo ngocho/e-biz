@@ -38,7 +38,7 @@ public class Authentication extends BaseAction {
 
     /**
      * [AuthenticationProvider].
-     * 
+     *
      * @param mapping ActionMapping
      * @param form ActionForm
      * @param request HttpServletRequest
@@ -66,7 +66,8 @@ public class Authentication extends BaseAction {
                                 ProviderForm login = new ProviderForm();
                                 login.setLoginId(providerId);
                                 se.setAttribute(CommonConstant.PROVIDER, login);
-                                se.setAttribute(CommonConstant.WELCOMEP, CommonConstant.WELCOMEP + login.getLoginId().toUpperCase());
+                                se.setAttribute(CommonConstant.WELCOMEP, CommonConstant.WELCOMEP
+                                        + login.getLoginId().toUpperCase());
                                 return mapping.findForward(SUCCESS);
                             }
                         }
