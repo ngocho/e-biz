@@ -30,7 +30,6 @@ import ebiz.action.BaseAction;
 import ebiz.blo.admin.AdminBLO;
 import ebiz.dto.account.admin.Admin;
 import ebiz.util.CommonConstant;
-import ebiz.form.AdminForm;
 /**
  * @author Administrator
  */
@@ -51,10 +50,6 @@ public class AdminAuthentication extends BaseAction {
         HttpSession se = request.getSession();
         String admin = (String) se.getAttribute(CommonConstant.ADMIN);
         if (admin == null) {
-//            Admin ad = new Admin();
-//            ad.setId("admin123");
-//            ad.setPassword("12345678");
-//            AdminBLO.registerAdmin(ad);
             return mapping.findForward(FAILURE);
         }
         return mapping.findForward(SUCCESS);
