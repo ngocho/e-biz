@@ -106,7 +106,7 @@ public class ActiveXU extends BaseAction {
 				IDXU xu=IDXUBLO.getXuById(listitem[1]);
 				if(xu!=null&&xu.getFlag().equals("true")){
 					customer.setXuOnline(customer.getXuOnline()+xu.getMoney());
-					CustomerBLO.updatecustomer(customer);
+					CustomerBLO.updateCustomer(customer);
 					System.out.println("sau : "+customer.getXuOnline());
 					xu.setFlag("false");
 					IDXUBLO.updateXu(xu);
@@ -133,7 +133,7 @@ public class ActiveXU extends BaseAction {
 			if(customer!=null){
 				System.out.println("truoc khi nap : "+customer.getXuOnline());
 				customer.setXuOnline(customer.getXuOnline()+tempmoney);
-				CustomerBLO.updatecustomer(customer);
+				CustomerBLO.updateCustomer(customer);
 				System.out.println("sau khi nap : "+customer.getXuOnline());
 				result="true";
 			}
@@ -173,7 +173,7 @@ public class ActiveXU extends BaseAction {
 					if(customer.getXuOnline()>=food.getPrice()){
 						result="true";
 						customer.setXuOnline(customer.getXuOnline()-food.getPrice());
-						CustomerBLO.updatecustomer(customer);
+						CustomerBLO.updateCustomer(customer);
 					}
 					else
 						result="Ban khong du tien thanh toan. Xin nap them tien!";

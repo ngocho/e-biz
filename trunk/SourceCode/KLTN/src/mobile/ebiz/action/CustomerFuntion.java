@@ -90,7 +90,7 @@ public class CustomerFuntion extends BaseAction {
 			customer.setCustomerGender(list[5]);
 			Address address = new Address();
 			address.setStreetName(list[6]);
-			return CustomerBLO.updatecustomer(customer);
+			return CustomerBLO.updateCustomer(customer);
 		} else {
 			return false;
 		}
@@ -132,7 +132,7 @@ public class CustomerFuntion extends BaseAction {
 		if (CustomerBLO.isLoginID(list[0], list[1]) == 1) {
 			Customer customer = CustomerBLO.getCustomerByID(list[0]);
 			customer.setCustomerPassword(list[2]);
-			CustomerBLO.updatecustomer(customer);
+			CustomerBLO.updateCustomer(customer);
 			return true;
 		} else {
 			return false;
