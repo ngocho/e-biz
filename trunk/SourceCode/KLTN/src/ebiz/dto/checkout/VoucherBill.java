@@ -1,12 +1,16 @@
 package ebiz.dto.checkout;
 
+import java.io.Serializable;
+
 import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
 @PersistenceCapable
-public class VoucherBill {
+public class VoucherBill  implements Serializable{
+	 /**  . */
+    private static final long serialVersionUID = 1L;
 	@PrimaryKey
 	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
 	private Long id;
@@ -88,6 +92,14 @@ public class VoucherBill {
 		this.address = address;
 	}
 
+	/**
+	 * @return the keySecret
+	 */
+
+	/**
+	 * @param keySecret
+	 *            the keySecret to set
+	 */
 
 	/**
 	 * @return the phone
@@ -149,20 +161,10 @@ public class VoucherBill {
 		this.sumMoney = sumMoney;
 	}
 
-    /**
-     * Get value of keyVoucher.
-     * @return the keyVoucher
-     */
     public String getKeyVoucher() {
         return keyVoucher;
     }
-
-    /**
-     * Set the value for keyVoucher.
-     * @param keyVoucher the keyVoucher to set
-     */
     public void setKeyVoucher(String keyVoucher) {
         this.keyVoucher = keyVoucher;
     }
-
 }
