@@ -20,6 +20,7 @@ package ebiz.dao.inf;
 
 import java.util.List;
 
+import ebiz.dto.account.customer.Assessment;
 import ebiz.dto.account.customer.Comment;
 import ebiz.dto.account.customer.Customer;
 
@@ -38,6 +39,8 @@ public interface ICustomerDAO {
 
     boolean saveComment(Comment comment);
 
+    public boolean saveAss(Assessment content) ;
+    public Assessment getAssByID(String id);
     boolean isCustomer(String id);
 
     Customer getCustomerById(String id);
@@ -45,5 +48,6 @@ public interface ICustomerDAO {
     List<String> getPhoneList();
 
     List<Customer> getCustomerList();
+    List<Assessment> getAssList();
 
 }
