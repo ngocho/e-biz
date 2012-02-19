@@ -21,6 +21,7 @@ package ebiz.blo.food;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -177,6 +178,43 @@ public class FoodBLO {
         for(int i = 0; i<limit; i++){
             if(formList.get(i).getPrice() - formList.get(i).getPromoPrice()>=value){
                 resultList.add(formList.get(i));
+            }
+        }
+        return resultList;
+    }
+    //call get Food
+    public static List<FoodForm> getFoodListRecent(int limit) {
+        List<Food> foodList = getFoodListAll();
+        List<FoodForm> resultList = getFoodListByDate(foodList,new Date(),limit);
+//        Date date = new Date();
+//        String d = CommonUtil.convertDateToString(date);
+//        for (Food food : foodList) {
+//            String dateUpload = CommonUtil.convertDateToString(food.getUploadDate());
+//            if (d.equals(dateUpload)) {
+//                FoodForm form = new FoodForm();
+//                form.editForm(food);
+//                resultList.add(form);
+//            }
+//        }
+////        if(!resultList.isEmpty()){
+////            
+////        }
+        return resultList;
+
+    }
+    public static List<FoodForm> getFoodListByDate(List<Food> foodList,Date date,int limit) {
+//        Date date = new Date();
+        List<FoodForm> resultList = new ArrayList<FoodForm>();
+        String d = CommonUtil.convertDateToString(date);
+        if (foodList.size() < limit) {
+            limit = foodList.size();
+        }
+        for (int i = 0; i < limit; i++) {
+            String dateUpload = CommonUtil.convertDateToString(foodList.get(i).getUploadDate());
+            if (date.equals(dateUpload)) {
+                FoodForm form = new FoodForm();
+                form.editForm(foodList.get(i));
+                resultList.add(form);
             }
         }
         return resultList;
