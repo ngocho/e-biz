@@ -18,6 +18,7 @@
  */
 package ebiz.dto.account.customer;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.jdo.annotations.IdGeneratorStrategy;
@@ -30,7 +31,9 @@ import javax.jdo.annotations.PrimaryKey;
  * Customer
  */
 @PersistenceCapable
-public class Customer  {
+public class Customer  implements Serializable{
+	/**  . */
+    private static final long serialVersionUID = 1L;
     //ten dang nhap
     /**  . customerId*/
     @PrimaryKey
