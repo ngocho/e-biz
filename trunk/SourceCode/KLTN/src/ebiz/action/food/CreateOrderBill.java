@@ -25,6 +25,8 @@ import javax.servlet.http.HttpSession;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import org.apache.struts.action.ActionMessage;
+import org.apache.struts.action.ActionMessages;
 
 import ebiz.action.BaseAction;
 import ebiz.blo.customer.CustomerBLO;
@@ -41,6 +43,7 @@ import ebiz.util.CommonConstant;
 public class CreateOrderBill extends BaseAction {
     /**
      * [AuthenticationUser].
+     *
      * @param mapping ActionMapping
      * @param form ActionForm
      * @param request HttpServletRequest
@@ -54,48 +57,55 @@ public class CreateOrderBill extends BaseAction {
         OrderBill order = new OrderBill();
         HttpSession se = request.getSession();
         ShoppingCart shopCart = (ShoppingCart) se.getAttribute(CommonConstant.SHOPPING);
-        OrderBillForm  orderForm = (OrderBillForm) form;
-        //checkout is Pay money
+        OrderBillForm orderForm = (OrderBillForm) form;
+        // checkout is Pay money
         boolean flag = true;
-        String typePayment ="0";
-        LoginForm user = (LoginForm)se.getAttribute(CommonConstant.USER);
-        if(orderForm.getIsPayment() == 0){
-            //user Xu account
+        String typePayment = "0";
+        LoginForm user = (LoginForm) se.getAttribute(CommonConstant.USER);
+        if (orderForm.getIsPayment() == 0) {
+            // user Xu account
             String uid = user.getLoginId();
             flag = CustomerBLO.checkoutXuOnline(uid, shopCart.getTotal());
-            //paid money
-           typePayment = CommonConstant.BILLSTATUS_2;
-        }else if(orderForm.getIsPayment() == 1) {
-            //will pay in home
-            typePayment =  CommonConstant.BILLSTATUS_1;
-            
-        }
-        else
-        {
+            // not enough money
+            if (!flag) {
+                ActionMessages messages = new ActionMessages();
+                messages.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage("xu.notEnough"));
+                saveMessages(request, messages);
+                return mapping.findForward(FAILURE);
+            }
+            // paid money
+            typePayment = CommonConstant.BILLSTATUS_2;
+        } else if (orderForm.getIsPayment() == 1) {
+            // will pay in home
+            typePayment = CommonConstant.BILLSTATUS_1;
+
+        } else {
             typePayment = CommonConstant.BILLSTATUS_2;
         }
-       if(flag){
-           //save in session
-         user.setXuOnline(CustomerBLO.getXuOnline(user.getLoginId()));
-        // billing
-        order = FoodBLO.billing(shopCart,typePayment);
-        //update Customer
-        // transfer OrderBill-> form to display
-        // success
-        if (order != null) {
-            
-            orderForm.editForm(order);
-            System.out.println("DATE BILL" + orderForm.getDateShip());
-            // update atrributes
-            orderForm.setNumberProduct(shopCart.size());
-            // set orderForm into session
-            se.setAttribute("bill", orderForm);
-            se.removeAttribute("shop");
-            // call method to pay xu
-            
-            return mapping.findForward(SUCCESS);
+        if (flag) {
+            // save in session
+            user.setXuOnline(CustomerBLO.getXuOnline(user.getLoginId()));
+            // billing
+            order = FoodBLO.billing(shopCart, typePayment);
+            // update Customer
+            // transfer OrderBill-> form to display
+            // success
+            if (order != null) {
+
+                // send mail
+
+                orderForm.editForm(order);
+                System.out.println("DATE BILL" + orderForm.getDateShip());
+                // update atrributes
+                orderForm.setNumberProduct(shopCart.size());
+                // set orderForm into session
+                se.setAttribute("bill", orderForm);
+                se.removeAttribute("shop");
+                // call method to pay xu
+
+                return mapping.findForward(SUCCESS);
+            }
         }
-       }
         return mapping.findForward(FAILURE);
     }
 }

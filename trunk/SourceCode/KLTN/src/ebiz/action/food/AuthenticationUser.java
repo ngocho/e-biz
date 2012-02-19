@@ -77,7 +77,6 @@ public class AuthenticationUser extends BaseAction {
             return mapping.findForward(SUCCESS);
         } else {
             // user didn't log-in
-            System.out.println("REQUIRE LOGIN");
             // request.setAttribute("type", 1);
             se.setAttribute("screen", CommonConstant.SCREEN_CHECKOUT);
             return mapping.findForward(LOGIN);
