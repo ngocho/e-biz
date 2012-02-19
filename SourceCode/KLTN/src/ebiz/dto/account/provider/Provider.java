@@ -18,6 +18,7 @@
  */
 package ebiz.dto.account.provider;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.jdo.annotations.IdGeneratorStrategy;
@@ -33,7 +34,9 @@ import ebiz.dto.account.customer.Address;
  * Provider
  */
 @PersistenceCapable
-public class Provider {
+public class Provider implements Serializable{
+	/**  . */
+    private static final long serialVersionUID = 1L;
     /**  . providerId*/
     @PrimaryKey
     @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
