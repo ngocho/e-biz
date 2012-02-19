@@ -44,7 +44,7 @@ function slideSwitch() {
     $(function() {
         setInterval("slideSwitch()", 5000);
     });
-    $(document).ready(function() {
+/*     $(document).ready(function() {
 
         var limit = $("#limit").val();
         $("#record option:selected").removeAttr('selected');
@@ -60,7 +60,7 @@ function slideSwitch() {
             a.css("color", "black");
         }
 
-    });
+    }); */
 </script>
 <!-- script type="text/javascript">
     $(document).ready(function() {
@@ -160,7 +160,7 @@ function slideSwitch() {
 
                   </c:when>
                   <c:otherwise>
-                   |  <a
+                    <a
                       href="/categoryRecord.vn?page=<bean:write name="element" />"><bean:write
                         name="element"  /> </a>
                   </c:otherwise>
@@ -175,11 +175,29 @@ function slideSwitch() {
           <label>Hiển thị </label> <input type="hidden" id="limit"
             value="<bean:write name="productVo" property="limit"/>"></input>
           <select id="record" onchange="setLocation(this.value)">
+              <c:choose>
+              <c:when test="${productVo.limit == '14'}">
             <option value="/categoryRecord.vn?limit=8"
               >8</option>
-            <option value="/categoryRecord.vn?limit=14">14</option>
+            <option value="/categoryRecord.vn?limit=14" selected="selected">14</option>
             <option value="/categoryRecord.vn?limit=30">30</option>
-          </select> sản phẩm mỗi trang
+            </c:when>
+            <c:when test="${productVo.limit == '30'}">
+            <option value="/categoryRecord.vn?limit=8"
+              >8</option>
+            <option value="/categoryRecord.vn?limit=14" >14</option>
+            <option value="/categoryRecord.vn?limit=30" selected="selected">30</option>
+            </c:when>
+            <c:otherwise>
+             <option value="/categoryRecord.vn?limit=8"
+              selected="selected">8</option>
+            <option value="/categoryRecord.vn?limit=14" >14</option>
+            <option value="/categoryRecord.vn?limit=30">30</option>
+            </c:otherwise>
+            </c:choose>
+          </select>
+          
+           sản phẩm mỗi trang
         </div>
       </div>
 
@@ -204,12 +222,32 @@ function slideSwitch() {
           <input type="hidden" name="col" id="col"
             value="<bean:write name="productVo" property="col"/>"></input>
           <select id="order" onchange="setLocation(this.value)">
+            <c:choose>
+              <c:when test="${productVo.col == 'saleProduct'}">
             <option value="/categoryRecord.vn?col=foodName"
-              selected="selected">Tên</option>
-            <option value="/categoryRecord.vn?col=price">Giá
+              >Tên</option>
+              <option value="/categoryRecord.vn?col=price">Giá
+              tiền</option>
+            <option value="/categoryRecord.vn?col=saleProduct" selected="selected">
+              Lượt người mua</option>
+              </c:when>
+              <c:when test="${productVo.col == 'price'}">
+            <option value="/categoryRecord.vn?col=foodName"
+              >Tên</option>
+              <option value="/categoryRecord.vn?col=price" selected="selected">Giá
               tiền</option>
             <option value="/categoryRecord.vn?col=saleProduct">
               Lượt người mua</option>
+              </c:when>
+               <c:otherwise>
+               <option value="/categoryRecord.vn?col=foodName"
+              selected="selected">Tên</option>
+              <option value="/categoryRecord.vn?col=price">Giá
+              tiền</option>
+            <option value="/categoryRecord.vn?col=saleProduct" >
+              Lượt người mua</option>
+               </c:otherwise>
+               </c:choose>
           </select>
           
            <logic:present name="productVo">

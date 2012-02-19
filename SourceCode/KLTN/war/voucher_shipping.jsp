@@ -11,8 +11,9 @@
 		<div class="content">
 			
 			<h2>LỰA CHỌN HÌNH THỨC NHẬN VOUCHER</h2>
+      <form action="/getVoucherType.vn" method="get" styleId="loginForm">
 			<ul style="margin-top:20px;" >
-				<form action="/getVoucherType.vn" method="get" styleId="loginForm">
+				
 					<li  >
 						<div class="input-box">
 						<input type="radio" name="typeShipping" value="home">Nhận tại nhà
@@ -33,8 +34,9 @@
 						<input type="submit" value="Tiếp tục"  class="buttonBG"/>
 						</div>
 					</li>
-				</form>
+				
 			</ul>
+      </form>
 
 
 		</div>

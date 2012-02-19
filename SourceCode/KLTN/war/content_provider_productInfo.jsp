@@ -37,7 +37,7 @@ $(document).ready(function(){
 <logic:present name="PVO"  property="fStatusList" >
 <select id="provider_product" name="choose"  onchange="setLocation(this.value)">
 
-<logic:iterate id="element"  name="PVO" property="fStatusList">
+<logic:iterate id="element"  name="PVO" property="fStatusList" >
 <c:choose>
  <c:when test="${element.id == providerVo.status}">
     <option value="/categoryProviderRecord.vn?value=<bean:write name="element" property="id"/>" selected="selected"><bean:write name="element" property="display"/> </option>               

@@ -40,7 +40,7 @@ $(document).ready(function(){
 </script>
  <div class="block block-cart">
     <div class="block-title">
-      <strong><span>TÌM KIẾM</span>
+      <strong><span class="whiteImPression">TÌM KIẾM</span>
       </strong>
     </div>
     <div class="block-content">
@@ -88,9 +88,9 @@ $(document).ready(function(){
    </html:form>
     </div>
   </div>
- <div class="block block-cart">
+<!--  <div class="block block-cart">
     <div class="block-title">
-      <strong><span>THÔNG TIN THỜI TIẾT</span>
+      <strong><span class="whiteImPression">THÔNG TIN THỜI TIẾT</span>
       </strong>
     </div>
     <div class="block-content">
@@ -98,10 +98,10 @@ $(document).ready(function(){
      Hiển thị thông tin của vùng hiện tại
      
      
-     <!-- <input type="submit" value="Xem"/> -->
+     <input type="submit" value="Xem"/>
      </form>
     </div>
-  </div>
+  </div> -->
  <div  >
  <a href="#" class="freeShip" >
  Miễn phí giao hàng nội địa với hóa đơn trên 300.000 VNĐ

@@ -52,7 +52,7 @@
 					</li>
 					<li><label for="email" class="required" id="typeLogin"><em>*</em>Email</label>
 						<div class="input-box">
-							<html:text property="homeNumber" styleId="homeNumber"  />
+							<html:text property="email" styleId="email"  />
 						</div>
 					</li>
 					<li style="margin-top:10px;">
