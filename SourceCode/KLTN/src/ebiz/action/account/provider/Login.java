@@ -58,7 +58,8 @@ public class Login extends BaseAction {
         int flag = -1;
         // test exist in database
         flag = ProviderBLO.isLoginID(login.getLoginId(), login.getLoginPassword());
-        if (flag == 2) { // don't authentication
+        if (flag == 2) {
+            // don't authentication
             se.setAttribute("idProvider", login.getLoginId());
             return mapping.findForward(SUCCESS1);
         } else if (flag == 1) {

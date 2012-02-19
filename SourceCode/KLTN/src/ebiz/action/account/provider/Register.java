@@ -32,6 +32,7 @@ import ebiz.blo.common.SendMail;
 import ebiz.blo.provider.ProviderBLO;
 import ebiz.dto.account.provider.Provider;
 import ebiz.form.ProviderForm;
+import ebiz.util.CommonConstant;
 import mobile.ebiz.dto.hashCode;
 /**
  * @author ThuyNT
@@ -39,7 +40,6 @@ import mobile.ebiz.dto.hashCode;
 public class Register extends BaseAction {
     /**
      * [Register ].
-     * 
      * @param mapping ActionMapping
      * @param form ActionForm
      * @param request HttpServletRequest
@@ -53,14 +53,12 @@ public class Register extends BaseAction {
         // after checked validation using xml file
         ProviderForm user = (ProviderForm) form;
         Provider register = user.getProvider();
-        // generate code active
-        String code = hashCode.hashID(8);
-        register.setActiveCode(code);
-        System.out.println("hascode" + code);
-        // set status Active
+        //set status Active
         register.setActive(false);
         boolean flag = ProviderBLO.registerProvider(register);
         if (flag) {
+            String code = hashCode.hashID(CommonConstant.HASHCODENUMBERROVIDER);
+            register.setActiveCode(code);
             HttpSession se = request.getSession();
             // save value in session
             se.setAttribute("providerForm", user);
