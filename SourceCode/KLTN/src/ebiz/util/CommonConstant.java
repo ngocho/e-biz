@@ -97,5 +97,6 @@ public class CommonConstant {
     public final static String FOOD_DETAIL_PRODUCT = "DetailProduct";
     // screen
     public final static String SCREEN_CHECKOUT = "scheckout";
-
+    public final static int HASHCODENUMBER = 15;
+    public final static int HASHCODENUMBERROVIDER = 8;
 }
