@@ -18,6 +18,7 @@
  */
 package ebiz.dto.food;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.jdo.annotations.IdGeneratorStrategy;
@@ -31,7 +32,9 @@ import javax.jdo.annotations.PrimaryKey;
  */
 
 @PersistenceCapable
-public class Food {
+public class Food implements Serializable {
+	/** . */
+    private static final long serialVersionUID = 1L;
     /** . foodId*/
     @PrimaryKey
     @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
@@ -92,7 +95,7 @@ public class Food {
     private Date uploadDate;
     /** . approved product */
     @Persistent
-    private int isDisplay;
+    private int isDisplay; // =1
     /**
      * Get value of foodId.
      * @return the foodId
@@ -290,22 +293,6 @@ public class Food {
         this.providerID = providerID;
     }
     /**
-     * Get value of reviewer.
-     *
-     * @return the reviewer
-     */
-    public int getReviewer() {
-        return saleProduct;
-    }
-    /**
-     * Set the value for reviewer.
-     *
-     * @param saleProduct the reviewer to set
-     */
-    public void setReviewer(int saleProduct) {
-        this.saleProduct = saleProduct;
-    }
-    /**
      * Get value of cooking.
      *
      * @return the cooking
@@ -401,5 +388,17 @@ public class Food {
     public void setUrlKey(String urlKey) {
         this.urlKey = urlKey;
     }
+	/**
+	 * @return the saleProduct
+	 */
+	public int getSaleProduct() {
+		return saleProduct;
+	}
+	/**
+	 * @param saleProduct the saleProduct to set
+	 */
+	public void setSaleProduct(int saleProduct) {
+		this.saleProduct = saleProduct;
+	}
 
 }
