@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<datastore-indexes autoGenerate="true">
+  <!-- start Display Category -->
+  <!-- 1 -->
+  <datastore-index kind="Food" ancestor="false" source="manual">
+    <property name="foodTypeId" direction="asc" />
+    <property name="isDisplay" direction="asc" />
+    <property name="foodName" direction="asc" />
+  </datastore-index>
+  <datastore-index kind="Food" ancestor="false" source="manual">
+    <property name="foodTypeId" direction="asc" />
+    <property name="isDisplay" direction="asc" />
+    <property name="foodName" direction="desc" />
+  </datastore-index>
+
+  <datastore-index kind="Food" ancestor="false" source="manual">
+    <property name="foodTypeId" direction="asc" />
+    <property name="isDisplay" direction="asc" />
+    <property name="price" direction="asc" />
+  </datastore-index>
+  <datastore-index kind="Food" ancestor="false" source="manual">
+    <property name="foodTypeId" direction="asc" />
+    <property name="isDisplay" direction="asc" />
+    <property name="price" direction="desc" />
+  </datastore-index>
+
+  <datastore-index kind="Food" ancestor="false" source="manual">
+    <property name="foodTypeId" direction="asc" />
+    <property name="isDisplay" direction="asc" />
+    <property name="saleProduct" direction="asc" />
+  </datastore-index>
+  <datastore-index kind="Food" ancestor="false" source="manual">
+    <property name="foodTypeId" direction="asc" />
+    <property name="isDisplay" direction="asc" />
+    <property name="saleProduct" direction="asc" />
+  </datastore-index>
+
+  <datastore-index kind="Food" ancestor="false" source="manual">
+    <property name="foodTypeId" direction="asc" />
+    <property name="isDisplay" direction="asc" />
+    <property name="saleProduct" direction="desc" />
+  </datastore-index>
+<!-- 1 -->
+<!-- 2 -->
+<!-- 2.1 -->
+  <datastore-index kind="Food" ancestor="false" source="manual">
+    <property name="foodPriceLevelId" direction="asc" />
+    <property name="foodTypeId" direction="asc" />
+    <property name="isDisplay" direction="asc" />
+    <property name="foodName" direction="asc" />
+  </datastore-index>
+  <datastore-index kind="Food" ancestor="false" source="manual">
+    <property name="foodPriceLevelId" direction="asc" />
+    <property name="foodTypeId" direction="asc" />
+    <property name="isDisplay" direction="asc" />
+    <property name="foodName" direction="desc" />
+  </datastore-index>
+  
+  <datastore-index kind="Food" ancestor="false" source="manual">
+    <property name="foodPriceLevelId" direction="asc" />
+    <property name="foodTypeId" direction="asc" />
+    <property name="isDisplay" direction="asc" />
+    <property name="price" direction="asc" />
+  </datastore-index>
+  <datastore-index kind="Food" ancestor="false" source="manual">
+    <property name="foodPriceLevelId" direction="asc" />
+    <property name="foodTypeId" direction="asc" />
+    <property name="isDisplay" direction="asc" />
+    <property name="price" direction="desc" />
+  </datastore-index>
+  
+   <datastore-index kind="Food" ancestor="false" source="manual">
+    <property name="foodPriceLevelId" direction="asc" />
+    <property name="foodTypeId" direction="asc" />
+    <property name="isDisplay" direction="asc" />
+    <property name="saleProduct" direction="asc" />
+  </datastore-index>
+   <datastore-index kind="Food" ancestor="false" source="manual">
+    <property name="foodPriceLevelId" direction="asc" />
+    <property name="foodTypeId" direction="asc" />
+    <property name="isDisplay" direction="asc" />
+    <property name="saleProduct" direction="desc" />
+  </datastore-index>
+  
+<!-- 2.2 -->  
+  <datastore-index kind="Food" ancestor="false" source="manual">
+    <property name="productAttributeId" direction="asc" />
+    <property name="foodTypeId" direction="asc" />
+    <property name="isDisplay" direction="asc" />
+    <property name="foodName" direction="asc" />
+  </datastore-index>
+  <datastore-index kind="Food" ancestor="false" source="manual">
+    <property name="productAttributeId" direction="asc" />
+    <property name="foodTypeId" direction="asc" />
+    <property name="isDisplay" direction="asc" />
+    <property name="foodName" direction="desc" />
+  </datastore-index>
+  
+  <datastore-index kind="Food" ancestor="false" source="manual">
+    <property name="productAttributeId" direction="asc" />
+    <property name="foodTypeId" direction="asc" />
+    <property name="isDisplay" direction="asc" />
+    <property name="price" direction="asc" />
+  </datastore-index>
+  <datastore-index kind="Food" ancestor="false" source="manual">
+    <property name="productAttributeId" direction="asc" />
+    <property name="foodTypeId" direction="asc" />
+    <property name="isDisplay" direction="asc" />
+    <property name="price" direction="desc" />
+  </datastore-index>
+  
+   <datastore-index kind="Food" ancestor="false" source="manual">
+    <property name="productAttributeId" direction="asc" />
+    <property name="foodTypeId" direction="asc" />
+    <property name="isDisplay" direction="asc" />
+    <property name="saleProduct" direction="asc" />
+  </datastore-index>
+   <datastore-index kind="Food" ancestor="false" source="manual">
+    <property name="productAttributeId" direction="asc" />
+    <property name="foodTypeId" direction="asc" />
+    <property name="isDisplay" direction="asc" />
+    <property name="saleProduct" direction="desc" />
+  </datastore-index>
+  
+  
+<!-- 2 -->
+  <datastore-index kind="Food" ancestor="false" source="manual">
+    <property name="foodPriceLevelId" direction="asc" />
+    <property name="productAttributeId" direction="asc" />
+    <property name="foodTypeId" direction="asc" />
+    <property name="isDisplay" direction="asc" />
+    <property name="price" direction="asc" />
+
+  </datastore-index>
+
+  <!-- end Display Category -->
+
+  <datastore-index kind="Customer" ancestor="false"
+    source="manual">
+    <property name="customerEmail" direction="asc" />
+    <property name="customerId" direction="asc" />
+  </datastore-index>
+</datastore-indexes>
