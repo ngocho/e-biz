@@ -25,7 +25,6 @@ import org.apache.struts.validator.ValidatorForm;
 import ebiz.dto.account.customer.Address;
 import ebiz.dto.account.customer.Customer;
 import ebiz.util.CommonUtil;
-
 /**
  * @author Administrator
  */
@@ -41,7 +40,7 @@ public class LoginForm extends ValidatorForm implements Serializable {
     /** . */
     private String loginName;
     /** . */
-    private String type; // type of account : customer, admin, employee
+    private String type;
     /** . */
     private String gender;
     /** . */
@@ -70,6 +69,7 @@ public class LoginForm extends ValidatorForm implements Serializable {
     private int isCustomerBill;
     /** . */
     private String url;
+    /**  . */
     private long xuOnline;
     /**
      * IsEmpty.
@@ -130,8 +130,6 @@ public class LoginForm extends ValidatorForm implements Serializable {
         this.xuOnline = customer.getXuOnline();
         // return this;
     }
-    
-   
     /**
      * Get value of loginId.
      *
@@ -466,18 +464,18 @@ public class LoginForm extends ValidatorForm implements Serializable {
         this.url = url;
     }
 
-	/**
-	 * @return the xuOnline
-	 */
-	public long getXuOnline() {
-		return xuOnline;
-	}
+    /**
+     * @return the xuOnline
+     */
+    public long getXuOnline() {
+        return xuOnline;
+    }
 
-	/**
-	 * @param xuOnline the xuOnline to set
-	 */
-	public void setXuOnline(long xuOnline) {
-		this.xuOnline = xuOnline;
-	}
+    /**
+     * @param xuOnline the xuOnline to set
+     */
+    public void setXuOnline(long xuOnline) {
+        this.xuOnline = xuOnline;
+    }
 
 }

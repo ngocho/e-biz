@@ -29,6 +29,7 @@ import ebiz.dto.account.customer.Address;
 import ebiz.dto.account.customer.Customer;
 import ebiz.dto.checkout.OrderBill;
 import ebiz.dto.checkout.VoucherBill;
+import ebiz.dto.food.Food;
 import ebiz.util.CommonConstant;
 import ebiz.util.CommonUtil;
 /**
@@ -103,6 +104,7 @@ public class OrderBillForm extends ValidatorForm implements Serializable {
         idEmployee = order.getIdEmployee();
         note = order.getNote();
         isPayment = order.getTypePayment();
+        sumPrice = order.getSumPrice();
     }
     public void editFormLogin(LoginForm form) {
     	this.idCustomer = form.getLoginId();
@@ -116,8 +118,16 @@ public class OrderBillForm extends ValidatorForm implements Serializable {
     }
     
     public void sumVoucherMoney(){
-    	long money = FoodBLO.getFoodById(this.idFood).getPrice() * this.numberVoucher;
-    	this.sumPrice = money;
+    	Food food = FoodBLO.getFoodById(this.idFood);
+    	long money = 0;
+    	//promotion food
+    	if(food.getFoodStatusId().equals("1")){
+    		money = food.getPricePromotion();
+    	}
+    	else{
+    		money = food.getPrice();
+    	}
+    	this.sumPrice = money * this.numberVoucher;
     	
     }
     public VoucherBill getVoucher() {

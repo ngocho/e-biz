@@ -43,7 +43,7 @@ public class FoodForm extends ValidatorForm implements Serializable {
 	private String nameTypeId;
 	private long price;
 	private long promoPrice;
-	private int reviewer;
+	private int sale;
 	private String status; // san pham da het, khuyen mai(id)
 	private String statusName; // hien thi name
 	private int number;
@@ -96,7 +96,7 @@ public class FoodForm extends ValidatorForm implements Serializable {
 	public FoodForm editForm(Food food) {
 		this.id = food.getFoodId();
 		this.name = food.getFoodName();
-		this.reviewer = food.getReviewer();
+		this.sale = food.getSaleProduct();
 		// this.url = food.getUrl();
 		this.urlKey = food.getUrlKey();
 		this.number = food.getNumber();
@@ -133,7 +133,7 @@ public class FoodForm extends ValidatorForm implements Serializable {
 	public FoodForm editFormDetail(Food food) {
 		this.id = food.getFoodId();
 		this.name = food.getFoodName();
-		this.reviewer = food.getReviewer();
+		this.sale = food.getSaleProduct();
 		// this.url = food.getUrl();
 		this.urlKey = food.getUrlKey();
 		this.number = food.getNumber();
@@ -201,24 +201,6 @@ public class FoodForm extends ValidatorForm implements Serializable {
 		this.name = name;
 	}
 
-	/**
-	 * Get value of reviewer.
-	 * 
-	 * @return the reviewer
-	 */
-	public int getReviewer() {
-		return reviewer;
-	}
-
-	/**
-	 * Set the value for reviewer.
-	 * 
-	 * @param reviewer
-	 *            the reviewer to set
-	 */
-	public void setReviewer(int reviewer) {
-		this.reviewer = reviewer;
-	}
 
 	/**
 	 * Get value of price.
@@ -543,6 +525,20 @@ public class FoodForm extends ValidatorForm implements Serializable {
 	 */
 	public void setNameAttr(String nameAttr) {
 		this.nameAttr = nameAttr;
+	}
+
+	/**
+	 * @return the sale
+	 */
+	public int getSale() {
+		return sale;
+	}
+
+	/**
+	 * @param sale the sale to set
+	 */
+	public void setSale(int sale) {
+		this.sale = sale;
 	}
 
 }
