@@ -71,7 +71,7 @@ public class DisplayCategory extends BaseAction {
         } else {
             vo.setTypeProduct(typeProduct);
         }
-        Initialize.initializeFoodAttribute();
+        
         // get attribute --> save in session
         attrs = FoodBLO.getAttributeFoodList();
         se.setAttribute(CommonConstant.FOOD_CATEGORY_A, attrs);

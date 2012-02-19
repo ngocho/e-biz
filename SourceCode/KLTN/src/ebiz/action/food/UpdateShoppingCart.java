@@ -38,8 +38,16 @@ import ebiz.util.CommonConstant;
  */
 
 public class UpdateShoppingCart extends BaseAction {
-    /*
-     * update product in shopping
+    /**
+     * [UpdateShoppingCart - ajax].
+     *
+     * @param mapping ActionMapping
+     * @param form ActionForm
+     * @param request HttpServletRequest
+     * @param response HttpServletResponse
+     * @return ActionForward
+     * @throws Exception Exception
+     * @see ActionForward Struts1 Framework
      */
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
@@ -76,7 +84,6 @@ public class UpdateShoppingCart extends BaseAction {
         try {
             // if have error
             if (!flag) {
-                System.out.println("error");
                 out.println("0" + " " + food.getNumber());
                 return null;
             }
@@ -87,7 +94,6 @@ public class UpdateShoppingCart extends BaseAction {
             se.setAttribute(CommonConstant.SHOPPING, shop);
             // retured data
             out.println("1" + " " + number + " " + shop.subMoney(id) + " " + shop.getTotal());
-            System.out.println("getCount" + shop.getCount());
         } catch (Exception e) {
             e.printStackTrace();
 
