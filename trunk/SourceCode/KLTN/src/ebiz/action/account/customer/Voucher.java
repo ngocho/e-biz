@@ -37,62 +37,56 @@ import ebiz.form.OrderBillForm;
  */
 public class Voucher extends BaseAction {
 
-	/**
-	 * [Voucher(Customer)].
-	 * 
-	 * @param mapping
-	 *            ActionMapping
-	 * @param form
-	 *            ActionForm
-	 * @param request
-	 *            HttpServletRequest
-	 * @param response
-	 *            HttpServletResponse
-	 * @return ActionForward
-	 * @throws Exception
-	 *             Exception
-	 * @see ActionForward Struts1 Framework
-	 */
-	public ActionForward execute(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		String value = request.getParameter("numVoucher");
-		System.out.println("GET VOUCHER" + value);
-		HttpSession se = request.getSession();
-		LoginForm login = (LoginForm) se.getAttribute("user");
-		if (value != null && !(value.equals(""))) {
-			// test 'value'
-			String id = (String) se.getAttribute("idFood");
-			Long key;
-			if (id != null) {
-				int number = Integer.parseInt(value);
-				key = Long.parseLong(id);
-				// test number in database
-				boolean flag = FoodBLO.getVoucherFood(key, number);
-				if (flag) {
-					if (login != null) {
+    /**
+     * [Voucher(Customer)].
+     *
+     * @param mapping ActionMapping
+     * @param form ActionForm
+     * @param request HttpServletRequest
+     * @param response HttpServletResponse
+     * @return ActionForward
+     * @throws Exception Exception
+     * @see ActionForward Struts1 Framework
+     */
+    public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
+            HttpServletResponse response) throws Exception {
+        String value = request.getParameter("numVoucher");
+        HttpSession se = request.getSession();
+        LoginForm login = (LoginForm) se.getAttribute("user");
+        if (value != null && !(value.equals(""))) {
+            // test 'value'
+            String id = (String) se.getAttribute("idFood");
+            Long key;
+            if (id != null) {
+                int number = Integer.parseInt(value);
+                key = Long.parseLong(id);
+                // test number in database
+                boolean flag = FoodBLO.getVoucherFood(key, number);
+                if (flag) {
+                    OrderBillForm voucherForm = new OrderBillForm();
+                    // get info of Customer
+                    // put value into Voucher Form
 
-						OrderBillForm voucherForm = new OrderBillForm();
-						//get info of Customer
-						CustomerBLO.getLoginVoucher(login);
-						//put value into Voucher Form
-						voucherForm.editFormLogin(login);
-						// set number of voucher
-						voucherForm.setNumberVoucher(number);
-						voucherForm.setIdFood(key);
-						voucherForm.sumVoucherMoney();
-						// save in session
-						se.setAttribute("voucherForm", voucherForm);
-						return mapping.findForward(SUCCESS);
-					} else {
-						se.setAttribute("screen", "voucher_optional");
-						// required Login
-						return mapping.findForward(LOGIN);
-					}
-				}
-			}
-		}
-		return mapping.findForward(FAILURE);
-	}
+                    // set number of voucher
+                    voucherForm.setNumberVoucher(number);
+                    voucherForm.setIdFood(key);
+                    voucherForm.sumVoucherMoney();
+                    // save in session
+                    se.setAttribute("voucherForm", voucherForm);
+                    if (login != null) {
+                        // get info of Customer
+                        CustomerBLO.getLoginVoucher(login);
+                        voucherForm.editFormLogin(login);
+                        return mapping.findForward(SUCCESS);
+                    } else {
+                        se.setAttribute("screen", "voucher_optional");
+                        // required Login
+                        return mapping.findForward(LOGIN);
+                    }
+                }
+            }
+        }
+        return mapping.findForward(FAILURE);
+    }
 
 }

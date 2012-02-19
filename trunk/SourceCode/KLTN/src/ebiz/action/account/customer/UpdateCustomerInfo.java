@@ -59,7 +59,6 @@ public class UpdateCustomerInfo extends BaseAction {
         LoginForm user = (LoginForm) se.getAttribute(CommonConstant.USER);
         Customer customer = CustomerBLO.getCustomerByID(user.getLoginId());
         //set value
-        System.out.println("NAME District"+ request.getParameter("districtName"));
         customer.setCustomerName(request.getParameter("name"));
         customer.setCustomerEmail(request.getParameter("mail"));
         customer.setCustomerPhone(request.getParameter("phone"));
@@ -69,11 +68,10 @@ public class UpdateCustomerInfo extends BaseAction {
         customer.getCustomerAddress().setStreetName(request.getParameter("streetName"));
         customer.getCustomerAddress().setWardName(request.getParameter("wardName"));
         //update
-        boolean flag =  CustomerBLO.updatecustomer(customer);
-        if(flag){
+        boolean flag =  CustomerBLO.updateCustomer(customer);
+        if (flag) {
             out.println("1");
         }
         return null;
-        
     }
 }

@@ -51,7 +51,7 @@ public class UpdateCustomer extends BaseAction {
         boolean flag;
         LoginForm user = (LoginForm) form;
         Customer customer = user.getCustomer();
-        flag = CustomerBLO.updatecustomer(customer);
+        flag = CustomerBLO.updateCustomer(customer);
         if (flag) {
             return mapping.findForward(SUCCESS);
         }

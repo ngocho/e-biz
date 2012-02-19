@@ -18,27 +18,27 @@
  */
 package ebiz.action.account.customer;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import ebiz.action.BaseAction;
-import ebiz.blo.food.FoodBLO;
-import ebiz.dto.checkout.OrderBill;
-import ebiz.form.OrderBillForm;
-import ebiz.form.ShoppingCart;
-import ebiz.util.CommonConstant;
+import ebiz.blo.customer.CustomerBLO;
+import ebiz.dto.account.customer.Assessment;
 
 /**
- * @author Administrator
+ * @author ThuyNT
  */
-public class XuPayment extends BaseAction {
+public class DisplayAss extends BaseAction {
+
     /**
-     * [AuthenticationUser].
+     * [DisplayAss].
+     *
      * @param mapping ActionMapping
      * @param form ActionForm
      * @param request HttpServletRequest
@@ -49,7 +49,26 @@ public class XuPayment extends BaseAction {
      */
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
-//        
-        return null;
+        String idValue = request.getParameter("vote");
+        // CustomerBLO.createAss();
+        if (idValue != null) {
+            // get Ass
+            Assessment as = CustomerBLO.getAss(idValue);
+            if (as != null) {
+                as.setNumber(as.getNumber() + 1);
+                boolean flag = CustomerBLO.saveAss(as);
+                if (flag) {
+                    // get list
+                    List<Assessment> assList = CustomerBLO.getAssList();
+                    // HttpSession se = request.getSession();
+                    request.setAttribute("assList", assList);
+                    return mapping.findForward(SUCCESS);
+                }
+            }
+
+        }
+        return mapping.findForward(FAILURE);
+
     }
+
 }

@@ -45,7 +45,6 @@ public class ResetForm extends BaseAction {
      */
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
-        System.out.println("RESET");
         response.setHeader("Cache-Control", "no-cache");
         response.setContentType("text/xml; charset=utf-8");
         response.setCharacterEncoding("utf-8");

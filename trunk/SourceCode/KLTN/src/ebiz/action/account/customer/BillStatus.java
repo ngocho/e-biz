@@ -20,7 +20,6 @@ package ebiz.action.account.customer;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
@@ -28,7 +27,6 @@ import org.apache.struts.action.ActionMapping;
 
 import ebiz.action.BaseAction;
 import ebiz.blo.customer.CustomerBLO;
-import ebiz.form.LoginForm;
 
 /**
  * @author ThuyNT
@@ -37,6 +35,7 @@ public class BillStatus extends BaseAction {
 
     /**
      * [Logout(Customer)].
+     *
      * @param mapping ActionMapping
      * @param form ActionForm
      * @param request HttpServletRequest
@@ -48,10 +47,10 @@ public class BillStatus extends BaseAction {
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
 
-        String id = (String)request.getParameter("id");
+        String id = (String) request.getParameter("id");
         if (id != null) {
             Long key = Long.parseLong(id);
-            CustomerBLO.deleteBill(key);
+            CustomerBLO.deleteBillCustomer(key);
         }
         return mapping.findForward(SUCCESS);
     }
