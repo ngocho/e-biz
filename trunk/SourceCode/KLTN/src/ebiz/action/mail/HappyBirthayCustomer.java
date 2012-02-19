@@ -41,9 +41,10 @@ import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-public class HappyBirthayCustomer extends Action {//send mail thong bao dang ki thanh cong
-    public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception 
-    {
+public class HappyBirthayCustomer extends Action {
+    public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
+            HttpServletResponse response) throws Exception {
+
     
 //    String flag=request.getParameter("flag");
     List<Customer> customerList= CustomerBLO.getCustomerList();
@@ -69,17 +70,17 @@ public class HappyBirthayCustomer extends Action {//send mail thong bao dang ki 
     	    try {
     	        Message msg = new MimeMessage(session);
     	        msg.setFrom(new InternetAddress("uit.mmt@gmail.com", "Food.com"));
-    	        msg.addRecipient(Message.RecipientType.TO,
-    	                         new InternetAddress(customer.getCustomerEmail(), "User"));
+                        msg.addRecipient(Message.RecipientType.TO, new InternetAddress(customer.getCustomerEmail(),
+                                "User"));
     	            msg.setSubject("Chúc mừng sinh nhật");
     	            msg.setContent(msgBody.toString(),"text/html");
     	        Transport.send(msg);
     	        
 
     	    } catch (AddressException e) {
-    	        // ...
+                        e.printStackTrace();
     	    } catch (MessagingException e) {
-    	        // ...
+                        e.printStackTrace();
     	    }
     	  
 

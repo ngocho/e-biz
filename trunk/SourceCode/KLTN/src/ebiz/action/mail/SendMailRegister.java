@@ -37,8 +37,8 @@ import java.util.logging.Logger;
 public class SendMailRegister extends Action {
 	private static final Logger log = Logger.getLogger(SendMailRegister.class.getName());
 	//send mail thong bao dang ki thanh cong
-    public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception 
-    {
+    public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
+            HttpServletResponse response) throws Exception {
     String msgBody;
 //    String flag=request.getParameter("flag");
     String email=request.getParameter("email");
@@ -47,11 +47,10 @@ public class SendMailRegister extends Action {
     msgBody ="Chúc mừng bạn đã đăng kí thành công!";
     log.info("Send Mail Register Success");
     try {
-        Message msg = new MimeMessage(session);
+        MimeMessage msg = new MimeMessage(session);
         msg.setFrom(new InternetAddress("uit.mmt@gmail.com", "Food E-commerce.com"));
-        msg.addRecipient(Message.RecipientType.TO,
-                         new InternetAddress(email, "User"));
-        msg.setSubject("Đăng kí thành viên thành công");
+            msg.addRecipient(Message.RecipientType.TO, new InternetAddress(email, "User"));
+        msg.setSubject("Đăng kí thành viên thành công","utf-8");
         msg.setText(msgBody);
         Transport.send(msg);
         
