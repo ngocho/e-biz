@@ -38,57 +38,49 @@ import ebiz.form.OrderBillForm;
  */
 public class VoucherProcess extends BaseAction {
 
-	/**
-	 * [Voucher(Customer)].
-	 * 
-	 * @param mapping
-	 *            ActionMapping
-	 * @param form
-	 *            ActionForm
-	 * @param request
-	 *            HttpServletRequest
-	 * @param response
-	 *            HttpServletResponse
-	 * @return ActionForward
-	 * @throws Exception
-	 *             Exception
-	 * @see ActionForward Struts1 Framework
-	 */
-	public ActionForward execute(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		String screen = request.getParameter("checkoutOption");
-		String type = request.getParameter("checkoutOption");
-		HttpSession se = request.getSession();
-		LoginForm user = (LoginForm)se.getAttribute(CommonConstant.USER);
-		if(type.equals("home")){
-			screen  = "voucher_info";
-		}
-		else if(type.equals("xu")){
-			//test xu account money : enough?
-			OrderBillForm voucherForm = (OrderBillForm)se.getAttribute("voucherForm");
-			System.out.println("Voucher Form" + voucherForm.getSumPrice());
-			boolean flag = CustomerBLO.isXuOnline(user.getLoginId(), voucherForm.getSumPrice());
-			if(flag){
-			//if enough 
-			screen  = "voucher_shipping";
-			}else{
-			//else 
-			//display message : choose different way or input money into xu account
-				ActionMessages messages = new ActionMessages();
-				 messages.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage("login.password.wrong"));
-				 saveMessages(request, messages);
-				 screen = "voucher_optional";
-				 se.setAttribute("inputXu", "xu");
-			}
-		}
-		else{
-			screen  = "voucher_shipping";
-		}
-		System.out.println("checkoutOption" + screen);
-		ActionForward forward =   mapping.getInputForward();
-    	forward.setPath(screen);
-    	return forward;
-	}
+    /**
+     * [Voucher(Customer)].
+     *
+     * @param mapping ActionMapping
+     * @param form ActionForm
+     * @param request HttpServletRequest
+     * @param response HttpServletResponse
+     * @return ActionForward
+     * @throws Exception Exception
+     * @see ActionForward Struts1 Framework
+     */
+    public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
+            HttpServletResponse response) throws Exception {
+        String screen = request.getParameter("checkoutOption");
+        String type = request.getParameter("checkoutOption");
+        HttpSession se = request.getSession();
+        LoginForm user = (LoginForm) se.getAttribute(CommonConstant.USER);
+        if (type.equals("home")) {
+            screen = "voucher_info";
+        } else if (type.equals("xu")) {
+            // test xu account money : enough?
+            OrderBillForm voucherForm = (OrderBillForm) se.getAttribute("voucherForm");
+            System.out.println("Voucher Form" + voucherForm.getSumPrice());
+            boolean flag = CustomerBLO.isXuOnline(user.getLoginId(), voucherForm.getSumPrice());
+            if (flag) {
+                // if enough
+                screen = "voucher_shipping";
+            } else {
+                // else
+                // display message : choose different way or input money into xu account
+                ActionMessages messages = new ActionMessages();
+                messages.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage("login.password.wrong"));
+                saveMessages(request, messages);
+                screen = "voucher_optional";
+                se.setAttribute("inputXu", "xu");
+            }
+        } else {
+            screen = "voucher_shipping";
+        }
+        System.out.println("checkoutOption" + screen);
+        ActionForward forward = mapping.getInputForward();
+        forward.setPath(screen);
+        return forward;
+    }
 
 }

@@ -38,7 +38,7 @@ import ebiz.util.CommonConstant;
 public class UploadComment extends BaseAction {
 
     /**
-     * [Login(Customer)].
+     * [Upload Comment(Customer)-ajax].
      * @param mapping ActionMapping
      * @param form ActionForm
      * @param request HttpServletRequest
@@ -64,7 +64,7 @@ public class UploadComment extends BaseAction {
             //insert comment into database
             CustomerBLO.saveComment(userComment);
         }
-        return mapping.findForward(SUCCESS);
+        return null;
 
     }
 

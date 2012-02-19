@@ -65,6 +65,7 @@ public class Register extends BaseAction {
         if (!CustomerBLO.isUID(user.getLoginId())) {
             Customer register = user.getCustomer();
             boolean flag;
+
             flag = CustomerBLO.registerCustomer(register);
             if (flag) {
                 HttpSession se = request.getSession();

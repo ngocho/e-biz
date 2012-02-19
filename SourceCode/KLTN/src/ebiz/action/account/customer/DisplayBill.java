@@ -76,8 +76,6 @@ public class DisplayBill extends BaseAction {
         }
         pageList = SearchBLO.paging(formList.size());
         formList = (List<OrderBillForm>) SearchBLO.getPage(formList, pageIndex);
-//        // update status of OrderBill
-//        login.setIsCustomerBill(status);
         //save Bill in session to display
         se.setAttribute(CommonConstant.BILL, formList);
         //save PagingList in session to display

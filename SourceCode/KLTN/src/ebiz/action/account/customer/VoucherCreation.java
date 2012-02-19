@@ -39,54 +39,47 @@ import mobile.ebiz.dto.hashCode;
  */
 public class VoucherCreation extends BaseAction {
 
-	/**
-	 * [Voucher(Customer)].
-	 * 
-	 * @param mapping
-	 *            ActionMapping
-	 * @param form
-	 *            ActionForm
-	 * @param request
-	 *            HttpServletRequest
-	 * @param response
-	 *            HttpServletResponse
-	 * @return ActionForward
-	 * @throws Exception
-	 *             Exception
-	 * @see ActionForward Struts1 Framework
-	 */
-	public ActionForward execute(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		HttpSession se = request.getSession();
-		LoginForm login ;
-		OrderBillForm voucherForm = (OrderBillForm)form;
-		VoucherBill voucherBill = voucherForm.getVoucher();
-		//create Secret Key
-		
-		//save voucherForm in database
-		System.out.println("ID voucherForm " + voucherForm.getIdFood());
-		//generate code voucher
-		String code = hashCode.hashID(15);
-		voucherBill.setKeyVoucher(code);
-		System.out.println("voucherBill key" + code);
-		voucherBill = CustomerBLO.saveVoucher(voucherBill);
-		if(voucherBill!= null){
-		    //checkout
-			boolean flag = CustomerBLO.checkoutXuOnline(voucherForm.getIdCustomer(), voucherBill.getSumMoney());
-			if(flag){
-			    //decrease product = number of voucher
-			    FoodBLO.downNumberOfFood(voucherBill.getIdFood(), voucherBill.getNumber());
-				//send mail
-				login = (LoginForm) se.getAttribute(CommonConstant.USER);
-				//update xu in LoginForm
-				login.setXuOnline(CustomerBLO.getXuOnline(login.getLoginId()));
-			}
-			
-			
-		}
-		return mapping.findForward(SUCCESS);
-		
-	}
+    /**
+     * [Voucher(Customer)].
+     *
+     * @param mapping ActionMapping
+     * @param form ActionForm
+     * @param request HttpServletRequest
+     * @param response HttpServletResponse
+     * @return ActionForward
+     * @throws Exception Exception
+     * @see ActionForward Struts1 Framework
+     */
+    public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
+            HttpServletResponse response) throws Exception {
+        HttpSession se = request.getSession();
+        LoginForm login;
+        OrderBillForm voucherForm = (OrderBillForm) form;
+        VoucherBill voucherBill = voucherForm.getVoucher();
+        // create Secret Key
+
+        // save voucherForm in database
+        System.out.println("ID voucherForm " + voucherForm.getIdFood());
+        // generate code voucher
+        String code = hashCode.hashID(CommonConstant.HASHCODENUMBER);
+        voucherBill.setKeyVoucher(code);
+        System.out.println("voucherBill key" + code);
+        voucherBill = CustomerBLO.saveVoucher(voucherBill);
+        if (voucherBill != null) {
+            // checkout
+            boolean flag = CustomerBLO.checkoutXuOnline(voucherForm.getIdCustomer(), voucherBill.getSumMoney());
+            if (flag) {
+                // decrease product = number of voucher
+                FoodBLO.downNumberOfFood(voucherBill.getIdFood(), voucherBill.getNumber());
+                // send mail
+                login = (LoginForm) se.getAttribute(CommonConstant.USER);
+                // update xu in LoginForm
+                login.setXuOnline(CustomerBLO.getXuOnline(login.getLoginId()));
+            }
+
+        }
+        return mapping.findForward(SUCCESS);
+
+    }
 
 }
