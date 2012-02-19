@@ -4,8 +4,8 @@
 
   <form-beans>
     <form-bean name="login" type="ebiz.form.LoginForm" />
-     <form-bean name="register" type="ebiz.form.LoginForm" />
-      <form-bean name="voucherForm" type="ebiz.form.OrderBillForm" />
+    <form-bean name="register" type="ebiz.form.LoginForm" />
+    <form-bean name="voucherForm" type="ebiz.form.OrderBillForm" />
   </form-beans>
   
   <global-exceptions>
@@ -80,8 +80,15 @@
     <action
 			path="/uploadComment"
 			type="ebiz.action.account.customer.UploadComment" >
-			<forward name="success" path="/home.vn" redirect="true" />
     </action>
+    
+    <action
+			path="/displayAss"
+			type="ebiz.action.account.customer.DisplayAss" >
+			 <forward name="success" path="customer_as" redirect="true" />
+			  <forward name="failure" path="/home.vn" redirect="true" />
+    </action>
+    
     
     <action
             path="/resetFormCustomer"
@@ -138,11 +145,27 @@
             type="ebiz.action.account.customer.XuAdd">
     </action>
     
+     <action
+            path="/transferXu" 
+            type="ebiz.action.account.customer.XuTransfer">
+    </action>
+    
     <action
             path="/updateCustomerInfo" 
             type="ebiz.action.account.customer.UpdateCustomerInfo">
     </action>
     
+     <action
+            path="/promotionInfoWeekly" 
+            type="ebiz.action.mail.PromotionWeekly">
+    </action>
+    
+    
+    
+    <action
+            path="/changeHomeSlide" 
+            type="ebiz.action.account.customer.UpdateCustomerInfo">
+    </action>
     
  
   </action-mappings>
