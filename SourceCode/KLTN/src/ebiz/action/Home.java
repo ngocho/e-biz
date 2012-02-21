@@ -48,10 +48,9 @@ public class Home extends BaseAction {
      */
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
         HttpServletResponse response) throws Exception {
-        System.out.println("HOME");
         HttpSession se = request.getSession();
         List<FoodForm> formList = new ArrayList<FoodForm>();
-        formList = FoodBLO.getFoodListByStatus(CommonConstant.HOME_NUMBER_DEFAUL, "1");
+        formList = FoodBLO.getFoodListPromotionBest(6);
 //       IDXUBLO.CreateListXu();
         if (!formList.isEmpty()) {
             se.setAttribute("promotionFood", formList);
