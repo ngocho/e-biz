@@ -93,7 +93,7 @@ public class OrderBillForm extends ValidatorForm implements Serializable {
     public void editForm(OrderBill order) {
         id = order.getId();
         idCustomer = order.getIdCustomer();
-        address = CustomerBLO.toStringAddres(order.getAddress());
+        address = order.getAddress();
         email = order.getEmail();
         phone = order.getPhone();
         dateOrder = CommonUtil.convertDateToString(order.getDateOrder());
@@ -152,13 +152,8 @@ public class OrderBillForm extends ValidatorForm implements Serializable {
         order.setStatus(CommonConstant.BILLSTATUS_1); // chua giao
         order.setDateOrder(CommonUtil.formatDateToDate(new Date()));
         order.setDateShip(CommonUtil.convertStringToDate(this.dateShip));
-        Address add = new Address();
-        add.setBuildingName(this.buildingName);
-        add.setDistrictName(this.districtName);
-        add.setHomeNumber(this.homeNumber);
-        add.setStreetName(this.streetName);
-        add.setWardName(this.wardName);
-        order.setAddress(add);
+        this.address = CustomerBLO.toStringAddres(homeNumber, buildingName, streetName, wardName, districtName);
+        order.setAddress(this.address);
         order.setNote(this.note);
         order.setTypePayment(this.isPayment);
         return order;
