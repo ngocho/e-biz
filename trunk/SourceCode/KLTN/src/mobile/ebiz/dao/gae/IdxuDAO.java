@@ -48,4 +48,15 @@ public class IdxuDAO implements IIdxuDAO{
 		hashXu hash=new hashXu();
 		return hash.CreateXuList(50000);
 	}
+
+    /**
+     * [Explain the description for this method here].
+     * @return
+     * @see mobile.ebiz.dao.inf.IIdxuDAO#countXuAvailabel()
+     */
+    @Override
+    public int  countXuAvailabel() {
+       int count = PMF.countRecordObject(IDXU.class, "flag", true);
+       return count;
+    }
 }
