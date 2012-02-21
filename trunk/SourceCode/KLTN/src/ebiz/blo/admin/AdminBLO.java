@@ -72,8 +72,7 @@ public class AdminBLO {
 	    }
 	    //get bill to shipping
   public static List<OrderBillForm> getOrderBillFormListDaily(){
-	  DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-//	  DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+	  DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 	  		Date date = new Date();
 	  		String d = CommonUtil.convertDateToString(date);
 	  		System.out.println(dateFormat.format(date));
