@@ -9,6 +9,8 @@ import javax.jdo.annotations.PrimaryKey;
 
 import com.google.appengine.api.datastore.Key;
 
+import ebiz.dto.checkout.OrderBill;
+
 @PersistenceCapable
 public class Address implements Serializable{
 	/**  . */
