@@ -30,13 +30,21 @@
 		<action path="/serveImage" type="ebiz.action.ServeImage" scope="session"
 			validate="true">
 		</action>
-
+        <action
+            path="/promotionInfoWeekly" 
+            type="ebiz.action.mail.PromotionWeekly">
+        </action>
 		<action path="/sendMailRegister" type="ebiz.action.mail.SendMailRegister">
 		</action>
 
 		<action path="/sendMailHappyBirthday" type="ebiz.action.mail.HappyBirthayCustomer">
 		</action>
-
+		<action path="/sendMailOrderBill" type="ebiz.action.mail.OrderBillMail">
+        </action>
+		<action path="/sendMailVoucher" type="ebiz.action.mail.VoucherMail">
+		</action>
+        <action path="/sendAuthenPro" type="ebiz.action.mail.AuthenticationProvider">
+        </action>
 		<action path="/Welcome" forward="/welcomeStruts.jsp" />
 	</action-mappings>
 

@@ -130,7 +130,11 @@
         <put name="content" value="/content_bill.jsp" />
     </definition>
 <!-- end Customer.Bill -->
-
+<definition name="checkout_optional" extends="baseLayout">
+        <put name="title"  value="Voucher Optional" />
+        <put name="content"   value="/checkout_optional.jsp" />
+        <put name="left"   value="/blank.jsp" />
+    </definition>
 <!-- start Customer.Detail Product -->
     <definition name="product" extends="baseLayout">
         <put name="title"  value="Detail Product" />

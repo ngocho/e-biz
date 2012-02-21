@@ -140,4 +140,9 @@
     <property name="customerEmail" direction="asc" />
     <property name="customerId" direction="asc" />
   </datastore-index>
+  <!-- Provider  -->
+   <datastore-index kind="Food" ancestor="false" source="manual">
+        <property name="providerID" direction="asc"/>
+        <property name="foodName" direction="asc"/>
+    </datastore-index>
 </datastore-indexes>
