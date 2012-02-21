@@ -46,21 +46,21 @@
 			</LinearLayout>
 			<TextView android:id="@+id/item_best_buycount"
 				android:textColor="@color/white" android:text="TextView"
-				android:textSize="14dp" android:textStyle="bold"
+				android:textSize="12dp" android:textStyle="bold"
 				android:textAppearance="?android:attr/textAppearanceMedium"
 				android:layout_width="wrap_content" android:layout_height="wrap_content"
 				android:layout_gravity="center_horizontal"></TextView>
-			<TextView android:id="@+id/item_best_count"
-				android:textColor="@color/white" android:textSize="13dp"
-				android:text="TextView" android:textAppearance="?android:attr/textAppearanceSmall"
+			<TextView android:id="@+id/fdfe" android:textColor="@color/white"
+				android:textSize="12dp" android:text="@string/buyer"
+				android:textAppearance="?android:attr/textAppearanceSmall"
 				android:layout_width="wrap_content" android:layout_height="wrap_content"
 				android:layout_gravity="center_horizontal"></TextView>
 		</LinearLayout>
-
 		<LinearLayout android:id="@+id/linearLayout3"
 			android:layout_marginRight="5dp" android:layout_width="fill_parent"
 			android:layout_height="fill_parent" android:orientation="vertical">
-			<TextView android:text="TextView" android:id="@+id/item_best_name"
+			<TextView android:text="TextView" android:id="@+id/item_best_name" android:textSize="17dp"
+				android:layout_marginLeft="10dp" android:textStyle="bold"
 				android:textColor="@color/black" android:textAppearance="?android:attr/textAppearanceMedium"
 				android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
 			<ImageView android:background="@drawable/button_bg_s"

@@ -38,6 +38,16 @@ public class myAccountActivity extends Activity implements OnClickListener {
 		mPayment=(LinearLayout)findViewById(R.id.myaccount_payment);
 		mOrder=(LinearLayout)findViewById(R.id.myaccount_order);
 		mHistory=(LinearLayout)findViewById(R.id.myaccount_history);
+		mAccountchangepass.setOnClickListener(this);
+		mAccountInfo.setOnClickListener(this);
+		mBack.setOnClickListener(this);
+		mHome.setOnClickListener(this);
+		mDeals.setOnClickListener(this);
+		mBest.setOnClickListener(this);
+		mBrowse.setOnClickListener(this);
+		mPayment.setOnClickListener(this);
+		mOrder.setOnClickListener(this);
+		mHistory.setOnClickListener(this);
 	}
 
 	private LinearLayout mAccountInfo;
@@ -60,19 +70,37 @@ public class myAccountActivity extends Activity implements OnClickListener {
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.myaccount_changepass:
+			Intent changepass=new Intent(myAccountActivity.this,MenuActivity.class);
+			startActivity(changepass);
 			break;
 		case R.id.myaccount_back:
 			finish();
 			Intent back=new Intent(myAccountActivity.this,MenuActivity.class);
+			back.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			back.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); 
 			startActivity(back);
 			break;
 		case R.id.myaccount_home:
+			Intent home=new Intent(myAccountActivity.this,MenuActivity.class);
+			home.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			home.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); 
+			startActivity(home);
+			finish();
 			break;
 		case R.id.myaccount_deal:
+			Intent deals=new Intent(myAccountActivity.this,TabDealsActivity.class);
+			startActivity(deals);
+			finish();
 			break;
 		case R.id.myaccount_best:
+			Intent best=new Intent(myAccountActivity.this,TabBestActivity.class);
+			startActivity(best);
+			finish();
 			break;
 		case R.id.myaccount_browse:
+			Intent browser=new Intent(myAccountActivity.this,TabBestActivity.class);
+			startActivity(browser);
+			finish();
 			break;
 		case R.id.myaccount_payment:
 			Intent payment=new Intent(myAccountActivity.this,PaymentActivity.class);
@@ -80,8 +108,15 @@ public class myAccountActivity extends Activity implements OnClickListener {
 			finish();
 			break;
 		case R.id.myaccount_order:
+			Intent order=new Intent(myAccountActivity.this,TabDealsActivity.class);
+			startActivity(order);
+			finish();
 			break;
 		case R.id.myaccount_history:
+			break;
+		case R.id.myaccount_info:
+			Intent info=new Intent(myAccountActivity.this,AccountInfoActivity.class);
+			startActivity(info);
 			break;
 		}
 	}

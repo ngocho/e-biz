@@ -19,10 +19,15 @@
 				android:textAppearance="?android:attr/textAppearanceMedium" android:text="@string/menu_browser"></TextView>
 		</LinearLayout>
 	</LinearLayout>
-	<LinearLayout android:id="@+id/linearLayout3" android:layout_width="fill_parent" android:layout_height="wrap_content">
-		<EditText android:layout_weight="1" android:layout_width="wrap_content" android:id="@+id/editText1" android:layout_height="wrap_content">
-			<requestFocus></requestFocus>
-		</EditText>
+	<LinearLayout android:id="@+id/linearLayout2"
+		android:layout_marginLeft="10dp" android:layout_marginRight="10dp"
+		android:layout_marginTop="2dp" android:layout_marginBottom="2dp"
+		android:layout_height="wrap_content" android:layout_width="fill_parent">
+		<EditText android:background="@drawable/search_bg_bv" android:paddingTop="1dp"
+			android:layout_weight="1.0" android:id="@+id/tab_browser_edit"
+			android:layout_width="fill_parent" android:layout_height="wrap_content"></EditText>
+		<Button android:id="@+id/tab_browser_ok" android:background="@drawable/search_button_none"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"></Button>
 	</LinearLayout>
 	<ListView android:id="@+id/tab_browser_list" android:listSelector="@color/transparent"
 		android:layout_margin="5dp" android:layout_height="wrap_content" android:cacheColorHint="#00000000"

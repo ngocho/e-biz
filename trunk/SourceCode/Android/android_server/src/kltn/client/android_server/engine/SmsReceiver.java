@@ -161,7 +161,7 @@ public class SmsReceiver extends BroadcastReceiver{
 		username=split_result[1];
 		if(product_key.length()==15){
 			sendsms.sendMessage(phone, "Tai khoan " + username+" cua ban duoc nap 50.000VND!");
-			Query_URL("http://10.uit-kltn.appspot.com/getActiveXU.vn?flag=stp&content="+username+"@"+product_key);
+			Query_URL("http://16.test-kltn1.appspot.com/getActiveXU.vn?flag=stp&content="+username+"@"+product_key);
 		}else{
 			sendsms.sendMessage(phone, xu_false);
 		}

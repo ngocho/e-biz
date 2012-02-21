@@ -76,19 +76,19 @@ public class LastestAdapter extends MCursorAdapter {
 		ViewHolder viewHolder;
 		if(convertView == null)
 		{
-			convertView = mActivity.getLayoutInflater().inflate(
-					R.layout.item_buyer_date, null);
+//			convertView = mActivity.getLayoutInflater().inflate(
+//					R.layout.item_buyer_date, null);
 			viewHolder = new ViewHolder();
 			convertView.setTag(viewHolder);
-			viewHolder.image = (ImageView) convertView.findViewById(R.id.item_buyer_date_image);
-			viewHolder.name = ((TextView) convertView.findViewById(R.id.item_buyer_date_name));
-			viewHolder.hour=(TextView)convertView.findViewById(R.id.item_buyer_date_hou);
-			viewHolder.minute=(TextView)convertView.findViewById(R.id.item_buyer_date_mi);
-			viewHolder.second=(TextView)convertView.findViewById(R.id.item_buyer_date_se);
-			viewHolder.ok=(Button)convertView.findViewById(R.id.item_buyer_date_ok);
-			viewHolder.price=(TextView)convertView.findViewById(R.id.item_buyer_date_price);
-			viewHolder.buyprice=(TextView)convertView.findViewById(R.id.item_buyer_date_buyprice);
-			viewHolder.date=(TextView)convertView.findViewById(R.id.item_buyer_date_buyprice);
+//			viewHolder.image = (ImageView) convertView.findViewById(R.id.item_buyer_date_image);
+//			viewHolder.name = ((TextView) convertView.findViewById(R.id.item_buyer_date_name));
+////			viewHolder.hour=(TextView)convertView.findViewById(R.id.item_buyer_date_hou);
+////			viewHolder.minute=(TextView)convertView.findViewById(R.id.item_buyer_date_mi);
+////			viewHolder.second=(TextView)convertView.findViewById(R.id.item_buyer_date_se);
+//			viewHolder.ok=(Button)convertView.findViewById(R.id.item_buyer_date_ok);
+//			viewHolder.price=(TextView)convertView.findViewById(R.id.item_buyer_date_price);
+//			viewHolder.buyprice=(TextView)convertView.findViewById(R.id.item_buyer_date_buyprice);
+//			viewHolder.date=(TextView)convertView.findViewById(R.id.item_buyer_date_buyprice);
 		}else{
 			viewHolder = (ViewHolder)convertView.getTag();
 		}

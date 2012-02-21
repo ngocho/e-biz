@@ -30,14 +30,14 @@ public class ViewFlow extends AdapterView<Adapter> {
 	private LinkedList<View> mLoadedViews;
 	private int mCurrentBufferIndex;
 	private int mCurrentAdapterIndex;
-	private int mSideBuffer = 3;
+	private int mSideBuffer = 0;
 	private Scroller mScroller;
 	private VelocityTracker mVelocityTracker;
 	private int mTouchState = TOUCH_STATE_REST;
 	private float mLastMotionX;
 	private int mTouchSlop;
 	private int mMaximumVelocity;
-	private int mCurrentScreen;
+	public int mCurrentScreen;
 	private int mNextScreen = INVALID_SCREEN;
 	private boolean mFirstLayout = true;
 	private ViewSwitchListener mViewSwitchListener;
@@ -93,13 +93,6 @@ public class ViewFlow extends AdapterView<Adapter> {
 		mTouchSlop = configuration.getScaledTouchSlop();
 		mMaximumVelocity = configuration.getScaledMaximumFlingVelocity();
 	}
-
-//	@Override
-//	protected void onConfigurationChanged(Configuration newConfig) {
-//		super.onConfigurationChanged(newConfig);
-//		getViewTreeObserver().addOnGlobalLayoutListener(
-//				orientationChangeListener);
-//	}
 
 	public int getViewsCount() {
 		return mAdapter.getCount();

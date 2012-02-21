@@ -64,7 +64,7 @@
 		<LinearLayout android:id="@+id/linearLayout4"
 			android:layout_marginLeft="10dp" android:layout_width="fill_parent"
 			android:layout_marginRight="10dp" android:layout_height="wrap_content">
-			<EditText android:layout_height="wrap_content"
+			<EditText android:layout_height="wrap_content" android:paddingLeft="10dp"
 				android:background="@drawable/search_box" android:layout_weight="1.0"
 				android:id="@+id/account_add_xu_productkey" android:layout_width="fill_parent"></EditText>
 			<Button android:layout_height="wrap_content" android:textStyle="bold"

@@ -25,11 +25,13 @@ import org.json.JSONObject;
  * @author nthanhphong
  *
  */
-public class engine {
-	private String URL_Login;
-	private String URL_Register;
+public class Engine {
+	private String URL_Login="http://16.test-kltn1.appspot.com/getUserFuntion.vn";
+	private String URL_Register="http://16.test-kltn1.appspot.com/getUserFuntion.vn";
 	private String URL_Get_Date_Food;
-	private String URL_get_Best_Food;
+	private String URL_get_Best_Food="http://16.test-kltn1.appspot.com/getBestList.vn";
+	public String URL_Image="http://16.test-kltn1.appspot.com/serveImage.vn?urlKey=";
+	
 	
 	//lay danh sách sản phẩm theo khoảng cách gần nhất
 	//lấy danh sách sản phẩm theo bestfood
@@ -40,11 +42,11 @@ public class engine {
 			int i;
 			for(i=0;i<JsonArray_phone.length();i++){
 				JSONObject item=(JSONObject)JsonArray_phone.get(i);
-				best_food_item node=new best_food_item(item.getString("id"), item.getString("name"),item.getString("introduction"),item.getString("price"),item.getString("buyprice"),item.getString("imageurl"),item.getString("startdate"),item.getString("enddate"),item.getInt("buycount"),item.getInt("minbuyer"),item.getInt("maxbuyer"),item.getInt("rate"));
+				best_food_item node=new best_food_item(item.getString("id"), item.getString("name"),item.getString("detail"),item.getString("price"),item.getString("promotionPrice"),item.getString("url"),item.getString("dateUpload"),item.getString("dateUpload"),item.getInt("sale"),item.getInt("sale"),item.getInt("sale"),item.getInt("sale"));
 				result.add(node);
 			}
 		} catch (Exception e) {
-			// TODO: handle exception
+			System.out.println(e);
 		}
 		return result;
 	}
@@ -66,14 +68,23 @@ public class engine {
 		}
 		return result;
 	}
+	public String GetXu(String username,String password){
+		String result="0";
+		try {
+			JSONObject item=new JSONObject(Query_URL("http://16.test-kltn1.appspot.com/getUserFuntion.vn?flag=GetXu&content="+username+"@"+password));
+			return item.getString("flag");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
 	
 	//đăng ký tài khoản người dùng
 	public boolean register(String username,String password,String fullname,String sex,String email,String phone,String address,String birthday){
 		boolean result=false;
 		try {
-			JSONArray JsonArray_phone = new JSONArray(Query_URL(URL_Register));
-			JSONObject item=JsonArray_phone.getJSONObject(0);
-			if(item.getString("flag").equals("true"))
+			JSONObject item=new JSONObject(Query_URL(URL_Register+"?flag=register&content="+username+"@"+password+"@"+fullname+"@"+phone+"@"+email+"@"+birthday+"@"+sex+"@"+address));
+			if(item.getInt("flag")==1)
 				result=true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -88,9 +99,8 @@ public class engine {
 	private boolean ParseJSON_login(String username,String password){
 		boolean jResult = false;
 		try {
-			JSONArray JsonArray_phone = new JSONArray(Query_URL(URL_Login));
-			JSONObject item=JsonArray_phone.getJSONObject(0);
-			if(item.getString("flag").equals("true"))
+			JSONObject item=new JSONObject(Query_URL(URL_Login+"?flag=login&content="+username+"@"+password));
+			if(item.getString("flag").equals("1"))
 				jResult=true;
 		}
 		catch (Exception e) {
