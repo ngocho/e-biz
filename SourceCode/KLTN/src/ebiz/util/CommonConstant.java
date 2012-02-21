@@ -69,9 +69,10 @@ public class CommonConstant {
     public final static String TYPE_3 = "3"; // vegatable
     // BILL STATUS
     public final static String BILLSTATUS_5 = "5";  //assign for employee
+    public final static String BILLSTATUS_0 = "0"; //create bill not payment
     public final static String BILLSTATUS_1 = "1";  //not paid money(order) or reOrder (paid money in home)
-    public final static String BILLSTATUS_2 = "2";  //not rececive (paid money)
-    public final static String BILLSTATUS_3 = "3";  // paid money
+    public final static String BILLSTATUS_2 = "2";  //not rececive (paid money xu)
+    public final static String BILLSTATUS_3 = "3";  // paid money ngan luong
     public final static String BILLSTATUS_4 ="4";  //rececive : finish
     // public final static String BILLSTATUS_5 ="5"; //cancel
     // public final static String BILLSTATUS_6 ="6";
