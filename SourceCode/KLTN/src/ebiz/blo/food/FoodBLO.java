@@ -163,6 +163,7 @@ public class FoodBLO {
         // long valueCopare = formList.get(0).getPrice() -
         // List<Long> sortList1 = new ArrayList<Long>();
         List<Long> sortList2 = new ArrayList<Long>();
+        if(!formList.isEmpty()){
         for (FoodForm form : formList) {
             // sortList1.add(form.getId());
             sortList2.add(form.getPrice() - form.getPromoPrice());
@@ -178,6 +179,7 @@ public class FoodBLO {
             if (formList.get(i).getPrice() - formList.get(i).getPromoPrice() >= value) {
                 resultList.add(formList.get(i));
             }
+        }
         }
         return resultList;
     }
