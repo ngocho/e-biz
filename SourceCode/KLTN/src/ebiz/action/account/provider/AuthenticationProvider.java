@@ -27,7 +27,6 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import ebiz.action.BaseAction;
-import ebiz.dto.account.provider.Provider;
 import ebiz.form.ProviderForm;
 /**
  * @author Administrator
