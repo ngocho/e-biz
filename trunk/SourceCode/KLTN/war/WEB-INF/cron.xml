@@ -14,4 +14,11 @@
      <timezone>Asia/Bangkok</timezone>
   </cron>
   
+  <cron>
+    <url>/generateXu.vn</url>
+    <description>Automatically generate Code Xu </description>
+    <schedule>every 60 minutes</schedule>
+     <timezone>Asia/Bangkok</timezone>
+  </cron>
+  
 </cronentries>
