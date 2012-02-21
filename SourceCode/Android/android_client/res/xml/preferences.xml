@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+	<PreferenceCategory android:title="@string/settings_category_caidatchung">
+		<!--
+			<CheckBoxPreference android:key="auto_rotation"
+			android:title="@string/settings_tudongxoay" />
+		-->
+		<Preference android:key="sound_reminder" android:title="@string/settings_volume"></Preference>
+		<CheckBoxPreference android:key="show_status_bar" android:title="@string/settings_titlebar"/><!--
+		<CheckBoxPreference android:title="@string/settings_giumanhinh"
+			android:key="keep_screen_on" />
+		--><Preference android:key="media_volume" android:title="@string/settings_volume"/>
+
+	</PreferenceCategory>
+	<PreferenceCategory android:title="@string/settings_category_network">
+		<Preference android:title="@string/settings_server" android:key="link_server"/>
+		<Preference android:title="@string/settings_serveroff" android:key="server_off"/>
+	</PreferenceCategory>
+	<PreferenceCategory android:title="@string/settings_category_user">
+		<Preference android:title="@string/settings_history" android:key="history"/>
+		<Preference android:key="maximum_item" android:title="@string/settings_maximum"></Preference>
+		<Preference android:key="reminder" android:title="@string/setting_reminder"></Preference>
+	</PreferenceCategory>
+</PreferenceScreen>
