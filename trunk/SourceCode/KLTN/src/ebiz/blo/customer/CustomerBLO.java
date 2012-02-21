@@ -98,6 +98,9 @@ public class CustomerBLO {
     public static VoucherBill saveVoucher(VoucherBill voucher) {
         return orderDao.saveVoucherBill(voucher);
     }
+    public static VoucherBill getVoucherByID(Long idVoucher) {
+        return orderDao.getVoucherByID(idVoucher);
+    }
     /**
      * [getCustomerList].
      * @return List<Customer>
@@ -231,6 +234,7 @@ public class CustomerBLO {
      */
     public static String toStringAddres(Address add){
         String address ="";
+        if(add != null){
         if(!CommonUtil.isBlankOrNull(add.getHomeNumber())){
             address = address + add.getHomeNumber().toString() + ", ";
         }
@@ -245,6 +249,7 @@ public class CustomerBLO {
         }
         if(add.getDistrictName()!=null){
             address = address + add.getDistrictName().toString();
+        }
         }
         return address;
     }
