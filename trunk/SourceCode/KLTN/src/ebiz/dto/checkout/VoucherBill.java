@@ -1,7 +1,7 @@
 package ebiz.dto.checkout;
 
 import java.io.Serializable;
-
+import java.util.Date;
 import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
@@ -31,6 +31,8 @@ public class VoucherBill  implements Serializable{
 	private String email;
 	@Persistent
 	private String keyVoucher;
+	@Persistent
+	private Date startDate;
 
 	/**
 	 * @return the id
@@ -167,4 +169,18 @@ public class VoucherBill  implements Serializable{
     public void setKeyVoucher(String keyVoucher) {
         this.keyVoucher = keyVoucher;
     }
+
+	/**
+	 * @return the startDate
+	 */
+	public Date getStartDate() {
+		return startDate;
+	}
+
+	/**
+	 * @param startDate the startDate to set
+	 */
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
+	}
 }

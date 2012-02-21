@@ -27,7 +27,7 @@ public class OrderBill  implements Serializable {
     private String idCustomer;
     /**  . */
     @Persistent
-    private Address address;
+    private String address;
     /**  . */
     @Persistent
     private String email;
@@ -91,14 +91,14 @@ public class OrderBill  implements Serializable {
      * Get value of address.
      * @return the address
      */
-    public Address getAddress() {
+    public String getAddress() {
         return address;
     }
     /**
      * Set the value for address.
      * @param address the address to set
      */
-    public void setAddress(Address address) {
+    public void setAddress(String address) {
         this.address = address;
     }
     /**
