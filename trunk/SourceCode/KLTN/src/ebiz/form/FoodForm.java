@@ -73,6 +73,7 @@ public class FoodForm extends ValidatorForm implements Serializable {
 		food.setFoodTypeId(this.productTypeId);
 		food.setProviderID(this.idProvider);
 		food.setFoodStatusId(this.status);
+		food.setSaleProduct(this.sale);
 		food.setUploadDate(CommonUtil.formatDateToDate(new Date()));
 		return food;
 	}
@@ -97,7 +98,6 @@ public class FoodForm extends ValidatorForm implements Serializable {
 		this.id = food.getFoodId();
 		this.name = food.getFoodName();
 		this.sale = food.getSaleProduct();
-		// this.url = food.getUrl();
 		this.urlKey = food.getUrlKey();
 		this.number = food.getNumber();
 		this.productTypeId = food.getFoodTypeId();
@@ -107,7 +107,7 @@ public class FoodForm extends ValidatorForm implements Serializable {
 		this.detail = food.getDetail();
 		this.cooking = food.getCooking();
 		this.uploadDate = CommonUtil.convertDateToString(food.getUploadDate());
-	
+		this.sale = food.getSaleProduct();
 		this.nameTypeId = FoodBLO.getNameTypeById(this.productTypeId);
 		this.nameAttr = FoodBLO.getNameAtrrById(this.idAttr);
 		// het san pham
