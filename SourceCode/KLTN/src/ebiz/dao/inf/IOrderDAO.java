@@ -1,9 +1,11 @@
 package ebiz.dao.inf;
 
-import java.util.List;
 import java.util.Date;
-import ebiz.dto.checkout.*;
-import ebiz.form.*;
+import java.util.List;
+
+import ebiz.dto.checkout.DetailOrder;
+import ebiz.dto.checkout.OrderBill;
+import ebiz.dto.checkout.VoucherBill;
 public interface IOrderDAO {
     public OrderBill save(OrderBill order);
 
@@ -29,6 +31,7 @@ public interface IOrderDAO {
 	public List<OrderBill> getOrderListByStatus(String idStatus);
 	public List<OrderBill> getOrderListByDate(Date date);
 	public VoucherBill saveVoucherBill(VoucherBill voucher);
+	public VoucherBill getVoucherByID(Long idVoucher);
 	
 
 }
