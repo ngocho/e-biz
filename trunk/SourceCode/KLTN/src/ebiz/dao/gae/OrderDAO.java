@@ -46,6 +46,12 @@ public class OrderDAO implements IOrderDAO {
         return (VoucherBill)PMF.save(voucher);
 
     }
+    @Override
+    public  VoucherBill getVoucherByID(Long idVoucher) {
+
+        return (VoucherBill)PMF.getObjectById(VoucherBill.class, idVoucher);
+
+    }
         public boolean insertDetailOrder(DetailOrder order){
         
         return PMF.insertObject(order);
