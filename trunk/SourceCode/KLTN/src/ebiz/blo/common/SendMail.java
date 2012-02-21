@@ -35,15 +35,28 @@ public class SendMail {
      */
     public static void registerSuccess(String email){
 
-      TaskOptions url=TaskOptions.Builder.withUrl("/sendMailRegister.vn");
+      TaskOptions url = TaskOptions.Builder.withUrl("/sendMailRegister.vn");
       url.param("email", email);
       queue.add(url);
     }
     
-    public static void createOrderBill(String idOrder){
+    public static void authenProvider(String id){
+
+        TaskOptions url=TaskOptions.Builder.withUrl("/sendAuthenPro.vn");
+        url.param("id", id);
+        queue.add(url);
+      }
+    public static void sendOrderBillMail(Long idBill){
 
         TaskOptions url=TaskOptions.Builder.withUrl("/sendMailOrderBill.vn");
-        url.param("idOrder", idOrder);
+        url.param("idOrder", String.valueOf(idBill));
+        queue.add(url);
+      }
+    
+    public static void sendVoucherlMail(Long idBill){
+
+        TaskOptions url=TaskOptions.Builder.withUrl("/sendMailVoucher.vn");
+        url.param("idVoucher", String.valueOf(idBill));
         queue.add(url);
       }
 
