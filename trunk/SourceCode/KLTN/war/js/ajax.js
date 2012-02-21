@@ -14,6 +14,9 @@ function  addToCart(quantity,idProduct){
             if(temp[0] == 0){
                 alert("Sản phẩm không đủ")
             }
+            else if(temp[1] == 0){
+                alert("Giá trị nhập vào không hợp lệ!")
+            }
             else{
             $("#countShop").html(temp[0]) ;
             $("#current_cart_items_count").html(temp[0]);
