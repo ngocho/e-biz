@@ -71,7 +71,7 @@
 		<LinearLayout android:id="@+id/linearLayout2"
 			android:layout_margin="10dp" android:layout_width="fill_parent"
 			android:layout_height="wrap_content" android:gravity="center_vertical">
-			<EditText android:id="@+id/account_tramsfer_xu_username" android:text="@string/account_transfer_user"
+			<EditText android:id="@+id/account_tramsfer_xu_username" android:hint="@string/account_transfer_user"
 				android:textSize="15dp" android:background="@drawable/nm_edittext"
 				android:layout_height="wrap_content" android:layout_width="fill_parent">
 				<requestFocus></requestFocus>
@@ -81,7 +81,7 @@
 			android:id="@+id/linearLayout6" android:layout_height="fill_parent"
 			android:orientation="vertical">
 			<EditText android:layout_margin="10dp" android:textSize="15dp"
-				android:text="@string/account_transfer_number" android:id="@+id/account_tramsfer_xu_number"
+				android:hint="@string/account_transfer_number" android:id="@+id/account_tramsfer_xu_number"
 				android:background="@drawable/nm_edittext" android:layout_height="wrap_content"
 				android:layout_width="fill_parent" android:inputType="number">
 				<requestFocus></requestFocus>

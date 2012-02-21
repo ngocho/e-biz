@@ -20,10 +20,14 @@ public class App extends Application {
 	public void onCreate() {
 		// TODO Auto-generated method stub
 		super.onCreate();
+		Username.setValue("wind");
+		Password.setValue("1234567890");
+		Xu.setValue("0");
 	}
 
-	private final StringPrefs Username = new StringPrefs(this, "username", "");
+	private final StringPrefs Username = new StringPrefs(this, "username", "admin");
 	private final StringPrefs Password = new StringPrefs(this, "password", "");
 	private final StringPrefs Linkserver = new StringPrefs(this, "linkserver",
 			"");
+	private final StringPrefs Xu=new StringPrefs(this, "xu", "0");
 }

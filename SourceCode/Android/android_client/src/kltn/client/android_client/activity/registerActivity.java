@@ -5,7 +5,12 @@ package kltn.client.android_client.activity;
 
 
 import kltn.client.android_client.R;
+import kltn.client.android_client.engine.Engine;
 import android.app.Activity;
+import android.app.Dialog;
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -22,7 +27,7 @@ import android.widget.Toast;
  * @author nthanhphong
  *
  */
-public class registerActivity extends Activity{
+public class RegisterActivity extends Activity implements OnDismissListener{
 
 	/* (non-Javadoc)
 	 * @see android.app.Activity#onCreate(android.os.Bundle)
@@ -46,6 +51,7 @@ public class registerActivity extends Activity{
 		check=(CheckBox)findViewById(R.id.register_check);
 		back.setOnClickListener(backAction);
 		ok.setOnClickListener(OkAction);
+		mEngine=new Engine();
 		male.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -68,21 +74,51 @@ public class registerActivity extends Activity{
 		@Override
 		public void onClick(View v) {
 			finish();
-			Intent i=new Intent(registerActivity.this,MenuActivity.class);
-			startActivity(i);
+			Intent home=new Intent(RegisterActivity.this,MenuActivity.class);
+			home.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			home.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			startActivity(home);
 		}
 	};
 	private OnClickListener OkAction=new OnClickListener() {
 
 		@Override
 		public void onClick(View v) {
-			Toast.makeText(registerActivity.this, "", Toast.LENGTH_LONG);
-			Intent i=new Intent(registerActivity.this,MenuActivity.class);
-			startActivity(i);
-			finish();
+			mCurrentDialog = ProgressDialog.show(RegisterActivity.this, null,
+					getString(R.string.menu_waiting), true);
+			mCurrentDialog.setOnDismissListener(RegisterActivity.this);
+			mIsWaiting = true;
+			Thread t = new Thread() {
+				public void run() {
+					flag=mEngine.register(nickname.getText().toString(), password.getText().toString(), fullname.getText().toString(),"male", email.getText().toString(), phone.getText().toString(), address.getText().toString(), birthday.getText().toString());
+					mCurrentDialog.dismiss();
+				}
+			};
+			t.start();
 		}
 	};
+	private Engine mEngine;
+	private boolean flag;
+	private boolean mIsWaiting;
+	private Dialog mCurrentDialog;
 	private EditText nickname,password,fullname,email,phone,address,birthday;
 	private Button back,ok;
 	private CheckBox male,female,check;
+	/* (non-Javadoc)
+	 * @see android.content.DialogInterface.OnDismissListener#onDismiss(android.content.DialogInterface)
+	 */
+	@Override
+	public void onDismiss(DialogInterface dialog) {
+		mIsWaiting = false;
+		if(flag){
+			Toast.makeText(RegisterActivity.this, getString(R.string.register_statusa), Toast.LENGTH_LONG).show();
+			Intent menu=new Intent(RegisterActivity.this,MenuActivity.class);
+			menu.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			menu.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			startActivity(menu);
+			finish();
+		}
+		else{ 
+			Toast.makeText(RegisterActivity.this, getString(R.string.register_statusb), Toast.LENGTH_LONG).show();}
+	}
 }

@@ -6,10 +6,9 @@
 		android:background="@drawable/theme_activity_title_bar"
 		android:layout_width="fill_parent" android:layout_height="wrap_content"
 		android:layout_gravity="center_vertical" android:gravity="center_vertical">
-		<Button android:id="@+id/tab_deals_back"
-			android:background="@drawable/btn_back" android:layout_width="wrap_content"
-			android:layout_height="wrap_content" android:gravity="left"
-			android:layout_gravity="left"></Button>
+		<Button android:id="@+id/tab_deals_back" android:background="@drawable/btn_back"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+			android:gravity="left" android:layout_gravity="left"></Button>
 		<LinearLayout android:layout_width="fill_parent"
 			android:id="@+id/linearLayout4" android:layout_height="fill_parent"
 			android:gravity="center_vertical|center_horizontal">
@@ -20,26 +19,6 @@
 				android:layout_width="wrap_content" android:textAppearance="?android:attr/textAppearanceMedium"></TextView>
 		</LinearLayout>
 	</LinearLayout>
-	<LinearLayout android:layout_height="wrap_content"
-		android:layout_margin="5dp"
-		android:layout_width="fill_parent" android:id="@+id/linearLayout6">
-		<TextView android:text="TextView" android:layout_height="wrap_content"
-			android:textSize="16dp" android:layout_weight="1.0"
-			android:textColor="@color/white" android:layout_width="wrap_content"
-			android:id="@+id/tab_deals_date" android:textAppearance="?android:attr/textAppearanceMedium"></TextView>
-		<TextView android:text="TextView" android:layout_height="wrap_content"
-			android:textSize="16dp" android:textColor="@color/blue"
-			android:layout_width="wrap_content" android:id="@+id/tab_deals_count"
-			android:textAppearance="?android:attr/textAppearanceMedium"></TextView>
-	</LinearLayout>
-	<LinearLayout android:layout_height="wrap_content"
-		android:layout_weight="1.0" android:layout_width="fill_parent"
-		android:id="@+id/linearLayout7" android:orientation="vertical">
-		<kltn.client.android_client.ui.ViewFlow android:layout_marginLeft="10dp" android:layout_marginRight="10dp"
-			android:id="@+id/viewflow" android:layout_width="fill_parent"
-			android:layout_height="fill_parent">
-		</kltn.client.android_client.ui.ViewFlow>
-	</LinearLayout>
 	<LinearLayout android:layout_width="fill_parent"
 		android:id="@+id/linearLayout5" android:layout_height="wrap_content"
 		android:gravity="center_vertical|center_horizontal">
@@ -49,27 +28,13 @@
 			android:layout_width="wrap_content"></kltn.client.android_client.ui.CircleFlowIndicator>
 	</LinearLayout>
 	<LinearLayout android:layout_height="wrap_content"
-		android:layout_marginBottom="15dp" android:orientation="horizontal"
-		android:background="@drawable/nm_gtgdgiaca" android:layout_width="fill_parent"
-		android:id="@+id/linearLayout3" android:gravity="center_vertical">
-		<TextView android:text="TextView" android:layout_marginLeft="10dp"
-			android:textSize="16dp" android:textColor="@color/white"
-			android:layout_marginRight="10dp" android:layout_height="wrap_content"
-			android:layout_weight="1.0" android:lines="2" android:layout_width="wrap_content"
-			android:id="@+id/tab_deals_name" android:textAppearance="?android:attr/textAppearanceMedium"></TextView>
-		<LinearLayout android:layout_height="fill_parent"
-			android:layout_marginRight="20dp" android:layout_width="wrap_content"
-			android:id="@+id/linearLayout5" android:orientation="vertical"
-			android:gravity="center_vertical">
-			<TextView android:text="TextView" android:layout_height="wrap_content"
-				android:textSize="16dp" android:textColor="@color/white"
-				android:layout_width="wrap_content" android:id="@+id/tab_deals_price"
-				android:textAppearance="?android:attr/textAppearanceMedium"></TextView>
-			<TextView android:text="TextView" android:layout_height="wrap_content"
-				android:textColor="@color/white" android:layout_width="wrap_content"
-				android:textSize="16dp" android:id="@+id/tab_deals_price_promotion"
-				android:textAppearance="?android:attr/textAppearanceMedium"></TextView>
-		</LinearLayout>
+		android:layout_marginBottom="5dp" android:layout_weight="1.0"
+		android:layout_width="fill_parent" android:id="@+id/linearLayout7"
+		android:orientation="vertical">
+		<kltn.client.android_client.ui.ViewFlow
+			android:id="@+id/viewflow" android:layout_width="fill_parent"
+			android:layout_height="fill_parent">
+		</kltn.client.android_client.ui.ViewFlow>
 	</LinearLayout>
 	<LinearLayout android:id="@+id/linearLayout2"
 		android:background="@drawable/footer_menu" android:layout_width="fill_parent"

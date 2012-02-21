@@ -59,6 +59,8 @@ public class PaymentActivity extends Activity implements OnClickListener{
 		case R.id.payment_back:
 			finish();
 			Intent back=new Intent(PaymentActivity.this,MenuActivity.class);
+			back.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			back.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); 
 			startActivity(back);
 			break;
 		case R.id.payment_add_xu:

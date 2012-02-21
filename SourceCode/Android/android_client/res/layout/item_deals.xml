@@ -1,9 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" 
-	android:orientation="vertical" android:layout_width="fill_parent" android:background="@drawable/button_bg_s"
-	android:layout_height="fill_parent">
-	<ImageView android:layout_height="fill_parent"
-		android:layout_margin="5dp" android:scaleType="fitXY"
-		android:layout_width="fill_parent" android:src="@drawable/btn_ads_close"
-		android:id="@+id/item_deals_image"></ImageView>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical" android:layout_width="fill_parent"
+	 android:layout_height="fill_parent">
+	<LinearLayout android:layout_height="wrap_content"
+		android:layout_marginLeft="5dp" android:layout_marginRight="5dp" android:layout_width="fill_parent"
+		android:id="@+id/linearLayout6">
+		<TextView android:text="TextView" android:layout_height="wrap_content"
+			android:textSize="16dp" android:layout_weight="1.0"
+			android:textColor="@color/blue" android:layout_width="wrap_content"
+			android:id="@+id/tab_deals_date" android:textAppearance="?android:attr/textAppearanceMedium"></TextView>
+		<TextView android:text="TextView" android:layout_height="wrap_content"
+			android:textSize="16dp" android:textColor="@color/blue"
+			android:layout_width="wrap_content" android:id="@+id/tab_deals_count"
+			android:textAppearance="?android:attr/textAppearanceMedium"></TextView>
+	</LinearLayout>
+	<ImageView android:layout_height="fill_parent" android:background="@drawable/button_bg_s"
+		android:layout_weight="1.0" android:layout_margin="5dp"
+		android:scaleType="fitXY" android:layout_width="fill_parent"
+		android:src="@drawable/btn_ads_close" android:id="@+id/item_deals_image"></ImageView>
+	<LinearLayout android:layout_height="wrap_content" android:layout_marginBottom="5dp"
+		android:orientation="horizontal" android:background="@drawable/nm_gtgdgiaca"
+		android:layout_width="fill_parent" android:id="@+id/linearLayout3"
+		android:gravity="center_vertical">
+		<TextView android:text="TextView" android:layout_marginLeft="10dp"
+			android:textSize="16dp" android:textColor="@color/white"
+			android:layout_marginRight="10dp" android:layout_height="wrap_content"
+			android:layout_weight="1.0" android:lines="2" android:layout_width="wrap_content"
+			android:id="@+id/tab_deals_name" android:textAppearance="?android:attr/textAppearanceMedium"></TextView>
+		<LinearLayout android:layout_height="fill_parent"
+			android:layout_marginRight="20dp" android:layout_width="wrap_content"
+			android:id="@+id/linearLayout5" android:orientation="vertical"
+			android:gravity="center_vertical|center_horizontal">
+			<TextView android:text="@string/deals_price" android:layout_height="wrap_content"
+				android:textSize="14dp" android:textColor="@color/white"
+				android:layout_width="wrap_content" android:id="@+id/tab_deals_price"
+				android:textAppearance="?android:attr/textAppearanceMedium"></TextView>
+			<TextView android:text="@string/deals_sale" android:layout_height="wrap_content"
+				android:textColor="@color/white" android:layout_width="wrap_content"
+				android:textSize="16dp" android:id="@+id/tab_deals_price_promotion"
+				android:textAppearance="?android:attr/textAppearanceMedium"></TextView>
+		</LinearLayout>
+	</LinearLayout>
 </LinearLayout>

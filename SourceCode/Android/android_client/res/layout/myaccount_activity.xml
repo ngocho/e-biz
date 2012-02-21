@@ -30,8 +30,8 @@
 			android:layout_width="fill_parent" android:layout_height="wrap_content"
 			android:gravity="center_vertical">
 			<ImageView android:src="@drawable/icon_person"
-				android:layout_width="wrap_content" android:layout_height="wrap_content"
-				android:id="@+id/imageView2"></ImageView>
+				android:scaleType="centerInside" android:layout_width="35dp"
+				android:layout_height="35dp" android:id="@+id/imageView2"></ImageView>
 			<TextView android:id="@+id/ufffsername"
 				android:layout_weight="1.0" android:layout_marginLeft="10dp"
 				android:textAppearance="?android:attr/textAppearanceMedium"
@@ -48,9 +48,9 @@
 			android:clickable="true" android:background="@drawable/button_menu_small"
 			android:layout_width="fill_parent" android:layout_height="wrap_content"
 			android:gravity="center_vertical">
-			<ImageView android:src="@drawable/icon_money"
-				android:layout_width="wrap_content" android:layout_height="wrap_content"
-				android:id="@+id/imageView3"></ImageView>
+			<ImageView android:src="@drawable/menu_refresh_icon"
+				android:scaleType="centerInside" android:layout_width="35dp"
+				android:layout_height="35dp" android:id="@+id/imageView3"></ImageView>
 			<TextView android:id="@+id/ffmoney" android:textAppearance="?android:attr/textAppearanceMedium"
 				android:layout_height="wrap_content" android:layout_marginLeft="10dp"
 				android:layout_weight="1.0" android:textColor="@color/black"
@@ -68,9 +68,9 @@
 			android:clickable="true" android:background="@drawable/button_menu_small"
 			android:layout_width="fill_parent" android:layout_height="wrap_content"
 			android:gravity="center_vertical">
-			<ImageView android:src="@drawable/icon_person"
-				android:layout_width="wrap_content" android:layout_height="wrap_content"
-				android:id="@+id/imageView2"></ImageView>
+			<ImageView android:src="@drawable/icon_money"
+				android:scaleType="centerInside" android:layout_width="35dp"
+				android:layout_height="35dp" android:id="@+id/imageView2"></ImageView>
 			<TextView android:id="@+id/ufffsername"
 				android:layout_weight="1.0" android:layout_marginLeft="10dp"
 				android:textAppearance="?android:attr/textAppearanceMedium"
@@ -87,9 +87,9 @@
 			android:clickable="true" android:background="@drawable/button_menu_small"
 			android:layout_width="fill_parent" android:layout_height="wrap_content"
 			android:gravity="center_vertical">
-			<ImageView android:src="@drawable/icon_money"
-				android:layout_width="wrap_content" android:layout_height="wrap_content"
-				android:id="@+id/imageView3"></ImageView>
+			<ImageView android:src="@drawable/history"
+				android:scaleType="centerInside" android:layout_width="35dp"
+				android:layout_height="35dp" android:id="@+id/imageView3"></ImageView>
 			<TextView android:id="@+id/ffmoney" android:textAppearance="?android:attr/textAppearanceMedium"
 				android:layout_height="wrap_content" android:layout_marginLeft="10dp"
 				android:layout_weight="1.0" android:textColor="@color/black"
@@ -105,9 +105,9 @@
 			android:clickable="true" android:background="@drawable/button_menu_small"
 			android:layout_width="fill_parent" android:layout_height="wrap_content"
 			android:gravity="center_vertical">
-			<ImageView android:src="@drawable/icon_money"
-				android:layout_width="wrap_content" android:layout_height="wrap_content"
-				android:id="@+id/imageView3"></ImageView>
+			<ImageView android:src="@drawable/app_setting"
+				android:scaleType="centerInside" android:layout_width="35dp"
+				android:layout_height="35dp" android:id="@+id/imageView3"></ImageView>
 			<TextView android:id="@+id/ffmoney" android:textAppearance="?android:attr/textAppearanceMedium"
 				android:layout_height="wrap_content" android:layout_marginLeft="10dp"
 				android:layout_weight="1.0" android:textColor="@color/black"

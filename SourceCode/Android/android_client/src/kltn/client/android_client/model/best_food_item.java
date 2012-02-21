@@ -32,7 +32,8 @@ public class best_food_item implements BaseColumns{
 		setId(id);
 		setName(name);
 		setIntroduction(introduction);
-		setPrice(buyprice);
+		setPrice(price);
+		setBuyprice(buyprice);
 		setBuycount(buycount);
 		setImageurl(imageurl);
 		setStartdate(startdate);
@@ -90,8 +91,8 @@ public class best_food_item implements BaseColumns{
 	public void setPrice(String price){
 		Price=price;
 	}
-	public void setBuyprice(int buyprice){
-		Buycount=buyprice;
+	public void setBuyprice(String buyprice){
+		Buyprice=buyprice;
 	}
 	public void setImageurl(String imageurl){
 		Imageurl=imageurl;

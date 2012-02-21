@@ -4,13 +4,18 @@
 package kltn.client.android_client.activity;
 
 import kltn.client.android_client.App;
+import kltn.client.android_client.PrefUtil;
 import kltn.client.android_client.R;
-import kltn.client.android_client.engine.engine;
+import kltn.client.android_client.engine.Engine;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import android.app.Activity;
+import android.app.Dialog;
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -23,7 +28,7 @@ import android.widget.Toast;
  * @author nthanhphong
  * 
  */
-public class AccountAddXuActivity extends Activity {
+public class AccountAddXuActivity extends Activity implements OnDismissListener{
 
 	/*
 	 * (non-Javadoc)
@@ -39,15 +44,41 @@ public class AccountAddXuActivity extends Activity {
 		mMoney = (TextView) findViewById(R.id.account_add_xu_money);
 		mProductkey = (EditText) findViewById(R.id.account_add_xu_productkey);
 		mOk = (Button) findViewById(R.id.account_add_xu_ok);
-		mEngine = new engine();
+		mEngine = new Engine();
+		mUsername.setText(PrefUtil.GetStringPref(this, "username"));
+		mMoney.setText(PrefUtil.GetStringPref(this, "xu"));
+		mOk.setOnClickListener(okAction);
 	}
 
 	public OnClickListener okAction = new OnClickListener() {
 
 		@Override
 		public void onClick(View v) {
-			Toast.makeText(AccountAddXuActivity.this, R.string.app_name,
-					Toast.LENGTH_LONG);
+			if(!mProductkey.getText().toString().equals("")){
+				mCurrentDialog = ProgressDialog.show(AccountAddXuActivity.this, null,
+						getString(R.string.menu_waiting), true);
+				mCurrentDialog.setOnDismissListener(AccountAddXuActivity.this);
+				mIsWaiting = true;
+				Thread t = new Thread() {
+					public void run() {
+						Status=getResultXu(mUsername.getText().toString(),mProductkey.getText().toString());
+						if(Status.equals("false")){
+							Status=getString(R.string.add_xu_fasle);
+							flag=false;
+						}
+						else if(Status.equals("true")){
+							Status=getString(R.string.add_xu_true);
+							flag=true;
+							}
+						mCurrentDialog.dismiss();
+					}
+				};
+				t.start();
+
+			}else{
+				Toast.makeText(AccountAddXuActivity.this,getString(R.string.add_xu_addproductkey) ,
+						Toast.LENGTH_LONG).show();
+			}
 		}
 	};
 
@@ -60,10 +91,10 @@ public class AccountAddXuActivity extends Activity {
 	 * @return 0 - not correct product key; 1 - successful; -1 - username
 	 *         customer not exist
 	 */
-	public int getResultXu(String username, String productkey) {
+	public String getResultXu(String username, String productkey) {
 		String json = mEngine
-				.Query_URL("http://10.uit-kltn.appspot.com/getActiveXU.vn?flag=stp&content="
-						+ username + "@" + productkey);
+		.Query_URL("http://16.test-kltn1.appspot.com/getActiveXU.vn?flag=stp&content="
+				+ username + "@" + productkey);
 		return ParseJSON_Xu(json);
 	}
 
@@ -74,12 +105,11 @@ public class AccountAddXuActivity extends Activity {
 	 * @return 0 - not correct product key; 1 - successful; -1 - username
 	 *         customer not exist
 	 */
-	private int ParseJSON_Xu(String json) {
-		int jResult = 0;
+	private String ParseJSON_Xu(String json) {
+		String jResult = "";
 		try {
-			JSONArray JsonArray_phone = new JSONArray(json);
-			JSONObject item = JsonArray_phone.getJSONObject(0);
-			jResult = item.getInt("flag");
+			JSONObject item = new JSONObject(json);
+			jResult = item.getString("flag");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -89,10 +119,29 @@ public class AccountAddXuActivity extends Activity {
 	public App getApp() {
 		return (App) getApplication();
 	}
-
+	private boolean flag=false;
+	private String Status;
+	private boolean mIsWaiting;
 	private TextView mUsername;
 	private TextView mMoney;
 	private EditText mProductkey;
 	private Button mOk;
-	private engine mEngine;
+	private Engine mEngine;
+	private Dialog mCurrentDialog;
+
+	/* (non-Javadoc)
+	 * @see android.content.DialogInterface.OnDismissListener#onDismiss(android.content.DialogInterface)
+	 */
+	@Override
+	public void onDismiss(DialogInterface dialog) {
+		Toast.makeText(AccountAddXuActivity.this,Status ,
+				Toast.LENGTH_LONG).show();
+		if(flag=true){
+			mMoney.setText(mEngine.GetXu(mUsername.getText().toString(),
+					PrefUtil.GetStringPref(AccountAddXuActivity.this,
+							"password")));
+			mProductkey.setText("");
+		}
+		mCurrentDialog.cancel();
+	}
 }
