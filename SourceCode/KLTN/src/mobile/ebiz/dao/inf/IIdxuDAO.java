@@ -17,4 +17,5 @@ public interface IIdxuDAO {
 	public IDXU getXuById(String id);
 	
 	public boolean createListxu();
+	public int countXuAvailabel();
 }
