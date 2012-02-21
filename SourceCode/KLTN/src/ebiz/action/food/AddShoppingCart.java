@@ -32,6 +32,7 @@ import ebiz.action.BaseAction;
 import ebiz.blo.food.FoodBLO;
 import ebiz.form.ShoppingCart;
 import ebiz.util.CommonConstant;
+import ebiz.util.CommonUtil;
 
 /**
  * @author ThuyNT
@@ -62,6 +63,11 @@ public class AddShoppingCart extends BaseAction {
         // get param from request
         String id = request.getParameter("id");
         String number = request.getParameter("number");
+        //check numeric
+        if(!CommonUtil.checkNumeric(number)){
+        	out.println("0" + "0");
+        	return null;
+        }
         // get attr from session
         HttpSession se = request.getSession();
         ShoppingCart shopCart = (ShoppingCart) se.getAttribute("shop");
