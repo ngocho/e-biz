@@ -25,6 +25,8 @@ import javax.servlet.http.HttpSession;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import org.apache.struts.action.ActionMessage;
+import org.apache.struts.action.ActionMessages;
 
 import ebiz.action.BaseAction;
 import ebiz.blo.food.FoodBLO;
@@ -56,6 +58,29 @@ public class UploadProduct extends BaseAction {
         String urlKey = (String) se.getAttribute("urlImageKey");
         // have image
         if ((urlKey != null)) {
+        	// start check validate numeric
+			ActionMessages messages = new ActionMessages();
+			boolean flag_temp = false;
+			if (CommonUtil.isBlankOrZero(foodForm.getPrice())
+					|| foodForm.getNumber() == 0) {
+				messages.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage(
+						"text.invFormat"));
+				flag_temp = true;
+				
+				saveMessages(request, messages);
+				return mapping.findForward(FAILURE);
+			}
+			if (foodForm.getStatus().equals("1")) {
+				if (CommonUtil.isBlankOrZero(foodForm.getPromoPrice())) {
+					if(!flag_temp){
+					messages.add(ActionMessages.GLOBAL_MESSAGE,
+							new ActionMessage("text.invFormat"));
+					saveMessages(request, messages);
+					}
+					return mapping.findForward(FAILURE);
+				}
+			}
+			// end check validate numeric
             foodForm.setUrlKey(urlKey);
 
             // upload product

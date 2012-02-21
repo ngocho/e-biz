@@ -63,7 +63,7 @@ public class Register extends BaseAction {
             // save value in session
             se.setAttribute("providerForm", user);
             // send mail --> use task queue
-            SendMail.registerSuccess(user.getEmail());
+            SendMail.authenProvider(user.getLoginId());
             // save in session to transfer to login
             se.setAttribute("providerFormLogin", user);
             return mapping.findForward(SUCCESS);
