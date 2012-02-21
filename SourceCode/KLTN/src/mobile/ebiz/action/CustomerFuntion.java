@@ -33,18 +33,34 @@ import ebiz.dto.account.customer.Customer;
 public class CustomerFuntion extends BaseAction {
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
+	throws Exception {
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out;
 
 		JSONObject json = new JSONObject();
-		String flag = "false";
-		// flag active xu
-		String flagxu = request.getParameter("flag");
+		String flag = "0";
+		String[] items;
+		String flaguser = request.getParameter("flag");
 		String content = request.getParameter("content");
 		try {
+			if(flaguser.equals("login")){
+				items=content.split("@");
+				flag=login(items[0], items[1]);
+			}else if(flaguser.equals("update")){
+				flag=update(content);
+			}else if(flaguser.equals("register")){
+				flag=register(content);
+			}else if(flaguser.equals("changepass")){
+				flag=changepass(content);
+			}else if(flaguser.equals("XuActive")){
+				flag=XuActive(content);
+			}else if(flaguser.equals("XuSendCustomer")){
+				flag=XuSendCustomer(content);
+			}else if(flaguser.equals("GetXu")){
+				items=content.split("@");
+				flag=getxu(items[0], items[1]);
+			}
 			json.put("flag", flag);
-			// json.put("content", arg1)
 			out = response.getWriter();
 			out.println(json);
 			out.flush();
@@ -57,18 +73,27 @@ public class CustomerFuntion extends BaseAction {
 		}
 		return mapping.findForward(null);
 	}
+	public String getxu(String username, String pass) {
+		Customer customerowner = CustomerBLO.getCustomerByID(username);
+		int i = CustomerBLO.isLoginID(username, pass);
+		if (i == 1) {
+			return String.valueOf(customerowner.getXuOnline());
+		} else {
+			return "0";
+		}
+	}
 
 	/**
 	 * login Parameters: id is username customer pass is password customer
 	 * Returns: true login successful false login fasle
 	 */
-
-	public boolean login(String id, String pass) {
+	
+	public String login(String id, String pass) {
 		int i = CustomerBLO.isLoginID(id, pass);
 		if (i == 1) {
-			return true;
+			return "1";
 		} else {
-			return false;
+			return "0";
 		}
 	}
 
@@ -79,7 +104,7 @@ public class CustomerFuntion extends BaseAction {
 	 *            (username@fullname@phone@email@birthday@gender@address)
 	 * @return
 	 */
-	public boolean update(String content) {
+	public String update(String content) {
 		String[] list = content.split("@");
 		Customer customer = CustomerBLO.getCustomerByID(list[0]);
 		if (null != customer) {
@@ -90,9 +115,11 @@ public class CustomerFuntion extends BaseAction {
 			customer.setCustomerGender(list[5]);
 			Address address = new Address();
 			address.setStreetName(list[6]);
-			return CustomerBLO.updateCustomer(customer);
+			if(CustomerBLO.updateCustomer(customer))
+				return "1";
+			else return "0";
 		} else {
-			return false;
+			return "0";
 		}
 	}
 
@@ -104,7 +131,7 @@ public class CustomerFuntion extends BaseAction {
 	 *            )
 	 * @return
 	 */
-	public boolean register(String content) {
+	public String register(String content) {
 		Customer customer = new Customer();
 		String[] list = content.split("@");
 		customer.setCustomerId(list[0]);
@@ -117,7 +144,9 @@ public class CustomerFuntion extends BaseAction {
 		Address address = new Address();
 		address.setStreetName(list[7]);
 		customer.setCustomerAddress(address);
-		return CustomerBLO.registerCustomer(customer);
+		if(CustomerBLO.registerCustomer(customer))
+			return "1";
+		else return "0";
 	}
 
 	/**
@@ -127,15 +156,15 @@ public class CustomerFuntion extends BaseAction {
 	 *            (username@oldpass@newpass)
 	 * @return true change successful, false can not change password
 	 */
-	public boolean changepass(String content) {
+	public String changepass(String content) {
 		String[] list = content.split("@");
 		if (CustomerBLO.isLoginID(list[0], list[1]) == 1) {
 			Customer customer = CustomerBLO.getCustomerByID(list[0]);
 			customer.setCustomerPassword(list[2]);
 			CustomerBLO.updateCustomer(customer);
-			return true;
+			return "1";
 		} else {
-			return false;
+			return "0";
 		}
 	}
 
@@ -146,17 +175,17 @@ public class CustomerFuntion extends BaseAction {
 	 *            (username@productkey)
 	 * @return -1: username not exist; 1: successful; 0: produckey not correct
 	 */
-	public int XuActive(String content) {
+	public String XuActive(String content) {
 		String[] list = content.split("@");
 		if (null != CustomerBLO.getCustomerByID(list[0])) {
 			IDXU xu = IDXUBLO.getXuById(list[1]);
 			if (xu.getFlag().equals("true")) {
-				return 1;
+				return "1";
 			} else {
-				return 0;
+				return "0";
 			}
 		} else {
-			return -1;
+			return "-1";
 		}
 	}
 
@@ -168,7 +197,7 @@ public class CustomerFuntion extends BaseAction {
 	 *         3: username transfer not exist; 0: password username owner not
 	 *         correct
 	 */
-	public int XuSendCustomer(String content) {
+	public String XuSendCustomer(String content) {
 		String[] list = content.split("@");
 		long xu = Long.parseLong(list[2]);
 		Customer customerowner = CustomerBLO.getCustomerByID(list[0]);
@@ -181,18 +210,20 @@ public class CustomerFuntion extends BaseAction {
 								- xu);
 						usertransfer.setXuOnline(usertransfer.getXuOnline()
 								+ xu);
-						return 1; // successful
+						CustomerBLO.updateCustomer(customerowner);
+						CustomerBLO.updateCustomer(usertransfer);
+						return "1"; // successful
 					} else {
-						return 3;// usertransfer not exist
+						return "3";// usertransfer not exist
 					}
 				} else {
-					return 2;// khong du xu giao dich
+					return "2";// khong du xu giao dich
 				}
 			} else {
-				return 0;// password userOwner not correct
+				return "0";// password userOwner not correct
 			}
 		} else {
-			return -1;// usernameowner not correct
+			return "-1";// usernameowner not correct
 		}
 	}
 }
