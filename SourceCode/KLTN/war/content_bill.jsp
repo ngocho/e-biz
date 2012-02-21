@@ -7,13 +7,13 @@
 <div class="home-spot">
 
   <div class="page-title">
-    <h1>Checkout</h1>
+    <h1>Hóa đơn thanh toán</h1>
   </div>
   <ul>
     <li class="section allow active">
 
       <div class="step-title">
-        <h2>Hóa đơn thanh toán</h2>
+        <h2 class="impressionText">Chúng tôi sẽ gởi thông tin đơn đặt hàng thông qua mail và điện thoại của quý khách</h2>
       </div>
       <div id="checkout-step-billing" class="step a-item">
         <fieldset>

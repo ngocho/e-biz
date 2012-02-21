@@ -184,7 +184,7 @@
 
         </fieldset>
      </li>
-     <li class="fields">
+    <%--  <li class="fields">
                     <div class="field">
                         <label  class="required">Vui lòng chọn hình thức thanh toán</label>
                        
@@ -196,12 +196,12 @@
              <html:radio  property="isPayment" value="1" /><label>   Thanh toán tại nhà</label></li>
          <li class="control">
               <html:radio  property="isPayment" value="2" /><label>   Thanh toán qua ngân lượng</label></li>
-       
-        <li>
-        <button type="submit" title="Thanh toán" class="button" id="checkout" ><span><span>Thanh toán</span></span></button>
+       --%>
+        <li> 
+        <button type="submit" title="Thanh toán" class="button" id="checkout" ><span><span>Chọn hình thức thanh toán</span></span></button>
         </li>
          <li>
-        <button type="button" title="Thanh toán" class="button" id="default" ><span><span>Đặt làm thông tin giao hàng mặc định</span></span></button>
+        <button type="button" title="Thanh toán" class="button" id="default" ><span class="required">Đặt làm thông tin giao hàng mặc định</span></button>
         </li>
         </ul>
         </html:form>
@@ -213,9 +213,9 @@
           </logic:messagesPresent> 
         
         <div class="buttons-set" id="billing-buttons-container">
-        <p class="required">* Required Fields</p>
-        <span class="please-wait" id="billing-please-wait" style="display:none;">
-            <img src="#" alt="Loading next step..." title="Loading next step..." class="v-middle"> Loading next step...        </span>
+        <p class="required">* Thông tin bắt buộc</p>
+<!--         <span class="please-wait" id="billing-please-wait" style="display:none;">
+            <img src="#" alt="Loading next step..." title="Loading next step..." class="v-middle"> Loading next step...        </span> -->
     </div>
   
 

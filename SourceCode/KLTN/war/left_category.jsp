@@ -37,71 +37,22 @@ $(document).ready(function(){
 });
 </script>
 
- <div class="block block-cart">
-    <div class="block-title">
-      <strong><span class="whiteImPression">TÌM KIẾM</span>
-      </strong>
-    </div>
-    <div class="block-content">
-    <html:form action="/search.vn" method="GET">
-    <ul>
-    <li>Nhập vào:<br><html:text property="searchText" style="width:98%;" styleId="searchID"/>
-    </li>
-    <li>Loại thực phẩm :<br>
-    <html:select property="type" style="width: 190px;" styleId="type">
-    <html:option value="0">Tất cả</html:option>
-    <html:option value="1">Thực phẩm sơ chế</html:option>
-    <html:option value="2">Thức ăn nấu sẵn</html:option>
-    <html:option value="3">Rau xanh</html:option>
-    <html:option value="4">Gia vị</html:option>
-    </html:select>
-    </li>
-    <li>Kiểu thực phẩm:<br>
-    <html:select property="attr" style="width: 190px;" styleId="attr">
-    <html:option value="0">Tất cả</html:option>
-    <html:option value="1">Kho</html:option>
-    <html:option value="2">Canh, luộc</html:option>
-    <html:option value="3">Xào</html:option>
-    <html:option value="4">Lẩu</html:option>
-    <html:option value="5">Khác</html:option>
-    </html:select>
-    </li>
-    <li>Giá tiền: <br>
-    <html:select property="price" style="width: 190px;" styleId="price">
-    <html:option value="0">Tất cả</html:option>
-    <html:option value="1">Dưới 30.000</html:option>
-    <html:option value="2">30.000 - 100.000</html:option>
-    <html:option value="3">100.000 - 200.000</html:option>
-    <html:option value="4">Trên 200.000</html:option>
-   </html:select>
-    </li>
-    <li>Thực phẩm:<br>
-    <html:select property="status" style="width: 190px;" styleId="status">
-    <html:option value="1">Khuyến mãi</html:option>
-    <html:option value="2">Bình thường</html:option>
-    <html:option value="0">Tất cả</html:option>
-   </html:select>
-    </li>
-    <li><input type="submit" value="Tìm kiếm" class="buttonBG" id="submitSearch" size="30px"/>
-    <input type="button" value="Xóa" class="buttonBG" id="resetSearch" size="30px" />
-    </li>
-    </ul>
-   </html:form>
-    </div>
-  </div>
 <div class="block block-layered-nav">
     <div style="background:#009900" >
         <strong><span style="text-transform:uppercase" class="whiteImPression">MENU</span></strong>    </div>
     <div class="block-content">
                             <p class="block-subtitle">TÙY CHỌN</p>
             <dl id="narrow-by-list">
-                                                                    <dt class="odd">MÓN ĂN</dt>
+                                                                    <c:choose>
+                <c:when test="${productVo.typeProduct == '1' ||productVo.typeProduct == '2' }"> <dt class="odd">MÓN ĂN</dt></c:when></c:choose>
                                                                     
                     <dd class="odd">
 <ol>
   <li>
   
                 <a href="/categoryRecord.vn?attr=0">
+                <c:choose>
+                <c:when test="${productVo.typeProduct == '1' ||productVo.typeProduct == '2' }">
                  <c:choose>
                   <c:when test="${productVo.attr == '0'}">
                   <span class="keepLink">Tất cả</span>
@@ -128,6 +79,8 @@ $(document).ready(function(){
                </li>
 </logic:iterate>
 </logic:present>
+</c:when>
+</c:choose>
 </ol>
 </dd>
                                                                     <dt class="even">GIÁ TIỀN</dt>
@@ -170,4 +123,17 @@ $(document).ready(function(){
                                             </dl>
             </div>
 </div>
+<p class="home-callout">
+<a href=""><img src="Images/Commons/giaohang.png" width="195" height="200" border="0"></a>
+</p> 
+<p class="home-callout">
+<a href=""><img src="Images/Commons/taikhoanXu.png" width="195" height="200" border="0"></a>
+</p>
+ <p class="home-callout">
+<a href=""><img src="Images/Commons/mail_sms.png" width="195" height="200" border="0"></a>
+</p>
+
+<p class="home-callout">
+<a href=""><img src="Images/Commons/voucher.png" width="195" height="200" border="0"></a>
+</p>
 </div>

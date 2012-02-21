@@ -235,6 +235,9 @@ $(document).ready(function(){
       </div>
     </form>
   </div>
+  <p class="home-callout">
+<a href=""><img src="Images/Commons/accepted-payment-yellow-152x63.png" width="195" height="100" border="0"></a>
+</p>
   <!-- <div class="paypal-logo">
     <a href="#"
       onclick="javascript:window.open(&#39;https://www.paypal.com/us/cgi-bin/webscr?cmd=xpt/Marketing/popup/OLCWhatIsPayPal-outside&#39;,&#39;paypal&#39;,&#39;width=600,height=350,left=0,top=0,location=no,status=yes,scrollbars=yes,resizable=yes&#39;); return false;"><img
