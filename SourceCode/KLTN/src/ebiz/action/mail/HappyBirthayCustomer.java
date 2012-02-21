@@ -59,20 +59,19 @@ public class HappyBirthayCustomer extends Action {
     		msgBody.append(customer.getCustomerName());
     		msgBody.append("</h1>");
     		msgBody.append("</body>");
-    		
-    		
-    		
     		Properties props = new Properties();
     	    Session session = Session.getDefaultInstance(props, null);
     	    msgBody.append("<h1>Chúc mừng sinh nhật ");
     	    msgBody.append(customer.getCustomerId());
     	    msgBody.append("</h1>");
+    	    msgBody.append("<br>");
+    	    msgBody.append("<img scr=\'  \'>");
     	    try {
-    	        Message msg = new MimeMessage(session);
+    	        MimeMessage msg = new MimeMessage(session);
     	        msg.setFrom(new InternetAddress("uit.mmt@gmail.com", "Food.com"));
                         msg.addRecipient(Message.RecipientType.TO, new InternetAddress(customer.getCustomerEmail(),
                                 "User"));
-    	            msg.setSubject("Chúc mừng sinh nhật");
+    	            msg.setSubject("Chúc mừng sinh nhật","UTF-8");
     	            msg.setContent(msgBody.toString(),"text/html");
     	        Transport.send(msg);
     	        
