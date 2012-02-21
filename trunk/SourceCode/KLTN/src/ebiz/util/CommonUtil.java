@@ -155,4 +155,19 @@ public class CommonUtil {
         return false;
 
     }
+    
+    //validate
+    public static boolean checkNumeric(String value){
+    	System.out.println("value checkNummeric" + value);
+    	//long result;
+    	try{
+    		 Long.parseLong(value);
+    		 return true;
+    	}
+    	catch(Exception e){
+    		return false;
+    	}
+    }
+    
+    
 }
