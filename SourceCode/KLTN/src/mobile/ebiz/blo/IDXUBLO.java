@@ -6,9 +6,6 @@ package mobile.ebiz.blo;
 import mobile.ebiz.dao.gae.IdxuDAO;
 import mobile.ebiz.dao.inf.IIdxuDAO;
 import mobile.ebiz.dto.IDXU;
-import ebiz.dao.gae.CustomerDAO;
-import ebiz.dao.gae.PMF;
-import ebiz.dao.inf.ICustomerDAO;
 
 /**
  * @author nthanhphong
@@ -42,7 +39,7 @@ public class IDXUBLO {
 	}
 	public static long getMoneyByID(String id) {
         // TODO Auto-generated method stub
-	    IDXU xu = (IDXU) IDXUBLO.getXuById(id);
+	    IDXU xu = getXuById(id);
         long money = 0;
         if (xu != null) {
             if (xu.getFlag().equals("true")) {
@@ -52,5 +49,8 @@ public class IDXUBLO {
             }
         }
         return money;
+    }
+    public static  int  countXuAvailabel() {
+       return custDao.countXuAvailabel();
     }
 }
