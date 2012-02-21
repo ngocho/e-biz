@@ -27,6 +27,7 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import ebiz.action.BaseAction;
+import ebiz.blo.common.SendMail;
 import ebiz.blo.customer.CustomerBLO;
 import ebiz.blo.food.FoodBLO;
 import ebiz.dto.checkout.VoucherBill;
@@ -34,6 +35,7 @@ import ebiz.form.OrderBillForm;
 import ebiz.util.CommonConstant;
 import ebiz.form.LoginForm;
 import mobile.ebiz.dto.hashCode;
+import java.util.Date;
 /**
  * @author ThuyNT
  */
@@ -56,19 +58,18 @@ public class VoucherCreation extends BaseAction {
         LoginForm login;
         OrderBillForm voucherForm = (OrderBillForm) form;
         VoucherBill voucherBill = voucherForm.getVoucher();
-        // create Secret Key
-
-        // save voucherForm in database
-        System.out.println("ID voucherForm " + voucherForm.getIdFood());
         // generate code voucher
         String code = hashCode.hashID(CommonConstant.HASHCODENUMBER);
         voucherBill.setKeyVoucher(code);
-        System.out.println("voucherBill key" + code);
+        voucherBill.setStartDate(new Date());
+        // save voucherForm in database
         voucherBill = CustomerBLO.saveVoucher(voucherBill);
         if (voucherBill != null) {
             // checkout
             boolean flag = CustomerBLO.checkoutXuOnline(voucherForm.getIdCustomer(), voucherBill.getSumMoney());
             if (flag) {
+            	//send mail
+            	SendMail.sendVoucherlMail(voucherBill.getId());
                 // decrease product = number of voucher
                 FoodBLO.downNumberOfFood(voucherBill.getIdFood(), voucherBill.getNumber());
                 // send mail

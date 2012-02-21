@@ -67,7 +67,6 @@ public class Login extends BaseAction {
             // remove LoginForm from session
             se.removeAttribute("login");
             String screen = (String) se.getAttribute("screen");
-            System.out.println("SCREEN" + screen);
             if (screen != null) {
                 if (screen.equals(CommonConstant.SCREEN_CHECKOUT)) {
                     se.removeAttribute("screen");
