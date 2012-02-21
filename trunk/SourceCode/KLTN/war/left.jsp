@@ -2,9 +2,7 @@
   pageEncoding="UTF-8"%>
 <div class="col-left ">
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
-<!-- <p class="home-callout">
-<a href="#"><img src="" width="195" height="200" border="0"></a>
-</p> -->
+
 <!-- <p class="home-callout">
 <img src="" border="0">
 </p> -->
@@ -88,6 +86,19 @@ $(document).ready(function(){
    </html:form>
     </div>
   </div>
+<p class="home-callout">
+<a href=""><img src="Images/Commons/giaohang.png" width="195" height="200" border="0"></a>
+</p> 
+<p class="home-callout">
+<a href=""><img src="Images/Commons/taikhoanXu.png" width="195" height="200" border="0"></a>
+</p>
+ <p class="home-callout">
+<a href=""><img src="Images/Commons/mail_sms.png" width="195" height="200" border="0"></a>
+</p>
+
+<p class="home-callout">
+<a href=""><img src="Images/Commons/voucher.png" width="195" height="200" border="0"></a>
+</p>
 <!--  <div class="block block-cart">
     <div class="block-title">
       <strong><span class="whiteImPression">THÔNG TIN THỜI TIẾT</span>
@@ -102,16 +113,6 @@ $(document).ready(function(){
      </form>
     </div>
   </div> -->
- <div  >
- <a href="#" class="freeShip" >
- Miễn phí giao hàng nội địa với hóa đơn trên 300.000 VNĐ
-</a>
-  </div>
 
-  <div class="block block-tags">
-</div>
-<div>
-Hiển thị thông tin quảng cáo
-</div>
 
 </div>
