@@ -25,6 +25,10 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+
+import ebiz.blo.provider.ProviderBLO;
+import ebiz.dto.account.provider.Provider;
+
 import java.util.Properties;
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -34,33 +38,34 @@ import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.util.logging.Logger;
-public class SendMailRegister extends Action {
+public class AuthenticationProvider extends Action {
 	private static final Logger log = Logger.getLogger(SendMailRegister.class.getName());
 	//send mail thong bao dang ki thanh cong
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
     String msgBody;
 //    String flag=request.getParameter("flag");
-    String email=request.getParameter("email");
+    String id=request.getParameter("id");
+    Provider pro = ProviderBLO.getProviderById(id);
+    if(pro != null){
     Properties props = new Properties();
     Session session = Session.getDefaultInstance(props, null);
-    msgBody ="Chúc mừng bạn đã đăng kí thành công!";
+    msgBody ="Mã chứng thực :" + pro.getActiveCode();
     log.info("Send Mail Register Success");
     try {
         MimeMessage msg = new MimeMessage(session);
         msg.setFrom(new InternetAddress("uit.mmt@gmail.com", "Food E-commerce.com"));
-            msg.addRecipient(Message.RecipientType.TO, new InternetAddress(email, "User"));
-        msg.setSubject("Đăng kí thành viên thành công","UTF-8");
-        msg.setText(msgBody);
+            msg.addRecipient(Message.RecipientType.TO, new InternetAddress(pro.getProviderEmail(), "User"));
+        msg.setSubject("Mã chứng thực cho cửa hàng","UTF-8");
+        msg.setText(msgBody,"UTF-8");
         Transport.send(msg);
         
-
     } catch (AddressException e) {
-        // ...
+      log.info("error AddressException");
     } catch (MessagingException e) {
-        // ...
+        log.info("error MessagingException");
+    }
     }
     return null;
-
     }
 }

@@ -85,13 +85,13 @@ public class PromotionWeekly extends Action {
        String email = "hailam349@gmail.com";
        Properties props = new Properties();
        Session session = Session.getDefaultInstance(props, null);
-       msgBody ="Thong tin khuyen mai";
+       msgBody ="Chúc mừng bạn đã đăng kí thành công!";
        log.info("Send Mail Register Success");
        try {
-           Message msg = new MimeMessage(session);
+           MimeMessage msg = new MimeMessage(session);
            msg.setFrom(new InternetAddress("uit.mmt@gmail.com", "Food E-commerce.com"));
                msg.addRecipient(Message.RecipientType.TO, new InternetAddress(email, "User"));
-           msg.setSubject("Daily Promotion Food");
+           msg.setSubject("Thông tin khuyến mãi","UTF-8");
            msg.setText(msgBody);
            Transport.send(msg);
            

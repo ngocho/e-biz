@@ -18,10 +18,63 @@
  */
 package ebiz.action.mail;
 
+import java.util.Properties;
+import java.util.logging.Logger;
+
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.struts.action.Action;
+import org.apache.struts.action.ActionForm;
+import org.apache.struts.action.ActionForward;
+import org.apache.struts.action.ActionMapping;
+
+import ebiz.blo.customer.CustomerBLO;
+import ebiz.dto.checkout.VoucherBill;
+
 /**
  * @author Administrator
  *
  */
-public class VoucherMail {
+public class VoucherMail extends Action {
+	private static final Logger log = Logger.getLogger(SendMailRegister.class.getName());
+    public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
+            HttpServletResponse response) throws Exception {
+     String idVoucher = request.getParameter("idVoucher");
+     if(idVoucher != null){
+    	 Long id = Long.parseLong(idVoucher);
+    	 VoucherBill voucher = CustomerBLO.getVoucherByID(id);
+    	 Properties props = new Properties();
+         Session session = Session.getDefaultInstance(props, null);
+         try {
+        	 StringBuffer msgBody = new StringBuffer();
+        	 msgBody.append("Mã voucher : " + voucher.getKeyVoucher());
+        	 msgBody.append("</br>");
+        	 msgBody.append("Voucher chỉ có giá trị 3 ngày kể từ ngày mua " + voucher.getStartDate() );
+        	 MimeMessage msg = new MimeMessage(session);
+             msg.setFrom(new InternetAddress("uit.mmt@gmail.com", "Food.com"));
+             msg.addRecipient(Message.RecipientType.TO, new InternetAddress(voucher.getEmail(), "Customer"));
+             msg.setSubject("Thông tin Voucher","UTF-8");
+             msg.setContent(msgBody.toString(), "text/html");
+             log.info("send Voucher info");
+             Transport.send(msg);
+             log.info("send Voucher info OK");
+
+         } catch (AddressException e) {
+             e.printStackTrace();
+         } catch (MessagingException e) {
+             e.printStackTrace();
+         }
+
+     }
+    	return null;
+    }
 
 }
