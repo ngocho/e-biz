@@ -42,7 +42,7 @@
 
 <script type="text/javascript">
   $(function() {
-      $("#dateShip").datepicker({dateFormat: 'dd/mm/yy'});
+      $("#datepicker").datepicker({dateFormat: 'dd/mm/yy'});
   });
 
 </script>
@@ -156,7 +156,7 @@
                         <% Date date = new Date(); 
                         String s_date = CommonUtil.convertDateToString(date);
                         %>
-                           <html:text id="dateShip" size="30" property="dateShip" styleId="datepicker" value="<%=s_date%>" styleClass="validated"/>
+                           <html:text  size="30" property="dateShip" styleId="datepicker" value="<%=s_date%>" styleClass="validated"/>
                         </div>
                     </div>
                   </li>
