@@ -6,6 +6,7 @@
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
 <%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
 <%@taglib  uri="http://java.sun.com/jstl/core" prefix="c"%>
+<link type="text/css" href="js/ui/themes/base/ui.all.css" rel="stylesheet" />
 <script type="text/javascript">
     $(document).ready(function() {
         $("#checkout").click(function() {
@@ -36,7 +37,15 @@
         }); */
     });
 </script>
+<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="js/ui/ui.datepicker_vn.js"></script>
 
+<script type="text/javascript">
+  $(function() {
+      $("#dateShip").datepicker({dateFormat: 'dd/mm/yy'});
+  });
+
+</script>
 <div class="home-spot">
                                         <div class="page-title">
     <h1>Checkout</h1>
@@ -147,7 +156,7 @@
                         <% Date date = new Date(); 
                         String s_date = CommonUtil.convertDateToString(date);
                         %>
-                           <html:text size="30" property="dateShip" styleId="datepicker" value="<%=s_date%>" styleClass="validated"/>
+                           <html:text id="dateShip" size="30" property="dateShip" styleId="datepicker" value="<%=s_date%>" styleClass="validated"/>
                         </div>
                     </div>
                   </li>
