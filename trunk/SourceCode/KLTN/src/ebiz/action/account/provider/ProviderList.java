@@ -18,6 +18,8 @@
  */
 package ebiz.action.account.provider;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -27,12 +29,14 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import ebiz.action.BaseAction;
+import ebiz.blo.food.SearchBLO;
+import ebiz.blo.provider.ProviderBLO;
 import ebiz.form.ProviderForm;
 
 /**
  * @author ThuyNT
  */
-public class Logout extends BaseAction {
+public class ProviderList extends BaseAction {
     /**
      * [Logout ].
      * @param mapping ActionMapping
@@ -43,13 +47,25 @@ public class Logout extends BaseAction {
      * @throws Exception Exception
      * @see ActionForward Struts1 Framework
      */
+    @SuppressWarnings("unchecked")
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
         HttpSession se = request.getSession();
-        ProviderForm login = (ProviderForm) se.getAttribute("provider");
-        if (login != null) {
-            se.invalidate();
+        String page = request.getParameter("page");
+        int pageIndex = 1;
+        if(page != null){
+         pageIndex = Integer.parseInt(page);
         }
+        List<ProviderForm> displayList = ProviderBLO.getProviderFormAll();
+        List<String> pageList = (List<String>)se.getAttribute("pageList");
+        if(pageList == null){
+            pageList = SearchBLO.paging(displayList.size());
+            se.setAttribute("pageList", pageList);
+        }
+        displayList = (List<ProviderForm>) SearchBLO.getPage(displayList, pageIndex);
+        System.out.println("displayList " + displayList.size());
+        se.setAttribute("providerList", displayList);
+        se.setAttribute("pageIndex", pageIndex);
         return mapping.findForward(SUCCESS);
 
     }

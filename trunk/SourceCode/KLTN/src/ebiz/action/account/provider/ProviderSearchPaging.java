@@ -18,6 +18,9 @@
  */
 package ebiz.action.account.provider;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -27,14 +30,16 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import ebiz.action.BaseAction;
+import ebiz.blo.food.SearchBLO;
 import ebiz.form.ProviderForm;
 
 /**
  * @author ThuyNT
  */
-public class Logout extends BaseAction {
+public class ProviderSearchPaging extends BaseAction {
     /**
      * [Logout ].
+     * 
      * @param mapping ActionMapping
      * @param form ActionForm
      * @param request HttpServletRequest
@@ -43,15 +48,27 @@ public class Logout extends BaseAction {
      * @throws Exception Exception
      * @see ActionForward Struts1 Framework
      */
+    @SuppressWarnings("unchecked")
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
         HttpSession se = request.getSession();
-        ProviderForm login = (ProviderForm) se.getAttribute("provider");
-        if (login != null) {
-            se.invalidate();
+        String page = request.getParameter("page");
+        int pageIndex = 1;
+        if (page != null) {
+            pageIndex = Integer.parseInt(page);
+        }
+        List<ProviderForm> resultList = (List<ProviderForm>) se.getAttribute("providerList");
+        List<String> pageList = new ArrayList<String>();
+        pageList = SearchBLO.paging(resultList.size());
+        resultList = (List<ProviderForm>) SearchBLO.getPage(resultList, pageIndex);
+        se.setAttribute("pageList", pageList);
+        se.setAttribute("pageIndex", pageIndex);
+        if (!resultList.isEmpty()) {
+            se.setAttribute("providerList", resultList);
+        } else {
+            se.setAttribute("providerList", null);
         }
         return mapping.findForward(SUCCESS);
-
     }
 
 }

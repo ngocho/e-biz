@@ -50,8 +50,11 @@ public class Register extends BaseAction {
      */
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
+    	String url = request.getParameter("urlImageKeyP");
+    	if(url != null){
         // after checked validation using xml file
         ProviderForm user = (ProviderForm) form;
+        user.setUrlAvatar(url);
         Provider register = user.getProvider();
         //set status Active
         register.setActive(false);
@@ -72,6 +75,7 @@ public class Register extends BaseAction {
         ActionMessages messages = new ActionMessages();
         messages.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage("errors.duplicated"));
         saveMessages(request, messages); // storing messages as request attributes
+    	}
         return mapping.findForward(FAILURE);
     }
 

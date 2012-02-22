@@ -33,7 +33,6 @@ import ebiz.action.BaseAction;
 import ebiz.blo.food.FoodBLO;
 import ebiz.form.FoodForm;
 import ebiz.form.ProductVO;
-import ebiz.form.ProviderVO;
 import ebiz.util.CommonConstant;
 
 /**

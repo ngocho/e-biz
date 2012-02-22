@@ -27,12 +27,17 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import ebiz.action.BaseAction;
+import ebiz.blo.customer.CustomerBLO;
+import ebiz.blo.provider.ProviderBLO;
+import ebiz.dto.account.provider.Provider;
+import ebiz.form.LoginForm;
 import ebiz.form.ProviderForm;
+import ebiz.util.CommonConstant;
 
 /**
  * @author ThuyNT
  */
-public class Logout extends BaseAction {
+public class GMProviderAddress extends BaseAction {
     /**
      * [Logout ].
      * @param mapping ActionMapping
@@ -45,11 +50,21 @@ public class Logout extends BaseAction {
      */
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
+        
+        String id = request.getParameter("id");
+        Provider provider = ProviderBLO.getProviderById(id);
+        String add = provider.getProviderAddress() +" , Hồ Chí Minh, Việt Nam";
         HttpSession se = request.getSession();
-        ProviderForm login = (ProviderForm) se.getAttribute("provider");
-        if (login != null) {
-            se.invalidate();
+        LoginForm login = (LoginForm)se.getAttribute(CommonConstant.USER);
+        if(login != null){
+            se.setAttribute("startProvider", CustomerBLO.toStringAddres(login.getHomeNumber(), login.getBuildingName(),login.getStreetName(),login.getWardName(),
+                    login.getDistrictName()));
         }
+        else{
+            se.setAttribute("startProvider", "Thủ Đức, Hồ Chí Minh, Việt Nam");
+        }
+        
+        se.setAttribute("endProvider", add);
         return mapping.findForward(SUCCESS);
 
     }
