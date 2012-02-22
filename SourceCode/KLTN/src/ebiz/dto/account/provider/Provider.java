@@ -26,8 +26,6 @@ import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
-import ebiz.dto.account.customer.Address;
-
 /**
  *
  * @author ThuyNT
@@ -60,8 +58,7 @@ public class Provider implements Serializable{
     @Persistent
     private String providerPhone;
     /**  . providerAddress*/
-    @Persistent(defaultFetchGroup = "true")
-    private Address providerAddress;
+    private String providerAddress;
     /**  . providerAccountPayment*/
     @Persistent
     private String providerAccountPayment;
@@ -81,6 +78,7 @@ public class Provider implements Serializable{
     @Persistent
     private String detail;
     /**  . isActive*/
+    private String url;
     @Persistent
     private boolean isActive;  //required
     @Persistent
@@ -187,14 +185,14 @@ public class Provider implements Serializable{
      * Get value of providerAddress.
      * @return the providerAddress
      */
-    public Address getProviderAddress() {
+    public String getProviderAddress() {
         return providerAddress;
     }
     /**
      * Set the value for providerAddress.
      * @param providerAddress the providerAddress to set
      */
-    public void setProviderAddress(Address providerAddress) {
+    public void setProviderAddress(String providerAddress) {
         this.providerAddress = providerAddress;
     }
     /**
@@ -302,4 +300,16 @@ public class Provider implements Serializable{
     public void setActiveCode(String activeCode) {
         this.activeCode = activeCode;
     }
+	/**
+	 * @return the url
+	 */
+	public String getUrl() {
+		return url;
+	}
+	/**
+	 * @param url the url to set
+	 */
+	public void setUrl(String url) {
+		this.url = url;
+	}
 }
