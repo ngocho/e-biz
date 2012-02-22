@@ -30,7 +30,9 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import ebiz.blo.food.FoodBLO;
+import ebiz.blo.provider.ProviderBLO;
 import ebiz.form.FoodForm;
+import ebiz.form.ProviderForm;
 import ebiz.util.CommonConstant;
 /**
  * @author ThuyNT
@@ -51,7 +53,13 @@ public class Home extends BaseAction {
         HttpSession se = request.getSession();
         List<FoodForm> formList = new ArrayList<FoodForm>();
         formList = FoodBLO.getFoodListPromotionBest(6);
-//       IDXUBLO.CreateListXu();
+        List<ProviderForm>  providerSearchParam = ProviderBLO.getProviderFormAll();
+        for(ProviderForm f : providerSearchParam){
+        	   System.out.println("providerSearchParam!!!!!!!!1" + f.getLoginName());
+        }
+        
+        System.out.println("providerSearchParam1111111111111111" + providerSearchParam.size());
+        se.setAttribute("providerSearchParam", providerSearchParam);
         if (!formList.isEmpty()) {
             se.setAttribute("promotionFood", formList);
         }

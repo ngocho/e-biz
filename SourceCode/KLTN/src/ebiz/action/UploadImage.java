@@ -52,10 +52,10 @@ public class UploadImage extends BaseAction {
      */
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
-        @SuppressWarnings("deprecation")
         Map<String, BlobKey> blobs = blobstoreService.getUploadedBlobs(request);
         BlobKey blobKey = blobs.get("myFile");
         HttpSession se = request.getSession();
+        String type = request.getParameter("type");
         if (blobKey != null) {
             // get Key
             String urlKey = blobKey.getKeyString();
@@ -63,7 +63,14 @@ public class UploadImage extends BaseAction {
                 // save in session
                 se.setAttribute("urlImageKey", urlKey);
             }
+            if(type.equals("1")){
+            	//register Provider 
+            	se.setAttribute("urlImageKeyP", urlKey);
+            	  return mapping.findForward(SUCCESS1);
+            }
         }
+        System.out.println("upload" + type);
+        
         return mapping.findForward(SUCCESS);
     }
 
