@@ -146,7 +146,6 @@
             type="ebiz.action.account.provider.GMProviderAddress" >
         <forward name="success" path="providerAdd" redirect="false" />
     </action>
-     providerAdd
 	</action-mappings>
 
 </struts-config>
