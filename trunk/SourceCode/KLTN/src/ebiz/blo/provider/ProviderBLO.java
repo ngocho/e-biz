@@ -28,6 +28,7 @@ import ebiz.dao.inf.IProviderDAO;
 import ebiz.dto.account.provider.Provider;
 import ebiz.dto.food.Food;
 import ebiz.form.FoodForm;
+import ebiz.form.ProviderForm;
 
 /**
  * @author Administrator
@@ -58,6 +59,10 @@ public class ProviderBLO {
         }
         return null;
     }
+    public static List<ProviderForm> searchProvider(String value) {
+        List<Provider> providerList = proDao.getProviderByName(value);
+        return transferForm(providerList);
+    }
     
     public static int isLoginID(String id, String pass) {
         Provider provider = proDao.getProviderById(id);
@@ -84,20 +89,63 @@ public class ProviderBLO {
         List<Food> foodList = new ArrayList<Food>();
         List<FoodForm> formList = new ArrayList<FoodForm>();
         //get all
-        if(statusFood.equals("0")){
+        if (statusFood.equals("0")) {
             System.out.println("ALL");
             foodList = foodDao.getListFoodByValue("providerID", idProvider);
         }
-        //get by status
-        else{
+        // get by status
+        else {
             foodList = foodDao.getFoodListByProviderStatus(idProvider, statusFood);
         }
-        for(Food food :foodList ){
+        for (Food food : foodList) {
             FoodForm form = new FoodForm();
             form.editForm(food);
             formList.add(form);
         }
         return formList;
     }
-
+    public static List<ProviderForm> getProviderFormAll() {
+        List<Provider> providerList = proDao.getProviderAll();
+        return transferForm(providerList);
+    }
+    public static List<ProviderForm> searchProviderByName(String value) {
+        List<Provider> providerList = proDao.getProviderByName(value);
+        return transferForm(providerList);
+    }
+    public static List<ProviderForm> transferForm(List<Provider> providerList) {
+        List<ProviderForm> resultList = new ArrayList<ProviderForm>();
+        if (!providerList.isEmpty()) {
+            for (Provider provider : providerList) {
+            	System.out.println("form provider" +provider.getProviderId() + "name" +provider.getProviderName()
+            			);
+                ProviderForm form = new ProviderForm();
+                form.editForm(provider);
+                if (form != null) {
+                	System.out.println("form provider" +form.getLoginId() + "name" +form.getLoginName());
+                    resultList.add(form);
+                }
+            }
+        }
+        return resultList;
+    }
+    
+    public static List<String> searchProviderByDis(String value) {
+    	List<String> list = new ArrayList<String>();
+    	List<Provider> providerList = proDao.getProviderAll();
+    	for(Provider provider: providerList){
+    		String add = provider.getProviderAddress();
+    		if(add.indexOf(value) != -1){ //have result
+    			list.add(provider.getProviderId());
+    		}
+    	}
+    	return list;
+    }
+    public static boolean testProviderByDis(List<String> idProviderList,String idProvider) {
+    	for(String id: idProviderList){
+    		if(id.equals(idProvider)){
+    			return true;
+    		}
+    	}
+    	return false;
+    }
 }
