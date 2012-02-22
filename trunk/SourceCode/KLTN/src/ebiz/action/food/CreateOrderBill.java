@@ -37,6 +37,7 @@ import ebiz.form.LoginForm;
 import ebiz.form.OrderBillForm;
 import ebiz.form.ShoppingCart;
 import ebiz.util.CommonConstant;
+import ebiz.util.CommonUtil;
 
 /**
  * @author Administrator
@@ -95,6 +96,10 @@ public class CreateOrderBill extends BaseAction {
 //            user.setXuOnline(CustomerBLO.getXuOnline(user.getLoginId()));
             // billing
             order = FoodBLO.billing(shopCart);
+            System.out.println("info MHD:" + order.getId());
+            System.out.println("sum money MHD:" + order.getSumPrice());
+            System.out.println("add money MHD:" + order.getAddress());
+            System.out.println("time money MHD:" + CommonUtil.convertDateToString(order.getDateShip()) + "time" +order.getNote());
             // update Customer
             // transfer OrderBill-> form to display
             // success
