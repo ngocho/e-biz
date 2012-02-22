@@ -124,30 +124,44 @@ $(document).ready(function(){
                         </div>
                     </div>
                     </li>
+                    <li>
+                     <div class="field">
+                        <label for="billing:email" class="required" ><em>*</em>Quận</label>
+                        <div class="input-box">
+                        <html:select property="districtName"  styleId="districtNameR">
+    <html:option value="">- - - - - - - - - - - - Chọn quận- - - - - - - - - - - - -</html:option>
+    <html:option value="1">1</html:option>
+    <html:option value="2">2</html:option>
+    <html:option value="3">3</html:option>
+   <html:option value="4">4</html:option>
+   <html:option value="5">5</html:option>
+   <html:option value="6">6</html:option>
+   <html:option value="7">7</html:option>
+   <html:option value="8">8</html:option>
+   <html:option value="9">9</html:option>
+   <html:option value="10">10</html:option>
+   <html:option value="11">11</html:option>
+   <html:option value="12">12</html:option>
+   <html:option value="Bình Chánh">Bình Chánh</html:option>
+   <html:option value="Bình Tân">Bình Tân</html:option>
+   <html:option value="Bình Thạnh">Bình Thạnh</html:option>
+   <html:option value="Gò Vấp">Gò Vấp</html:option>
+   <html:option value="Hóc Môn">Hóc Môn</html:option>
+   <html:option value="Nhà Bè">Nhà Bè</html:option>
+   <html:option value="Phú Nhuận">Phú Nhuận</html:option>
+   <html:option value="Tân Bình">Tân Bình</html:option>
+   <html:option value="Tân Phú">Tân Phú</html:option>
+   <html:option value="Thủ Đức">Thủ Đức</html:option>
+</html:select>
+                        </div>
+                      </div>
+                      </li>
                 <li>
                 <span style="color:red" >
-<%--                 <logic:messagesPresent >  
-    <script type="text/javascript">
-    $(document).ready(function(){
-    $("#headerHome").focus();
-    }
-    );
-</script> --%>
         <logic:messagesPresent >
          <html:messages id="error"  header="providerForm.registerMadatory" >
         </html:messages>
          </logic:messagesPresent>
-<%--         <html:messages id="error"  property="email" >
-        <br>
-        <span style="color:red" > Địa chỉ mail không hợp lệ !</span>
-         <script type="text/javascript">
-    $(document).ready(function(){
-    $("#email").focus();
-    }
-    );
-</script>
-        </html:messages> --%>
-    
 </span>
                 
                 </li>                                                                   </ul>
@@ -201,36 +215,7 @@ $(document).ready(function(){
                            <html:text property="wardName" size="40"/>
                         </div>
                     </div>
-                     <div class="field">
-                        <label for="billing:email" class="required">Quận</label>
-                        <div class="input-box">
-                        <html:select property="districtName">
-    <html:option value="">- - - - - - - - - - - - Chọn quận- - - - - - - - - - - - -</html:option>
-    <html:option value="1">1</html:option>
-    <html:option value="2">2</html:option>
-    <html:option value="3">3</html:option>
-   <html:option value="4">4</html:option>
-   <html:option value="5">5</html:option>
-   <html:option value="6">6</html:option>
-   <html:option value="7">7</html:option>
-   <html:option value="8">8</html:option>
-   <html:option value="9">9</html:option>
-   <html:option value="10">10</html:option>
-   <html:option value="11">11</html:option>
-   <html:option value="12">12</html:option>
-   <html:option value="Bình Chánh">Bình Chánh</html:option>
-   <html:option value="Bình Tân">Bình Tân</html:option>
-   <html:option value="Bình Thạnh">Bình Thạnh</html:option>
-   <html:option value="Gò Vấp">Gò Vấp</html:option>
-   <html:option value="Hóc Môn">Hóc Môn</html:option>
-   <html:option value="Nhà Bè">Nhà Bè</html:option>
-   <html:option value="Phú Nhuận">Phú Nhuận</html:option>
-   <html:option value="Tân Bình">Tân Bình</html:option>
-   <html:option value="Tân Phú">Tân Phú</html:option>
-   <html:option value="Thủ Đức">Thủ Đức</html:option>
-</html:select>
-                        </div>
-                      </div>
+                    
                     </li>
                      <li class="fields">
                     <div class="field">

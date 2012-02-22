@@ -50,55 +50,12 @@ $(document).ready(function(){
        
       </div>
       </logic:notEmpty> 
-
-     <%--  <!-- hidden fields -->
-          <input type="hidden" name="col" id="col"
-            value="<bean:write name="providerVo" property="col"/>"></input>
-            <input type="hidden" id="limit"
-            value="<bean:write name="providerVo" property="limit"/>"></input>
-            <input
-            type="hidden" name="page" id="page"
-            value="<bean:write name="providerVo" property="page"/>"></input>
-              --%>
-    
-<%-- <table  style="font-size: 10pt;margin-left: 10px;" border="1">
-<tbody>
-<tr class="pProduct">
-<th >HÌNH </th>
-<th >MSP</th>
-<th >TÊN SẢN PHẨM</th>
-<th >GIÁ</th>
-<th >GIÁ KHUYỄN MÃI</th>
-<th >SỐ LƯỢNG</th>
-<th >CHI TIẾT</th>
-<th >HƯỚNG DẪN </th>
-<th >MUA</th>
-<th >XEM</th>
-</tr>
-<logic:present name="searchResult" >
-<logic:iterate id="element"  name="searchResult">
-<tr>
-<td> <img src="/serveImage.vn?urlKey=<bean:write name="element" property="urlKey"/>" width="50" height="40"/></td>
-<td style="text-align: center;" ><a href="/reOrder.vn?id=<bean:write name="element" property="id"/>"><bean:write name="element" property="id"/></a></td>
-<td> <bean:write name="element" property="name"/></td>
-<td><bean:write name="element"  property="price"/></td>
-<td><bean:write name="element"  property="promoPrice"/></td>
-<td><bean:write name="element"  property="number"/></td>
-<td><bean:write name="element"  property="detail"/></td>
-<td><bean:write name="element"  property="cooking"/></td>
-<td><a id="" href="/displayDetailProduct.vn?id=<bean:write name="element" property="id"/>"><img src="Images/Commons/mua.jpg" width="50" /></a></td>
-<td><a id="delBill" href="/deleteProduct.vn?id=<bean:write name="element" property="id"/>"><img src="Images/Commons/.jpg" width="50" /></a></td>
-</tr>
-</logic:iterate>
-</logic:present>
-</tbody>
-</table> --%>
 <ul>
 <logic:present name="searchResult" >
 <logic:iterate id="element"  name="searchResult">
 <li style="margin-left:10px;"> 
 <img src="/serveImage.vn?urlKey=<bean:write name="element" property="urlKey"/>" width="50" height="40"/>
-<a href="/reOrder.vn?id=<bean:write name="element" property="id"/>"><bean:write name="element" property="name"/></a> 
+<a href="/displayProductDetail.vn?id=<bean:write name="element" property="id"/>"><bean:write name="element" property="name"/></a> 
 <br>
 <bean:write name="element" property="detail"/>
 </li>

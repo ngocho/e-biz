@@ -62,16 +62,6 @@ function slideSwitch() {
 
     }); */
 </script>
-<!-- script type="text/javascript">
-    $(document).ready(function() {
-        $("#addToCart").click(function() {
-            var quantity = $("#quantity").val();
-            var idProduct = $("#id").val();
-            addToCart(quantity, idProduct);
-            return false;
-        });
-    });
-</script> -->
 <style type="text/css">
 
 /*** set the width and height to match your images **/
@@ -100,6 +90,18 @@ function slideSwitch() {
 }
 
 </style>
+<logic:present name="flagCompare">
+  <c:if test="${flagCompare =='0'}">
+  <script type="text/javascript" >
+  $(document).ready(function(){
+  	alert("Không có sản phẩm để so sánh");
+  });
+  </script>
+  </c:if>
+ <c:remove var="flagCompare"/>
+</logic:present>
+<%--  <bean:write name="flagCompare"/>
+<input type="hidden" value="12" name="flagCompareName" id="flagCompareID"/> --%>
   <div class="page-title category-title">
 
     <h1>
@@ -317,6 +319,9 @@ function slideSwitch() {
                 <span class="price-label">Số lượng:</span> <span
                   class="price" id="product-price-52"> <bean:write
                     name="element" property="number" /> </span>
+              </p>
+               <p >
+                <a href="/compareFood.vn?id=<bean:write name="element" property="id" />" style="color:blue;"> So sánh với sản phẩm của cửa hàng khác</a>
               </p>
             </div>
             <div class="actions">

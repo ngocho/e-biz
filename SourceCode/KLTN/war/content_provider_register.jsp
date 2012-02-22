@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
   pageEncoding="UTF-8"%>
+  <%@ page
+  import="com.google.appengine.api.blobstore.BlobstoreServiceFactory"%>
+<%@ page import="com.google.appengine.api.blobstore.BlobstoreService"%>
 <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
 <%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic"%>
@@ -20,10 +23,6 @@
             var flag = validateProviderRegister();
             if (!flag) {
                 return false;
-               // $("#registerForm").submit();
-            } /* else {
-                return false;
-            } */
         });
 
         $(".reset").blur(function() {
@@ -33,12 +32,24 @@
         });
     });
 </script>
+<%
+    BlobstoreService blobstoreService = BlobstoreServiceFactory
+					.getBlobstoreService();
+%>
 <div class="home-spot">
   <div class="account-create">
 
     <div class="page-title">
       <h1>Tạo một tài khoản mới</h1>
     </div>
+      <form name="uploadImage"
+      action="<%=blobstoreService.createUploadUrl("/uploadImage.vn")%>"
+      method="post" enctype="multipart/form-data">
+      <input type="file" name="myFile" class="buttonBG"> 
+      <input type="hidden" value="1" name="type"/>
+      <input  type="submit" value="Upload Hình"
+        class="buttonBG">
+    </form>
     <html:form action="/registerProvierAcc.vn" method="get"
       styleId="registerForm">
       <div class="fieldset">
@@ -95,7 +106,27 @@
           <span>Thông tin cửa hàng</span>
         </h2>
         <ul class="form-list">
-          <li class="fields"></li>
+        <li>
+    </li>
+     <li class="fields">
+            <div class="customer-name">
+              <div class="field name-firstname">
+                <label for="firstname" class="required" ><em>*</em>Hình</label>
+                <div class="input-box">
+                  <logic:present name="urlImageKeyP">
+                    <img
+                      src="/serveImage.vn?urlKey=<bean:write name="urlImageKeyP"/>"
+                      width="200" height="150" id="image" />
+                       <input type="hidden" value="<bean:write name="urlImageKeyP"/>" name="urlImageKeyP"/>
+                  </logic:present>
+                  <%-- <logic:notPresent name="urlImageKey">
+                  <input type="hidden" value="" name="url"/>
+                  </logic:notPresent> --%>
+                </div>
+
+              </div>
+            </div>
+          </li>
           <li class="fields">
             <div class="field">
               <label class="required"><em>*</em>Tên cửa hàng</label>
@@ -187,11 +218,12 @@
             </div>
           </li>
           <li>
+          
             <div class="field">
               <label class="required"><em>*</em>Giới thiệu về
                 cửa hàng</label>
               <div class="input-box">
-                <html:textarea property="detail" styleClass="reset" />
+                <html:textarea property="detail" styleClass="reset" style="width: 200px;"/>
               </div>
             </div>
           </li>
