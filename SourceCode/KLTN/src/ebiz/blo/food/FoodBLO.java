@@ -123,6 +123,44 @@ public class FoodBLO {
         // transfer FoodForm to display
         return formList;
     }
+    
+    public static List<FoodForm> getFoodListByProvider(String id) {
+        List<FoodForm> formList = new ArrayList<FoodForm>();
+        List<Food> foodList = new ArrayList<Food>();
+        // get Food List
+        foodList = (List<Food>) foodDao.getListFoodByValue("providerID", id);
+        // specify size list to get
+        for (Food food : foodList) {
+            if (food.getIsDisplay() == 1) {
+                FoodForm form = new FoodForm();
+                form.editForm(food);
+                if (form != null) {
+                    formList.add(form);
+                }
+            }
+        }
+        // transfer FoodForm to display
+        return formList;
+    }
+    
+    public static List<FoodForm> getFoodListByNameDistinctProvider(String name, String idProvider) {
+        List<FoodForm> formList = new ArrayList<FoodForm>();
+        List<Food> foodList = new ArrayList<Food>();
+        // get Food List
+        foodList = (List<Food>) foodDao.getListFoodByValue("foodName", name);
+        // specify size list to get
+        for (Food food : foodList) {
+            if (food.getIsDisplay() == 1 && (!(food.getProviderID().equals(idProvider)))) {
+                FoodForm form = new FoodForm();
+                form.editForm(food);
+                if (form != null) {
+                    formList.add(form);
+                }
+            }
+        }
+        // transfer FoodForm to display
+        return formList;
+    }
 
     /**
      * [get ProductList by atrr(kho, xao, canh)].
@@ -160,6 +198,8 @@ public class FoodBLO {
         // get Promotin food
         List<FoodForm> formList = getFoodListByStatus("1");
         List<FoodForm> resultList = new ArrayList<FoodForm>();
+        if(!formList.isEmpty()){
+       
         // long valueCopare = formList.get(0).getPrice() -
         // List<Long> sortList1 = new ArrayList<Long>();
         List<Long> sortList2 = new ArrayList<Long>();
@@ -180,7 +220,12 @@ public class FoodBLO {
                 resultList.add(formList.get(i));
             }
         }
+<<<<<<< .mine
+        
         }
+=======
+        }
+>>>>>>> .r474
         return resultList;
     }
     // call get Food
