@@ -32,7 +32,9 @@ import org.apache.struts.action.ActionMapping;
 import ebiz.action.BaseAction;
 import ebiz.blo.food.SearchBLO;
 import ebiz.form.FoodForm;
+import ebiz.form.LoginForm;
 import ebiz.form.SearchForm;
+import ebiz.util.CommonConstant;
 /**
  * @author ThuyNT
  */
@@ -60,7 +62,10 @@ public class Search extends BaseAction {
             List<FoodForm> formList = new ArrayList<FoodForm>();
             List<String> pageList = new ArrayList<String>();
             // Cache cache = SearchBLO.getMemcache();
-
+            LoginForm login = (LoginForm)se.getAttribute(CommonConstant.USER);
+            if("-1".equals(searchForm.getDistrictNameS())){
+            	searchForm.setDis(login.getDistrictName());
+            }
             formList = SearchBLO.searchFullText(searchForm);
             pageList = SearchBLO.paging(formList.size());
             // display first page
@@ -70,6 +75,8 @@ public class Search extends BaseAction {
             se.setAttribute("pageIndex", 1);
             if (!formList.isEmpty()) {
                 se.setAttribute("searchResult", formList);
+            }else{
+                se.setAttribute("searchResult", null);
             }
         }
         return mapping.findForward(SUCCESS);

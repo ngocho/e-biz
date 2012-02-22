@@ -25,8 +25,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import net.sf.jsr107cache.Cache;
-
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
@@ -55,17 +53,19 @@ public class SearchPaging extends BaseAction {
             HttpServletResponse response) throws Exception {
         HttpSession se = request.getSession();
         // HashMap<Integer, String> paging = new HashMap<Integer, String>();
-        SearchForm searchForm = (SearchForm) se.getAttribute("searchForm");
+//        SearchForm searchForm = (SearchForm) se.getAttribute("searchForm");
         String page = request.getParameter("page");
         int pageIndex = Integer.parseInt(page);
-        List<FoodForm> formList = new ArrayList<FoodForm>();
-        Cache cache = SearchBLO.getMemcache();
-        formList = (List<FoodForm>) cache.get("searchData");
-        // had
-        if (formList == null || formList.isEmpty()) {
-            formList = SearchBLO.searchFullText(searchForm);
-        }
+        List<FoodForm> formList =(List<FoodForm>) se.getAttribute("searchResult");
+//        Cache cache = SearchBLO.getMemcache();
+//        formList = (List<FoodForm>) cache.get("searchData");
+//        // had
+//        if (formList == null || formList.isEmpty()) {
+//            formList = SearchBLO.searchFullText(searchForm);
+//        }
+//        formList = SearchBLO.searchFullText(searchForm);
         formList = (List<FoodForm>) SearchBLO.getPage(formList, pageIndex);
+        se.setAttribute("pageIndex", pageIndex);
         if (!formList.isEmpty()) {
             se.setAttribute("searchResult", formList);
         }
