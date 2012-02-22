@@ -40,6 +40,17 @@ function  updateComment(content){
         }
         });
 }
+function  generateXu(){
+    $.ajax({
+        type: "GET",
+        url: "/generateXu.vn",
+        dataType: "html",
+        async: false,
+        success: function(data){
+            $("#xuActive").val(data);
+        }
+        });
+}
 
 function  addXu(value){
     $.ajax({
