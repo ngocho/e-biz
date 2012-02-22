@@ -220,12 +220,6 @@ public class FoodBLO {
                 resultList.add(formList.get(i));
             }
         }
-<<<<<<< .mine
-        
-        }
-=======
-        }
->>>>>>> .r474
         return resultList;
     }
     // call get Food
