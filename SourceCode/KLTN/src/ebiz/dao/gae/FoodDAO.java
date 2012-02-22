@@ -27,7 +27,6 @@ import ebiz.dto.food.FoodAttribute;
 import ebiz.dto.food.FoodPriceLevel;
 import ebiz.dto.food.FoodStatus;
 import ebiz.dto.food.FoodType;
-import ebiz.dto.checkout.*;
 /**
  * @author ThuyNT
  */
@@ -237,9 +236,9 @@ public class FoodDAO implements IFoodDAO {
     }
     @SuppressWarnings("unchecked")
     @Override
-    public List<Food> searchFoodByName(String searchText, String type, String attr, String price, String status) {
+    public List<Food> searchFoodByName(String searchText, String type, String attr, String price, String status,String provider) {
         List<Food> foodList = new ArrayList<Food>();
-        foodList = (List<Food>) PMF.searchListFoodByName(Food.class, searchText, type, attr, price, status);
+        foodList = (List<Food>) PMF.searchListFoodByName(Food.class, searchText, type, attr, price, status,provider);
         return foodList;
     }
     
