@@ -23,7 +23,7 @@ import java.util.Date;
 
 import org.apache.struts.validator.ValidatorForm;
 
-import ebiz.dto.account.customer.Address;
+import ebiz.blo.customer.CustomerBLO;
 import ebiz.dto.account.provider.Provider;
 import ebiz.util.CommonUtil;
 
@@ -68,6 +68,8 @@ public class ProviderForm extends ValidatorForm implements Serializable {
     private String detail;
     /**  . */
     private Date birth;
+    private String address;
+    private String urlAvatar;
 
     /**
      * [Give the description for method].
@@ -91,13 +93,15 @@ public class ProviderForm extends ValidatorForm implements Serializable {
         provider.setProviderGender(this.gender);
         provider.setAuthentication(this.authentication);
         provider.setProviderAccountPayment(this.accountPayment);
-        Address add = new Address();
-        add.setBuildingName(this.buildingName);
-        add.setDistrictName(this.districtName);
-        add.setHomeNumber(this.homeNumber);
-        add.setStreetName(this.streetName);
-        add.setWardName(this.wardName);
-        provider.setProviderAddress(add);
+        provider.setUrl(this.urlAvatar);
+//        Address add = new Address();
+//        add.setBuildingName(this.buildingName);
+//        add.setDistrictName(this.districtName);
+//        add.setHomeNumber(this.homeNumber);
+//        add.setStreetName(this.streetName);
+//        add.setWardName(this.wardName);
+        this.address = CustomerBLO.toStringAddres(homeNumber, buildingName, streetName, wardName, districtName);
+        provider.setProviderAddress(this.address);
         provider.setLoginDate(new Date());
         provider.setDetail(this.detail);
         provider.setProviderName(this.loginName);
@@ -110,6 +114,7 @@ public class ProviderForm extends ValidatorForm implements Serializable {
      * @param provider Provider
      */
     public void editForm(Provider provider) {
+    	this.urlAvatar = provider.getUrl();
         this.loginId = provider.getProviderId();
         this.loginPassword = provider.getProviderPassword();
         this.loginName = provider.getProviderName();
@@ -119,11 +124,12 @@ public class ProviderForm extends ValidatorForm implements Serializable {
         this.birth = provider.getProviderBirth();
         this.email = provider.getProviderEmail();
         this.phone = provider.getProviderPhone();
-        this.buildingName = provider.getProviderAddress().getBuildingName();
-        this.districtName = provider.getProviderAddress().getDistrictName();
-        this.homeNumber = provider.getProviderAddress().getHomeNumber();
-        this.streetName = provider.getProviderAddress().getStreetName();
-        this.wardName = provider.getProviderAddress().getWardName();
+//        this.buildingName = provider.getProviderAddress().getBuildingName();
+//        this.districtName = provider.getProviderAddress().getDistrictName();
+//        this.homeNumber = provider.getProviderAddress().getHomeNumber();
+//        this.streetName = provider.getProviderAddress().getStreetName();
+//        this.wardName = provider.getProviderAddress().getWardName();
+        this.address = provider.getProviderAddress();
         this.detail = provider.getDetail();
     }
     /**
@@ -412,6 +418,36 @@ public class ProviderForm extends ValidatorForm implements Serializable {
     public void setBirth(Date birth) {
         this.birth = birth;
     }
+
+    /**
+     * Get value of address.
+     * @return the address
+     */
+    public String getAddress() {
+        return address;
+    }
+
+    /**
+     * Set the value for address.
+     * @param address the address to set
+     */
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+	/**
+	 * @return the urlAvatar
+	 */
+	public String getUrlAvatar() {
+		return urlAvatar;
+	}
+
+	/**
+	 * @param urlAvatar the urlAvatar to set
+	 */
+	public void setUrlAvatar(String urlAvatar) {
+		this.urlAvatar = urlAvatar;
+	}
 
 
 }

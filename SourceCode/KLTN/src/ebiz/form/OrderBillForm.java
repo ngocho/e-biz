@@ -25,7 +25,6 @@ import org.apache.struts.validator.ValidatorForm;
 
 import ebiz.blo.customer.CustomerBLO;
 import ebiz.blo.food.FoodBLO;
-import ebiz.dto.account.customer.Address;
 import ebiz.dto.account.customer.Customer;
 import ebiz.dto.checkout.OrderBill;
 import ebiz.dto.checkout.VoucherBill;

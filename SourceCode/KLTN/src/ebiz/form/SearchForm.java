@@ -10,6 +10,9 @@ public class SearchForm extends ActionForm implements Serializable{
 	private String attr;
 	private String price;
 	private String status;
+	private String districtNameS;
+	private String provider;
+	private String dis;
 	public String getSearchText() {
 		return searchText;
 	}
@@ -39,6 +42,42 @@ public class SearchForm extends ActionForm implements Serializable{
 	}
 	public void setType(String type) {
 		this.type = type;
+	}
+	/**
+	 * @return the provider
+	 */
+	public String getProvider() {
+		return provider;
+	}
+	/**
+	 * @param provider the provider to set
+	 */
+	public void setProvider(String provider) {
+		this.provider = provider;
+	}
+	/**
+	 * @return the districtNameS
+	 */
+	public String getDistrictNameS() {
+		return districtNameS;
+	}
+	/**
+	 * @param districtNameS the districtNameS to set
+	 */
+	public void setDistrictNameS(String districtNameS) {
+		this.districtNameS = districtNameS;
+	}
+	/**
+	 * @return the dis
+	 */
+	public String getDis() {
+		return dis;
+	}
+	/**
+	 * @param dis the dis to set
+	 */
+	public void setDis(String dis) {
+		this.dis = dis;
 	}
 
 }
