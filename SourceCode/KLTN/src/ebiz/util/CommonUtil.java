@@ -57,6 +57,13 @@ public class CommonUtil {
             }
             return false;
         }
+        
+//        public static boolean isBlankOrZero(int l) {
+//            if (l == null || l.equals(0) || l == 0) {
+//                return true;
+//            }
+//            return false;
+//        }
        /**
      * [nullToBlank].
      * @param s             String
