@@ -174,6 +174,15 @@
 		<put name="content" value="/customer_content_as.jsp" />
     </definition>
     
+      <definition name="compareFoodLayout" extends="baseLayout1">
+		<put name="title" value="Shopping" />
+		<put name="content" value="/customer_compareFood.jsp" />
+    </definition>
+    
+     <definition name="providerAdd" extends="baseLayout1">
+        <put name="title" value="GM Provider" />
+        <put name="content" value="/provider_address.jsp" />
+    </definition>
     
 <!-- END CUSTOMER -->
 
@@ -229,6 +238,21 @@
 		<put name="content" value="/content_provider_uploadProduct.jsp" />
     </definition>
 <!-- end Provider.uploadProduct --> 
+  <definition name="provider_list" extends="baseLayout1">
+       <put name="header" value="/header_provider.jsp" />
+      <put name="title" value="List Provider" />
+      <put name="content" value="/content_provider_list.jsp" />
+    </definition>
+    
+      <definition name="provider_info" extends="baseLayout1">
+      <put name="title" value="Provider Info" />
+      <put name="content" value="/content_provider_info.jsp" />
+    </definition>
+    
+    <definition name="product_provider" extends="baseLayout1">
+      <put name="title" value="Search Result" />
+      <put name="content" value="/content_product_provider.jsp" />
+    </definition>
 <!-- END PROVIDER -->
 
 
@@ -278,6 +302,11 @@
         <put name="content" value="/admin_content_foodDetail.jsp" />
     </definition>
     
+     <definition name="admin_xu" extends="baseLayout1">
+     <put name="header" value="/admin_header.jsp" />
+      <put name="title" value="Search Result" />
+      <put name="content" value="/admin_xuCard.jsp" />
+    </definition>
     
 <!-- END ADMIN -->
 
@@ -285,6 +314,7 @@
 		<put name="title" value="Customer ReOrder" />
 		<put name="content" value="/content_customer_reOrder.jsp" />
     </definition>
+    
 
 
 </tiles-definitions>

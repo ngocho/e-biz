@@ -72,7 +72,6 @@
 		<forward name="success" path="home_customer_reOrder" redirect="true" />
     </action>
 	
-    
     <action
 			path="/uploadComment"
 			type="ebiz.action.account.customer.UploadComment" >
@@ -151,13 +150,26 @@
             type="ebiz.action.account.customer.UpdateCustomerInfo">
     </action>
     
-   
+     <action
+            path="/promotionInfoWeekly" 
+            type="ebiz.action.mail.PromotionWeekly">
+    </action>
     
-    
-    
-    <action
+   <!--  <action
             path="/changeHomeSlide" 
             type="ebiz.action.account.customer.UpdateCustomerInfo">
+    </action> -->
+    
+    <action
+            path="/displayProviderInfo" 
+            type="ebiz.action.account.provider.ProviderDetail">
+            <forward name="success" path="provider_info" redirect="true" />
+    </action>
+    
+    <action
+            path="/displayProductByProvider" 
+            type="ebiz.action.account.customer.FoodByProvider">
+            <forward name="success" path="product_provider" redirect="true" />
     </action>
     
  

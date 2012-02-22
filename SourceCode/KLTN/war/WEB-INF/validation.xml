@@ -53,12 +53,12 @@
           	<field
                 property="id"
                 depends="required">
-                <arg0 key="adminForm.id"/>
+                <arg0 key="login.loginId"/>
             </field>
             <field
                 property="pass"
                 depends="required">
-                <arg0 key="adminForm.pass"/>
+                <arg0 key="login.loginPassword"/>
             </field>
             <field
                 property="pass"
@@ -69,7 +69,7 @@
                     <var-value>8
                     </var-value>
                 </var>
-                <arg0 key="adminForm.pass"/>
+                <arg0 key="login.loginPassword"/>
             </field>
          </form>
         <!-- end Admin login  04/02/2012-->
@@ -100,6 +100,11 @@
                 property="phone"
                 depends="required">
                 <arg0 key="register.phone"/>
+            </field>
+            <field
+                property="districtName"
+                depends="required">
+                <arg0 key="register.districtName"/>
             </field>
             <field
                 property="loginPassword"
@@ -138,9 +143,9 @@
                 depends="required">
                 <arg0 key="order.phone"/>
             </field>
-       <field
-                property="email"
-                depends="required, email">
+       		<field
+                property="required"
+                depends="email">
                 <arg0 key="order.email"/>
             </field>
             <field
