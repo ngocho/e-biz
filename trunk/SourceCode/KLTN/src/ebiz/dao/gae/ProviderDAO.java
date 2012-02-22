@@ -18,6 +18,8 @@
  */
 package ebiz.dao.gae;
 
+import java.util.List;
+
 import ebiz.dao.inf.IProviderDAO;
 import ebiz.dto.account.provider.Provider;
 
@@ -63,4 +65,21 @@ public class ProviderDAO implements IProviderDAO{
         return provider;
     }
 
+    /**
+     * [Explain the description for this method here].
+     * @return
+     * @see ebiz.dao.inf.IProviderDAO#getProviderAll()
+     */
+    @SuppressWarnings("unchecked")
+    @Override
+    public List<Provider> getProviderAll() {
+        return (List<Provider>)PMF.getObjectList(Provider.class);
+    }
+    
+    @SuppressWarnings("unchecked")
+    @Override
+    public List<Provider> getProviderByName(String value) {
+        return  (List<Provider>)PMF.searchListProviderByName(Provider.class, value);
+        
+    }
 }

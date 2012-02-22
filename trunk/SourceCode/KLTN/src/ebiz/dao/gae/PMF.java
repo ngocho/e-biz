@@ -1,8 +1,8 @@
 package ebiz.dao.gae;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Date;
+import java.util.List;
+
 import javax.jdo.JDOHelper;
 import javax.jdo.JDOObjectNotFoundException;
 import javax.jdo.PersistenceManager;
@@ -577,13 +577,13 @@ public final class PMF {
     }
     @SuppressWarnings("unchecked")
     public static List<?> searchListFoodByName(Class<?> className, String searchText, String type, String attr,
-            String price, String status) {
+            String price, String status,String provider) {
         PersistenceManager pm = getPMF();
         StringBuffer sqlSearch = new StringBuffer();
         sqlSearch.append("");
         if (!("0".equals(type))) {
             sqlSearch.append(" && ");
-            sqlSearch.append("foodStatusId == \'" + type + "\'");
+            sqlSearch.append("foodTypeId == \'" + type + "\'");
         }
         if (!("0".equals(attr))) {
             sqlSearch.append(" && ");
@@ -597,16 +597,60 @@ public final class PMF {
             sqlSearch.append(" && ");
             sqlSearch.append("foodStatusId == \'" + status + "\'");
         }
+        if (!("0".equals(provider))) {
+            sqlSearch.append(" && ");
+            sqlSearch.append("providerID == \'" + provider + "\'");
+        }
         System.out.println("SQL SEARCH" + sqlSearch);
         Query q = pm.newQuery(className);
         List<Object> results = null;
         List<Object> detachedList = null;
         // set the filter and params
         q.setFilter("foodName >= :1 && foodName < :2" + sqlSearch);
-        System.out.println("TEXT SEARCH " + searchText);
+        System.out.println("TEXT SEARCH " + "foodName >= :1 && foodName < :2" + sqlSearch);
         // run query with param values and return results
         try {
             detachedList = (List<Object>) q.execute(searchText, (searchText + "\ufffd"));
+            //db.GqlQuery("SELECT * FROM MyModel WHERE prop >= :1 AND prop < :2", "abc", u"abc" + u"\ufffd")
+            results = (List<Object>) pm.detachCopyAll(detachedList);
+        } finally {
+            q.closeAll();
+            pm.close();
+        }
+        return results;
+    }
+    
+    @SuppressWarnings("unchecked")
+    public static List<?> searchListProviderByName(Class<?> className, String value) {
+        PersistenceManager pm = getPMF();
+//        StringBuffer sqlSearch = new StringBuffer();
+//        sqlSearch.append("");
+//        if (!("0".equals(type))) {
+//            sqlSearch.append(" && ");
+//            sqlSearch.append("foodTypeId == \'" + type + "\'");
+//        }
+//        if (!("0".equals(attr))) {
+//            sqlSearch.append(" && ");
+//            sqlSearch.append("productAttributeId == \'" + attr + "\'");
+//        }
+//        if (!("0".equals(price))) {
+//            sqlSearch.append(" && ");
+//            sqlSearch.append("foodPriceLevelId == \'" + price + "\'");
+//        }
+//        if (!("0".equals(status))) {
+//            sqlSearch.append(" && ");
+//            sqlSearch.append("foodStatusId == \'" + status + "\'");
+//        }
+//        System.out.println("SQL SEARCH" + sqlSearch);
+        Query q = pm.newQuery(className);
+        List<Object> results = null;
+        List<Object> detachedList = null;
+        // set the filter and params
+        q.setFilter("providerName >= :1 && providerName < :2");
+        System.out.println("TEXT SEARCH " + "providerName >= :1 && foodName < :2" );
+        // run query with param values and return results
+        try {
+            detachedList = (List<Object>) q.execute(value, (value + "\ufffd"));
             results = (List<Object>) pm.detachCopyAll(detachedList);
         } finally {
             q.closeAll();
