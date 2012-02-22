@@ -99,12 +99,11 @@
 		<forward name="success" path="checkout_optional" redirect="true" />
 		<forward name="failure" path="checkout" redirect="true" />
     </action>
-    
      <action 
             path="/checkoutMoney"
             type="ebiz.action.food.CheckoutType" 
             scope="session" validate="true">
-        <forward name="success" path="bill" redirect="true" />
+		<forward name="success" path="bill" redirect="true" />
         <forward name="failure" path="checkout_optional" redirect="true" />
     </action>
     
@@ -115,6 +114,14 @@
 			scope="session" validate="true">
 		<forward name="success" path="search_result" redirect="true" />
 		<forward name="failure" path="/home.vn" redirect="true" />
+    </action>
+    
+     <action 
+			path="/compareFood"
+			type="ebiz.action.account.customer.ProductCompare" 
+			scope="session" validate="true">
+		<forward name="success" path="compareFoodLayout" redirect="true" />
+		<forward name="failure" path="/categoryRecord.vn" redirect="true"  />
     </action>
     
 

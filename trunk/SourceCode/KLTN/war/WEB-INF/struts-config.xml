@@ -45,6 +45,8 @@
 		</action>
         <action path="/sendAuthenPro" type="ebiz.action.mail.AuthenticationProvider">
         </action>
+        <action path="/generateXu" type="ebiz.action.mail.GenerationCodeXu">
+        </action>
 		<action path="/Welcome" forward="/welcomeStruts.jsp" />
 	</action-mappings>
 

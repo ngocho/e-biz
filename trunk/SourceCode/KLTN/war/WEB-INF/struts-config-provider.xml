@@ -26,6 +26,8 @@
 	 
      <action path="/transferUpImage" forward="home_provider_upload">
     </action>
+    <action path="/transferUpImage1" forward="home_provider_register">
+    </action>
 	
     <action path="/uploadLink" 
             type="ebiz.action.account.provider.UploadLink" >
@@ -51,8 +53,7 @@
     <action 
 			path="/logoutProviderAcc"
 			type="ebiz.action.account.provider.Logout" >
-		<forward name="success" path="home_provider_authentication" redirect="true" />
-		<forward name="failure" path="home_provider" redirect="true" />
+		<forward name="success" path="/provider.vn" redirect="true" />
     </action>
      
     <action input="home_provider_register" 
@@ -80,6 +81,7 @@
 			type="ebiz.action.UploadImage" 
 			scope="session" validate="true">
 		<forward name="success" path="/transferUpImage.vn" redirect="true" />
+		<forward name="success1" path="/transferUpImage1.vn" redirect="true" />
     </action>
 	
     <action
@@ -124,7 +126,27 @@
 		<forward name="failure" path="home_provider_authentication" redirect="false" />
     </action>
     
-     
+     <action 
+            path="/displayProviderList"
+            type="ebiz.action.account.provider.ProviderList" >
+        <forward name="success" path="provider_list" redirect="false" />
+    </action>
+     <action 
+            path="/searchProvider"
+            type="ebiz.action.account.provider.ProviderSearch" >
+        <forward name="success" path="provider_list" redirect="false" />
+    </action>
+     <action 
+            path="/pagingProvider"
+            type="ebiz.action.account.provider.ProviderSearchPaging" >
+        <forward name="success" path="provider_list" redirect="false" />
+    </action>
+    <action 
+            path="/displayAddProviderGM"
+            type="ebiz.action.account.provider.GMProviderAddress" >
+        <forward name="success" path="providerAdd" redirect="false" />
+    </action>
+     providerAdd
 	</action-mappings>
 
 </struts-config>
