@@ -50,6 +50,6 @@ public interface IFoodDAO {
             List<String> numberPageList, String order, int record,
             int page, String sql);
 
-	public List<Food> searchFoodByName(String searchText, String type, String attr, String price, String status);
+	public List<Food> searchFoodByName(String searchText, String type, String attr, String price, String status,String provider);
 
 }
