@@ -45,7 +45,7 @@
 						<div class="input-box">
 							<input type="text" name="valueAuthen"  value=""/>
 						</div></li>
-					<li><input type="submit" value="Gởi" /></li>
+					<li><input type="submit"  class="buttonBG" value="Gởi" /></li>
 
 					<li>
 					<li><span style="color: red;" id="message"> <logic:messagesPresent

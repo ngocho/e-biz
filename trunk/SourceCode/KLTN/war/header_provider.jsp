@@ -41,7 +41,20 @@ Tiếng Anh
           href="/home.vn"
           class="level-top">
 <img src="Images/Commons/icon-trang-chu.png" width="20" height="20" style="margin-left:-70px;"/><span style="margin-left:10px;margin-top:-10px;" class="nav-text-provider"> Trang chủ</span>
-        </a></li>
+        </a>
+        <a
+          href="/displayProviderList.vn"
+          class="level-top">
+<span  class="nav-text-provider"> Danh sách cửa hàng</span>
+        </a>
+         <c:if test="${provider ==null}">
+        <a
+          href="/provider.vn"
+          class="level-top">
+<span  class="nav-text-provider"> Đăng nhập</span>
+        </a>
+        </c:if>
+        </li>
         <logic:present name="provider">
         <li class="level0 nav-1 level-top first parent">
 <a href="#"
@@ -74,18 +87,18 @@ Tiếng Anh
 </ul>
 
 </div>
-<!-- <form id="search_mini_form" action="#" method="get">
+<form id="search_mini_form" action="/searchProvider.vn" method="get">
 <fieldset class="form-search">
     <legend>Search Site</legend>
    <p>
           <input class="input-text input-reset inactive" name="q"
-            value="Nhập tên thức ăn" onfocus=" this.value='' ;"
+            value="Nhập tên cửa hàng" onfocus=" this.value='' ;"
             type="text" />
     <input src="Images/Commons/btn_go.png" alt="Tìm kiếm" class="btn"
             type="image" onclick ="" />
         </p>
 </fieldset>
-</form>  -->
+</form> 
             </div>
       </div>
         <!-- ends .header -->

@@ -15,6 +15,7 @@ $(document).ready(function(){
     });
 });
 </script>
+
 <div style="width: 750px;">
 
 <div id="messages_product_view"></div>
@@ -65,22 +66,18 @@ $(document).ready(function(){
             <th >Tên món ăn</th>
             <td width="200" style="padding:3px;" > <bean:write name="DetailProduct" property="name" /></td>
             </tr>
-            <tr>
-            <th >Cửa hàng:</th>
-            <td width="200" style="padding:3px;" > <bean:write name="DetailProduct" property="idProvider" /></td>
-            </tr>
              <tr>
             <th class="old-price">Giá bình thường:</th>
             <td width="200"  style="padding:3px;" >
               <c:choose>
                   <c:when test="${DetailProduct.promoPrice != 0}">
-                   <span style="text-decoration:line-through;color:black;" class="price" id="old-price-52"> 
+                   <span style="text-decoration:line-through;color:black;" class="price" id="old-price-52"> </span>
                   </c:when>
                   <c:otherwise>
-                   <span style="color:black;" class="price" id="old-price-52"> 
+                   <span style="color:black;" class="price" id="old-price-52"> </span>
                   </c:otherwise>
                   </c:choose>
-             <bean:write name="DetailProduct" property="price" /> </span></td>
+             <bean:write name="DetailProduct" property="price" /> </td>
             </tr>
              <tr>
             <th  class="price-label">Giá khuyến mãi</th>
@@ -110,8 +107,11 @@ $(document).ready(function(){
             
             </tr>
             <tr>
-            <th > Cửa hàng  </th>
-            <td  width="200" style="padding:3px;" > <bean:write name="DetailProduct" property="nameProvider" /></td>
+            <th> Cửa hàng  </th>
+            <td  width="200" style="padding:3px;" ><a href="/displayProviderInfo.vn?id=<bean:write name="DetailProduct" property="idProvider" />"><bean:write name="DetailProduct" property="nameProvider" /></a> 
+            <a href="/displayAddProviderGM.vn?id=<bean:write name="DetailProduct" property="idProvider" />" >
+            <span style="color:red;font-size: 10px">Chỉ đường</span>
+            </a></td>
             </tr>
             </table>
             </div>
@@ -119,7 +119,7 @@ $(document).ready(function(){
 
         <div class="product-img-box">
             <p class="product-image ">
-  <a href ="#"  ><img  width="335" height="315" id="image" src="/serveImage.vn?urlKey=<bean:write name="DetailProduct" property="urlKey"/>" alt="Chair" title="Chair"></a></p>
+  <a href ="#"  ><img  width="335" height="315" id="image" src="/serveImage.vn?urlKey=<bean:write name="DetailProduct" property="urlKey"/>" alt="Chair" ></a></p>
 <div class="more-views">
 </div>
         </div>

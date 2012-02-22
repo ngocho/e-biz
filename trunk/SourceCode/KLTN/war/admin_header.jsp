@@ -84,6 +84,13 @@ Tiếng Anh
           class="level-top">
 <span class="nav-text-provider">Hóa đơn</span>
         </a></li>
+        <li class="level0 nav-4 level-top first parent">
+<a
+          href="xuAdmin.vn"
+          class="level-top">
+
+<span class="nav-text-provider">Thẻ Xu</span>
+        </a></li>
        </logic:present>
 </ul>
 

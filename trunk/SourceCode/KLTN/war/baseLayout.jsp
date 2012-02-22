@@ -25,6 +25,10 @@
 <script type="text/javascript" src="js/ajax.js"></script>
 <script type="text/javascript" src="js/validation.js"></script>
 <script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript"
+      src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAR090EOkpEHeriyDtdUSEzoa-XsJu9nCA&sensor=true">
+</script>
+<script type="text/javascript" src="js/googlemap.js"></script>
 
 <script type="text/javascript">
 
@@ -69,7 +73,7 @@ $(function() {
 
 
 </head>
-<body class=" cms-index-index cms-home">
+<body class=" cms-index-index cms-home" onload="initialize()">
 <div class="wrapper">
         <noscript>
         

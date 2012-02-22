@@ -245,4 +245,7 @@ $(document).ready(function(){
       alt="Các ngân hàng trực tuyến có thể thanh toán"
       title="Additional Options"> </a>
   </div> -->
+  <p class="home-callout">
+<a href=""><img src="Images/Commons/taikhoanXu.png" width="195" height="200" border="0"></a>
+</p>
 </div>
