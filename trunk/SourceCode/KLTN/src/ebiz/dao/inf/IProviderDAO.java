@@ -18,6 +18,8 @@
  */
 package ebiz.dao.inf;
 
+import java.util.List;
+
 import ebiz.dto.account.provider.Provider;
 
 /**
@@ -30,7 +32,8 @@ public interface IProviderDAO {
     public boolean isProvider(String id);
 
     public Provider getProviderById(String id);
-    
+    public List<Provider> getProviderAll();
+    public List<Provider> getProviderByName(String value);
 //    public List<String> getPhoneList();
 
 }
