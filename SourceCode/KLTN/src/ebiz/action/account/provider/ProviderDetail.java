@@ -27,12 +27,13 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import ebiz.action.BaseAction;
+import ebiz.blo.provider.ProviderBLO;
 import ebiz.form.ProviderForm;
-
+import ebiz.dto.account.provider.Provider;
 /**
  * @author ThuyNT
  */
-public class Logout extends BaseAction {
+public class ProviderDetail extends BaseAction {
     /**
      * [Logout ].
      * @param mapping ActionMapping
@@ -46,10 +47,11 @@ public class Logout extends BaseAction {
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
         HttpSession se = request.getSession();
-        ProviderForm login = (ProviderForm) se.getAttribute("provider");
-        if (login != null) {
-            se.invalidate();
-        }
+        String id = request.getParameter("id");
+        Provider provider = ProviderBLO.getProviderById(id);
+        ProviderForm formProvider = new ProviderForm();
+        formProvider.editForm(provider);
+        se.setAttribute("formProvider", formProvider);
         return mapping.findForward(SUCCESS);
 
     }
