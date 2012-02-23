@@ -1,4 +1,5 @@
 package ebiz.dto.checkout;
+
 import java.net.*;
 import java.util.*;
 import java.security.*;
@@ -7,14 +8,14 @@ import java.security.*;
 
 public class NL_Checkout {
 
-	// URL chheckout của nganluong.vn
-	private String nganluong_url = "http://sandbox.nganluong.vn/checkout.php";
-	
-	// Mã merchante site
-	private String merchant_site_code = "346";	// Biến này được nganluong.vn cung cấp khi bạn đăng ký merchant site
-	
-	// Mật khẩu bảo mật
-	private String secure_pass = "123456";	// Biến này được nganluong.vn cung cấp khi bạn đăng ký merchant site
+    // URL chheckout của nganluong.vn
+    private String nganluong_url = "https://www.nganluong.vn/checkout.php";
+    
+    // Mã merchante site
+    private String merchant_site_code = "16800";    // Biến này được nganluong.vn cung cấp khi bạn đăng ký merchant site
+    
+    // Mật khẩu bảo mật
+    private String secure_pass = "duyhung";    // Biến này được nganluong.vn cung cấp khi bạn đăng ký merchant site
     public static final int MD5 = 1;
     public static final int SHA1 = 2;
     private int algorithm = 1;
@@ -43,110 +44,110 @@ public class NL_Checkout {
         }
         return result.toString();
     }
-	
+    
     //Hàm xây dựng url, trong đó có tham số mã hóa (còn gọi là public key)
-	public String buildCheckoutUrl(String return_url,String receiver,String order_code,String price,String transaction_info)
-	{
-		Hashtable arr_param = new Hashtable();
-		arr_param.put("merchant_site_code",this.merchant_site_code.toString());
-		arr_param.put("return_url",URLEncoder.encode(return_url).toString().toLowerCase());
-		arr_param.put("receiver",receiver.toString());
-		arr_param.put("transaction_info", transaction_info.toString());
-		arr_param.put("order_code",order_code.toString());
-		arr_param.put("price",price);
+    public String buildCheckoutUrl(String return_url,String receiver,String order_code,String price,String transaction_info)
+    {
+        Hashtable arr_param = new Hashtable();
+        arr_param.put("merchant_site_code",this.merchant_site_code.toString());
+        arr_param.put("return_url",URLEncoder.encode(return_url).toString().toLowerCase());
+        arr_param.put("receiver",receiver.toString());
+        arr_param.put("transaction_info", transaction_info.toString());
+        arr_param.put("order_code",order_code.toString());
+        arr_param.put("price",price);
 
-		
-		/* b1. tao public key*/
-		String secure_code = "";
-		
-		
-		secure_code =this.merchant_site_code.toString()
-					+" "+URLEncoder.encode(return_url).toLowerCase()
-					+" "+receiver.toString()
-					+" "+transaction_info.toString()
-					+" "+order_code.toString()
-					+" "+price.toString();
-		
-		//Thực hiện mã hóa secure_code
-		try {
-			String strText = secure_code+" "+secure_pass;
-			System.out.print("Trungtk:"+strText+"\n");
-			//gọi hàm mã hóa MD5
-			//String strEecode = md.hash(strText);
-			String strEecode = this.hash(strText);
-			
-			arr_param.put("secure_code",strEecode);
-		} catch (Exception e) {
-			System.out.print(e.getMessage());
-		}
-		
-		
-		/* b2. kiem tra return_url xem có '?' ko, neu chua có the bo sung vào*/
-		String redirect_url = nganluong_url;
-		if (redirect_url.indexOf("?") == -1)
-		{
-			redirect_url += "?";
-		}
-		else if (redirect_url.substring(redirect_url.length()-1,redirect_url.length())== "?" && redirect_url.indexOf("&") == -1)
-		{
-			//neu return_url có '?' nhung không ket thúc bang '?' và chua có dau '&' thi bo sung vào cuoi
-			redirect_url+="&";			
-		}
-	    
-		/* b3. tao url*/
-		String url = "";
+        
+        /* b1. tao public key*/
+        String secure_code = "";
+        
+        
+        secure_code =this.merchant_site_code.toString()
+                    +" "+URLEncoder.encode(return_url).toLowerCase()
+                    +" "+receiver.toString()
+                    +" "+transaction_info.toString()
+                    +" "+order_code.toString()
+                    +" "+price.toString();
+        
+        //Thực hiện mã hóa secure_code
+        try {
+            String strText = secure_code+" "+secure_pass;
+            System.out.print("Trungtk:"+strText+"\n");
+            //gọi hàm mã hóa MD5
+            //String strEecode = md.hash(strText);
+            String strEecode = this.hash(strText);
+            
+            arr_param.put("secure_code",strEecode);
+        } catch (Exception e) {
+            System.out.print(e.getMessage());
+        }
+        
+        
+        /* b2. kiem tra return_url xem có '?' ko, neu chua có the bo sung vào*/
+        String redirect_url = nganluong_url;
+        if (redirect_url.indexOf("?") == -1)
+        {
+            redirect_url += "?";
+        }
+        else if (redirect_url.substring(redirect_url.length()-1,redirect_url.length())== "?" && redirect_url.indexOf("&") == -1)
+        {
+            //neu return_url có '?' nhung không ket thúc bang '?' và chua có dau '&' thi bo sung vào cuoi
+            redirect_url+="&";          
+        }
+        
+        /* b3. tao url*/
+        String url = "";
 
-		for (Enumeration e = arr_param.keys (); e.hasMoreElements();)
-		{
-			String key = (String)e.nextElement();
-			String val = (String)arr_param.get(key);
-			if (url == "")
-			{
-				url += key+"="+val;
-			}
-			else
-			{
-				url += "&"+key+"="+val;
-			}
-		}
-		
-		return redirect_url+url;
-	}
-	  
-	public Boolean verifyPaymentUrl(String transaction_info,String order_code,String price,String payment_id,String payment_type,String error_text,String secure_code)
-	{
-		Boolean result = false;
-	
-		/* 1. tao public key bang url param và secure_pass: */
-		String verify_secure_code = "";
-		verify_secure_code =" "+transaction_info.toString()
-							+" "+order_code.toString()
-							+" "+price.toString()
-							+" "+payment_id.toString()
-							+" "+payment_type.toString()
-							+" "+error_text.toString();
+        for (Enumeration e = arr_param.keys (); e.hasMoreElements();)
+        {
+            String key = (String)e.nextElement();
+            String val = (String)arr_param.get(key);
+            if (url == "")
+            {
+                url += key+"="+val;
+            }
+            else
+            {
+                url += "&"+key+"="+val;
+            }
+        }
+        System.out.print("\n------"+redirect_url+url+"--------\n");
+        return redirect_url+url;
+    }
+      
+    public Boolean verifyPaymentUrl(String transaction_info,String order_code,String price,String payment_id,String payment_type,String error_text,String secure_code)
+    {
+        Boolean result = false;
+    
+        /* 1. tao public key bang url param và secure_pass: */
+        String verify_secure_code = "";
+        verify_secure_code =" "+transaction_info.toString()
+                            +" "+order_code.toString()
+                            +" "+price.toString()
+                            +" "+payment_id.toString()
+                            +" "+payment_type.toString()
+                            +" "+error_text.toString();
 
 
-		//thực hiện mã hóa verify_secure_code
-		try
-		{
-			verify_secure_code = this.hash(verify_secure_code+" "+merchant_site_code+" "+secure_pass);
-		}
-	    catch (Exception e) {
-	    	System.err.println(e.getMessage());
-		}
-	
-		
-		/* 2. kiem tra security code*/
-		if (verify_secure_code == secure_code)
-		{
-			result = true;
-		}
-		else
-		{
-			result = false;
-		}
-		return result;
-	}	
+        //thực hiện mã hóa verify_secure_code
+        try
+        {
+            verify_secure_code = this.hash(verify_secure_code+" "+merchant_site_code+" "+secure_pass);
+        }
+        catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+    
+        
+        /* 2. kiem tra security code*/
+        if (verify_secure_code == secure_code)
+        {
+            result = true;
+        }
+        else
+        {
+            result = false;
+        }
+        return result;
+    }   
 
 }
