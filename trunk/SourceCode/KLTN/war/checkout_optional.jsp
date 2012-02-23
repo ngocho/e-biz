@@ -39,18 +39,9 @@
                          <button type="button" title="Thanh toán"  class="button"  onclick="setLocation('/checkoutMoney.vn?checkoutOption=xu')"><span>Thanh toán với tài khoản Xu</span></button>
                         </div>
                     </li>
-                    <%NL_Checkout nl_checkout = new NL_Checkout();
-                    OrderBillForm bill =(OrderBillForm) session.getAttribute("bill");
-                    String return_url ="http://12.test-kltn1.appspot.com/checkoutMoney.vn?checkoutOption=xu";
-                    String receiver ="uit.mmt@gmail.com";
-                    String transaction_info ="Thanh toán hóa đơn";
-                    String order_code = String.valueOf(bill.getId());
-                    String price = String.valueOf(bill.getSumPrice());
-                    String url =  nl_checkout.buildCheckoutUrl(return_url, receiver, order_code, price, transaction_info);
-                    %>
                     <li style="margin-top:10px;">
                         <div class="input-box">
-                       <a href="<%=url %>">
+                       <a href="<%=(null==session.getAttribute("nganluongurl"))?"":((String)session.getAttribute("nganluongurl"))%>">
                        <img src="Images/Commons/btn-paynow-122.png" /></a>
                         </div>
                     </li>
