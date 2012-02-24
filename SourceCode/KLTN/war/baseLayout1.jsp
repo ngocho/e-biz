@@ -72,7 +72,7 @@ $(function() {
 
 
 </head>
-<body class=" cms-index-index cms-home" onload="initialize()">
+<body class=" cms-index-index cms-home" >
 <div class="wrapper">
         <noscript>
         
