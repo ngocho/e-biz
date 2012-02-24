@@ -18,28 +18,25 @@
  */
 package ebiz.action.account.provider;
 
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import ebiz.action.BaseAction;
-import ebiz.blo.customer.CustomerBLO;
 import ebiz.blo.provider.ProviderBLO;
 import ebiz.dto.account.provider.Provider;
-import ebiz.form.LoginForm;
-import ebiz.form.ProviderForm;
-import ebiz.util.CommonConstant;
 
 /**
  * @author ThuyNT
  */
-public class GMProviderAddress extends BaseAction {
+public class ProviderAdd extends BaseAction {
     /**
-     * [Logout ].
+     * [get Add by ID ].
      * @param mapping ActionMapping
      * @param form ActionForm
      * @param request HttpServletRequest
@@ -50,22 +47,15 @@ public class GMProviderAddress extends BaseAction {
      */
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
-        
+        PrintWriter out = response.getWriter();
+        response.setHeader("Cache-Control", "no-cache");
+        response.setContentType("text/xml; charset=utf-8");
+        response.setCharacterEncoding("utf-8");
         String id = request.getParameter("id");
         Provider provider = ProviderBLO.getProviderById(id);
-        String add = provider.getProviderAddress() +" , Hồ Chí Minh, Việt Nam";
-        HttpSession se = request.getSession();
-        LoginForm login = (LoginForm)se.getAttribute(CommonConstant.USER);
-        if(login != null){
-            se.setAttribute("startProvider", CustomerBLO.toStringAddres(login.getHomeNumber(), login.getBuildingName(),login.getStreetName(),login.getWardName(),
-                    login.getDistrictName()));
-        }
-        else{
-            se.setAttribute("startProvider", "Bến Thành , Hồ Chí Minh, Việt Nam");
-        }
-        
-        se.setAttribute("endProvider", add);
-        return mapping.findForward(SUCCESS);
+        String add = provider.getProviderAddress();
+        out.println(add);
+        return null;
 
     }
 
