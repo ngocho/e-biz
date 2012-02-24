@@ -71,7 +71,6 @@ public class NL_Checkout {
         //Thực hiện mã hóa secure_code
         try {
             String strText = secure_code+" "+secure_pass;
-            System.out.print("Trungtk:"+strText+"\n");
             //gọi hàm mã hóa MD5
             //String strEecode = md.hash(strText);
             String strEecode = this.hash(strText);
@@ -110,7 +109,6 @@ public class NL_Checkout {
                 url += "&"+key+"="+val;
             }
         }
-        System.out.print("\n------"+redirect_url+url+"--------\n");
         return redirect_url+url;
     }
       
