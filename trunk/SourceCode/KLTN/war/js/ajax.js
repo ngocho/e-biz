@@ -27,6 +27,19 @@ function  addToCart(quantity,idProduct){
     return result;
     
 }
+//get Add of Provider
+function  getAddProvider(id){
+    $.ajax({
+        type: "GET",
+        url: "/getAddProvider.vn",
+        data: "id="+id,
+        dataType: "text",
+        async: false,
+        success: function(data){
+            return data;
+        }
+        });
+}
 
 function  updateComment(content){
     $.ajax({
