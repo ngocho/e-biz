@@ -203,7 +203,6 @@ public class FoodBLO {
         // long valueCopare = formList.get(0).getPrice() -
         // List<Long> sortList1 = new ArrayList<Long>();
         List<Long> sortList2 = new ArrayList<Long>();
-        if(!formList.isEmpty()){
         for (FoodForm form : formList) {
             // sortList1.add(form.getId());
             sortList2.add(form.getPrice() - form.getPromoPrice());
@@ -220,7 +219,7 @@ public class FoodBLO {
                 resultList.add(formList.get(i));
             }
         }
-        }
+        
         }
         return resultList;
     }
@@ -944,7 +943,7 @@ public class FoodBLO {
      * @return boolean
      */
     public static boolean uploadFood(Food food) {
-        food.setIsDisplay(0); // display ( must edit : 0 - product doesn't sell)
+        food.setIsDisplay(0); // not display ( must edit : 0 - product doesn't sell)
         food.setFoodStatusId(food.getFoodStatusId()); // status of product
 
         food.setNumberOrder(0);
