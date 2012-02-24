@@ -12,6 +12,16 @@ $(document).ready(function(){
     });
 });
 </script>
+<logic:present name="flagCompare">
+  <c:if test="${flagCompare =='0'}">
+  <script type="text/javascript" >
+  $(document).ready(function(){
+    alert("Không có sản phẩm để so sánh");
+  });
+  </script>
+  </c:if>
+ <c:remove var="flagCompare"/>
+</logic:present>
   <p class="home-callout">
   
 <div id='wrapper'>
@@ -102,6 +112,10 @@ $(document).ready(function(){
                 <span class="price-label">Giá khuyến mãi:</span> <span
                   class="price" id="product-price-52"> <bean:write
                     name="element" property="promoPrice" /> </span>
+              </p>
+              <p >
+                <a href="/compareFood.vn?screen=home&id=<bean:write name="element" property="id" />" style="color:blue;"> 
+                So sánh với cửa hàng khác</a>
               </p>
             <p><a href="/displayProductDetail.vn?id=<bean:write name="element" property="id" />"><img src="Images/Commons/xem.jpg" width="100"></img></a><!-- a class="link" href="#" >Xem hang </a> --></p>
             <p><a  class="addShopping" name="<bean:write name="element" property="id"/>" href=""   ><img src="Images/Commons/mua.jpg" width="100"></img></a>
