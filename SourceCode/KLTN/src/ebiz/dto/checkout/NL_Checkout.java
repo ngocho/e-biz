@@ -12,10 +12,10 @@ public class NL_Checkout {
     private String nganluong_url = "https://www.nganluong.vn/checkout.php";
     
     // Mã merchante site
-    private String merchant_site_code = "16800";    // Biến này được nganluong.vn cung cấp khi bạn đăng ký merchant site
+    private String merchant_site_code = "21995";    // Biến này được nganluong.vn cung cấp khi bạn đăng ký merchant site
     
     // Mật khẩu bảo mật
-    private String secure_pass = "duyhung";    // Biến này được nganluong.vn cung cấp khi bạn đăng ký merchant site
+    private String secure_pass = "matkhau";    // Biến này được nganluong.vn cung cấp khi bạn đăng ký merchant site
     public static final int MD5 = 1;
     public static final int SHA1 = 2;
     private int algorithm = 1;
