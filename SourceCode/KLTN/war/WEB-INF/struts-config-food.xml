@@ -121,7 +121,7 @@
 			type="ebiz.action.account.customer.ProductCompare" 
 			scope="session" validate="true">
 		<forward name="success" path="compareFoodLayout" redirect="true" />
-		<forward name="failure" path="/categoryRecord.vn" redirect="true"  />
+		<forward name="failure" path="category" redirect="true"  />
     </action>
     
 
