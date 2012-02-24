@@ -124,7 +124,7 @@ public class CreateOrderBill extends BaseAction {
                 String return_url = "http://demo.nganluong.vn";// Địa chỉ trả về 
                 String transaction_info = "Demo";//Thông tin giao dịch
                 String order_code = String.valueOf(orderForm.getId());
-                String receiver = "duylt_it@yahoo.com";//Tài khoản nhận tiền 
+                String receiver = "duyltgl92@gmail.com";//Tài khoản nhận tiền 
                 String price = String.valueOf(orderForm.getSumPrice());
                 String url =  nl_checkout.buildCheckoutUrl(return_url, receiver, order_code, price, transaction_info);
                 se.setAttribute("nganluongurl", url);
