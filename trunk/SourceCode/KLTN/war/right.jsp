@@ -167,28 +167,6 @@ $(document).ready(function(){
     </div>
   </div>
 
-  <!-- <div class="block block-banner">
-    <div class="block-content">
-      <img src="./resource_files/col_right_callout.jpg"
-        title="Thông tin quảng cáo"
-        alt="Hiển thị thông tin quảng cáo">
-    </div>
-  </div> -->
-  <!-- <script type="text/javascript">
-//<![CDATA[
-    function validatePollAnswerIsSelected()
-    {
-        var options = $$('input.poll_vote');
-        for( i in options ) {
-            if( options[i].checked == true ) {
-                return true;
-            }
-        }
-        return false;
-    }
-//]]>
-</script> -->
-
 
   <div class="block block-poll">
     <div class="block-title">
@@ -238,13 +216,6 @@ $(document).ready(function(){
   <p class="home-callout">
 <a href=""><img src="Images/Commons/accepted-payment-yellow-152x63.png" width="195" height="100" border="0"></a>
 </p>
-  <!-- <div class="paypal-logo">
-    <a href="#"
-      onclick="javascript:window.open(&#39;https://www.paypal.com/us/cgi-bin/webscr?cmd=xpt/Marketing/popup/OLCWhatIsPayPal-outside&#39;,&#39;paypal&#39;,&#39;width=600,height=350,left=0,top=0,location=no,status=yes,scrollbars=yes,resizable=yes&#39;); return false;"><img
-      src="Images/Commons/bnr_nowAccepting_150x60.gif"
-      alt="Các ngân hàng trực tuyến có thể thanh toán"
-      title="Additional Options"> </a>
-  </div> -->
   <p class="home-callout">
 <a href=""><img src="Images/Commons/taikhoanXu.png" width="195" height="200" border="0"></a>
 </p>

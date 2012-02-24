@@ -5,27 +5,24 @@
 <%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
 <script type="text/javascript">
 $(document).ready(function(){
-/*     $(".updateShopping").click(function() {
-        var index = $(this).attr('rel');
-        var id = $(this).attr('name');
-        var number = $("#"+index).val();
-        updateNumberProduct(id,number,index);
-        return false;
-    }); */
+    initialize();
     calcRoute();
     
 });
 </script>
 <div class="cart">
 <p class="home-callout">
+<logic:present name="endProvider">
 <div>
 <strong>Bắt đầu: </strong>
-<input type="text" id="start" name="start" value="<bean:write name="startProvider"/>"/>
+<input type="text" id="start" name="start" size="300px" style="width:200px;" value="<bean:write name="startProvider"/>" /><br>
 <strong>Tới: </strong>
 <bean:write name="endProvider"/>
-<input type="hidden" id="end"  name="end" value="<bean:write name="endProvider"/>" />
+<input type="hidden" id="end"  name="end" value="<bean:write name="endProvider"/>" /><br>
+
+<input type="button" name="view" value="Xem đường đi" onclick="calcRoute();" class="buttonBG""/>
 </div>
+</logic:present>
+
 <div id="map_canvas" style="width:800px; height:500px;"></div>
-
-
 </div>

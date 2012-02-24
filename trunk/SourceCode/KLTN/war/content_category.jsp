@@ -44,23 +44,6 @@ function slideSwitch() {
     $(function() {
         setInterval("slideSwitch()", 5000);
     });
-/*     $(document).ready(function() {
-
-        var limit = $("#limit").val();
-        $("#record option:selected").removeAttr('selected');
-        $("#record").val("/categoryRecord.vn?limit=" + limit).attr('selected', true);
-
-        var col = $("#col").val();
-        $("#order option:selected").removeAttr('selected');
-        $("#order").val("/categoryRecord.vn?col=" + col).attr('selected', true);
-
-        var page = $("#page").val();
-        if ($("a").text == page) {
-            var a = $("a").text;
-            a.css("color", "black");
-        }
-
-    }); */
 </script>
 <style type="text/css">
 
@@ -321,7 +304,8 @@ function slideSwitch() {
                     name="element" property="number" /> </span>
               </p>
                <p >
-                <a href="/compareFood.vn?id=<bean:write name="element" property="id" />" style="color:blue;"> So sánh với sản phẩm của cửa hàng khác</a>
+                <a href="/compareFood.vn?screen=category&id=<bean:write name="element" property="id" />" style="color:blue;"> 
+                So sánh với sản phẩm của cửa hàng khác</a>
               </p>
             </div>
             <div class="actions">
