@@ -201,6 +201,8 @@ public class date_food_item implements BaseColumns {
         Countmax = countmax;
     }
 
+    /**  . */
     private String Idgoods, Name, Price, Buyprice, Imageurl, Startdate, Enddate;
+    /**  . */
     private int Buycount, Countmin, Countmax;
 }

@@ -155,7 +155,7 @@ public class MenuActivity extends Activity implements OnClickListener, OnDismiss
                                 .login(dialog_username.getText().toString(), dialog_password.getText().toString());
                         PrefUtil.SetPref(MenuActivity.this, "username", dialog_username.getText().toString());
                         PrefUtil.SetPref(MenuActivity.this, "password", dialog_password.getText().toString());
-                        PrefUtil.SetPref(MenuActivity.this, "xu", mEngine.GetXu(dialog_username.getText().toString(),
+                        PrefUtil.SetPref(MenuActivity.this, "xu", mEngine.mGetXu(dialog_username.getText().toString(),
                                 dialog_password.getText().toString()));
                         mCurrentDialog.dismiss();
                     }

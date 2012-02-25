@@ -75,7 +75,7 @@ public class SavedSearchActivity extends Activity implements OnClickListener, Te
             if (convertView == null)
                 convertView = getLayoutInflater().inflate(R.layout.item_search, null);
             mData.moveToPosition(position);
-            String url = mEngine.URL_Image + mData.getString(mData.getColumnIndex("imageurl"));
+            String url = mEngine.mURLImage + mData.getString(mData.getColumnIndex("imageurl"));
             ImageView image = (ImageView) convertView.findViewById(R.id.item_search_image);
             TextView name = (TextView) convertView.findViewById(R.id.item_search_name);
             TextView price = (TextView) convertView.findViewById(R.id.item_search_price);

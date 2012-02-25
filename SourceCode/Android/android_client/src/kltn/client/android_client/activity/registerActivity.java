@@ -1,6 +1,3 @@
-/**
- * 
- */
 package kltn.client.android_client.activity;
 
 import kltn.client.android_client.R;
@@ -12,7 +9,6 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnDismissListener;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -86,7 +82,7 @@ public class RegisterActivity extends Activity implements OnDismissListener {
             mIsWaiting = true;
             Thread t = new Thread() {
                 public void run() {
-                    flag = mEngine.register(nickname.getText().toString(), password.getText().toString(), fullname
+                    flag = mEngine.mRegister(nickname.getText().toString(), password.getText().toString(), fullname
                             .getText().toString(), "male", email.getText().toString(), phone.getText().toString(),
                             address.getText().toString(), birthday.getText().toString());
                     mCurrentDialog.dismiss();

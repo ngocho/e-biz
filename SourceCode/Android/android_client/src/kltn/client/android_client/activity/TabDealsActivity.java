@@ -1,6 +1,3 @@
-/**
- * 
- */
 package kltn.client.android_client.activity;
 
 import java.util.Vector;
@@ -18,7 +15,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnDismissListener;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -31,6 +27,10 @@ import android.widget.TextView;
 
 /**
  * @author NThanhPhong
+ */
+/**
+ * @author wind
+ *
  */
 public class TabDealsActivity extends Activity implements OnClickListener, OnDismissListener {
 
@@ -63,20 +63,30 @@ public class TabDealsActivity extends Activity implements OnClickListener, OnDis
         // viewFlow.setAdapter(mAdapter);
         // viewFlow.setFlowIndicator(init);
     }
+    /**
+     * [LoadData].
+     */
     public void LoadData() {
         mCurrentDialog = ProgressDialog.show(TabDealsActivity.this, null, getString(R.string.menu_waiting), true);
         mCurrentDialog.setOnDismissListener(TabDealsActivity.this);
         mIsWaiting = true;
         Thread t = new Thread() {
             public void run() {
-                mData = mEngine.get_best_food();
+                mData = mEngine.getBestFood();
                 mCurrentDialog.dismiss();
             }
         };
         t.start();
     }
+    /**
+     * @author NThanhPhong
+     */
     public class DealsAdapter extends BaseAdapter {
+        /** context. */
         Context context;
+        /**
+         * @param mycontext Context
+         */
         public DealsAdapter(Context mycontext) {
             context = mycontext;
         }
@@ -97,8 +107,9 @@ public class TabDealsActivity extends Activity implements OnClickListener, OnDis
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            if (convertView == null)
+            if (convertView == null) {
                 convertView = getLayoutInflater().inflate(R.layout.item_deals, null);
+            }
             ImageView image = (ImageView) convertView.findViewById(R.id.item_deals_image);
             ItemData = mData.get(position);
             TextView mDate = (TextView) convertView.findViewById(R.id.tab_deals_date);
@@ -112,7 +123,7 @@ public class TabDealsActivity extends Activity implements OnClickListener, OnDis
             mPrice.setText(getString(R.string.deals_price) + " " + ItemData.getPrice() + " " + getString(R.string.vnd));
             mPricePromotion.setText(getString(R.string.deals_sale) + " " + ItemData.getBuyprice() + " "
                     + getString(R.string.vnd));
-            BitmapManager.INSTANCE.loadBitmap(mEngine.URL_Image + ItemData.getImageurl(), image, 500, 500);
+            BitmapManager.INSTANCE.loadBitmap(mEngine.mURLImage + ItemData.getImageurl(), image, 500, 500);
             convertView.setOnClickListener(new OnClickListener() {
 
                 @Override
@@ -125,19 +136,32 @@ public class TabDealsActivity extends Activity implements OnClickListener, OnDis
             return convertView;
         }
     };
+    /**  . */
     private best_food_item ItemData;
-    public Vector<best_food_item> mData;
+    /**  . */
+    private Vector<best_food_item> mData;
+    /**  . */
     public Engine mEngine;
-    public CircleFlowIndicator init;
-    public ViewFlow viewFlow;
-    public DealsAdapter mAdapter;
-    public Button mBack;
-    public LinearLayout mHome;
-    public LinearLayout mDeals;
-    public LinearLayout mBest;
-    public LinearLayout mBrowser;
+    /**  . */
+    private CircleFlowIndicator init;
+    /**  . */
+    private ViewFlow viewFlow;
+    /**  . */
+    private DealsAdapter mAdapter;
+    /**  . */
+    private Button mBack;
+    /**  . */
+    private LinearLayout mHome;
+    /**  . */
+    private LinearLayout mDeals;
+    /**  . */
+    private LinearLayout mBest;
+    /**  . */
     private Dialog mCurrentDialog;
-    public boolean mIsWaiting;
+    /**  . */
+    private LinearLayout mBrowser;
+    /**  . */
+    private boolean mIsWaiting;
     /*
      * (non-Javadoc)
      * @see android.view.View.OnClickListener#onClick(android.view.View)

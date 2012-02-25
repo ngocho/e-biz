@@ -1,6 +1,3 @@
-/**
- * 
- */
 package kltn.client.android_client.engine;
 
 import java.io.BufferedReader;
@@ -29,22 +26,32 @@ import android.content.Context;
  * @author NThanhPhong
  */
 public class Engine {
-    private String URL_Login = "http://16.test-kltn1.appspot.com/getUserFuntion.vn";
-    private String URL_CUSTOMER_FUNTION = "http://16.test-kltn1.appspot.com/getUserFuntion.vn";
-    private String URL_Get_Date_Food;
-    private String URL_get_Best_Food = "http://16.test-kltn1.appspot.com/getBestList.vn";
-    public String URL_Image = "http://16.test-kltn1.appspot.com/serveImage.vn?urlKey=";
+    /** . */
+    private String mURLLogin = "http://16.test-kltn1.appspot.com/getUserFuntion.vn";
+    /** . */
+    private String mURLCUSTOMERFUNTION = "http://16.test-kltn1.appspot.com/getUserFuntion.vn";
+    /** . */
+    private String mURLGetDateFood;
+    /** . */
+    private String mURLGetBestFood = "http://16.test-kltn1.appspot.com/getBestList.vn";
+    /** . */
+    public String mURLImage = "http://16.test-kltn1.appspot.com/serveImage.vn?urlKey=";
 
     // getBrowserList
 
-    public Vector<Browser_food_item> GetBrowserFood(Context mContext) {
+    /**
+     * [Give the description for method].
+     * @param mContext Context
+     * @return Vector<Browser_food_item>
+     */
+    public Vector<Browser_food_item> getBrowserFood(Context mContext) {
         Vector<Browser_food_item> result = new Vector<Browser_food_item>();
         try {
-            JSONArray JsonArray_Browser = new JSONArray(Query_URL(PrefUtil.GetStringPref(mContext, "linkserver")
+            JSONArray jsonArrayBrowser = new JSONArray(mQueryURL(PrefUtil.GetStringPref(mContext, "linkserver")
                     + "getBrowserList.vn"));
             int i;
-            for (i = 0; i < JsonArray_Browser.length(); i++) {
-                JSONObject item = (JSONObject) JsonArray_Browser.get(i);
+            for (i = 0; i < jsonArrayBrowser.length(); i++) {
+                JSONObject item = (JSONObject) jsonArrayBrowser.get(i);
                 Browser_food_item node = new Browser_food_item(item.getString("id"), item.getString("name"),
                         item.getString("detail"), item.getString("price"), item.getString("promotionPrice"),
                         item.getString("url"), item.getString("dateUpload"), item.getString("dateUpload"),
@@ -60,13 +67,17 @@ public class Engine {
 
     // lay danh sách sản phẩm theo khoảng cách gần nhất
     // lấy danh sách sản phẩm theo bestfood
-    public Vector<best_food_item> get_best_food() {
+    /**
+     * [Give the description for method].
+     * @return Vector<best_food_item>
+     */
+    public Vector<best_food_item> getBestFood() {
         Vector<best_food_item> result = new Vector<best_food_item>();
         try {
-            JSONArray JsonArray_phone = new JSONArray(Query_URL(URL_get_Best_Food));
+            JSONArray jsonArrayphone = new JSONArray(mQueryURL(mURLGetBestFood));
             int i;
-            for (i = 0; i < JsonArray_phone.length(); i++) {
-                JSONObject item = (JSONObject) JsonArray_phone.get(i);
+            for (i = 0; i < jsonArrayphone.length(); i++) {
+                JSONObject item = (JSONObject) jsonArrayphone.get(i);
                 best_food_item node = new best_food_item(item.getString("id"), item.getString("name"),
                         item.getString("detail"), item.getString("price"), item.getString("promotionPrice"),
                         item.getString("url"), item.getString("dateUpload"), item.getString("dateUpload"),
@@ -80,13 +91,17 @@ public class Engine {
     }
 
     // lấy danh sách sản phẩm theo th�?i gian
-    public Vector<date_food_item> get_date_food() {
+    /**
+     * [get_date_food].
+     * @return Vector<date_food_item>
+     */
+    public Vector<date_food_item> getDateFood() {
         Vector<date_food_item> result = new Vector<date_food_item>();
         try {
-            JSONArray JsonArray_phone = new JSONArray(Query_URL(URL_Get_Date_Food));
+            JSONArray jsonArrayPhone = new JSONArray(mQueryURL(mURLGetDateFood));
             int i;
-            for (i = 0; i < JsonArray_phone.length(); i++) {
-                JSONObject item = (JSONObject) JsonArray_phone.get(i);
+            for (i = 0; i < jsonArrayPhone.length(); i++) {
+                JSONObject item = (JSONObject) jsonArrayPhone.get(i);
                 date_food_item node = new date_food_item(item.getString("id"), item.getString("name"),
                         item.getString("price"), item.getString("buyprice"), item.getString("imageurl"),
                         item.getString("startdate"), item.getString("enddate"), item.getInt("buycount"),
@@ -100,11 +115,17 @@ public class Engine {
         return result;
     }
 
-    public String GetXu(String username, String password) {
+    /**
+     * [GetXu].
+     * @param username String
+     * @param password String
+     * @return String
+     */
+    public String mGetXu(String username, String password) {
         String result = "0";
         try {
             JSONObject item = new JSONObject(
-                    Query_URL("http://16.test-kltn1.appspot.com/getUserFuntion.vn?flag=GetXu&content=" + username + "@"
+                    mQueryURL("http://16.test-kltn1.appspot.com/getUserFuntion.vn?flag=GetXu&content=" + username + "@"
                             + password));
             return item.getString("flag");
         } catch (Exception e) {
@@ -112,10 +133,16 @@ public class Engine {
         }
         return result;
     }
-    public JSONObject GetInfo(String username, String password) {
+    /**
+     * [GetInfo].
+     * @param username String
+     * @param password String
+     * @return JSONObject
+     */
+    public JSONObject mGetInfo(String username, String password) {
         try {
             JSONObject item = new JSONObject(
-                    Query_URL("http://16.test-kltn1.appspot.com/getUserFuntion.vn?flag=Info&content=" + username + "@"
+                    mQueryURL("http://16.test-kltn1.appspot.com/getUserFuntion.vn?flag=Info&content=" + username + "@"
                             + password));
             return item;
         } catch (Exception e) {
@@ -123,10 +150,15 @@ public class Engine {
             return null;
         }
     }
-    public JSONObject GetFood(String idfood) {
+    /**
+     * [GetFood].
+     * @param idfood String
+     * @return JSONObject
+     */
+    public JSONObject mGetFood(String idfood) {
         try {
             JSONObject item = new JSONObject(
-                    Query_URL("http://16.test-kltn1.appspot.com/getFoodId.vn?idfood=" + idfood));
+                    mQueryURL("http://16.test-kltn1.appspot.com/getFoodId.vn?idfood=" + idfood));
             return item;
         } catch (Exception e) {
             e.printStackTrace();
@@ -135,15 +167,28 @@ public class Engine {
     }
 
     // đăng ký tài khoản ngư�?i dùng
-    public boolean register(String username, String password, String fullname, String sex, String email, String phone,
+    /**
+     * [register].
+     * @param username String
+     * @param password String
+     * @param fullname String
+     * @param sex String
+     * @param email String
+     * @param phone String
+     * @param address String
+     * @param birthday String
+     * @return boolean
+     */
+    public boolean mRegister(String username, String password, String fullname, String sex, String email, String phone,
             String address, String birthday) {
         boolean result = false;
         try {
-            JSONObject item = new JSONObject(Query_URL(URL_CUSTOMER_FUNTION + "?flag=register&content=" + username
-                    + "@" + password + "@" + fullname + "@" + phone + "@" + email + "@" + birthday + "@" + sex + "@"
+            JSONObject item = new JSONObject(mQueryURL(mURLCUSTOMERFUNTION + "?flag=register&content=" + username + "@"
+                    + password + "@" + fullname + "@" + phone + "@" + email + "@" + birthday + "@" + sex + "@"
                     + address));
-            if (item.getInt("flag") == 1)
+            if (item.getInt("flag") == 1) {
                 result = true;
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -151,28 +196,49 @@ public class Engine {
     }
 
     // login vào hệ thống
+    /**
+     * [login].
+     * @param username String
+     * @param password String
+     * @return boolean
+     */
     public boolean login(String username, String password) {
-        return ParseJSON_login(username, password);
+        return mParseJSONLogin(username, password);
     }
-    public boolean ChangePass(String username, String oldpassword, String newpassword) {
+    /**
+     * [ChangePass].
+     * @param username String
+     * @param oldpassword String
+     * @param newpassword String
+     * @return boolean
+     */
+    public boolean mChangePass(String username, String oldpassword, String newpassword) {
         boolean jResult = false;
         try {
-            JSONObject item = new JSONObject(Query_URL(URL_CUSTOMER_FUNTION + "?flag=changepass&content=" + username
+            JSONObject item = new JSONObject(mQueryURL(mURLCUSTOMERFUNTION + "?flag=changepass&content=" + username
                     + "@" + oldpassword + "@" + newpassword));
-            if (item.getString("flag").equals("1"))
+            if (item.getString("flag").equals("1")) {
                 jResult = true;
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
         return jResult;
     }
 
-    private boolean ParseJSON_login(String username, String password) {
+    /**
+     * [ParseJSON_login].
+     * @param username String
+     * @param password String
+     * @return boolean
+     */
+    private boolean mParseJSONLogin(String username, String password) {
         boolean jResult = false;
         try {
-            JSONObject item = new JSONObject(Query_URL(URL_Login + "?flag=login&content=" + username + "@" + password));
-            if (item.getString("flag").equals("1"))
+            JSONObject item = new JSONObject(mQueryURL(mURLLogin + "?flag=login&content=" + username + "@" + password));
+            if (item.getString("flag").equals("1")) {
                 jResult = true;
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -180,7 +246,12 @@ public class Engine {
     }
 
     // query 1 url từ server
-    public String Query_URL(String q) {
+    /**
+     * [Give the description for method].
+     * @param q String
+     * @return String
+     */
+    public String mQueryURL(String q) {
         String qResult = null;
         String qString = q;
         HttpClient httpClient = new DefaultHttpClient();
@@ -207,6 +278,12 @@ public class Engine {
         }
         return qResult;
     }
+    /**
+     * [Give the description for method].
+     * @param in String
+     * @param count int
+     * @return String
+     */
     public String fillString(String in, int count) {
         String result = "";
         if (in.length() > count) {

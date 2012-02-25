@@ -1,12 +1,8 @@
-/**
- * 
- */
 package kltn.client.android_client.activity;
 
 import java.util.Vector;
 
 import kltn.client.android_client.R;
-import kltn.client.android_client.activity.TabDealsActivity.DealsAdapter;
 import kltn.client.android_client.engine.BitmapManager;
 import kltn.client.android_client.engine.Engine;
 import kltn.client.android_client.model.best_food_item;
@@ -56,20 +52,30 @@ public class TabBestActivity extends Activity implements OnClickListener, OnDism
         mBrowser.setOnClickListener(this);
         LoadData();
     }
+    /**
+     * [Give the description for method].
+     */
     public void LoadData() {
         mCurrentDialog = ProgressDialog.show(TabBestActivity.this, null, getString(R.string.menu_waiting), true);
         mCurrentDialog.setOnDismissListener(TabBestActivity.this);
         mIsWaiting = true;
         Thread t = new Thread() {
             public void run() {
-                mData = mEngine.get_best_food();
+                mData = mEngine.getBestFood();
                 mCurrentDialog.dismiss();
             }
         };
         t.start();
     }
+    /**
+     * @author NThanhPhong
+     */
     public class BestAdapter extends BaseAdapter {
+        /** . */
         Context context;
+        /**
+         * @param mycontext
+         */
         public BestAdapter(Context mycontext) {
             context = mycontext;
         }
@@ -88,13 +94,22 @@ public class TabBestActivity extends Activity implements OnClickListener, OnDism
             return 0;
         }
 
+        /**
+         * [Explain the description for this method here].
+         * @param position int
+         * @param convertView View
+         * @param parent ViewGroup
+         * @return View
+         * @see android.widget.Adapter#getView(int, android.view.View, android.view.ViewGroup)
+         */
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            if (convertView == null)
+            if (convertView == null) {
                 convertView = getLayoutInflater().inflate(R.layout.item_best, null);
+            }
             ImageView image = (ImageView) convertView.findViewById(R.id.item_best_image);
             final best_food_item item = mData.get(position);
-            BitmapManager.INSTANCE.loadBitmap(mEngine.URL_Image + item.getImageurl(), image, 300, 300);
+            BitmapManager.INSTANCE.loadBitmap(mEngine.mURLImage + item.getImageurl(), image, 300, 300);
             TextView promotion = (TextView) convertView.findViewById(R.id.item_best_gt);
             TextView date = (TextView) convertView.findViewById(R.id.item_best_date);
             TextView price = (TextView) convertView.findViewById(R.id.item_best_price);
@@ -129,16 +144,27 @@ public class TabBestActivity extends Activity implements OnClickListener, OnDism
             return convertView;
         }
     };
+    /**  . */
     private ListView mList;
+    /**  . */
     private Button mBack;
+    /**  . */
     private LinearLayout mHome;
+    /**  . */
     private LinearLayout mDeals;
+    /**  . */
     private LinearLayout mBest;
+    /**  . */
     private LinearLayout mBrowser;
+    /**  . */
     private Dialog mCurrentDialog;
+    /**  . */
     private boolean mIsWaiting;
+    /**  . */
     private BestAdapter mAdapter;
+    /**  . */
     private Engine mEngine;
+    /**  . */
     public Vector<best_food_item> mData;
     /*
      * (non-Javadoc)

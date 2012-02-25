@@ -1,6 +1,3 @@
-/**
- * 
- */
 package kltn.client.android_client.engine.adapter;
 
 import kltn.client.android_client.R;
@@ -87,13 +84,24 @@ public class BestAdapter extends MCursorAdapter {
         return convertView;
     }
 
+    /**
+     * @author NThanhPhong
+     *
+     */
     public static class ViewHolder {
+        /**  . */
         ImageView image;
+        /**  . */
         TextView name;
+        /**  . */
         TextView sub;
+        /**  . */
         TextView price;
+        /**  . */
         TextView buyprice;
+        /**  . */
         TextView date;
+        /**  . */
         TextView buycount;
     }
     // ========================================================================================================
