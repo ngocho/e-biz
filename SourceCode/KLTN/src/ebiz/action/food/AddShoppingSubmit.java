@@ -72,9 +72,6 @@ public class AddShoppingSubmit extends BaseAction {
             // }
             // set info of product into session
             se.setAttribute(CommonConstant.SHOPPING, shopCart);
-            System.out.println(se.getAttribute(CommonConstant.FOOD_DETAIL_PRODUCT));
-            System.out.println("detail" + shopCart.getCount());
-
         }
         if (type.equals("1")) {
             return mapping.findForward(SUCCESS);

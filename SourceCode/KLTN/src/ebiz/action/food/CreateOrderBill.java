@@ -25,16 +25,11 @@ import javax.servlet.http.HttpSession;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
-import org.apache.struts.action.ActionMessage;
-import org.apache.struts.action.ActionMessages;
 
 import ebiz.action.BaseAction;
-import ebiz.blo.common.SendMail;
-import ebiz.blo.customer.CustomerBLO;
 import ebiz.blo.food.FoodBLO;
 import ebiz.dto.checkout.NL_Checkout;
 import ebiz.dto.checkout.OrderBill;
-import ebiz.form.LoginForm;
 import ebiz.form.OrderBillForm;
 import ebiz.form.ShoppingCart;
 import ebiz.util.CommonConstant;

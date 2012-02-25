@@ -18,7 +18,6 @@
  */
 package ebiz.action.food;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -32,7 +31,6 @@ import org.apache.struts.action.ActionMapping;
 import ebiz.action.BaseAction;
 import ebiz.blo.food.SearchBLO;
 import ebiz.form.FoodForm;
-import ebiz.form.SearchForm;
 /**
  * @author ThuyNT
  */
