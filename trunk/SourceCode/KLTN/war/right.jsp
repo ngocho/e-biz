@@ -1,10 +1,10 @@
 <%@page import="ebiz.util.CommonConstant"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
   pageEncoding="UTF-8"%>
-<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
-<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
-<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic"%>
-<%@taglib uri="http://java.sun.com/jstl/core" prefix="c"%>
+<%@taglib uri="/WEB-INF/c.tld" prefix="c"%>
+<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 <script type="text/javascript">
 $(document).ready(function(){
     $("#uploadComment").click(function() {
@@ -51,19 +51,19 @@ $(document).ready(function(){
   <div class="block block-cart">
     <c:if test="${user !=null}">
       <div class="block-title">
-        <a href="/customer.vn"><strong><span class="whiteImPression"> TÀI KHOẢN CỦA BẠN</span>
+        <a href="/customer.vn"><strong><span class="whiteImPression"><bean:message key="home.right.account.title" /></span>
         </strong>
         </a>
       </div>
       <strong><span><bean:write name="<%=CommonConstant.WELCOME %>" scope="session" /></span></strong>
       <br>
-        <strong><span >Tài khoản Xu : <span class="impressionText" id="xuOnline"><bean:write name="user" property="xuOnline" scope="session" /></span> </span></strong>
+        <strong><span ><bean:message key="home.right.account.xu" />: <span class="impressionText" id="xuOnline"><bean:write name="user" property="xuOnline" scope="session" /></span> </span></strong>
       <br>
-      <a href="/logoutCustomer.vn" style="margin-left:130px;"><b> Đăng xuất</b></a>
+      <a href="/logoutCustomer.vn" style="margin-left:130px;"><b><bean:message key="home.right.account.logout" /></b></a>
     </c:if>
     <c:if test="${user ==null}">
       <div class="block-title">
-       <strong><span class="whiteImPression">ĐĂNG NHẬP</span>
+       <strong><span class="whiteImPression"><bean:message key="home.right.login.title" /></span>
         </strong>
       </div>
       <div class="block-content">
@@ -71,14 +71,13 @@ $(document).ready(function(){
 
 
           <html:form action="/loginAction.vn" method="get">
-            <li><label for="email" class="required" id="typeLogin">Tên
-                đăng nhâp</label>
+            <li><label for="email" class="required" id="typeLogin"><bean:message key="home.right.login.name" /></label>
               <div class="input-box">
                 <html:text property="loginId" />
                 <!--  <input type="text" name="login[username]" value="" id="email" class="input-text required-entry validate-email" title="Email Address"> -->
               </div>
             </li>
-            <li><label for="pass" class="required">Password</label>
+            <li><label for="pass" class="required"><bean:message key="home.right.login.password" /></label>
               <div class="input-box">
                 <html:password property="loginPassword" />
                 <!--  <input type="password" name="login[password]" class="input-text required-entry validate-password" id="pass" title="Password"> -->
@@ -87,12 +86,12 @@ $(document).ready(function(){
             <li>
               <div class="input-box">
                 <input type="submit" name="OK" id="pass"  class="buttonBG"
-                  title="Password" value="Đăng nhập">
+                  title="Password" value="<bean:message key="home.right.login.button" />">
               </div>
             </li>
             <li>
               <div class="input-box">
-                <a href="/registerCustomer.vn">Đăng kí nếu chưa có tài khoản</a>
+                <a href="/registerCustomer.vn"><bean:message key="home.right.login.register" /></a>
               </div>
             </li>
             <li>
@@ -106,62 +105,61 @@ $(document).ready(function(){
    <div class="block" >
     <div class="block-title">
 
-      <strong><span class="whiteImPression">GIỎ HÀNG</span> </strong> 
+      <strong><span class="whiteImPression"><bean:message key="home.right.shopping.title" /></span> </strong> 
     </div>
     <div class="block-content">
       <p >
-      <span class="empty1" > Bạn đã mua </span><div class="block-cart_header">
+      <span class="empty1" > <bean:message key="home.right.shopping.name" /> </span><div class="block-cart_header">
      <a id="current_cart_items_count" href="/displayShoppingCart.vn"
         class="count"> <logic:present name="shop">
           <bean:write name="shop" property="count" />
-        </logic:present> </a> món hàng
+        </logic:present> </a> <bean:message key="home.right.shopping.food" />
     </div>
-      </p>
        <p class="empty" style="text-align: left">
-        <a href="/displayShoppingCart.vn">...xem giỏ hàng</a>
+        <a href="/displayShoppingCart.vn">...<bean:message key="home.right.shopping.view" /></a>
       </p>
       <p class="empty" style="text-align: right">
-        <a href="/checkAuthentication.vn">...thanh toán</a>
+        <a href="/checkAuthentication.vn">...<bean:message key="home.right.shopping.checkout" /></a>
       </p>
     </div>
   </div>
  <div class="block block-cart">
     <div class="block-title">
 
-      <a href="/displayShoppingCart.vn"><strong><span class="whiteImPression">NẠP XU</span> </strong> </a>
+      <a href="/displayShoppingCart.vn"><strong><span class="whiteImPression"><bean:message key="home.right.xu.title" /></span> </strong> </a>
     </div>
 		<div class="block-content">
 			<form name="money" action="/addXu.vn" method="get" >
-				Nhập mã nạp xu :<br><input type="text" name="valueXu"  value="" id="valueXu" /><input  class="buttonBG"
-					type="submit" value="Nạp xu" id="addXu"/>
+				<bean:message key="home.right.xu.value" />:<br><input type="text" name="valueXu"  value="" id="valueXu" /><input  class="buttonBG"
+					type="submit" value="<bean:message key="home.right.xu.button" />" id="addXu"/>
 			</form>
 		</div>
 	</div>
 	<div class="block block-cart">
     <div class="block-title">
-      <strong><span class="whiteImPression">CHUYỂN XU</span> </strong> 
+      <strong><span class="whiteImPression"><bean:message key="home.right.transferXu.title" /></span> </strong> 
     </div>
 		<div class="block-content">
 			<form name="moveMoney" action="/transferXu.vn" method="get" >
-				Nhập tài khoản chuyển đến:<br><input type="text" name="name"  value="" id="idUser" /><br>
-				Nhập số tiền chuyển : <br><input type="text" name="money"  value=""  id="valueMoney" />
+				<bean:message key="home.right.transferXu.to" />:<br><input type="text" name="name"  value="" id="idUser" /><br>
+				<bean:message key="home.right.transferXu.number" />: <br><input type="text" name="money"  value=""  id="valueMoney" />
 				<input  class="buttonBG"
-					type="submit" value="Chuyển" id="transferXu"/>
+					type="submit" value="<bean:message key="home.right.transferXu.button" />" id="transferXu"/>
 			</form>
 		</div>
 	</div>
  
   <div class="block block-cart">
     <div class="block-title" >
-      <strong><span class="whiteImPression">NHẬN XÉT CỦA BẠN </span> </strong>
+      <strong><span class="whiteImPression"><bean:message key="home.right.comment.title" /></span> </strong>
     </div>
     <div class="block-content" style="background: white">
       <!--p class="empty">You have no items in your shopping cart.</p-->
       <form name="comment" action="/uploadComment.vn" style="clear: both">
-      <textarea id="content"  rows="10"  style="width:98%;vertical-align:left;padding-right: 0px;padding-left: 0px;" align=left name="content" >
+      <textarea id="content"  rows="10"  style="width:98%;vertical-align:left;padding-right: 0px;padding-left: 0px;" align='left' name="content" >
 	   </textarea><br>
 	   <!-- id="uploadComment" -->
-   <input type="submit" id="uploadComment" value="Gởi ý kiến" class="buttonBG" ></input>
+   <input type="submit" id="uploadComment" value="<bean:message key="home.right.comment.button" />" class="buttonBG" ></input>
       </form>
 
     </div>
@@ -170,44 +168,39 @@ $(document).ready(function(){
 
   <div class="block block-poll">
     <div class="block-title">
-      <strong><span class="whiteImPression">ĐÁNH GIÁ</span> </strong>
+      <strong><span class="whiteImPression"><bean:message key="home.right.comment.title"/></span> </strong>
     </div>
     <form id="pollForm"
       action="/displayAss.vn"
       method="get" >
       <div class="block-content">
-        <p class="block-subtitle">Bạn thích gì ở trang web chúng
-          tôi?</p>
+        <p class="block-subtitle"><bean:message key="home.right.assessment.name" />
+          </p>
         <ul id="poll-answers">
           <li class="odd"><input type="radio" name="vote"
             class="radio poll_vote" id="vote_5" value="1"> <span
-            class="label"><label for="vote_5">Món ăn đa
-                dạng</label> </span>
+            class="label"><label for="vote_5"><bean:message key="home.right.assessment.option1" /></label> </span>
           </li>
           <li class="even"><input type="radio" name="vote"
             class="radio poll_vote" id="vote_6" value="2"> <span
-            class="label"><label for="vote_6">Giá cả phải
-                chăng</label> </span>
+            class="label"><label for="vote_6"><bean:message key="home.right.assessment.option2" /></label> </span>
           </li>
           <li class="odd"><input type="radio" name="vote"
             class="radio poll_vote" id="vote_7" value="3"> <span
-            class="label"><label for="vote_7">Giao diện
-                dễ sử dụng</label> </span>
+            class="label"><label for="vote_7"><bean:message key="home.right.assessment.option3" /></label> </span>
           </li>
           <li class="last even"><input type="radio" name="vote"
             class="radio poll_vote" id="vote_8" value="4"> <span
-            class="label"><label for="vote_8">Thanh toán
-                đảm bảo</label> </span>
+            class="label"><label for="vote_8"><bean:message key="home.right.assessment.option4" /></label> </span>
           </li>
           <li class="last even"><input type="radio" name="vote"
             class="radio poll_vote" id="vote_8" value="5"> <span
-            class="label"><label for="vote_8">Giao hàng
-                tận tình</label> </span>
+            class="label"><label for="vote_8"><bean:message key="home.right.assessment.option5" /></label> </span>
           </li>
         </ul>
         <div class="actions">
           <button type="submit" title="Vote" class="button">
-            <span><span>Xem kết quả</span> </span>
+            <span><span><bean:message key="home.right.assessment.button" /></span> </span>
           </button>
         </div>
       </div>
