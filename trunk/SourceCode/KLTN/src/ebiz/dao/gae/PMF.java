@@ -246,7 +246,7 @@ public final class PMF {
         List<Object> results = null;
         List<Object> detachedList = null;
         query.setFilter(sql);
-		System.out.println("SQL filter of " + className + " : " + sql);
+        System.out.println("SQL filter of " + className + " : " + sql);
         query.setOrdering(col + " " + order);
         try {
             detachedList = (List<Object>) query.execute();
@@ -276,7 +276,7 @@ public final class PMF {
         List<Object> detachedList = null;
         if (!sql.equals("")) {
             query.setFilter(sql);
-			System.out.println("SQL filter of " + className + " : " + sql);
+            System.out.println("SQL filter of " + className + " : " + sql);
         }
         query.setOrdering(col + " " + order);
         try {
@@ -288,17 +288,18 @@ public final class PMF {
         }
         return results;
     }
-    
-    public static int countRecordObject(Class<?> className, String col, boolean flag){
-        int count =  0;
+
+    public static int countRecordObject(Class<?> className, String col, boolean flag) {
+        int count = 0;
         PersistenceManager pm = getPMF();
-        Query query = pm.newQuery("select count(" + col + ")  from " + className.getName() + " where " + col + " ==" + flag);
+        Query query = pm.newQuery("select count(" + col + ")  from " + className.getName() + " where " + col + " =="
+                + flag);
         try {
-            count = (Integer)query.execute();
-    } finally {
-        pm.close();
-    }
-    return count;
+            count = (Integer) query.execute();
+        } finally {
+            pm.close();
+        }
+        return count;
     }
     @SuppressWarnings("unchecked")
     public static List<?> displayPageFood(Class<?> className, String col, List<String> numberPageList, String order,
@@ -383,7 +384,7 @@ public final class PMF {
         List<Object> results = null;
         List<Object> detachedList = null;
         query.setFilter(col + " == param");
-		System.out.println("SQL filter of " + className + " : " + col);
+        System.out.println("SQL filter of " + className + " : " + col);
         query.declareParameters("String param");
         try {
             detachedList = (List<Object>) query.execute(key);
@@ -402,7 +403,7 @@ public final class PMF {
         List<Object> results = null;
         List<Object> detachedList = null;
         query.setFilter(col + " == param");
-		System.out.println("SQL filter of " + className + " : " + col);
+        System.out.println("SQL filter of " + className + " : " + col);
         query.declareParameters("Date param");
         try {
             detachedList = (List<Object>) query.execute(key);
@@ -421,7 +422,7 @@ public final class PMF {
         List<Object> results = null;
         List<Object> detachedList = null;
         query.setFilter(col + " == param");
-		System.out.println("SQL filter of " + className + " : " + col);
+        System.out.println("SQL filter of " + className + " : " + col);
         query.setOrdering(orderCol + " " + order);
         query.declareParameters("Date param");
         try {
@@ -447,7 +448,7 @@ public final class PMF {
         List<Object> results = null;
         List<Object> detachedList = null;
         query.setFilter(col + " == param");
-		System.out.println("SQL filter of " + className + " : " + col);
+        System.out.println("SQL filter of " + className + " : " + col);
         query.declareParameters("String param");
         try {
             detachedList = (List<Object>) query.execute(value);
@@ -465,7 +466,7 @@ public final class PMF {
         List<Object> results = null;
         List<Object> detachedList = null;
         query.setFilter(col + " == param");
-		System.out.println("SQL filter of " + className + " : " + col);
+        System.out.println("SQL filter of " + className + " : " + col);
         query.declareParameters("Long param");
         try {
             detachedList = (List<Object>) query.execute(key);
@@ -577,7 +578,7 @@ public final class PMF {
     }
     @SuppressWarnings("unchecked")
     public static List<?> searchListFoodByName(Class<?> className, String searchText, String type, String attr,
-            String price, String status,String provider) {
+            String price, String status, String provider) {
         PersistenceManager pm = getPMF();
         StringBuffer sqlSearch = new StringBuffer();
         sqlSearch.append("");
@@ -611,7 +612,7 @@ public final class PMF {
         // run query with param values and return results
         try {
             detachedList = (List<Object>) q.execute(searchText, (searchText + "\ufffd"));
-            //db.GqlQuery("SELECT * FROM MyModel WHERE prop >= :1 AND prop < :2", "abc", u"abc" + u"\ufffd")
+            // db.GqlQuery("SELECT * FROM MyModel WHERE prop >= :1 AND prop < :2", "abc", u"abc" + u"\ufffd")
             results = (List<Object>) pm.detachCopyAll(detachedList);
         } finally {
             q.closeAll();
@@ -619,35 +620,35 @@ public final class PMF {
         }
         return results;
     }
-    
+
     @SuppressWarnings("unchecked")
     public static List<?> searchListProviderByName(Class<?> className, String value) {
         PersistenceManager pm = getPMF();
-//        StringBuffer sqlSearch = new StringBuffer();
-//        sqlSearch.append("");
-//        if (!("0".equals(type))) {
-//            sqlSearch.append(" && ");
-//            sqlSearch.append("foodTypeId == \'" + type + "\'");
-//        }
-//        if (!("0".equals(attr))) {
-//            sqlSearch.append(" && ");
-//            sqlSearch.append("productAttributeId == \'" + attr + "\'");
-//        }
-//        if (!("0".equals(price))) {
-//            sqlSearch.append(" && ");
-//            sqlSearch.append("foodPriceLevelId == \'" + price + "\'");
-//        }
-//        if (!("0".equals(status))) {
-//            sqlSearch.append(" && ");
-//            sqlSearch.append("foodStatusId == \'" + status + "\'");
-//        }
-//        System.out.println("SQL SEARCH" + sqlSearch);
+        // StringBuffer sqlSearch = new StringBuffer();
+        // sqlSearch.append("");
+        // if (!("0".equals(type))) {
+        // sqlSearch.append(" && ");
+        // sqlSearch.append("foodTypeId == \'" + type + "\'");
+        // }
+        // if (!("0".equals(attr))) {
+        // sqlSearch.append(" && ");
+        // sqlSearch.append("productAttributeId == \'" + attr + "\'");
+        // }
+        // if (!("0".equals(price))) {
+        // sqlSearch.append(" && ");
+        // sqlSearch.append("foodPriceLevelId == \'" + price + "\'");
+        // }
+        // if (!("0".equals(status))) {
+        // sqlSearch.append(" && ");
+        // sqlSearch.append("foodStatusId == \'" + status + "\'");
+        // }
+        // System.out.println("SQL SEARCH" + sqlSearch);
         Query q = pm.newQuery(className);
         List<Object> results = null;
         List<Object> detachedList = null;
         // set the filter and params
         q.setFilter("providerName >= :1 && providerName < :2");
-        System.out.println("TEXT SEARCH " + "providerName >= :1 && foodName < :2" );
+        System.out.println("TEXT SEARCH " + "providerName >= :1 && foodName < :2");
         // run query with param values and return results
         try {
             detachedList = (List<Object>) q.execute(value, (value + "\ufffd"));

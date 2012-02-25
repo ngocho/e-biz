@@ -26,28 +26,67 @@ import ebiz.dto.account.customer.Customer;
 
 /**
  * Interface for CRUD of Customer entity.
- * @author hailam380, thachln
+ *
+ * @author ThuyNT17, thachln
  */
 public interface ICustomerDAO {
 
     /**
      * Store the customer into the persistence layer.
+     *
      * @param customer Customer entity
      * @return true if success. Otherwise, return false and details of exception (if occur) is in logging file.
      */
     boolean saveCustomer(Customer customer);
 
+    /**
+     * [saveComment].
+     * @param comment Comment
+     * @return boolean
+     */
     boolean saveComment(Comment comment);
 
-    public boolean saveAss(Assessment content) ;
-    public Assessment getAssByID(String id);
+    /**
+     * [saveAss].
+     * @param content Assessment
+     * @return boolean
+     */
+    boolean saveAss(Assessment content);
+    /**
+     * [getAssByID].
+     * @param id String
+     * @return Assessment
+     */
+    Assessment getAssByID(String id);
+    /**
+     * [isCustomer].
+     * @param id String
+     * @return boolean
+     */
     boolean isCustomer(String id);
 
+    /**
+     * [getCustomerById].
+     * @param id String
+     * @return Customer
+     */
     Customer getCustomerById(String id);
 
+    /**
+     * [getPhoneList].
+     * @return List<String>
+     */
     List<String> getPhoneList();
 
+    /**
+     * [getCustomerList].
+     * @return List<Customer>
+     */
     List<Customer> getCustomerList();
+    /**
+     * [getAssList].
+     * @return List<Assessment>
+     */
     List<Assessment> getAssList();
 
 }

@@ -24,13 +24,13 @@ import ebiz.dao.inf.IProviderDAO;
 import ebiz.dto.account.provider.Provider;
 
 /**
- * @author Administrator
- *
+ * @author ThuyNT
  */
-public class ProviderDAO implements IProviderDAO{
+public class ProviderDAO implements IProviderDAO {
 
     /**
      * [Explain the description for this method here].
+     * 
      * @param provider
      * @return
      * @see ebiz.dao.inf.IProviderDAO#saveProvider(ebiz.dto.account.provider.Provider)
@@ -43,6 +43,7 @@ public class ProviderDAO implements IProviderDAO{
 
     /**
      * [Explain the description for this method here].
+     * 
      * @param id
      * @return
      * @see ebiz.dao.inf.IProviderDAO#isProvider(java.lang.String)
@@ -54,6 +55,7 @@ public class ProviderDAO implements IProviderDAO{
 
     /**
      * [Explain the description for this method here].
+     * 
      * @param id
      * @return
      * @see ebiz.dao.inf.IProviderDAO#getProviderById(java.lang.String)
@@ -61,25 +63,26 @@ public class ProviderDAO implements IProviderDAO{
     @Override
     public Provider getProviderById(String id) {
         Provider provider = null;
-        provider = (Provider)PMF.getObjectById(Provider.class, id);
+        provider = (Provider) PMF.getObjectById(Provider.class, id);
         return provider;
     }
 
     /**
      * [Explain the description for this method here].
+     * 
      * @return
      * @see ebiz.dao.inf.IProviderDAO#getProviderAll()
      */
     @SuppressWarnings("unchecked")
     @Override
     public List<Provider> getProviderAll() {
-        return (List<Provider>)PMF.getObjectList(Provider.class);
+        return (List<Provider>) PMF.getObjectList(Provider.class);
     }
-    
+
     @SuppressWarnings("unchecked")
     @Override
     public List<Provider> getProviderByName(String value) {
-        return  (List<Provider>)PMF.searchListProviderByName(Provider.class, value);
-        
+        return (List<Provider>) PMF.searchListProviderByName(Provider.class, value);
+
     }
 }
