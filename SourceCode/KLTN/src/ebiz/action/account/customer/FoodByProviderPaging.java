@@ -16,9 +16,10 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package ebiz.action;
+package ebiz.action.account.customer;
 
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -28,19 +29,16 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
-import com.google.appengine.api.blobstore.BlobKey;
-import com.google.appengine.api.blobstore.BlobstoreService;
-import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
-
-
+import ebiz.action.BaseAction;
+import ebiz.blo.food.SearchBLO;
+import ebiz.form.FoodForm;
+import ebiz.form.SearchForm;
 /**
  * @author ThuyNT
  */
-public class UploadImage extends BaseAction {
-    /** . declare BlobstoreService */
-    private BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
+public class FoodByProviderPaging extends BaseAction {
     /**
-     * [UploadImage Action].
+     * [Search Food Paging].
      *
      * @param mapping ActionMapping
      * @param form ActionForm
@@ -50,26 +48,27 @@ public class UploadImage extends BaseAction {
      * @throws Exception Exception
      * @see ActionForward Struts1 Framework
      */
+    @SuppressWarnings("unchecked")
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
-        Map<String, BlobKey> blobs = blobstoreService.getUploadedBlobs(request);
-        BlobKey blobKey = blobs.get("myFile");
         HttpSession se = request.getSession();
-        String type = request.getParameter("type");
-        if (blobKey != null) {
-            // get Key
-            String urlKey = blobKey.getKeyString();
-            if (urlKey != null) {
-                // save in session
-                se.setAttribute("urlImageKey", urlKey);
-            }
-            if(type != null && type.equals("1")){
-            	//register Provider 
-            	se.setAttribute("urlImageKeyP", urlKey);
-            	  return mapping.findForward(SUCCESS1);
-            }
+        // HashMap<Integer, String> paging = new HashMap<Integer, String>();
+//        SearchForm searchForm = (SearchForm) se.getAttribute("searchForm");
+        String page = request.getParameter("page");
+        int pageIndex = Integer.parseInt(page);
+        List<FoodForm> formList =(List<FoodForm>) se.getAttribute("foodByProvider");
+//        Cache cache = SearchBLO.getMemcache();
+//        formList = (List<FoodForm>) cache.get("searchData");
+//        // had
+//        if (formList == null || formList.isEmpty()) {
+//            formList = SearchBLO.searchFullText(searchForm);
+//        }
+//        formList = SearchBLO.searchFullText(searchForm);
+        formList = (List<FoodForm>) SearchBLO.getPage(formList, pageIndex);
+        se.setAttribute("pageIndex", pageIndex);
+        if (!formList.isEmpty()) {
+            se.setAttribute("searchResult", formList);
         }
         return mapping.findForward(SUCCESS);
     }
-
 }

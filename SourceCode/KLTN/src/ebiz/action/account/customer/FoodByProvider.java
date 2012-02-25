@@ -16,9 +16,10 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package ebiz.action;
+package ebiz.action.account.customer;
 
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -28,20 +29,18 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
-import com.google.appengine.api.blobstore.BlobKey;
-import com.google.appengine.api.blobstore.BlobstoreService;
-import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
-
+import ebiz.action.BaseAction;
+import ebiz.blo.food.FoodBLO;
+import ebiz.blo.food.SearchBLO;
+import ebiz.form.FoodForm;
 
 /**
  * @author ThuyNT
  */
-public class UploadImage extends BaseAction {
-    /** . declare BlobstoreService */
-    private BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
+public class FoodByProvider extends BaseAction {
+
     /**
-     * [UploadImage Action].
-     *
+     * [Logout(Customer)].
      * @param mapping ActionMapping
      * @param form ActionForm
      * @param request HttpServletRequest
@@ -52,22 +51,18 @@ public class UploadImage extends BaseAction {
      */
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
-        Map<String, BlobKey> blobs = blobstoreService.getUploadedBlobs(request);
-        BlobKey blobKey = blobs.get("myFile");
+
+        String id = request.getParameter("id");
+        System.out.println("ID PROVIDER" + id);
+        List<FoodForm> formList = FoodBLO.getFoodListByProvider(id);
+        if(!formList.isEmpty()){
+        List<String> pageList = new ArrayList<String>();
+        pageList = SearchBLO.paging(formList.size());
         HttpSession se = request.getSession();
-        String type = request.getParameter("type");
-        if (blobKey != null) {
-            // get Key
-            String urlKey = blobKey.getKeyString();
-            if (urlKey != null) {
-                // save in session
-                se.setAttribute("urlImageKey", urlKey);
-            }
-            if(type != null && type.equals("1")){
-            	//register Provider 
-            	se.setAttribute("urlImageKeyP", urlKey);
-            	  return mapping.findForward(SUCCESS1);
-            }
+        se.setAttribute("foodByProvider", formList);
+        se.setAttribute("pageList", pageList);
+        se.setAttribute("pageIndex", 1);
+        System.out.println("ID PROVIDER" + formList.size());
         }
         return mapping.findForward(SUCCESS);
     }

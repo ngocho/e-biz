@@ -16,32 +16,27 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package ebiz.action;
-
-import java.util.Map;
+package ebiz.action.account.admin;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import mobile.ebiz.blo.IDXUBLO;
+
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
-import com.google.appengine.api.blobstore.BlobKey;
-import com.google.appengine.api.blobstore.BlobstoreService;
-import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
-
+import ebiz.action.BaseAction;
 
 /**
  * @author ThuyNT
  */
-public class UploadImage extends BaseAction {
-    /** . declare BlobstoreService */
-    private BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
+public class XuStatus extends BaseAction {
+
     /**
-     * [UploadImage Action].
-     *
+     * [Logout(Customer)].
      * @param mapping ActionMapping
      * @param form ActionForm
      * @param request HttpServletRequest
@@ -52,23 +47,9 @@ public class UploadImage extends BaseAction {
      */
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
-        Map<String, BlobKey> blobs = blobstoreService.getUploadedBlobs(request);
-        BlobKey blobKey = blobs.get("myFile");
         HttpSession se = request.getSession();
-        String type = request.getParameter("type");
-        if (blobKey != null) {
-            // get Key
-            String urlKey = blobKey.getKeyString();
-            if (urlKey != null) {
-                // save in session
-                se.setAttribute("urlImageKey", urlKey);
-            }
-            if(type != null && type.equals("1")){
-            	//register Provider 
-            	se.setAttribute("urlImageKeyP", urlKey);
-            	  return mapping.findForward(SUCCESS1);
-            }
-        }
+        int number = IDXUBLO.countXuAvailabel();
+        se.setAttribute("xuActive", String.valueOf(number));
         return mapping.findForward(SUCCESS);
     }
 
