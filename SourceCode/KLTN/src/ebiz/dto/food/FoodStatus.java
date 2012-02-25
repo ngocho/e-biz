@@ -30,26 +30,23 @@ import javax.jdo.annotations.PrimaryKey;
  *
  */
 /**
- * xac dinh status cua thuc pham : dang ban , khuyen mai,  het hsd, het hang,..
- * 1 : khuyến mãi
- * 2 : không khuyến mãi
- * 3 : hết hàng
- * 4 : upload len nhung chua duoc ban( chua approved)
- * 5 : hết hạn sử dụng
+ * xac dinh status cua thuc pham : dang ban , khuyen mai, het hsd, het hang,.. 1 : khuyến mãi 2 : không khuyến mãi 3 :
+ * hết hàng 4 : upload len nhung chua duoc ban( chua approved) 5 : hết hạn sử dụng
  */
 @PersistenceCapable
-public class FoodStatus implements Serializable{
-	/** . */
+public class FoodStatus implements Serializable {
+    /** . */
     private static final long serialVersionUID = 1L;
-    /**ID  . */
+    /** ID . */
     @PrimaryKey
     @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
-    private String  foodStatusId;
+    private String foodStatusId;
     /** Name . */
     @Persistent
     private String foodStatusName;
     /**
      * Get value of foodStatusId.
+     * 
      * @return the foodStatusId
      */
     public String getFoodStatusId() {
@@ -57,6 +54,7 @@ public class FoodStatus implements Serializable{
     }
     /**
      * Set the value for foodStatusId.
+     * 
      * @param foodStatusId the foodStatusId to set
      */
     public void setFoodStatusId(String foodStatusId) {
@@ -64,6 +62,7 @@ public class FoodStatus implements Serializable{
     }
     /**
      * Get value of foodStatusName.
+     * 
      * @return the foodStatusName
      */
     public String getFoodStatusName() {
@@ -71,6 +70,7 @@ public class FoodStatus implements Serializable{
     }
     /**
      * Set the value for foodStatusName.
+     * 
      * @param foodStatusName the foodStatusName to set
      */
     public void setFoodStatusName(String foodStatusName) {
