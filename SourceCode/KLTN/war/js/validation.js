@@ -291,13 +291,13 @@ function validateCustomerRegister() {
             temp = true;
         } 
     }
-    if($('input[name=districtNameR]').val() == ""){
+   /* if($('input[name=districtNameR]').val() == ""){
         $('input[name=districtNameR]').css("background", "#FC0");
         if(temp == false){
             $('input[name=districtNameR]').focus();
             temp = true;
         } 
-    }
+    }*/
     
     if(temp == true){
         flag = false;
