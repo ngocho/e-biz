@@ -46,7 +46,7 @@ public class ImageActivity extends Activity {
     }
 
     /** saveAction. */
-    public OnClickListener saveAction = new OnClickListener() {
+    private OnClickListener saveAction = new OnClickListener() {
 
         @Override
         public void onClick(View v) {
@@ -54,7 +54,8 @@ public class ImageActivity extends Activity {
 
         }
     };
-    public OnClickListener backAction = new OnClickListener() {
+    /**  . */
+    private OnClickListener backAction = new OnClickListener() {
 
         @Override
         public void onClick(View v) {
@@ -62,29 +63,63 @@ public class ImageActivity extends Activity {
 
         }
     };
+    /**
+     * @author NThanhPhong
+     *
+     */
     public class AddImgAdp extends BaseAdapter {
-        int GalItemBg;
+        /**  . */
+        private int mGalItemBg;
+        /**  . */
         private Context cont;
 
+        /**
+         * @param c Context
+         */
         public AddImgAdp(Context c) {
             cont = c;
             TypedArray typArray = obtainStyledAttributes(R.styleable.GalleryTheme);
-            GalItemBg = typArray.getResourceId(R.styleable.GalleryTheme_android_galleryItemBackground, 0);
+            mGalItemBg = typArray.getResourceId(R.styleable.GalleryTheme_android_galleryItemBackground, 0);
             typArray.recycle();
         }
 
+        /**
+         * [Explain the description for this method here].
+         * @return int
+         * @see android.widget.Adapter#getCount()
+         */
         public int getCount() {
             return 2;
         }
 
+        /**
+         * [Explain the description for this method here].
+         * @param position int
+         * @return Object
+         * @see android.widget.Adapter#getItem(int)
+         */
         public Object getItem(int position) {
             return position;
         }
 
+        /**
+         * [Explain the description for this method here].
+         * @param position int
+         * @return long
+         * @see android.widget.Adapter#getItemId(int)
+         */
         public long getItemId(int position) {
             return position;
         }
 
+        /**
+         * [Explain the description for this method here].
+         * @param position int
+         * @param convertView View
+         * @param parent ViewGroup
+         * @return View
+         * @see android.widget.Adapter#getView(int, android.view.View, android.view.ViewGroup)
+         */
         public View getView(int position, View convertView, ViewGroup parent) {
             ImageView imgView = new ImageView(cont);
             // imgView.setImageResource(Imgid[position]);
@@ -94,8 +129,12 @@ public class ImageActivity extends Activity {
             return imgView;
         }
     }
+    /**  . */
     private Gallery gallery;
+    /**  . */
     private Button back, save;
+    /**  . */
     private TextView number;
+    /**  . */
     private ImageView image;
 }

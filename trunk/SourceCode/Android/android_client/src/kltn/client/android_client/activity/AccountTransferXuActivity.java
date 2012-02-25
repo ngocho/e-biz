@@ -46,7 +46,7 @@ public class AccountTransferXuActivity extends Activity implements OnDismissList
         mEngine = new Engine();
     }
 
-    public OnClickListener okAction = new OnClickListener() {
+    private OnClickListener okAction = new OnClickListener() {
 
         @Override
         public void onClick(View v) {

@@ -45,42 +45,42 @@ public class histoty_buy_item implements BaseColumns {
      * @return Idcustomer
      */
     public String getIdcustomer() {
-        return Idcustomer;
+        return idCustomer;
     }
     /**
      * [getIdgoods].
      * @return Idgoods
      */
     public String getIdgoods() {
-        return Idgoods;
+        return idGoods;
     }
     /**
      * [getGoodsname].
      * @return Goodsname
      */
     public String getGoodsname() {
-        return Goodsname;
+        return goodsName;
     }
     /**
      * [getImage].
      * @return Image
      */
     public String getImage() {
-        return Image;
+        return image;
     }
     /**
      * [getDatetime].
      * @return Datetime
      */
     public String getDatetime() {
-        return Datetime;
+        return dateTime;
     }
     /**
      * [getPrice].
      * @return Price
      */
     public String getPrice() {
-        return Price;
+        return price;
     }
 
     /**
@@ -88,43 +88,43 @@ public class histoty_buy_item implements BaseColumns {
      * @param idcustomer String
      */
     public void setIdcustomer(String idcustomer) {
-        Idcustomer = idcustomer;
+        idCustomer = idcustomer;
     }
     /**
      * [setIdgoods].
      * @param idgoods String
      */
     public void setIdgoods(String idgoods) {
-        Idgoods = idgoods;
+        idGoods = idgoods;
     }
     /**
      * [setGoodsname].
      * @param goodsname String
      */
     public void setGoodsname(String goodsname) {
-        Goodsname = goodsname;
+        goodsName = goodsname;
     }
     /**
      * [setImage].
      * @param image String
      */
     public void setImage(String image) {
-        Image = image;
+        image = image;
     }
     /**
      * [setDatetime].
      * @param datetime String
      */
     public void setDatetime(String datetime) {
-        Datetime = datetime;
+        dateTime = datetime;
     }
     /**
      * [setPrice].
      * @param price String
      */
     public void setPrice(String price) {
-        Price = price;
+        price = price;
     }
     /**  . */
-    private String Idcustomer, Idgoods, Goodsname, Image, Datetime, Price;
+    private String idCustomer, idGoods, goodsName, image, dateTime, price;
 }

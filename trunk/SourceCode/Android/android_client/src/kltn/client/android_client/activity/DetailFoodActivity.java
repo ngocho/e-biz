@@ -138,6 +138,8 @@ public class DetailFoodActivity extends Activity implements OnClickListener, OnD
                 break;
             case R.id.detail_food_tab_content :
                 break;
+            default :
+                break;
         }
     }
     private void ChangeTab(int tab) {
@@ -164,6 +166,8 @@ public class DetailFoodActivity extends Activity implements OnClickListener, OnD
                 break;
             case PROVIDER_TAB :
                 this.mCurrentTab = new ProviderTab(this, 1);
+                break;
+            default :
                 break;
         }
 

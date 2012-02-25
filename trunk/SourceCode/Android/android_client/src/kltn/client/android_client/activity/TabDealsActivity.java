@@ -30,7 +30,6 @@ import android.widget.TextView;
  */
 /**
  * @author wind
- *
  */
 public class TabDealsActivity extends Activity implements OnClickListener, OnDismissListener {
 
@@ -57,7 +56,7 @@ public class TabDealsActivity extends Activity implements OnClickListener, OnDis
         mDeals.setOnClickListener(this);
         mBest.setOnClickListener(this);
         mBrowser.setOnClickListener(this);
-        LoadData();
+        loadData();
         // mData=mEngine.get_best_food();
         // mAdapter=new DealsAdapter(this);
         // viewFlow.setAdapter(mAdapter);
@@ -66,7 +65,7 @@ public class TabDealsActivity extends Activity implements OnClickListener, OnDis
     /**
      * [LoadData].
      */
-    public void LoadData() {
+    public void loadData() {
         mCurrentDialog = ProgressDialog.show(TabDealsActivity.this, null, getString(R.string.menu_waiting), true);
         mCurrentDialog.setOnDismissListener(TabDealsActivity.this);
         mIsWaiting = true;
@@ -83,7 +82,7 @@ public class TabDealsActivity extends Activity implements OnClickListener, OnDis
      */
     public class DealsAdapter extends BaseAdapter {
         /** context. */
-        Context context;
+        private Context context;
         /**
          * @param mycontext Context
          */
@@ -111,56 +110,56 @@ public class TabDealsActivity extends Activity implements OnClickListener, OnDis
                 convertView = getLayoutInflater().inflate(R.layout.item_deals, null);
             }
             ImageView image = (ImageView) convertView.findViewById(R.id.item_deals_image);
-            ItemData = mData.get(position);
+            mItemData = mData.get(position);
             TextView mDate = (TextView) convertView.findViewById(R.id.tab_deals_date);
             TextView mCount = (TextView) convertView.findViewById(R.id.tab_deals_count);
             TextView mName = (TextView) convertView.findViewById(R.id.tab_deals_name);
             TextView mPrice = (TextView) convertView.findViewById(R.id.tab_deals_price);
             TextView mPricePromotion = (TextView) convertView.findViewById(R.id.tab_deals_price_promotion);
-            mDate.setText(ItemData.getStartdate());
-            mCount.setText(ItemData.getBuycount() + " buyer");
-            mName.setText(ItemData.getName());
-            mPrice.setText(getString(R.string.deals_price) + " " + ItemData.getPrice() + " " + getString(R.string.vnd));
-            mPricePromotion.setText(getString(R.string.deals_sale) + " " + ItemData.getBuyprice() + " "
+            mDate.setText(mItemData.getStartdate());
+            mCount.setText(mItemData.getBuycount() + " buyer");
+            mName.setText(mItemData.getName());
+            mPrice.setText(getString(R.string.deals_price) + " " + mItemData.getPrice() + " " + getString(R.string.vnd));
+            mPricePromotion.setText(getString(R.string.deals_sale) + " " + mItemData.getBuyprice() + " "
                     + getString(R.string.vnd));
-            BitmapManager.INSTANCE.loadBitmap(mEngine.mURLImage + ItemData.getImageurl(), image, 500, 500);
+            BitmapManager.INSTANCE.loadBitmap(mEngine.mURLImage + mItemData.getImageurl(), image, 500, 500);
             convertView.setOnClickListener(new OnClickListener() {
 
                 @Override
                 public void onClick(View v) {
                     Intent i = new Intent(TabDealsActivity.this, DetailFoodActivity.class);
-                    i.putExtra("id_food", ItemData.getId());
+                    i.putExtra("id_food", mItemData.getId());
                     startActivity(i);
                 }
             });
             return convertView;
         }
     };
-    /**  . */
-    private best_food_item ItemData;
-    /**  . */
+    /** . */
+    private best_food_item mItemData;
+    /** . */
     private Vector<best_food_item> mData;
-    /**  . */
-    public Engine mEngine;
-    /**  . */
+    /** . */
+    private Engine mEngine;
+    /** . */
     private CircleFlowIndicator init;
-    /**  . */
+    /** . */
     private ViewFlow viewFlow;
-    /**  . */
+    /** . */
     private DealsAdapter mAdapter;
-    /**  . */
+    /** . */
     private Button mBack;
-    /**  . */
+    /** . */
     private LinearLayout mHome;
-    /**  . */
+    /** . */
     private LinearLayout mDeals;
-    /**  . */
+    /** . */
     private LinearLayout mBest;
-    /**  . */
+    /** . */
     private Dialog mCurrentDialog;
-    /**  . */
+    /** . */
     private LinearLayout mBrowser;
-    /**  . */
+    /** . */
     private boolean mIsWaiting;
     /*
      * (non-Javadoc)
@@ -194,6 +193,8 @@ public class TabDealsActivity extends Activity implements OnClickListener, OnDis
                 home.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(home);
                 finish();
+                break;
+            default :
                 break;
         }
     }
