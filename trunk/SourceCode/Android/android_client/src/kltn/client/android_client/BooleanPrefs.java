@@ -4,9 +4,14 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 /**
- * @author wind
+ * @author NThanhPhong
  */
 public class BooleanPrefs extends PrefsItem {
+    /**
+     * @param context
+     * @param name
+     * @param defValue
+     */
     public BooleanPrefs(Context context, String name, boolean defValue) {
         super(context, name);
         this.defValue = defValue;
@@ -34,14 +39,23 @@ public class BooleanPrefs extends PrefsItem {
         return v;
     }
 
+    /**
+     * [Give the description for method].
+     * @return boolean
+     */
     public boolean getValue() {
         Boolean b = (Boolean) getPrefValue();
         return b.booleanValue();
     }
 
+    /**
+     * [Give the description for method].
+     * @param value
+     */
     public void setValue(boolean value) {
         setPrefValue(value);
     }
 
+    /**  . */
     private boolean defValue;
 }

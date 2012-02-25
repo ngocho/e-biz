@@ -26,7 +26,7 @@ import org.json.JSONObject;
 import android.content.Context;
 
 /**
- * @author nthanhphong
+ * @author NThanhPhong
  */
 public class Engine {
     private String URL_Login = "http://16.test-kltn1.appspot.com/getUserFuntion.vn";

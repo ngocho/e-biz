@@ -1,6 +1,3 @@
-/**
- * 
- */
 package kltn.client.android_client.activity;
 
 import kltn.client.android_client.App;
@@ -8,7 +5,6 @@ import kltn.client.android_client.PrefUtil;
 import kltn.client.android_client.R;
 import kltn.client.android_client.engine.Engine;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 import android.app.Activity;
@@ -25,7 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 /**
- * @author nthanhphong
+ * @author NThanhPhong
  */
 public class AccountAddXuActivity extends Activity implements OnDismissListener {
 
@@ -48,6 +44,9 @@ public class AccountAddXuActivity extends Activity implements OnDismissListener 
         mOk.setOnClickListener(okAction);
     }
 
+    /**
+     *    
+     */
     public OnClickListener okAction = new OnClickListener() {
 
         @Override
@@ -125,7 +124,7 @@ public class AccountAddXuActivity extends Activity implements OnDismissListener 
     @Override
     public void onDismiss(DialogInterface dialog) {
         Toast.makeText(AccountAddXuActivity.this, Status, Toast.LENGTH_LONG).show();
-        if (flag = true) {
+        if (flag) {
             mMoney.setText(mEngine.GetXu(mUsername.getText().toString(),
                     PrefUtil.GetStringPref(AccountAddXuActivity.this, "password")));
             mProductkey.setText("");

@@ -3,6 +3,10 @@ package kltn.client.android_client;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+/**
+ * @author NThanhPhong
+ *
+ */
 public abstract class PrefsItem {
 
     protected PrefsItem(Context context, String name) {

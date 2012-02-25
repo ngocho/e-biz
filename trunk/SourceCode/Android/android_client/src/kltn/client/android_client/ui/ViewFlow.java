@@ -374,10 +374,11 @@ public class ViewFlow extends AdapterView<Adapter> {
         mCurrentScreen = Math.max(0, Math.min(indexInBuffer, getChildCount() - 1));
         int dx = (mCurrentScreen * getWidth()) - mScroller.getCurrX();
         mScroller.startScroll(mScroller.getCurrX(), mScroller.getCurrY(), dx, 0, 0);
-        if (uiThread)
+        if (uiThread) {
             invalidate();
-        else
+        } else {
             postInvalidate();
+        }
     }
 
     /**
