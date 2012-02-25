@@ -295,6 +295,8 @@ public class TabBrowserActivity extends Activity implements OnClickListener, Tex
                     }
                 }
                 break;
+            default :
+                break;
         }
     }
 

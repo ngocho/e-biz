@@ -94,6 +94,8 @@ public class PaymentActivity extends Activity implements OnClickListener {
                 startActivity(browser);
                 finish();
                 break;
+            default :
+                break;
         }
     }
 }

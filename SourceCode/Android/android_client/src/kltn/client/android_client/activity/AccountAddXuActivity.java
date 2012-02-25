@@ -47,7 +47,7 @@ public class AccountAddXuActivity extends Activity implements OnDismissListener 
     /**
      *    
      */
-    public OnClickListener okAction = new OnClickListener() {
+    private OnClickListener okAction = new OnClickListener() {
 
         @Override
         public void onClick(View v) {

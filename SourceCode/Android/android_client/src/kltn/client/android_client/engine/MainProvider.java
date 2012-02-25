@@ -159,6 +159,8 @@ public class MainProvider extends ContentProvider {
                     return uri1;
                 }
                 break;
+            default :
+                break;
         }
         throw new SQLException("Failed to insert row into " + uri);
     }

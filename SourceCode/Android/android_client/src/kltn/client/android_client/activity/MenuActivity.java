@@ -200,6 +200,8 @@ public class MenuActivity extends Activity implements OnClickListener, OnDismiss
                     Intent myaccount = new Intent(MenuActivity.this, MyAccountActivity.class);
                     startActivity(myaccount);
                     break;
+                default :
+                    break;
             }
         }
     }

@@ -92,6 +92,8 @@ public class AccountInfoActivity extends Activity implements OnClickListener, On
                 break;
             case R.id.accountinfo_update :
                 break;
+            default :
+                break;
         }
     }
     /*

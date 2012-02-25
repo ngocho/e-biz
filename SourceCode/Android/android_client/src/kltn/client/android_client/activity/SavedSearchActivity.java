@@ -119,6 +119,8 @@ public class SavedSearchActivity extends Activity implements OnClickListener, Te
                 startActivity(home);
                 finish();
                 break;
+            default :
+                break;
         }
     }
     /*

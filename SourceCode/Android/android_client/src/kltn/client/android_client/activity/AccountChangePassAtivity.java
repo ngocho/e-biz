@@ -41,12 +41,19 @@ public class AccountChangePassAtivity extends Activity implements OnClickListene
         mEngine = new Engine();
         mName.setText(PrefUtil.GetStringPref(this, "username"));
     }
+    /**  . */
     private Button mBack, mOk;
+    /**  . */
     private EditText mOldPass, mNewPass, mComfirmPass;
+    /**  . */
     private TextView mName;
+    /**  . */
     private Dialog mCurrentDialog;
+    /**  . */
     public boolean mIsWaiting;
+    /**  . */
     private Engine mEngine;
+    /**  . */
     private boolean flag = false;
     /*
      * (non-Javadoc)
@@ -66,6 +73,8 @@ public class AccountChangePassAtivity extends Activity implements OnClickListene
                 break;
             case R.id.account_changepass_back :
                 finish();
+                break;
+            default :
                 break;
         }
     }
@@ -87,6 +96,9 @@ public class AccountChangePassAtivity extends Activity implements OnClickListene
         }
 
     }
+    /**
+     * [Give the description for method].
+     */
     public void LoadData() {
         mCurrentDialog = ProgressDialog.show(AccountChangePassAtivity.this, null, getString(R.string.menu_waiting),
                 true);

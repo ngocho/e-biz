@@ -15,28 +15,53 @@ import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.Scroller;
 
+/**
+ * @author NThanhPhong
+ *
+ */
 public class HorizontialListView extends AdapterView<ListAdapter> {
 
+    /**  . */
     public boolean mAlwaysOverrideTouch = true;
+    /**  . */
     protected ListAdapter mAdapter;
+    /**  . */
     private int mLeftViewIndex = -1;
+    /**  . */
     private int mRightViewIndex = 0;
+    /**  . */
     protected int mCurrentX;
+    /**  . */
     protected int mNextX;
+    /**  . */
     private int mMaxX = Integer.MAX_VALUE;
+    /**  . */
     private int mDisplayOffset = 0;
+    /**  . */
     protected Scroller mScroller;
+    /**  . */
     private GestureDetector mGesture;
+    /**  . */
     private Queue<View> mRemovedViewQueue = new LinkedList<View>();
+    /**  . */
     private OnItemSelectedListener mOnItemSelected;
+    /**  . */
     private OnItemClickListener mOnItemClicked;
+    /**  . */
     private boolean mDataChanged = false;
 
+    /**
+     * @param context Context
+     * @param attrs AttributeSet
+     */
     public HorizontialListView(Context context, AttributeSet attrs) {
         super(context, attrs);
         initView();
     }
 
+    /**
+     * [Give the description for method].
+     */
     private synchronized void initView() {
         mLeftViewIndex = -1;
         mRightViewIndex = 0;
@@ -58,6 +83,7 @@ public class HorizontialListView extends AdapterView<ListAdapter> {
         mOnItemClicked = listener;
     }
 
+    /**  . */
     private DataSetObserver mDataObserver = new DataSetObserver() {
 
         @Override
@@ -83,6 +109,11 @@ public class HorizontialListView extends AdapterView<ListAdapter> {
         return mAdapter;
     }
 
+    /**
+     * [Explain the description for this method here].
+     * @return View
+     * @see android.widget.AdapterView#getSelectedView()
+     */
     @Override
     public View getSelectedView() {
         // TODO: implement
@@ -99,17 +130,29 @@ public class HorizontialListView extends AdapterView<ListAdapter> {
         reset();
     }
 
+    /**
+     * [Give the description for method].
+     */
     private synchronized void reset() {
         initView();
         removeAllViewsInLayout();
         requestLayout();
     }
 
+    /**
+     * [Explain the description for this method here].
+     * @param position int
+     * @see android.widget.AdapterView#setSelection(int)
+     */
     @Override
     public void setSelection(int position) {
-        // TODO: implement
     }
 
+    /**
+     * [Give the description for method].
+     * @param child View
+     * @param viewPos int
+     */
     private void addAndMeasureChild(final View child, int viewPos) {
         LayoutParams params = child.getLayoutParams();
         if (params == null) {
@@ -170,6 +213,10 @@ public class HorizontialListView extends AdapterView<ListAdapter> {
         }
     }
 
+    /**
+     * [Give the description for method].
+     * @param dx int
+     */
     private void fillList(final int dx) {
         int edge = 0;
         View child = getChildAt(getChildCount() - 1);
@@ -187,6 +234,11 @@ public class HorizontialListView extends AdapterView<ListAdapter> {
 
     }
 
+    /**
+     * [Give the description for method].
+     * @param rightEdge int
+     * @param dx int
+     */
     private void fillListRight(int rightEdge, final int dx) {
         while (rightEdge + dx < getWidth() && mRightViewIndex < mAdapter.getCount()) {
 
@@ -202,6 +254,11 @@ public class HorizontialListView extends AdapterView<ListAdapter> {
 
     }
 
+    /**
+     * [Give the description for method].
+     * @param leftEdge int
+     * @param dx int
+     */
     private void fillListLeft(int leftEdge, final int dx) {
         while (leftEdge + dx > 0 && mLeftViewIndex >= 0) {
             View child = mAdapter.getView(mLeftViewIndex, mRemovedViewQueue.poll(), this);
@@ -212,6 +269,10 @@ public class HorizontialListView extends AdapterView<ListAdapter> {
         }
     }
 
+    /**
+     * [Give the description for method].
+     * @param dx int
+     */
     private void removeNonVisibleItems(final int dx) {
         View child = getChildAt(0);
         while (child != null && child.getRight() + dx <= 0) {
@@ -232,6 +293,10 @@ public class HorizontialListView extends AdapterView<ListAdapter> {
         }
     }
 
+    /**
+     * [Give the description for method].
+     * @param dx int
+     */
     private void positionItems(final int dx) {
         if (getChildCount() > 0) {
             mDisplayOffset += dx;
@@ -245,6 +310,10 @@ public class HorizontialListView extends AdapterView<ListAdapter> {
         }
     }
 
+    /**
+     * [Give the description for method].
+     * @param x int
+     */
     public synchronized void scrollTo(int x) {
         mScroller.startScroll(mNextX, 0, x - mNextX, 0);
         requestLayout();
@@ -256,6 +325,14 @@ public class HorizontialListView extends AdapterView<ListAdapter> {
         return handled;
     }
 
+    /**
+     * [Give the description for method].
+     * @param e1 MotionEvent
+     * @param e2 MotionEvent
+     * @param velocityX float
+     * @param velocityY float
+     * @return boolean
+     */
     protected boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
         synchronized (HorizontialListView.this) {
             mScroller.fling(mNextX, 0, (int) -velocityX, 0, 0, mMaxX, 0, 0);
@@ -265,11 +342,17 @@ public class HorizontialListView extends AdapterView<ListAdapter> {
         return true;
     }
 
+    /**
+     * [Give the description for method].
+     * @param e MotionEvent
+     * @return boolean
+     */
     protected boolean onDown(MotionEvent e) {
         mScroller.forceFinished(true);
         return true;
     }
 
+    /**  . */
     private OnGestureListener mOnGesture = new GestureDetector.SimpleOnGestureListener() {
 
         @Override

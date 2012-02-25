@@ -115,6 +115,8 @@ public class MyAccountActivity extends Activity implements OnClickListener {
                 Intent info = new Intent(MyAccountActivity.this, AccountInfoActivity.class);
                 startActivity(info);
                 break;
+            default :
+                break;
         }
     }
 }

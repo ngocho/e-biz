@@ -144,27 +144,27 @@ public class TabBestActivity extends Activity implements OnClickListener, OnDism
             return convertView;
         }
     };
-    /**  . */
+    /** . */
     private ListView mList;
-    /**  . */
+    /** . */
     private Button mBack;
-    /**  . */
+    /** . */
     private LinearLayout mHome;
-    /**  . */
+    /** . */
     private LinearLayout mDeals;
-    /**  . */
+    /** . */
     private LinearLayout mBest;
-    /**  . */
+    /** . */
     private LinearLayout mBrowser;
-    /**  . */
+    /** . */
     private Dialog mCurrentDialog;
-    /**  . */
+    /** . */
     private boolean mIsWaiting;
-    /**  . */
+    /** . */
     private BestAdapter mAdapter;
-    /**  . */
+    /** . */
     private Engine mEngine;
-    /**  . */
+    /** . */
     public Vector<best_food_item> mData;
     /*
      * (non-Javadoc)
@@ -197,6 +197,8 @@ public class TabBestActivity extends Activity implements OnClickListener, OnDism
                 home.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(home);
                 finish();
+                break;
+            default :
                 break;
         }
     }

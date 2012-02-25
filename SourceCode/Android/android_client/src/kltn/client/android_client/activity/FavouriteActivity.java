@@ -153,6 +153,8 @@ public class FavouriteActivity extends Activity implements OnClickListener {
                     mAdvance.setText(R.string.favourite_advance_b);
                 }
                 break;
+            default :
+                break;
         }
     }
 }
