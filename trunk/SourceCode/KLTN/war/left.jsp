@@ -66,15 +66,15 @@
           <li><bean:message key="home.search.optional3" />: <br> <html:select property="price"
               style="width: 190px;">
               <html:option value="0"><bean:message key="home.search.value1" /></html:option>
-              <html:option value="1">Dưới 30.000</html:option>
-              <html:option value="2">30.000 - 100.000</html:option>
-              <html:option value="3">100.000 - 200.000</html:option>
-              <html:option value="4">Trên 200.000</html:option>
+              <html:option value="1"><bean:message key="home.search.optional3.1" /></html:option>
+              <html:option value="2"><bean:message key="home.search.optional3.2" /></html:option>
+              <html:option value="3"><bean:message key="home.search.optional3.3" /></html:option>
+              <html:option value="4"><bean:message key="home.search.optional3.4" /></html:option>
             </html:select></li>
           <li><bean:message key="home.search.optional4" />:<br> <html:select property="status"
               style="width: 190px;">
-              <html:option value="1">Khuyến mãi</html:option>
-              <html:option value="2">Bình thường</html:option>
+              <html:option value="1"><bean:message key="home.search.optional4.1" /></html:option>
+              <html:option value="2"><bean:message key="home.search.optional4.2" /></html:option>
               <html:option value="0"><bean:message key="home.search.value1" /></html:option>
             </html:select></li>
           <logic:present name="providerSearchParam">
@@ -122,7 +122,8 @@
     </div>
   </div>
   <p class="home-callout">
- <a href="/getAddProviderList.vn"><div id="map_canvas" style="width: 200px; height: 300px"></div></a>
+ 
+<div id="map_canvas" style="width: 200px; height: 300px" onclick=""></div>
   <p class="home-callout">
     <a href=""><img src="Images/Commons/giaohang.png" width="195"
       height="200" border="0">

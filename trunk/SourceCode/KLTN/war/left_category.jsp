@@ -41,7 +41,7 @@ $(document).ready(function(){
     <div style="background:#009900" >
         <strong><span style="text-transform:uppercase" class="whiteImPression">MENU</span></strong>    </div>
     <div class="block-content">
-                            <p class="block-subtitle">TÙY CHỌN</p>
+                            <p class="block-subtitle"><bean:message key="category.menu.title" />TÙY CHỌN</p>
             <dl id="narrow-by-list">
                                                                     <c:choose>
                 <c:when test="${productVo.typeProduct == '1' ||productVo.typeProduct == '2' }"> <dt class="odd">MÓN ĂN</dt></c:when></c:choose>
@@ -55,10 +55,10 @@ $(document).ready(function(){
                 <c:when test="${productVo.typeProduct == '1' ||productVo.typeProduct == '2' }">
                  <c:choose>
                   <c:when test="${productVo.attr == '0'}">
-                  <span class="keepLink">Tất cả</span>
+                  <span class="keepLink"><bean:message key="home.search.value1" /></span>
                   </c:when>
                   <c:otherwise>
-               Tất cả
+            <bean:message key="home.search.value1" />
                </c:otherwise>
                </c:choose>
                 </a>
@@ -83,17 +83,17 @@ $(document).ready(function(){
 </c:choose>
 </ol>
 </dd>
-                                                                    <dt class="even">GIÁ TIỀN</dt>
+                                                                    <dt class="even"><bean:message key="category.menu.title1" /></dt>
                     <dd class="even">
 <ol>
     <li>
                 <a href="/categoryRecord.vn?price=0">
                 <c:choose>
                   <c:when test="${productVo.priceId == '0'}">
-                  <span class="keepLink">Tất cả</span>
+                  <span class="keepLink">  <bean:message key="home.search.value1" /></span>
                   </c:when>
                   <c:otherwise>
-               Tất cả
+                 <bean:message key="home.search.value1" />
                </c:otherwise>
                </c:choose>
                 </a>
@@ -108,7 +108,7 @@ $(document).ready(function(){
 <span   class="keepLink"><bean:write name="element" property="endPrice"/></span>
                	</c:when>
                <c:otherwise>
-               <span class="price" ><bean:write name="element" property="startPrice"/></span> - <span class="price">
+               <span class="price" ><bean:write name="element" property="startPrice"/></span> - 
 <span class="price"><bean:write name="element" property="endPrice"/></span>
                </c:otherwise>
                </c:choose>

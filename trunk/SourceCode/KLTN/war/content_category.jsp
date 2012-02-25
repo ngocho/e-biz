@@ -92,16 +92,16 @@ function slideSwitch() {
       <logic:present name="productVo" property="typeProduct">
        <c:choose>
                   <c:when test="${productVo.typeProduct == '1'}">
-                  Thực phẩm sơ chế
+                 <bean:message key="home.nav.menu1" />
                   </c:when>
                   <c:when test="${productVo.typeProduct == 2}">
-                 Thức ăn nấu sẵn
+                 <bean:message key="home.nav.menu2" />
                   </c:when>
                   <c:when test="${productVo.typeProduct == 3}">
-                  Rau xanh
+                 <bean:message key="home.nav.menu3" />
                   </c:when>
                   <c:when test="${productVo.typeProduct == 4}">
-                  Trái cây
+                 <bean:message key="home.nav.menu4" />
                   </c:when>
       </c:choose>
       </logic:present>
@@ -131,7 +131,7 @@ function slideSwitch() {
     <div class="toolbar">
       <div class="pager">
         <p class="amount">
-          <strong>Page: &nbsp;</strong> <span> <input
+          <strong><bean:message key="category.content.page" />: &nbsp;</strong> <span> <input
             type="hidden" name="page" id="page"
             value="<bean:write name="productVo" property="page"/>"></input>
             <logic:present name="productVo" property="pagingList">
@@ -157,7 +157,7 @@ function slideSwitch() {
         </p>
 
         <div class="limiter">
-          <label>Hiển thị </label> <input type="hidden" id="limit"
+          <label><bean:message key="category.content.display" /> </label> <input type="hidden" id="limit"
             value="<bean:write name="productVo" property="limit"/>"></input>
           <select id="record" onchange="setLocation(this.value)">
               <c:choose>
@@ -182,7 +182,7 @@ function slideSwitch() {
             </c:choose>
           </select>
           
-           sản phẩm mỗi trang
+          <bean:message key="category.content.display1" />
         </div>
       </div>
 
@@ -194,13 +194,13 @@ function slideSwitch() {
           <logic:present name="productVo">
             <c:choose>
               <c:when test="${productVo.order == 'asc'}">
-                <label>Sắp xếp tăng dần theo</label>
+                <label><bean:message key="category.content.order" /></label>
               </c:when>
               <c:when test="${productVo.order == 'desc'}">
-                <label>Sắp xếp giảm dần  theo</label>
+                <label><bean:message key="category.content.order1" /></label>
               </c:when>
               <c:otherwise>
-               <label>Sắp xếp tăng dần theo</label>
+               <label><bean:message key="category.content.order" /></label>
               </c:otherwise>
             </c:choose>
           </logic:present>
@@ -209,28 +209,24 @@ function slideSwitch() {
           <select id="order" onchange="setLocation(this.value)">
             <c:choose>
               <c:when test="${productVo.col == 'saleProduct'}">
-            <option value="/categoryRecord.vn?col=foodName"
-              >Tên</option>
-              <option value="/categoryRecord.vn?col=price">Giá
-              tiền</option>
+            <option value="/categoryRecord.vn?col=foodName"><bean:message key="category.content.order.value1" /></option>
+              <option value="/categoryRecord.vn?col=price"><bean:message key="category.content.order.value2" /></option>
             <option value="/categoryRecord.vn?col=saleProduct" selected="selected">
-              Lượt người mua</option>
+              <bean:message key="category.content.order.value3" /></option>
               </c:when>
               <c:when test="${productVo.col == 'price'}">
             <option value="/categoryRecord.vn?col=foodName"
-              >Tên</option>
-              <option value="/categoryRecord.vn?col=price" selected="selected">Giá
-              tiền</option>
+              ><bean:message key="category.content.order.value1" /></option>
+              <option value="/categoryRecord.vn?col=price" selected="selected"><bean:message key="category.content.order.value2" /></option>
             <option value="/categoryRecord.vn?col=saleProduct">
-              Lượt người mua</option>
+              <bean:message key="category.content.order.value3" /></option>
               </c:when>
                <c:otherwise>
                <option value="/categoryRecord.vn?col=foodName"
-              selected="selected">Tên</option>
-              <option value="/categoryRecord.vn?col=price">Giá
-              tiền</option>
+              selected="selected"><bean:message key="category.content.order.value1" /></option>
+              <option value="/categoryRecord.vn?col=price"><bean:message key="category.content.order.value2" /></option>
             <option value="/categoryRecord.vn?col=saleProduct" >
-              Lượt người mua</option>
+             <bean:message key="category.content.order.value3" /></option>
                </c:otherwise>
                </c:choose>
           </select>
@@ -240,19 +236,19 @@ function slideSwitch() {
               <c:when test="${productVo.order == 'asc'}">
                  <a style="text-decoration: none;"
               href="/categoryRecord.vn?order=desc"
-              title="Set Descending Direction">Sắp xếp giảm dần
+              title="Set Descending Direction"><bean:message key="category.content.order1" />
             </a>
               </c:when>
               <c:when test="${productVo.order == 'desc'}">
                 <a style="text-decoration: none;"
               href="/categoryRecord.vn?order=asc"
-              title="Set Descending Direction">Sắp xếp tăng dần
+              title="Set Descending Direction"><bean:message key="category.content.order" />
             </a>
               </c:when>
                <c:otherwise>
                <a style="text-decoration: none;"
               href="/categoryRecord.vn?order=desc"
-              title="Set Descending Direction">Sắp xếp giảm dần
+              title="Set Descending Direction"><bean:message key="category.content.order1" />
             </a>
                </c:otherwise>
             </c:choose>
@@ -281,31 +277,31 @@ function slideSwitch() {
               <div class="rating-box">
                 <div class="rating" style="width: 87%;"></div>
               </div>
-              Mã món ăn: <span class="amount" style="color: red;">
+              <bean:message key="home.content.food.id" />: <span class="amount" style="color: red;">
                 <!-- <a href="#" onclick="var t = opener ? opener.window : window; t.location.href='http://demo.magentocommerce.com/review/product/list/id/52/category/10/'; return false;"> -->
                 <bean:write name="element" property="id" /> </span>
             </div>
             <div class="price-box">
 
               <p class="old-price">
-                <span class="price-label">Giá bình thường:</span> <span
+                <span class="price-label"><bean:message key="home.content.food.price" />:</span> <span
                   class="price" id="old-price-52"> <bean:write
                     name="element" property="price" /> </span>
               </p>
 
               <p class="special-price">
-                <span class="price-label">Giá khuyến mãi:</span> <span
+                <span class="price-label"><bean:message key="home.content.food.priceP" />:</span> <span
                   class="price" id="product-price-52"> <bean:write
                     name="element" property="promoPrice" /> </span>
               </p>
                <p class="special-price">
-                <span class="price-label">Số lượng:</span> <span
+                <span class="price-label"><bean:message key="category.content.number" />:</span> <span
                   class="price" id="product-price-52"> <bean:write
                     name="element" property="number" /> </span>
               </p>
                <p >
                 <a href="/compareFood.vn?screen=category&id=<bean:write name="element" property="id" />" style="color:blue;"> 
-                So sánh với sản phẩm của cửa hàng khác</a>
+                <bean:message key="home.content.food.compare" /></a>
               </p>
             </div>
             <div class="actions">
