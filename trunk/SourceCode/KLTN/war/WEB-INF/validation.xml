@@ -102,11 +102,6 @@
                 <arg0 key="register.phone"/>
             </field>
             <field
-                property="districtName"
-                depends="required">
-                <arg0 key="register.districtName"/>
-            </field>
-            <field
                 property="loginPassword"
                 depends="minlength">
                 <var>

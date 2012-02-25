@@ -48,6 +48,10 @@
         <action path="/generateXu" type="ebiz.action.mail.GenerationCodeXu">
         </action>
 		<action path="/Welcome" forward="/welcomeStruts.jsp" />
+		
+		<action path="/changeLanguage" type="ebiz.action.Language">
+        <forward name="success" path="/home.vn" redirect="true" />
+        </action>
 	</action-mappings>
 
 	<controller processorClass="org.apache.struts.tiles.TilesRequestProcessor" />
