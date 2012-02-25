@@ -7,13 +7,13 @@
 <div class="home-spot">
 
   <div class="page-title">
-    <h1>Hóa đơn thanh toán</h1>
+    <h1><bean:message key="bill.title" /></h1>
   </div>
   <ul>
     <li class="section allow active">
 
       <div class="step-title">
-        <h2 class="impressionText">Chúng tôi sẽ gởi thông tin đơn đặt hàng thông qua mail và điện thoại của quý khách</h2>
+        <h2 class="impressionText"><bean:message key="bill.message" /></h2>
       </div>
       <div id="checkout-step-billing" class="step a-item">
         <fieldset>
@@ -21,60 +21,60 @@
             <table>
               <tbody id="bill">
                <tr>
-                  <th width="150" height="25" style="font-weight: bold">Tổng tiền:</th>
+                  <th width="150" height="25" style="font-weight: bold"><bean:message key="bill.sum" />:</th>
                   <td style="font-weight: bold; color: red"><bean:write
                       name="bill" property="sumPrice" /></td>
                 </tr>
                 <tr>
-                  <th width="150" height="25" style="font-weight: bold">Mã hóa
-                    đơn :</th>
+                  <th width="150" height="25" style="font-weight: bold"><bean:message key="bill.id" />
+                    :</th>
                   <td style="font-weight: bold; color: red"><bean:write
                       name="bill" property="id" /></td>
                 </tr>
                 <tr>
-                   <th width="150" height="25" style="font-weight: bold">Mã
-                    khách hàng :</th>
+                   <th width="150" height="25" style="font-weight: bold"><bean:message key="bill.idCustomer" />
+                    :</th>
                   <td style="font-weight: bold; color: red"><bean:write
                       name="bill" property="idCustomer" /></td>
                 </tr>
                 <tr>
-                   <th width="150" height="25" style="font-weight: bold">Tên
-                    khách hàng :</th>
+                   <th width="150" height="25" style="font-weight: bold"><bean:message key="bill.nameCustomer" />
+                   :</th>
                   <td style="font-weight: bold; color: red"><bean:write
                       name="bill" property="nameCustomer" /></td>
                 </tr>
                 <tr>
                   <th width="150" height="25" style="font-weight: bold">
-                    Email:</th>
+                    <bean:message key="checkout.mail" />:</th>
                   <td style="font-weight: bold; color: red"><bean:write
                       name="bill" property="email" /></td>
                 </tr>
                 <tr>
-                  <th width="150" height="25" style="font-weight: bold">Số
-                    điện thoại :</th>
+                  <th width="150" height="25" style="font-weight: bold">
+                    <bean:message key="checkout.phone" />:</th>
                   <td style="font-weight: bold; color: red"><bean:write
                       name="bill" property="phone" /></td>
                 </tr>
                 <tr>
-                   <th width="150" height="25" style="font-weight: bold">Địa
-                    chỉ giao hàng:</th>
+                   <th width="150" height="25" style="font-weight: bold">
+                    <bean:message key="bill.add" />:</th>
                   <td style="font-weight: bold; color: red"><bean:write
                       name="bill" property="address" /></td>
                 </tr>
                 <tr>
-                   <th width="150" height="25" style="font-weight: bold">Ngày
-                    đặt hàng :</th>
+                   <th width="150" height="25" style="font-weight: bold">
+                   <bean:message key="bill.orderDay" />:</th>
                   <td style="font-weight: bold; color: red"><bean:write
                       name="bill" property="dateOrder" /></td>
                 </tr>
                 <tr>
-                  <th width="150" height="25" style="font-weight: bold">Ngày
-                    giao hàng :</th>
+                  <th width="150" height="25" style="font-weight: bold"><bean:message key="checkout.dateShip" />
+                     :</th>
                   <td style="font-weight: bold; color: red"><bean:write
                       name="bill" property="dateShip" /></td>
                 </tr>
                  <tr>
-                  <th width="150" height="25" style="font-weight: bold">Ghi chú:</th>
+                  <th width="150" height="25" style="font-weight: bold"><bean:message key="checkout.note" />:</th>
                   <td style="font-weight: bold; color: red"><bean:write
                       name="bill" property="note" /></td>
                 </tr>

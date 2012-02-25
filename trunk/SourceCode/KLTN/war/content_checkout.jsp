@@ -30,11 +30,6 @@
                 $(this).css("background", "#FFF");
             }
         });
-       /*  $("#note").focusout(function() {
-            if($(this).val == ''){
-            $(this).val('Nhập thời gian giao thực phẩm, yêu cầu');
-            }
-        }); */
     });
 </script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
@@ -48,13 +43,13 @@
 </script>
 <div class="home-spot">
                                         <div class="page-title">
-    <h1>Checkout</h1>
+    <h1><bean:message key="checkout.title" /></h1>
 </div>
 <ul>
 <li class="section allow active"> 
     
         <div class="step-title">
-        <h2>Nhập thông tin cần thiết:</h2>
+        <h2><bean:message key="checkout.info" /></h2>
         </div>
         <div id="checkout-step-billing" class="step a-item" > 
         <html:form action="/createBill.vn" method="get">
@@ -65,7 +60,7 @@
             <ul>
                 <li class="fields"><div class="customer-name">
     <div class="field name-firstname">
-        <label  class="required"><em>*</em>Họ và tên</label>
+        <label  class="required"><em>*</em><bean:message key="checkout.fullname" /></label>
         <div class="input-box">
         <html:text size="30" property="nameCustomer" styleClass="validated"/>
         </div>
@@ -74,7 +69,7 @@
 </li>
                 <li class="fields">
                     <div class="field">
-                        <label  class="required"><em>*</em>Điện thoại</label>
+                        <label  class="required"><em>*</em><bean:message key="checkout.phone" /></label>
                         <div class="input-box">
                            <html:text size="30" property="phone" styleClass="validated"/>
                         </div>
@@ -82,7 +77,7 @@
                         </li>
                         <li class="fields">
                     <div class="field">
-                        <label  class="required"><em>*</em>Email</label>
+                        <label  class="required"><em>*</em><bean:message key="checkout.mail" /></label>
                         <div class="input-box">
                            <html:text size="30" property="email" styleClass="validated"/>
                         </div>
@@ -90,13 +85,13 @@
                         </li>
                 <li class="fields">
                     <div class="field">
-                        <label class="required" ><em>*</em>Số nhà</label>
+                        <label class="required" ><em>*</em><bean:message key="customer.register.home" /></label>
                         <div class="input-box">
                             <html:text size="30" property="homeNumber" styleClass="validated"/>
                         </div>
                     </div>
                       <div class="field">
-                        <label  class="required"><em>*</em>Tên đường</label>
+                        <label  class="required"><em>*</em><bean:message key="customer.register.street" /></label>
                         <div class="input-box">
                              <html:text size="30" property="streetName" styleClass="validated"/>
                         </div>
@@ -104,16 +99,16 @@
                     </li>
                         <li class="fields">
                     <div class="field">
-                        <label  class="required" ><em>*</em>Phường</label>
+                        <label  class="required" ><em>*</em><bean:message key="customer.register.ward" /></label>
                         <div class="input-box">
                               <html:text size="30" property="wardName" styleClass="validated"/>
                         </div>
                     </div>
                      <div class="field">
-                        <label  class="required" class="required"><em>*</em>Quận</label>
+                        <label  class="required" class="required"><em>*</em><bean:message key="customer.register.district" /></label>
                         <div class="input-box">
                         <html:select property="districtName" styleId="districtName">
-   <html:option value="" >- - - - - - - - - - - - Chọn quận- - - - - - - - - - - - -</html:option>
+   <html:option value="" >- - - - - - - - - - - - <bean:message key="customer.register.district.choose" />- - - - - - - - - - - - -</html:option>
     <html:option value="1">1</html:option>
     <html:option value="2">2</html:option>
     <html:option value="3">3</html:option>
@@ -142,7 +137,7 @@
                     </li>
                         <li class="fields">
                     <div class="field">
-                        <label  class="required">Tòa nhà</label>
+                        <label  class="required"><bean:message key="customer.register.building" /></label>
                         <div class="input-box">
                         <html:text size="30" property="buildingName"/>
                         </div>
@@ -151,7 +146,7 @@
 
                   <li class="fields">
                     <div class="field">
-                        <label  class="required"><em>*</em>Ngày giao hàng</label>
+                        <label  class="required"><em>*</em><bean:message key="checkout.dateShip" /></label>
                         <div class="input-box">
                         <% Date date = new Date(); 
                         String s_date = CommonUtil.convertDateToString(date);
@@ -162,8 +157,8 @@
                   </li>
                   <li class="fields">
                     <div class="field">
-                        <label  class="required"><em>*</em>Lời nhắn</label><br>
-                        Nhập thời gian giao thực phẩm, yêu cầu
+                        <label  class="required"><em>*</em><bean:message key="checkout.note" /></label><br>
+                        <bean:message key="checkout.note.info" />
                         <div class="input-box">
                             <html:textarea style="width:400px;"  styleId="note" styleClass="validated"
                             value="" onfocus="this.value='';"
@@ -178,7 +173,7 @@
                                                                     });
                                                              </script>
                                                              <logic:messagesPresent property="email">
-                                                             Địa chỉ email không hợp lệ
+                                                             <bean:message key="checkou.invemail" />
                                                              </logic:messagesPresent>
                                                              <logic:messagesNotPresent  property="email">
                                                               <html:messages id="error"
@@ -193,24 +188,11 @@
 
         </fieldset>
      </li>
-    <%--  <li class="fields">
-                    <div class="field">
-                        <label  class="required">Vui lòng chọn hình thức thanh toán</label>
-                       
-                    </div>
-                  </li>
-            <li class="control">
-            <html:radio  property="isPayment" value="0" /><label>   Dùng tài khoản xu để thanh toán</label></li>
-        <li class="control">
-             <html:radio  property="isPayment" value="1" /><label>   Thanh toán tại nhà</label></li>
-         <li class="control">
-              <html:radio  property="isPayment" value="2" /><label>   Thanh toán qua ngân lượng</label></li>
-       --%>
         <li> 
-        <button type="submit" title="Thanh toán" class="button" id="checkout" ><span><span>Chọn hình thức thanh toán</span></span></button>
+        <button type="submit" title="Thanh toán" class="button" id="checkout" ><span><bean:message key="checkout.button.type" /></span></button>
         </li>
          <li>
-        <button type="button" title="Thanh toán" class="button" id="default" ><span class="required">Đặt làm thông tin giao hàng mặc định</span></button>
+        <button type="button" title="Thanh toán" class="button" id="default" ><span class="required"><bean:message key="checkou.button.save" /></span></button>
         </li>
         </ul>
         </html:form>
@@ -222,9 +204,7 @@
           </logic:messagesPresent> 
         
         <div class="buttons-set" id="billing-buttons-container">
-        <p class="required">* Thông tin bắt buộc</p>
-<!--         <span class="please-wait" id="billing-please-wait" style="display:none;">
-            <img src="#" alt="Loading next step..." title="Loading next step..." class="v-middle"> Loading next step...        </span> -->
+        <p class="required">* <bean:message key="customer.register.mandatory" /></p>
     </div>
   
 
