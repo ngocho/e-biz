@@ -1,6 +1,3 @@
-/**
- * 
- */
 package kltn.client.android_client.activity;
 
 import kltn.client.android_client.R;
@@ -53,9 +50,17 @@ public class FavouriteActivity extends Activity implements OnClickListener {
         mAdvance.setOnClickListener(this);
     }
 
+    /**
+     * @author NThanhPhong
+     *
+     */
     public class FavouriteAdapter extends BaseAdapter {
-        Context context;
+        /**  . */
+        private Context context;
 
+        /**
+         * @param mycontext Context
+         */
         public FavouriteAdapter(Context mycontext) {
             context = mycontext;
         }
@@ -111,7 +116,7 @@ public class FavouriteActivity extends Activity implements OnClickListener {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     if (isChecked) {
-                        ListDelete += id + "@";
+                        listDelete += id + "@";
                     }
                 }
             });
@@ -119,15 +124,25 @@ public class FavouriteActivity extends Activity implements OnClickListener {
         }
     };
 
-    private String ListDelete = "";
+    /**  . */
+    private String listDelete = "";
+    /**  . */
     private Engine mEngine;
+    /**  . */
     private FavouriteEngine mFavoriteEngine;
+    /**  . */
     private Cursor mData;
+    /**  . */
     private boolean mflag = false;
+    /**  . */
     private Button mBack;
+    /**  . */
     private Button mAdvance;
+    /**  . */
     private ListView mList;
+    /**  . */
     private TextView mCount;
+    /**  . */
     private FavouriteAdapter mFavouriteAdapter;
 
     @Override
@@ -143,7 +158,7 @@ public class FavouriteActivity extends Activity implements OnClickListener {
             case R.id.favourite_advance :
                 if (mflag) {
                     mflag = false;
-                    mFavoriteEngine.removeItemsById(ListDelete.split("@"));
+                    mFavoriteEngine.removeItemsById(listDelete.split("@"));
                     mData = mFavoriteEngine.getAllSortByDate();
                     mFavouriteAdapter.notifyDataSetChanged();
                     mAdvance.setText(R.string.favourite_advance_a);
