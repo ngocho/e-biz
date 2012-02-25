@@ -7,7 +7,7 @@ import android.net.Uri;
 import android.provider.BaseColumns;
 
 /**
- * @author nthanhphong
+ * @author NThanhPhong
  */
 public class Browser_food_item implements BaseColumns {
     public static final Uri CONTENT_URI = Uri.parse("content://kltn.client.android_client/browser_food");

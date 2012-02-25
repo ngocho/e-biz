@@ -28,7 +28,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 /**
- * @author nthanhphong
+ * @author NThanhPhong
  */
 public class DetailFoodActivity extends Activity implements OnClickListener, OnDismissListener {
 

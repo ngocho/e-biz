@@ -1,13 +1,12 @@
 package kltn.client.android_client.activity;
 
-import kltn.client.android_client.R;
 import android.app.Activity;
 import android.os.Bundle;
 
 /**
  * @author NThanhPhong
  */
-public class AboutActivity extends Activity {
+public class AddCommentActivity extends Activity {
 
     /*
      * (non-Javadoc)
@@ -17,6 +16,6 @@ public class AboutActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.about_activity);
     }
+
 }

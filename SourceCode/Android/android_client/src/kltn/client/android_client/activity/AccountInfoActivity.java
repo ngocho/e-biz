@@ -21,7 +21,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 /**
- * @author nthanhphong
+ * @author NThanhPhong
  */
 public class AccountInfoActivity extends Activity implements OnClickListener, OnDismissListener {
 

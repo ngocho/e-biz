@@ -29,7 +29,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 /**
- * @author nthanhphong
+ * @author NThanhPhong
  */
 public class TabBestActivity extends Activity implements OnClickListener, OnDismissListener {
 

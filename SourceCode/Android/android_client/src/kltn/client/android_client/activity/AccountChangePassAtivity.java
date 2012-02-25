@@ -1,6 +1,3 @@
-/**
- * 
- */
 package kltn.client.android_client.activity;
 
 import kltn.client.android_client.PrefUtil;
@@ -20,7 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 /**
- * @author nthanhphong
+ * @author NThanhPhong
  */
 public class AccountChangePassAtivity extends Activity implements OnClickListener, OnDismissListener {
 
@@ -60,11 +57,12 @@ public class AccountChangePassAtivity extends Activity implements OnClickListene
         switch (v.getId()) {
             case R.id.account_changepass_ok :
                 if (!mOldPass.getText().equals("") && !mNewPass.getText().equals("")
-                        && !mComfirmPass.getText().equals(""))
+                        && !mComfirmPass.getText().equals("")) {
                     LoadData();
-                else
+                } else {
                     Toast.makeText(AccountChangePassAtivity.this, getString(R.string.transfer_xu_status),
                             Toast.LENGTH_LONG).show();
+                }
                 break;
             case R.id.account_changepass_back :
                 finish();
@@ -83,9 +81,10 @@ public class AccountChangePassAtivity extends Activity implements OnClickListene
                     .show();
             PrefUtil.SetPref(AccountChangePassAtivity.this, "password", mComfirmPass.getText());
             finish();
-        } else
+        } else {
             Toast.makeText(AccountChangePassAtivity.this, getString(R.string.accountchange_false), Toast.LENGTH_LONG)
                     .show();
+        }
 
     }
     public void LoadData() {
