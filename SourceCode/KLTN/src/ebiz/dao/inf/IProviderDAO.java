@@ -22,18 +22,18 @@ import java.util.List;
 
 import ebiz.dto.account.provider.Provider;
 
-/**
- * @author Administrator
+ /**
+ * @author ThuyNT
  *
  */
 public interface IProviderDAO {
-    public boolean saveProvider(Provider provider);
+     boolean saveProvider(Provider provider);
 
-    public boolean isProvider(String id);
+     boolean isProvider(String id);
 
-    public Provider getProviderById(String id);
-    public List<Provider> getProviderAll();
-    public List<Provider> getProviderByName(String value);
-//    public List<String> getPhoneList();
+     Provider getProviderById(String id);
+     List<Provider> getProviderAll();
+     List<Provider> getProviderByName(String value);
+//     List<String> getPhoneList();
 
 }

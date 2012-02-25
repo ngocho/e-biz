@@ -8,48 +8,50 @@ import ebiz.dto.food.FoodPriceLevel;
 import ebiz.dto.food.FoodStatus;
 import ebiz.dto.food.FoodType;
 
+/**
+ * @author ThuyNT
+ *
+ */
 public interface IFoodDAO {
-	
-	public Food getFoodById(String key);
-	
-	public Food getFoodById(Long key);
-	public String getStatusNameByID(String id);
-	public String getNameTypeById(String id);
-	public String getNameAttrById(String id);
-	public List<Food> getListFoodByValue(String col, String id);
 
-	public List<Food> getFoodListAll();
-	
-	public List<Food> getFoodListByProviderStatus(String idProvider, String statusFood);
-	
-	public List<String> getAttributeList(String col);
-	public List<FoodAttribute> getAttributeList();
+    Food getFoodById(String key);
 
-	public List<FoodPriceLevel> getPriceList();
+    Food getFoodById(Long key);
+    String getStatusNameByID(String id);
+    String getNameTypeById(String id);
+    String getNameAttrById(String id);
+    List<Food> getListFoodByValue(String col, String id);
 
-	public boolean insertFoodAttribute(FoodAttribute food);
+    List<Food> getFoodListAll();
 
-	public boolean insertFoodStatus(FoodStatus food);
+    List<Food> getFoodListByProviderStatus(String idProvider, String statusFood);
 
-	public boolean insertFoodType(FoodType food);
+    List<String> getAttributeList(String col);
+    List<FoodAttribute> getAttributeList();
 
-	public boolean insertFoodPriceLevel(FoodPriceLevel food);
+    List<FoodPriceLevel> getPriceList();
 
-	public boolean saveFood(Food food);   //save = update
-	
-	public boolean deleteFood(Food food);
-	
-	public boolean deleteFoodAll(Class<?> className);
-	
-	public boolean isFood(Long id);
-	
-	public List<Food> diplayPageFood(String col,
-			 List<String> numberPageList, String order, int record,
-			int page, String sql);
-	public List<Food> diplayFoodCategoryAll(String col,
-            List<String> numberPageList, String order, int record,
-            int page, String sql);
+    boolean insertFoodAttribute(FoodAttribute food);
 
-	public List<Food> searchFoodByName(String searchText, String type, String attr, String price, String status,String provider);
+    boolean insertFoodStatus(FoodStatus food);
+
+    boolean insertFoodType(FoodType food);
+
+    boolean insertFoodPriceLevel(FoodPriceLevel food);
+
+    boolean saveFood(Food food); // save = update
+
+    boolean deleteFood(Food food);
+
+    boolean deleteFoodAll(Class<?> className);
+
+    boolean isFood(Long id);
+
+    List<Food> diplayPageFood(String col, List<String> numberPageList, String order, int record, int page, String sql);
+    List<Food> diplayFoodCategoryAll(String col, List<String> numberPageList, String order, int record, int page,
+            String sql);
+
+    List<Food> searchFoodByName(String searchText, String type, String attr, String price, String status,
+            String provider);
 
 }
