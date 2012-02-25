@@ -21,6 +21,10 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		/WEB-INF/struts-config-mobile.xml
       </param-value>
     </init-param>
+   <init-param>
+    <param-name>application</param-name>
+    <param-value>ApplicationResources</param-value>
+  </init-param>
     <load-on-startup>1</load-on-startup>
   </servlet>
   	<listener>
