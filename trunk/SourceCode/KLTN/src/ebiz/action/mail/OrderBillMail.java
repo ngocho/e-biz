@@ -44,7 +44,7 @@ import ebiz.util.CommonUtil;
 public class OrderBillMail extends Action {
     /**
      * [OrderBillMail].
-     *
+     * 
      * @param mapping ActionMapping
      * @param form ActionForm
      * @param request HttpServletRequest
@@ -76,7 +76,7 @@ public class OrderBillMail extends Action {
                 msgBody.append("Mã hóa đơn: " + bill.getId());
                 msgBody.append("</li>");
                 msgBody.append("<li>");
-                msgBody.append("Tổng số tiền: <span style=\'color:red\'>" + bill.getSumPrice()+"</span>");
+                msgBody.append("Tổng số tiền: <span style=\'color:red\'>" + bill.getSumPrice() + "</span>");
                 msgBody.append("</li>");
                 msgBody.append("<li>");
                 msgBody.append("Thời gian giao hàng: " + CommonUtil.convertDateToString(bill.getDateShip()));
@@ -95,10 +95,9 @@ public class OrderBillMail extends Action {
                     MimeMessage msg = new MimeMessage(session);
                     msg.setFrom(new InternetAddress("uit.mmt@gmail.com", "Food.com"));
                     msg.addRecipient(Message.RecipientType.TO, new InternetAddress(bill.getEmail(), "User"));
-                    msg.setSubject("Thông tin hóa đơn","UTF-8");
+                    msg.setSubject("Thông tin hóa đơn", "UTF-8");
                     msg.setContent(msgBody.toString(), "text/html");
                     Transport.send(msg);
-                    System.out.println("send mail thanh cong #################");
 
                 } catch (AddressException e) {
                     e.printStackTrace();

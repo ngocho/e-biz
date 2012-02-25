@@ -32,7 +32,6 @@ import com.google.appengine.api.blobstore.BlobKey;
 import com.google.appengine.api.blobstore.BlobstoreService;
 import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
 
-
 /**
  * @author ThuyNT
  */
@@ -41,7 +40,7 @@ public class UploadImage extends BaseAction {
     private BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
     /**
      * [UploadImage Action].
-     *
+     * 
      * @param mapping ActionMapping
      * @param form ActionForm
      * @param request HttpServletRequest
@@ -63,10 +62,10 @@ public class UploadImage extends BaseAction {
                 // save in session
                 se.setAttribute("urlImageKey", urlKey);
             }
-            if(type != null && type.equals("1")){
-            	//register Provider 
-            	se.setAttribute("urlImageKeyP", urlKey);
-            	  return mapping.findForward(SUCCESS1);
+            if (type != null && type.equals("1")) {
+                // register Provider
+                se.setAttribute("urlImageKeyP", urlKey);
+                return mapping.findForward(SUCCESS1);
             }
         }
         return mapping.findForward(SUCCESS);

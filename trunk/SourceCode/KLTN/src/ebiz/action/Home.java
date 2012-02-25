@@ -20,6 +20,7 @@ package ebiz.action;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -40,6 +41,7 @@ import ebiz.util.CommonConstant;
 public class Home extends BaseAction {
     /**
      * [Home action].
+     * 
      * @param mapping ActionMapping
      * @param form ActionForm
      * @param request HttpServletRequest
@@ -49,23 +51,23 @@ public class Home extends BaseAction {
      * @see ActionForward Struts1 Framework
      */
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
-        HttpServletResponse response) throws Exception {
+            HttpServletResponse response) throws Exception {
+
         HttpSession se = request.getSession();
-        List<FoodForm> formList = new ArrayList<FoodForm>();
-        formList = FoodBLO.getFoodListPromotionBest(6);
-        List<ProviderForm>  providerSearchParam = ProviderBLO.getProviderFormAll();
-        for(ProviderForm f : providerSearchParam){
-        	   System.out.println("providerSearchParam!!!!!!!!1" + f.getLoginName());
+        String lang = (String) se.getAttribute("language");
+        if (lang == null) {
+            Locale locale = new Locale("vi");
+            se.setAttribute("language", "vi");
+            se.setAttribute("org.apache.struts.action.LOCALE", locale);
         }
-        
-        System.out.println("providerSearchParam1111111111111111" + providerSearchParam.size());
+        List<FoodForm> formList = new ArrayList<FoodForm>();
+        formList = FoodBLO.getFoodListPromotionBest(CommonConstant.HOME_RECORD);
+        List<ProviderForm> providerSearchParam = ProviderBLO.getProviderFormAll();
         se.setAttribute("providerSearchParam", providerSearchParam);
         if (!formList.isEmpty()) {
             se.setAttribute("promotionFood", formList);
         }
-            return mapping.findForward(SUCCESS);
+        return mapping.findForward(SUCCESS);
     }
-
-
 
 }
