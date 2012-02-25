@@ -1,6 +1,3 @@
-/**
- * 
- */
 package kltn.client.android_client.model;
 
 import android.net.Uri;
@@ -10,23 +7,53 @@ import android.provider.BaseColumns;
  * @author NThanhPhong
  */
 public class FavoriteItem implements BaseColumns {
+    /**  . */
     public static final Uri CONTENT_URI = Uri.parse("content://kltn.client.android_client/favorite_food");
 
+    /**  . */
     public static final String DEFAULT_SORT_ORDER = "savedate, id DESC";
+    /**  . */
     public static final String ID = "id";
+    /**  . */
     public static final String NAME = "name";
+    /**  . */
     public static final String INTRODUCTION = "introduction";
+    /**  . */
     public static final String PRICE = "price";
+    /**  . */
     public static final String BUYPRICE = "buyprice";
+    /**  . */
     public static final String IMAGEURL = "imageurl";
+    /**  . */
     public static final String UPLOADDATE = "uploaddate";
+    /**  . */
     public static final String SAVEDATE = "savedate";
+    /**  . */
     public static final String BUYCOUNT = "buycount";
+    /**  . */
     public static final String MINBUYER = "minbuyer";
+    /**  . */
     public static final String MAXBUYER = "maxbuyer";
+    /**  . */
     public static final String RATE = "rate";
+    /**  . */
     public static final String PROVIDER = "provider";
 
+    /**
+     * @param id String
+     * @param name String
+     * @param introduction String
+     * @param price String
+     * @param buyprice String
+     * @param imageurl String
+     * @param uploadate String
+     * @param savedate String
+     * @param buycount int
+     * @param minbuyer int
+     * @param maxbuyer int
+     * @param rate int
+     * @param provider String
+     */
     public FavoriteItem(String id, String name, String introduction, String price, String buyprice, String imageurl,
             String uploadate, String savedate, int buycount, int minbuyer, int maxbuyer, int rate, String provider) {
         setId(id);
@@ -44,85 +71,191 @@ public class FavoriteItem implements BaseColumns {
         setRate(rate);
         setProvider(provider);
     }
+    /**
+     * [Give the description for method].
+     * @return String
+     */
     public String getId() {
-        return Id;
+        return id;
     }
+    /**
+     * [Give the description for method].
+     * @return String
+     */
     public String getName() {
-        return Name;
+        return name;
     }
+    /**
+     * [Give the description for method].
+     * @return String
+     */
     public String getIntroduction() {
-        return Introduction;
+        return introduction;
     }
+    /**
+     * [Give the description for method].
+     * @return String
+     */
     public String getPrice() {
-        return Price;
+        return price;
     }
+    /**
+     * [Give the description for method].
+     * @return String
+     */
     public String getBuyprice() {
-        return Buyprice;
+        return buyprice;
     }
+    /**
+     * [Give the description for method].
+     * @return String
+     */
     public String getImageurl() {
-        return Imageurl;
+        return imageurl;
     }
+    /**
+     * [Give the description for method].
+     * @return String
+     */
     public String getUploaddatedate() {
-        return Uploaddate;
+        return uploaddate;
     }
+    /**
+     * [Give the description for method].
+     * @return String
+     */
     public String getSavedate() {
-        return Savedate;
+        return savedate;
     }
+    /**
+     * [Give the description for method].
+     * @return String
+     */
     public int getBuycount() {
-        return Buycount;
+        return buycount;
     }
+    /**
+     * [Give the description for method].
+     * @return String
+     */
     public int getMinbuyer() {
-        return Minbuyer;
+        return minbuyer;
     }
+    /**
+     * [Give the description for method].
+     * @return String
+     */
     public int getMaxbuyer() {
-        return Maxbuyer;
+        return maxbuyer;
     }
+    /**
+     * [Give the description for method].
+     * @return String
+     */
     public int getRate() {
-        return Rate;
+        return rate;
     }
+    /**
+     * [Give the description for method].
+     * @param id String
+     */
     public void setId(String id) {
-        Id = id;
+        this.id = id;
     }
+    /**
+     * [Give the description for method].
+     * @param name String
+     */
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
+    /**
+     * [Give the description for method].
+     * @param introduction String
+     */
     public void setIntroduction(String introduction) {
-        Introduction = introduction;
+        this.introduction = introduction;
     }
+    /**
+     * [Give the description for method].
+     * @param price String
+     */
     public void setPrice(String price) {
-        Price = price;
+        this.price = price;
     }
+    /**
+     * [Give the description for method].
+     * @param buyprice String
+     */
     public void setBuyprice(String buyprice) {
-        Buyprice = buyprice;
+        this.buyprice = buyprice;
     }
+    /**
+     * [Give the description for method].
+     * @param imageurl String
+     */
     public void setImageurl(String imageurl) {
-        Imageurl = imageurl;
+        this.imageurl = imageurl;
     }
+    /**
+     * [Give the description for method].
+     * @param uploadadte String
+     */
     public void setUploaddate(String uploadadte) {
-        Uploaddate = uploadadte;
+        this.uploaddate = uploadadte;
     }
+    /**
+     * [Give the description for method].
+     * @param savedate String
+     */
     public void setSavedate(String savedate) {
-        Savedate = savedate;
+        this.savedate = savedate;
     }
+    /**
+     * [Give the description for method].
+     * @param buycount int
+     */
     public void setBuycount(int buycount) {
-        Buycount = buycount;
+        this.buycount = buycount;
     }
+    /**
+     * [Give the description for method].
+     * @param minbuyer int
+     */
     public void setMinbuyer(int minbuyer) {
-        Minbuyer = minbuyer;
+        this.minbuyer = minbuyer;
     }
+    /**
+     * [Give the description for method].
+     * @param maxbuyer int
+     */
     public void setMaxbuyer(int maxbuyer) {
-        Maxbuyer = maxbuyer;
+        this.maxbuyer = maxbuyer;
     }
+    /**
+     * [Give the description for method].
+     * @param rate int
+     */
     public void setRate(int rate) {
-        Rate = rate;
+        this.rate = rate;
     }
+    /**
+     * [Give the description for method].
+     * @param provider String
+     */
     public void setProvider(String provider) {
-        this.Provider = provider;
+        this.provider = provider;
     }
+    /**
+     * [Give the description for method].
+     * @return String
+     */
     public String getProvider() {
-        return Provider;
+        return provider;
     }
 
-    private String Id, Name, Introduction, Price, Buyprice, Imageurl, Uploaddate, Savedate, Provider;
-    private int Rate, Buycount, Minbuyer, Maxbuyer;
+    /**  . */
+    private String id, name, introduction, price, buyprice, imageurl, uploaddate, savedate, provider;
+    /**  . */
+    private int rate, buycount, minbuyer, maxbuyer;
 }
