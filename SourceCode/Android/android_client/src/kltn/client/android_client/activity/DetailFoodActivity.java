@@ -55,28 +55,31 @@ public class DetailFoodActivity extends Activity implements OnClickListener, OnD
         ok.setOnClickListener(this);
         back.setOnClickListener(this);
         // LoadData("");
-        introduction.setOnClickListener(TabClickListener(CONTENT_TAB));
-        image.setOnClickListener(TabClickListener(IMAGE_TAB));
-        comment.setOnClickListener(TabClickListener(COMMENT_TAB));
-        provider.setOnClickListener(TabClickListener(PROVIDER_TAB));
+        introduction.setOnClickListener(tabClickListener(CONTENT_TAB));
+        image.setOnClickListener(tabClickListener(IMAGE_TAB));
+        comment.setOnClickListener(tabClickListener(COMMENT_TAB));
+        provider.setOnClickListener(tabClickListener(PROVIDER_TAB));
         Bundle receive = this.getIntent().getExtras();
-        id_food = receive.getString("id_food");
-        LoadData();
+        idfood = receive.getString("id_food");
+        mLoadData();
     }
-    public void LoadData() {
+    /**
+     * [Give the description for method].
+     */
+    public void mLoadData() {
         mCurrentDialog = ProgressDialog.show(DetailFoodActivity.this, null, getString(R.string.menu_waiting), true);
         mCurrentDialog.setOnDismissListener(DetailFoodActivity.this);
         mIsWaiting = true;
         Thread t = new Thread() {
             public void run() {
-                mData = mEngine.mGetFood(id_food);
+                mData = mEngine.mGetFood(idfood);
                 mCurrentDialog.dismiss();
             }
         };
         t.start();
     }
     /** . */
-    private String id_food;
+    private String idfood;
     /** . */
     private TextView subprice, price, promotionprice, name, countbuy;
     /** . */
@@ -105,7 +108,7 @@ public class DetailFoodActivity extends Activity implements OnClickListener, OnD
     private int mCurrentTabId;
     /**
      * [Explain the description for this method here].
-     * @param dialog
+     * @param dialog DialogInterface
      * @see android.content.DialogInterface.OnDismissListener#onDismiss(android.content.DialogInterface)
      */
     @Override
@@ -118,9 +121,9 @@ public class DetailFoodActivity extends Activity implements OnClickListener, OnD
             subprice.setText(String.valueOf((Long.valueOf(mData.getString("price")) - Long.valueOf(mData
                     .getString("pricepromotion")))) + getString(R.string.vnd));
             countbuy.setText(mData.getString("uploaddate"));
-            ChangeTab(CONTENT_TAB);
+            mChangeTab(CONTENT_TAB);
         } catch (Exception e) {
-
+            System.out.println(e);
         }
     }
     /*
@@ -142,9 +145,14 @@ public class DetailFoodActivity extends Activity implements OnClickListener, OnD
                 break;
         }
     }
-    private void ChangeTab(int tab) {
-        if (this.mCurrentTabId == tab)
+    /**
+     * [Give the description for method].
+     * @param tab int
+     */
+    private void mChangeTab(int tab) {
+        if (this.mCurrentTabId == tab) {
             return;
+        }
 
         this.mCurrentTabId = tab;
 
@@ -179,15 +187,20 @@ public class DetailFoodActivity extends Activity implements OnClickListener, OnD
      * [Give the description for method].
      * @param tab int
      */
-    private void ForceChangeTab(int tab) {
+    private void forceChangeTab(int tab) {
         this.mCurrentTabId = -1;
-        this.ChangeTab(tab);
+        this.mChangeTab(tab);
     }
-    public OnClickListener TabClickListener(final int tab) {
+    /**
+     * [Give the description for method].
+     * @param tab int
+     * @return OnClickListener
+     */
+    public OnClickListener tabClickListener(final int tab) {
         return new OnClickListener() {
             @Override
             public void onClick(View v) {
-                ChangeTab(tab);
+                mChangeTab(tab);
                 if (tab == 101) {
 
                 } else if (tab == 102) {

@@ -77,8 +77,9 @@ public class FavouriteActivity extends Activity implements OnClickListener {
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            if (convertView == null)
+            if (convertView == null) {
                 convertView = getLayoutInflater().inflate(R.layout.item_favourite, null);
+            }
             TextView name = (TextView) convertView.findViewById(R.id.item_favourite_name);
             TextView datesaved = (TextView) convertView.findViewById(R.id.item_favourite_datesaved);
             TextView content = (TextView) convertView.findViewById(R.id.item_favourite_content);
