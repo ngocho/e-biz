@@ -21,7 +21,7 @@ public class StringPrefs extends PrefsItem {
     @Override
     public void setPrefValue(Object value) {
         String v = (String) value;
-        SharedPreferences settings = context.getSharedPreferences(PrefsName, Context.MODE_PRIVATE);
+        SharedPreferences settings = context.getSharedPreferences(prefsname, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = settings.edit();
         editor.putString(getName(), v);
         editor.commit();
@@ -30,7 +30,7 @@ public class StringPrefs extends PrefsItem {
     @Override
     public Object getPrefValue() {
         // TODO Auto-generated method stub
-        SharedPreferences settings = context.getSharedPreferences(PrefsName, Context.MODE_PRIVATE);
+        SharedPreferences settings = context.getSharedPreferences(prefsname, Context.MODE_PRIVATE);
         String v = settings.getString(getName(), defValue);
         return v;
     }

@@ -8,9 +8,9 @@ import android.content.SharedPreferences;
  */
 public class BooleanPrefs extends PrefsItem {
     /**
-     * @param context
-     * @param name
-     * @param defValue
+     * @param context Context
+     * @param name String
+     * @param defValue boolean
      */
     public BooleanPrefs(Context context, String name, boolean defValue) {
         super(context, name);
@@ -19,13 +19,13 @@ public class BooleanPrefs extends PrefsItem {
 
     /**
      * [Explain the description for this method here].
-     * @param value
+     * @param value Object
      * @see kltn.client.android_client.PrefsItem#setPrefValue(java.lang.Object)
      */
     @Override
     public void setPrefValue(Object value) {
         Boolean v = (Boolean) value;
-        SharedPreferences settings = context.getSharedPreferences(PrefsName, Context.MODE_PRIVATE);
+        SharedPreferences settings = context.getSharedPreferences(prefsname, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = settings.edit();
         editor.putBoolean(getName(), v.booleanValue());
         editor.commit();
@@ -34,7 +34,7 @@ public class BooleanPrefs extends PrefsItem {
     @Override
     public Object getPrefValue() {
         // TODO Auto-generated method stub
-        SharedPreferences settings = context.getSharedPreferences(PrefsName, Context.MODE_PRIVATE);
+        SharedPreferences settings = context.getSharedPreferences(prefsname, Context.MODE_PRIVATE);
         boolean v = settings.getBoolean(getName(), defValue);
         return v;
     }
@@ -50,7 +50,7 @@ public class BooleanPrefs extends PrefsItem {
 
     /**
      * [Give the description for method].
-     * @param value
+     * @param value boolean
      */
     public void setValue(boolean value) {
         setPrefValue(value);

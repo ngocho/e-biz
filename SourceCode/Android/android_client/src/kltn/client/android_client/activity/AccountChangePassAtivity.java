@@ -39,7 +39,7 @@ public class AccountChangePassAtivity extends Activity implements OnClickListene
         mBack.setOnClickListener(this);
         mOk.setOnClickListener(this);
         mEngine = new Engine();
-        mName.setText(PrefUtil.GetStringPref(this, "username"));
+        mName.setText(PrefUtil.getStringPref(this, "username"));
     }
     /**  . */
     private Button mBack, mOk;
@@ -65,7 +65,7 @@ public class AccountChangePassAtivity extends Activity implements OnClickListene
             case R.id.account_changepass_ok :
                 if (!mOldPass.getText().equals("") && !mNewPass.getText().equals("")
                         && !mComfirmPass.getText().equals("")) {
-                    LoadData();
+                    mLoadData();
                 } else {
                     Toast.makeText(AccountChangePassAtivity.this, getString(R.string.transfer_xu_status),
                             Toast.LENGTH_LONG).show();
@@ -88,7 +88,7 @@ public class AccountChangePassAtivity extends Activity implements OnClickListene
         if (flag) {
             Toast.makeText(AccountChangePassAtivity.this, getString(R.string.accountchange_true), Toast.LENGTH_LONG)
                     .show();
-            PrefUtil.SetPref(AccountChangePassAtivity.this, "password", mComfirmPass.getText());
+            PrefUtil.setPref(AccountChangePassAtivity.this, "password", mComfirmPass.getText());
             finish();
         } else {
             Toast.makeText(AccountChangePassAtivity.this, getString(R.string.accountchange_false), Toast.LENGTH_LONG)
@@ -99,14 +99,14 @@ public class AccountChangePassAtivity extends Activity implements OnClickListene
     /**
      * [Give the description for method].
      */
-    public void LoadData() {
+    public void mLoadData() {
         mCurrentDialog = ProgressDialog.show(AccountChangePassAtivity.this, null, getString(R.string.menu_waiting),
                 true);
         mCurrentDialog.setOnDismissListener(AccountChangePassAtivity.this);
         mIsWaiting = true;
         Thread t = new Thread() {
             public void run() {
-                flag = mEngine.mChangePass(PrefUtil.GetStringPref(AccountChangePassAtivity.this, "username"), mOldPass
+                flag = mEngine.mChangePass(PrefUtil.getStringPref(AccountChangePassAtivity.this, "username"), mOldPass
                         .getText().toString(), mNewPass.getText().toString());
                 mCurrentDialog.dismiss();
             }

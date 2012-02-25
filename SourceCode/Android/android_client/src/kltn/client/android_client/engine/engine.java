@@ -7,7 +7,7 @@ import java.io.Reader;
 import java.util.Vector;
 
 import kltn.client.android_client.PrefUtil;
-import kltn.client.android_client.model.Browser_food_item;
+import kltn.client.android_client.model.BrowserFoodItem;
 import kltn.client.android_client.model.BestFoodItem;
 import kltn.client.android_client.model.DateFoodItem;
 
@@ -44,15 +44,15 @@ public class Engine {
      * @param mContext Context
      * @return Vector<Browser_food_item>
      */
-    public Vector<Browser_food_item> getBrowserFood(Context mContext) {
-        Vector<Browser_food_item> result = new Vector<Browser_food_item>();
+    public Vector<BrowserFoodItem> getBrowserFood(Context mContext) {
+        Vector<BrowserFoodItem> result = new Vector<BrowserFoodItem>();
         try {
-            JSONArray jsonArrayBrowser = new JSONArray(mQueryURL(PrefUtil.GetStringPref(mContext, "linkserver")
+            JSONArray jsonArrayBrowser = new JSONArray(mQueryURL(PrefUtil.getStringPref(mContext, "linkserver")
                     + "getBrowserList.vn"));
             int i;
             for (i = 0; i < jsonArrayBrowser.length(); i++) {
                 JSONObject item = (JSONObject) jsonArrayBrowser.get(i);
-                Browser_food_item node = new Browser_food_item(item.getString("id"), item.getString("name"),
+                BrowserFoodItem node = new BrowserFoodItem(item.getString("id"), item.getString("name"),
                         item.getString("detail"), item.getString("price"), item.getString("promotionPrice"),
                         item.getString("url"), item.getString("dateUpload"), item.getString("dateUpload"),
                         item.getInt("sale"), item.getInt("sale"), item.getInt("sale"), item.getInt("sale"),

@@ -6,7 +6,7 @@ import kltn.client.android_client.R;
 import kltn.client.android_client.engine.BitmapManager;
 import kltn.client.android_client.engine.Engine;
 import kltn.client.android_client.engine.FavouriteEngine;
-import kltn.client.android_client.model.Browser_food_item;
+import kltn.client.android_client.model.BrowserFoodItem;
 import kltn.client.android_client.model.FavoriteItem;
 import android.app.Activity;
 import android.app.Dialog;
@@ -62,7 +62,7 @@ public class TabBrowserActivity extends Activity implements OnClickListener, Tex
         mOk.setOnClickListener(this);
         mEdittext.addTextChangedListener(this);
         mEngine = new Engine();
-        mItemsData = new Vector<Browser_food_item>();
+        mItemsData = new Vector<BrowserFoodItem>();
         mSave = (Button) findViewById(R.id.tab_browser_savesearch);
         mSave.setOnClickListener(this);
         mLoadData();
@@ -181,7 +181,7 @@ public class TabBrowserActivity extends Activity implements OnClickListener, Tex
             TextView pricepromotion = (TextView) convertView.findViewById(R.id.item_browser_get_buyend);
             TextView date = (TextView) convertView.findViewById(R.id.item_browser_get_date);
             TextView content = (TextView) convertView.findViewById(R.id.item_browser_get_content);
-            final Browser_food_item item = mItemsData.get(position);
+            final BrowserFoodItem item = mItemsData.get(position);
             name.setText(item.getId() + " - " + item.getName());
             price.setText("$" + item.getPrice() + " " + getString(R.string.vnd));
             price.setPaintFlags(price.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
@@ -206,7 +206,7 @@ public class TabBrowserActivity extends Activity implements OnClickListener, Tex
     };
 
     /** . */
-    private Vector<Browser_food_item> mItemsData;
+    private Vector<BrowserFoodItem> mItemsData;
     /** . */
     private BrowserItemAdapter mBrowserItemAdapter;
     /** . */
@@ -234,7 +234,7 @@ public class TabBrowserActivity extends Activity implements OnClickListener, Tex
     /** . */
     public boolean mIsWaiting;
     /** . */
-    private Vector<Browser_food_item> mListBrowser;
+    private Vector<BrowserFoodItem> mListBrowser;
     /** . */
     private Engine mEngine;
     /** . */
@@ -287,7 +287,7 @@ public class TabBrowserActivity extends Activity implements OnClickListener, Tex
             case R.id.tab_browser_savesearch :
                 if (flag) {
                     for (int i = 0; i < mItemsData.size(); i++) {
-                        Browser_food_item item = mItemsData.get(i);
+                        BrowserFoodItem item = mItemsData.get(i);
                         mFavoriteEngine.put(new FavoriteItem(item.getId(), item.getName(), item.getIntroduction(), item
                                 .getPrice(), item.getBuyprice(), item.getImageurl(), item.getStartdate(), item
                                 .getStartdate(), item.getBuycount(), item.getBuycount(), item.getBuycount(), item

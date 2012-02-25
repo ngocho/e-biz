@@ -1,6 +1,3 @@
-/**
- * 
- */
 package kltn.client.android_client.engine;
 
 import java.io.IOException;
@@ -26,22 +23,37 @@ import android.widget.ImageView;
  * @author NThanhPhong
  */
 public enum BitmapManager {
+    /**  . */
     INSTANCE;
 
+    /**  . */
     private final Map<String, SoftReference<Bitmap>> cache;
+    /**  . */
     private final ExecutorService pool;
+    /**  . */
     private Map<ImageView, String> imageViews = Collections.synchronizedMap(new WeakHashMap<ImageView, String>());
+    /**  . */
     private Bitmap placeholder;
-
+    /**
+     * 
+     */
     BitmapManager() {
         cache = new HashMap<String, SoftReference<Bitmap>>();
         pool = Executors.newFixedThreadPool(5);
     }
-
+    /**
+     * [Give the description for method].
+     * @param bmp Bitmap
+     */
     public void setPlaceholder(Bitmap bmp) {
         placeholder = bmp;
     }
 
+    /**
+     * [Give the description for method].
+     * @param url String
+     * @return Bitmap
+     */
     public Bitmap getBitmapFromCache(String url) {
         if (cache.containsKey(url)) {
             return cache.get(url).get();
@@ -50,6 +62,13 @@ public enum BitmapManager {
         return null;
     }
 
+    /**
+     * [Give the description for method].
+     * @param url String
+     * @param imageView String
+     * @param width int
+     * @param height int
+     */
     public void queueJob(final String url, final ImageView imageView, final int width, final int height) {
         /* Create handler in UI thread. */
         final Handler handler = new Handler() {
@@ -80,6 +99,13 @@ public enum BitmapManager {
         });
     }
 
+    /**
+     * [Give the description for method].
+     * @param url String
+     * @param imageView ImageView
+     * @param width int
+     * @param height int
+     */
     public void loadBitmap(final String url, final ImageView imageView, final int width, final int height) {
         imageViews.put(imageView, url);
         Bitmap bitmap = getBitmapFromCache(url);
@@ -94,6 +120,13 @@ public enum BitmapManager {
         }
     }
 
+    /**
+     * [Give the description for method].
+     * @param url String
+     * @param width int
+     * @param height int
+     * @return Bitmap
+     */
     private Bitmap downloadBitmap(String url, int width, int height) {
         try {
             Bitmap bitmap = BitmapFactory.decodeStream((InputStream) new URL(url).getContent());
