@@ -1,0 +1,3 @@
+module android client:
+sourece code:
+https://e-biz.googlecode.com/svn/trunk/SourceCode/Android/android_client,revision 444
