@@ -27,13 +27,12 @@ import javax.jdo.annotations.PrimaryKey;
 
 /**
  * @author Administrator
- *
  */
 @PersistenceCapable
-public class OrderStatus implements Serializable{
-    /**  . */
+public class OrderStatus implements Serializable {
+    /** . */
     private static final long serialVersionUID = 1L;
-    /**  . */
+    /** . */
     @PrimaryKey
     @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
     private String id;
@@ -41,6 +40,7 @@ public class OrderStatus implements Serializable{
     private String name;
     /**
      * Get value of id.
+     * 
      * @return the id
      */
     public String getId() {
@@ -48,6 +48,7 @@ public class OrderStatus implements Serializable{
     }
     /**
      * Set the value for id.
+     * 
      * @param id the id to set
      */
     public void setId(String id) {
@@ -55,6 +56,7 @@ public class OrderStatus implements Serializable{
     }
     /**
      * Get value of name.
+     * 
      * @return the name
      */
     public String getName() {
@@ -62,6 +64,7 @@ public class OrderStatus implements Serializable{
     }
     /**
      * Set the value for name.
+     * 
      * @param name the name to set
      */
     public void setName(String name) {

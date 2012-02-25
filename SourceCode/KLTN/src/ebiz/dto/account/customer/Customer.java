@@ -27,74 +27,74 @@ import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
 /**
- * @author ThuyNT
- * Customer
+ * @author ThuyNT Customer
  */
 @PersistenceCapable
-public class Customer  implements Serializable{
-	/**  . */
+public class Customer implements Serializable {
+    /** . */
     private static final long serialVersionUID = 1L;
-    //ten dang nhap
-    /**  . customerId*/
+    // ten dang nhap
+    /** . customerId */
     @PrimaryKey
     @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
     private String customerId;
-    /**  . customerPassword*/
+    /** . customerPassword */
     @Persistent
     private String customerPassword;
-    /**  . customerName*/
+    /** . customerName */
     @Persistent
     private String customerName;
-    /**  . customerGender*/
+    /** . customerGender */
     @Persistent
     private String customerGender;
-    /**  . customerBirth*/
+    /** . customerBirth */
     @Persistent
     private Date customerBirth;
-    /**  . customerEmail*/
+    /** . customerEmail */
     @Persistent
-    private String customerEmail;           //bat buoc
-    /**  . customerPhone*/
+    private String customerEmail; // bat buoc
+    /** . customerPhone */
     @Persistent
     private String customerPhone;
-    /**  . customerAddress*/
+    /** . customerAddress */
     @Persistent(defaultFetchGroup = "true")
     private Address customerAddress;
-    /**  . customerType*/
+    /** . customerType */
     @Persistent
     private String customerType;
-    /**  . customerSumMoney*/
+    /** . customerSumMoney */
     @Persistent
     private long customerSumMoney;
-    /**  . customerMark*/
+    /** . customerMark */
     @Persistent
     private int customerMark;
-    /**  . isPay*/
+    /** . isPay */
     @Persistent
     private boolean isPay;
-    /**  . payOnlineType*/
+    /** . payOnlineType */
     @Persistent
     private String payOnlineType;
-    /**  . isAdEmail*/
+    /** . isAdEmail */
     @Persistent
     private boolean isAdEmail;
-    /**  . isAdPhone*/
+    /** . isAdPhone */
     @Persistent
     private boolean isAdPhone;
-    /**  . isActive*/
+    /** . isActive */
     @Persistent
     private boolean isActive;
-    /**  . xuOnline*/
+    /** . xuOnline */
     @Persistent
     private long xuOnline;
-    /**  . loginDate*/
+    /** . loginDate */
     @Persistent
     private Date loginDate;
-    /**  . url*/
+    /** . url */
     @Persistent
-    private String  url;
+    private String url;
     /**
      * Get value of customerId.
+     * 
      * @return the customerId
      */
     public String getCustomerId() {
@@ -102,6 +102,7 @@ public class Customer  implements Serializable{
     }
     /**
      * Set the value for customerId.
+     * 
      * @param customerId the customerId to set
      */
     public void setCustomerId(String customerId) {
@@ -109,6 +110,7 @@ public class Customer  implements Serializable{
     }
     /**
      * Get value of customerPassword.
+     * 
      * @return the customerPassword
      */
     public String getCustomerPassword() {
@@ -116,6 +118,7 @@ public class Customer  implements Serializable{
     }
     /**
      * Set the value for customerPassword.
+     * 
      * @param customerPassword the customerPassword to set
      */
     public void setCustomerPassword(String customerPassword) {
@@ -123,6 +126,7 @@ public class Customer  implements Serializable{
     }
     /**
      * Get value of customerName.
+     * 
      * @return the customerName
      */
     public String getCustomerName() {
@@ -130,6 +134,7 @@ public class Customer  implements Serializable{
     }
     /**
      * Set the value for customerName.
+     * 
      * @param customerName the customerName to set
      */
     public void setCustomerName(String customerName) {
@@ -137,6 +142,7 @@ public class Customer  implements Serializable{
     }
     /**
      * Get value of customerGender.
+     * 
      * @return the customerGender
      */
     public String getCustomerGender() {
@@ -144,6 +150,7 @@ public class Customer  implements Serializable{
     }
     /**
      * Set the value for customerGender.
+     * 
      * @param customerGender the customerGender to set
      */
     public void setCustomerGender(String customerGender) {
@@ -151,6 +158,7 @@ public class Customer  implements Serializable{
     }
     /**
      * Get value of customerBirth.
+     * 
      * @return the customerBirth
      */
     public Date getCustomerBirth() {
@@ -158,6 +166,7 @@ public class Customer  implements Serializable{
     }
     /**
      * Set the value for customerBirth.
+     * 
      * @param customerBirth the customerBirth to set
      */
     public void setCustomerBirth(Date customerBirth) {
@@ -165,6 +174,7 @@ public class Customer  implements Serializable{
     }
     /**
      * Get value of customerEmail.
+     * 
      * @return the customerEmail
      */
     public String getCustomerEmail() {
@@ -172,6 +182,7 @@ public class Customer  implements Serializable{
     }
     /**
      * Set the value for customerEmail.
+     * 
      * @param customerEmail the customerEmail to set
      */
     public void setCustomerEmail(String customerEmail) {
@@ -179,6 +190,7 @@ public class Customer  implements Serializable{
     }
     /**
      * Get value of customerPhone.
+     * 
      * @return the customerPhone
      */
     public String getCustomerPhone() {
@@ -186,6 +198,7 @@ public class Customer  implements Serializable{
     }
     /**
      * Set the value for customerPhone.
+     * 
      * @param customerPhone the customerPhone to set
      */
     public void setCustomerPhone(String customerPhone) {
@@ -193,6 +206,7 @@ public class Customer  implements Serializable{
     }
     /**
      * Get value of customerAddress.
+     * 
      * @return the customerAddress
      */
     public Address getCustomerAddress() {
@@ -200,6 +214,7 @@ public class Customer  implements Serializable{
     }
     /**
      * Set the value for customerAddress.
+     * 
      * @param customerAddress the customerAddress to set
      */
     public void setCustomerAddress(Address customerAddress) {
@@ -207,6 +222,7 @@ public class Customer  implements Serializable{
     }
     /**
      * Get value of customerType.
+     * 
      * @return the customerType
      */
     public String getCustomerType() {
@@ -214,6 +230,7 @@ public class Customer  implements Serializable{
     }
     /**
      * Set the value for customerType.
+     * 
      * @param customerType the customerType to set
      */
     public void setCustomerType(String customerType) {
@@ -221,6 +238,7 @@ public class Customer  implements Serializable{
     }
     /**
      * Get value of customerSumMoney.
+     * 
      * @return the customerSumMoney
      */
     public long getCustomerSumMoney() {
@@ -228,6 +246,7 @@ public class Customer  implements Serializable{
     }
     /**
      * Set the value for customerSumMoney.
+     * 
      * @param customerSumMoney the customerSumMoney to set
      */
     public void setCustomerSumMoney(long customerSumMoney) {
@@ -235,6 +254,7 @@ public class Customer  implements Serializable{
     }
     /**
      * Get value of customerMark.
+     * 
      * @return the customerMark
      */
     public Integer getCustomerMark() {
@@ -242,6 +262,7 @@ public class Customer  implements Serializable{
     }
     /**
      * Set the value for customerMark.
+     * 
      * @param customerMark the customerMark to set
      */
     public void setCustomerMark(Integer customerMark) {
@@ -249,6 +270,7 @@ public class Customer  implements Serializable{
     }
     /**
      * Get value of isPay.
+     * 
      * @return the isPay
      */
     public boolean getIsPay() {
@@ -256,6 +278,7 @@ public class Customer  implements Serializable{
     }
     /**
      * Set the value for isPay.
+     * 
      * @param isPay the isPay to set
      */
     public void setIsPay(boolean isPay) {
@@ -263,6 +286,7 @@ public class Customer  implements Serializable{
     }
     /**
      * Get value of payOnlineType.
+     * 
      * @return the payOnlineType
      */
     public String getPayOnlineType() {
@@ -270,6 +294,7 @@ public class Customer  implements Serializable{
     }
     /**
      * Set the value for payOnlineType.
+     * 
      * @param payOnlineType the payOnlineType to set
      */
     public void setPayOnlineType(String payOnlineType) {
@@ -277,6 +302,7 @@ public class Customer  implements Serializable{
     }
     /**
      * Get value of isActive.
+     * 
      * @return the isActive
      */
     public boolean getIsActive() {
@@ -284,6 +310,7 @@ public class Customer  implements Serializable{
     }
     /**
      * Set the value for isActive.
+     * 
      * @param isActive the isActive to set
      */
     public void setIsActive(boolean isActive) {
@@ -291,6 +318,7 @@ public class Customer  implements Serializable{
     }
     /**
      * Get value of isAdEmail.
+     * 
      * @return the isAdEmail
      */
     public boolean getIsAdEmail() {
@@ -298,6 +326,7 @@ public class Customer  implements Serializable{
     }
     /**
      * Set the value for isAdEmail.
+     * 
      * @param isAdEmail the isAdEmail to set
      */
     public void setIsAdEmail(boolean isAdEmail) {
@@ -305,6 +334,7 @@ public class Customer  implements Serializable{
     }
     /**
      * Get value of isAdPhone.
+     * 
      * @return the isAdPhone
      */
     public boolean getIsAdPhone() {
@@ -312,6 +342,7 @@ public class Customer  implements Serializable{
     }
     /**
      * Set the value for isAdPhone.
+     * 
      * @param isAdPhone the isAdPhone to set
      */
     public void setIsAdPhone(boolean isAdPhone) {
@@ -319,6 +350,7 @@ public class Customer  implements Serializable{
     }
     /**
      * Get value of xuOnline.
+     * 
      * @return the xuOnline
      */
     public long getXuOnline() {
@@ -326,6 +358,7 @@ public class Customer  implements Serializable{
     }
     /**
      * Set the value for xuOnline.
+     * 
      * @param xuOnline the xuOnline to set
      */
     public void setXuOnline(long xuOnline) {
@@ -333,6 +366,7 @@ public class Customer  implements Serializable{
     }
     /**
      * Get value of loginDate.
+     * 
      * @return the loginDate
      */
     public Date getLoginDate() {
@@ -340,6 +374,7 @@ public class Customer  implements Serializable{
     }
     /**
      * Set the value for loginDate.
+     * 
      * @param loginDate the loginDate to set
      */
     public void setLoginDate(Date loginDate) {
@@ -347,6 +382,7 @@ public class Customer  implements Serializable{
     }
     /**
      * Set the value for customerMark.
+     * 
      * @param customerMark the customerMark to set
      */
     public void setCustomerMark(int customerMark) {
@@ -354,6 +390,7 @@ public class Customer  implements Serializable{
     }
     /**
      * Set the value for isPay.
+     * 
      * @param isPay the isPay to set
      */
     public void setPay(boolean isPay) {
@@ -361,6 +398,7 @@ public class Customer  implements Serializable{
     }
     /**
      * Set the value for isAdEmail.
+     * 
      * @param isAdEmail the isAdEmail to set
      */
     public void setAdEmail(boolean isAdEmail) {
@@ -368,6 +406,7 @@ public class Customer  implements Serializable{
     }
     /**
      * Set the value for isAdPhone.
+     * 
      * @param isAdPhone the isAdPhone to set
      */
     public void setAdPhone(boolean isAdPhone) {
@@ -375,6 +414,7 @@ public class Customer  implements Serializable{
     }
     /**
      * Set the value for isActive.
+     * 
      * @param isActive the isActive to set
      */
     public void setActive(boolean isActive) {
@@ -382,6 +422,7 @@ public class Customer  implements Serializable{
     }
     /**
      * Get value of url.
+     * 
      * @return the url
      */
     public String getUrl() {
@@ -389,6 +430,7 @@ public class Customer  implements Serializable{
     }
     /**
      * Set the value for url.
+     * 
      * @param url the url to set
      */
     public void setUrl(String url) {

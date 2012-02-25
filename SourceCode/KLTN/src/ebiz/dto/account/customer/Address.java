@@ -9,59 +9,62 @@ import javax.jdo.annotations.PrimaryKey;
 
 import com.google.appengine.api.datastore.Key;
 
-import ebiz.dto.checkout.OrderBill;
-
+/**
+ * @author ThuyNT
+ *
+ */
 @PersistenceCapable
-public class Address implements Serializable{
-	/**  . */
+public class Address implements Serializable {
+    /** . */
     private static final long serialVersionUID = 1L;
     @PrimaryKey
     @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
     private Key key;
     @Persistent
-	private String buildingName;
+    private String buildingName;
     @Persistent
-	private String districtName;
+    private String districtName;
     @Persistent
-	private String homeNumber;
+    private String homeNumber;
     @Persistent
-	private String streetName;
+    private String streetName;
     @Persistent
-	private String wardName;
+    private String wardName;
     @Persistent(mappedBy = "customerAddress")
     private Customer customer;
-	public String getBuildingName() {
-		return buildingName;
-	}
-	public void setBuildingName(String buildingName) {
-		this.buildingName = buildingName;
-	}
-	public String getDistrictName() {
-		return districtName;
-	}
-	public void setDistrictName(String districtName) {
-		this.districtName = districtName;
-	}
-	public String getHomeNumber() {
-		return homeNumber;
-	}
-	public void setHomeNumber(String homeNumber) {
-		this.homeNumber = homeNumber;
-	}
-	public String getStreetName() {
-		return streetName;
-	}
-	public void setStreetName(String streetName) {
-		this.streetName = streetName;
-	}
-	public String getWardName() {
-		return wardName;
-	}
-	public void setWardName(String wardName) {
-		this.wardName = wardName;
-	}
+    public String getBuildingName() {
+        return buildingName;
+    }
+    public void setBuildingName(String buildingName) {
+        this.buildingName = buildingName;
+    }
+    public String getDistrictName() {
+        return districtName;
+    }
+    public void setDistrictName(String districtName) {
+        this.districtName = districtName;
+    }
+    public String getHomeNumber() {
+        return homeNumber;
+    }
+    public void setHomeNumber(String homeNumber) {
+        this.homeNumber = homeNumber;
+    }
+    public String getStreetName() {
+        return streetName;
+    }
+    public void setStreetName(String streetName) {
+        this.streetName = streetName;
+    }
+    public String getWardName() {
+        return wardName;
+    }
+    public void setWardName(String wardName) {
+        this.wardName = wardName;
+    }
     /**
      * Get value of key.
+     * 
      * @return the key
      */
     public Key getKey() {
@@ -69,6 +72,7 @@ public class Address implements Serializable{
     }
     /**
      * Set the value for key.
+     * 
      * @param key the key to set
      */
     public void setKey(Key key) {
@@ -76,6 +80,7 @@ public class Address implements Serializable{
     }
     /**
      * Get value of customer.
+     * 
      * @return the customer
      */
     public Customer getCustomer() {
@@ -83,6 +88,7 @@ public class Address implements Serializable{
     }
     /**
      * Set the value for customer.
+     * 
      * @param customer the customer to set
      */
     public void setCustomer(Customer customer) {

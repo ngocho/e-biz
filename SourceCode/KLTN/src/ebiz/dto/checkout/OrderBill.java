@@ -10,55 +10,55 @@ import javax.jdo.annotations.PrimaryKey;
 
 /**
  * @author Administrator
- *
  */
 @PersistenceCapable
-public class OrderBill  implements Serializable {
-    /**  . */
+public class OrderBill implements Serializable {
+    /** . */
     private static final long serialVersionUID = 1L;
-    /**  . */
+    /** . */
     @PrimaryKey
     @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
     private Long id;
-    /**  . */
+    /** . */
     @Persistent
     private String idCustomer;
-    /**  . */
+    /** . */
     @Persistent
     private String address;
-    /**  . */
+    /** . */
     @Persistent
     private String email;
-    /**  . */
+    /** . */
     @Persistent
     private String phone;
-    /**  . */
+    /** . */
     @Persistent
     private String status;
-    /**  . */
+    /** . */
     @Persistent
     private Date dateOrder;
-    /**  . */
+    /** . */
     @Persistent
     private Date dateShip;
-    /**  . */
+    /** . */
     @Persistent
     private long sumPrice;
-    /**  . */
+    /** . */
     @Persistent
     private String idEmployee;
-    /**  . */
+    /** . */
     @Persistent
     private String note;
-    /**  . */
+    /** . */
     @Persistent
     private int typePayment;
-    /**  . */
+    /** . */
     @Persistent
     private boolean isDeleted;
 
     /**
      * Get value of id.
+     * 
      * @return the id
      */
     public Long getId() {
@@ -66,6 +66,7 @@ public class OrderBill  implements Serializable {
     }
     /**
      * Set the value for id.
+     * 
      * @param id the id to set
      */
     public void setId(Long id) {
@@ -73,6 +74,7 @@ public class OrderBill  implements Serializable {
     }
     /**
      * Get value of idCustomer.
+     * 
      * @return the idCustomer
      */
     public String getIdCustomer() {
@@ -80,6 +82,7 @@ public class OrderBill  implements Serializable {
     }
     /**
      * Set the value for idCustomer.
+     * 
      * @param idCustomer the idCustomer to set
      */
     public void setIdCustomer(String idCustomer) {
@@ -87,6 +90,7 @@ public class OrderBill  implements Serializable {
     }
     /**
      * Get value of address.
+     * 
      * @return the address
      */
     public String getAddress() {
@@ -94,6 +98,7 @@ public class OrderBill  implements Serializable {
     }
     /**
      * Set the value for address.
+     * 
      * @param address the address to set
      */
     public void setAddress(String address) {
@@ -101,6 +106,7 @@ public class OrderBill  implements Serializable {
     }
     /**
      * Get value of email.
+     * 
      * @return the email
      */
     public String getEmail() {
@@ -108,6 +114,7 @@ public class OrderBill  implements Serializable {
     }
     /**
      * Set the value for email.
+     * 
      * @param email the email to set
      */
     public void setEmail(String email) {
@@ -115,6 +122,7 @@ public class OrderBill  implements Serializable {
     }
     /**
      * Get value of phone.
+     * 
      * @return the phone
      */
     public String getPhone() {
@@ -122,6 +130,7 @@ public class OrderBill  implements Serializable {
     }
     /**
      * Set the value for phone.
+     * 
      * @param phone the phone to set
      */
     public void setPhone(String phone) {
@@ -129,6 +138,7 @@ public class OrderBill  implements Serializable {
     }
     /**
      * Get value of status.
+     * 
      * @return the status
      */
     public String getStatus() {
@@ -136,6 +146,7 @@ public class OrderBill  implements Serializable {
     }
     /**
      * Set the value for status.
+     * 
      * @param status the status to set
      */
     public void setStatus(String status) {
@@ -143,6 +154,7 @@ public class OrderBill  implements Serializable {
     }
     /**
      * Get value of dateOrder.
+     * 
      * @return the dateOrder
      */
     public Date getDateOrder() {
@@ -150,6 +162,7 @@ public class OrderBill  implements Serializable {
     }
     /**
      * Set the value for dateOrder.
+     * 
      * @param dateOrder the dateOrder to set
      */
     public void setDateOrder(Date dateOrder) {
@@ -157,6 +170,7 @@ public class OrderBill  implements Serializable {
     }
     /**
      * Get value of sumPrice.
+     * 
      * @return the sumPrice
      */
     public long getSumPrice() {
@@ -164,6 +178,7 @@ public class OrderBill  implements Serializable {
     }
     /**
      * Set the value for sumPrice.
+     * 
      * @param sumPrice the sumPrice to set
      */
     public void setSumPrice(long sumPrice) {
@@ -171,6 +186,7 @@ public class OrderBill  implements Serializable {
     }
     /**
      * Get value of idEmployee.
+     * 
      * @return the idEmployee
      */
     public String getIdEmployee() {
@@ -178,6 +194,7 @@ public class OrderBill  implements Serializable {
     }
     /**
      * Set the value for idEmployee.
+     * 
      * @param idEmployee the idEmployee to set
      */
     public void setIdEmployee(String idEmployee) {
@@ -185,6 +202,7 @@ public class OrderBill  implements Serializable {
     }
     /**
      * Get value of dateShip.
+     * 
      * @return the dateShip
      */
     public Date getDateShip() {
@@ -192,6 +210,7 @@ public class OrderBill  implements Serializable {
     }
     /**
      * Set the value for dateShip.
+     * 
      * @param dateShip the dateShip to set
      */
     public void setDateShip(Date dateShip) {
@@ -199,6 +218,7 @@ public class OrderBill  implements Serializable {
     }
     /**
      * Get value of typePayment.
+     * 
      * @return the typePayment
      */
     public int getTypePayment() {
@@ -206,6 +226,7 @@ public class OrderBill  implements Serializable {
     }
     /**
      * Set the value for typePayment.
+     * 
      * @param typePayment the typePayment to set
      */
     public void setTypePayment(int typePayment) {
@@ -213,6 +234,7 @@ public class OrderBill  implements Serializable {
     }
     /**
      * Get value of isDeleted.
+     * 
      * @return the isDeleted
      */
     public boolean isDeleted() {
@@ -220,6 +242,7 @@ public class OrderBill  implements Serializable {
     }
     /**
      * Set the value for isDeleted.
+     * 
      * @param isDeleted the isDeleted to set
      */
     public void setDeleted(boolean isDeleted) {
@@ -227,6 +250,7 @@ public class OrderBill  implements Serializable {
     }
     /**
      * Get value of note.
+     * 
      * @return the note
      */
     public String getNote() {
@@ -234,6 +258,7 @@ public class OrderBill  implements Serializable {
     }
     /**
      * Set the value for note.
+     * 
      * @param note the note to set
      */
     public void setNote(String note) {

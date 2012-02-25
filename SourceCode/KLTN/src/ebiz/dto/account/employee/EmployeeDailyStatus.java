@@ -19,9 +19,8 @@
 package ebiz.dto.account.employee;
 
 import java.util.Date;
-
 /**
- * @author Administrator
+ * @author ThuyNT
  *
  */
 public class EmployeeDailyStatus {
