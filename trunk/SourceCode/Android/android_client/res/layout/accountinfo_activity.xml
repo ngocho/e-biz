@@ -38,8 +38,8 @@
 				android:id="@+id/imageView2"></ImageView>
 			<TextView android:id="@+id/accountinfo_username"
 				android:layout_marginLeft="10dp" android:textAppearance="?android:attr/textAppearanceMedium"
-				android:layout_height="wrap_content" android:text="TextView"
-				android:textColor="@color/black" android:layout_width="wrap_content"></TextView>
+				android:layout_height="wrap_content" android:textColor="@color/black"
+				android:layout_width="wrap_content"></TextView>
 		</LinearLayout>
 		<LinearLayout android:id="@+id/linearLayout3"
 			android:layout_margin="10dp" android:layout_width="fill_parent"
@@ -49,9 +49,8 @@
 				android:id="@+id/imageView3"></ImageView>
 			<TextView android:id="@+id/accountinfo_money"
 				android:textAppearance="?android:attr/textAppearanceMedium"
-				android:layout_height="wrap_content" android:text="TextView"
-				android:layout_marginLeft="10dp" android:textColor="@color/black"
-				android:layout_width="wrap_content"></TextView>
+				android:layout_height="wrap_content" android:layout_marginLeft="10dp"
+				android:textColor="@color/black" android:layout_width="wrap_content"></TextView>
 			<TextView android:id="@+id/textView1"
 				android:textAppearance="?android:attr/textAppearanceMedium"
 				android:layout_height="wrap_content" android:text=" Xu"
@@ -76,8 +75,8 @@
 				android:id="@+id/imageView2"></ImageView>
 			<TextView android:id="@+id/accountinfo_fullname"
 				android:layout_marginLeft="10dp" android:textAppearance="?android:attr/textAppearanceMedium"
-				android:layout_height="wrap_content" android:text="TextView"
-				android:textColor="@color/black" android:layout_width="wrap_content"></TextView>
+				android:layout_height="wrap_content" android:textColor="@color/black"
+				android:layout_width="wrap_content"></TextView>
 		</LinearLayout>
 		<LinearLayout android:id="@+id/linearLayout3"
 			android:layout_marginLeft="10dp" android:layout_marginRight="10dp"
@@ -88,9 +87,8 @@
 				android:id="@+id/imageView3"></ImageView>
 			<TextView android:id="@+id/accountinfo_email"
 				android:textAppearance="?android:attr/textAppearanceMedium"
-				android:layout_height="wrap_content" android:text="TextView"
-				android:layout_marginLeft="10dp" android:textColor="@color/black"
-				android:layout_width="wrap_content"></TextView>
+				android:layout_height="wrap_content" android:layout_marginLeft="10dp"
+				android:textColor="@color/black" android:layout_width="wrap_content"></TextView>
 		</LinearLayout>
 		<LinearLayout android:id="@+id/linearLayout3"
 			android:layout_marginLeft="10dp" android:layout_marginRight="10dp"
@@ -101,9 +99,8 @@
 				android:id="@+id/imageView3"></ImageView>
 			<TextView android:id="@+id/accountinfo_phone"
 				android:textAppearance="?android:attr/textAppearanceMedium"
-				android:layout_height="wrap_content" android:text="TextView"
-				android:layout_marginLeft="10dp" android:textColor="@color/black"
-				android:layout_width="wrap_content"></TextView>
+				android:layout_height="wrap_content" android:layout_marginLeft="10dp"
+				android:textColor="@color/black" android:layout_width="wrap_content"></TextView>
 		</LinearLayout>
 		<LinearLayout android:id="@+id/linearLayout3"
 			android:layout_marginBottom="5dp" android:layout_marginLeft="10dp"
@@ -114,9 +111,8 @@
 				android:id="@+id/imageView3"></ImageView>
 			<TextView android:id="@+id/accountinfo_address"
 				android:textAppearance="?android:attr/textAppearanceMedium"
-				android:layout_height="wrap_content" android:text="TextView"
-				android:layout_marginLeft="10dp" android:textColor="@color/black"
-				android:layout_width="wrap_content"></TextView>
+				android:layout_height="wrap_content" android:layout_marginLeft="10dp"
+				android:textColor="@color/black" android:layout_width="wrap_content"></TextView>
 		</LinearLayout>
 	</LinearLayout>
 	<LinearLayout android:layout_height="wrap_content"

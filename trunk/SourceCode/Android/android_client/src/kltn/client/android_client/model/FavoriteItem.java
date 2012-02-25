@@ -9,28 +9,26 @@ import android.provider.BaseColumns;
 /**
  * @author nthanhphong
  */
-public class Browser_food_item implements BaseColumns {
-    public static final Uri CONTENT_URI = Uri.parse("content://kltn.client.android_client/browser_food");
+public class FavoriteItem implements BaseColumns {
+    public static final Uri CONTENT_URI = Uri.parse("content://kltn.client.android_client/favorite_food");
 
-    public static final String DEFAULT_SORT_ORDER = "startdate, _id DESC";
+    public static final String DEFAULT_SORT_ORDER = "savedate, id DESC";
     public static final String ID = "id";
     public static final String NAME = "name";
     public static final String INTRODUCTION = "introduction";
     public static final String PRICE = "price";
     public static final String BUYPRICE = "buyprice";
     public static final String IMAGEURL = "imageurl";
-    public static final String STARTDATE = "startdate";
-    public static final String ENDDATE = "enddate";
+    public static final String UPLOADDATE = "uploaddate";
+    public static final String SAVEDATE = "savedate";
     public static final String BUYCOUNT = "buycount";
     public static final String MINBUYER = "minbuyer";
     public static final String MAXBUYER = "maxbuyer";
     public static final String RATE = "rate";
-    public static final String TYPE = "type";
     public static final String PROVIDER = "provider";
 
-    public Browser_food_item(String id, String name, String introduction, String price, String buyprice,
-            String imageurl, String startdate, String enddate, int buycount, int minbuyer, int maxbuyer, int rate,
-            String type, String provider) {
+    public FavoriteItem(String id, String name, String introduction, String price, String buyprice, String imageurl,
+            String uploadate, String savedate, int buycount, int minbuyer, int maxbuyer, int rate, String provider) {
         setId(id);
         setName(name);
         setIntroduction(introduction);
@@ -38,26 +36,13 @@ public class Browser_food_item implements BaseColumns {
         setBuyprice(buyprice);
         setBuycount(buycount);
         setImageurl(imageurl);
-        setStartdate(startdate);
-        setEnddate(enddate);
+        setUploaddate(uploadate);
+        setSavedate(savedate);
         setBuycount(buycount);
         setMinbuyer(minbuyer);
         setMaxbuyer(maxbuyer);
         setRate(rate);
-        setType(type);
         setProvider(provider);
-    }
-    public void setProvider(String provider) {
-        this.Provider = provider;
-    }
-    public String getProvider() {
-        return Provider;
-    }
-    public String getType() {
-        return Type;
-    }
-    public void setType(String type) {
-        this.Type = type;
     }
     public String getId() {
         return Id;
@@ -77,11 +62,11 @@ public class Browser_food_item implements BaseColumns {
     public String getImageurl() {
         return Imageurl;
     }
-    public String getStartdate() {
-        return Startdate;
+    public String getUploaddatedate() {
+        return Uploaddate;
     }
-    public String getEnddate() {
-        return Enddate;
+    public String getSavedate() {
+        return Savedate;
     }
     public int getBuycount() {
         return Buycount;
@@ -113,11 +98,11 @@ public class Browser_food_item implements BaseColumns {
     public void setImageurl(String imageurl) {
         Imageurl = imageurl;
     }
-    public void setStartdate(String startdate) {
-        Startdate = startdate;
+    public void setUploaddate(String uploadadte) {
+        Uploaddate = uploadadte;
     }
-    public void setEnddate(String enddate) {
-        Enddate = enddate;
+    public void setSavedate(String savedate) {
+        Savedate = savedate;
     }
     public void setBuycount(int buycount) {
         Buycount = buycount;
@@ -131,7 +116,13 @@ public class Browser_food_item implements BaseColumns {
     public void setRate(int rate) {
         Rate = rate;
     }
+    public void setProvider(String provider) {
+        this.Provider = provider;
+    }
+    public String getProvider() {
+        return Provider;
+    }
 
-    private String Id, Name, Introduction, Price, Buyprice, Imageurl, Startdate, Enddate, Type, Provider;
+    private String Id, Name, Introduction, Price, Buyprice, Imageurl, Uploaddate, Savedate, Provider;
     private int Rate, Buycount, Minbuyer, Maxbuyer;
 }

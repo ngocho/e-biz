@@ -23,9 +23,8 @@
 		<activity android:name=".activity.PaymentActivity" android:theme="@android:style/Theme.NoTitleBar"></activity>
 		<activity android:name=".activity.AccountAddXuActivity" android:theme="@android:style/Theme.NoTitleBar"></activity>
 		<activity android:name=".activity.AccountTransferXuActivity" android:theme="@android:style/Theme.NoTitleBar"></activity>
-		<activity android:name=".activity.myAccountActivity"
-			android:theme="@android:style/Theme.NoTitleBar"
-			android:configChanges="keyboardHidden|orientation"></activity>
+		<activity android:theme="@android:style/Theme.NoTitleBar"
+			android:configChanges="keyboardHidden|orientation" android:name=".activity.MyAccountActivity"></activity>
 		<activity android:name=".activity.TabDealsActivity"
 			android:theme="@android:style/Theme.NoTitleBar"
 			android:configChanges="keyboardHidden|orientation"></activity>
@@ -33,17 +32,16 @@
 			android:theme="@android:style/Theme.NoTitleBar"
 			android:configChanges="keyboardHidden|orientation"></activity>
 		<activity android:name=".activity.TabBrowserActivity"
-			android:theme="@android:style/Theme.NoTitleBar"
-			android:configChanges="keyboardHidden|orientation"></activity>
+			android:theme="@android:style/Theme.NoTitleBar" android:windowSoftInputMode="stateAlwaysHidden"></activity>
 		<activity android:name=".activity.FavouriteActivity"
 			android:theme="@android:style/Theme.NoTitleBar"></activity>
-		<activity android:name="activity.SavedSearchActivity"
-			android:theme="@android:style/Theme.NoTitleBar"
-			android:configChanges="keyboardHidden|orientation"></activity>
 		<activity android:name=".activity.AccountInfoActivity"></activity>
 		<activity android:name=".activity.AccountChangePassAtivity"></activity>
 		<activity android:configChanges="keyboardHidden|orientation"
 			android:screenOrientation="portrait" android:name="SettingsActivity"/>
-		<activity android:name=".activity.SavedSearchActivity" android:theme="@android:style/Theme.NoTitleBar"></activity>
+		<activity android:name=".activity.SavedSearchActivity" android:theme="@android:style/Theme.NoTitleBar" android:windowSoftInputMode="stateAlwaysHidden"></activity>
+		<provider android:name=".engine.MainProvider" android:authorities="kltn.client.android_client"/>
+		<activity android:name=".activity.DetailFoodActivity" android:theme="@android:style/Theme.NoTitleBar"></activity>
+		<activity android:name=".activity.AccountChangePassAtivity"></activity>
 	</application>
 </manifest>

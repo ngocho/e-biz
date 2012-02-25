@@ -5,12 +5,16 @@ package kltn.client.android_client.activity;
 
 import kltn.client.android_client.R;
 import kltn.client.android_client.engine.BitmapManager;
+import kltn.client.android_client.engine.Engine;
+import kltn.client.android_client.engine.FavouriteEngine;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
@@ -39,10 +43,13 @@ public class SavedSearchActivity extends Activity implements OnClickListener,Tex
 		mListview=(ListView)findViewById(R.id.save_search_listView);
 		mOk=(Button)findViewById(R.id.save_search_ok);
 		mEdittext=(EditText)findViewById(R.id.save_search_edit);
-		mListview.setAdapter(new SaveSearchAdapter(this));
 		mBack.setOnClickListener(this);
 		mOk.setOnClickListener(this);
 		mEdittext.addTextChangedListener(this);
+		mFavoriteEngine=new FavouriteEngine(this);
+		mData=mFavoriteEngine.getAllSortByDate();
+		mEngine=new Engine();
+		mListview.setAdapter(new SaveSearchAdapter(this));
 	}
 	public class SaveSearchAdapter extends BaseAdapter{  
 		Context context;
@@ -51,7 +58,7 @@ public class SavedSearchActivity extends Activity implements OnClickListener,Tex
 		}
 		@Override  
 		public int getCount() {
-			return 3;  
+			return mData.getCount();  
 		}  
 
 		@Override  
@@ -67,20 +74,33 @@ public class SavedSearchActivity extends Activity implements OnClickListener,Tex
 		@Override  
 		public View getView(int position, View convertView, ViewGroup parent) {
 			if(convertView==null)
-				convertView = getLayoutInflater().inflate(R.layout.item_search, null);  
-			//			ImageView image=(ImageView)convertView.findViewById(R.id.item_deals_image);
-			//			image.setImageResource(R.color.black);
-			//TextView name=(TextView)convertView.findViewById(R.id.item_search_name);
+				convertView = getLayoutInflater().inflate(R.layout.item_search, null);
+			mData.moveToPosition(position);
+			String url=mEngine.URL_Image+mData.getString(mData.getColumnIndex("imageurl"));
 			ImageView image=(ImageView)convertView.findViewById(R.id.item_search_image);
-			BitmapManager.INSTANCE.loadBitmap("http://7.test-kltn1.appspot.com/serveImage.vn?urlKey=AMIfv95gfOgW1fEUNHwvmhR3n_m_wY8Z6lFee_4-oJt5NOenUL8Lv9NzmzIt5Gqg-E70k3VCQiNMNpnO9sBu0xi6lZpRsCWZ9cSU36sJP14HqdAkrewpZo3bsqTAmSuUyCCGqKS0L3cCbvXhIYxKruvo2hFcpnfnZg", image, 100, 100);
+			TextView name=(TextView)convertView.findViewById(R.id.item_search_name);
+			TextView price=(TextView)convertView.findViewById(R.id.item_search_price);
+			TextView buyprice=(TextView)convertView.findViewById(R.id.item_search_buyprice);
+			TextView provider=(TextView)convertView.findViewById(R.id.item_search_provider);
+			TextView count=(TextView)convertView.findViewById(R.id.item_search_count);
+			TextView saveddate=(TextView)convertView.findViewById(R.id.item_search_saveddate);
+			name.setText(mData.getString(mData.getColumnIndex("id"))+" - "+mData.getString(mData.getColumnIndex("name")));
+			price.setText(mData.getString(mData.getColumnIndex("price"))+getString(R.string.vnd));
+			buyprice.setText(mData.getString(mData.getColumnIndex("buyprice"))+getString(R.string.vnd));
+			provider.setText(getString(R.string.provider)+" "+mData.getString(mData.getColumnIndex("provider")));
+			count.setText(getString(R.string.buyer)+" "+mData.getString(mData.getColumnIndex("buycount")));
+			saveddate.setText(getString(R.string.saved_date) + " "+mData.getString(mData.getColumnIndex("savedate")));
+			BitmapManager.INSTANCE.loadBitmap(url, image, 150, 150);
 			return convertView;
 		}  
-
 	};
+	private Engine mEngine;
+	private FavouriteEngine mFavoriteEngine;
 	private Button mBack;
 	private ListView mListview;
 	private Button mOk;
 	private EditText mEdittext;
+	private Cursor mData;
 	/* (non-Javadoc)
 	 * @see android.view.View.OnClickListener#onClick(android.view.View)
 	 */
@@ -123,6 +143,7 @@ public class SavedSearchActivity extends Activity implements OnClickListener,Tex
 	@Override
 	public void onTextChanged(CharSequence s, int start, int before, int count) {
 		if(s.length()>0){
+			mListview.setSelection(mFavoriteEngine.SelectFoodByName(mData, s.toString()));
 			mOk.setBackgroundResource(R.drawable.search_button_cancel);
 		}
 	}

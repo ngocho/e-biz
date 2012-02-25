@@ -58,10 +58,10 @@ public class TabDealsActivity extends Activity implements OnClickListener,OnDism
 		mBest.setOnClickListener(this);
 		mBrowser.setOnClickListener(this);
 		LoadData();
-//		mData=mEngine.get_best_food();
-//		mAdapter=new DealsAdapter(this);
-//		viewFlow.setAdapter(mAdapter);
-//		viewFlow.setFlowIndicator(init);
+		//		mData=mEngine.get_best_food();
+		//		mAdapter=new DealsAdapter(this);
+		//		viewFlow.setAdapter(mAdapter);
+		//		viewFlow.setFlowIndicator(init);
 	}
 	public void LoadData(){
 		mCurrentDialog = ProgressDialog.show(TabDealsActivity.this, null,
@@ -113,6 +113,15 @@ public class TabDealsActivity extends Activity implements OnClickListener,OnDism
 			mPrice.setText(getString(R.string.deals_price)+" "+ItemData.getPrice()+" "+getString(R.string.vnd));
 			mPricePromotion.setText(getString(R.string.deals_sale)+" "+ItemData.getBuyprice()+" "+getString(R.string.vnd));
 			BitmapManager.INSTANCE.loadBitmap(mEngine.URL_Image+ItemData.getImageurl(), image, 500, 500);
+			convertView.setOnClickListener(new OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					Intent i=new Intent(TabDealsActivity.this,DetailFoodActivity.class);
+					i.putExtra("id_food", ItemData.getId());
+					startActivity(i);
+				}
+			});
 			return convertView;
 		}  
 	};

@@ -4,18 +4,23 @@
 	android:layout_width="fill_parent" android:layout_height="wrap_content">
 	<TextView android:text="TextView" android:textColor="@color/black"
 		android:layout_weight="1.0" android:id="@+id/item_search_name"
-		android:layout_marginLeft="10dp" android:layout_marginRight="2dp"
-		android:layout_marginTop="2dp" android:textAppearance="?android:attr/textAppearanceMedium"
-		android:textSize="14dp" android:lines="2" android:layout_width="fill_parent"
+		android:textStyle="bold" android:layout_marginLeft="10dp"
+		android:layout_marginRight="2dp" android:layout_marginTop="2dp"
+		android:textAppearance="?android:attr/textAppearanceMedium"
+		android:textSize="13dp" android:lines="1" android:layout_width="fill_parent"
 		android:layout_height="wrap_content"></TextView>
 	<LinearLayout android:id="@+id/linearLayout1"
-		android:layout_marginBottom="2dp" android:layout_width="fill_parent"
-		android:layout_height="wrap_content">
-		<ImageView android:id="@+id/item_search_image"
-			android:background="@drawable/button_bg_us" android:padding="5dp"
-			android:scaleType="fitXY" android:layout_marginLeft="5dp"
-			android:layout_marginRight="5dp" android:src="@drawable/btn_ads_close"
-			android:layout_width="190dp" android:layout_height="fill_parent"></ImageView>
+		android:layout_width="fill_parent" android:layout_height="wrap_content">
+		<LinearLayout android:layout_width="wrap_content"
+			android:layout_height="fill_parent" android:id="@+id/linearLayout3"
+			android:orientation="vertical">
+			<ImageView android:layout_width="180dp"
+				android:layout_weight="1.0" android:layout_marginRight="2dp"
+				android:background="@drawable/button_bg_us" android:layout_height="fill_parent"
+				android:padding="5dp" android:src="@drawable/btn_ads_close"
+				android:layout_marginLeft="5dp" android:scaleType="fitXY"
+				android:id="@+id/item_search_image"></ImageView>
+		</LinearLayout>
 		<LinearLayout android:id="@+id/linearLayout2"
 			android:layout_width="fill_parent" android:layout_height="wrap_content"
 			android:orientation="vertical">
@@ -23,12 +28,8 @@
 				android:background="@drawable/nm_counter_bg" android:layout_width="fill_parent"
 				android:layout_height="wrap_content" android:orientation="vertical"
 				android:gravity="center_vertical|center_horizontal">
-				<TextView android:text="Thời gian lưu:" android:textColor="@color/white"
-					android:layout_marginTop="3dp" android:textSize="13dp"
-					android:id="@+id/item_search_date" android:textAppearance="?android:attr/textAppearanceMedium"
-					android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
 				<TextView android:text="Trạng thái: " android:textColor="@color/white"
-					android:textSize="13dp" android:id="@+id/item_search_status"
+					android:textSize="13dp" android:id="@+id/item_search_provider"
 					android:textAppearance="?android:attr/textAppearanceMedium"
 					android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
 				<TextView android:text="Còn hàng" android:textColor="@color/white"
@@ -36,14 +37,13 @@
 					android:textAppearance="?android:attr/textAppearanceMedium"
 					android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
 				<Button android:layout_width="wrap_content"
-					android:layout_marginBottom="5dp" android:textColor="@color/white"
-					android:textStyle="bold" android:layout_marginLeft="5dp"
-					android:layout_marginRight="5dp" android:text="Chi tiết"
-					android:background="@drawable/nm_buy_btn" android:id="@+id/item_search_ok"
-					android:layout_height="wrap_content"></Button>
+					android:textColor="@color/white" android:textStyle="bold"
+					android:layout_marginLeft="5dp" android:layout_marginRight="5dp"
+					android:text="Chi tiết" android:background="@drawable/nm_buy_btn"
+					android:id="@+id/item_search_ok" android:layout_height="wrap_content"></Button>
 			</LinearLayout>
 			<LinearLayout android:id="@+id/linearLayout2"
-				android:layout_marginTop="5dp" android:layout_width="fill_parent"
+				android:layout_marginTop="2dp" android:layout_width="fill_parent"
 				android:layout_height="wrap_content" android:layout_marginLeft="2dp"
 				android:orientation="vertical" android:gravity="center_horizontal">
 				<LinearLayout android:id="@+id/linearLayout6"
@@ -61,7 +61,7 @@
 				</LinearLayout>
 				<LinearLayout android:id="@+id/linearLayout5"
 					android:background="@drawable/nm_gtgdgiaca" android:layout_width="fill_parent"
-					android:layout_height="wrap_content" android:orientation="vertical"
+					android:layout_height="40dp" android:orientation="vertical"
 					android:gravity="center_vertical|center_horizontal">
 					<TextView android:text="Còn lại        vnđ" android:id="@+id/textView4"
 						android:textColor="@color/white" android:textSize="12dp"
@@ -69,11 +69,15 @@
 						android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
 					<TextView android:text="TextView" android:id="@+id/item_search_buyprice"
 						android:textAppearance="?android:attr/textAppearanceMedium"
-						android:textStyle="bold" android:textSize="14dp"
+						android:textStyle="bold" android:textSize="13dp"
 						android:textColor="@color/white" android:layout_width="wrap_content"
 						android:layout_height="wrap_content"></TextView>
 				</LinearLayout>
 			</LinearLayout>
 		</LinearLayout>
 	</LinearLayout>
+	<TextView android:text="Thời gian lưu:" android:textColor="@color/black"
+		android:layout_marginLeft="5dp" android:textSize="12dp"
+		android:id="@+id/item_search_saveddate" android:textAppearance="?android:attr/textAppearanceMedium"
+		android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
 </LinearLayout>

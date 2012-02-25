@@ -3,59 +3,66 @@
 	android:orientation="vertical" android:background="@color/white_smoke"
 	android:layout_width="fill_parent" android:layout_height="fill_parent">
 	<LinearLayout android:id="@+id/linearLayout1"
-		android:background="@drawable/map_menubar"
-		android:layout_marginBottom="5dp" android:layout_height="40dp"
-		android:layout_width="fill_parent" android:gravity="center_vertical">
-		<LinearLayout android:layout_width="wrap_content"
-			android:id="@+id/linearLayout2" android:layout_height="fill_parent">
-			<Button android:id="@+id/detail_back" android:background="@drawable/btn_back"
-				android:layout_width="wrap_content" android:layout_height="wrap_content"
-				android:gravity="left" android:layout_gravity="left"></Button>
-		</LinearLayout>
+		android:background="@drawable/theme_activity_title_bar"
+		android:layout_width="fill_parent" android:layout_height="wrap_content"
+		android:layout_gravity="center_vertical" android:gravity="center_vertical">
+		<Button android:id="@+id/detail_food_back" android:background="@drawable/btn_back"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+			android:gravity="left" android:layout_gravity="left"></Button>
 		<LinearLayout android:layout_width="fill_parent"
-			android:layout_marginRight="50dp" android:id="@+id/linearLayout3"
-			android:layout_height="fill_parent" android:gravity="center_vertical|center_horizontal">
-			<TextView android:id="@+id/detail_title"
+			android:id="@+id/linearLayout4" android:layout_height="fill_parent"
+			android:gravity="center_vertical|center_horizontal">
+			<TextView android:textStyle="bold" android:gravity="center_horizontal"
+				android:id="@+id/textView1" android:textColor="@color/white"
+				android:layout_marginRight="40dp" android:layout_height="wrap_content"
+				android:textSize="18dp" android:layout_width="wrap_content"
 				android:textAppearance="?android:attr/textAppearanceMedium"
-				android:layout_height="wrap_content" android:textStyle="bold"
-				android:layout_width="wrap_content" android:text="@string/register_title"
-				android:gravity="center_horizontal"></TextView>
+				android:text="@string/detail_food"></TextView>
 		</LinearLayout>
 	</LinearLayout>
 	<LinearLayout android:id="@+id/linearLayout9"
 		android:layout_margin="5dp" android:background="@drawable/button_bg_s"
 		android:layout_width="fill_parent" android:layout_height="wrap_content"
 		android:orientation="vertical">
+		<LinearLayout android:layout_width="fill_parent"
+			android:layout_height="wrap_content" android:id="@+id/linearLayout5"
+			android:gravity="center_horizontal">
+			<TextView android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:textStyle="bold"
+				android:textSize="13dp" android:text="TextView"
+				android:textAppearance="?android:attr/textAppearanceSmall"
+				android:id="@+id/detail_food_name" android:textColor="@color/black"></TextView>
+		</LinearLayout>
 		<LinearLayout android:id="@+id/linearLayout10"
-			android:layout_width="fill_parent" android:layout_height="wrap_content">
+			android:layout_marginTop="5dp" android:layout_width="fill_parent"
+			android:layout_height="wrap_content">
 			<LinearLayout android:id="@+id/linearLayout11"
-				android:layout_width="wrap_content" android:layout_height="fill_parent"
+				android:layout_weight="1.0" android:layout_width="wrap_content"
+				android:layout_height="fill_parent" android:paddingLeft="10dp"
 				android:orientation="vertical">
 				<TextView android:id="@+id/textView6" android:layout_width="wrap_content"
 					android:textColor="@color/black" android:layout_height="wrap_content"
 					android:textAppearance="?android:attr/textAppearanceSmall"
 					android:text="Giá trị:"></TextView>
 				<TextView android:id="@+id/detail_food_price"
-					android:layout_width="wrap_content" android:textColor="@color/black"
-					android:layout_height="wrap_content" android:textAppearance="?android:attr/textAppearanceSmall"
+					android:textSize="12dp" android:layout_width="wrap_content"
+					android:textColor="@color/black" android:layout_height="wrap_content"
+					android:textAppearance="?android:attr/textAppearanceSmall"
 					android:textStyle="bold" android:text="TextView"></TextView>
 			</LinearLayout>
 			<LinearLayout android:id="@+id/linearLayout12"
-				android:layout_width="wrap_content" android:layout_height="fill_parent"
-				android:orientation="vertical">
+				android:layout_weight="1.0" android:layout_width="wrap_content"
+				android:layout_height="fill_parent" android:orientation="vertical">
 				<TextView android:id="@+id/textView6" android:layout_width="wrap_content"
 					android:textColor="@color/black" android:layout_height="wrap_content"
 					android:textAppearance="?android:attr/textAppearanceSmall"
 					android:text="Tiết kiệm:"></TextView>
-				<TextView android:id="@+id/detail_food_sub"
-					android:layout_width="wrap_content" android:textStyle="bold"
-					android:textColor="@color/black" android:layout_height="wrap_content"
-					android:textAppearance="?android:attr/textAppearanceSmall"
+				<TextView android:id="@+id/detail_food_subprice"
+					android:textSize="12dp" android:layout_width="wrap_content"
+					android:textStyle="bold" android:textColor="@color/black"
+					android:layout_height="wrap_content" android:textAppearance="?android:attr/textAppearanceSmall"
 					android:text="TextView"></TextView>
 			</LinearLayout>
-			<LinearLayout android:id="@+id/linearLayout13"
-				android:layout_width="wrap_content" android:layout_height="fill_parent"
-				android:orientation="vertical"></LinearLayout>
 		</LinearLayout>
 		<LinearLayout android:id="@+id/linearLayout14"
 			android:background="@drawable/nm_giaca" android:layout_width="fill_parent"
@@ -64,12 +71,13 @@
 				android:layout_width="wrap_content" android:layout_height="fill_parent"
 				android:orientation="vertical" android:gravity="center_vertical|center_horizontal">
 				<TextView android:id="@+id/textView2" android:layout_width="wrap_content"
-					android:textColor="@color/white" android:layout_height="wrap_content"
-					android:textAppearance="?android:attr/textAppearanceSmall"
+					android:textSize="13dp" android:textColor="@color/white"
+					android:layout_height="wrap_content" android:textAppearance="?android:attr/textAppearanceSmall"
 					android:text="Còn lại            vnđ"></TextView>
-				<TextView android:id="@+id/detail_food_buyprice"
-					android:textStyle="bold" android:layout_width="wrap_content"
-					android:layout_height="wrap_content" android:textAppearance="?android:attr/textAppearanceMedium"
+				<TextView android:id="@+id/detail_food_buyprice" android:textColor="@color/white"
+					android:textSize="13dp" android:textStyle="bold"
+					android:layout_width="wrap_content" android:layout_height="wrap_content"
+					android:textAppearance="?android:attr/textAppearanceMedium"
 					android:text="TextView"></TextView>
 			</LinearLayout>
 			<LinearLayout android:id="@+id/linearLayout16"
@@ -82,16 +90,12 @@
 					android:layout_width="wrap_content" android:layout_height="wrap_content"></Button>
 			</LinearLayout>
 		</LinearLayout>
-
 		<LinearLayout android:layout_width="fill_parent"
-			android:layout_marginTop="5dp" android:layout_marginBottom="5dp"
-			android:id="@+id/linearLayout17" android:layout_height="wrap_content">
-			<TextView android:layout_width="wrap_content" android:id="@+id/textView4"
+			android:layout_marginTop="2dp" android:layout_marginBottom="2dp"
+			android:layout_marginLeft="5dp" android:id="@+id/linearLayout17"
+			android:layout_height="wrap_content">
+			<TextView android:layout_width="wrap_content" android:id="@+id/detail_food_count"
 				android:textColor="@color/black" android:textAppearance="?android:attr/textAppearanceSmall"
-				android:text="TextView" android:layout_height="wrap_content"></TextView>
-			<TextView android:textColor="@color/black"
-				android:textStyle="bold" android:layout_width="wrap_content"
-				android:id="@+id/detail_food_count" android:textAppearance="?android:attr/textAppearanceSmall"
 				android:text="TextView" android:layout_height="wrap_content"></TextView>
 		</LinearLayout>
 	</LinearLayout>
@@ -105,7 +109,7 @@
 				android:textColor="@color/white" android:background="@drawable/detail_tabselect"
 				android:textSize="12dp" android:layout_width="wrap_content"
 				android:layout_height="wrap_content" android:layout_gravity="center_vertical"></Button>
-			<Button android:text="Hình ảnh" android:id="@+id/detail_food_tab_image" 
+			<Button android:text="Hình ảnh" android:id="@+id/detail_food_tab_image"
 				android:layout_marginLeft="-20dp" android:layout_marginRight="-20dp"
 				android:textColor="@color/black" android:textSize="12dp"
 				android:background="@drawable/detail_tabunselect"
@@ -122,8 +126,8 @@
 				android:layout_gravity="center_vertical"></Button>
 		</LinearLayout>
 	</LinearLayout>
-	<LinearLayout android:layout_height="wrap_content"
-		android:id="@+id/linearLayout3" android:layout_width="fill_parent"
-		android:background="@drawable/detail_tabbottom">
+	<LinearLayout android:layout_height="fill_parent"
+		android:layout_weight="1" android:orientation="vertical" android:id="@+id/detail_food_tab_host"
+		android:layout_width="fill_parent">
 	</LinearLayout>
 </LinearLayout>

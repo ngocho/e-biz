@@ -1,6 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  android:layout_width="fill_parent"
-  android:layout_height="fill_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical" android:layout_width="fill_parent"
+	android:background="@drawable/my_background" android:layout_height="fill_parent">
+	<LinearLayout android:id="@+id/linearLayout1"
+		android:background="@drawable/theme_activity_title_bar"
+		android:layout_marginBottom="5dp" android:layout_height="40dp"
+		android:layout_width="fill_parent" android:gravity="center_vertical">
+		<Button android:id="@+id/account_changepass_back"
+			android:background="@drawable/btn_back" android:layout_width="wrap_content"
+			android:layout_height="wrap_content" android:gravity="left"
+			android:layout_gravity="left"></Button>
+		<LinearLayout android:layout_width="fill_parent"
+			android:id="@+id/linearLayout4" android:layout_height="fill_parent"
+			android:gravity="center_vertical|center_horizontal">
+			<TextView android:textStyle="bold" android:gravity="center_horizontal"
+				android:id="@+id/textView1" android:textColor="@color/white"
+				android:layout_marginRight="40dp" android:layout_height="wrap_content"
+				android:textSize="18dp" android:layout_width="wrap_content"
+				android:textAppearance="?android:attr/textAppearanceMedium"
+				android:text="@string/myaccount_changepass"></TextView>
+		</LinearLayout>
+	</LinearLayout>
+	<LinearLayout android:layout_width="fill_parent"
+		android:orientation="vertical" android:layout_height="fill_parent"
+		android:layout_margin="10dp" android:background="@drawable/button_bg_us"
+		android:id="@+id/linearLayout5">
+		<LinearLayout android:layout_width="fill_parent"
+			android:layout_height="wrap_content" android:gravity="center_vertical"
+			android:layout_margin="7dp" android:id="@+id/linearLayout2">
+			<ImageView android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:src="@drawable/icon_person"
+				android:id="@+id/imageView2"></ImageView>
+			<TextView android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:textAppearance="?android:attr/textAppearanceMedium"
+				android:layout_marginLeft="10dp" android:id="@+id/account_changepass_username"
+				android:textColor="@color/black"></TextView>
+		</LinearLayout>
+		<TextView android:layout_width="wrap_content"
+			android:textSize="15dp" android:layout_marginRight="5dp"
+			android:layout_height="wrap_content" android:textAppearance="?android:attr/textAppearanceMedium"
+			android:id="@+id/rer" android:textColor="@color/black" android:text="@string/changepass_oldpass"></TextView>
+		<LinearLayout android:layout_width="fill_parent"
+			android:layout_height="wrap_content" android:layout_margin="5dp"
+			android:gravity="center_vertical" android:id="@+id/linearLayout3">
+			<EditText android:layout_height="wrap_content"
+				android:paddingLeft="10dp" android:background="@drawable/search_box"
+				android:layout_weight="1.0" android:id="@+id/account_changepass_old"
+				android:layout_width="fill_parent" android:inputType="textPassword"></EditText>
+		</LinearLayout>
+		<TextView android:layout_width="wrap_content"
+			android:textSize="15dp" android:layout_marginRight="5dp"
+			android:layout_height="wrap_content" android:textAppearance="?android:attr/textAppearanceMedium"
+			android:id="@+id/rer" android:textColor="@color/black" android:text="@string/changepass_new"></TextView>
+		<LinearLayout android:layout_width="fill_parent"
+			android:layout_height="wrap_content" android:layout_margin="5dp"
+			android:gravity="center_vertical" android:id="@+id/linearLayout3">
+
+			<EditText android:layout_height="wrap_content"
+				android:inputType="textPassword" android:paddingLeft="10dp"
+				android:background="@drawable/search_box" android:layout_weight="1.0"
+				android:id="@+id/account_changepass_new" android:layout_width="fill_parent"></EditText>
+		</LinearLayout>
+		<TextView android:layout_width="wrap_content"
+			android:textSize="15dp" android:layout_marginRight="5dp"
+			android:layout_height="wrap_content" android:textAppearance="?android:attr/textAppearanceMedium"
+			android:id="@+id/rer" android:textColor="@color/black" android:text="@string/changepass_confirm"></TextView>
+		<LinearLayout android:layout_width="fill_parent"
+			android:layout_height="wrap_content" android:layout_margin="5dp"
+			android:gravity="center_vertical" android:id="@+id/linearLayout3">
+
+			<EditText android:layout_height="wrap_content"
+				android:inputType="textPassword" android:paddingLeft="10dp"
+				android:background="@drawable/search_box" android:layout_weight="1.0"
+				android:id="@+id/account_changepass_confirm" android:layout_width="fill_parent"></EditText>
+		</LinearLayout>
+		<Button android:id="@+id/account_changepass_ok"
+			android:layout_height="40dp" android:layout_gravity="center_horizontal"
+			android:background="@drawable/button_menu" android:textStyle="bold"
+			android:textColor="@color/white" android:layout_width="120dp"
+			android:text="@string/ok"></Button>
+	</LinearLayout>
 </LinearLayout>

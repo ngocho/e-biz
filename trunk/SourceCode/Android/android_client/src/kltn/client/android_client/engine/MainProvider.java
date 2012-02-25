@@ -1,5 +1,6 @@
 package kltn.client.android_client.engine;
 
+import kltn.client.android_client.model.FavoriteItem;
 import kltn.client.android_client.model.date_food_item;
 import kltn.client.android_client.model.histoty_buy_item;
 import android.content.ContentProvider;
@@ -32,6 +33,8 @@ public class MainProvider extends ContentProvider {
 				db.execSQL(SQL_CREATE_HISTORY_BUY);
 				Log.w(DEBUG_TAG, "creating date_food table");
 				db.execSQL(SQL_CREATE_DATE_FOOD);
+				Log.w(DEBUG_TAG, "creating favorite_food table");
+				db.execSQL(SQL_CREATE_FAVORITE_FOOD);
 			} catch (SQLException e) {
 				Log.e(DEBUG_TAG, e.getMessage());
 			}
@@ -45,6 +48,7 @@ public class MainProvider extends ContentProvider {
 						+ ", which will destroy all old data");
 				db.execSQL(SQL_DROP_HISTORY_BUY);
 				db.execSQL(SQL_DROP_CHAT);
+				db.execSQL(SQL_DROP_FAVORITE);
 				onCreate(db);
 			} catch (SQLException e) {
 				Log.e(DEBUG_TAG, e.getMessage());
@@ -53,25 +57,44 @@ public class MainProvider extends ContentProvider {
 
 		private static final String SQL_CREATE_HISTORY_BUY = "CREATE TABLE "
 				+ TABLE_HISTORY_BUY + "(" + histoty_buy_item._ID
-				+ " INTEGER PRIMARY KEY AUTOINCREMENT, " + histoty_buy_item.IDCUSTOMER
-				+ " TEXT, " + histoty_buy_item.IDGOODS + " TEXT, "
-				+ histoty_buy_item.GOODSNAME + " TEXT, " + histoty_buy_item.IMAGE
-				+ " TEXT, " + histoty_buy_item.DATE + " TEXT, " + histoty_buy_item.PRICE
-				+" TEXT);";
+				+ " INTEGER PRIMARY KEY AUTOINCREMENT, "
+				+ histoty_buy_item.IDCUSTOMER + " TEXT, "
+				+ histoty_buy_item.IDGOODS + " TEXT, "
+				+ histoty_buy_item.GOODSNAME + " TEXT, "
+				+ histoty_buy_item.IMAGE + " TEXT, " + histoty_buy_item.DATE
+				+ " TEXT, " + histoty_buy_item.PRICE + " TEXT);";
 		private static final String SQL_DROP_HISTORY_BUY = "DROP TABLE IF EXISTS "
 				+ TABLE_HISTORY_BUY;
 
 		private static final String SQL_CREATE_DATE_FOOD = "CREATE TABLE "
 				+ TABLE_DATE_FOOD + "(" + date_food_item._ID
-				+ " INTEGER PRIMARY KEY AUTOINCREMENT, " + date_food_item.IDGOODS
-				+ " TEXT, " + date_food_item.NAME + " TEXT, "
-				+ date_food_item.PRICE + " TEXT, "+ date_food_item.BUYPRICE + " TEXT, "
-				+ date_food_item.IMAGEURL + " TEXT, "+ date_food_item.STARTDATE + " TEXT, "
-				+ date_food_item.ENDDATE + " TEXT, "+ date_food_item.BUYCOUNT + " TEXT, "
-				+ date_food_item.COUNTMIN + " TEXT, "+ date_food_item.COUNTMAX + " TEXT);";
+				+ " INTEGER PRIMARY KEY AUTOINCREMENT, "
+				+ date_food_item.IDGOODS + " TEXT, " + date_food_item.NAME
+				+ " TEXT, " + date_food_item.PRICE + " TEXT, "
+				+ date_food_item.BUYPRICE + " TEXT, " + date_food_item.IMAGEURL
+				+ " TEXT, " + date_food_item.STARTDATE + " TEXT, "
+				+ date_food_item.ENDDATE + " TEXT, " + date_food_item.BUYCOUNT
+				+ " TEXT, " + date_food_item.COUNTMIN + " TEXT, "
+				+ date_food_item.COUNTMAX + " TEXT);";
 
 		private static final String SQL_DROP_CHAT = "DROP TABLE IF EXISTS "
 				+ TABLE_DATE_FOOD;
+
+		private static final String SQL_CREATE_FAVORITE_FOOD = "CREATE TABLE "
+				+ TABLE_FAVORITE_FOOD + "(" + FavoriteItem._ID
+				+ " INTEGER PRIMARY KEY AUTOINCREMENT, " + FavoriteItem.ID
+				+ " TEXT, " + FavoriteItem.NAME + " TEXT, "
+				+ FavoriteItem.INTRODUCTION + " TEXT, " + FavoriteItem.PRICE
+				+ " TEXT, " + FavoriteItem.BUYPRICE + " TEXT, "
+				+ FavoriteItem.IMAGEURL + " TEXT, " + FavoriteItem.UPLOADDATE
+				+ " TEXT, " + FavoriteItem.SAVEDATE + " TEXT, "
+				+ FavoriteItem.MAXBUYER + " TEXT, " + FavoriteItem.RATE
+				+ " TEXT, " + FavoriteItem.PROVIDER + " TEXT, "
+				+ FavoriteItem.BUYCOUNT + " TEXT, " + FavoriteItem.MINBUYER
+				+ " TEXT);";
+
+		private static final String SQL_DROP_FAVORITE = "DROP TABLE IF EXISTS "
+				+ TABLE_FAVORITE_FOOD;
 	}
 
 	@Override
@@ -96,6 +119,10 @@ public class MainProvider extends ContentProvider {
 			Log.i(DEBUG_TAG, "Delete where: " + where);
 			count = mDatabase.delete(TABLE_DATE_FOOD, where, whereArgs);
 			break;
+		case CODE_FAVORITE_FOOD:
+			Log.i(DEBUG_TAG, "Delete where: " + where);
+			count = mDatabase.delete(TABLE_FAVORITE_FOOD, where, whereArgs);
+			break;
 		default:
 			throw new IllegalArgumentException("Unsupported URI: " + uri);
 		}
@@ -111,6 +138,8 @@ public class MainProvider extends ContentProvider {
 			return "vnd.android.cursor.dir/vnd.kltn.client.android_client";
 		case CODE_DATE_FOOD:
 			return "vnd.android.cursor.dir/vnd.kltn.client.android_client";
+		case CODE_FAVORITE_FOOD:
+			return "vnd.android.cursor.dir/vnd.kltn.client.android_client";
 		default:
 			throw new IllegalArgumentException("Unsupported URI: " + uri);
 		}
@@ -125,8 +154,8 @@ public class MainProvider extends ContentProvider {
 		case CODE_HISTORY_BUY:
 			rowID = mDatabase.insert(TABLE_HISTORY_BUY, null, values);
 			if (rowID > 0) {
-				Uri uri1 = ContentUris.withAppendedId(histoty_buy_item.CONTENT_URI,
-						rowID);
+				Uri uri1 = ContentUris.withAppendedId(
+						histoty_buy_item.CONTENT_URI, rowID);
 				getContext().getContentResolver().notifyChange(uri1, null);
 				// Return a URI to the newly inserted row on success.
 				return uri1;
@@ -135,10 +164,19 @@ public class MainProvider extends ContentProvider {
 		case CODE_DATE_FOOD:
 			rowID = mDatabase.insert(TABLE_DATE_FOOD, null, values);
 			if (rowID > 0) {
-				Uri uri1 = ContentUris.withAppendedId(date_food_item.CONTENT_URI,
-						rowID);
+				Uri uri1 = ContentUris.withAppendedId(
+						date_food_item.CONTENT_URI, rowID);
 				getContext().getContentResolver().notifyChange(uri1, null);
 				// Return a URI to the newly inserted row on success.
+				return uri1;
+			}
+			break;
+		case CODE_FAVORITE_FOOD:
+			rowID = mDatabase.insert(TABLE_FAVORITE_FOOD, null, values);
+			if (rowID > 0) {
+				Uri uri1 = ContentUris.withAppendedId(FavoriteItem.CONTENT_URI,
+						rowID);
+				getContext().getContentResolver().notifyChange(uri1, null);
 				return uri1;
 			}
 			break;
@@ -162,16 +200,9 @@ public class MainProvider extends ContentProvider {
 			} else {
 				orderBy = sortOrder;
 			}
-			// Apply the query to the underlying database.
-			// Log.i(DEBUG_TAG, "Build query: "
-			// + qb.buildQuery(projection, selection, selectionArgs, null,
-			// null, orderBy, null));
 			c = qb.query(mDatabase, projection, selection, selectionArgs, null,
 					null, orderBy);
-			// Register the contexts ContentResolver to be notified if
-			// the cursor result set changes.
 			c.setNotificationUri(getContext().getContentResolver(), uri);
-			// Return a cursor to the query result.
 			return c;
 		case CODE_DATE_FOOD:
 			qb.setTables(TABLE_DATE_FOOD);
@@ -180,16 +211,20 @@ public class MainProvider extends ContentProvider {
 			} else {
 				orderBy = sortOrder;
 			}
-			// Apply the query to the underlying database.
-			// Log.i(DEBUG_TAG, "Build query: "
-			// + qb.buildQuery(projection, selection, selectionArgs, null,
-			// null, orderBy, null));
 			c = qb.query(mDatabase, projection, selection, selectionArgs, null,
 					null, orderBy);
-			// Register the contexts ContentResolver to be notified if
-			// the cursor result set changes.
 			c.setNotificationUri(getContext().getContentResolver(), uri);
-			// Return a cursor to the query result.
+			return c;
+		case CODE_FAVORITE_FOOD:
+			qb.setTables(TABLE_FAVORITE_FOOD);
+			if (TextUtils.isEmpty(sortOrder)) {
+				orderBy = FavoriteItem.DEFAULT_SORT_ORDER;
+			} else {
+				orderBy = sortOrder;
+			}
+			c = qb.query(mDatabase, projection, selection, selectionArgs, null,
+					null, orderBy);
+			c.setNotificationUri(getContext().getContentResolver(), uri);
 			return c;
 		default:
 			break;
@@ -203,10 +238,15 @@ public class MainProvider extends ContentProvider {
 		int count;
 		switch (mUriMatcher.match(uri)) {
 		case CODE_HISTORY_BUY:
-			count = mDatabase.update(TABLE_HISTORY_BUY, values, where, whereArgs);
+			count = mDatabase.update(TABLE_HISTORY_BUY, values, where,
+					whereArgs);
 			break;
 		case CODE_DATE_FOOD:
 			count = mDatabase.update(TABLE_DATE_FOOD, values, where, whereArgs);
+			break;
+		case CODE_FAVORITE_FOOD:
+			count = mDatabase.update(TABLE_FAVORITE_FOOD, values, where,
+					whereArgs);
 			break;
 		default:
 			throw new IllegalArgumentException("Unknown URI " + uri);
@@ -222,8 +262,10 @@ public class MainProvider extends ContentProvider {
 	public static final int DATABASE_VERSION = 8;
 	public static final String TABLE_HISTORY_BUY = "history_buy";
 	public static final String TABLE_DATE_FOOD = "date_food";
+	public static final String TABLE_FAVORITE_FOOD = "favorite_food";
 	private static final int CODE_HISTORY_BUY = 1;
 	private static final int CODE_DATE_FOOD = 2;
+	private static final int CODE_FAVORITE_FOOD = 3;
 
 	static {
 		mUriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
@@ -231,5 +273,7 @@ public class MainProvider extends ContentProvider {
 				CODE_HISTORY_BUY);
 		mUriMatcher.addURI("kltn.client.android_client", "date_food",
 				CODE_DATE_FOOD);
+		mUriMatcher.addURI("kltn.client.android_client", "favorite_food",
+				CODE_FAVORITE_FOOD);
 	}
 }
