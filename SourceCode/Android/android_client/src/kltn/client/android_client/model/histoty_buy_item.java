@@ -125,5 +125,6 @@ public class histoty_buy_item implements BaseColumns {
     public void setPrice(String price) {
         Price = price;
     }
+    /**  . */
     private String Idcustomer, Idgoods, Goodsname, Image, Datetime, Price;
 }

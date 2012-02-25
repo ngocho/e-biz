@@ -5,7 +5,6 @@ import java.util.LinkedList;
 
 import kltn.client.android_client.R;
 import android.content.Context;
-import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.database.DataSetObserver;
 import android.util.AttributeSet;
@@ -22,40 +21,70 @@ import android.widget.AdapterView;
 import android.widget.Scroller;
 
 public class ViewFlow extends AdapterView<Adapter> {
+    /** . */
     private static final int SNAP_VELOCITY = 1000;
+    /** . */
     private static final int INVALID_SCREEN = -1;
+    /** . */
     private final static int TOUCH_STATE_REST = 0;
+    /** . */
     private final static int TOUCH_STATE_SCROLLING = 1;
-
+    /** . */
     private LinkedList<View> mLoadedViews;
+    /** . */
     private int mCurrentBufferIndex;
+    /** . */
     private int mCurrentAdapterIndex;
+    /** . */
     private int mSideBuffer = 0;
+    /** . */
     private Scroller mScroller;
+    /** . */
     private VelocityTracker mVelocityTracker;
+    /** . */
     private int mTouchState = TOUCH_STATE_REST;
+    /** . */
     private float mLastMotionX;
+    /** . */
     private int mTouchSlop;
+    /** . */
     private int mMaximumVelocity;
+    /** . */
     public int mCurrentScreen;
+    /** . */
     private int mNextScreen = INVALID_SCREEN;
+    /** . */
     private boolean mFirstLayout = true;
+    /** . */
     private ViewSwitchListener mViewSwitchListener;
+    /** . */
     private Adapter mAdapter;
+    /** . */
     private int mLastScrollDirection;
+    /** . */
     private AdapterDataSetObserver mDataSetObserver;
+    /** . */
     private FlowIndicator mIndicator;
 
+    /**
+     * [Give the description for method].
+     */
     public void next() {
-        if (mCurrentScreen < getChildCount() - 1)
+        if (mCurrentScreen < getChildCount() - 1) {
             snapToScreen(mCurrentScreen + 1);
+        }
     }
 
+    /**
+     * [Give the description for method].
+     */
     public void pre() {
-        if (mCurrentScreen > 0)
+        if (mCurrentScreen > 0) {
             snapToScreen(mCurrentScreen - 1);
+        }
     }
 
+    /** . */
     private OnGlobalLayoutListener orientationChangeListener = new OnGlobalLayoutListener() {
         @Override
         public void onGlobalLayout() {
@@ -64,18 +93,29 @@ public class ViewFlow extends AdapterView<Adapter> {
         }
     };
 
+    /**
+     * @param context Context
+     */
     public ViewFlow(Context context) {
         super(context);
         mSideBuffer = 1;
         init();
     }
 
+    /**
+     * @param context Context
+     * @param sideBuffer int
+     */
     public ViewFlow(Context context, int sideBuffer) {
         super(context);
         mSideBuffer = sideBuffer;
         init();
     }
 
+    /**
+     * @param context Context
+     * @param attrs AttributeSet
+     */
     public ViewFlow(Context context, AttributeSet attrs) {
         super(context, attrs);
         TypedArray styledAttrs = context.obtainStyledAttributes(attrs, R.styleable.ViewFlow);
@@ -83,6 +123,9 @@ public class ViewFlow extends AdapterView<Adapter> {
         init();
     }
 
+    /**
+     * [init].
+     */
     private void init() {
         mLoadedViews = new LinkedList<View>();
         mScroller = new Scroller(getContext());
@@ -91,6 +134,10 @@ public class ViewFlow extends AdapterView<Adapter> {
         mMaximumVelocity = configuration.getScaledMaximumFlingVelocity();
     }
 
+    /**
+     * [getViewsCount].
+     * @return int
+     */
     public int getViewsCount() {
         return mAdapter.getCount();
     }
@@ -139,10 +186,17 @@ public class ViewFlow extends AdapterView<Adapter> {
         }
     }
 
+    /**
+     * [Explain the description for this method here].
+     * @param ev MotionEvent
+     * @return boolean
+     * @see android.view.ViewGroup#onInterceptTouchEvent(android.view.MotionEvent)
+     */
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
-        if (getChildCount() == 0)
+        if (getChildCount() == 0) {
             return false;
+        }
 
         if (mVelocityTracker == null) {
             mVelocityTracker = VelocityTracker.obtain();
@@ -231,8 +285,9 @@ public class ViewFlow extends AdapterView<Adapter> {
 
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
-        if (getChildCount() == 0)
+        if (getChildCount() == 0) {
             return false;
+        }
 
         if (mVelocityTracker == null) {
             mVelocityTracker = VelocityTracker.obtain();
@@ -332,6 +387,9 @@ public class ViewFlow extends AdapterView<Adapter> {
         }
     }
 
+    /**
+     * [snapToDestination].
+     */
     private void snapToDestination() {
         final int screenWidth = getWidth();
         final int whichScreen = (getScrollX() + (screenWidth / 2)) / screenWidth;
@@ -339,10 +397,15 @@ public class ViewFlow extends AdapterView<Adapter> {
         snapToScreen(whichScreen);
     }
 
+    /**
+     * [snapToScreen].
+     * @param whichScreen int
+     */
     private void snapToScreen(int whichScreen) {
         mLastScrollDirection = whichScreen - mCurrentScreen;
-        if (!mScroller.isFinished())
+        if (!mScroller.isFinished()) {
             return;
+        }
 
         whichScreen = Math.max(0, Math.min(whichScreen, getChildCount() - 1));
 
