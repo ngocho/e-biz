@@ -19,7 +19,7 @@
 package ebiz.dto.account.employee;
 
 /**
- * @author Administrator
+ * @author ThuyNT
  *
  */
 public class CodeDistrict {
@@ -27,6 +27,7 @@ public class CodeDistrict {
     private String name;
     /**
      * Get value of id.
+     * 
      * @return the id
      */
     public String getId() {
@@ -34,6 +35,7 @@ public class CodeDistrict {
     }
     /**
      * Set the value for id.
+     * 
      * @param id the id to set
      */
     public void setId(String id) {
@@ -41,6 +43,7 @@ public class CodeDistrict {
     }
     /**
      * Get value of name.
+     * 
      * @return the name
      */
     public String getName() {
@@ -48,6 +51,7 @@ public class CodeDistrict {
     }
     /**
      * Set the value for name.
+     * 
      * @param name the name to set
      */
     public void setName(String name) {

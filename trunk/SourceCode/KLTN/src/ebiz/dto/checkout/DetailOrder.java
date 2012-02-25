@@ -26,18 +26,12 @@ import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
 /**
- * 
- * @author Administrator
- * 1  : Hóa đơn chưa thanh toán
- * 2  : Hóa đơn chưa nhận hàng 
- * 3  : Hóa đơn đã thanh toán
- * 4  : Hóa đơn đã nhận hàng 
- * 
- *
+ * @author Administrator 1 : Hóa đơn chưa thanh toán 2 : Hóa đơn chưa nhận hàng 3 : Hóa đơn đã thanh toán 4 : Hóa đơn đã
+ *         nhận hàng
  */
 @PersistenceCapable
-public class DetailOrder implements Serializable{
-    /**  . */
+public class DetailOrder implements Serializable {
+    /** . */
     private static final long serialVersionUID = 1L;
     @PrimaryKey
     @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
@@ -54,6 +48,7 @@ public class DetailOrder implements Serializable{
     private Long orderId;
     /**
      * Get value of id.
+     * 
      * @return the id
      */
     public Long getId() {
@@ -61,6 +56,7 @@ public class DetailOrder implements Serializable{
     }
     /**
      * Set the value for id.
+     * 
      * @param id the id to set
      */
     public void setId(Long id) {
@@ -68,6 +64,7 @@ public class DetailOrder implements Serializable{
     }
     /**
      * Get value of idProduct.
+     * 
      * @return the idProduct
      */
     public Long getIdProduct() {
@@ -75,6 +72,7 @@ public class DetailOrder implements Serializable{
     }
     /**
      * Set the value for idProduct.
+     * 
      * @param idProduct the idProduct to set
      */
     public void setIdProduct(Long idProduct) {
@@ -82,6 +80,7 @@ public class DetailOrder implements Serializable{
     }
     /**
      * Get value of name.
+     * 
      * @return the name
      */
     public String getName() {
@@ -89,6 +88,7 @@ public class DetailOrder implements Serializable{
     }
     /**
      * Set the value for name.
+     * 
      * @param name the name to set
      */
     public void setName(String name) {
@@ -96,6 +96,7 @@ public class DetailOrder implements Serializable{
     }
     /**
      * Get value of number.
+     * 
      * @return the number
      */
     public Integer getNumber() {
@@ -103,6 +104,7 @@ public class DetailOrder implements Serializable{
     }
     /**
      * Set the value for number.
+     * 
      * @param number the number to set
      */
     public void setNumber(Integer number) {
@@ -110,6 +112,7 @@ public class DetailOrder implements Serializable{
     }
     /**
      * Get value of subPrice.
+     * 
      * @return the subPrice
      */
     public Long getSubPrice() {
@@ -117,6 +120,7 @@ public class DetailOrder implements Serializable{
     }
     /**
      * Set the value for subPrice.
+     * 
      * @param subPrice the subPrice to set
      */
     public void setSubPrice(Long subPrice) {
@@ -124,6 +128,7 @@ public class DetailOrder implements Serializable{
     }
     /**
      * Get value of orderId.
+     * 
      * @return the orderId
      */
     public Long getOrderId() {
@@ -131,6 +136,7 @@ public class DetailOrder implements Serializable{
     }
     /**
      * Set the value for orderId.
+     * 
      * @param orderId the orderId to set
      */
     public void setOrderId(Long orderId) {
