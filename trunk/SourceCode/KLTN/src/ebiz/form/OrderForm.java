@@ -24,10 +24,9 @@ import ebiz.dto.account.customer.Customer;
 
 /**
  * @author Administrator
- *
  */
 public class OrderForm implements Serializable {
-    /**  . */
+    /** . */
     private static final long serialVersionUID = 1L;
     private String idCustomer;
     private String nameCustomer;
@@ -39,9 +38,9 @@ public class OrderForm implements Serializable {
     private String wardName;
     private String districtName;
     private String buildingName;
-    private String note; //bill 
-    
-    public void editCustomer(Customer user){
+    private String note; // bill
+
+    public void editCustomer(Customer user) {
         idCustomer = user.getCustomerId();
         nameCustomer = user.getCustomerName();
         phone = user.getCustomerPhone();
@@ -55,6 +54,7 @@ public class OrderForm implements Serializable {
 
     /**
      * Get value of idCustomer.
+     * 
      * @return the idCustomer
      */
     public String getIdCustomer() {
@@ -63,6 +63,7 @@ public class OrderForm implements Serializable {
 
     /**
      * Set the value for idCustomer.
+     * 
      * @param idCustomer the idCustomer to set
      */
     public void setIdCustomer(String idCustomer) {
@@ -71,6 +72,7 @@ public class OrderForm implements Serializable {
 
     /**
      * Get value of nameCustomer.
+     * 
      * @return the nameCustomer
      */
     public String getNameCustomer() {
@@ -79,6 +81,7 @@ public class OrderForm implements Serializable {
 
     /**
      * Set the value for nameCustomer.
+     * 
      * @param nameCustomer the nameCustomer to set
      */
     public void setNameCustomer(String nameCustomer) {
@@ -87,6 +90,7 @@ public class OrderForm implements Serializable {
 
     /**
      * Get value of address.
+     * 
      * @return the address
      */
     public String getAddress() {
@@ -95,6 +99,7 @@ public class OrderForm implements Serializable {
 
     /**
      * Set the value for address.
+     * 
      * @param address the address to set
      */
     public void setAddress(String address) {
@@ -103,6 +108,7 @@ public class OrderForm implements Serializable {
 
     /**
      * Get value of email.
+     * 
      * @return the email
      */
     public String getEmail() {
@@ -111,6 +117,7 @@ public class OrderForm implements Serializable {
 
     /**
      * Set the value for email.
+     * 
      * @param email the email to set
      */
     public void setEmail(String email) {
@@ -119,6 +126,7 @@ public class OrderForm implements Serializable {
 
     /**
      * Get value of phone.
+     * 
      * @return the phone
      */
     public String getPhone() {
@@ -127,6 +135,7 @@ public class OrderForm implements Serializable {
 
     /**
      * Set the value for phone.
+     * 
      * @param phone the phone to set
      */
     public void setPhone(String phone) {
@@ -135,6 +144,7 @@ public class OrderForm implements Serializable {
 
     /**
      * Get value of homeNumber.
+     * 
      * @return the homeNumber
      */
     public String getHomeNumber() {
@@ -143,6 +153,7 @@ public class OrderForm implements Serializable {
 
     /**
      * Set the value for homeNumber.
+     * 
      * @param homeNumber the homeNumber to set
      */
     public void setHomeNumber(String homeNumber) {
@@ -151,6 +162,7 @@ public class OrderForm implements Serializable {
 
     /**
      * Get value of streetName.
+     * 
      * @return the streetName
      */
     public String getStreetName() {
@@ -159,6 +171,7 @@ public class OrderForm implements Serializable {
 
     /**
      * Set the value for streetName.
+     * 
      * @param streetName the streetName to set
      */
     public void setStreetName(String streetName) {
@@ -167,6 +180,7 @@ public class OrderForm implements Serializable {
 
     /**
      * Get value of wardName.
+     * 
      * @return the wardName
      */
     public String getWardName() {
@@ -175,6 +189,7 @@ public class OrderForm implements Serializable {
 
     /**
      * Set the value for wardName.
+     * 
      * @param wardName the wardName to set
      */
     public void setWardName(String wardName) {
@@ -183,6 +198,7 @@ public class OrderForm implements Serializable {
 
     /**
      * Get value of districtName.
+     * 
      * @return the districtName
      */
     public String getDistrictName() {
@@ -191,6 +207,7 @@ public class OrderForm implements Serializable {
 
     /**
      * Set the value for districtName.
+     * 
      * @param districtName the districtName to set
      */
     public void setDistrictName(String districtName) {
@@ -199,6 +216,7 @@ public class OrderForm implements Serializable {
 
     /**
      * Get value of buildingName.
+     * 
      * @return the buildingName
      */
     public String getBuildingName() {
@@ -207,6 +225,7 @@ public class OrderForm implements Serializable {
 
     /**
      * Set the value for buildingName.
+     * 
      * @param buildingName the buildingName to set
      */
     public void setBuildingName(String buildingName) {
@@ -215,6 +234,7 @@ public class OrderForm implements Serializable {
 
     /**
      * Get value of note.
+     * 
      * @return the note
      */
     public String getNote() {
@@ -223,6 +243,7 @@ public class OrderForm implements Serializable {
 
     /**
      * Set the value for note.
+     * 
      * @param note the note to set
      */
     public void setNote(String note) {

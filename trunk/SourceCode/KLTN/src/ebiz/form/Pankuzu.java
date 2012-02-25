@@ -50,8 +50,8 @@ public class Pankuzu {
         }
     }
     /**
-     * 
      * Remove pankuzu when clik button back
+     * 
      * @param id
      */
     public void removeLink(String id) {
@@ -60,16 +60,16 @@ public class Pankuzu {
 
     }
     /**
-     * 
      * click nut back cua trinh duyet
+     * 
      * @param id ??
      */
-//    public void removeBack(String id) {
-//
-//        pankuzuList.remove(pankuzuList.size() - 1);
-//
-//    }
-    
+    // public void removeBack(String id) {
+    //
+    // pankuzuList.remove(pankuzuList.size() - 1);
+    //
+    // }
+
     public HashMap<String, String> getLink(String id) {
         for (HashMap<String, String> link : pankuzuList) {
             if (link.containsKey(id)) {
