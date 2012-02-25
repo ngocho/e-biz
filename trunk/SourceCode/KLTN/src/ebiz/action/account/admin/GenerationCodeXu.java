@@ -19,7 +19,6 @@
 package ebiz.action.account.admin;
 
 import java.io.PrintWriter;
-import java.util.logging.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -31,10 +30,23 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
+import ebiz.util.CommonConstant;
+
 /**
- * @author Administrator
+ * @author ThuyNT
  */
 public class GenerationCodeXu extends Action {
+
+    /**
+     * [display DetailProduct - Admin].
+     * @param mapping ActionMapping
+     * @param form ActionForm
+     * @param request HttpServletRequest
+     * @param response HttpServletResponse
+     * @return ActionForward
+     * @throws Exception Exception
+     * @see ActionForward Struts1 Framework
+     */
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
         PrintWriter out = response.getWriter();
@@ -42,7 +54,7 @@ public class GenerationCodeXu extends Action {
         response.setContentType("text/xml; charset=utf-8");
         response.setCharacterEncoding("utf-8");
         int count = IDXUBLO.countXuAvailabel();
-        if (count < 500) {
+        if (count < CommonConstant.LIMIT_NUMBER_XU) {
             IDXUBLO.CreateListXu();
             count = IDXUBLO.countXuAvailabel();
             out.println(count);

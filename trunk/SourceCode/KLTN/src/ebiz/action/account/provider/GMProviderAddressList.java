@@ -18,6 +18,8 @@
  */
 package ebiz.action.account.provider;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -25,21 +27,17 @@ import javax.servlet.http.HttpSession;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
-import java.util.List;
+
 import ebiz.action.BaseAction;
-import ebiz.blo.customer.CustomerBLO;
 import ebiz.blo.provider.ProviderBLO;
-import ebiz.dto.account.provider.Provider;
-import ebiz.form.LoginForm;
 import ebiz.form.ProviderForm;
-import ebiz.util.CommonConstant;
 
 /**
  * @author ThuyNT
  */
 public class GMProviderAddressList extends BaseAction {
     /**
-     * [Logout ].
+     * [GMProviderAddressList ].
      * @param mapping ActionMapping
      * @param form ActionForm
      * @param request HttpServletRequest
@@ -50,22 +48,10 @@ public class GMProviderAddressList extends BaseAction {
      */
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
-        
-        String id = request.getParameter("id");
+        System.out.println(" GMProviderAddressList");
         List<ProviderForm> providerList = ProviderBLO.getProviderFormAll();
-//        String add = provider.getProviderAddress() +" , Hồ Chí Minh, Việt Nam";
         HttpSession se = request.getSession();
-//        LoginForm login = (LoginForm)se.getAttribute(CommonConstant.USER);
-//        if(login != null){
-//            se.setAttribute("startProvider", CustomerBLO.toStringAddres(login.getHomeNumber(), login.getBuildingName(),login.getStreetName(),login.getWardName(),
-//                    login.getDistrictName()));
-//        }
-//        else{
-//            se.setAttribute("startProvider", "Bến Thành , Hồ Chí Minh, Việt Nam");
-//        }
-        
         se.setAttribute("providerAddList", providerList);
-//        se.setAttribute("nameProvider", provider.getProviderName());
         return mapping.findForward(SUCCESS);
 
     }

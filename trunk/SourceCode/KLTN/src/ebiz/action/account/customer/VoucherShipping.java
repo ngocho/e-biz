@@ -59,7 +59,6 @@ public class VoucherShipping extends BaseAction {
             screen = "voucher_type";
             se.setAttribute("voucherType", "mail");
         }
-        System.out.println("checkoutOption" + screen);
         ActionForward forward = mapping.getInputForward();
         forward.setPath(screen);
         return forward;

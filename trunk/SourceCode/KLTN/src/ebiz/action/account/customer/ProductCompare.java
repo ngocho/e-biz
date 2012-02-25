@@ -39,6 +39,7 @@ public class ProductCompare extends BaseAction {
 
     /**
      * [Logout(Customer)].
+     *
      * @param mapping ActionMapping
      * @param form ActionForm
      * @param request HttpServletRequest
@@ -49,21 +50,22 @@ public class ProductCompare extends BaseAction {
      */
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
-    	HttpSession se = request.getSession();
+        HttpSession se = request.getSession();
         String id = request.getParameter("id");
         String screen = request.getParameter("screen");
-        if(id != null){
+        if (id != null) {
             System.out.println("screen" + screen);
-        Food food = FoodBLO.getFoodById(Long.parseLong(id));
-        List<FoodForm> formList = FoodBLO.getFoodListByNameDistinctProvider(food.getFoodName(), food.getProviderID());
-        if(!formList.isEmpty()){
-        	FoodForm formFood = new FoodForm();
-        	se.setAttribute("valueCompare", formList);
-        	se.setAttribute("orginalCompare",formFood.editForm(food));
-        	 
-        	 return mapping.findForward(SUCCESS);
+            Food food = FoodBLO.getFoodById(Long.parseLong(id));
+            List<FoodForm> formList = FoodBLO.getFoodListByNameDistinctProvider(food.getFoodName(),
+                    food.getProviderID());
+            if (!formList.isEmpty()) {
+                FoodForm formFood = new FoodForm();
+                se.setAttribute("valueCompare", formList);
+                se.setAttribute("orginalCompare", formFood.editForm(food));
+
+                return mapping.findForward(SUCCESS);
+            }
         }
-    }
         se.setAttribute("flagCompare", screen);
         ActionForward forward = mapping.getInputForward();
         forward.setPath(screen);

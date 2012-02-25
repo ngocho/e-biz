@@ -39,8 +39,8 @@ import ebiz.form.ProviderForm;
  */
 public class ProviderSearch extends BaseAction {
     /**
-     * [Logout ].
-     * 
+     * [ProviderSearch ].
+     *
      * @param mapping ActionMapping
      * @param form ActionForm
      * @param request HttpServletRequest

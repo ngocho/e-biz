@@ -41,6 +41,7 @@ public class FoodByProvider extends BaseAction {
 
     /**
      * [Logout(Customer)].
+     *
      * @param mapping ActionMapping
      * @param form ActionForm
      * @param request HttpServletRequest
@@ -53,16 +54,14 @@ public class FoodByProvider extends BaseAction {
             HttpServletResponse response) throws Exception {
 
         String id = request.getParameter("id");
-        System.out.println("ID PROVIDER" + id);
         List<FoodForm> formList = FoodBLO.getFoodListByProvider(id);
-        if(!formList.isEmpty()){
-        List<String> pageList = new ArrayList<String>();
-        pageList = SearchBLO.paging(formList.size());
-        HttpSession se = request.getSession();
-        se.setAttribute("foodByProvider", formList);
-        se.setAttribute("pageList", pageList);
-        se.setAttribute("pageIndex", 1);
-        System.out.println("ID PROVIDER" + formList.size());
+        if (!formList.isEmpty()) {
+            List<String> pageList = new ArrayList<String>();
+            pageList = SearchBLO.paging(formList.size());
+            HttpSession se = request.getSession();
+            se.setAttribute("foodByProvider", formList);
+            se.setAttribute("pageList", pageList);
+            se.setAttribute("pageIndex", 1);
         }
         return mapping.findForward(SUCCESS);
     }

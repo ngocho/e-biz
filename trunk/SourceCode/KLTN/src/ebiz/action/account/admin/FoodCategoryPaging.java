@@ -32,7 +32,6 @@ import org.apache.struts.action.ActionMapping;
 import ebiz.action.BaseAction;
 import ebiz.blo.food.FoodBLO;
 import ebiz.form.FoodForm;
-import ebiz.form.Paging;
 import ebiz.form.ProductVO;
 import ebiz.util.CommonConstant;
 
@@ -61,7 +60,6 @@ public class FoodCategoryPaging extends BaseAction {
         String filterCol = CommonConstant.FOOD_STATUS;
         System.out.println("STATUS" + filterCol);
         List<FoodForm> foods = new ArrayList<FoodForm>();
-        List<Paging> pageList = new ArrayList<Paging>();
         List<String> numberPageList = new ArrayList<String>();
         // get param
         String order = request.getParameter("order");
@@ -92,11 +90,9 @@ public class FoodCategoryPaging extends BaseAction {
             page = Integer.parseInt(p);
         }
 
-        System.out.println("SIZE PAGING" + page);
         // display FoodCategory
         foods = FoodBLO.displayFoodCategoryPaging(col, numberPageList, order, record, page, filterCol, status, null);
         // update status of paging
-        System.out.println("SIZE PAGING" + pageList.size());
         // save in Session
         se.setAttribute(CommonConstant.ADMIN_CATEGORY_F, foods);
         vo.setLimit(record);

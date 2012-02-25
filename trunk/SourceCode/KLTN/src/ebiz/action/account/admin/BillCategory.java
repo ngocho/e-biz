@@ -42,7 +42,7 @@ import ebiz.util.CommonConstant;
 public class BillCategory extends BaseAction {
     /**
      * [DisplayBill(Customer Account)].
-     *
+     * 
      * @param mapping ActionMapping
      * @param form ActionForm
      * @param request HttpServletRequest

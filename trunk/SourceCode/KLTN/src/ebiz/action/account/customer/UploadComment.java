@@ -38,7 +38,7 @@ import ebiz.util.CommonConstant;
 public class UploadComment extends BaseAction {
 
     /**
-     * [Upload Comment(Customer)-ajax].
+     * [Upload Comment(Customer)- ajax].
      * @param mapping ActionMapping
      * @param form ActionForm
      * @param request HttpServletRequest

@@ -60,7 +60,6 @@ public class VoucherProcess extends BaseAction {
         } else if (type.equals("xu")) {
             // test xu account money : enough?
             OrderBillForm voucherForm = (OrderBillForm) se.getAttribute("voucherForm");
-            System.out.println("Voucher Form" + voucherForm.getSumPrice());
             boolean flag = CustomerBLO.isXuOnline(user.getLoginId(), voucherForm.getSumPrice());
             if (flag) {
                 // if enough
@@ -77,7 +76,6 @@ public class VoucherProcess extends BaseAction {
         } else {
             screen = "voucher_shipping";
         }
-        System.out.println("checkoutOption" + screen);
         ActionForward forward = mapping.getInputForward();
         forward.setPath(screen);
         return forward;

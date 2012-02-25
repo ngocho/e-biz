@@ -40,7 +40,7 @@ import ebiz.util.CommonConstant;
 public class UpdateCustomerInfo extends BaseAction {
 
     /**
-     * [Login(Customer)].
+     * [UpdateCustomerInfo].
      * @param mapping ActionMapping
      * @param form ActionForm
      * @param request HttpServletRequest
