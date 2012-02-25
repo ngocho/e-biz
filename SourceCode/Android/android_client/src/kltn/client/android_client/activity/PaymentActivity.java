@@ -72,12 +72,26 @@ public class PaymentActivity extends Activity implements OnClickListener{
 			startActivity(transfer_xu);
 			break;
 		case R.id.payment_home:
+			Intent home=new Intent(PaymentActivity.this,MenuActivity.class);
+			home.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			home.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); 
+			startActivity(home);
+			finish();
 			break;
 		case R.id.payment_deal:
+			Intent deals=new Intent(PaymentActivity.this,TabDealsActivity.class);
+			startActivity(deals);
+			finish();
 			break;
 		case R.id.payment_best:
+			Intent best=new Intent(PaymentActivity.this,TabBestActivity.class);
+			startActivity(best);
+			finish();
 			break;
 		case R.id.payment_browse:
+			Intent browser=new Intent(PaymentActivity.this,TabBrowserActivity.class);
+			startActivity(browser);
+			finish();
 			break;
 		}
 	}

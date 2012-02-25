@@ -91,4 +91,19 @@
     <string name="transfer_enough_xu">You are not enough xu!</string>
     <string name="transfer_username">Username transfer not exist!</string>
     <string name="transfer_not_successful">Transfer not successful!</string>
+    <string name="menu_logout">Logout</string>
+    <string name="provider">Id Store:</string>
+    <string name="tab_browser_save">Save</string>
+    <string name="saved_date">Saved date:</string>
+    <string name="detail_food">Detail Food</string>
+    <string name="changepass_oldpass">Old password:</string>
+    <string name="changepass_new">New password:</string>
+    <string name="changepass_confirm">Confirm password:</string>
+    <string name="ok">Ok</string>
+    <string name="accountchange_true">Change password successful!</string>
+    <string name="accountchange_false">Change password not successful!</string>
+    <string name="address">Address</string>
+    <string name="phone">Phone</string>
+    <string name="introduction">Introduction:</string>
+    <string name="cooking">Cooking:</string>
 </resources>
