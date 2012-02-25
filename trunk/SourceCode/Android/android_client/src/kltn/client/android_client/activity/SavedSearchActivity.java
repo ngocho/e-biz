@@ -160,7 +160,7 @@ public class SavedSearchActivity extends Activity implements OnClickListener, Te
     @Override
     public void onTextChanged(CharSequence s, int start, int before, int count) {
         if (s.length() > 0) {
-            mListview.setSelection(mFavoriteEngine.SelectFoodByName(mData, s.toString()));
+            mListview.setSelection(mFavoriteEngine.selectFoodByName(mData, s.toString()));
             mOk.setBackgroundResource(R.drawable.search_button_cancel);
         }
     }

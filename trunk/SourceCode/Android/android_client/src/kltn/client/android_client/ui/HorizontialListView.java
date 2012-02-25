@@ -116,7 +116,6 @@ public class HorizontialListView extends AdapterView<ListAdapter> {
      */
     @Override
     public View getSelectedView() {
-        // TODO: implement
         return null;
     }
 
