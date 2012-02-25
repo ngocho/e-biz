@@ -15,22 +15,14 @@ $(document).ready(function(){
     });
 });
 </script>
-<!-- <script type="text/javascript">
-$(document).ready(function(){
-    $(".").click(function() {
-        addToCart(1,$(this).attr('name'));
-        return false;
-    });
-});
-</script> -->
                                         <div class="cart">
     <div class="page-title title-buttons">
-        <h1>Giỏ hàng</h1>
+        <h1><bean:message key="shopping.title" /></h1>
                 <ul class="checkout-types">
                             </ul>
             </div>
             <logic:present name="shop">
-            Tổng tiền : <span style="color:red;font-weight: bold;" id="total"><bean:write name="shop"  property="total" /></span>
+            <bean:message key="shopping.sumMoney" /> : <span style="color:red;font-weight: bold;" id="total"><bean:write name="shop"  property="total" /></span>
             </logic:present>
             <form action="/checkAuthentication.vn" method="post" id="idForm">
         <fieldset>
@@ -46,22 +38,21 @@ $(document).ready(function(){
                             </colgroup><thead>
                     <tr class="first last">
                         <th rowspan="1">&nbsp;</th>
-                        <th rowspan="1"><span class="nobr" >Tên sản phẩm</span></th>
-                       <!--  <th rowspan="1"></th> -->
-                                                <th class="a-center" colspan="1"><span class="nobr">Giá</span></th>
-                        <th rowspan="1" class="a-center">Số lượng</th>
-                        <th class="a-center" colspan="1">Thành tiền</th>
-                         <th rowspan="1" class="a-center">Cập nhật</th>
-                          <th rowspan="1" class="a-center">Xóa</th>
+                        <th rowspan="1"><span class="nobr" ><bean:message key="shopping.food.name" /></span></th>
+                        <th class="a-center" colspan="1"><span class="nobr"><bean:message key="product.price" /></span></th>
+                        <th rowspan="1" class="a-center"><bean:message key="category.content.number" />Số lượng</th>
+                        <th class="a-center" colspan="1"><bean:message key="shopping.subMoney" />Thành tiền</th>
+                         <th rowspan="1" class="a-center"><bean:message key="shopping.updateProduct" />Cập nhật</th>
+                          <th rowspan="1" class="a-center"><bean:message key="shopping.delProduct" />Xóa</th>
                     </tr>
                                     </thead>
                 <tfoot>
                     <tr class="first last">
                         <td colspan="50" class="a-right last">
                         <input type="hidden" name="type" value="0"/>
-                                                     <button type="button" title="Continue Shopping" class="button btn-continue" onclick="setLocation('/home.vn')"><span><span>Tiếp tục mua hàng</span></span></button>
-                                                     <button type="button"  id="updateSC"  title="Update Shopping Cart" class="button btn-update" onclick="setLocation('/deleteShopping.vn')"><span><span>Tạo giỏ hàng mới</span></span></button>
-                                                     <button type="submit" title="Check Out Shopping Cart"  id ="checkout" class="button btn-update"><span><span>Đặt hàng</span></span></button>
+                                                     <button type="button" title="Continue Shopping" class="button btn-continue" onclick="setLocation('/home.vn')"><span><bean:message key="shopping.continue" /></span></button>
+                                                     <button type="button"  id="updateSC"  title="Update Shopping Cart" class="button btn-update" onclick="setLocation('/deleteShopping.vn')"><span><bean:message key="shopping.new" /></span></button>
+                                                     <button type="submit" title="Check Out Shopping Cart"  id ="checkout" class="button btn-update"><span><bean:message key="shopping.order" /></span></button>
                         </td>
                     </tr>
                 </tfoot>
@@ -94,7 +85,7 @@ $(document).ready(function(){
         </span>
             </td>
             <td ><a rel="<%=index%>" class="updateShopping"  name="<bean:write name="element" property="id"/>" href="" title="Sửa "  class="a-center">
-            <span><img src="Images/Commons/update-icon.gif"
+            <img src="Images/Commons/update-icon.gif"
                 width="20"></a></td>
             <td class="a-center last"><a href="deleteShoppingFood.vn?id=<bean:write name="element" property="id"/>" title="Remove item"  class="a-center"><span><img src="Images/Commons/DeleteRed.png"
                 width="20"></span></a></td>

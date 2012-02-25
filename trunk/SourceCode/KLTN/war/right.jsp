@@ -109,7 +109,7 @@ $(document).ready(function(){
     </div>
     <div class="block-content">
       <p >
-      <span class="empty1" > <bean:message key="home.right.shopping.name" /> </span><div class="block-cart_header">
+      <span class="empty1" >  </span><div class="block-cart_header">
      <a id="current_cart_items_count" href="/displayShoppingCart.vn"
         class="count"> <logic:present name="shop">
           <bean:write name="shop" property="count" />
