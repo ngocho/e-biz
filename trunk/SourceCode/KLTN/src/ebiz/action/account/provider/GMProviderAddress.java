@@ -31,7 +31,6 @@ import ebiz.blo.customer.CustomerBLO;
 import ebiz.blo.provider.ProviderBLO;
 import ebiz.dto.account.provider.Provider;
 import ebiz.form.LoginForm;
-import ebiz.form.ProviderForm;
 import ebiz.util.CommonConstant;
 
 /**
@@ -52,19 +51,22 @@ public class GMProviderAddress extends BaseAction {
             HttpServletResponse response) throws Exception {
         
         String id = request.getParameter("id");
-        Provider provider = ProviderBLO.getProviderById(id);
-        String add = provider.getProviderAddress() +" , Hồ Chí Minh, Việt Nam";
         HttpSession se = request.getSession();
+        if(id != null){
+        Provider provider = ProviderBLO.getProviderById(id);
+        String add = provider.getProviderAddress();
         LoginForm login = (LoginForm)se.getAttribute(CommonConstant.USER);
         if(login != null){
             se.setAttribute("startProvider", CustomerBLO.toStringAddres(login.getHomeNumber(), login.getBuildingName(),login.getStreetName(),login.getWardName(),
                     login.getDistrictName()));
         }
         else{
-            se.setAttribute("startProvider", "Bến Thành , Hồ Chí Minh, Việt Nam");
+            se.setAttribute("startProvider", "Bến Thành");
         }
-        
+        request.setAttribute("gmFlag", 1);
         se.setAttribute("endProvider", add);
+        se.setAttribute("nameProvider", provider.getProviderName());
+        }
         return mapping.findForward(SUCCESS);
 
     }

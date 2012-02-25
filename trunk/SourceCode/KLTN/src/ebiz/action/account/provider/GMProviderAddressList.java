@@ -16,9 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package ebiz.action;
-
-import java.util.Map;
+package ebiz.action.account.provider;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -27,21 +25,21 @@ import javax.servlet.http.HttpSession;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
-
-import com.google.appengine.api.blobstore.BlobKey;
-import com.google.appengine.api.blobstore.BlobstoreService;
-import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
-
+import java.util.List;
+import ebiz.action.BaseAction;
+import ebiz.blo.customer.CustomerBLO;
+import ebiz.blo.provider.ProviderBLO;
+import ebiz.dto.account.provider.Provider;
+import ebiz.form.LoginForm;
+import ebiz.form.ProviderForm;
+import ebiz.util.CommonConstant;
 
 /**
  * @author ThuyNT
  */
-public class UploadImage extends BaseAction {
-    /** . declare BlobstoreService */
-    private BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
+public class GMProviderAddressList extends BaseAction {
     /**
-     * [UploadImage Action].
-     *
+     * [Logout ].
      * @param mapping ActionMapping
      * @param form ActionForm
      * @param request HttpServletRequest
@@ -52,24 +50,24 @@ public class UploadImage extends BaseAction {
      */
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
-        Map<String, BlobKey> blobs = blobstoreService.getUploadedBlobs(request);
-        BlobKey blobKey = blobs.get("myFile");
+        
+        String id = request.getParameter("id");
+        List<ProviderForm> providerList = ProviderBLO.getProviderFormAll();
+//        String add = provider.getProviderAddress() +" , Hồ Chí Minh, Việt Nam";
         HttpSession se = request.getSession();
-        String type = request.getParameter("type");
-        if (blobKey != null) {
-            // get Key
-            String urlKey = blobKey.getKeyString();
-            if (urlKey != null) {
-                // save in session
-                se.setAttribute("urlImageKey", urlKey);
-            }
-            if(type != null && type.equals("1")){
-            	//register Provider 
-            	se.setAttribute("urlImageKeyP", urlKey);
-            	  return mapping.findForward(SUCCESS1);
-            }
-        }
+//        LoginForm login = (LoginForm)se.getAttribute(CommonConstant.USER);
+//        if(login != null){
+//            se.setAttribute("startProvider", CustomerBLO.toStringAddres(login.getHomeNumber(), login.getBuildingName(),login.getStreetName(),login.getWardName(),
+//                    login.getDistrictName()));
+//        }
+//        else{
+//            se.setAttribute("startProvider", "Bến Thành , Hồ Chí Minh, Việt Nam");
+//        }
+        
+        se.setAttribute("providerAddList", providerList);
+//        se.setAttribute("nameProvider", provider.getProviderName());
         return mapping.findForward(SUCCESS);
+
     }
 
 }

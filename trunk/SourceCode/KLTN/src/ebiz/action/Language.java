@@ -18,7 +18,7 @@
  */
 package ebiz.action;
 
-import java.util.Map;
+import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -27,21 +27,13 @@ import javax.servlet.http.HttpSession;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
-
-import com.google.appengine.api.blobstore.BlobKey;
-import com.google.appengine.api.blobstore.BlobstoreService;
-import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
-
-
+//import org.apache.struts.action.LOCALE;
 /**
  * @author ThuyNT
  */
-public class UploadImage extends BaseAction {
-    /** . declare BlobstoreService */
-    private BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
+public class Language extends BaseAction {
     /**
-     * [UploadImage Action].
-     *
+     * [Home action].
      * @param mapping ActionMapping
      * @param form ActionForm
      * @param request HttpServletRequest
@@ -51,25 +43,17 @@ public class UploadImage extends BaseAction {
      * @see ActionForward Struts1 Framework
      */
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
-            HttpServletResponse response) throws Exception {
-        Map<String, BlobKey> blobs = blobstoreService.getUploadedBlobs(request);
-        BlobKey blobKey = blobs.get("myFile");
-        HttpSession se = request.getSession();
-        String type = request.getParameter("type");
-        if (blobKey != null) {
-            // get Key
-            String urlKey = blobKey.getKeyString();
-            if (urlKey != null) {
-                // save in session
-                se.setAttribute("urlImageKey", urlKey);
-            }
-            if(type != null && type.equals("1")){
-            	//register Provider 
-            	se.setAttribute("urlImageKeyP", urlKey);
-            	  return mapping.findForward(SUCCESS1);
-            }
-        }
+        HttpServletResponse response) throws Exception {
+        String language  = request.getParameter("lang");
+        System.out.println("language" + language);
+        Locale locale = new Locale(language);
+        System.out.println("locale" + locale);
+        HttpSession session = request.getSession();
+        session.setAttribute("language", language);
+        session.setAttribute("org.apache.struts.action.LOCALE", locale);
         return mapping.findForward(SUCCESS);
     }
+
+
 
 }
