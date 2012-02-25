@@ -103,7 +103,12 @@
 <fieldset class="form-search">
     <legend>Search Site</legend>
    <p>
+  <c:if test="${language =='vi'}">
    <html:text property="searchText" size="32" value="Nhập tên thức ăn" onfocus="this.value='' ;" styleClass="input-text input-reset inactive" />
+   </c:if>
+    <c:if test="${language =='en'}">
+    <html:text property="searchText" size="32" value="Input food name"  onfocus="this.value='' ;" styleClass="input-text input-reset inactive" />
+    </c:if>
             <html:hidden property="type" value="0"/>
              <html:hidden property="attr" value="0"/>
               <html:hidden property="price" value="0"/>

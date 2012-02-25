@@ -13,10 +13,18 @@ $(document).ready(function(){
 });
 </script>
 <logic:present name="flagCompare">
-  <c:if test="${flagCompare =='home'}">
+  <c:if test="${flagCompare =='home' && language =='vi'}">
   <script type="text/javascript" >
   $(document).ready(function(){
     alert("Không có sản phẩm để so sánh");
+  });
+  </script>
+  </c:if>
+  
+     <c:if test="${flagCompare =='home' && language =='en'}">
+  <script type="text/javascript" >
+  $(document).ready(function(){
+    alert("No product to compare");
   });
   </script>
   </c:if>
