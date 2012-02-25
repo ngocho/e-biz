@@ -8,8 +8,8 @@ import java.util.Vector;
 
 import kltn.client.android_client.PrefUtil;
 import kltn.client.android_client.model.Browser_food_item;
-import kltn.client.android_client.model.best_food_item;
-import kltn.client.android_client.model.date_food_item;
+import kltn.client.android_client.model.BestFoodItem;
+import kltn.client.android_client.model.DateFoodItem;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.client.ClientProtocolException;
@@ -71,14 +71,14 @@ public class Engine {
      * [Give the description for method].
      * @return Vector<best_food_item>
      */
-    public Vector<best_food_item> getBestFood() {
-        Vector<best_food_item> result = new Vector<best_food_item>();
+    public Vector<BestFoodItem> getBestFood() {
+        Vector<BestFoodItem> result = new Vector<BestFoodItem>();
         try {
             JSONArray jsonArrayphone = new JSONArray(mQueryURL(mURLGetBestFood));
             int i;
             for (i = 0; i < jsonArrayphone.length(); i++) {
                 JSONObject item = (JSONObject) jsonArrayphone.get(i);
-                best_food_item node = new best_food_item(item.getString("id"), item.getString("name"),
+                BestFoodItem node = new BestFoodItem(item.getString("id"), item.getString("name"),
                         item.getString("detail"), item.getString("price"), item.getString("promotionPrice"),
                         item.getString("url"), item.getString("dateUpload"), item.getString("dateUpload"),
                         item.getInt("sale"), item.getInt("sale"), item.getInt("sale"), item.getInt("sale"));
@@ -95,14 +95,14 @@ public class Engine {
      * [get_date_food].
      * @return Vector<date_food_item>
      */
-    public Vector<date_food_item> getDateFood() {
-        Vector<date_food_item> result = new Vector<date_food_item>();
+    public Vector<DateFoodItem> getDateFood() {
+        Vector<DateFoodItem> result = new Vector<DateFoodItem>();
         try {
             JSONArray jsonArrayPhone = new JSONArray(mQueryURL(mURLGetDateFood));
             int i;
             for (i = 0; i < jsonArrayPhone.length(); i++) {
                 JSONObject item = (JSONObject) jsonArrayPhone.get(i);
-                date_food_item node = new date_food_item(item.getString("id"), item.getString("name"),
+                DateFoodItem node = new DateFoodItem(item.getString("id"), item.getString("name"),
                         item.getString("price"), item.getString("buyprice"), item.getString("imageurl"),
                         item.getString("startdate"), item.getString("enddate"), item.getInt("buycount"),
                         item.getInt("countmin"), item.getInt("countmax"));

@@ -5,7 +5,7 @@ import java.util.Vector;
 import kltn.client.android_client.R;
 import kltn.client.android_client.engine.BitmapManager;
 import kltn.client.android_client.engine.Engine;
-import kltn.client.android_client.model.best_food_item;
+import kltn.client.android_client.model.BestFoodItem;
 import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
@@ -50,12 +50,12 @@ public class TabBestActivity extends Activity implements OnClickListener, OnDism
         mBest.setOnClickListener(this);
         mDeals.setOnClickListener(this);
         mBrowser.setOnClickListener(this);
-        LoadData();
+        mLoadData();
     }
     /**
      * [Give the description for method].
      */
-    public void LoadData() {
+    public void mLoadData() {
         mCurrentDialog = ProgressDialog.show(TabBestActivity.this, null, getString(R.string.menu_waiting), true);
         mCurrentDialog.setOnDismissListener(TabBestActivity.this);
         mIsWaiting = true;
@@ -72,9 +72,9 @@ public class TabBestActivity extends Activity implements OnClickListener, OnDism
      */
     public class BestAdapter extends BaseAdapter {
         /** . */
-        Context context;
+        private Context context;
         /**
-         * @param mycontext
+         * @param mycontext Context
          */
         public BestAdapter(Context mycontext) {
             context = mycontext;
@@ -108,7 +108,7 @@ public class TabBestActivity extends Activity implements OnClickListener, OnDism
                 convertView = getLayoutInflater().inflate(R.layout.item_best, null);
             }
             ImageView image = (ImageView) convertView.findViewById(R.id.item_best_image);
-            final best_food_item item = mData.get(position);
+            final BestFoodItem item = mData.get(position);
             BitmapManager.INSTANCE.loadBitmap(mEngine.mURLImage + item.getImageurl(), image, 300, 300);
             TextView promotion = (TextView) convertView.findViewById(R.id.item_best_gt);
             TextView date = (TextView) convertView.findViewById(R.id.item_best_date);
@@ -123,14 +123,15 @@ public class TabBestActivity extends Activity implements OnClickListener, OnDism
             name.setText(item.getName());
             countbuyer.setText(String.valueOf(item.getBuycount()));
             try {
-                int num_price, num_buyprice, s, pecent;
-                num_price = Integer.parseInt(item.getPrice());
-                num_buyprice = Integer.parseInt(item.getBuyprice());
-                s = num_price - num_buyprice;
+                int numprice, numbuyprice, s, pecent;
+                numprice = Integer.parseInt(item.getPrice());
+                numbuyprice = Integer.parseInt(item.getBuyprice());
+                s = numprice - numbuyprice;
                 subprice.setText(String.valueOf(s) + " " + getString(R.string.vnd));
-                pecent = (int) ((s * 100) / num_price);
+                pecent = (int) ((s * 100) / numprice);
                 promotion.setText(String.valueOf(pecent) + "%");
             } catch (Exception e) {
+                System.out.println(e);
             }
             convertView.setOnClickListener(new OnClickListener() {
 
@@ -165,7 +166,7 @@ public class TabBestActivity extends Activity implements OnClickListener, OnDism
     /** . */
     private Engine mEngine;
     /** . */
-    public Vector<best_food_item> mData;
+    private Vector<BestFoodItem> mData;
     /*
      * (non-Javadoc)
      * @see android.view.View.OnClickListener#onClick(android.view.View)

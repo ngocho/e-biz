@@ -65,14 +65,14 @@ public class TabBrowserActivity extends Activity implements OnClickListener, Tex
         mItemsData = new Vector<Browser_food_item>();
         mSave = (Button) findViewById(R.id.tab_browser_savesearch);
         mSave.setOnClickListener(this);
-        LoadData();
+        mLoadData();
         mFavoriteEngine = new FavouriteEngine(this);
     }
 
     /**
      * [LoadData].
      */
-    public void LoadData() {
+    public void mLoadData() {
         mCurrentDialog = ProgressDialog.show(TabBrowserActivity.this, null, getString(R.string.menu_waiting), true);
         mCurrentDialog.setOnDismissListener(TabBrowserActivity.this);
         mIsWaiting = true;
@@ -90,7 +90,7 @@ public class TabBrowserActivity extends Activity implements OnClickListener, Tex
      */
     public class BrowserAdapter extends BaseAdapter {
         /** . */
-        Context context;
+        private Context context;
 
         /**
          * @param mycontext Context
@@ -147,9 +147,6 @@ public class TabBrowserActivity extends Activity implements OnClickListener, Tex
      */
     public class BrowserItemAdapter extends BaseAdapter {
 
-        /**
-         * 
-         */
         public BrowserItemAdapter() {
         }
 

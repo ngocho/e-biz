@@ -3,7 +3,16 @@ package kltn.client.android_client;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+/**
+ * @author NThanhPhong
+ *
+ */
 public class StringPrefs extends PrefsItem {
+    /**
+     * @param context Context
+     * @param name String
+     * @param defValue String
+     */
     public StringPrefs(Context context, String name, String defValue) {
         super(context, name);
         this.defValue = defValue;
