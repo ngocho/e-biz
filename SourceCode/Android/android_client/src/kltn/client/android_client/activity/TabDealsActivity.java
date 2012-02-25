@@ -5,7 +5,7 @@ import java.util.Vector;
 import kltn.client.android_client.R;
 import kltn.client.android_client.engine.BitmapManager;
 import kltn.client.android_client.engine.Engine;
-import kltn.client.android_client.model.best_food_item;
+import kltn.client.android_client.model.BestFoodItem;
 import kltn.client.android_client.ui.CircleFlowIndicator;
 import kltn.client.android_client.ui.ViewFlow;
 import android.app.Activity;
@@ -136,9 +136,9 @@ public class TabDealsActivity extends Activity implements OnClickListener, OnDis
         }
     };
     /** . */
-    private best_food_item mItemData;
+    private BestFoodItem mItemData;
     /** . */
-    private Vector<best_food_item> mData;
+    private Vector<BestFoodItem> mData;
     /** . */
     private Engine mEngine;
     /** . */
@@ -160,7 +160,7 @@ public class TabDealsActivity extends Activity implements OnClickListener, OnDis
     /** . */
     private LinearLayout mBrowser;
     /** . */
-    private boolean mIsWaiting;
+    public boolean mIsWaiting;
     /*
      * (non-Javadoc)
      * @see android.view.View.OnClickListener#onClick(android.view.View)

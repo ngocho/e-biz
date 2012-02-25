@@ -1,8 +1,8 @@
 package kltn.client.android_client.engine;
 
 import kltn.client.android_client.model.FavoriteItem;
-import kltn.client.android_client.model.date_food_item;
-import kltn.client.android_client.model.histoty_buy_item;
+import kltn.client.android_client.model.DateFoodItem;
+import kltn.client.android_client.model.HistotyBuyItem;
 import android.content.ContentProvider;
 import android.content.ContentUris;
 import android.content.ContentValues;
@@ -54,18 +54,18 @@ public class MainProvider extends ContentProvider {
         }
 
         private static final String SQL_CREATE_HISTORY_BUY = "CREATE TABLE " + TABLE_HISTORY_BUY + "("
-                + histoty_buy_item._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + histoty_buy_item.IDCUSTOMER
-                + " TEXT, " + histoty_buy_item.IDGOODS + " TEXT, " + histoty_buy_item.GOODSNAME + " TEXT, "
-                + histoty_buy_item.IMAGE + " TEXT, " + histoty_buy_item.DATE + " TEXT, " + histoty_buy_item.PRICE
+                + HistotyBuyItem._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + HistotyBuyItem.IDCUSTOMER
+                + " TEXT, " + HistotyBuyItem.IDGOODS + " TEXT, " + HistotyBuyItem.GOODSNAME + " TEXT, "
+                + HistotyBuyItem.IMAGE + " TEXT, " + HistotyBuyItem.DATE + " TEXT, " + HistotyBuyItem.PRICE
                 + " TEXT);";
         private static final String SQL_DROP_HISTORY_BUY = "DROP TABLE IF EXISTS " + TABLE_HISTORY_BUY;
 
-        private static final String SQL_CREATE_DATE_FOOD = "CREATE TABLE " + TABLE_DATE_FOOD + "(" + date_food_item._ID
-                + " INTEGER PRIMARY KEY AUTOINCREMENT, " + date_food_item.IDGOODS + " TEXT, " + date_food_item.NAME
-                + " TEXT, " + date_food_item.PRICE + " TEXT, " + date_food_item.BUYPRICE + " TEXT, "
-                + date_food_item.IMAGEURL + " TEXT, " + date_food_item.STARTDATE + " TEXT, " + date_food_item.ENDDATE
-                + " TEXT, " + date_food_item.BUYCOUNT + " TEXT, " + date_food_item.COUNTMIN + " TEXT, "
-                + date_food_item.COUNTMAX + " TEXT);";
+        private static final String SQL_CREATE_DATE_FOOD = "CREATE TABLE " + TABLE_DATE_FOOD + "(" + DateFoodItem._ID
+                + " INTEGER PRIMARY KEY AUTOINCREMENT, " + DateFoodItem.IDGOODS + " TEXT, " + DateFoodItem.NAME
+                + " TEXT, " + DateFoodItem.PRICE + " TEXT, " + DateFoodItem.BUYPRICE + " TEXT, "
+                + DateFoodItem.IMAGEURL + " TEXT, " + DateFoodItem.STARTDATE + " TEXT, " + DateFoodItem.ENDDATE
+                + " TEXT, " + DateFoodItem.BUYCOUNT + " TEXT, " + DateFoodItem.COUNTMIN + " TEXT, "
+                + DateFoodItem.COUNTMAX + " TEXT);";
 
         private static final String SQL_DROP_CHAT = "DROP TABLE IF EXISTS " + TABLE_DATE_FOOD;
 
@@ -136,7 +136,7 @@ public class MainProvider extends ContentProvider {
             case CODE_HISTORY_BUY :
                 rowID = mDatabase.insert(TABLE_HISTORY_BUY, null, values);
                 if (rowID > 0) {
-                    Uri uri1 = ContentUris.withAppendedId(histoty_buy_item.CONTENT_URI, rowID);
+                    Uri uri1 = ContentUris.withAppendedId(HistotyBuyItem.CONTENT_URI, rowID);
                     getContext().getContentResolver().notifyChange(uri1, null);
                     // Return a URI to the newly inserted row on success.
                     return uri1;
@@ -145,7 +145,7 @@ public class MainProvider extends ContentProvider {
             case CODE_DATE_FOOD :
                 rowID = mDatabase.insert(TABLE_DATE_FOOD, null, values);
                 if (rowID > 0) {
-                    Uri uri1 = ContentUris.withAppendedId(date_food_item.CONTENT_URI, rowID);
+                    Uri uri1 = ContentUris.withAppendedId(DateFoodItem.CONTENT_URI, rowID);
                     getContext().getContentResolver().notifyChange(uri1, null);
                     // Return a URI to the newly inserted row on success.
                     return uri1;
@@ -176,7 +176,7 @@ public class MainProvider extends ContentProvider {
             case CODE_HISTORY_BUY :
                 qb.setTables(TABLE_HISTORY_BUY);
                 if (TextUtils.isEmpty(sortOrder)) {
-                    orderBy = histoty_buy_item.DEFAULT_SORT_ORDER;
+                    orderBy = HistotyBuyItem.DEFAULT_SORT_ORDER;
                 } else {
                     orderBy = sortOrder;
                 }
@@ -186,7 +186,7 @@ public class MainProvider extends ContentProvider {
             case CODE_DATE_FOOD :
                 qb.setTables(TABLE_DATE_FOOD);
                 if (TextUtils.isEmpty(sortOrder)) {
-                    orderBy = date_food_item.DEFAULT_SORT_ORDER;
+                    orderBy = DateFoodItem.DEFAULT_SORT_ORDER;
                 } else {
                     orderBy = sortOrder;
                 }
