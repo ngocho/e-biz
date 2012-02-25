@@ -1,6 +1,3 @@
-/**
- * 
- */
 package kltn.client.android_client.activity;
 
 import kltn.client.android_client.App;
@@ -28,6 +25,10 @@ import android.widget.Toast;
 
 /**
  * @author NThanhPhong
+ */
+/**
+ * @author wind
+ *
  */
 public class MenuActivity extends Activity implements OnClickListener, OnDismissListener {
 
@@ -57,17 +58,17 @@ public class MenuActivity extends Activity implements OnClickListener, OnDismiss
         mDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         mDialog.setContentView(R.layout.login_content);
         mDialog.setCancelable(true);
-        mLogin.setOnClickListener(login_action);
+        mLogin.setOnClickListener(mLoginAction);
         mAccount.setOnClickListener(this);
-        mDeal.setOnClickListener(Deals_Action);
-        mBest.setOnClickListener(Best_Action);
-        mBrowser.setOnClickListener(Browser_Action);
+        mDeal.setOnClickListener(mDealsAction);
+        mBest.setOnClickListener(mBestAction);
+        mBrowser.setOnClickListener(mBrowserAction);
         mFavorite.setOnClickListener(this);
         mSaveSearch.setOnClickListener(this);
         // mSetting.setOnClickListener(this);
         mEngine = new Engine();
-        if (PrefUtil.GetStringPref(MenuActivity.this, "username").equals("")
-                && PrefUtil.GetStringPref(MenuActivity.this, "password").equals("")) {
+        if (PrefUtil.getStringPref(MenuActivity.this, "username").equals("")
+                && PrefUtil.getStringPref(MenuActivity.this, "password").equals("")) {
             mLogin.setText(R.string.menu_login);
             flag = false;
         } else {
@@ -76,7 +77,8 @@ public class MenuActivity extends Activity implements OnClickListener, OnDismiss
         }
     }
 
-    public OnClickListener Browser_Action = new OnClickListener() {
+    /**  . */
+    private OnClickListener mBrowserAction = new OnClickListener() {
 
         @Override
         public void onClick(View v) {
@@ -84,7 +86,8 @@ public class MenuActivity extends Activity implements OnClickListener, OnDismiss
             startActivity(browser);
         }
     };
-    public OnClickListener Best_Action = new OnClickListener() {
+    /**  . */
+    private OnClickListener mBestAction = new OnClickListener() {
 
         @Override
         public void onClick(View v) {
@@ -92,7 +95,8 @@ public class MenuActivity extends Activity implements OnClickListener, OnDismiss
             startActivity(best);
         }
     };
-    public OnClickListener Deals_Action = new OnClickListener() {
+    /**  . */
+    private OnClickListener mDealsAction = new OnClickListener() {
 
         @Override
         public void onClick(View v) {
@@ -101,7 +105,8 @@ public class MenuActivity extends Activity implements OnClickListener, OnDismiss
         }
     };
 
-    public OnClickListener about_action = new OnClickListener() {
+    /**  . */
+    private OnClickListener mAboutAction = new OnClickListener() {
 
         @Override
         public void onClick(View v) {
@@ -109,40 +114,44 @@ public class MenuActivity extends Activity implements OnClickListener, OnDismiss
             startActivity(about);
         }
     };
-    public OnClickListener login_action = new OnClickListener() {
+    /**  . */
+    private OnClickListener mLoginAction = new OnClickListener() {
 
         @Override
         public void onClick(View v) {
             if (flag) {
-                PrefUtil.SetPref(MenuActivity.this, "username", "");
-                PrefUtil.SetPref(MenuActivity.this, "password", "");
-                PrefUtil.SetPref(MenuActivity.this, "xu", "0");
+                PrefUtil.setPref(MenuActivity.this, "username", "");
+                PrefUtil.setPref(MenuActivity.this, "password", "");
+                PrefUtil.setPref(MenuActivity.this, "xu", "0");
                 mLogin.setText(R.string.menu_login);
                 flag = false;
             } else {
-                ShowDialogLogin();
+                mShowDialogLogin();
             }
         }
     };
 
-    public void ShowDialogLogin() {
-        final EditText dialog_username = (EditText) mDialog.findViewById(R.id.login_username);
-        final EditText dialog_password = (EditText) mDialog.findViewById(R.id.login_pass);
-        final CheckBox show_password = (CheckBox) mDialog.findViewById(R.id.login_showpassword);
-        show_password.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+    /**
+     * [Give the description for method].
+     */
+    public void mShowDialogLogin() {
+        final EditText dialogusername = (EditText) mDialog.findViewById(R.id.login_username);
+        final EditText dialogpassword = (EditText) mDialog.findViewById(R.id.login_pass);
+        final CheckBox showpassword = (CheckBox) mDialog.findViewById(R.id.login_showpassword);
+        showpassword.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (show_password.isChecked()) {
-                    dialog_password.setInputType(InputType.TYPE_TEXT_VARIATION_NORMAL);
+                if (showpassword.isChecked()) {
+                    dialogpassword.setInputType(InputType.TYPE_TEXT_VARIATION_NORMAL);
                 } else {
-                    dialog_password.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                    dialogpassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
                 }
             }
         });
-        Button dialog_login = (Button) mDialog.findViewById(R.id.login_ok);
-        Button dialog_register = (Button) mDialog.findViewById(R.id.login_register);
-        dialog_login.setOnClickListener(new OnClickListener() {
+        Button dialoglogin = (Button) mDialog.findViewById(R.id.login_ok);
+        Button dialogregister = (Button) mDialog.findViewById(R.id.login_register);
+        dialoglogin.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -152,18 +161,18 @@ public class MenuActivity extends Activity implements OnClickListener, OnDismiss
                 Thread t = new Thread() {
                     public void run() {
                         flag = mEngine
-                                .login(dialog_username.getText().toString(), dialog_password.getText().toString());
-                        PrefUtil.SetPref(MenuActivity.this, "username", dialog_username.getText().toString());
-                        PrefUtil.SetPref(MenuActivity.this, "password", dialog_password.getText().toString());
-                        PrefUtil.SetPref(MenuActivity.this, "xu", mEngine.mGetXu(dialog_username.getText().toString(),
-                                dialog_password.getText().toString()));
+                                .login(dialogusername.getText().toString(), dialogpassword.getText().toString());
+                        PrefUtil.setPref(MenuActivity.this, "username", dialogusername.getText().toString());
+                        PrefUtil.setPref(MenuActivity.this, "password", dialogpassword.getText().toString());
+                        PrefUtil.setPref(MenuActivity.this, "xu", mEngine.mGetXu(dialogusername.getText().toString(),
+                                dialogpassword.getText().toString()));
                         mCurrentDialog.dismiss();
                     }
                 };
                 t.start();
             }
         });
-        dialog_register.setOnClickListener(new OnClickListener() {
+        dialogregister.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -174,6 +183,10 @@ public class MenuActivity extends Activity implements OnClickListener, OnDismiss
         mDialog.show();
     }
 
+    /**
+     * [Give the description for method].
+     * @return App
+     */
     public App getApp() {
         return (App) getApplication();
     }
@@ -181,7 +194,7 @@ public class MenuActivity extends Activity implements OnClickListener, OnDismiss
     @Override
     public void onClick(View v) {
         if (!flag) {
-            ShowDialogLogin();
+            mShowDialogLogin();
         } else {
             switch (v.getId()) {
                 case R.id.menu_payment :
@@ -218,21 +231,38 @@ public class MenuActivity extends Activity implements OnClickListener, OnDismiss
         }
     }
 
+    /**  . */
     private boolean flag = false;
+    /**  . */
     private Dialog mCurrentDialog;
+    /**  . */
     private Engine mEngine;
-    private Dialog mDialog;
+    /**  . */
     private Button mLogin;
+    /**  . */
+    private Dialog mDialog;
+    /**  . */
     private LinearLayout mBest;
+    /**  . */
     private LinearLayout mDeal;
+    /**  . */
     private LinearLayout mBrowser;
+    /**  . */
     private LinearLayout mSaveSearch;
+    /**  . */
     private LinearLayout mFavorite;
+    /**  . */
     private LinearLayout mReminder;
+    /**  . */
     private LinearLayout mMessage;
+    /**  . */
     private LinearLayout mSetting;
+    /**  . */
     private LinearLayout mAccount;
+    /**  . */
     private LinearLayout mPayment;
+    /**  . */
     private LinearLayout mAbout;
+    /**  . */
     private boolean mIsWaiting;
 }

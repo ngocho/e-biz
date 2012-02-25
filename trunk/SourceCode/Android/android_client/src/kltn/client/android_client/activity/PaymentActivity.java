@@ -1,9 +1,4 @@
-/**
- * 
- */
 package kltn.client.android_client.activity;
-
-import java.text.BreakIterator;
 
 import kltn.client.android_client.R;
 import android.app.Activity;
@@ -43,12 +38,19 @@ public class PaymentActivity extends Activity implements OnClickListener {
         mBest.setOnClickListener(this);
         mBrowser.setOnClickListener(this);
     }
+    /**  . */
     private Button mBack;
+    /**  . */
     private LinearLayout mAddXu;
+    /**  . */
     private LinearLayout mTransferXu;
+    /**  . */
     private LinearLayout mHome;
+    /**  . */
     private LinearLayout mDeals;
+    /**  . */
     private LinearLayout mBest;
+    /**  . */
     private LinearLayout mBrowser;
     /*
      * (non-Javadoc)
@@ -65,12 +67,12 @@ public class PaymentActivity extends Activity implements OnClickListener {
                 startActivity(back);
                 break;
             case R.id.payment_add_xu :
-                Intent add_xu = new Intent(PaymentActivity.this, AccountAddXuActivity.class);
-                startActivity(add_xu);
+                Intent addxu = new Intent(PaymentActivity.this, AccountAddXuActivity.class);
+                startActivity(addxu);
                 break;
             case R.id.payment_transfer_xu :
-                Intent transfer_xu = new Intent(PaymentActivity.this, AccountTransferXuActivity.class);
-                startActivity(transfer_xu);
+                Intent transferxu = new Intent(PaymentActivity.this, AccountTransferXuActivity.class);
+                startActivity(transferxu);
                 break;
             case R.id.payment_home :
                 Intent home = new Intent(PaymentActivity.this, MenuActivity.class);

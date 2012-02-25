@@ -1,6 +1,3 @@
-/**
- * 
- */
 package kltn.client.android_client.activity;
 
 import org.json.JSONObject;
@@ -41,11 +38,12 @@ public class AccountTransferXuActivity extends Activity implements OnDismissList
         mUser = (EditText) findViewById(R.id.account_tramsfer_xu_username);
         mNumber = (EditText) findViewById(R.id.account_tramsfer_xu_number);
         mOk.setOnClickListener(okAction);
-        mOwner.setText(PrefUtil.GetStringPref(this, "username"));
-        mOwnerXu.setText(PrefUtil.GetStringPref(this, "xu"));
+        mOwner.setText(PrefUtil.getStringPref(this, "username"));
+        mOwnerXu.setText(PrefUtil.getStringPref(this, "xu"));
         mEngine = new Engine();
     }
 
+    /**  . */
     private OnClickListener okAction = new OnClickListener() {
 
         @Override
@@ -57,19 +55,19 @@ public class AccountTransferXuActivity extends Activity implements OnDismissList
                 mIsWaiting = true;
                 Thread t = new Thread() {
                     public void run() {
-                        Status = getResultXu(mOwner.getText().toString(), PrefUtil.GetStringPref(
+                        status = getResultXu(mOwner.getText().toString(), PrefUtil.getStringPref(
                                 AccountTransferXuActivity.this, "password"), mNumber.getText().toString(), mUser
                                 .getText().toString());
-                        if (Status.equals("1")) {
-                            Status = getString(R.string.transfer_successful);
+                        if (status.equals("1")) {
+                            status = getString(R.string.transfer_successful);
                             flag = true;
                         } else {
-                            if (Status.equals("2")) {
-                                Status = getString(R.string.transfer_enough_xu);
-                            } else if (Status.equals("3")) {
-                                Status = getString(R.string.transfer_username);
+                            if (status.equals("2")) {
+                                status = getString(R.string.transfer_enough_xu);
+                            } else if (status.equals("3")) {
+                                status = getString(R.string.transfer_username);
                             } else {
-                                Status = getString(R.string.transfer_not_successful);
+                                status = getString(R.string.transfer_not_successful);
                             }
                             flag = false;
                         }
@@ -85,18 +83,31 @@ public class AccountTransferXuActivity extends Activity implements OnDismissList
         }
     };
 
+    /**
+     * [Give the description for method].
+     * @param mOwner String
+     * @param password String
+     * @param mOwnerXu String
+     * @param mUser String
+     * @return String
+     */
     public String getResultXu(String mOwner, String password, String mOwnerXu, String mUser) {
         String json = mEngine
                 .mQueryURL("http://16.test-kltn1.appspot.com/getUserFuntion.vn?flag=XuSendCustomer&content=" + mOwner
                         + "@" + password + "@" + mOwnerXu + "@" + mUser);
-        return ParseJSON_Xu(json);
+        return parseJSONXu(json);
     }
 
     /**
      * @param json - parsejson
      * @return 0 - not correct product key; 1 - successful; -1 - username customer not exist
      */
-    private String ParseJSON_Xu(String json) {
+    /**
+     * [Give the description for method].
+     * @param json String
+     * @return String
+     */
+    private String parseJSONXu(String json) {
         String jResult = "";
         try {
             JSONObject item = new JSONObject(json);
@@ -107,15 +118,25 @@ public class AccountTransferXuActivity extends Activity implements OnDismissList
         return jResult;
     }
 
+    /**  . */
     private boolean flag = false;
+    /**  . */
     private Button mOk;
+    /**  . */
     private TextView mOwner;
+    /**  . */
     private TextView mOwnerXu;
+    /**  . */
     private EditText mUser;
+    /**  . */
+    private String status;
+    /**  . */
     private EditText mNumber;
-    private String Status;
+    /**  . */
     private boolean mIsWaiting;
+    /**  . */
     private Dialog mCurrentDialog;
+    /**  . */
     private Engine mEngine;
 
     /*
@@ -124,10 +145,10 @@ public class AccountTransferXuActivity extends Activity implements OnDismissList
      */
     @Override
     public void onDismiss(DialogInterface dialog) {
-        Toast.makeText(AccountTransferXuActivity.this, Status, Toast.LENGTH_LONG).show();
-        if (flag = true) {
+        Toast.makeText(AccountTransferXuActivity.this, status, Toast.LENGTH_LONG).show();
+        if (flag) {
             mOwnerXu.setText(mEngine.mGetXu(mOwner.getText().toString(),
-                    PrefUtil.GetStringPref(AccountTransferXuActivity.this, "password")));
+                    PrefUtil.getStringPref(AccountTransferXuActivity.this, "password")));
             mNumber.setText("");
             mUser.setText("");
         }

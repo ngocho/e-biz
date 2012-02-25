@@ -30,7 +30,7 @@ public abstract class PrefsItem {
      * [Give the description for method].
      */
     public void unset() {
-        SharedPreferences settings = context.getSharedPreferences(PrefsName, Context.MODE_PRIVATE);
+        SharedPreferences settings = context.getSharedPreferences(prefsname, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = settings.edit();
         editor.remove(getName());
     }
@@ -47,7 +47,7 @@ public abstract class PrefsItem {
     protected abstract void setPrefValue(Object value);
 
     /**  . */
-    public static final String PrefsName = "kltn_prefs";
+    public static final String prefsname = "kltn_prefs";
     /**  . */
     private String name;
     /**  . */

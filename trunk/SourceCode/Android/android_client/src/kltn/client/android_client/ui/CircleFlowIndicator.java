@@ -1,18 +1,3 @@
-/*
- * Copyright (C) 2011 Patrik �kerfeldt
- * 
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 package kltn.client.android_client.ui;
 
 import kltn.client.android_client.R;
@@ -39,26 +24,30 @@ import android.view.View;
  * </ul>
  */
 public class CircleFlowIndicator extends View implements FlowIndicator {
+    /**  . */
     private float radius = 4;
+    /**  . */
     private final Paint mPaintStroke = new Paint(Paint.ANTI_ALIAS_FLAG);
+    /**  . */
     private final Paint mPaintFill = new Paint(Paint.ANTI_ALIAS_FLAG);
+    /**  . */
     private ViewFlow viewFlow;
+    /**  . */
     private int currentScroll = 0;
+    /**  . */
     private int flowWidth = 0;
 
     /**
-     * Default constructor
-     * @param context
+     * @param context Context
      */
     public CircleFlowIndicator(Context context) {
         super(context);
         initColors(0xFFFFFFFF, 0xFFFFFFFF);
     }
-
     /**
      * The contructor used with an inflater
-     * @param context
-     * @param attrs
+     * @param context Context
+     * @param attrs AttributeSet
      */
     public CircleFlowIndicator(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -75,6 +64,11 @@ public class CircleFlowIndicator extends View implements FlowIndicator {
         initColors(0xFFFFFFFF, 0xFFFFFFFF);
     }
 
+    /**
+     * [Give the description for method].
+     * @param fillColor int
+     * @param strokeColor int
+     */
     private void initColors(int fillColor, int strokeColor) {
         mPaintStroke.setStyle(Style.STROKE);
         mPaintStroke.setColor(R.color.black);

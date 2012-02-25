@@ -18,9 +18,21 @@ import android.net.Uri;
 import android.text.TextUtils;
 import android.util.Log;
 
+/**
+ * @author NThanhPhong
+ */
 public class MainProvider extends ContentProvider {
 
+    /**
+     * @author NThanhPhong
+     */
     private static class DatabaseHelper extends SQLiteOpenHelper {
+        /**
+         * @param context Context
+         * @param name String
+         * @param factory CursorFactory
+         * @param version int
+         */
         DatabaseHelper(Context context, String name, CursorFactory factory, int version) {
             super(context, name, factory, version);
         }
@@ -53,13 +65,15 @@ public class MainProvider extends ContentProvider {
             }
         }
 
+        /**  . */
         private static final String SQL_CREATE_HISTORY_BUY = "CREATE TABLE " + TABLE_HISTORY_BUY + "("
-                + HistotyBuyItem._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + HistotyBuyItem.IDCUSTOMER
-                + " TEXT, " + HistotyBuyItem.IDGOODS + " TEXT, " + HistotyBuyItem.GOODSNAME + " TEXT, "
-                + HistotyBuyItem.IMAGE + " TEXT, " + HistotyBuyItem.DATE + " TEXT, " + HistotyBuyItem.PRICE
-                + " TEXT);";
+                + HistotyBuyItem._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + HistotyBuyItem.IDCUSTOMER + " TEXT, "
+                + HistotyBuyItem.IDGOODS + " TEXT, " + HistotyBuyItem.GOODSNAME + " TEXT, " + HistotyBuyItem.IMAGE
+                + " TEXT, " + HistotyBuyItem.DATE + " TEXT, " + HistotyBuyItem.PRICE + " TEXT);";
+        /**  . */
         private static final String SQL_DROP_HISTORY_BUY = "DROP TABLE IF EXISTS " + TABLE_HISTORY_BUY;
 
+        /**  . */
         private static final String SQL_CREATE_DATE_FOOD = "CREATE TABLE " + TABLE_DATE_FOOD + "(" + DateFoodItem._ID
                 + " INTEGER PRIMARY KEY AUTOINCREMENT, " + DateFoodItem.IDGOODS + " TEXT, " + DateFoodItem.NAME
                 + " TEXT, " + DateFoodItem.PRICE + " TEXT, " + DateFoodItem.BUYPRICE + " TEXT, "
@@ -67,8 +81,10 @@ public class MainProvider extends ContentProvider {
                 + " TEXT, " + DateFoodItem.BUYCOUNT + " TEXT, " + DateFoodItem.COUNTMIN + " TEXT, "
                 + DateFoodItem.COUNTMAX + " TEXT);";
 
+        /**  . */
         private static final String SQL_DROP_CHAT = "DROP TABLE IF EXISTS " + TABLE_DATE_FOOD;
 
+        /**  . */
         private static final String SQL_CREATE_FAVORITE_FOOD = "CREATE TABLE " + TABLE_FAVORITE_FOOD + "("
                 + FavoriteItem._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + FavoriteItem.ID + " TEXT, "
                 + FavoriteItem.NAME + " TEXT, " + FavoriteItem.INTRODUCTION + " TEXT, " + FavoriteItem.PRICE
@@ -77,6 +93,7 @@ public class MainProvider extends ContentProvider {
                 + " TEXT, " + FavoriteItem.RATE + " TEXT, " + FavoriteItem.PROVIDER + " TEXT, " + FavoriteItem.BUYCOUNT
                 + " TEXT, " + FavoriteItem.MINBUYER + " TEXT);";
 
+        /**  . */
         private static final String SQL_DROP_FAVORITE = "DROP TABLE IF EXISTS " + TABLE_FAVORITE_FOOD;
     }
 
@@ -229,16 +246,27 @@ public class MainProvider extends ContentProvider {
         return count;
     }
 
+    /**  . */
     private static final UriMatcher mUriMatcher;
+    /**  . */
     private static final String DEBUG_TAG = "[MainProvider]";
+    /**  . */
     private SQLiteDatabase mDatabase;
+    /**  . */
     public static final String DATABASE_NAME = "client.db";
+    /**  . */
     public static final int DATABASE_VERSION = 8;
+    /**  . */
     public static final String TABLE_HISTORY_BUY = "history_buy";
+    /**  . */
     public static final String TABLE_DATE_FOOD = "date_food";
+    /**  . */
     public static final String TABLE_FAVORITE_FOOD = "favorite_food";
+    /**  . */
     private static final int CODE_HISTORY_BUY = 1;
+    /**  . */
     private static final int CODE_DATE_FOOD = 2;
+    /**  . */
     private static final int CODE_FAVORITE_FOOD = 3;
 
     static {

@@ -1,6 +1,3 @@
-/**
- * 
- */
 package kltn.client.android_client.activity;
 
 import org.json.JSONObject;
@@ -23,6 +20,10 @@ import android.widget.TextView;
 /**
  * @author NThanhPhong
  */
+/**
+ * @author wind
+ *
+ */
 public class AccountInfoActivity extends Activity implements OnClickListener, OnDismissListener {
 
     /*
@@ -44,38 +45,59 @@ public class AccountInfoActivity extends Activity implements OnClickListener, On
         mEmail = (TextView) findViewById(R.id.accountinfo_email);
         mAddress = (TextView) findViewById(R.id.accountinfo_address);
         mEngine = new Engine();
-        LoadData();
+        mLoadData();
         mBack.setOnClickListener(this);
         mPayment.setOnClickListener(this);
     }
-    public void LoadData() {
+    /**
+     * [Give the description for method].
+     */
+    public void mLoadData() {
         mCurrentDialog = ProgressDialog.show(AccountInfoActivity.this, null, getString(R.string.menu_waiting), true);
         mCurrentDialog.setOnDismissListener(AccountInfoActivity.this);
         mIsWaiting = true;
         Thread t = new Thread() {
             public void run() {
-                Data = mEngine.mGetInfo(PrefUtil.GetStringPref(AccountInfoActivity.this, "username"),
-                        PrefUtil.GetStringPref(AccountInfoActivity.this, "password"));
+                mData = mEngine.mGetInfo(PrefUtil.getStringPref(AccountInfoActivity.this, "username"),
+                        PrefUtil.getStringPref(AccountInfoActivity.this, "password"));
                 mCurrentDialog.dismiss();
             }
         };
         t.start();
     }
+    /**  . */
     private Engine mEngine;
-    private JSONObject Data;
+    /**  . */
+    private JSONObject mData;
+    /**  . */
     private Button mBack;
+    /**  . */
     private Button mPayment;
+    /**  . */
     private Button mUpdate;
+    /**  . */
     private TextView mUsername;
+    /**  . */
     private TextView mXu;
+    /**  . */
     private TextView mFullname;
-    private TextView mPhone;
+    /**  . */
     private TextView mEmail;
+    /**  . */
+    private TextView mPhone;
+    /**  . */
     private TextView mAddress;
+    /**  . */
     private Dialog mCurrentDialog;
+    /**  . */
     public boolean mIsWaiting;
     /*
      * (non-Javadoc)
+     * @see android.view.View.OnClickListener#onClick(android.view.View)
+     */
+    /**
+     * [Explain the description for this method here].
+     * @param v View
      * @see android.view.View.OnClickListener#onClick(android.view.View)
      */
     @Override
@@ -103,12 +125,12 @@ public class AccountInfoActivity extends Activity implements OnClickListener, On
     @Override
     public void onDismiss(DialogInterface dialog) {
         try {
-            mFullname.setText(Data.getString("fullname"));
-            mXu.setText(Data.getString("xu"));
-            mPhone.setText(Data.getString("phone"));
-            mAddress.setText(Data.getString("address"));
-            mEmail.setText(Data.getString("email"));
-            mUsername.setText(Data.getString("username"));
+            mFullname.setText(mData.getString("fullname"));
+            mXu.setText(mData.getString("xu"));
+            mPhone.setText(mData.getString("phone"));
+            mAddress.setText(mData.getString("address"));
+            mEmail.setText(mData.getString("email"));
+            mUsername.setText(mData.getString("username"));
         } catch (Exception e) {
             System.out.println(e);
         }
