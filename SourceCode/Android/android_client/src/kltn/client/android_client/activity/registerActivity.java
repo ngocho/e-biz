@@ -43,7 +43,7 @@ public class RegisterActivity extends Activity implements OnDismissListener {
         female = (CheckBox) findViewById(R.id.register_female);
         check = (CheckBox) findViewById(R.id.register_check);
         back.setOnClickListener(backAction);
-        ok.setOnClickListener(OkAction);
+        ok.setOnClickListener(mOkAction);
         mEngine = new Engine();
         male.setOnClickListener(new OnClickListener() {
 
@@ -62,6 +62,7 @@ public class RegisterActivity extends Activity implements OnDismissListener {
             }
         });
     }
+    /**  . */
     private OnClickListener backAction = new OnClickListener() {
 
         @Override
@@ -73,7 +74,8 @@ public class RegisterActivity extends Activity implements OnDismissListener {
             startActivity(home);
         }
     };
-    private OnClickListener OkAction = new OnClickListener() {
+    /**  . */
+    private OnClickListener mOkAction = new OnClickListener() {
 
         @Override
         public void onClick(View v) {
@@ -91,12 +93,19 @@ public class RegisterActivity extends Activity implements OnDismissListener {
             t.start();
         }
     };
+    /**  . */
     private Engine mEngine;
+    /**  . */
     private boolean flag;
+    /**  . */
     private boolean mIsWaiting;
+    /**  . */
     private Dialog mCurrentDialog;
+    /**  . */
     private EditText nickname, password, fullname, email, phone, address, birthday;
+    /**  . */
     private Button back, ok;
+    /**  . */
     private CheckBox male, female, check;
     /*
      * (non-Javadoc)

@@ -35,14 +35,23 @@ public class StringPrefs extends PrefsItem {
         return v;
     }
 
+    /**
+     * [Give the description for method].
+     * @return String
+     */
     public String getValue() {
         String s = (String) getPrefValue();
         return s;
     }
 
+    /**
+     * [Give the description for method].
+     * @param value String
+     */
     public void setValue(String value) {
         setPrefValue(value);
     }
 
+    /**  . */
     private String defValue;
 }

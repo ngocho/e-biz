@@ -37,12 +37,12 @@ public abstract class PrefsItem {
 
     /**
      * [Give the description for method].
-     * @return
+     * @return Object
      */
     protected abstract Object getPrefValue();
     /**
      * [Give the description for method].
-     * @param value
+     * @param value Object
      */
     protected abstract void setPrefValue(Object value);
 
