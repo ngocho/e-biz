@@ -184,6 +184,11 @@
         <put name="content" value="/provider_address.jsp" />
     </definition>
     
+      <definition name="providerAddList" extends="baseLayout1">
+        <put name="title" value="GM Provider" />
+        <put name="content" value="/provider_add_search.jsp" />
+    </definition>
+    
 <!-- END CUSTOMER -->
 
 <!-- START PROVIDER -->

@@ -153,6 +153,12 @@
             type="ebiz.action.account.provider.ProviderAdd" >
     </action>
     
+    <action 
+            path="/getAddProviderList"
+            type="ebiz.action.account.provider.GMProviderAddressList" >
+            <forward name="success" path="providerAddList" redirect="false" />
+    </action>
+    
 
 	</action-mappings>
 
