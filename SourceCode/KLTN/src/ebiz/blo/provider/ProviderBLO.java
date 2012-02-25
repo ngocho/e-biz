@@ -46,16 +46,16 @@ public class ProviderBLO {
         }
         return false;
     }
-    public static boolean updateProvider(Provider provider){
+    public static boolean updateProvider(Provider provider) {
         return proDao.saveProvider(provider);
     }
-    public static Provider getProviderById(String id){
+    public static Provider getProviderById(String id) {
         return proDao.getProviderById(id);
     }
-    public static String getNameProviderByID(String id){
+    public static String getNameProviderByID(String id) {
         Provider provider = proDao.getProviderById(id);
-        if(provider !=null){
-           return  provider.getProviderName();
+        if (provider != null) {
+            return provider.getProviderName();
         }
         return null;
     }
@@ -63,13 +63,13 @@ public class ProviderBLO {
         List<Provider> providerList = proDao.getProviderByName(value);
         return transferForm(providerList);
     }
-    
+
     public static int isLoginID(String id, String pass) {
         Provider provider = proDao.getProviderById(id);
-        
+
         if (provider != null) {
-        	if(!provider.isActive()){
-            	return 2; //not yet authentication
+            if (!provider.isActive()) {
+                return 2; // not yet authentication
             }
             // get password
             String passCust = provider.getProviderPassword();
@@ -81,14 +81,13 @@ public class ProviderBLO {
         } else {
             return -1; // didn't exist this user
         }
-        
 
     }
- public static List<FoodForm> getFoodFormList(String idProvider,String statusFood){
-        
+    public static List<FoodForm> getFoodFormList(String idProvider, String statusFood) {
+
         List<Food> foodList = new ArrayList<Food>();
         List<FoodForm> formList = new ArrayList<FoodForm>();
-        //get all
+        // get all
         if (statusFood.equals("0")) {
             System.out.println("ALL");
             foodList = foodDao.getListFoodByValue("providerID", idProvider);
@@ -116,36 +115,35 @@ public class ProviderBLO {
         List<ProviderForm> resultList = new ArrayList<ProviderForm>();
         if (!providerList.isEmpty()) {
             for (Provider provider : providerList) {
-            	System.out.println("form provider" +provider.getProviderId() + "name" +provider.getProviderName()
-            			);
+                System.out.println("form provider" + provider.getProviderId() + "name" + provider.getProviderName());
                 ProviderForm form = new ProviderForm();
                 form.editForm(provider);
                 if (form != null) {
-                	System.out.println("form provider" +form.getLoginId() + "name" +form.getLoginName());
+                    System.out.println("form provider" + form.getLoginId() + "name" + form.getLoginName());
                     resultList.add(form);
                 }
             }
         }
         return resultList;
     }
-    
+
     public static List<String> searchProviderByDis(String value) {
-    	List<String> list = new ArrayList<String>();
-    	List<Provider> providerList = proDao.getProviderAll();
-    	for(Provider provider: providerList){
-    		String add = provider.getProviderAddress();
-    		if(add.indexOf(value) != -1){ //have result
-    			list.add(provider.getProviderId());
-    		}
-    	}
-    	return list;
+        List<String> list = new ArrayList<String>();
+        List<Provider> providerList = proDao.getProviderAll();
+        for (Provider provider : providerList) {
+            String add = provider.getProviderAddress();
+            if (add.indexOf(value) != -1) { // have result
+                list.add(provider.getProviderId());
+            }
+        }
+        return list;
     }
-    public static boolean testProviderByDis(List<String> idProviderList,String idProvider) {
-    	for(String id: idProviderList){
-    		if(id.equals(idProvider)){
-    			return true;
-    		}
-    	}
-    	return false;
+    public static boolean testProviderByDis(List<String> idProviderList, String idProvider) {
+        for (String id : idProviderList) {
+            if (id.equals(idProvider)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
