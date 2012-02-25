@@ -6,8 +6,8 @@
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 <div class="header">
   <div class="header-row1" >
-    <ul class="super-links" style="" id="customer_super_links">
-      <li><span style='color:black;'><bean:message key="home.header.language" /></span>
+    <ul class="super-links"  id="customer_super_links" style="margin-right:400px;">
+      <li><span style='color:black;' ><bean:message key="home.header.language" /></span>
 <c:if test="${language =='vi'}">
 <select name="language" onchange="setLocation(this.value)">
 <option value="/changeLanguage.vn?lang=vi">
@@ -28,7 +28,7 @@
 </option>
 </select>
 </c:if>
-<c:if test="${language == null}">
+<%-- <c:if test="${language == null}">
 <select name="language" onchange="setLocation(this.value)">
 <option value="/changeLanguage.vn?lang=vi" selected="selected">
 <bean:message key="home.header.option1" />
@@ -37,7 +37,7 @@
 <bean:message key="home.header.option2" />
 </option>
 </select>
-</c:if>
+</c:if> --%>
 </li>
 </ul>
  </div>

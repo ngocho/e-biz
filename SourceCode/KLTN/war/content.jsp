@@ -90,7 +90,7 @@ $(document).ready(function(){
     
     </script>   
 <div class="box best-selling" >
-<h3>Các sản phẩm khuyến mãi</h3>
+<h3><bean:message key="home.content.title" /></h3>
 <logic:present name="promotionFood">
 
 <table border="0" cellspacing="0">
@@ -100,25 +100,25 @@ $(document).ready(function(){
        
          <td><a href="/displayProductDetail.vn?id=<bean:write name="element" property="id" />"><img  class="product-img" src="/serveImage.vn?urlKey=<bean:write name="element" property="urlKey"/>" border="0" height="200" width="300"   style="margin-right: 40px;"></a>
             <div class="product-description" >
-            <p>Mã sản phẩm:<a href="#"><bean:write name="element" property="id"/></a></p>
-            <p>Tên  :<bean:write name="element" property="name"/>  </p>
+            <p><bean:message key="home.content.food.id" />:<a href="#"><bean:write name="element" property="id"/></a></p>
+            <p><bean:message key="home.content.food.name" />:<bean:write name="element" property="name"/>  </p>
            <p class="old-price">
-                <span class="price-label">Giá bình thường:</span> <span
+                <span class="price-label"><bean:message key="home.content.food.price" />:</span> <span
                   class="price" id="old-price-52"> <bean:write
                     name="element" property="price" /> </span>
               </p>
 
               <p class="special-price">
-                <span class="price-label">Giá khuyến mãi:</span> <span
+                <span class="price-label"><bean:message key="home.content.food.priceP" />:</span> <span
                   class="price" id="product-price-52"> <bean:write
                     name="element" property="promoPrice" /> </span>
               </p>
               <p >
                 <a href="/compareFood.vn?screen=home&id=<bean:write name="element" property="id" />" style="color:blue;"> 
-                So sánh với cửa hàng khác</a>
+               <bean:message key="home.content.food.compare" /></a>
               </p>
             <p><a href="/displayProductDetail.vn?id=<bean:write name="element" property="id" />"><img src="Images/Commons/xem.jpg" width="100"></img></a><!-- a class="link" href="#" >Xem hang </a> --></p>
-            <p><a  class="addShopping" name="<bean:write name="element" property="id"/>" href=""   ><img src="Images/Commons/mua.jpg" width="100"></img></a>
+            <p><a  class="addShopping" name="<bean:write name="element" property="id"/>" href="" ><img src="Images/Commons/mua.jpg" width="100"></img></a>
             </p>
             </div>
             </td>
