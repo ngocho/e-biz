@@ -120,7 +120,7 @@ $(document).ready(function(){
                     <div class="field">
                         <label for="password" class="required" ><em>*</em>Email</label>
                         <div class="input-box">
-                           <html:text property="email" size="40" styleId="email" styleId="loginEmailR"/>
+                           <html:text property="email" size="40" styleId="loginEmailR"/>
 
                         </div>
                     </div>
