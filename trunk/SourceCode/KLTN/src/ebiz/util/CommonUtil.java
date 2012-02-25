@@ -106,8 +106,7 @@ public class CommonUtil {
      * @return Date
      */
     public static Date convertStringToDate(String strDate) {
-        System.out.println("DATE" + strDate);
-        if (strDate != null) {
+        if (strDate != null && !("".equals(strDate))) {
             Date date;
             try {
                 DateFormat formatter;
