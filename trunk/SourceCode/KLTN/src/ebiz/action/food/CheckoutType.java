@@ -51,9 +51,9 @@ public class CheckoutType extends BaseAction {
         HttpSession se = request.getSession();
         OrderBillForm orderForm = (OrderBillForm) se.getAttribute("bill");
         String typeCheckout = request.getParameter("checkoutOption");
-        LoginForm login = (LoginForm)se.getAttribute(CommonConstant.USER);
+        LoginForm login = (LoginForm) se.getAttribute(CommonConstant.USER);
         if ("home".equals(typeCheckout)) {
-           FoodBLO.updateStatusOrderBill(orderForm.getId(), CommonConstant.BILLSTATUS_1);
+            FoodBLO.updateStatusOrderBill(orderForm.getId(), CommonConstant.BILLSTATUS_1);
         } else if ("xu".equals(typeCheckout)) {
             LoginForm user = (LoginForm) se.getAttribute(CommonConstant.USER);
             String uid = user.getLoginId();
@@ -62,11 +62,10 @@ public class CheckoutType extends BaseAction {
                 messages.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage("xu.notEnough"));
                 result = false;
 
-            }
-            else{
+            } else {
                 login.setXuOnline(CustomerBLO.getXuOnline(login.getLoginId()));
-            // paid money
-            FoodBLO.updateStatusOrderBill(orderForm.getId(), CommonConstant.BILLSTATUS_2);
+                // paid money
+                FoodBLO.updateStatusOrderBill(orderForm.getId(), CommonConstant.BILLSTATUS_2);
             }
         } else if ("nganluong".equals(typeCheckout)) {
             NL_Checkout nl_checkout = new NL_Checkout();

@@ -41,6 +41,7 @@ public class AddShoppingCart extends BaseAction {
 
     /**
      * [AddShoppingCart(ajax)].
+     *
      * @param mapping ActionMapping
      * @param form ActionForm
      * @param request HttpServletRequest
@@ -49,9 +50,8 @@ public class AddShoppingCart extends BaseAction {
      * @throws Exception Exception
      * @see ActionForward Struts1 Framework
      */
-    public ActionForward execute(ActionMapping mapping, ActionForm form,
-            HttpServletRequest request, HttpServletResponse response)
-        throws Exception {
+    public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
+            HttpServletResponse response) throws Exception {
 
         PrintWriter out = response.getWriter();
         boolean flag;
@@ -63,48 +63,48 @@ public class AddShoppingCart extends BaseAction {
         // get param from request
         String id = request.getParameter("id");
         String number = request.getParameter("number");
-        //check numeric
-        if(!CommonUtil.checkNumeric(number)){
-        	out.println("0" + "0");
-        	return null;
+        // check numeric
+        if (!CommonUtil.checkNumeric(number)) {
+            out.println("0" + "0");
+            return null;
         }
         // get attr from session
         HttpSession se = request.getSession();
         ShoppingCart shopCart = (ShoppingCart) se.getAttribute("shop");
         if (shopCart == null) {
-                shopCart = new ShoppingCart();
+            shopCart = new ShoppingCart();
         }
 
         try {
-                if (number != null) {
+            if (number != null) {
                 count = Integer.parseInt(number);
                 // add shopping
                 flag = FoodBLO.addShoppingCart(shopCart, id, count);
-                if (!flag) { //failed
-                        out.println("0" + " ");
-                        return null;
+                if (!flag) { // failed
+                    out.println("0" + " ");
+                    return null;
                 }
-                //success
+                // success
                 // count size of Shopping Cart
                 shopCart.size();
-                //count money
+                // count money
                 shopCart.sumMoney();
                 // set info of product into session
                 se.setAttribute(CommonConstant.SHOPPING, shopCart);
                 int num = shopCart.remainNumber(Long.parseLong(id));
                 se.setAttribute("numberDisplay", num);
-                //retured data
+                // retured data
                 out.println(shopCart.getCount() + " " + num);
-                }
+            }
         } catch (Exception e) {
             e.printStackTrace();
 
         } finally {
-                out.flush();
-                out.close();
+            out.flush();
+            out.close();
         }
 
         return null;
-        }
+    }
 
 }

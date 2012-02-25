@@ -44,7 +44,7 @@ import ebiz.util.CommonConstant;
 public class DisplayCategory extends BaseAction {
     /**
      * [DisplayCategory].
-     *
+     * 
      * @param mapping ActionMapping
      * @param form ActionForm
      * @param request HttpServletRequest
@@ -70,7 +70,7 @@ public class DisplayCategory extends BaseAction {
         } else {
             vo.setTypeProduct(typeProduct);
         }
-        
+
         // get attribute --> save in session
         attrs = FoodBLO.getAttributeFoodList();
         se.setAttribute(CommonConstant.FOOD_CATEGORY_A, attrs);

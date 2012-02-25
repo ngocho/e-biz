@@ -41,7 +41,7 @@ import ebiz.util.CommonConstant;
 public class Search extends BaseAction {
     /**
      * [Search Food ].
-     *
+     * 
      * @param mapping ActionMapping
      * @param form ActionForm
      * @param request HttpServletRequest
@@ -62,9 +62,9 @@ public class Search extends BaseAction {
             List<FoodForm> formList = new ArrayList<FoodForm>();
             List<String> pageList = new ArrayList<String>();
             // Cache cache = SearchBLO.getMemcache();
-            LoginForm login = (LoginForm)se.getAttribute(CommonConstant.USER);
-            if("-1".equals(searchForm.getDistrictNameS())){
-            	searchForm.setDis(login.getDistrictName());
+            LoginForm login = (LoginForm) se.getAttribute(CommonConstant.USER);
+            if ("-1".equals(searchForm.getDistrictNameS())) {
+                searchForm.setDis(login.getDistrictName());
             }
             formList = SearchBLO.searchFullText(searchForm);
             pageList = SearchBLO.paging(formList.size());
@@ -75,7 +75,7 @@ public class Search extends BaseAction {
             se.setAttribute("pageIndex", 1);
             if (!formList.isEmpty()) {
                 se.setAttribute("searchResult", formList);
-            }else{
+            } else {
                 se.setAttribute("searchResult", null);
             }
         }

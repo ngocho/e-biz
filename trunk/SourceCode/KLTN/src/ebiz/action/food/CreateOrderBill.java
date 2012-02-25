@@ -58,47 +58,12 @@ public class CreateOrderBill extends BaseAction {
         OrderBillForm orderForm = (OrderBillForm) form;
         //test value
         System.out.println("ID CUSTOMER" + orderForm.getIdCustomer());
-        
-//        LoginForm user = (LoginForm) se.getAttribute(CommonConstant.USER);
-//        orderForm.setIdCustomer(user.getLoginId());
-        
-//        shopCart.setOrder(orderForm);
-        // checkout is Pay money
-//        boolean flag = true;
-//        String typePayment = "0";
-//        LoginForm user = (LoginForm) se.getAttribute(CommonConstant.USER);
-//        if (orderForm.getIsPayment() == 0) {
-//            // user Xu account
-//            String uid = user.getLoginId();
-//            flag = CustomerBLO.checkoutXuOnline(uid, shopCart.getTotal());
-//            // not enough money
-//            if (!flag) {
-//                ActionMessages messages = new ActionMessages();
-//                messages.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage("xu.notEnough"));
-//                saveMessages(request, messages);
-//                return mapping.findForward(FAILURE);
-//            }
-//            // paid money
-//            typePayment = CommonConstant.BILLSTATUS_2;
-//        } else if (orderForm.getIsPayment() == 1) {
-//            // will pay in home
-//            typePayment = CommonConstant.BILLSTATUS_1;
-//
-//        } else {
-//            typePayment = CommonConstant.BILLSTATUS_2;
-//        }
-//        if (flag) {
-//            // save in session
-//            user.setXuOnline(CustomerBLO.getXuOnline(user.getLoginId()));
             // billing
             order = FoodBLO.billing(shopCart);
             System.out.println("info MHD:" + order.getId());
             System.out.println("sum money MHD:" + order.getSumPrice());
             System.out.println("add money MHD:" + order.getAddress());
             System.out.println("time money MHD:" + CommonUtil.convertDateToString(order.getDateShip()) + "time" +order.getNote());
-            // update Customer
-            // transfer OrderBill-> form to display
-            // success
             if (order != null) {
 
                 // send mail
