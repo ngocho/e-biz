@@ -35,7 +35,7 @@ import ebiz.dto.account.provider.Provider;
  */
 public class ProviderDetail extends BaseAction {
     /**
-     * [Logout ].
+     * [ProviderDetail ].
      * @param mapping ActionMapping
      * @param form ActionForm
      * @param request HttpServletRequest

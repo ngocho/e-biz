@@ -27,8 +27,6 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import ebiz.action.BaseAction;
-import ebiz.blo.admin.AdminBLO;
-import ebiz.dto.account.admin.Admin;
 import ebiz.util.CommonConstant;
 /**
  * @author Administrator

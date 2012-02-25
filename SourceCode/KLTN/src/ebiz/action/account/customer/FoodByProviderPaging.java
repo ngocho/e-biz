@@ -18,7 +18,6 @@
  */
 package ebiz.action.account.customer;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -32,7 +31,6 @@ import org.apache.struts.action.ActionMapping;
 import ebiz.action.BaseAction;
 import ebiz.blo.food.SearchBLO;
 import ebiz.form.FoodForm;
-import ebiz.form.SearchForm;
 /**
  * @author ThuyNT
  */
@@ -52,18 +50,9 @@ public class FoodByProviderPaging extends BaseAction {
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
         HttpSession se = request.getSession();
-        // HashMap<Integer, String> paging = new HashMap<Integer, String>();
-//        SearchForm searchForm = (SearchForm) se.getAttribute("searchForm");
         String page = request.getParameter("page");
         int pageIndex = Integer.parseInt(page);
-        List<FoodForm> formList =(List<FoodForm>) se.getAttribute("foodByProvider");
-//        Cache cache = SearchBLO.getMemcache();
-//        formList = (List<FoodForm>) cache.get("searchData");
-//        // had
-//        if (formList == null || formList.isEmpty()) {
-//            formList = SearchBLO.searchFullText(searchForm);
-//        }
-//        formList = SearchBLO.searchFullText(searchForm);
+        List<FoodForm> formList = (List<FoodForm>) se.getAttribute("foodByProvider");
         formList = (List<FoodForm>) SearchBLO.getPage(formList, pageIndex);
         se.setAttribute("pageIndex", pageIndex);
         if (!formList.isEmpty()) {

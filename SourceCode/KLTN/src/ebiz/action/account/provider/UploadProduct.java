@@ -40,7 +40,7 @@ import ebiz.util.CommonUtil;
 public class UploadProduct extends BaseAction {
     /**
      * [UploadProduct ].
-     *
+     * 
      * @param mapping ActionMapping
      * @param form ActionForm
      * @param request HttpServletRequest
@@ -58,29 +58,26 @@ public class UploadProduct extends BaseAction {
         String urlKey = (String) se.getAttribute("urlImageKey");
         // have image
         if ((urlKey != null)) {
-        	// start check validate numeric
-			ActionMessages messages = new ActionMessages();
-			boolean flag_temp = false;
-			if (CommonUtil.isBlankOrZero(foodForm.getPrice())
-					|| foodForm.getNumber() == 0) {
-				messages.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage(
-						"text.invFormat"));
-				flag_temp = true;
-				
-				saveMessages(request, messages);
-				return mapping.findForward(FAILURE);
-			}
-			if (foodForm.getStatus().equals("1")) {
-				if (CommonUtil.isBlankOrZero(foodForm.getPromoPrice())) {
-					if(!flag_temp){
-					messages.add(ActionMessages.GLOBAL_MESSAGE,
-							new ActionMessage("text.invFormat"));
-					saveMessages(request, messages);
-					}
-					return mapping.findForward(FAILURE);
-				}
-			}
-			// end check validate numeric
+            // start check validate numeric
+            ActionMessages messages = new ActionMessages();
+            boolean ftemp = false;
+            if (CommonUtil.isBlankOrZero(foodForm.getPrice()) || foodForm.getNumber() == 0) {
+                messages.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage("text.invFormat"));
+                ftemp = true;
+
+                saveMessages(request, messages);
+                return mapping.findForward(FAILURE);
+            }
+            if (foodForm.getStatus().equals("1")) {
+                if (CommonUtil.isBlankOrZero(foodForm.getPromoPrice())) {
+                    if (!ftemp) {
+                        messages.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage("text.invFormat"));
+                        saveMessages(request, messages);
+                    }
+                    return mapping.findForward(FAILURE);
+                }
+            }
+            // end check validate numeric
             foodForm.setUrlKey(urlKey);
 
             // upload product
@@ -110,7 +107,6 @@ public class UploadProduct extends BaseAction {
                 food.setFoodId(foodForm.getId());
                 food.setIsDisplay(1);
                 boolean flag = FoodBLO.updateFood(food);
-                System.out.println("STAUS UPDATED PRODUCT " + flag + " status" + food.getFoodTypeId());
                 if (flag) {
                     // remove attr
                     se.removeAttribute("urlImageKey");

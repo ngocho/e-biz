@@ -38,7 +38,8 @@ import ebiz.form.ProviderForm;
  */
 public class ProviderList extends BaseAction {
     /**
-     * [Logout ].
+     * [ProviderList ].
+     *
      * @param mapping ActionMapping
      * @param form ActionForm
      * @param request HttpServletRequest
@@ -53,12 +54,12 @@ public class ProviderList extends BaseAction {
         HttpSession se = request.getSession();
         String page = request.getParameter("page");
         int pageIndex = 1;
-        if(page != null){
-         pageIndex = Integer.parseInt(page);
+        if (page != null) {
+            pageIndex = Integer.parseInt(page);
         }
         List<ProviderForm> displayList = ProviderBLO.getProviderFormAll();
-        List<String> pageList = (List<String>)se.getAttribute("pageList");
-        if(pageList == null){
+        List<String> pageList = (List<String>) se.getAttribute("pageList");
+        if (pageList == null) {
             pageList = SearchBLO.paging(displayList.size());
             se.setAttribute("pageList", pageList);
         }

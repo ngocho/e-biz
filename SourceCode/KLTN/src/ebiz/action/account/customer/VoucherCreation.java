@@ -68,8 +68,8 @@ public class VoucherCreation extends BaseAction {
             // checkout
             boolean flag = CustomerBLO.checkoutXuOnline(voucherForm.getIdCustomer(), voucherBill.getSumMoney());
             if (flag) {
-            	//send mail
-            	SendMail.sendVoucherlMail(voucherBill.getId());
+                // send mail
+                SendMail.sendVoucherlMail(voucherBill.getId());
                 // decrease product = number of voucher
                 FoodBLO.downNumberOfFood(voucherBill.getIdFood(), voucherBill.getNumber());
                 // send mail

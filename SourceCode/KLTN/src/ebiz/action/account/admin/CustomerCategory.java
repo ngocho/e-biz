@@ -70,7 +70,6 @@ public class CustomerCategory extends BaseAction {
         if (formList == null || formList.isEmpty()) {
             formList = AdminBLO.getCustomerList();
         }
-        System.out.println("customer list " + formList.size());
         pageList = SearchBLO.paging(formList.size());
         formList = (List<LoginForm>) SearchBLO.getPage(formList, pageIndex);
         // // update status of OrderBill

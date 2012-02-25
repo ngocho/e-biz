@@ -74,7 +74,6 @@ public class Login extends BaseAction {
                     return mapping.findForward(SUCCESS1);
                 } else if (screen.equals("voucher_optional")) {
                     OrderBillForm voucherForm = (OrderBillForm) se.getAttribute("voucherForm");
-                    System.out.println("Voucher Form" + voucherForm.getSumPrice());
                     CustomerBLO.getLoginVoucher(login);
                     voucherForm.editFormLogin(login);
                     ActionForward forward = mapping.getInputForward();

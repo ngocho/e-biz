@@ -40,6 +40,7 @@ import mobile.ebiz.dto.hashCode;
 public class Register extends BaseAction {
     /**
      * [Register ].
+     * 
      * @param mapping ActionMapping
      * @param form ActionForm
      * @param request HttpServletRequest
@@ -50,32 +51,32 @@ public class Register extends BaseAction {
      */
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
-    	String url = request.getParameter("urlImageKeyP");
-    	if(url != null){
-        // after checked validation using xml file
-        ProviderForm user = (ProviderForm) form;
-        user.setUrlAvatar(url);
-        Provider register = user.getProvider();
-        //set status Active
-        register.setActive(false);
-        boolean flag = ProviderBLO.registerProvider(register);
-        if (flag) {
-            String code = hashCode.hashID(CommonConstant.HASHCODENUMBERROVIDER);
-            register.setActiveCode(code);
-            HttpSession se = request.getSession();
-            // save value in session
-            se.setAttribute("providerForm", user);
-            // send mail --> use task queue
-            SendMail.authenProvider(user.getLoginId());
-            // save in session to transfer to login
-            se.setAttribute("providerFormLogin", user);
-            return mapping.findForward(SUCCESS);
+        String url = request.getParameter("urlImageKeyP");
+        if (url != null) {
+            // after checked validation using xml file
+            ProviderForm user = (ProviderForm) form;
+            user.setUrlAvatar(url);
+            Provider register = user.getProvider();
+            // set status Active
+            register.setActive(false);
+            boolean flag = ProviderBLO.registerProvider(register);
+            if (flag) {
+                String code = hashCode.hashID(CommonConstant.HASHCODENUMBERROVIDER);
+                register.setActiveCode(code);
+                HttpSession se = request.getSession();
+                // save value in session
+                se.setAttribute("providerForm", user);
+                // send mail --> use task queue
+                SendMail.authenProvider(user.getLoginId());
+                // save in session to transfer to login
+                se.setAttribute("providerFormLogin", user);
+                return mapping.findForward(SUCCESS);
+            }
+            // account is exsist
+            ActionMessages messages = new ActionMessages();
+            messages.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage("errors.duplicated"));
+            saveMessages(request, messages); // storing messages as request attributes
         }
-        // account is exsist
-        ActionMessages messages = new ActionMessages();
-        messages.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage("errors.duplicated"));
-        saveMessages(request, messages); // storing messages as request attributes
-    	}
         return mapping.findForward(FAILURE);
     }
 
