@@ -30,16 +30,31 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
+import ebiz.util.CommonConstant;
+
 /**
- * @author Administrator
+ * @author ThuyNT
+ *
  */
 public class GenerationCodeXu extends Action {
+    /**  . */
     private static final Logger log = Logger.getLogger(GenerationCodeXu.class.getName());
+    /**
+     * [AuthenticationProvider].
+     *
+     * @param mapping ActionMapping
+     * @param form ActionForm
+     * @param request HttpServletRequest
+     * @param response HttpServletResponse
+     * @return ActionForward
+     * @throws Exception Exception
+     * @see ActionForward Struts1 Framework
+     */
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
         // test number of Codexu available
         int count = IDXUBLO.countXuAvailabel();
-        if (count < 500) {
+        if (count < CommonConstant.LIMIT_NUMBER_XU) {
             log.info(" Start Generation Xu");
             IDXUBLO.CreateListXu();
             log.info("Generation Xu Successfully");

@@ -34,6 +34,7 @@ import org.apache.struts.action.ActionMapping;
 public class Language extends BaseAction {
     /**
      * [Home action].
+     *
      * @param mapping ActionMapping
      * @param form ActionForm
      * @param request HttpServletRequest
@@ -43,17 +44,13 @@ public class Language extends BaseAction {
      * @see ActionForward Struts1 Framework
      */
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
-        HttpServletResponse response) throws Exception {
-        String language  = request.getParameter("lang");
-        System.out.println("language" + language);
+            HttpServletResponse response) throws Exception {
+        String language = request.getParameter("lang");
         Locale locale = new Locale(language);
-        System.out.println("locale" + locale);
         HttpSession session = request.getSession();
         session.setAttribute("language", language);
         session.setAttribute("org.apache.struts.action.LOCALE", locale);
         return mapping.findForward(SUCCESS);
     }
-
-
 
 }

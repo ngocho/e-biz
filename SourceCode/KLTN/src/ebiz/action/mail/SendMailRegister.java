@@ -34,33 +34,47 @@ import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.util.logging.Logger;
+/**
+ * @author ThuyNT
+ *
+ */
 public class SendMailRegister extends Action {
-	private static final Logger log = Logger.getLogger(SendMailRegister.class.getName());
-	//send mail thong bao dang ki thanh cong
+    /**  . */
+    private static final Logger log = Logger.getLogger(SendMailRegister.class.getName());
+    /**
+     * [SendMailRegister].
+     *
+     * @param mapping ActionMapping
+     * @param form ActionForm
+     * @param request HttpServletRequest
+     * @param response HttpServletResponse
+     * @return ActionForward
+     * @throws Exception Exception
+     * @see ActionForward Struts1 Framework
+     */
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
-    String msgBody;
-//    String flag=request.getParameter("flag");
-    String email=request.getParameter("email");
-    Properties props = new Properties();
-    Session session = Session.getDefaultInstance(props, null);
-    msgBody ="Chúc mừng bạn đã đăng kí thành công!";
-    log.info("Send Mail Register Success");
-    try {
-        MimeMessage msg = new MimeMessage(session);
-        msg.setFrom(new InternetAddress("uit.mmt@gmail.com", "Food E-commerce.com"));
+        String msgBody;
+        // String flag=request.getParameter("flag");
+        String email = request.getParameter("email");
+        Properties props = new Properties();
+        Session session = Session.getDefaultInstance(props, null);
+        msgBody = "Chúc mừng bạn đã đăng kí thành công!";
+        log.info("Send Mail Register Success");
+        try {
+            MimeMessage msg = new MimeMessage(session);
+            msg.setFrom(new InternetAddress("uit.mmt@gmail.com", "Food E-commerce.com"));
             msg.addRecipient(Message.RecipientType.TO, new InternetAddress(email, "User"));
-        msg.setSubject("Đăng kí thành viên thành công","UTF-8");
-        msg.setText(msgBody);
-        Transport.send(msg);
-        
+            msg.setSubject("Đăng kí thành viên thành công", "UTF-8");
+            msg.setText(msgBody);
+            Transport.send(msg);
 
-    } catch (AddressException e) {
-        // ...
-    } catch (MessagingException e) {
-        // ...
-    }
-    return null;
+        } catch (AddressException e) {
+            log.info(e.getLocalizedMessage());
+        } catch (MessagingException e) {
+            log.info(e.getLocalizedMessage());
+        }
+        return null;
 
     }
 }
