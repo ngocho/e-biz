@@ -13,8 +13,8 @@
     <div class="col-2 registered-users" class="login">
         <div class="content">
             
-            <h2>LỰA CHỌN HÌNH THỨC THANH TOÁN</h2>
-            Số tiền Thanh toán là : <bean:write name="bill" property="sumPrice"/>  VNĐ
+            <h2><bean:message key="checkout.optional.title" /></h2>
+            <bean:message key="checkout.money" /> : <bean:write name="bill" property="sumPrice"/>  VNĐ
               <form action="/checkoutMoney.vn" method="get" >
             <ul style="margin-top:20px;margin-left: 20px;" >
               
@@ -31,12 +31,12 @@
 
                     <li >
                         <div class="input-box">
-                       <button type="button" title="Thanh toán"  class="button"  onclick="setLocation('/checkoutMoney.vn?checkoutOption=home')"><span>Thanh toán bằng tiền mặt tại nhà</span></button>
+                       <button type="button" title="Thanh toán"  class="button"  onclick="setLocation('/checkoutMoney.vn?checkoutOption=home')"><span><bean:message key="checkout.optional.home" /></span></button>
                         </div>
                     </li>
                     <li style="margin-top:10px;">
                         <div class="input-box">
-                         <button type="button" title="Thanh toán"  class="button"  onclick="setLocation('/checkoutMoney.vn?checkoutOption=xu')"><span>Thanh toán với tài khoản Xu</span></button>
+                         <button type="button" title="Thanh toán"  class="button"  onclick="setLocation('/checkoutMoney.vn?checkoutOption=xu')"><span><bean:message key="checkout.optional.xu" /></span></button>
                         </div>
                     </li>
                     <li style="margin-top:10px;">

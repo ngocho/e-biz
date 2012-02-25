@@ -46,26 +46,25 @@ $(document).ready(function(){
           <b> Hãy đăng kí trước khi thanh toán đơn hàng</b>
         </c:if>
       </logic:present>
-      <h2>ĐĂNG NHẬP</h2>
+      <h2><bean:message key="home.right.login.title" /></h2>
       <!--p>If you have an account with us, please log in.</p-->
       <ul class="form-list">
         <html:form action="/loginAction.vn" method="get" styleId="loginForm">
-          <li><label for="email" class="required" id="typeLogin"><em>*</em>Tên
-              đăng nhâp</label>
+          <li><label for="email" class="required" id="typeLogin"><em>*</em><bean:message key="home.right.login.name" /></label>
             <div class="input-box">
               <html:text property="loginId" styleId="id" />
             </div>
           </li>
-          <li><label for="pass" class="required"><em>*</em>Password</label>
+          <li><label for="pass" class="required"><em>*</em><bean:message key="home.right.login.password" /></label>
             <div class="input-box">
               <html:password property="loginPassword" styleId="pass"/>
             </div>
           </li>
           <li>
             <div class="input-box">
-              <input type="submit" class="buttonBG" name="login" id="login" title="Password" value="Đăng nhập">
+              <input type="submit" class="buttonBG" name="login" id="login" title="Password" value="<bean:message key="home.right.login.button" />">
                <input type="button"  class="buttonBG" name="reset"
-                id="reset" title="Password" value="Xóa hết"  >
+                id="reset" title="Password" value="<bean:message key="customer.register.button1" />"  >
             </div>
           </li>
           <li>
