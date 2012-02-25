@@ -1,22 +1,43 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
   pageEncoding="UTF-8"%>
-<%@taglib uri="http://java.sun.com/jstl/core" prefix="c"%>
-<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
-<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
-<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@taglib uri="/WEB-INF/c.tld" prefix="c"%>
+<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 <div class="header">
   <div class="header-row1" >
     <ul class="super-links" style="" id="customer_super_links">
-      <li><span style="color:black;">Lựa chọn ngôn ngữ </span>
-<select>
-<option>
-Tiếng Việt
+      <li><span style='color:black;'><bean:message key="home.header.language" /></span>
+<c:if test="${language =='vi'}">
+<select name="language" onchange="setLocation(this.value)">
+<option value="/changeLanguage.vn?lang=vi">
+<bean:message key="home.header.option1" />
 </option>
-<option >
-Tiếng Anh
+<option value="/changeLanguage.vn?lang=en" >
+<bean:message key="home.header.option2" />
 </option>
 </select>
-
+</c:if>
+<c:if test="${language =='en'}">
+<select name="language" onchange="setLocation(this.value)">
+<option value="/changeLanguage.vn?lang=en" selected="selected">
+<bean:message key="home.header.option2" />
+</option>
+<option value="/changeLanguage.vn?lang=vi" >
+<bean:message key="home.header.option1" />
+</option>
+</select>
+</c:if>
+<c:if test="${language == null}">
+<select name="language" onchange="setLocation(this.value)">
+<option value="/changeLanguage.vn?lang=vi" selected="selected">
+<bean:message key="home.header.option1" />
+</option>
+<option value="/changeLanguage.vn?lang=en" >
+<bean:message key="home.header.option2" />
+</option>
+</select>
+</c:if>
 </li>
 </ul>
  </div>
@@ -28,19 +49,19 @@ Tiếng Anh
         <a
           href="home.vn"
           class="level-top">
-<img src="Images/Commons/icon-trang-chu.png" width="20" height="20" style="margin-left:-70px;" /><span style="margin-left:10px;margin-top:-10px;" class="nav-text"> Trang chủ</span>
+<img src="Images/Commons/icon-trang-chu.png" width="20" height="20" style="margin-left:-70px;" /><span style="margin-left:10px;margin-top:-10px;" class="nav-text"> <bean:message key="home.name" /></span>
         </a>
 <a
           href="category.vn?typeProduct=1"
           class="level-top">
 
-<span class="nav-text">Thực phẩm sơ chế</span>
+<span class="nav-text"><bean:message key="home.nav.menu1" /></span>
         </a>
         <a
           href="category.vn?typeProduct=2"
           class="level-top">
 
-<span class="nav-text">Thức ăn nấu sẵn</span>
+<span class="nav-text"><bean:message key="home.nav.menu2" /></span>
         </a>
 </li>
   <li class="level0 nav-4 level-top first parent">
@@ -48,7 +69,7 @@ Tiếng Anh
           href="category.vn?typeProduct=3"
           class="level-top">
 
-<span class="nav-text">Rau xanh</span>
+<span class="nav-text"><bean:message key="home.nav.menu3" /></span>
         </a>
         </li>
           <li class="level0 nav-4 level-top first parent">
@@ -56,14 +77,14 @@ Tiếng Anh
           href="category.vn?typeProduct=4"
           class="level-top">
 
-<span class="nav-text">Trái cây</span>
+<span class="nav-text"><bean:message key="home.nav.menu4" /></span>
         </a>
 
  <li class="level0 nav-2 level-top parent">
 <a
           href="provider.vn"
           class="level-top">
-<span class="nav-text">Cửa hàng</span>
+<span class="nav-text"><bean:message key="home.nav.menu5" /></span>
         </a>
 
 </li> 
@@ -71,7 +92,7 @@ Tiếng Anh
     <li class="level0 nav-2 level-top parent">
 <a         href="customer.vn"
             class="level-top">
-<span class="nav-text">Tài khoản</span>
+<span class="nav-text"><bean:message key="home.nav.menu6" /></span>
         </a>
 </li>
 </c:if>

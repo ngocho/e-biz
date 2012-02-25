@@ -5,7 +5,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Shopping Cart - Magento Commerce Demo Store</title>
+<title>Shopping Cart - Efood</title>
 <meta name="description" content="Default Description">
 <meta name="keywords" content="Magento, Varien, E-commerce">
 <meta name="robots" content="INDEX,FOLLOW">

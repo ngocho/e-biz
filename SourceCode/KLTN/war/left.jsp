@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
   pageEncoding="UTF-8"%>
 <div class="col-left ">
-  <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
-  <%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic"%>
-  <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
-  <%@taglib uri="http://java.sun.com/jstl/core" prefix="c"%>
+<%@taglib uri="/WEB-INF/c.tld" prefix="c"%>
+<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
   <script type="text/javascript">
             $(document).ready(function() {
                 //initialize google map api
@@ -39,48 +39,48 @@
         </script>
   <div class="block block-cart">
     <div class="block-title">
-      <strong><span class="whiteImPression">TÌM KIẾM</span> </strong>
+      <strong><span class="whiteImPression"><bean:message key="home.search" /></span> </strong>
     </div>
     <div class="block-content">
       <html:form action="/search.vn" method="GET">
         <ul>
-          <li>Nhập vào:<br>
+          <li><bean:message key="home.search.text" /><br>
           <html:text property="searchText" size="32" /></li>
-          <li>Loại thực phẩm :<br> <html:select
+          <li><bean:message key="home.search.optional1" />:<br> <html:select
               property="type" style="width: 190px;">
-              <html:option value="0">Tất cả</html:option>
-              <html:option value="1">Thực phẩm sơ chế</html:option>
-              <html:option value="2">Thức ăn nấu sẵn</html:option>
-              <html:option value="3">Rau xanh</html:option>
-              <html:option value="4">Gia vị</html:option>
+              <html:option value="0"><bean:message key="home.search.value1" /></html:option>
+              <html:option value="1"><bean:message key="home.nav.menu1" /></html:option>
+              <html:option value="2"><bean:message key="home.nav.menu2" /></html:option>
+              <html:option value="3"><bean:message key="home.nav.menu3" /></html:option>
+              <html:option value="4"><bean:message key="home.nav.menu4" /></html:option>
             </html:select></li>
-          <li>Kiểu thực phẩm:<br> <html:select property="attr"
+          <li><bean:message key="home.search.optional2" />:<br> <html:select property="attr"
               style="width: 190px;">
-              <html:option value="0">Tất cả</html:option>
-              <html:option value="1">Kho</html:option>
-              <html:option value="2">Canh, luộc</html:option>
-              <html:option value="3">Xào</html:option>
-              <html:option value="4">Lẩu</html:option>
-              <html:option value="5">Khác</html:option>
+              <html:option value="0"><bean:message key="home.search.value1" /></html:option>
+              <html:option value="1"><bean:message key="home.search.optional2.1" /></html:option>
+              <html:option value="2"><bean:message key="home.search.optional2.2" /></html:option>
+              <html:option value="3"><bean:message key="home.search.optional2.3" /></html:option>
+              <html:option value="4"><bean:message key="home.search.optional2.4" /></html:option>
+              <html:option value="5"><bean:message key="home.search.optional2.5" /></html:option>
             </html:select></li>
-          <li>Giá tiền: <br> <html:select property="price"
+          <li><bean:message key="home.search.optional3" />: <br> <html:select property="price"
               style="width: 190px;">
-              <html:option value="0">Tất cả</html:option>
+              <html:option value="0"><bean:message key="home.search.value1" /></html:option>
               <html:option value="1">Dưới 30.000</html:option>
               <html:option value="2">30.000 - 100.000</html:option>
               <html:option value="3">100.000 - 200.000</html:option>
               <html:option value="4">Trên 200.000</html:option>
             </html:select></li>
-          <li>Thực phẩm:<br> <html:select property="status"
+          <li><bean:message key="home.search.optional4" />:<br> <html:select property="status"
               style="width: 190px;">
               <html:option value="1">Khuyến mãi</html:option>
               <html:option value="2">Bình thường</html:option>
-              <html:option value="0">Tất cả</html:option>
+              <html:option value="0"><bean:message key="home.search.value1" /></html:option>
             </html:select></li>
           <logic:present name="providerSearchParam">
-            <li>Cửa hàng:<br> <html:select property="provider"
+            <li><bean:message key="home.search.optional5" />:<br> <html:select property="provider"
                 style="width: 190px;">
-                <html:option value="0">Tất cả</html:option>
+                <html:option value="0"><bean:message key="home.search.value1" /></html:option>
                 <logic:iterate id="element" name="providerSearchParam">
                   <html:option value="${element.loginId}">
                     <bean:write name="element" property="loginName" />
@@ -88,12 +88,9 @@
                 </logic:iterate>
               </html:select></li>
           </logic:present>
-          <li>Địa điểm:<br> <html:select
+          <li><bean:message key="home.search.optional6" />:<br> <html:select
               property="districtNameS" style="width: 190px;">
-              <c:if test="${user !=null}">
-                <html:option value="-1">Gần nhất</html:option>
-              </c:if>
-              <html:option value="0">- - - - - - - Chọn quận- - - - - - - </html:option>
+              <html:option value="0">- - - - - - - <bean:message key="home.search.value2" />- - - - - - - </html:option>
               <html:option value="1">1</html:option>
               <html:option value="2">2</html:option>
               <html:option value="3">3</html:option>
@@ -117,7 +114,7 @@
               <html:option value="Tân Phú">Tân Phú</html:option>
               <html:option value="Thủ Đức">Thủ Đức</html:option>
             </html:select></li>
-          <li><input type="submit" value="Tìm kiếm"
+          <li><input type="submit" value="<bean:message key="home.search.button" />"
             class="buttonBG" size="30px" />
           </li>
         </ul>
@@ -125,7 +122,7 @@
     </div>
   </div>
   <p class="home-callout">
-  <div id="map_canvas" style="width: 200px; height: 300px"></div>
+ <a href="/getAddProviderList.vn"><div id="map_canvas" style="width: 200px; height: 300px"></div></a>
   <p class="home-callout">
     <a href=""><img src="Images/Commons/giaohang.png" width="195"
       height="200" border="0">

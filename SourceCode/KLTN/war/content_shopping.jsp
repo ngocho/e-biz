@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
-<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
-<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@taglib uri="/WEB-INF/c.tld" prefix="c"%>
+<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 <script type="text/javascript">
 $(document).ready(function(){
     $(".updateShopping").click(function() {
@@ -60,7 +61,7 @@ $(document).ready(function(){
                         <input type="hidden" name="type" value="0"/>
                                                      <button type="button" title="Continue Shopping" class="button btn-continue" onclick="setLocation('/home.vn')"><span><span>Tiếp tục mua hàng</span></span></button>
                                                      <button type="button"  id="updateSC"  title="Update Shopping Cart" class="button btn-update" onclick="setLocation('/deleteShopping.vn')"><span><span>Tạo giỏ hàng mới</span></span></button>
-                                                     <button type="submit" title="Check Out Shopping Cart"  id ="checkout" class="button btn-update"><span><span>Thanh toán</span></span></button>
+                                                     <button type="submit" title="Check Out Shopping Cart"  id ="checkout" class="button btn-update"><span><span>Đặt hàng</span></span></button>
                         </td>
                     </tr>
                 </tfoot>
@@ -92,8 +93,11 @@ $(document).ready(function(){
                                                 <span class="price" id='Sub<%=index%>'><bean:write name="element" property="subTotal"/></span>                            
         </span>
             </td>
-            <td ><a rel="<%=index%>" class="updateShopping"  name="<bean:write name="element" property="id"/>" href="" title="Remove item"  class="a-center"><span><span>Sửa</span></span></a></td>
-            <td class="a-center last"><a href="deleteShoppingFood.vn?id=<bean:write name="element" property="id"/>" title="Remove item"  class="a-center"><span><span>Xóa</span></span></a></td>
+            <td ><a rel="<%=index%>" class="updateShopping"  name="<bean:write name="element" property="id"/>" href="" title="Sửa "  class="a-center">
+            <span><img src="Images/Commons/update-icon.gif"
+                width="20"></a></td>
+            <td class="a-center last"><a href="deleteShoppingFood.vn?id=<bean:write name="element" property="id"/>" title="Remove item"  class="a-center"><span><img src="Images/Commons/DeleteRed.png"
+                width="20"></span></a></td>
 </tr>
 </logic:iterate>
 </logic:present>
