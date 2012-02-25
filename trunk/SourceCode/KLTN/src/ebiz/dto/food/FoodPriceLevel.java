@@ -35,17 +35,18 @@ import javax.jdo.annotations.PrimaryKey;
  */
 @PersistenceCapable
 public class FoodPriceLevel implements Serializable {
-	/** . */
+    /** . */
     private static final long serialVersionUID = 1L;
     @PrimaryKey
     @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
-    private String  foodPriceLevelId;
+    private String foodPriceLevelId;
     @Persistent
     private long startPrice;
     @Persistent
     private long endPrice;
     /**
      * Get value of foodPriceLevelId.
+     * 
      * @return the foodPriceLevelId
      */
     public String getFoodPriceLevelId() {
@@ -53,6 +54,7 @@ public class FoodPriceLevel implements Serializable {
     }
     /**
      * Set the value for foodPriceLevelId.
+     * 
      * @param foodPriceLevelId the foodPriceLevelId to set
      */
     public void setFoodPriceLevelId(String foodPriceLevelId) {
@@ -60,6 +62,7 @@ public class FoodPriceLevel implements Serializable {
     }
     /**
      * Get value of startPrice.
+     * 
      * @return the startPrice
      */
     public long getStartPrice() {
@@ -67,6 +70,7 @@ public class FoodPriceLevel implements Serializable {
     }
     /**
      * Set the value for startPrice.
+     * 
      * @param startPrice the startPrice to set
      */
     public void setStartPrice(long startPrice) {
@@ -74,6 +78,7 @@ public class FoodPriceLevel implements Serializable {
     }
     /**
      * Get value of endPrice.
+     * 
      * @return the endPrice
      */
     public long getEndPrice() {
@@ -81,12 +86,11 @@ public class FoodPriceLevel implements Serializable {
     }
     /**
      * Set the value for endPrice.
+     * 
      * @param endPrice the endPrice to set
      */
     public void setEndPrice(long endPrice) {
         this.endPrice = endPrice;
     }
-    
-    
 
 }

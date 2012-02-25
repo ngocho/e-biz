@@ -27,61 +27,60 @@ import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
 /**
- * @author ThuyNT
- * Food
+ * @author ThuyNT Food
  */
 
 @PersistenceCapable
 public class Food implements Serializable {
-	/** . */
+    /** . */
     private static final long serialVersionUID = 1L;
-    /** . foodId*/
+    /** . foodId */
     @PrimaryKey
     @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
     private Long foodId;
-    /** . foodName*/
+    /** . foodName */
     @Persistent
     private String foodName;
-    /** . foodPriceLevelId*/
+    /** . foodPriceLevelId */
     @Persistent
     private String foodPriceLevelId;
-    /** . productAttributeId*/
+    /** . productAttributeId */
     @Persistent
     private String productAttributeId;
-    /** . foodStatusId*/
+    /** . foodStatusId */
     @Persistent
     private String foodStatusId;
-    /** . foodTypeId*/
+    /** . foodTypeId */
     @Persistent
     private String foodTypeId;
-    /** . startDate*/
+    /** . startDate */
     @Persistent
     private Date startDate;
-    /** . expDate*/
+    /** . expDate */
     @Persistent
     private Date expDate;
-    /** . number*/
+    /** . number */
     @Persistent
     private int number;
-    /** . numberOrder*/
+    /** . numberOrder */
     @Persistent
     private int numberOrder;
-    /** . detail*/
+    /** . detail */
     @Persistent
     private String detail;
-    /** . cooking*/
+    /** . cooking */
     @Persistent
     private String cooking;
-    /** . calo*/
+    /** . calo */
     @Persistent
     private String calo;
-    /** . price*/
+    /** . price */
     @Persistent
     private long price;
-    /** . pricePromotion*/
+    /** . pricePromotion */
     @Persistent
     private long pricePromotion;
-    /** . providerID*/
+    /** . providerID */
     @Persistent
     private String providerID;
     /** . urlImage */
@@ -90,7 +89,7 @@ public class Food implements Serializable {
     /** . saleProduct */
     @Persistent
     private int saleProduct;
-    /** . uploadDate*/
+    /** . uploadDate */
     @Persistent
     private Date uploadDate;
     /** . approved product */
@@ -98,6 +97,7 @@ public class Food implements Serializable {
     private int isDisplay; // =1
     /**
      * Get value of foodId.
+     * 
      * @return the foodId
      */
     public Long getFoodId() {
@@ -105,6 +105,7 @@ public class Food implements Serializable {
     }
     /**
      * Set the value for foodId.
+     * 
      * @param foodId the foodId to set
      */
     public void setFoodId(Long foodId) {
@@ -112,6 +113,7 @@ public class Food implements Serializable {
     }
     /**
      * Get value of foodName.
+     * 
      * @return the foodName
      */
     public String getFoodName() {
@@ -119,6 +121,7 @@ public class Food implements Serializable {
     }
     /**
      * Set the value for foodName.
+     * 
      * @param foodName the foodName to set
      */
     public void setFoodName(String foodName) {
@@ -126,6 +129,7 @@ public class Food implements Serializable {
     }
     /**
      * Get value of foodPriceLevelId.
+     * 
      * @return the foodPriceLevelId
      */
     public String getFoodPriceLevelId() {
@@ -133,6 +137,7 @@ public class Food implements Serializable {
     }
     /**
      * Set the value for foodPriceLevelId.
+     * 
      * @param foodPriceLevelId the foodPriceLevelId to set
      */
     public void setFoodPriceLevelId(String foodPriceLevelId) {
@@ -140,6 +145,7 @@ public class Food implements Serializable {
     }
     /**
      * Get value of productAttributeId.
+     * 
      * @return the productAttributeId
      */
     public String getProductAttributeId() {
@@ -147,6 +153,7 @@ public class Food implements Serializable {
     }
     /**
      * Set the value for productAttributeId.
+     * 
      * @param productAttributeId the productAttributeId to set
      */
     public void setProductAttributeId(String productAttributeId) {
@@ -154,6 +161,7 @@ public class Food implements Serializable {
     }
     /**
      * Get value of foodStatusId.
+     * 
      * @return the foodStatusId
      */
     public String getFoodStatusId() {
@@ -161,6 +169,7 @@ public class Food implements Serializable {
     }
     /**
      * Set the value for foodStatusId.
+     * 
      * @param foodStatusId the foodStatusId to set
      */
     public void setFoodStatusId(String foodStatusId) {
@@ -168,6 +177,7 @@ public class Food implements Serializable {
     }
     /**
      * Get value of productTypeId.
+     * 
      * @return the productTypeId
      */
     public String getFoodTypeId() {
@@ -175,6 +185,7 @@ public class Food implements Serializable {
     }
     /**
      * Set the value for productTypeId.
+     * 
      * @param foodTypeId the foodTypeId to set
      */
     public void setFoodTypeId(String foodTypeId) {
@@ -182,7 +193,7 @@ public class Food implements Serializable {
     }
     /**
      * Get value of startDate.
-     *
+     * 
      * @return the startDate
      */
     public Date getStartDate() {
@@ -190,7 +201,7 @@ public class Food implements Serializable {
     }
     /**
      * Set the value for startDate.
-     *
+     * 
      * @param startDate the startDate to set
      */
     public void setStartDate(Date startDate) {
@@ -198,7 +209,7 @@ public class Food implements Serializable {
     }
     /**
      * Get value of expDate.
-     *
+     * 
      * @return the expDate
      */
     public Date getExpDate() {
@@ -206,7 +217,7 @@ public class Food implements Serializable {
     }
     /**
      * Set the value for expDate.
-     *
+     * 
      * @param expDate the expDate to set
      */
     public void setExpDate(Date expDate) {
@@ -214,7 +225,7 @@ public class Food implements Serializable {
     }
     /**
      * Get value of number.
-     *
+     * 
      * @return the number
      */
     public int getNumber() {
@@ -222,7 +233,7 @@ public class Food implements Serializable {
     }
     /**
      * Set the value for number.
-     *
+     * 
      * @param number the number to set
      */
     public void setNumber(int number) {
@@ -230,7 +241,7 @@ public class Food implements Serializable {
     }
     /**
      * Get value of detail.
-     *
+     * 
      * @return the detail
      */
     public String getDetail() {
@@ -238,7 +249,7 @@ public class Food implements Serializable {
     }
     /**
      * Set the value for detail.
-     *
+     * 
      * @param detail the detail to set
      */
     public void setDetail(String detail) {
@@ -246,7 +257,7 @@ public class Food implements Serializable {
     }
     /**
      * Get value of calo.
-     *
+     * 
      * @return the calo
      */
     public String getCalo() {
@@ -254,7 +265,7 @@ public class Food implements Serializable {
     }
     /**
      * Set the value for calo.
-     *
+     * 
      * @param calo the calo to set
      */
     public void setCalo(String calo) {
@@ -262,7 +273,7 @@ public class Food implements Serializable {
     }
     /**
      * Get value of price.
-     *
+     * 
      * @return the price
      */
     public long getPrice() {
@@ -270,7 +281,7 @@ public class Food implements Serializable {
     }
     /**
      * Set the value for price.
-     *
+     * 
      * @param price the price to set
      */
     public void setPrice(long price) {
@@ -278,7 +289,7 @@ public class Food implements Serializable {
     }
     /**
      * Get value of providerID.
-     *
+     * 
      * @return the providerID
      */
     public String getProviderID() {
@@ -286,7 +297,7 @@ public class Food implements Serializable {
     }
     /**
      * Set the value for providerID.
-     *
+     * 
      * @param providerID the providerID to set
      */
     public void setProviderID(String providerID) {
@@ -294,7 +305,7 @@ public class Food implements Serializable {
     }
     /**
      * Get value of cooking.
-     *
+     * 
      * @return the cooking
      */
     public String getCooking() {
@@ -302,7 +313,7 @@ public class Food implements Serializable {
     }
     /**
      * Set the value for cooking.
-     *
+     * 
      * @param cooking the cooking to set
      */
     public void setCooking(String cooking) {
@@ -310,7 +321,7 @@ public class Food implements Serializable {
     }
     /**
      * Get value of numberOrder.
-     *
+     * 
      * @return the numberOrder
      */
     public int getNumberOrder() {
@@ -318,7 +329,7 @@ public class Food implements Serializable {
     }
     /**
      * Set the value for numberOrder.
-     *
+     * 
      * @param numberOrder the numberOrder to set
      */
     public void setNumberOrder(int numberOrder) {
@@ -326,7 +337,7 @@ public class Food implements Serializable {
     }
     /**
      * Get value of pricePromotion.
-     *
+     * 
      * @return the pricePromotion
      */
     public long getPricePromotion() {
@@ -334,7 +345,7 @@ public class Food implements Serializable {
     }
     /**
      * Set the value for pricePromotion.
-     *
+     * 
      * @param pricePromotion the pricePromotion to set
      */
     public void setPricePromotion(long pricePromotion) {
@@ -342,7 +353,7 @@ public class Food implements Serializable {
     }
     /**
      * Get value of uploadDate.
-     *
+     * 
      * @return the uploadDate
      */
     public Date getUploadDate() {
@@ -350,7 +361,7 @@ public class Food implements Serializable {
     }
     /**
      * Set the value for uploadDate.
-     *
+     * 
      * @param uploadDate the uploadDate to set
      */
     public void setUploadDate(Date uploadDate) {
@@ -358,7 +369,7 @@ public class Food implements Serializable {
     }
     /**
      * Get value of isDisplay.
-     *
+     * 
      * @return the isDisplay
      */
     public int getIsDisplay() {
@@ -366,7 +377,7 @@ public class Food implements Serializable {
     }
     /**
      * Set the value for isDisplay.
-     *
+     * 
      * @param isDisplay the isDisplay to set
      */
     public void setIsDisplay(int isDisplay) {
@@ -374,7 +385,7 @@ public class Food implements Serializable {
     }
     /**
      * Get value of urlKey.
-     *
+     * 
      * @return the urlKey
      */
     public String getUrlKey() {
@@ -382,23 +393,23 @@ public class Food implements Serializable {
     }
     /**
      * Set the value for urlKey.
-     *
+     * 
      * @param urlKey the urlKey to set
      */
     public void setUrlKey(String urlKey) {
         this.urlKey = urlKey;
     }
-	/**
-	 * @return the saleProduct
-	 */
-	public int getSaleProduct() {
-		return saleProduct;
-	}
-	/**
-	 * @param saleProduct the saleProduct to set
-	 */
-	public void setSaleProduct(int saleProduct) {
-		this.saleProduct = saleProduct;
-	}
+    /**
+     * @return the saleProduct
+     */
+    public int getSaleProduct() {
+        return saleProduct;
+    }
+    /**
+     * @param saleProduct the saleProduct to set
+     */
+    public void setSaleProduct(int saleProduct) {
+        this.saleProduct = saleProduct;
+    }
 
 }
