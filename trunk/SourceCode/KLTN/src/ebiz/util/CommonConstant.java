@@ -68,12 +68,12 @@ public class CommonConstant {
     public final static String TYPE_2 = "2"; // cooked food
     public final static String TYPE_3 = "3"; // vegatable
     // BILL STATUS
-    public final static String BILLSTATUS_5 = "5";  //assign for employee
-    public final static String BILLSTATUS_0 = "0"; //create bill not payment
-    public final static String BILLSTATUS_1 = "1";  //not paid money(order) or reOrder (paid money in home)
-    public final static String BILLSTATUS_2 = "2";  //not rececive (paid money xu)
-    public final static String BILLSTATUS_3 = "3";  // paid money ngan luong
-    public final static String BILLSTATUS_4 ="4";  //rececive : finish
+    public final static String BILLSTATUS_5 = "5"; // assign for employee
+    public final static String BILLSTATUS_0 = "0"; // create bill not payment
+    public final static String BILLSTATUS_1 = "1"; // not paid money(order) or reOrder (paid money in home)
+    public final static String BILLSTATUS_2 = "2"; // not rececive (paid money xu)
+    public final static String BILLSTATUS_3 = "3"; // paid money ngan luong
+    public final static String BILLSTATUS_4 = "4"; // rececive : finish
     // public final static String BILLSTATUS_5 ="5"; //cancel
     // public final static String BILLSTATUS_6 ="6";
     // DISPLAY CATEGORY
@@ -84,6 +84,8 @@ public class CommonConstant {
     public final static String FOOD_CATEGORY_F = "Food";
     public final static String PAGING = "Paging";
     public final static Integer DEFAULT_RECORD = 8;
+    public final static Integer HOME_RECORD = 6;
+    public final static Integer LIMIT_NUMBER_XU = 500;
     public final static String DEFAULT_COL = "foodName";
     public final static Integer DEFAULT_PAGE = 1;
     public final static String DEFAULT_ORDER = "asc";
