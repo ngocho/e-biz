@@ -84,7 +84,7 @@ public class AccountAddXuActivity extends Activity implements OnDismissListener 
      * @return 0 - not correct product key; 1 - successful; -1 - username customer not exist
      */
     public String getResultXu(String username, String productkey) {
-        String json = mEngine.Query_URL("http://16.test-kltn1.appspot.com/getActiveXU.vn?flag=stp&content=" + username
+        String json = mEngine.mQueryURL("http://16.test-kltn1.appspot.com/getActiveXU.vn?flag=stp&content=" + username
                 + "@" + productkey);
         return ParseJSON_Xu(json);
     }
@@ -125,7 +125,7 @@ public class AccountAddXuActivity extends Activity implements OnDismissListener 
     public void onDismiss(DialogInterface dialog) {
         Toast.makeText(AccountAddXuActivity.this, Status, Toast.LENGTH_LONG).show();
         if (flag) {
-            mMoney.setText(mEngine.GetXu(mUsername.getText().toString(),
+            mMoney.setText(mEngine.mGetXu(mUsername.getText().toString(),
                     PrefUtil.GetStringPref(AccountAddXuActivity.this, "password")));
             mProductkey.setText("");
         }

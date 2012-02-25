@@ -1,9 +1,4 @@
-/**
- * 
- */
 package kltn.client.android_client.activity;
-
-import java.text.BreakIterator;
 
 import org.json.JSONObject;
 
@@ -29,6 +24,9 @@ import android.widget.TextView;
 
 /**
  * @author NThanhPhong
+ */
+/**
+ * @author wind
  */
 public class DetailFoodActivity extends Activity implements OnClickListener, OnDismissListener {
 
@@ -71,28 +69,43 @@ public class DetailFoodActivity extends Activity implements OnClickListener, OnD
         mIsWaiting = true;
         Thread t = new Thread() {
             public void run() {
-                mData = mEngine.GetFood(id_food);
+                mData = mEngine.mGetFood(id_food);
                 mCurrentDialog.dismiss();
             }
         };
         t.start();
     }
+    /** . */
     private String id_food;
-    private JSONObject mData;
+    /** . */
     private TextView subprice, price, promotionprice, name, countbuy;
+    /** . */
+    private JSONObject mData;
+    /** . */
     private Button back, ok, introduction, image, comment, provider;
+    /** . */
     private Dialog mCurrentDialog;
-    public boolean mIsWaiting;
+    /** . */
+    private boolean mIsWaiting;
+    /** . */
     private Engine mEngine;
+    /** . */
     private LinearLayout mTabView;
+    /** . */
     private static final int CONTENT_TAB = 101;
+    /** . */
     private static final int IMAGE_TAB = 102;
+    /** . */
     private static final int COMMENT_TAB = 103;
+    /** . */
     private static final int PROVIDER_TAB = 104;
+    /** . */
     private BaseTab mCurrentTab = null;
+    /** . */
     private int mCurrentTabId;
-    /*
-     * (non-Javadoc)
+    /**
+     * [Explain the description for this method here].
+     * @param dialog
      * @see android.content.DialogInterface.OnDismissListener#onDismiss(android.content.DialogInterface)
      */
     @Override
@@ -158,6 +171,10 @@ public class DetailFoodActivity extends Activity implements OnClickListener, OnD
         this.mTabView.addView(this.mCurrentTab.GetView());
         this.mTabView.setGravity(Gravity.TOP);
     }
+    /**
+     * [Give the description for method].
+     * @param tab int
+     */
     private void ForceChangeTab(int tab) {
         this.mCurrentTabId = -1;
         this.ChangeTab(tab);

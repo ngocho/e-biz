@@ -96,7 +96,7 @@ public class FavouriteActivity extends Activity implements OnClickListener {
             price.setPaintFlags(price.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
             promotionprice.setText("$" + mData.getString(mData.getColumnIndex("buyprice")));
             provider.setText(getString(R.string.provider) + " " + mData.getString(mData.getColumnIndex("provider")));
-            BitmapManager.INSTANCE.loadBitmap(mEngine.URL_Image + mData.getString(mData.getColumnIndex("imageurl")),
+            BitmapManager.INSTANCE.loadBitmap(mEngine.mURLImage + mData.getString(mData.getColumnIndex("imageurl")),
                     image, 90, 90);
             if (mflag) {
                 flag.setVisibility(0);

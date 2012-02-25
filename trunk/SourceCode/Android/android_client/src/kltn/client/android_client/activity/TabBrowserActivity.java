@@ -1,12 +1,8 @@
-/**
- * 
- */
 package kltn.client.android_client.activity;
 
 import java.util.Vector;
 
 import kltn.client.android_client.R;
-import kltn.client.android_client.activity.TabDealsActivity.DealsAdapter;
 import kltn.client.android_client.engine.BitmapManager;
 import kltn.client.android_client.engine.Engine;
 import kltn.client.android_client.engine.FavouriteEngine;
@@ -73,22 +69,32 @@ public class TabBrowserActivity extends Activity implements OnClickListener, Tex
         mFavoriteEngine = new FavouriteEngine(this);
     }
 
+    /**
+     * [LoadData].
+     */
     public void LoadData() {
         mCurrentDialog = ProgressDialog.show(TabBrowserActivity.this, null, getString(R.string.menu_waiting), true);
         mCurrentDialog.setOnDismissListener(TabBrowserActivity.this);
         mIsWaiting = true;
         Thread t = new Thread() {
             public void run() {
-                mListBrowser = mEngine.GetBrowserFood(TabBrowserActivity.this);
+                mListBrowser = mEngine.getBrowserFood(TabBrowserActivity.this);
                 mCurrentDialog.dismiss();
             }
         };
         t.start();
     }
 
+    /**
+     * @author NThanhPhong
+     */
     public class BrowserAdapter extends BaseAdapter {
+        /** . */
         Context context;
 
+        /**
+         * @param mycontext Context
+         */
         public BrowserAdapter(Context mycontext) {
             context = mycontext;
         }
@@ -110,8 +116,9 @@ public class TabBrowserActivity extends Activity implements OnClickListener, Tex
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            if (convertView == null)
+            if (convertView == null) {
                 convertView = getLayoutInflater().inflate(R.layout.item_browser, null);
+            }
             TextView name = (TextView) convertView.findViewById(R.id.item_browser_name);
             name.setText(mData[position]);
             final int pos = position;
@@ -121,8 +128,9 @@ public class TabBrowserActivity extends Activity implements OnClickListener, Tex
                 public void onClick(View v) {
                     mItemsData.clear();
                     for (int i = 0; i < mListBrowser.size(); i++) {
-                        if (mListBrowser.get(i).getType().equals(String.valueOf(pos + 1)))
+                        if (mListBrowser.get(i).getType().equals(String.valueOf(pos + 1))) {
                             mItemsData.add(mListBrowser.get(i));
+                        }
                     }
                     flag = true;
                     mBrowserItemAdapter = new BrowserItemAdapter();
@@ -134,8 +142,14 @@ public class TabBrowserActivity extends Activity implements OnClickListener, Tex
 
     };
 
+    /**
+     * @author NThanhPhong
+     */
     public class BrowserItemAdapter extends BaseAdapter {
 
+        /**
+         * 
+         */
         public BrowserItemAdapter() {
         }
 
@@ -156,10 +170,11 @@ public class TabBrowserActivity extends Activity implements OnClickListener, Tex
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            if (convertView == null)
+            if (convertView == null) {
                 convertView = getLayoutInflater().inflate(R.layout.item_browser_get, null);
+            }
             ImageView image = (ImageView) convertView.findViewById(R.id.item_browser_get_image);
-            BitmapManager.INSTANCE.loadBitmap(mEngine.URL_Image + mItemsData.get(position).getImageurl(), image, 500,
+            BitmapManager.INSTANCE.loadBitmap(mEngine.mURLImage + mItemsData.get(position).getImageurl(), image, 500,
                     500);
             TextView name = (TextView) convertView.findViewById(R.id.item_browser_get_name);
             TextView price = (TextView) convertView.findViewById(R.id.item_browser_get_buy);
@@ -190,23 +205,41 @@ public class TabBrowserActivity extends Activity implements OnClickListener, Tex
         }
     };
 
+    /** . */
     private Vector<Browser_food_item> mItemsData;
+    /** . */
     private BrowserItemAdapter mBrowserItemAdapter;
+    /** . */
     private boolean flag = false;
+    /** . */
     private ListView mList;
+    /** . */
     private Button mBack;
+    /** . */
     private LinearLayout mHome;
+    /** . */
     private LinearLayout mBest;
+    /** . */
     private LinearLayout mDeal;
+    /** . */
     private LinearLayout mBrowser;
+    /** . */
     private EditText mEdittext;
+    /** . */
     private Button mOk;
+    /** . */
     private String[] mData = {"Thực phẩm sơ chế", "Thức ăn nấu sẵn", "Rau xanh", "Trái cây", "Cửa hàng"};
+    /** . */
     private Dialog mCurrentDialog;
+    /** . */
     public boolean mIsWaiting;
+    /** . */
     private Vector<Browser_food_item> mListBrowser;
+    /** . */
     private Engine mEngine;
+    /** . */
     private Button mSave;
+    /** . */
     private FavouriteEngine mFavoriteEngine;
 
     /*

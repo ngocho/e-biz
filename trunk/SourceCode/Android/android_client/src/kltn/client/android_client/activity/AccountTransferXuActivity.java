@@ -87,7 +87,7 @@ public class AccountTransferXuActivity extends Activity implements OnDismissList
 
     public String getResultXu(String mOwner, String password, String mOwnerXu, String mUser) {
         String json = mEngine
-                .Query_URL("http://16.test-kltn1.appspot.com/getUserFuntion.vn?flag=XuSendCustomer&content=" + mOwner
+                .mQueryURL("http://16.test-kltn1.appspot.com/getUserFuntion.vn?flag=XuSendCustomer&content=" + mOwner
                         + "@" + password + "@" + mOwnerXu + "@" + mUser);
         return ParseJSON_Xu(json);
     }
@@ -126,7 +126,7 @@ public class AccountTransferXuActivity extends Activity implements OnDismissList
     public void onDismiss(DialogInterface dialog) {
         Toast.makeText(AccountTransferXuActivity.this, Status, Toast.LENGTH_LONG).show();
         if (flag = true) {
-            mOwnerXu.setText(mEngine.GetXu(mOwner.getText().toString(),
+            mOwnerXu.setText(mEngine.mGetXu(mOwner.getText().toString(),
                     PrefUtil.GetStringPref(AccountTransferXuActivity.this, "password")));
             mNumber.setText("");
             mUser.setText("");

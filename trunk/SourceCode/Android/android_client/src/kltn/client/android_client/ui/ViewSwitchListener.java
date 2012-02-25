@@ -2,6 +2,10 @@ package kltn.client.android_client.ui;
 
 import android.view.View;
 
+/**
+ * @author NThanhPhong
+ *
+ */
 public interface ViewSwitchListener {
 
     /**

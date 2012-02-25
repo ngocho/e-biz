@@ -94,7 +94,7 @@ public class AccountChangePassAtivity extends Activity implements OnClickListene
         mIsWaiting = true;
         Thread t = new Thread() {
             public void run() {
-                flag = mEngine.ChangePass(PrefUtil.GetStringPref(AccountChangePassAtivity.this, "username"), mOldPass
+                flag = mEngine.mChangePass(PrefUtil.GetStringPref(AccountChangePassAtivity.this, "username"), mOldPass
                         .getText().toString(), mNewPass.getText().toString());
                 mCurrentDialog.dismiss();
             }

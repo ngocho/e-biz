@@ -20,6 +20,10 @@ import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.Scroller;
 
+/**
+ * @author NThanhPhong
+ *
+ */
 public class ViewFlow extends AdapterView<Adapter> {
     /** . */
     private static final int SNAP_VELOCITY = 1000;
@@ -430,8 +434,9 @@ public class ViewFlow extends AdapterView<Adapter> {
     }
 
     /**
-     * Scroll to the {@link View} in the view buffer specified by the index.
-     * @param indexInBuffer Index of the view in the view buffer.
+     * [setVisibleView].
+     * @param indexInBuffer int
+     * @param uiThread boolean
      */
     private void setVisibleView(int indexInBuffer, boolean uiThread) {
         mCurrentScreen = Math.max(0, Math.min(indexInBuffer, getChildCount() - 1));
@@ -470,8 +475,9 @@ public class ViewFlow extends AdapterView<Adapter> {
             mAdapter.registerDataSetObserver(mDataSetObserver);
 
         }
-        if (mAdapter.getCount() == 0)
+        if (mAdapter.getCount() == 0) {
             return;
+        }
 
         for (int i = 0; i < Math.min(mAdapter.getCount(), mSideBuffer + 1); i++) {
             mLoadedViews.addLast(makeAndAddView(i, true, null));
@@ -481,28 +487,34 @@ public class ViewFlow extends AdapterView<Adapter> {
         mCurrentBufferIndex = 0;
         requestLayout();
         setVisibleView(mCurrentBufferIndex, false);
-        if (mViewSwitchListener != null)
+        if (mViewSwitchListener != null) {
             mViewSwitchListener.onSwitched(mLoadedViews.get(0), 0);
+        }
     }
 
     @Override
     public View getSelectedView() {
         return (mCurrentAdapterIndex < mLoadedViews.size() ? mLoadedViews.get(mCurrentBufferIndex) : null);
     }
-
     /**
-     * Set the FlowIndicator
-     * @param flowIndicator
+     * [setFlowIndicator]
+     * @param flowIndicator FlowIndicator
      */
     public void setFlowIndicator(FlowIndicator flowIndicator) {
         mIndicator = flowIndicator;
         mIndicator.setViewFlow(this);
     }
 
+    /**
+     * [Explain the description for this method here].
+     * @param position int
+     * @see android.widget.AdapterView#setSelection(int)
+     */
     @Override
     public void setSelection(int position) {
-        if (mAdapter == null || position >= mAdapter.getCount())
+        if (mAdapter == null || position >= mAdapter.getCount()) {
             return;
+        }
 
         ArrayList<View> recycleViews = new ArrayList<View>();
         View recycleView;
@@ -513,8 +525,9 @@ public class ViewFlow extends AdapterView<Adapter> {
 
         for (int i = Math.max(0, position - mSideBuffer); i < Math.min(mAdapter.getCount(), position + mSideBuffer + 1); i++) {
             mLoadedViews.addLast(makeAndAddView(i, true, (recycleViews.isEmpty() ? null : recycleViews.remove(0))));
-            if (i == position)
+            if (i == position) {
                 mCurrentBufferIndex = mLoadedViews.size() - 1;
+            }
         }
         mCurrentAdapterIndex = position;
 
@@ -531,6 +544,9 @@ public class ViewFlow extends AdapterView<Adapter> {
         }
     }
 
+    /**
+     * [resetFocus].
+     */
     private void resetFocus() {
         logBuffer();
         mLoadedViews.clear();
@@ -539,16 +555,22 @@ public class ViewFlow extends AdapterView<Adapter> {
         for (int i = Math.max(0, mCurrentAdapterIndex - mSideBuffer); i < Math.min(mAdapter.getCount(),
                 mCurrentAdapterIndex + mSideBuffer + 1); i++) {
             mLoadedViews.addLast(makeAndAddView(i, true, null));
-            if (i == mCurrentAdapterIndex)
+            if (i == mCurrentAdapterIndex) {
                 mCurrentBufferIndex = mLoadedViews.size() - 1;
+            }
         }
         logBuffer();
         requestLayout();
     }
 
+    /**
+     * [postViewSwitched].
+     * @param direction int
+     */
     private void postViewSwitched(int direction) {
-        if (direction == 0)
+        if (direction == 0) {
             return;
+        }
 
         if (direction > 0) { // to the right
             mCurrentAdapterIndex++;
@@ -566,8 +588,9 @@ public class ViewFlow extends AdapterView<Adapter> {
 
             // Add new view to buffer
             int newBufferIndex = mCurrentAdapterIndex + mSideBuffer;
-            if (newBufferIndex < mAdapter.getCount())
+            if (newBufferIndex < mAdapter.getCount()) {
                 mLoadedViews.addLast(makeAndAddView(newBufferIndex, true, recycleView));
+            }
 
         } else { // to the left
             mCurrentAdapterIndex--;
@@ -600,23 +623,41 @@ public class ViewFlow extends AdapterView<Adapter> {
         logBuffer();
     }
 
+    /**
+     * [Give the description for method].
+     * @param child View
+     * @param addToEnd boolean
+     * @param recycle boolean
+     * @return View
+     */
     private View setupChild(View child, boolean addToEnd, boolean recycle) {
         ViewGroup.LayoutParams p = (ViewGroup.LayoutParams) child.getLayoutParams();
         if (p == null) {
             p = new AbsListView.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, 0);
         }
-        if (recycle)
+        if (recycle) {
             attachViewToParent(child, (addToEnd ? -1 : 0), p);
-        else
+        } else {
             addViewInLayout(child, (addToEnd ? -1 : 0), p, true);
+        }
         return child;
     }
 
+    /**
+     * [Give the description for method].
+     * @param position int
+     * @param addToEnd boolean
+     * @param convertView View
+     * @return View
+     */
     private View makeAndAddView(int position, boolean addToEnd, View convertView) {
         View view = mAdapter.getView(position, convertView, this);
         return setupChild(view, addToEnd, convertView != null);
     }
 
+    /**
+     * @author NThanhPhong
+     */
     class AdapterDataSetObserver extends DataSetObserver {
 
         @Override
@@ -640,6 +681,9 @@ public class ViewFlow extends AdapterView<Adapter> {
 
     }
 
+    /**
+     * [logBuffer].
+     */
     private void logBuffer() {
 
         Log.d("viewflow", "Size of mLoadedViews: " + mLoadedViews.size() + "X: " + mScroller.getCurrX() + ", Y: "

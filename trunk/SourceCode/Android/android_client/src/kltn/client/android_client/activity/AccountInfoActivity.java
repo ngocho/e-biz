@@ -54,7 +54,7 @@ public class AccountInfoActivity extends Activity implements OnClickListener, On
         mIsWaiting = true;
         Thread t = new Thread() {
             public void run() {
-                Data = mEngine.GetInfo(PrefUtil.GetStringPref(AccountInfoActivity.this, "username"),
+                Data = mEngine.mGetInfo(PrefUtil.GetStringPref(AccountInfoActivity.this, "username"),
                         PrefUtil.GetStringPref(AccountInfoActivity.this, "password"));
                 mCurrentDialog.dismiss();
             }
