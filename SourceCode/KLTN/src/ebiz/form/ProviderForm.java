@@ -34,46 +34,47 @@ public class ProviderForm extends ValidatorForm implements Serializable {
 
     /** . */
     private static final long serialVersionUID = 1L;
-    /**  . */
+    /** . */
     private String loginId;
-    /**  . */
+    /** . */
     private String loginPassword;
-    /**  . */
+    /** . */
     private String loginPasswordPre;
-    /**  . */
+    /** . */
     private String loginName;
-    /**  . */
+    /** . */
     private String type;
-    /**  . */
+    /** . */
     private String gender;
-    /**  . */
+    /** . */
     private String email;
-    /**  . */
+    /** . */
     private String phone;
-    /**  . */
+    /** . */
     private String homeNumber;
-    /**  . */
+    /** . */
     private String streetName;
-    /**  . */
+    /** . */
     private String wardName;
-    /**  . */
+    /** . */
     private String districtName;
-    /**  . */
+    /** . */
     private String buildingName;
-    /**  . */
+    /** . */
     private String authentication;
-    /**  . */
+    /** . */
     private String accountPayment;
-    /**  . */
+    /** . */
     private String detail;
-    /**  . */
+    /** . */
     private Date birth;
     private String address;
     private String urlAvatar;
 
     /**
      * [Give the description for method].
-     * @return  boolean
+     * 
+     * @return boolean
      */
     public boolean isEmpty() {
         return CommonUtil.isBlankOrNull(loginId);
@@ -81,7 +82,8 @@ public class ProviderForm extends ValidatorForm implements Serializable {
 
     /**
      * [Give the description for method].
-     * @return   Provider
+     * 
+     * @return Provider
      */
     public Provider getProvider() {
         Provider provider = new Provider();
@@ -94,12 +96,12 @@ public class ProviderForm extends ValidatorForm implements Serializable {
         provider.setAuthentication(this.authentication);
         provider.setProviderAccountPayment(this.accountPayment);
         provider.setUrl(this.urlAvatar);
-//        Address add = new Address();
-//        add.setBuildingName(this.buildingName);
-//        add.setDistrictName(this.districtName);
-//        add.setHomeNumber(this.homeNumber);
-//        add.setStreetName(this.streetName);
-//        add.setWardName(this.wardName);
+        // Address add = new Address();
+        // add.setBuildingName(this.buildingName);
+        // add.setDistrictName(this.districtName);
+        // add.setHomeNumber(this.homeNumber);
+        // add.setStreetName(this.streetName);
+        // add.setWardName(this.wardName);
         this.address = CustomerBLO.toStringAddres(homeNumber, buildingName, streetName, wardName, districtName);
         provider.setProviderAddress(this.address);
         provider.setLoginDate(new Date());
@@ -111,10 +113,11 @@ public class ProviderForm extends ValidatorForm implements Serializable {
 
     /**
      * [Give the description for method].
+     * 
      * @param provider Provider
      */
     public void editForm(Provider provider) {
-    	this.urlAvatar = provider.getUrl();
+        this.urlAvatar = provider.getUrl();
         this.loginId = provider.getProviderId();
         this.loginPassword = provider.getProviderPassword();
         this.loginName = provider.getProviderName();
@@ -124,17 +127,17 @@ public class ProviderForm extends ValidatorForm implements Serializable {
         this.birth = provider.getProviderBirth();
         this.email = provider.getProviderEmail();
         this.phone = provider.getProviderPhone();
-//        this.buildingName = provider.getProviderAddress().getBuildingName();
-//        this.districtName = provider.getProviderAddress().getDistrictName();
-//        this.homeNumber = provider.getProviderAddress().getHomeNumber();
-//        this.streetName = provider.getProviderAddress().getStreetName();
-//        this.wardName = provider.getProviderAddress().getWardName();
+        // this.buildingName = provider.getProviderAddress().getBuildingName();
+        // this.districtName = provider.getProviderAddress().getDistrictName();
+        // this.homeNumber = provider.getProviderAddress().getHomeNumber();
+        // this.streetName = provider.getProviderAddress().getStreetName();
+        // this.wardName = provider.getProviderAddress().getWardName();
         this.address = provider.getProviderAddress();
         this.detail = provider.getDetail();
     }
     /**
      * Get value of loginId.
-     *
+     * 
      * @return the loginId
      */
     public String getLoginId() {
@@ -143,7 +146,7 @@ public class ProviderForm extends ValidatorForm implements Serializable {
 
     /**
      * Set the value for loginId.
-     *
+     * 
      * @param loginId the loginId to set
      */
     public void setLoginId(String loginId) {
@@ -152,7 +155,7 @@ public class ProviderForm extends ValidatorForm implements Serializable {
 
     /**
      * Get value of loginPassword.
-     *
+     * 
      * @return the loginPassword
      */
     public String getLoginPassword() {
@@ -161,7 +164,7 @@ public class ProviderForm extends ValidatorForm implements Serializable {
 
     /**
      * Set the value for loginPassword.
-     *
+     * 
      * @param loginPassword the loginPassword to set
      */
     public void setLoginPassword(String loginPassword) {
@@ -170,7 +173,7 @@ public class ProviderForm extends ValidatorForm implements Serializable {
 
     /**
      * Get value of loginName.
-     *
+     * 
      * @return the loginName
      */
     public String getLoginName() {
@@ -179,7 +182,7 @@ public class ProviderForm extends ValidatorForm implements Serializable {
 
     /**
      * Set the value for loginName.
-     *
+     * 
      * @param loginName the loginName to set
      */
     public void setLoginName(String loginName) {
@@ -188,7 +191,7 @@ public class ProviderForm extends ValidatorForm implements Serializable {
 
     /**
      * Get value of type.
-     *
+     * 
      * @return the type
      */
     public String getType() {
@@ -197,7 +200,7 @@ public class ProviderForm extends ValidatorForm implements Serializable {
 
     /**
      * Set the value for type.
-     *
+     * 
      * @param type the type to set
      */
     public void setType(String type) {
@@ -206,7 +209,7 @@ public class ProviderForm extends ValidatorForm implements Serializable {
 
     /**
      * Get value of phone.
-     *
+     * 
      * @return the phone
      */
     public String getPhone() {
@@ -215,7 +218,7 @@ public class ProviderForm extends ValidatorForm implements Serializable {
 
     /**
      * Set the value for phone.
-     *
+     * 
      * @param phone the phone to set
      */
     public void setPhone(String phone) {
@@ -224,7 +227,7 @@ public class ProviderForm extends ValidatorForm implements Serializable {
 
     /**
      * Get value of homeNumber.
-     *
+     * 
      * @return the homeNumber
      */
     public String getHomeNumber() {
@@ -232,7 +235,7 @@ public class ProviderForm extends ValidatorForm implements Serializable {
     }
     /**
      * Set the value for homeNumber.
-     *
+     * 
      * @param homeNumber the homeNumber to set
      */
     public void setHomeNumber(String homeNumber) {
@@ -240,7 +243,7 @@ public class ProviderForm extends ValidatorForm implements Serializable {
     }
     /**
      * Get value of streetName.
-     *
+     * 
      * @return the streetName
      */
     public String getStreetName() {
@@ -248,7 +251,7 @@ public class ProviderForm extends ValidatorForm implements Serializable {
     }
     /**
      * Set the value for streetName.
-     *
+     * 
      * @param streetName the streetName to set
      */
     public void setStreetName(String streetName) {
@@ -256,7 +259,7 @@ public class ProviderForm extends ValidatorForm implements Serializable {
     }
     /**
      * Get value of wardName.
-     *
+     * 
      * @return the wardName
      */
     public String getWardName() {
@@ -264,7 +267,7 @@ public class ProviderForm extends ValidatorForm implements Serializable {
     }
     /**
      * Set the value for wardName.
-     *
+     * 
      * @param wardName the wardName to set
      */
     public void setWardName(String wardName) {
@@ -272,7 +275,7 @@ public class ProviderForm extends ValidatorForm implements Serializable {
     }
     /**
      * Get value of districtName.
-     *
+     * 
      * @return the districtName
      */
     public String getDistrictName() {
@@ -280,7 +283,7 @@ public class ProviderForm extends ValidatorForm implements Serializable {
     }
     /**
      * Set the value for districtName.
-     *
+     * 
      * @param districtName the districtName to set
      */
     public void setDistrictName(String districtName) {
@@ -288,7 +291,7 @@ public class ProviderForm extends ValidatorForm implements Serializable {
     }
     /**
      * Get value of buildingName.
-     *
+     * 
      * @return the buildingName
      */
     public String getBuildingName() {
@@ -296,7 +299,7 @@ public class ProviderForm extends ValidatorForm implements Serializable {
     }
     /**
      * Set the value for buildingName.
-     *
+     * 
      * @param buildingName the buildingName to set
      */
     public void setBuildingName(String buildingName) {
@@ -304,7 +307,7 @@ public class ProviderForm extends ValidatorForm implements Serializable {
     }
     /**
      * Get value of loginPasswordPre.
-     *
+     * 
      * @return the loginPasswordPre
      */
     public String getLoginPasswordPre() {
@@ -312,7 +315,7 @@ public class ProviderForm extends ValidatorForm implements Serializable {
     }
     /**
      * Set the value for loginPasswordPre.
-     *
+     * 
      * @param loginPasswordPre the loginPasswordPre to set
      */
     public void setLoginPasswordPre(String loginPasswordPre) {
@@ -320,7 +323,7 @@ public class ProviderForm extends ValidatorForm implements Serializable {
     }
     /**
      * Get value of gender.
-     *
+     * 
      * @return the gender
      */
     public String getGender() {
@@ -328,7 +331,7 @@ public class ProviderForm extends ValidatorForm implements Serializable {
     }
     /**
      * Set the value for gender.
-     *
+     * 
      * @param gender the gender to set
      */
     public void setGender(String gender) {
@@ -336,7 +339,7 @@ public class ProviderForm extends ValidatorForm implements Serializable {
     }
     /**
      * Get value of email.
-     *
+     * 
      * @return the email
      */
     public String getEmail() {
@@ -344,7 +347,7 @@ public class ProviderForm extends ValidatorForm implements Serializable {
     }
     /**
      * Set the value for email.
-     *
+     * 
      * @param email the email to set
      */
     public void setEmail(String email) {
@@ -353,7 +356,7 @@ public class ProviderForm extends ValidatorForm implements Serializable {
 
     /**
      * Get value of authentication.
-     *
+     * 
      * @return the authentication
      */
     public String getAuthentication() {
@@ -362,7 +365,7 @@ public class ProviderForm extends ValidatorForm implements Serializable {
 
     /**
      * Set the value for authentication.
-     *
+     * 
      * @param authentication the authentication to set
      */
     public void setAuthentication(String authentication) {
@@ -371,7 +374,7 @@ public class ProviderForm extends ValidatorForm implements Serializable {
 
     /**
      * Get value of accountPayment.
-     *
+     * 
      * @return the accountPayment
      */
     public String getAccountPayment() {
@@ -380,7 +383,7 @@ public class ProviderForm extends ValidatorForm implements Serializable {
 
     /**
      * Set the value for accountPayment.
-     *
+     * 
      * @param accountPayment the accountPayment to set
      */
     public void setAccountPayment(String accountPayment) {
@@ -389,6 +392,7 @@ public class ProviderForm extends ValidatorForm implements Serializable {
 
     /**
      * Get value of detail.
+     * 
      * @return the detail
      */
     public String getDetail() {
@@ -397,6 +401,7 @@ public class ProviderForm extends ValidatorForm implements Serializable {
 
     /**
      * Set the value for detail.
+     * 
      * @param detail the detail to set
      */
     public void setDetail(String detail) {
@@ -405,6 +410,7 @@ public class ProviderForm extends ValidatorForm implements Serializable {
 
     /**
      * Get value of birth.
+     * 
      * @return the birth
      */
     public Date getBirth() {
@@ -413,6 +419,7 @@ public class ProviderForm extends ValidatorForm implements Serializable {
 
     /**
      * Set the value for birth.
+     * 
      * @param birth the birth to set
      */
     public void setBirth(Date birth) {
@@ -421,6 +428,7 @@ public class ProviderForm extends ValidatorForm implements Serializable {
 
     /**
      * Get value of address.
+     * 
      * @return the address
      */
     public String getAddress() {
@@ -429,25 +437,25 @@ public class ProviderForm extends ValidatorForm implements Serializable {
 
     /**
      * Set the value for address.
+     * 
      * @param address the address to set
      */
     public void setAddress(String address) {
         this.address = address;
     }
 
-	/**
-	 * @return the urlAvatar
-	 */
-	public String getUrlAvatar() {
-		return urlAvatar;
-	}
+    /**
+     * @return the urlAvatar
+     */
+    public String getUrlAvatar() {
+        return urlAvatar;
+    }
 
-	/**
-	 * @param urlAvatar the urlAvatar to set
-	 */
-	public void setUrlAvatar(String urlAvatar) {
-		this.urlAvatar = urlAvatar;
-	}
-
+    /**
+     * @param urlAvatar the urlAvatar to set
+     */
+    public void setUrlAvatar(String urlAvatar) {
+        this.urlAvatar = urlAvatar;
+    }
 
 }

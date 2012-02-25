@@ -20,27 +20,27 @@ package ebiz.form;
 
 import java.io.Serializable;
 
-
 /**
  * @author ThuyNT
- *
  */
 public class Paging implements Serializable {
-    
-    /**  . */
+
+    /** . */
     private static final long serialVersionUID = 1L;
     private int id;
     private String cursorString;
     /**
      * Get value of id.
+     * 
      * @return the id
      */
     public int getId() {
         return id;
     }
-    
+
     /**
      * Set the value for id.
+     * 
      * @param id the id to set
      */
     public void setId(int id) {
@@ -48,6 +48,7 @@ public class Paging implements Serializable {
     }
     /**
      * Get value of cursorString.
+     * 
      * @return the cursorString
      */
     public String getCursorString() {
@@ -55,6 +56,7 @@ public class Paging implements Serializable {
     }
     /**
      * Set the value for cursorString.
+     * 
      * @param cursorString the cursorString to set
      */
     public void setCursorString(String cursorString) {

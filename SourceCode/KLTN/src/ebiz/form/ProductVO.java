@@ -28,30 +28,30 @@ public class ProductVO implements Serializable {
     /** . */
     private static final long serialVersionUID = 1L;
 
-    /**  number of record/page. */
+    /** number of record/page. */
     private int limit;
-    /**  name of col to set order by. */
+    /** name of col to set order by. */
     private String col;
-    /**  number of page. */
+    /** number of page. */
     private int page;
-    /**  . */
+    /** . */
     private String order;
-    /**  . */
+    /** . */
     private List<String> pagingList;
-    /**  . */
+    /** . */
     private String typeProduct;
-    /**  . */
+    /** . */
     private String numberFoodView;
-    /**  . */
+    /** . */
     private String status;
-    /**  . */
+    /** . */
     private String priceId;
-    /**  . */
+    /** . */
     private String attr;
 
     /**
      * Get value of limit.
-     *
+     * 
      * @return the limit
      */
     public int getLimit() {
@@ -60,7 +60,7 @@ public class ProductVO implements Serializable {
 
     /**
      * Set the value for limit.
-     *
+     * 
      * @param limit the limit to set
      */
     public void setLimit(int limit) {
@@ -69,7 +69,7 @@ public class ProductVO implements Serializable {
 
     /**
      * Get value of col.
-     *
+     * 
      * @return the col
      */
     public String getCol() {
@@ -78,7 +78,7 @@ public class ProductVO implements Serializable {
 
     /**
      * Set the value for col.
-     *
+     * 
      * @param col the col to set
      */
     public void setCol(String col) {
@@ -87,7 +87,7 @@ public class ProductVO implements Serializable {
 
     /**
      * Get value of page.
-     *
+     * 
      * @return the page
      */
     public int getPage() {
@@ -96,7 +96,7 @@ public class ProductVO implements Serializable {
 
     /**
      * Set the value for page.
-     *
+     * 
      * @param page the page to set
      */
     public void setPage(int page) {
@@ -105,7 +105,7 @@ public class ProductVO implements Serializable {
 
     /**
      * Get value of pagingList.
-     *
+     * 
      * @return the pagingList
      */
     public List<String> getPagingList() {
@@ -114,7 +114,7 @@ public class ProductVO implements Serializable {
 
     /**
      * Set the value for pagingList.
-     *
+     * 
      * @param pagingList the pagingList to set
      */
     public void setPagingList(List<String> pagingList) {
@@ -123,7 +123,7 @@ public class ProductVO implements Serializable {
 
     /**
      * Get value of typeProduct.
-     *
+     * 
      * @return the typeProduct
      */
     public String getTypeProduct() {
@@ -132,7 +132,7 @@ public class ProductVO implements Serializable {
 
     /**
      * Set the value for typeProduct.
-     *
+     * 
      * @param typeProduct the typeProduct to set
      */
     public void setTypeProduct(String typeProduct) {
@@ -141,7 +141,7 @@ public class ProductVO implements Serializable {
 
     /**
      * Get value of numberFoodView.
-     *
+     * 
      * @return the numberFoodView
      */
     public String getNumberFoodView() {
@@ -150,7 +150,7 @@ public class ProductVO implements Serializable {
 
     /**
      * Set the value for numberFoodView.
-     *
+     * 
      * @param numberFoodView the numberFoodView to set
      */
     public void setNumberFoodView(String numberFoodView) {
@@ -159,7 +159,7 @@ public class ProductVO implements Serializable {
 
     /**
      * Get value of order.
-     *
+     * 
      * @return the order
      */
     public String getOrder() {
@@ -168,7 +168,7 @@ public class ProductVO implements Serializable {
 
     /**
      * Set the value for order.
-     *
+     * 
      * @param order the order to set
      */
     public void setOrder(String order) {
@@ -177,6 +177,7 @@ public class ProductVO implements Serializable {
 
     /**
      * Get value of status.
+     * 
      * @return the status
      */
     public String getStatus() {
@@ -185,6 +186,7 @@ public class ProductVO implements Serializable {
 
     /**
      * Set the value for status.
+     * 
      * @param status the status to set
      */
     public void setStatus(String status) {
@@ -193,6 +195,7 @@ public class ProductVO implements Serializable {
 
     /**
      * Get value of priceId.
+     * 
      * @return the priceId
      */
     public String getPriceId() {
@@ -201,6 +204,7 @@ public class ProductVO implements Serializable {
 
     /**
      * Set the value for priceId.
+     * 
      * @param priceId the priceId to set
      */
     public void setPriceId(String priceId) {
@@ -209,6 +213,7 @@ public class ProductVO implements Serializable {
 
     /**
      * Get value of attr.
+     * 
      * @return the attr
      */
     public String getAttr() {
@@ -217,6 +222,7 @@ public class ProductVO implements Serializable {
 
     /**
      * Set the value for attr.
+     * 
      * @param attr the attr to set
      */
     public void setAttr(String attr) {
