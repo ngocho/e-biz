@@ -147,6 +147,9 @@ public class TabBrowserActivity extends Activity implements OnClickListener, Tex
      */
     public class BrowserItemAdapter extends BaseAdapter {
 
+        /**
+         * 
+         */
         public BrowserItemAdapter() {
         }
 

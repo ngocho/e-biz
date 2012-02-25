@@ -3,6 +3,10 @@ package kltn.client.android_client;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+/**
+ * @author NThanhPhong
+ *
+ */
 public class PrefUtil {
     private static final String PREF_NAME = "kltn_prefs";
     public static final int NO_EXIST_VALUE = -167;

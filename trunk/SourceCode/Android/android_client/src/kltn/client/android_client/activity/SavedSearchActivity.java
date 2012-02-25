@@ -1,6 +1,3 @@
-/**
- * 
- */
 package kltn.client.android_client.activity;
 
 import kltn.client.android_client.R;
@@ -50,8 +47,15 @@ public class SavedSearchActivity extends Activity implements OnClickListener, Te
         mEngine = new Engine();
         mListview.setAdapter(new SaveSearchAdapter(this));
     }
+    /**
+     * @author NThanhPhong
+     */
     public class SaveSearchAdapter extends BaseAdapter {
-        Context context;
+        /**  . */
+        private Context context;
+        /**
+         * @param mycontext Context
+         */
         public SaveSearchAdapter(Context mycontext) {
             context = mycontext;
         }
@@ -72,8 +76,9 @@ public class SavedSearchActivity extends Activity implements OnClickListener, Te
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            if (convertView == null)
+            if (convertView == null) {
                 convertView = getLayoutInflater().inflate(R.layout.item_search, null);
+            }
             mData.moveToPosition(position);
             String url = mEngine.mURLImage + mData.getString(mData.getColumnIndex("imageurl"));
             ImageView image = (ImageView) convertView.findViewById(R.id.item_search_image);
@@ -94,12 +99,19 @@ public class SavedSearchActivity extends Activity implements OnClickListener, Te
             return convertView;
         }
     };
+    /**  . */
     private Engine mEngine;
+    /**  . */
     private FavouriteEngine mFavoriteEngine;
+    /**  . */
     private Button mBack;
+    /**  . */
     private ListView mListview;
+    /**  . */
     private Button mOk;
+    /**  . */
     private EditText mEdittext;
+    /**  . */
     private Cursor mData;
     /*
      * (non-Javadoc)
