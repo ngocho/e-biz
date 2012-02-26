@@ -59,10 +59,11 @@ public class Register extends BaseAction {
             Provider register = user.getProvider();
             // set status Active
             register.setActive(false);
+            String code = hashCode.hashID(CommonConstant.HASHCODENUMBERROVIDER);
+            register.setActiveCode(code);
             boolean flag = ProviderBLO.registerProvider(register);
             if (flag) {
-                String code = hashCode.hashID(CommonConstant.HASHCODENUMBERROVIDER);
-                register.setActiveCode(code);
+                
                 HttpSession se = request.getSession();
                 // save value in session
                 se.setAttribute("providerForm", user);
