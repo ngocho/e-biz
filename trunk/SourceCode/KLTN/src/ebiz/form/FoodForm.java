@@ -57,6 +57,7 @@ public class FoodForm extends ValidatorForm implements Serializable {
     private String idProvider;
     private String urlKey;
     private String uploadDate;
+    private int isDisplay;
 
     public Food getFood() {
         Food food = new Food();
@@ -64,6 +65,7 @@ public class FoodForm extends ValidatorForm implements Serializable {
         food.setPrice(this.price);
         // food.setUrl(this.url);
         food.setUrlKey(this.urlKey);
+        food.setIsDisplay(this.isDisplay);
         food.setPricePromotion(this.promoPrice);
         food.setProductAttributeId(this.idAttr);
         food.setNumber(this.number);
@@ -93,6 +95,7 @@ public class FoodForm extends ValidatorForm implements Serializable {
      * @return
      */
     public FoodForm editForm(Food food) {
+        this.isDisplay = food.getIsDisplay();
         this.id = food.getFoodId();
         this.name = food.getFoodName();
         this.sale = food.getSaleProduct();
@@ -518,6 +521,22 @@ public class FoodForm extends ValidatorForm implements Serializable {
      */
     public void setSale(int sale) {
         this.sale = sale;
+    }
+
+    /**
+     * Get value of isDisplay.
+     * @return the isDisplay
+     */
+    public int getIsDisplay() {
+        return isDisplay;
+    }
+
+    /**
+     * Set the value for isDisplay.
+     * @param isDisplay the isDisplay to set
+     */
+    public void setIsDisplay(int isDisplay) {
+        this.isDisplay = isDisplay;
     }
 
 }

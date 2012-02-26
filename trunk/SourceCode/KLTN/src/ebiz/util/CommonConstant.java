@@ -27,7 +27,7 @@ public class CommonConstant {
     public final static String SUCCESS2 = "success2";
     public final static String FAILURE = "failure";
     public final static String LOGIN = "login";
-
+    public final static String URL= "http://12.test-kltn1.appspot.com";
     // save in session
     public final static String USER = "user";
     public final static String ADMIN = "admin";

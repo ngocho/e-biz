@@ -105,7 +105,10 @@ public class UploadProduct extends BaseAction {
                 // updated product
                 Food food = foodForm.getFood();
                 food.setFoodId(foodForm.getId());
-                food.setIsDisplay(1);
+                System.out.println("idDisplay " + food.getIsDisplay());
+//                if(food.getIsDisplay() == 1){
+//                food.setIsDisplay(1);
+//                }
                 boolean flag = FoodBLO.updateFood(food);
                 if (flag) {
                     // remove attr

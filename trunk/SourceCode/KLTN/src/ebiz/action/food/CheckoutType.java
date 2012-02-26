@@ -50,7 +50,7 @@ public class CheckoutType extends BaseAction {
         boolean result = true;
         HttpSession se = request.getSession();
         OrderBillForm orderForm = (OrderBillForm) se.getAttribute("bill");
-        String typeCheckout = request.getParameter("checkoutOption");
+        String typeCheckout = request.getParameter("checkout");
         LoginForm login = (LoginForm) se.getAttribute(CommonConstant.USER);
         if ("home".equals(typeCheckout)) {
             FoodBLO.updateStatusOrderBill(orderForm.getId(), CommonConstant.BILLSTATUS_1);
