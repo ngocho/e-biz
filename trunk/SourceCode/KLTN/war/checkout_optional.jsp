@@ -15,7 +15,7 @@
             
             <h2><bean:message key="checkout.optional.title" /></h2>
             <bean:message key="checkout.money" /> : <bean:write name="bill" property="sumPrice"/>  VNĐ
-              <form action="/checkoutMoney.vn" method="get" >
+              <form action="/checkoutmoney.vn" method="get" >
             <ul style="margin-top:20px;margin-left: 20px;" >
               
                     <li><span style="color: red;" id="message"> <logic:messagesPresent
@@ -31,12 +31,12 @@
 
                     <li >
                         <div class="input-box">
-                       <button type="button" title="Thanh toán"  class="button"  onclick="setLocation('/checkoutMoney.vn?checkoutOption=home')"><span><bean:message key="checkout.optional.home" /></span></button>
+                       <button type="button" title="Thanh toán"  class="button"  onclick="setLocation('/checkoutmoney.vn?checkoutOption=home')"><span><bean:message key="checkout.optional.home" /></span></button>
                         </div>
                     </li>
                     <li style="margin-top:10px;">
                         <div class="input-box">
-                         <button type="button" title="Thanh toán"  class="button"  onclick="setLocation('/checkoutMoney.vn?checkoutOption=xu')"><span><bean:message key="checkout.optional.xu" /></span></button>
+                         <button type="button" title="Thanh toán"  class="button"  onclick="setLocation('/checkoutmoney.vn?checkoutOption=xu')"><span><bean:message key="checkout.optional.xu" /></span></button>
                         </div>
                     </li>
                     <li style="margin-top:10px;">

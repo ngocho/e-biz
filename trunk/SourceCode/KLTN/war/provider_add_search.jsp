@@ -12,11 +12,11 @@ $(document).ready(function(){
 </script>
 <div class="cart">
 <p class="home-callout">
-<a href="/displayAddProviderGM.vn" style="color:blue; text-decoration: underline;">Tìm đường đi</a> <a href="/getAddProviderList.vn" style="color:blue; text-decoration: underline;">Tìm địa chỉ cửa hàng</a>
+<a href="/displayAddProviderGM.vn" style="color:blue; text-decoration: underline;"><bean:message key="home.search.gm1" /></a> <a href="/getAddProviderList.vn" style="color:blue; text-decoration: underline;"><bean:message key="home.search.gm" /></a>
 <div>
-<strong>Bắt đầu: </strong>
+<strong><bean:message key="home.search.gm.from" />: </strong>
 <input type="text" id="start" name="start" value=""   style="width:200px;"/>
-<strong>Đến cửa hàng: </strong>
+<strong><bean:message key="home.search.gm.to" />Đến cửa hàng: </strong>
  <logic:present name="providerAddList">
  <select name="end" id="end">
 <logic:iterate id="element" name="providerAddList"  >
@@ -26,9 +26,9 @@ $(document).ready(function(){
 </logic:iterate>
 </select>
 </logic:present>
-<input type="button" name="view" value="Tìm đường" onclick="calcRoute1();" class="buttonBG""/>
+<input type="button" name="view" value="<bean:message key="home.search.gm.button" />" onclick="calcRoute1();" class="buttonBG""/>
 <br>
-<strong>Tên cửa hàng: </strong>
+<strong><bean:message key="home.search.gm.name" />: </strong>
  <logic:present name="providerAddList">
  <select name="add" id="add">
 <logic:iterate id="element" name="providerAddList"  >
@@ -37,40 +37,10 @@ $(document).ready(function(){
 </option>
 </logic:iterate>
 </select>
-<input type="button" name="view" value="Tìm địa chỉ" onclick="codeAddress();" class="buttonBG""/>
+<input type="button" name="view" value="<bean:message key="home.search.gm.button1" />" onclick="codeAddress();" class="buttonBG""/>
 </logic:present>
 <br>
-<%-- <strong>Tìm các cửa hàng tại: </strong>
-                     <div class="field">
-                        <label for="billing:email" class="required" ><em>*</em>Quận</label>
-                        <div class="input-box">
-                        <select name="districtName"  id="districtNameR">
-    <option value="">- - - - - - - - - - - - Chọn quận- - - - - - - - - - - - -</option>
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-   <option value="4">4</option>
-   <option value="5">5</option>
-   <option value="6">6</option>
-   <option value="7">7</option>
-   <option value="8">8</option>
-   <option value="9">9</option>
-   <option value="10">10</option>
-   <option value="11">11</option>
-   <option value="12">12</option>
-   <option value="Bình Chánh">Bình Chánh</option>
-   <option value="Bình Tân">Bình Tân</option>
-   <option value="Bình Thạnh">Bình Thạnh</option>
-   <option value="Gò Vấp">Gò Vấp</option>
-   <option value="Hóc Môn">Hóc Môn</option>
-   <option value="Nhà Bè">Nhà Bè</option>
-   <option value="Phú Nhuận">Phú Nhuận</option>
-   <option value="Tân Bình">Tân Bình</option>
-   <option value="Tân Phú">Tân Phú</option>
-   <option value="Thủ Đức">Thủ Đức</option>
-</html:select>
-                        </div>
-                      </div> --%>
+
 </div>
 
 
