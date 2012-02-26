@@ -100,7 +100,7 @@
 		<forward name="failure" path="checkout" redirect="true" />
     </action>
      <action 
-            path="/checkoutMoney"
+            path="/checkoutmoney"
             type="ebiz.action.food.CheckoutType" 
             scope="session" validate="true">
 		<forward name="success" path="bill" redirect="true" />
