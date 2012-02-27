@@ -218,7 +218,7 @@
                   <script type="text/javascript">
                   function cropImage(){
                       $.ajax({
-                          url: 'cropImage.vn',
+                          url: '/cropImage.vn',
                           data: {
                               'leftX' : $('x').val(),
                               'topY' : $('y').val(),
@@ -226,13 +226,11 @@
                               'bottomY' : $('y2').val()
                           },
                           success: function(){
-                                  $('.pop-up').hide();
-                                  $('.lose-focus').hide();
-                                  $('.input-box').innerHtml = '';
                                   $('#image').src = cacheBuster($('#image').src);
-                              
                           }
                       });
+                      $('.pop-up').hide();
+                      $('.lose-focus').hide();
                   }
                   </script>
                   <div class="input-box">
@@ -241,13 +239,13 @@
                         <div id="forPreview">
                           <img id="preview" src="/serveImage.vn?urlKey=<bean:write name="urlImageKey" />" >
                         </div>
-                        <form onsubmit="cropImage()">
-                            <input type="text" name="leftX" id="x" >
-                            <input type="text" name="topY" id="y" > 
-                            <input type="text" name="rightX" id="x2" >
-                            <input type="text" name="bottomY" id="y2" >
-                            <input type="submit" value="Chọn" onclick="cropImage()">
-                          </form>
+                   <!--      <form action="cropImage.vn" onsubmit="cropImage()"> -->
+                            <input type="hidden" name="leftX" id="x" >
+                            <input type="hidden" name="topY" id="y" > 
+                            <input type="hidden" name="rightX" id="x2" >
+                            <input type="hidden" name="bottomY" id="y2" >
+                            <input type="button" value="Chọn" onclick="cropImage()">
+                   <!--         </form>-->
                       </div>
                       <div class="for-crop" >
                         <img id="cropping" src="/serveImage.vn?urlKey=<bean:write name="urlImageKey" />" >
