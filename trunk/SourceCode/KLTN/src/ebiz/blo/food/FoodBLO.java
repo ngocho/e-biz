@@ -20,7 +20,6 @@ package ebiz.blo.food;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
@@ -320,10 +319,6 @@ public class FoodBLO {
             FoodForm form = new FoodForm();
             form.editForm(food);
             if (!form.isEmpty()) {
-                // System.out.println("Attribute:"+
-                // food.getProductAttributeId());
-                // food.setProductAttributeId("1");
-                // foodDao.saveFood(food);
                 formList.add(form);
             }
         }
@@ -332,7 +327,7 @@ public class FoodBLO {
 
     // Customer
     public static List<FoodForm> getFoodListCategory(String col, List<String> numberPageList, String order, int record,
-            int page, String colFilter, String typeProduct, String attr, String price) {
+            int page, String colFilter, String typeProduct, String attr, String price,String providerId) {
         StringBuffer sql = new StringBuffer();
         sql.append(" isDisplay == 1 ");
         sql.append(" &&  ");
@@ -344,6 +339,10 @@ public class FoodBLO {
         if (!price.equals("0")) {
             sql.append(" &&  ");
             sql.append("foodPriceLevelId == \'" + price + "\'");
+        }
+        if (providerId != null) {
+            sql.append(" &&  ");
+            sql.append("providerID == \'" + providerId + "\'");
         }
         return getFoodFormList(col, numberPageList, order, record, page, sql.toString());
     }
@@ -379,7 +378,7 @@ public class FoodBLO {
      * @return List<FoodForm> to display
      */
     public static List<FoodForm> initFoodCategory(List<String> numberPageList, int record, String colFilter,
-            String typeProduct, String attr, String price) {
+            String typeProduct, String attr, String price,String providerId) {
 
         List<FoodForm> formList = new ArrayList<FoodForm>();
         StringBuffer sql = new StringBuffer();
@@ -394,6 +393,11 @@ public class FoodBLO {
             sql.append(" &&  ");
             sql.append("foodPriceLevelId == \'" + price + "\'");
         }
+        if (providerId != null) {
+            sql.append(" &&  ");
+            sql.append("providerID == \'" + providerId + "\'");
+        }
+        
         formList = getFoodFormList("foodName", numberPageList, "asc", record, 1, sql.toString());
         return formList;
     }
@@ -572,25 +576,15 @@ public class FoodBLO {
         return true;
     }
 
-    // /**
-    // * [remove Product in Shopping Cart].
-    // * @param shopCart ShoppingCart
-    // * @param idProduct id of Food
-    // * @return boolean
-    // */
-    // public boolean removeProInShop(ShoppingCart shopCart, Long idProduct) {
-    // List<FoodForm> foodList = shopCart.getProducts();
-    // if (!foodList.isEmpty()) {
-    // for (int i = 0; i < foodList.size(); i++) {
-    // if (foodList.get(i).getId() == idProduct) {
-    // foodList.remove(i);
-    // return true;
-    // }
-    //
-    // }
-    // }
-    // return false;
-    // }
+   public static List<FoodForm> getFoodListByProvider(List<FoodForm> list, String providerId){
+	   List<FoodForm> foodList = new ArrayList<FoodForm>();
+	   for(FoodForm form: list){
+		   if(form.getIdProvider().equals(providerId)){
+			   foodList.add(form);
+		   }
+	   }
+	   return foodList;
+   }
     /**
      * [test number of food in database with food which add into shop].
      * 
