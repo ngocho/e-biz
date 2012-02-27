@@ -3,14 +3,11 @@
  */
 package mobile.ebiz.dao.gae;
 
-import java.util.Calendar;
-
 import mobile.ebiz.dao.inf.IIdxuDAO;
 import mobile.ebiz.dto.IDXU;
+import mobile.ebiz.dto.USERXUHISTORY;
 import mobile.ebiz.dto.hashXu;
-
 import ebiz.dao.gae.PMF;
-
 /**
  * @author nthanhphong
  *
@@ -48,7 +45,10 @@ public class IdxuDAO implements IIdxuDAO{
 		hashXu hash=new hashXu();
 		return hash.CreateXuList(50000);
 	}
-
+	@Override
+	public boolean updateHistory(USERXUHISTORY history) {
+		return PMF.insertObject(history);
+	}
     /**
      * [Explain the description for this method here].
      * @return

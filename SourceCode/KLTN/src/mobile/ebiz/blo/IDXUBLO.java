@@ -6,6 +6,7 @@ package mobile.ebiz.blo;
 import mobile.ebiz.dao.gae.IdxuDAO;
 import mobile.ebiz.dao.inf.IIdxuDAO;
 import mobile.ebiz.dto.IDXU;
+import mobile.ebiz.dto.USERXUHISTORY;
 
 /**
  * @author nthanhphong
@@ -52,5 +53,8 @@ public class IDXUBLO {
     }
     public static  int  countXuAvailabel() {
        return custDao.countXuAvailabel();
+    }
+    public static boolean updateHistoryXu(USERXUHISTORY userHistory){
+    	return custDao.updateHistory(userHistory);
     }
 }

@@ -17,11 +17,94 @@
  * under the License.
  */
 package mobile.ebiz.dto;
+import java.io.Serializable;
+import java.util.Date;
 
+import javax.jdo.annotations.IdGeneratorStrategy;
+import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.Persistent;
+import javax.jdo.annotations.PrimaryKey;
 /**
  * @author Administrator
  *
  */
-public class USERXUHISTORY {
+@PersistenceCapable
+public class USERXUHISTORY  implements Serializable{
+	  /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	@PrimaryKey
+    @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
+	private String id;
+	@Persistent
+	private String idXu;
+	@Persistent
+	private String idCustomer;
+	@Persistent
+	private Long money;
+	@Persistent
+	private Date addXu;
+	/**
+	 * @return the id
+	 */
+	public String getId() {
+		return id;
+	}
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(String id) {
+		this.id = id;
+	}
+	/**
+	 * @return the idXu
+	 */
+	public String getIdXu() {
+		return idXu;
+	}
+	/**
+	 * @param idXu the idXu to set
+	 */
+	public void setIdXu(String idXu) {
+		this.idXu = idXu;
+	}
+	/**
+	 * @return the money
+	 */
+	public Long getMoney() {
+		return money;
+	}
+	/**
+	 * @param money the money to set
+	 */
+	public void setMoney(Long money) {
+		this.money = money;
+	}
+	/**
+	 * @return the addXu
+	 */
+	public Date getAddXu() {
+		return addXu;
+	}
+	/**
+	 * @param addXu the addXu to set
+	 */
+	public void setAddXu(Date addXu) {
+		this.addXu = addXu;
+	}
+	/**
+	 * @return the idCustomer
+	 */
+	public String getIdCustomer() {
+		return idCustomer;
+	}
+	/**
+	 * @param idCustomer the idCustomer to set
+	 */
+	public void setIdCustomer(String idCustomer) {
+		this.idCustomer = idCustomer;
+	}
+	
 
 }
