@@ -13,28 +13,8 @@ $(document).ready(function(){
 
 });
 </script>
-<script type="text/javascript">
-    $(document).ready(function() {
-
-      /*   var status = $("#status").val();
-        $("#provider_product option:selected").removeAttr('selected');
-        $("#provider_product").val("/categoryProviderRecord.vn?value=" + status).attr('selected', true); */
-
-       /*  var col = $("#col").val();
-        $("#order option:selected").removeAttr('selected');
-        $("#order").val("/categoryProviderRecord.vn?col=" + col).attr('selected', true);
-
-        var page = $("#page").val();
-        if ($("a").text == page) {
-            var a = $("a").text;
-            a.css("color", "black");
-        } */
-
-    });
-</script>   
 <div class="page-title category-title">
   <h1>DANH SACH SẢN PHẨM</h1>
-<%-- <input type="hidden"  id="value" value ="<bean:write name="user" property="isCustomerBill"/>"></input> --%>
 <logic:present name="PVO"  property="fStatusList" >
 <select id="provider_product" name="choose"  onchange="setLocation(this.value)">
 
@@ -213,7 +193,6 @@ $(document).ready(function(){
 <td style="text-align: center;" ><a href="/reOrder.vn?id=<bean:write name="element" property="id"/>"><bean:write name="element" property="id"/></a></td>
 <td> <bean:write name="element" property="name"/></td>
 <td><bean:write name="element"  property="nameTypeId"/></td>
-<%-- <td><bean:write name="element"  property="statusName"/></td> --%>
 <td><bean:write name="element"  property="price"/></td>
 <td><bean:write name="element"  property="promoPrice"/></td>
 <td><bean:write name="element"  property="number"/></td>

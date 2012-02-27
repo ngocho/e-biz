@@ -91,8 +91,6 @@ function slideSwitch() {
   </c:if>
  <c:remove var="flagCompare"/>
 </logic:present>
-<%--  <bean:write name="flagCompare"/>
-<input type="hidden" value="12" name="flagCompareName" id="flagCompareID"/> --%>
   <div class="page-title category-title">
 
     <h1>
@@ -100,16 +98,16 @@ function slideSwitch() {
       <logic:present name="productVo" property="typeProduct">
        <c:choose>
                   <c:when test="${productVo.typeProduct == '1'}">
-                 <bean:message key="home.nav.menu1" />
+                 <bean:message key="home.nav.menu1" /> <logic:present name="ProviderFood">- <bean:message key="home.nav.menu5" /> <bean:write name="ProviderFoodName"/></logic:present>
                   </c:when>
-                  <c:when test="${productVo.typeProduct == 2}">
-                 <bean:message key="home.nav.menu2" />
+                  <c:when test="${productVo.typeProduct == 2}"> 
+                 <bean:message key="home.nav.menu2" /> <logic:present name="ProviderFood"> - <bean:message key="home.nav.menu5" /> <bean:write name="ProviderFoodName"/></logic:present>
                   </c:when>
-                  <c:when test="${productVo.typeProduct == 3}">
-                 <bean:message key="home.nav.menu3" />
+                  <c:when test="${productVo.typeProduct == 3}"> 
+                 <bean:message key="home.nav.menu3" /> <logic:present name="ProviderFood"> - <bean:message key="home.nav.menu5" /> <bean:write name="ProviderFoodName"/></logic:present>
                   </c:when>
                   <c:when test="${productVo.typeProduct == 4}">
-                 <bean:message key="home.nav.menu4" />
+                 <bean:message key="home.nav.menu4" /> <logic:present name="ProviderFood"> - <bean:message key="home.nav.menu5" /> <bean:write name="ProviderFoodName"/></logic:present>
                   </c:when>
       </c:choose>
       </logic:present>

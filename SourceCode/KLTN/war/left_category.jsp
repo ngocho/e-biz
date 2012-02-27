@@ -124,16 +124,16 @@ $(document).ready(function(){
             </div>
 </div>
 <p class="home-callout">
-<a href=""><img src="Images/Commons/giaohang.png" width="195" height="200" border="0"></a>
+<img src="Images/Commons/giaohang.png" width="195" height="200" border="0">
 </p> 
 <p class="home-callout">
-<a href=""><img src="Images/Commons/taikhoanXu.png" width="195" height="200" border="0"></a>
+<img src="Images/Commons/taikhoanXu.png" width="195" height="200" border="0">
 </p>
  <p class="home-callout">
-<a href=""><img src="Images/Commons/mail_sms.png" width="195" height="200" border="0"></a>
+<img src="Images/Commons/mail_sms.png" width="195" height="200" border="0">
 </p>
 
 <p class="home-callout">
-<a href=""><img src="Images/Commons/voucher.png" width="195" height="200" border="0"></a>
+<img src="Images/Commons/voucher.png" width="195" height="200" border="0">
 </p>
 </div>

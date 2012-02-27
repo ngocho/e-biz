@@ -75,13 +75,11 @@
           </span></li>
 					<div class="input-box">
 						<a href="/registerProvider.vn">Đăng kí nếu chưa có tài khoản</a>
-					</div>
+					</div><br>
+          <p style="color:red;">*Bắt buộc phải nhập</p>
 					
 				</html:form>
 			</ul>
-
-
-			<p class="required">* Bắt buộc phải nhập</p>
 		</div>
 	</div>
 </div>
