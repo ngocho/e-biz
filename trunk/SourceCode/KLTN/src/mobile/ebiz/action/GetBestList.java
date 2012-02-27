@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import mobile.ebiz.blo.MobileBLO;
-import mobile.ebiz.blo.PromotionBLO;
 
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
@@ -22,7 +21,6 @@ import com.google.appengine.repackaged.org.json.JSONException;
 import com.google.appengine.repackaged.org.json.JSONObject;
 
 import ebiz.action.BaseAction;
-import ebiz.util.CommonConstant;
 
 /**
  * @author nthanhphong
