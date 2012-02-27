@@ -7,31 +7,56 @@ import android.provider.BaseColumns;
  * @author NThanhPhong
  */
 public class SaveSearchItem implements BaseColumns {
-    /**  . */
+    /** . */
     public static final Uri CONTENT_URI = Uri.parse("content://kltn.client.android_client/save_search_food");
 
-    /**  . */
+    /** . */
     public static final String DEFAULT_SORT_ORDER = "savedate, id DESC";
-    /**  . */
+    /** . */
     public static final String ID = "id";
-    /**  . */
+    /** . */
     public static final String NAME = "name";
-    /**  . */
+    /** . */
     public static final String INTRODUCTION = "introduction";
-    /**  . */
+    /** . */
     public static final String PRICE = "price";
-    /**  . */
+    /** . */
     public static final String BUYPRICE = "buyprice";
-    /**  . */
+    /** . */
     public static final String IMAGEURL = "imageurl";
-    /**  . */
+    /** . */
     public static final String UPLOADDATE = "uploaddate";
-    /**  . */
+    /** . */
     public static final String SAVEDATE = "savedate";
-    /**  . */
+    /** . */
     public static final String BUYCOUNT = "buycount";
-    /**  . */
+    /** . */
     public static final String PROVIDER = "provider";
+    /**
+     * @param id String
+     * @param name String
+     * @param introduction String
+     * @param price String
+     * @param buyprice String
+     * @param image String
+     * @param uploaddate String
+     * @param savedate String
+     * @param buycount String
+     * @param provider String
+     */
+    public SaveSearchItem(String id, String name, String introduction, String price, String buyprice, String image,
+            String uploaddate, String savedate, String buycount, String provider) {
+        setId(id);
+        setName(name);
+        setIntroduction(introduction);
+        setPrice(price);
+        setBuyprice(buyprice);
+        setImageurl(image);
+        setUploaddate(uploaddate);
+        setSavedate(savedate);
+        setBuycount(buycount);
+        setProvider(provider);
+    }
     /**
      * [Give the description for method].
      * @return String
@@ -172,6 +197,6 @@ public class SaveSearchItem implements BaseColumns {
     public void setProvider(String provider) {
         this.provider = provider;
     }
-    /**  . */
+    /** . */
     private String id, name, introduction, price, buyprice, imageurl, uploaddate, savedate, buycount, provider;
 }

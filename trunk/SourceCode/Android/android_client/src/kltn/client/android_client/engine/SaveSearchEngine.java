@@ -2,7 +2,7 @@ package kltn.client.android_client.engine;
 
 import java.security.InvalidParameterException;
 
-import kltn.client.android_client.model.FavoriteItem;
+import kltn.client.android_client.model.SaveSearchItem;
 import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
@@ -11,63 +11,63 @@ import android.database.Cursor;
 /**
  * @author NThanhPhong
  */
-public class FavouriteEngine {
+public class SaveSearchEngine {
     /**
      * @param context Context
      */
-    public FavouriteEngine(Context context) {
+    public SaveSearchEngine(Context context) {
         mResolver = context.getContentResolver();
     }
 
     /**
      * [Give the description for method].
-     * @param item FavoriteItem
+     * @param item SaveSearchItem
      */
-    public void put(FavoriteItem item) {
+    public void put(SaveSearchItem item) {
         if (item == null) {
             throw new InvalidParameterException();
         }
-        String where = FavoriteItem.ID + "=\"" + item.getId() + "\"";
-        Cursor c = mResolver.query(FavoriteItem.CONTENT_URI, null, where, null, null);
+        String where = SaveSearchItem.ID + "=\"" + item.getId() + "\"";
+        Cursor c = mResolver.query(SaveSearchItem.CONTENT_URI, null, where, null, null);
         if (c != null) {
             int dbCount = c.getCount();
             c.close();
             ContentValues values = new ContentValues();
-            values.put(FavoriteItem.ID, item.getId());
-            values.put(FavoriteItem.NAME, item.getName());
-            values.put(FavoriteItem.INTRODUCTION, item.getIntroduction());
-            values.put(FavoriteItem.PRICE, item.getPrice());
-            values.put(FavoriteItem.BUYPRICE, item.getBuyprice());
-            values.put(FavoriteItem.IMAGEURL, item.getImageurl());
-            values.put(FavoriteItem.UPLOADDATE, item.getUploaddatedate());
-            values.put(FavoriteItem.SAVEDATE, item.getSavedate());
-            values.put(FavoriteItem.BUYCOUNT, item.getBuycount());
-            values.put(FavoriteItem.PROVIDER, item.getProvider());
+            values.put(SaveSearchItem.ID, item.getId());
+            values.put(SaveSearchItem.NAME, item.getName());
+            values.put(SaveSearchItem.INTRODUCTION, item.getIntroduction());
+            values.put(SaveSearchItem.PRICE, item.getPrice());
+            values.put(SaveSearchItem.BUYPRICE, item.getBuyprice());
+            values.put(SaveSearchItem.IMAGEURL, item.getImageurl());
+            values.put(SaveSearchItem.UPLOADDATE, item.getUploaddatedate());
+            values.put(SaveSearchItem.SAVEDATE, item.getSavedate());
+            values.put(SaveSearchItem.BUYCOUNT, item.getBuycount());
+            values.put(SaveSearchItem.PROVIDER, item.getProvider());
             if (dbCount == 0) {
-                mResolver.insert(FavoriteItem.CONTENT_URI, values);
+                mResolver.insert(SaveSearchItem.CONTENT_URI, values);
             } else {
-                mResolver.update(FavoriteItem.CONTENT_URI, values, where, null);
+                mResolver.update(SaveSearchItem.CONTENT_URI, values, where, null);
             }
         }
     }
 
     /**
      * [Give the description for method].
-     * @param favoriteId String
+     * @param saveSearchId String
      */
-    public void removeItem(String favoriteId) {
-        String where = FavoriteItem.ID + "=" + favoriteId;
-        mResolver.delete(FavoriteItem.CONTENT_URI, where, null);
+    public void removeItem(String saveSearchId) {
+        String where = SaveSearchItem.ID + "=" + saveSearchId;
+        mResolver.delete(SaveSearchItem.CONTENT_URI, where, null);
     }
 
     /**
      * [Give the description for method].
-     * @param favoriteId String
+     * @param saveSearchId String
      * @return boolean
      */
-    public boolean isItem(String favoriteId) {
-        String where = FavoriteItem.ID + "=\"" + favoriteId + "\"";
-        Cursor c = mResolver.query(FavoriteItem.CONTENT_URI, null, where, null, null);
+    public boolean isItem(String saveSearchId) {
+        String where = SaveSearchItem.ID + "=\"" + saveSearchId + "\"";
+        Cursor c = mResolver.query(SaveSearchItem.CONTENT_URI, null, where, null, null);
         if (c != null) {
             int dbCount = c.getCount();
             if (dbCount > 0) {
@@ -89,16 +89,16 @@ public class FavouriteEngine {
         }
         StringBuffer where = new StringBuffer();
         for (int i = 0; i < ids.length - 1; i++) {
-            where.append(FavoriteItem.ID).append("=? OR ");
+            where.append(SaveSearchItem.ID).append("=? OR ");
         }
         if (ids.length > 0) {
-            where.append(FavoriteItem.ID).append("=?");
+            where.append(SaveSearchItem.ID).append("=?");
         }
         String[] args = new String[ids.length];
         for (int i = 0; i < ids.length; i++) {
             args[i] = ids[i];
         }
-        mResolver.delete(FavoriteItem.CONTENT_URI, where.toString(), args);
+        mResolver.delete(SaveSearchItem.CONTENT_URI, where.toString(), args);
     }
 
     /**
@@ -106,8 +106,8 @@ public class FavouriteEngine {
      * @return int
      */
     public int count() {
-        String projection = "COUNT(" + FavoriteItem.ID + ")";
-        Cursor c = mResolver.query(FavoriteItem.CONTENT_URI, new String[]{projection}, null, null, null);
+        String projection = "COUNT(" + SaveSearchItem.ID + ")";
+        Cursor c = mResolver.query(SaveSearchItem.CONTENT_URI, new String[]{projection}, null, null, null);
         int count = 0;
         if (c != null) {
             c.moveToFirst();
@@ -123,12 +123,11 @@ public class FavouriteEngine {
      * @return Cursor
      */
     private Cursor getAll(String sortOrder) {
-        String projection[] = {FavoriteItem.ID, FavoriteItem.NAME, FavoriteItem.INTRODUCTION, FavoriteItem.PRICE,
-                FavoriteItem.BUYPRICE, FavoriteItem.IMAGEURL, FavoriteItem.BUYCOUNT, FavoriteItem.MINBUYER,
-                FavoriteItem.MAXBUYER, FavoriteItem.RATE, FavoriteItem.UPLOADDATE, FavoriteItem.SAVEDATE,
-                FavoriteItem.PROVIDER};
+        String projection[] = {SaveSearchItem.ID, SaveSearchItem.NAME, SaveSearchItem.INTRODUCTION,
+                SaveSearchItem.PRICE, SaveSearchItem.BUYPRICE, SaveSearchItem.IMAGEURL, SaveSearchItem.BUYCOUNT,
+                SaveSearchItem.UPLOADDATE, SaveSearchItem.SAVEDATE, SaveSearchItem.PROVIDER};
 
-        Cursor c = mResolver.query(FavoriteItem.CONTENT_URI, projection, null, null, sortOrder);
+        Cursor c = mResolver.query(SaveSearchItem.CONTENT_URI, projection, null, null, sortOrder);
         return c;
     }
     /**
@@ -141,7 +140,7 @@ public class FavouriteEngine {
         int result = 0;
         try {
             String sqlSearch = "name like '" + foodname + "%'";
-            Cursor c = mResolver.query(FavoriteItem.CONTENT_URI, null, sqlSearch, null, null);
+            Cursor c = mResolver.query(SaveSearchItem.CONTENT_URI, null, sqlSearch, null, null);
             if (c.moveToFirst()) {
                 result = c.getInt(c.getColumnIndex("_id"));
             }
@@ -168,5 +167,5 @@ public class FavouriteEngine {
     /** . */
     private ContentResolver mResolver;
     /** . */
-    private static String mDEBUGTAG = "[FavoriteEngine]";
+    private static String mDEBUGTAG = "[SaveSearchEngine]";
 }

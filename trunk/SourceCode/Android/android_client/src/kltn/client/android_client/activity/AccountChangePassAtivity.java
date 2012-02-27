@@ -64,7 +64,7 @@ public class AccountChangePassAtivity extends Activity implements OnClickListene
         switch (v.getId()) {
             case R.id.account_changepass_ok :
                 if (!mOldPass.getText().equals("") && !mNewPass.getText().equals("")
-                        && !mComfirmPass.getText().equals("")) {
+                        && !mComfirmPass.getText().equals("") && mNewPass.getText().toString().equals(mComfirmPass.getText().toString())) {
                     mLoadData();
                 } else {
                     Toast.makeText(AccountChangePassAtivity.this, getString(R.string.transfer_xu_status),

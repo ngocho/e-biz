@@ -4,6 +4,7 @@ import kltn.client.android_client.R;
 import kltn.client.android_client.engine.BitmapManager;
 import kltn.client.android_client.engine.Engine;
 import kltn.client.android_client.engine.FavouriteEngine;
+import kltn.client.android_client.engine.SaveSearchEngine;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -42,8 +43,8 @@ public class SavedSearchActivity extends Activity implements OnClickListener, Te
         mBack.setOnClickListener(this);
         mOk.setOnClickListener(this);
         mEdittext.addTextChangedListener(this);
-        mFavoriteEngine = new FavouriteEngine(this);
-        mData = mFavoriteEngine.getAllSortByDate();
+        mSaveSearchEngine = new SaveSearchEngine(this);
+        mData = mSaveSearchEngine.getAllSortByDate();
         mEngine = new Engine();
         mListview.setAdapter(new SaveSearchAdapter(this));
     }
@@ -51,7 +52,7 @@ public class SavedSearchActivity extends Activity implements OnClickListener, Te
      * @author NThanhPhong
      */
     public class SaveSearchAdapter extends BaseAdapter {
-        /**  . */
+        /** . */
         private Context context;
         /**
          * @param mycontext Context
@@ -90,28 +91,38 @@ public class SavedSearchActivity extends Activity implements OnClickListener, Te
             TextView saveddate = (TextView) convertView.findViewById(R.id.item_search_saveddate);
             name.setText(mData.getString(mData.getColumnIndex("id")) + " - "
                     + mData.getString(mData.getColumnIndex("name")));
-            price.setText(mData.getString(mData.getColumnIndex("price")) + getString(R.string.vnd));
-            buyprice.setText(mData.getString(mData.getColumnIndex("buyprice")) + getString(R.string.vnd));
+            price.setText(mData.getString(mData.getColumnIndex("price")) + " " + getString(R.string.vnd));
+            buyprice.setText(mData.getString(mData.getColumnIndex("buyprice")) + " " + getString(R.string.vnd));
             provider.setText(getString(R.string.provider) + " " + mData.getString(mData.getColumnIndex("provider")));
             count.setText(getString(R.string.buyer) + " " + mData.getString(mData.getColumnIndex("buycount")));
             saveddate.setText(getString(R.string.saved_date) + " " + mData.getString(mData.getColumnIndex("savedate")));
             BitmapManager.INSTANCE.loadBitmap(url, image, 150, 150);
+            final String idfood = mData.getString(mData.getColumnIndex("id"));
+            convertView.setOnClickListener(new OnClickListener() {
+
+                @Override
+                public void onClick(View v) {
+                    Intent i = new Intent(SavedSearchActivity.this, DetailFoodActivity.class);
+                    i.putExtra("id_food", idfood);
+                    startActivity(i);
+                }
+            });
             return convertView;
         }
     };
-    /**  . */
+    /** . */
     private Engine mEngine;
-    /**  . */
-    private FavouriteEngine mFavoriteEngine;
-    /**  . */
+    /** . */
+    private SaveSearchEngine mSaveSearchEngine;
+    /** . */
     private Button mBack;
-    /**  . */
+    /** . */
     private ListView mListview;
-    /**  . */
+    /** . */
     private Button mOk;
-    /**  . */
+    /** . */
     private EditText mEdittext;
-    /**  . */
+    /** . */
     private Cursor mData;
     /*
      * (non-Javadoc)
@@ -160,7 +171,7 @@ public class SavedSearchActivity extends Activity implements OnClickListener, Te
     @Override
     public void onTextChanged(CharSequence s, int start, int before, int count) {
         if (s.length() > 0) {
-            mListview.setSelection(mFavoriteEngine.selectFoodByName(mData, s.toString()));
+            mListview.setSelection(mSaveSearchEngine.selectFoodByName(mData, s.toString()));
             mOk.setBackgroundResource(R.drawable.search_button_cancel);
         }
     }

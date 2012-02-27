@@ -1,13 +1,17 @@
 package kltn.client.android_client.activity;
 
+import java.util.Calendar;
 import java.util.Vector;
 
 import kltn.client.android_client.R;
 import kltn.client.android_client.engine.BitmapManager;
+import kltn.client.android_client.engine.CommonUtil;
 import kltn.client.android_client.engine.Engine;
 import kltn.client.android_client.engine.FavouriteEngine;
+import kltn.client.android_client.engine.SaveSearchEngine;
 import kltn.client.android_client.model.BrowserFoodItem;
 import kltn.client.android_client.model.FavoriteItem;
+import kltn.client.android_client.model.SaveSearchItem;
 import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
@@ -66,7 +70,7 @@ public class TabBrowserActivity extends Activity implements OnClickListener, Tex
         mSave = (Button) findViewById(R.id.tab_browser_savesearch);
         mSave.setOnClickListener(this);
         mLoadData();
-        mFavoriteEngine = new FavouriteEngine(this);
+        mSaveSearchEngine = new SaveSearchEngine(this);
     }
 
     /**
@@ -240,7 +244,7 @@ public class TabBrowserActivity extends Activity implements OnClickListener, Tex
     /** . */
     private Button mSave;
     /** . */
-    private FavouriteEngine mFavoriteEngine;
+    private SaveSearchEngine mSaveSearchEngine;
 
     /*
      * (non-Javadoc)
@@ -288,10 +292,10 @@ public class TabBrowserActivity extends Activity implements OnClickListener, Tex
                 if (flag) {
                     for (int i = 0; i < mItemsData.size(); i++) {
                         BrowserFoodItem item = mItemsData.get(i);
-                        mFavoriteEngine.put(new FavoriteItem(item.getId(), item.getName(), item.getIntroduction(), item
-                                .getPrice(), item.getBuyprice(), item.getImageurl(), item.getStartdate(), item
-                                .getStartdate(), item.getBuycount(), item.getBuycount(), item.getBuycount(), item
-                                .getBuycount(), item.getProvider()));
+                        mSaveSearchEngine.put(new SaveSearchItem(item.getId(), item.getName(), item.getIntroduction(),
+                                item.getPrice(), item.getBuyprice(), item.getImageurl(), item.getStartdate(),
+                                CommonUtil.formatDate(Calendar.getInstance().getTime()), String.valueOf(item
+                                        .getBuycount()), item.getProvider()));
                     }
                 }
                 break;

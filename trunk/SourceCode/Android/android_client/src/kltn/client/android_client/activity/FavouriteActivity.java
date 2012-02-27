@@ -98,9 +98,9 @@ public class FavouriteActivity extends Activity implements OnClickListener {
                     + mData.getString(mData.getColumnIndex("name")));
             datesaved.setText(getString(R.string.saved_date) + " " + mData.getString(mData.getColumnIndex("savedate")));
             content.setText(mData.getString(mData.getColumnIndex("introduction")));
-            price.setText("$" + mData.getString(mData.getColumnIndex("price")));
+            price.setText("$" + mData.getString(mData.getColumnIndex("price"))+" "+getString(R.string.vnd));
             price.setPaintFlags(price.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-            promotionprice.setText("$" + mData.getString(mData.getColumnIndex("buyprice")));
+            promotionprice.setText("$" + mData.getString(mData.getColumnIndex("buyprice"))+" "+getString(R.string.vnd));
             provider.setText(getString(R.string.provider) + " " + mData.getString(mData.getColumnIndex("provider")));
             BitmapManager.INSTANCE.loadBitmap(mEngine.mURLImage + mData.getString(mData.getColumnIndex("imageurl")),
                     image, 90, 90);
@@ -118,6 +118,15 @@ public class FavouriteActivity extends Activity implements OnClickListener {
                     if (isChecked) {
                         listDelete += id + "@";
                     }
+                }
+            });
+            convertView.setOnClickListener(new OnClickListener() {
+
+                @Override
+                public void onClick(View v) {
+                    Intent i = new Intent(FavouriteActivity.this, DetailFoodActivity.class);
+                    i.putExtra("id_food", id);
+                    startActivity(i);
                 }
             });
             return convertView;

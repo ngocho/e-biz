@@ -28,10 +28,14 @@
 			android:layout_height="wrap_content" android:id="@+id/linearLayout5"
 			android:gravity="center_horizontal">
 			<TextView android:layout_width="wrap_content"
-				android:layout_height="wrap_content" android:textStyle="bold"
-				android:textSize="13dp" android:text="TextView"
+				android:layout_weight="1.0" android:layout_height="wrap_content"
+				android:textStyle="bold" android:textSize="13dp" android:text="TextView"
 				android:textAppearance="?android:attr/textAppearanceSmall"
-				android:id="@+id/detail_food_name" android:textColor="@color/black"></TextView>
+				android:id="@+id/detail_food_name" android:textColor="@color/black"
+				android:gravity="center_horizontal"></TextView>
+			<Button android:layout_width="30dp"
+				android:background="@drawable/favours_normal" android:id="@+id/detail_food_add_favorite"
+				android:layout_height="30dp"></Button>
 		</LinearLayout>
 		<LinearLayout android:id="@+id/linearLayout10"
 			android:layout_marginTop="5dp" android:layout_width="fill_parent"
@@ -74,10 +78,10 @@
 					android:textSize="13dp" android:textColor="@color/white"
 					android:layout_height="wrap_content" android:textAppearance="?android:attr/textAppearanceSmall"
 					android:text="Còn lại            vnđ"></TextView>
-				<TextView android:id="@+id/detail_food_buyprice" android:textColor="@color/white"
-					android:textSize="13dp" android:textStyle="bold"
-					android:layout_width="wrap_content" android:layout_height="wrap_content"
-					android:textAppearance="?android:attr/textAppearanceMedium"
+				<TextView android:id="@+id/detail_food_buyprice"
+					android:textColor="@color/white" android:textSize="13dp"
+					android:textStyle="bold" android:layout_width="wrap_content"
+					android:layout_height="wrap_content" android:textAppearance="?android:attr/textAppearanceMedium"
 					android:text="TextView"></TextView>
 			</LinearLayout>
 			<LinearLayout android:id="@+id/linearLayout16"
@@ -127,7 +131,7 @@
 		</LinearLayout>
 	</LinearLayout>
 	<LinearLayout android:layout_height="fill_parent"
-		android:layout_weight="1" android:orientation="vertical" android:id="@+id/detail_food_tab_host"
-		android:layout_width="fill_parent">
+		android:layout_weight="1" android:orientation="vertical"
+		android:id="@+id/detail_food_tab_host" android:layout_width="fill_parent">
 	</LinearLayout>
 </LinearLayout>

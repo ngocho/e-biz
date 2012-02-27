@@ -3,6 +3,7 @@ package kltn.client.android_client.engine;
 import kltn.client.android_client.model.FavoriteItem;
 import kltn.client.android_client.model.DateFoodItem;
 import kltn.client.android_client.model.HistotyBuyItem;
+import kltn.client.android_client.model.SaveSearchItem;
 import android.content.ContentProvider;
 import android.content.ContentUris;
 import android.content.ContentValues;
@@ -46,6 +47,7 @@ public class MainProvider extends ContentProvider {
                 db.execSQL(SQL_CREATE_DATE_FOOD);
                 Log.w(DEBUG_TAG, "creating favorite_food table");
                 db.execSQL(SQL_CREATE_FAVORITE_FOOD);
+                db.execSQL(SQL_CREATE_SAVESEARCH_FOOD);
             } catch (SQLException e) {
                 Log.e(DEBUG_TAG, e.getMessage());
             }
@@ -59,21 +61,22 @@ public class MainProvider extends ContentProvider {
                 db.execSQL(SQL_DROP_HISTORY_BUY);
                 db.execSQL(SQL_DROP_CHAT);
                 db.execSQL(SQL_DROP_FAVORITE);
+                db.execSQL(SQL_DROP_SAVESEARCH_FOOD);
                 onCreate(db);
             } catch (SQLException e) {
                 Log.e(DEBUG_TAG, e.getMessage());
             }
         }
 
-        /**  . */
+        /** . */
         private static final String SQL_CREATE_HISTORY_BUY = "CREATE TABLE " + TABLE_HISTORY_BUY + "("
                 + HistotyBuyItem._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + HistotyBuyItem.IDCUSTOMER + " TEXT, "
                 + HistotyBuyItem.IDGOODS + " TEXT, " + HistotyBuyItem.GOODSNAME + " TEXT, " + HistotyBuyItem.IMAGE
                 + " TEXT, " + HistotyBuyItem.DATE + " TEXT, " + HistotyBuyItem.PRICE + " TEXT);";
-        /**  . */
+        /** . */
         private static final String SQL_DROP_HISTORY_BUY = "DROP TABLE IF EXISTS " + TABLE_HISTORY_BUY;
 
-        /**  . */
+        /** . */
         private static final String SQL_CREATE_DATE_FOOD = "CREATE TABLE " + TABLE_DATE_FOOD + "(" + DateFoodItem._ID
                 + " INTEGER PRIMARY KEY AUTOINCREMENT, " + DateFoodItem.IDGOODS + " TEXT, " + DateFoodItem.NAME
                 + " TEXT, " + DateFoodItem.PRICE + " TEXT, " + DateFoodItem.BUYPRICE + " TEXT, "
@@ -81,10 +84,10 @@ public class MainProvider extends ContentProvider {
                 + " TEXT, " + DateFoodItem.BUYCOUNT + " TEXT, " + DateFoodItem.COUNTMIN + " TEXT, "
                 + DateFoodItem.COUNTMAX + " TEXT);";
 
-        /**  . */
+        /** . */
         private static final String SQL_DROP_CHAT = "DROP TABLE IF EXISTS " + TABLE_DATE_FOOD;
 
-        /**  . */
+        /** . */
         private static final String SQL_CREATE_FAVORITE_FOOD = "CREATE TABLE " + TABLE_FAVORITE_FOOD + "("
                 + FavoriteItem._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + FavoriteItem.ID + " TEXT, "
                 + FavoriteItem.NAME + " TEXT, " + FavoriteItem.INTRODUCTION + " TEXT, " + FavoriteItem.PRICE
@@ -93,7 +96,18 @@ public class MainProvider extends ContentProvider {
                 + " TEXT, " + FavoriteItem.RATE + " TEXT, " + FavoriteItem.PROVIDER + " TEXT, " + FavoriteItem.BUYCOUNT
                 + " TEXT, " + FavoriteItem.MINBUYER + " TEXT);";
 
-        /**  . */
+        /** . */
+        private static final String SQL_DROP_SAVESEARCH_FOOD = "DROP TABLE IF EXISTS " + TABLE_SAVE_FOOD;
+
+        /** . */
+        private static final String SQL_CREATE_SAVESEARCH_FOOD = "CREATE TABLE " + TABLE_SAVE_FOOD + "("
+                + SaveSearchItem._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + SaveSearchItem.ID + " TEXT, "
+                + SaveSearchItem.NAME + " TEXT, " + SaveSearchItem.INTRODUCTION + " TEXT, " + SaveSearchItem.PRICE
+                + " TEXT, " + SaveSearchItem.BUYPRICE + " TEXT, " + SaveSearchItem.IMAGEURL + " TEXT, "
+                + SaveSearchItem.UPLOADDATE + " TEXT, " + SaveSearchItem.SAVEDATE + " TEXT, " + SaveSearchItem.PROVIDER
+                + " TEXT, " + SaveSearchItem.BUYCOUNT + " TEXT);";
+
+        /** . */
         private static final String SQL_DROP_FAVORITE = "DROP TABLE IF EXISTS " + TABLE_FAVORITE_FOOD;
     }
 
@@ -122,6 +136,10 @@ public class MainProvider extends ContentProvider {
                 Log.i(DEBUG_TAG, "Delete where: " + where);
                 count = mDatabase.delete(TABLE_FAVORITE_FOOD, where, whereArgs);
                 break;
+            case CODE_SAVE_FOOD :
+                Log.i(DEBUG_TAG, "Delete where: " + where);
+                count = mDatabase.delete(TABLE_SAVE_FOOD, where, whereArgs);
+                break;
             default :
                 throw new IllegalArgumentException("Unsupported URI: " + uri);
         }
@@ -138,6 +156,8 @@ public class MainProvider extends ContentProvider {
             case CODE_DATE_FOOD :
                 return "vnd.android.cursor.dir/vnd.kltn.client.android_client";
             case CODE_FAVORITE_FOOD :
+                return "vnd.android.cursor.dir/vnd.kltn.client.android_client";
+            case CODE_SAVE_FOOD :
                 return "vnd.android.cursor.dir/vnd.kltn.client.android_client";
             default :
                 throw new IllegalArgumentException("Unsupported URI: " + uri);
@@ -170,6 +190,14 @@ public class MainProvider extends ContentProvider {
                 break;
             case CODE_FAVORITE_FOOD :
                 rowID = mDatabase.insert(TABLE_FAVORITE_FOOD, null, values);
+                if (rowID > 0) {
+                    Uri uri1 = ContentUris.withAppendedId(FavoriteItem.CONTENT_URI, rowID);
+                    getContext().getContentResolver().notifyChange(uri1, null);
+                    return uri1;
+                }
+                break;
+            case CODE_SAVE_FOOD :
+                rowID = mDatabase.insert(TABLE_SAVE_FOOD, null, values);
                 if (rowID > 0) {
                     Uri uri1 = ContentUris.withAppendedId(FavoriteItem.CONTENT_URI, rowID);
                     getContext().getContentResolver().notifyChange(uri1, null);
@@ -220,6 +248,16 @@ public class MainProvider extends ContentProvider {
                 c = qb.query(mDatabase, projection, selection, selectionArgs, null, null, orderBy);
                 c.setNotificationUri(getContext().getContentResolver(), uri);
                 return c;
+            case CODE_SAVE_FOOD :
+                qb.setTables(TABLE_SAVE_FOOD);
+                if (TextUtils.isEmpty(sortOrder)) {
+                    orderBy = FavoriteItem.DEFAULT_SORT_ORDER;
+                } else {
+                    orderBy = sortOrder;
+                }
+                c = qb.query(mDatabase, projection, selection, selectionArgs, null, null, orderBy);
+                c.setNotificationUri(getContext().getContentResolver(), uri);
+                return c;
             default :
                 break;
         }
@@ -239,6 +277,9 @@ public class MainProvider extends ContentProvider {
             case CODE_FAVORITE_FOOD :
                 count = mDatabase.update(TABLE_FAVORITE_FOOD, values, where, whereArgs);
                 break;
+            case CODE_SAVE_FOOD :
+                count = mDatabase.update(TABLE_SAVE_FOOD, values, where, whereArgs);
+                break;
             default :
                 throw new IllegalArgumentException("Unknown URI " + uri);
         }
@@ -246,33 +287,38 @@ public class MainProvider extends ContentProvider {
         return count;
     }
 
-    /**  . */
+    /** . */
     private static final UriMatcher mUriMatcher;
-    /**  . */
+    /** . */
     private static final String DEBUG_TAG = "[MainProvider]";
-    /**  . */
+    /** . */
     private SQLiteDatabase mDatabase;
-    /**  . */
+    /** . */
     public static final String DATABASE_NAME = "client.db";
-    /**  . */
+    /** . */
     public static final int DATABASE_VERSION = 8;
-    /**  . */
+    /** . */
     public static final String TABLE_HISTORY_BUY = "history_buy";
-    /**  . */
+    /** . */
     public static final String TABLE_DATE_FOOD = "date_food";
-    /**  . */
+    /** . */
     public static final String TABLE_FAVORITE_FOOD = "favorite_food";
-    /**  . */
+    /** . */
+    public static final String TABLE_SAVE_FOOD = "save_search_food";
+    /** . */
     private static final int CODE_HISTORY_BUY = 1;
-    /**  . */
+    /** . */
     private static final int CODE_DATE_FOOD = 2;
-    /**  . */
+    /** . */
     private static final int CODE_FAVORITE_FOOD = 3;
+    /** . */
+    private static final int CODE_SAVE_FOOD = 4;
 
     static {
         mUriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
         mUriMatcher.addURI("kltn.client.android_client", "history_buy", CODE_HISTORY_BUY);
         mUriMatcher.addURI("kltn.client.android_client", "date_food", CODE_DATE_FOOD);
         mUriMatcher.addURI("kltn.client.android_client", "favorite_food", CODE_FAVORITE_FOOD);
+        mUriMatcher.addURI("kltn.client.android_client", "save_search_food", CODE_SAVE_FOOD);
     }
 }
