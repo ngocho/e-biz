@@ -137,6 +137,7 @@ public class AccountAddXuActivity extends Activity implements OnDismissListener 
         if (flag) {
             mMoney.setText(mEngine.mGetXu(mUsername.getText().toString(),
                     PrefUtil.getStringPref(AccountAddXuActivity.this, "password")));
+            PrefUtil.setPref(AccountAddXuActivity.this, "xu", mMoney.getText());
             mProductkey.setText("");
         }
         mCurrentDialog.cancel();

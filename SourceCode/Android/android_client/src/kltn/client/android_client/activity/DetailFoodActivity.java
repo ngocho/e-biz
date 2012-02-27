@@ -1,5 +1,7 @@
 package kltn.client.android_client.activity;
 
+import java.util.Calendar;
+
 import org.json.JSONObject;
 
 import kltn.client.android_client.R;
@@ -8,7 +10,10 @@ import kltn.client.android_client.activity.tab.CommentTab;
 import kltn.client.android_client.activity.tab.ContentTab;
 import kltn.client.android_client.activity.tab.ImageTab;
 import kltn.client.android_client.activity.tab.ProviderTab;
+import kltn.client.android_client.engine.CommonUtil;
 import kltn.client.android_client.engine.Engine;
+import kltn.client.android_client.engine.FavouriteEngine;
+import kltn.client.android_client.model.FavoriteItem;
 import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
@@ -40,6 +45,7 @@ public class DetailFoodActivity extends Activity implements OnClickListener, OnD
         super.onCreate(savedInstanceState);
         setContentView(R.layout.detail_food_activity);
         mEngine = new Engine();
+        addFavorite = (Button) findViewById(R.id.detail_food_add_favorite);
         mTabView = (LinearLayout) findViewById(R.id.detail_food_tab_host);
         subprice = (TextView) findViewById(R.id.detail_food_subprice);
         price = (TextView) findViewById(R.id.detail_food_price);
@@ -54,6 +60,7 @@ public class DetailFoodActivity extends Activity implements OnClickListener, OnD
         provider = (Button) findViewById(R.id.detail_food_tab_contact);
         ok.setOnClickListener(this);
         back.setOnClickListener(this);
+        addFavorite.setOnClickListener(this);
         // LoadData("");
         introduction.setOnClickListener(tabClickListener(CONTENT_TAB));
         image.setOnClickListener(tabClickListener(IMAGE_TAB));
@@ -61,7 +68,14 @@ public class DetailFoodActivity extends Activity implements OnClickListener, OnD
         provider.setOnClickListener(tabClickListener(PROVIDER_TAB));
         Bundle receive = this.getIntent().getExtras();
         idfood = receive.getString("id_food");
+        mFavoriteEngine = new FavouriteEngine(this);
         mLoadData();
+        flagFavorite = mFavoriteEngine.isItem(idfood);
+        if (flagFavorite) {
+            addFavorite.setBackgroundResource(R.drawable.favours_pressed);
+        } else {
+            addFavorite.setBackgroundResource(R.drawable.favours_normal);
+        }
     }
     /**
      * [Give the description for method].
@@ -78,6 +92,7 @@ public class DetailFoodActivity extends Activity implements OnClickListener, OnD
         };
         t.start();
     }
+    private FavouriteEngine mFavoriteEngine;
     /** . */
     private String idfood;
     /** . */
@@ -106,6 +121,10 @@ public class DetailFoodActivity extends Activity implements OnClickListener, OnD
     private BaseTab mCurrentTab = null;
     /** . */
     private int mCurrentTabId;
+    /** . */
+    private Button addFavorite;
+    /** . */
+    private boolean flagFavorite;
     /**
      * [Explain the description for this method here].
      * @param dialog DialogInterface
@@ -116,10 +135,10 @@ public class DetailFoodActivity extends Activity implements OnClickListener, OnD
         mCurrentDialog.dismiss();
         try {
             name.setText("MS: " + mData.getString("id") + " - " + mData.getString("name"));
-            price.setText(mData.getString("price") + getString(R.string.vnd));
-            promotionprice.setText(mData.getString("pricepromotion") + getString(R.string.vnd));
+            price.setText(mData.getString("price") + " " + getString(R.string.vnd));
+            promotionprice.setText(mData.getString("pricepromotion") + " " + getString(R.string.vnd));
             subprice.setText(String.valueOf((Long.valueOf(mData.getString("price")) - Long.valueOf(mData
-                    .getString("pricepromotion")))) + getString(R.string.vnd));
+                    .getString("pricepromotion")))) + " " + getString(R.string.vnd));
             countbuy.setText(mData.getString("uploaddate"));
             mChangeTab(CONTENT_TAB);
         } catch (Exception e) {
@@ -140,6 +159,29 @@ public class DetailFoodActivity extends Activity implements OnClickListener, OnD
                 finish();
                 break;
             case R.id.detail_food_tab_content :
+                break;
+            case R.id.detail_food_add_favorite :
+                if (flagFavorite) {
+                    addFavorite.setBackgroundResource(R.drawable.favours_normal);
+                    mFavoriteEngine.removeItem(idfood);
+                    flagFavorite = false;
+                } else {
+                    addFavorite.setBackgroundResource(R.drawable.favours_pressed);
+                    try {
+
+                        FavoriteItem favoriteitem = new FavoriteItem(idfood, mData.getString("name"),
+                                mData.getString("pricepromotion"), mData.getString("price"),
+                                mData.getString("pricepromotion"), mData.getString("image"),
+                                mData.getString("uploaddate"), CommonUtil.formatDate(Calendar.getInstance().getTime()),
+                                Integer.parseInt(mData.getString("countbuy")), Integer.parseInt(mData
+                                        .getString("countbuy")), Integer.parseInt(mData.getString("countbuy")),
+                                Integer.parseInt(mData.getString("countbuy")), mData.getString("providerid"));
+                        mFavoriteEngine.put(favoriteitem);
+                    } catch (Exception e) {
+                        System.out.println(e);
+                    }
+                    flagFavorite = true;
+                }
                 break;
             default :
                 break;
