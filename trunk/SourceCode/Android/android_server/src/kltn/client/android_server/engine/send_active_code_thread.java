@@ -26,7 +26,7 @@ import org.json.JSONObject;
  * @author nthanhphong
  *
  */
-public class happybirthday_thread extends TimerTask{
+public class send_active_code_thread extends TimerTask{
 
 	/* (non-Javadoc)
 	 * @see java.util.TimerTask#run()
