@@ -142,6 +142,7 @@ public class FoodForm extends ValidatorForm implements Serializable {
         this.cooking = food.getCooking();
         this.productTypeId = food.getFoodTypeId();
         this.idProvider = food.getProviderID();
+        this.isDisplay = food.getIsDisplay();
         this.nameProvider = ProviderBLO.getNameProviderByID(this.idProvider);
         // het san pham
         if (food.getNumber() == 0) {
