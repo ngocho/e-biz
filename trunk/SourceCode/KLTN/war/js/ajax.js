@@ -101,6 +101,9 @@ function  addXu(value){
             else if(temp[0] == '3'){
             	alert('Vui lòng nạp mã xu');
             }
+            else {
+            	alert('Mã Xu không đúng!');
+            }
             }
         }
     });
