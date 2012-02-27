@@ -4,6 +4,8 @@
 <%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+<script src="//maps.googleapis.com/maps/api/js?sensor=false&libraries=places"
+      type="text/javascript"></script>
 <script type="text/javascript">
 $(document).ready(function(){
     initialize();
@@ -13,8 +15,24 @@ $(document).ready(function(){
 </script>
 <div class="cart">
 <p class="home-callout">
-<a href="/displayAddProviderGM.vn" style="color:blue; text-decoration: underline;"><bean:message key="home.search.gm1" /></a> <a href="/getAddProviderList.vn" style="color:blue; text-decoration: underline;"><bean:message key="home.search.gm" /></a>
-
+<logic:present name="gmDisplay" >
+<c:if test="${gmDisplay == '1'}">
+<bean:message key="home.search.gm1" />
+ <a href="/getAddProviderList.vn" style="color:blue; text-decoration: underline;">
+ <bean:message key="home.search.gm" /></a>
+ </c:if>
+ <c:if test="${gmDisplay == '0'}">
+ <a href="/displayAddProviderGM.vn" style="color:blue; text-decoration: underline;">
+<bean:message key="home.search.gm1" /></a>
+ <bean:message key="home.search.gm" />
+ </c:if>
+</logic:present>
+<%-- <logic:notPresent name="gmDisplay">
+<a href="/displayAddProviderGM.vn" style="color:blue; text-decoration: underline;">
+<bean:message key="home.search.gm1" /></a>
+ <!-- <a href="/getAddProviderList.vn" style="color:blue; text-decoration: underline;"> -->
+ <bean:message key="home.search.gm" />
+</logic:notPresent> --%>
 <div>
 <logic:present name="gmFlag" >
 <strong><bean:message key="home.search.gm.from" />: </strong>
@@ -31,5 +49,5 @@ $(document).ready(function(){
 <input type="button" name="view" value="<bean:message key="home.search.gm1.button" />" onclick="calcRoute();" class="buttonBG""/>
 </div>
 
-<div id="map_canvas" style="width:800px; height:500px;"></div>
+<div id="map_canvas" style="width:920px; height:500px;"></div>
 </div>

@@ -7,16 +7,26 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	initialize1();
-    
 });
 </script>
 <div class="cart">
 <p class="home-callout">
-<a href="/displayAddProviderGM.vn" style="color:blue; text-decoration: underline;"><bean:message key="home.search.gm1" /></a> <a href="/getAddProviderList.vn" style="color:blue; text-decoration: underline;"><bean:message key="home.search.gm" /></a>
+<logic:present name="gmDisplay" >
+<c:if test="${gmDisplay == '1'}">
+<bean:message key="home.search.gm1" />
+ <a href="/getAddProviderList.vn" style="color:blue; text-decoration: underline;">
+ <bean:message key="home.search.gm" /></a>
+ </c:if>
+ <c:if test="${gmDisplay == '0'}">
+ <a href="/displayAddProviderGM.vn" style="color:blue; text-decoration: underline;">
+<bean:message key="home.search.gm1" /></a>
+ <bean:message key="home.search.gm" />
+ </c:if>
+</logic:present>
 <div>
 <strong><bean:message key="home.search.gm.from" />: </strong>
 <input type="text" id="start" name="start" value=""   style="width:200px;"/>
-<strong><bean:message key="home.search.gm.to" />Đến cửa hàng: </strong>
+<strong><bean:message key="home.search.gm.to" />: </strong>
  <logic:present name="providerAddList">
  <select name="end" id="end">
 <logic:iterate id="element" name="providerAddList"  >
@@ -40,9 +50,6 @@ $(document).ready(function(){
 <input type="button" name="view" value="<bean:message key="home.search.gm.button1" />" onclick="codeAddress();" class="buttonBG""/>
 </logic:present>
 <br>
-
 </div>
-
-
 <div id="map_canvas" style="width:920px; height:500px;"></div>
 </div>

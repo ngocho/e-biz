@@ -154,11 +154,9 @@ $(document).ready(function(){
       <strong><span class="whiteImPression"><bean:message key="home.right.comment.title" /></span> </strong>
     </div>
     <div class="block-content" style="background: white">
-      <!--p class="empty">You have no items in your shopping cart.</p-->
       <form name="comment" action="/uploadComment.vn" style="clear: both">
       <textarea id="content"  rows="10"  style="width:98%;vertical-align:left;padding-right: 0px;padding-left: 0px;" align='left' name="content" >
 	   </textarea><br>
-	   <!-- id="uploadComment" -->
    <input type="submit" id="uploadComment" value="<bean:message key="home.right.comment.button" />" class="buttonBG" ></input>
       </form>
 
@@ -210,6 +208,6 @@ $(document).ready(function(){
 <a href=""><img src="Images/Commons/accepted-payment-yellow-152x63.png" width="195" height="100" border="0"></a>
 </p>
   <p class="home-callout">
-<a href=""><img src="Images/Commons/taikhoanXu.png" width="195" height="200" border="0"></a>
+<img src="Images/Commons/taikhoanXu.png" width="195" height="200" border="0">
 </p>
 </div>

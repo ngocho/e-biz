@@ -28,16 +28,6 @@
 </option>
 </select>
 </c:if>
-<%-- <c:if test="${language == null}">
-<select name="language" onchange="setLocation(this.value)">
-<option value="/changeLanguage.vn?lang=vi" selected="selected">
-<bean:message key="home.header.option1" />
-</option>
-<option value="/changeLanguage.vn?lang=en" >
-<bean:message key="home.header.option2" />
-</option>
-</select>
-</c:if> --%>
 </li>
 </ul>
  </div>
@@ -82,7 +72,7 @@
 
  <li class="level0 nav-2 level-top parent">
 <a
-          href="provider.vn"
+          href="/displayProviderList.vn"
           class="level-top">
 <span class="nav-text"><bean:message key="home.nav.menu5" /></span>
         </a>

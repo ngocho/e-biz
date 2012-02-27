@@ -31,12 +31,12 @@
 
                     <li >
                         <div class="input-box">
-                       <button type="button" title="Thanh toán"  class="button"  onclick="setLocation('/checkoutmoney.vn?checkoutOption=home')"><span><bean:message key="checkout.optional.home" /></span></button>
+                       <button type="button" title="Thanh toán"  class="button"  onclick="setLocation('/checkoutmoney.vn?checkout=home')"><span><bean:message key="checkout.optional.home" /></span></button>
                         </div>
                     </li>
                     <li style="margin-top:10px;">
                         <div class="input-box">
-                         <button type="button" title="Thanh toán"  class="button"  onclick="setLocation('/checkoutmoney.vn?checkoutOption=xu')"><span><bean:message key="checkout.optional.xu" /></span></button>
+                         <button type="button" title="Thanh toán"  class="button"  onclick="setLocation('/checkoutmoney.vn?checkout=xu')"><span><bean:message key="checkout.optional.xu" /></span></button>
                         </div>
                     </li>
                     <li style="margin-top:10px;">

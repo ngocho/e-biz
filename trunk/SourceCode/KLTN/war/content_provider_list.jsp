@@ -46,9 +46,9 @@ $(document).ready(function(){
 <logic:present name="providerList" >
 <logic:iterate id="element"  name="providerList">
 <li style="margin-left:10px;"> 
-<a href="/displayProductByProvider.vn?id=<bean:write name="element" property="loginId"/>"/><img src="/serveImage.vn?urlKey=<bean:write name="element" property="urlAvatar"/>" width="50" height="40"/>
+<a href="/category.vn?typeProduct=1&providerId=<bean:write name="element" property="loginId"/>"/><img src="/serveImage.vn?urlKey=<bean:write name="element" property="urlAvatar"/>" width="50" height="40"/>
 </a><br>
-<a href="/displayProductByProvider.vn?id=<bean:write name="element" property="loginId"/>"/><bean:write name="element" property="loginName"/></a>
+<a href="/category.vn?typeProduct=1&providerId=<bean:write name="element" property="loginId"/>"/><bean:write name="element" property="loginName"/></a>
 <br>
 <bean:write name="element" property="detail"/><br>
 <bean:write name="element" property="address"/>
