@@ -57,7 +57,7 @@ public class hashXu {
 		// hex string to uppercase
 		m_szUniqueID = m_szUniqueID.toUpperCase();
 		result=m_szUniqueID;
-		if(style==0){
+        if (style == 0) {
 			String hextodec = convertHexToString(result);
 			result=hextodec.substring(hextodec.length()-15, hextodec.length());
 		}
