@@ -25,6 +25,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import mobile.ebiz.blo.IDXUBLO;
+import mobile.ebiz.dto.USERXUHISTORY;
 
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
@@ -34,6 +35,7 @@ import ebiz.action.BaseAction;
 import ebiz.blo.customer.CustomerBLO;
 import ebiz.form.LoginForm;
 import ebiz.util.CommonConstant;
+import java.util.Date;
 /**
  * @author Administrator
  */
@@ -60,6 +62,8 @@ public class XuAdd extends BaseAction {
         if (value != null || !("".equals(value))) {
             value = value.trim();
             long money = IDXUBLO.getMoneyByID(value);
+            System.out.println("money add " + money);
+            if(money >0){
             // long money = Long.parseLong(value);
             HttpSession se = request.getSession();
             LoginForm user = (LoginForm) se.getAttribute(CommonConstant.USER);
@@ -67,6 +71,14 @@ public class XuAdd extends BaseAction {
                 String uid = user.getLoginId();
                 long result = CustomerBLO.addXuOnline(uid, money);
                 if (result > 0) {
+                	//update history
+                	USERXUHISTORY userHistory = new USERXUHISTORY();
+                	userHistory.setAddXu(new Date());
+                	userHistory.setIdCustomer(user.getLoginId());
+                	userHistory.setIdXu(value);
+                	userHistory.setMoney(money);
+                	IDXUBLO.updateHistoryXu(userHistory);
+                	
                     user.setXuOnline(result);
                     out.println("1" + " " + String.valueOf(result));
                 } else {
@@ -75,6 +87,10 @@ public class XuAdd extends BaseAction {
                 }
             } else { // required login
                 out.println("2" + " " + "2");
+            }
+            }
+            else{
+            	 out.println("0" + " " + money);
             }
         } else {
             // required mandatory

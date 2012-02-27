@@ -31,6 +31,7 @@ import org.apache.struts.action.ActionMapping;
 
 import ebiz.action.BaseAction;
 import ebiz.blo.food.FoodBLO;
+import ebiz.blo.provider.ProviderBLO;
 import ebiz.dto.food.FoodAttribute;
 import ebiz.dto.food.FoodPriceLevel;
 import ebiz.form.FoodForm;
@@ -62,19 +63,21 @@ public class DisplayCategory extends BaseAction {
         List<FoodForm> foods = new ArrayList<FoodForm>();
         List<String> numberPageList = new ArrayList<String>();
         ProductVO vo = new ProductVO();
+        String providerId = request.getParameter("providerId");
+        if(providerId == null){
+        	providerId = (String)se.getAttribute("ProviderFood");
+        }
+        System.out.println("providerId" + providerId );
         String typeProduct = request.getParameter("typeProduct");
-        System.out.println("typeProduct" + typeProduct);
         if (typeProduct == null) {
             vo = (ProductVO) se.getAttribute(CommonConstant.PRODUCTVO);
             typeProduct = vo.getTypeProduct();
         } else {
             vo.setTypeProduct(typeProduct);
         }
-
         // get attribute --> save in session
         attrs = FoodBLO.getAttributeFoodList();
         se.setAttribute(CommonConstant.FOOD_CATEGORY_A, attrs);
-
         // get type of price from session
         prices = (List<FoodPriceForm>) se.getAttribute(CommonConstant.FOOD_CATEGORY_P);
         if (prices == null) {
@@ -82,11 +85,15 @@ public class DisplayCategory extends BaseAction {
             prices = FoodBLO.format(listLevel);
             se.setAttribute(CommonConstant.FOOD_CATEGORY_P, prices);
         }
-
-        // getproduct --> save in session
+        // get product --> save in session
         String filterCol = CommonConstant.FOOD_TYPE;
         foods = FoodBLO.initFoodCategory(numberPageList, CommonConstant.DEFAULT_RECORD, filterCol, typeProduct, null,
-                null);
+                null,providerId);
+        if(providerId != null){
+        	String name = ProviderBLO.getNameProviderByID(providerId);
+        	se.setAttribute("ProviderFood", providerId);
+        	se.setAttribute("ProviderFoodName", name);
+        }
         // paging
         vo.setPagingList(numberPageList);
         // se.setAttribute(CommonConstant.PAGING, pageList);
@@ -98,11 +105,9 @@ public class DisplayCategory extends BaseAction {
         vo.setAttr("0");
         vo.setPriceId("0");
         se.setAttribute(CommonConstant.PRODUCTVO, vo);
-
         // System.out.println("SIZE OF FOOD" + foods.size());
         // list food
         se.setAttribute(CommonConstant.FOOD_CATEGORY_F, foods);
-
         // return display category
         return mapping.findForward(SUCCESS);
 

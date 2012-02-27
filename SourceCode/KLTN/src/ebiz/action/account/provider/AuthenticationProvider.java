@@ -48,9 +48,9 @@ public class AuthenticationProvider extends BaseAction {
             HttpServletResponse response) throws Exception {
         HttpSession se = request.getSession();
         ProviderForm provider = (ProviderForm) se.getAttribute("provider");
-        if (provider == null) {
+        /*if (provider == null) {
             return mapping.findForward(FAILURE);
-        }
+        }*/
         return mapping.findForward(SUCCESS);
     }
 }

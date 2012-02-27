@@ -63,13 +63,13 @@ public class DisplayCategoryRecord extends BaseAction {
         List<Paging> pageList = new ArrayList<Paging>();
         List<String> numberPageList = new ArrayList<String>();
         HashMap<Integer, String> paging = new HashMap<Integer, String>();
+        String providerId =(String)se.getAttribute("ProviderFood");
         ProductVO vo = (ProductVO) se.getAttribute(CommonConstant.PRODUCTVO);
         int record = CommonConstant.DEFAULT_RECORD;
         String limit;
         String col;
         if (order == null) {
             order = vo.getOrder();
-            System.out.println("ORDER" + order);
         }
         int page = 1;
 
@@ -102,9 +102,8 @@ public class DisplayCategoryRecord extends BaseAction {
         // }
         String filterCol = CommonConstant.FOOD_TYPE;
         foods = FoodBLO.getFoodListCategory(col, numberPageList, order, record, page, filterCol, vo.getTypeProduct(),
-                attr, price);
+                attr, price,providerId);
         pageList = FoodBLO.updateStatusPaging(paging);
-        System.out.println("PAGE LIST" + pageList.size());
         // save in Session
         se.setAttribute(CommonConstant.FOOD_CATEGORY_F, foods);
         vo.setLimit(record);
