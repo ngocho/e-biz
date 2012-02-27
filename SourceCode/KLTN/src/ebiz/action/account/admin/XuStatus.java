@@ -29,6 +29,7 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import ebiz.action.BaseAction;
+import ebiz.util.CommonConstant;
 
 /**
  * @author ThuyNT
@@ -48,6 +49,10 @@ public class XuStatus extends BaseAction {
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
         HttpSession se = request.getSession();
+        String admin = (String) se.getAttribute(CommonConstant.ADMIN);
+        if (admin == null) {
+            return mapping.findForward(FAILURE);
+        }
         int number = IDXUBLO.countXuAvailabel();
         se.setAttribute("xuActive", String.valueOf(number));
         return mapping.findForward(SUCCESS);
