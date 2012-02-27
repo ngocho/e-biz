@@ -61,6 +61,8 @@ public class UploadImage extends BaseAction {
             if (urlKey != null) {
                 // save in session
                 se.setAttribute("urlImageKey", urlKey);
+                // Added by DanhDTC, flag to mark it must crop.
+                se.setAttribute("notCropped", "1");
             }
             if (type != null && type.equals("1")) {
                 // register Provider
