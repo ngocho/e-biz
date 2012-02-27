@@ -19,6 +19,16 @@
     </action>
     <action path="/getFoodPromotion" type="mobile.ebiz.action.getPromotion" scope="session" validate="false">
     </action>
+    <action path="/getUserFuntion" type="mobile.ebiz.action.CustomerFuntion" scope="session" validate="false">
+    </action>
+    <action path="/getFoodByProvider" type="mobile.ebiz.action.GetFoodListByProvider" scope="session" validate="false">
+    </action>
+    <action path="/getBestList" type="mobile.ebiz.action.GetBestList" scope="session" validate="false">
+    </action>
+    <action path="/getBrowserList" type="mobile.ebiz.action.GetBrowserList" scope="session" validate="false">
+    </action>
+    <action path="/getFoodId" type="mobile.ebiz.action.GetFoodId" scope="session" validate="false">
+    </action>
  
   </action-mappings>
 </struts-config>
