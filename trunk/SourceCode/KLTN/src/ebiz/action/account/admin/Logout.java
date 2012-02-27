@@ -49,10 +49,12 @@ public class Logout extends BaseAction {
             HttpServletResponse response) throws Exception {
 
         HttpSession se = request.getSession();
-        LoginForm login = (LoginForm) se.getAttribute(CommonConstant.ADMIN);
-        if (login != null) {
-            se.invalidate();
-        }
+        //LoginForm login = (LoginForm) se.getAttribute(CommonConstant.ADMIN);
+        //if (login != null) {
+        //    se.invalidate();
+        //}
+
+        se.removeAttribute(CommonConstant.ADMIN);
         return mapping.findForward(SUCCESS);
     }
 
