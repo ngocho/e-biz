@@ -61,8 +61,9 @@
 
 <!-- start Customer.login -->
     <definition name="loginLayout" extends="baseLayout">
-        <put name="title" value="Login" />
-        <put name="content" value="/content_login.jsp" />
+        <put name="title"    value="Login" />
+        <put name="content"  value="/content_login.jsp" />
+         <put name="right"    value="/blank.jsp" />
     </definition>
 <!-- end Customer login -->
 
