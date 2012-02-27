@@ -1,17 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-  pageEncoding="UTF-8"%>
-<%@ page
-  import="com.google.appengine.api.blobstore.BlobstoreServiceFactory"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="com.google.appengine.api.blobstore.BlobstoreServiceFactory"%>
 <%@ page import="com.google.appengine.api.blobstore.BlobstoreService"%>
 <%@taglib uri="/WEB-INF/c.tld" prefix="c"%>
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean"%>
+<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html"%>
+<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"%>
 <%
-    BlobstoreService blobstoreService = BlobstoreServiceFactory
-					.getBlobstoreService();
+    BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
 %>
-
+<script type="text/javascript" src="js/jquery.Jcrop.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function() {
         //remove 0
@@ -91,30 +88,60 @@
         }); 
         
     });
+    jQuery(function($){
+        var x,y;
+        var jcrop_api;
+        $('#cropping').Jcrop({
+            onChange: cropChange,
+            onSelect: cropChange,
+            onRelease: cropClear,
+            aspectRatio: 3/4
+          },function(){
+                var b = this.getBounds();
+                x = b[0];y=b[1];
+              });
+        function cropChange(c){
+            $('#x').val(c.x);
+            $('#y').val(c.y);
+            $('#x2').val(c.x2);
+            $('#y2').val(c.y2);
+            
+            if(parseInt(c.w)>0){
+                var r=150/c.w;
+                $('#preview').css({
+                    width: Math.round(r * x) + 'px',
+                    height: Math.round(r * y) + 'px',
+                    marginLeft: '-' + Math.round(r * c.x) + 'px',
+                    marginTop: '-' + Math.round(r * c.y) + 'px'
+                  });
+              }
+          };
+            function cropClear(){
+                this.setSelect(getRandom());
+              }
+
+      });
 </script>
 
 <div class="home-spot">
   <div class="account-create">
 
     <div class="page-title" id="focus">
-    <logic:notPresent name="flagUpload">
+      <logic:notPresent name="flagUpload">
         <h1>Upload sản phẩm</h1>
-     </logic:notPresent>
+      </logic:notPresent>
       <logic:present name="flagUpload">
         <h1>Chỉnh sửa sản phẩm</h1>
       </logic:present>
     </div>
     <logic:present name="fUpload" scope="request">
-      <span style="color: red;">Upload thành công, tiếp tục
-        upload</span>
+      <span style="color: red;">Upload thành công, tiếp tục upload</span>
       <br>
     </logic:present>
-    <form name="uploadImage"
-      action="<%=blobstoreService.createUploadUrl("/uploadImage.vn")%>"
-      method="post" enctype="multipart/form-data">
-      <input type="file" name="myFile" class="buttonBG"> 
-      <input  id="uploadAction" type="submit" value="Upload Hình"
-        class="buttonBG">
+    <form name="uploadImage" action="<%=blobstoreService.createUploadUrl("/uploadImage.vn")%>" method="post"
+      enctype="multipart/form-data">
+      <input type="file" name="myFile" class="buttonBG"> <input id="uploadAction" type="submit"
+        value="Upload Hình" class="buttonBG">
     </form>
 
     <html:form action="/uploadProduct.vn" method="get" styleId="uploadForm">
@@ -129,8 +156,7 @@
           <li class="fields">
             <div class="customer-name">
               <div class="field name-firstname">
-                <label for="firstname" class="required" ><em>*</em>Lựa
-                  chọn loại sản phẩm</label>
+                <label for="firstname" class="required"><em>*</em>Lựa chọn loại sản phẩm</label>
                 <div class="input-box">
                   <html:select property="productTypeId" styleId="productTypeId">
                     <html:option value="1"> Thực phẩm sơ chế
@@ -149,7 +175,7 @@
           <li class="fields">
             <div class="customer-name">
               <div class="field name-firstname">
-                <label for="firstname" class="required" ><em>*</em>Chọn nhóm sản phẩm</label>
+                <label for="firstname" class="required"><em>*</em>Chọn nhóm sản phẩm</label>
                 <div class="input-box">
                   <html:select property="idAttr" styleId="idAttr">
                     <html:option value="1"> Kho
@@ -170,8 +196,7 @@
           <li class="fields">
             <div class="customer-name">
               <div class="field name-firstname">
-                <label for="firstname" class="required" ><em>*</em>Lựa
-                  chọn trạng thái của sản phẩm</label>
+                <label for="firstname" class="required"><em>*</em>Lựa chọn trạng thái của sản phẩm</label>
                 <div class="input-box">
                   <html:select property="status" styleId="status">
                     <html:option value="1"> Thực phẩm khuyến mãi
@@ -187,40 +212,67 @@
           <li class="fields">
             <div class="customer-name">
               <div class="field name-firstname">
-                <label for="firstname" class="required" ><em>*</em>Hình</label>
-                <div class="input-box">
-                  <logic:present name="urlImageKey">
-                    <img
-                      src="/serveImage.vn?urlKey=<bean:write name="urlImageKey"/>"
-                      width="200" height="150" id="image" />
-                       <input type="hidden" value="1" name="url"/>
+                <label for="firstname" class="required"><em>*</em>Hình</label>
+                <logic:present name="notCropped">
+                <logic:present name="urlImageKey">
+                  <script type="text/javascript">
+                  function cropImage(){
+                      $.ajax({
+                          url: 'cropImage.vn',
+                          data: {
+                              'leftX' : $('x').val(),
+                              'topY' : $('y').val(),
+                              'rightX' : $('x2').val(),
+                              'bottomY' : $('y2').val()
+                          },
+                          success: function(){
+                                  $('.pop-up').hide();
+                                  $('.lose-focus').hide();
+                                  $('.input-box').innerHtml = '';
+                                  $('#image').src = cacheBuster($('#image').src);
+                              
+                          }
+                      });
+                  }
+                  </script>
+                  <div class="input-box">
+                    <div class="pop-up">
+                      <div class="for-preview">
+                        <div id="forPreview">
+                          <img id="preview" src="/serveImage.vn?urlKey=<bean:write name="urlImageKey" />" >
+                        </div>
+                        <form onsubmit="cropImage()">
+                            <input type="text" name="leftX" id="x" >
+                            <input type="text" name="topY" id="y" > 
+                            <input type="text" name="rightX" id="x2" >
+                            <input type="text" name="bottomY" id="y2" >
+                            <input type="submit" value="Chọn" onclick="cropImage()">
+                          </form>
+                      </div>
+                      <div class="for-crop" >
+                        <img id="cropping" src="/serveImage.vn?urlKey=<bean:write name="urlImageKey" />" >
+                      </div>
+                    </div>
+                    <div class="lose-focus"></div>
+                  </div>
+                  <img src="/serveImage.vn?urlKey=<bean:write name="urlImageKey"/>" width="200" height="150" id="image" />
                   </logic:present>
-                  <logic:notPresent name="urlImageKey">
-                  <input type="hidden" value="" name="url"/>
-                  </logic:notPresent>
-                </div>
-
+                </logic:present>
+                <logic:notPresent name="notCropped">
+                    <logic:present name="urlImageKey">
+                      <h2>Test</h2>
+                      <img src="/serveImage.vn?urlKey=<bean:write name="urlImageKey"/>" width="200" height="150" id="image" />
+                    </logic:present>
+                </logic:notPresent>
               </div>
             </div>
           </li>
           <li class="fields">
             <div class="customer-name">
               <div class="field name-firstname">
-                <label for="firstname" class="required" ><em>*</em>Tên
-                  món ăn</label>
+                <label for="firstname" class="required"><em>*</em>Tên món ăn</label>
                 <div class="input-box">
-                  <html:text property="name" styleId="name" size="45%"/>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li class="fields">
-            <div class="customer-name">
-              <div class="field name-firstname">
-                <label for="firstname" class="required" ><em>*</em>Số
-                  lượng</label>
-                <div class="input-box">
-                  <html:text property="number" styleId="number"   size="45%" styleClass="zero"/>
+                  <html:text property="name" styleId="name" size="45%" />
                 </div>
               </div>
             </div>
@@ -228,9 +280,19 @@
           <li class="fields">
             <div class="customer-name">
               <div class="field name-firstname">
-                <label for="firstname" class="required" ><em>*</em>Giá</label>
+                <label for="firstname" class="required"><em>*</em>Số lượng</label>
                 <div class="input-box">
-                  <html:text property="price" styleId="price"  size="45%" styleClass="zero"/>
+                  <html:text property="number" styleId="number" size="45%" styleClass="zero" />
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="fields">
+            <div class="customer-name">
+              <div class="field name-firstname">
+                <label for="firstname" class="required"><em>*</em>Giá</label>
+                <div class="input-box">
+                  <html:text property="price" styleId="price" size="45%" styleClass="zero" />
                 </div>
               </div>
             </div>
@@ -238,10 +300,9 @@
           <li class="fields">
             <div class="customer-name" id="divPrice">
               <div class="field name-firstname">
-                <label for="firstname" class="required" >Giá
-                  khuyến mãi</label>
+                <label for="firstname" class="required">Giá khuyến mãi</label>
                 <div class="input-box">
-                  <html:text property="promoPrice" styleId="promoPrice"  size="45%" styleClass="zero"/>
+                  <html:text property="promoPrice" styleId="promoPrice" size="45%" styleClass="zero" />
                 </div>
               </div>
             </div>
@@ -249,8 +310,7 @@
           <li class="fields">
             <div class="customer-name">
               <div class="field name-firstname">
-                <label for="firstname" class="required" ><em>*</em>Giới
-                  thiệu về sản phẩm</label>
+                <label for="firstname" class="required"><em>*</em>Giới thiệu về sản phẩm</label>
                 <div class="input-box">
                   <html:textarea property="detail" styleId="detail" />
                 </div>
@@ -260,8 +320,7 @@
           <li class="fields">
             <div class="customer-name">
               <div class="field name-firstname">
-                <label for="firstname" class="required" >Hướng
-                  dẫn cách nấu</label>
+                <label for="firstname" class="required">Hướng dẫn cách nấu</label>
                 <div class="input-box">
                   <html:textarea property="cooking" styleId="cooking" />
                 </div>
@@ -269,31 +328,26 @@
             </div>
           </li>
 
-          <li><span style="color: red;" id="message"> <logic:messagesPresent
-                message="true">
+          <li><span style="color: red;" id="message"> <logic:messagesPresent message="true">
                 <html:messages id="message" message="true">
                   <bean:write name="message" />
                 </html:messages>
               </logic:messagesPresent> <html:messages id="error">
                 <%=error%>
               </html:messages>
-          </span>
+          </span></li>
+          <li>
+            <div class="input-box">
+              <logic:empty name="flagUpload">
+                <input type=submit title="Submit" class="buttonBG" id="upload" value="Upload" />
+                <input type="button" title="Reset" class="buttonBG" id="reset" value="Xóa hết" />
+              </logic:empty>
+              <logic:present name="flagUpload">
+                <input type="submit" title="Submit" class="buttonBG" id="upload" value="Cập nhật" />
+              </logic:present>
+            </div>
           </li>
-<li>
-          <div class="input-box">
-        <logic:empty name="flagUpload">
-          <input type=submit title="Submit" class="buttonBG"
-            id="upload" value="Upload"/>
-          <input type="button" title="Reset" class="buttonBG"
-             id="reset" value="Xóa hết"/> 
-        </logic:empty>
-        <logic:present name="flagUpload" >
-          <input type="submit" title="Submit" class="buttonBG"
-            id="upload" value="Cập nhật"/>
-        </logic:present>
-        </div>
-        </li>
-</ul>
+        </ul>
         <div class="buttons-set1">
           <p class="buttons-set1 p.required">* Yêu cầu phải nhập</p>
           <br />
