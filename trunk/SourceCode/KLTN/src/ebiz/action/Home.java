@@ -66,6 +66,7 @@ public class Home extends BaseAction {
         se.setAttribute("providerSearchParam", providerSearchParam);
         if (!formList.isEmpty()) {
             se.setAttribute("promotionFood", formList);
+            se.removeAttribute("ProviderFood");
         }
         return mapping.findForward(SUCCESS);
     }

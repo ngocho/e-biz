@@ -65,10 +65,11 @@ public class GMProviderAddress extends BaseAction {
             } else {
                 se.setAttribute("startProvider", "Bến Thành");
             }
-            request.setAttribute("gmFlag", 1);
             se.setAttribute("endProvider", add);
             se.setAttribute("nameProvider", provider.getProviderName());
+          
         }
+        se.setAttribute("gmDisplay", "1");
         return mapping.findForward(SUCCESS);
 
     }

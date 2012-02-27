@@ -52,6 +52,7 @@ public class GMProviderAddressList extends BaseAction {
         List<ProviderForm> providerList = ProviderBLO.getProviderFormAll();
         HttpSession se = request.getSession();
         se.setAttribute("providerAddList", providerList);
+        se.setAttribute("gmDisplay", "0");
         return mapping.findForward(SUCCESS);
 
     }
