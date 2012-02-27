@@ -25,6 +25,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import org.apache.struts.action.ActionMessages;
 
 import ebiz.action.BaseAction;
 import ebiz.util.CommonConstant;
@@ -45,6 +46,11 @@ public class AdminAuthentication extends BaseAction {
      */
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
+        
+        //clear exist message in system
+        ActionMessages messages = new ActionMessages();
+        messages.clear();
+        
         HttpSession se = request.getSession();
         String admin = (String) se.getAttribute(CommonConstant.ADMIN);
         if (admin == null) {
