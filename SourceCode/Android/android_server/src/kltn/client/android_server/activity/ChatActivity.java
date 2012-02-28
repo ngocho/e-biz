@@ -1,26 +1,22 @@
-/**
- * 
- */
 package kltn.client.android_server.activity;
 
-import kltn.client.android_server.R;
 import android.app.Activity;
 import android.os.Bundle;
 
 /**
  * @author nthanhphong
- *
  */
-public class ChatActivity extends Activity{
+public class ChatActivity extends Activity {
 
-	/* (non-Javadoc)
-	 * @see android.app.Activity#onCreate(android.os.Bundle)
-	 */
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
-		super.onCreate(savedInstanceState);
-		//setContentView(R.layout.content)
-	}
+    /*
+     * (non-Javadoc)
+     * @see android.app.Activity#onCreate(android.os.Bundle)
+     */
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        // TODO Auto-generated method stub
+        super.onCreate(savedInstanceState);
+        // setContentView(R.layout.content)
+    }
 
 }

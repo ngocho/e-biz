@@ -1,6 +1,3 @@
-/**
- * 
- */
 package kltn.client.android_server.engine;
 
 import java.io.BufferedReader;
@@ -55,29 +52,39 @@ public class SmsReceiver extends BroadcastReceiver {
             paserSMS(msgs);
         }
     }
+    /**
+     * [Give the description for method].
+     * @param sms SmsMessage[]
+     */
     public void paserSMS(SmsMessage[] sms) {
         for (int i = 0; i < sms.length; i++) {
             if (typeSMS(sms[i].getMessageBody()) == 1) {
-                funtion_Xu(sms[i].getOriginatingAddress(), sms[i].getMessageBody());
+                funtionXu(sms[i].getOriginatingAddress(), sms[i].getMessageBody());
             } else if (typeSMS(sms[i].getMessageBody()) == 2) {
-                funtion_Nap(sms[i].getOriginatingAddress(), sms[i].getMessageBody());
+                funtionNap(sms[i].getOriginatingAddress(), sms[i].getMessageBody());
             } else if (typeSMS(sms[i].getMessageBody()) == 3) {
-                funtion_buy_by_phone(sms[i].getOriginatingAddress(), sms[i].getMessageBody());
+                funtionBuyByPhone(sms[i].getOriginatingAddress(), sms[i].getMessageBody());
             } else if (typeSMS(sms[i].getMessageBody()) == 4) {
-                funtion_buy_by_username(sms[i].getOriginatingAddress(), sms[i].getMessageBody());
+                funtionBuyByUsername(sms[i].getOriginatingAddress(), sms[i].getMessageBody());
             } else if (typeSMS(sms[i].getMessageBody()) == 5) {
-                funtion_nap_by_phone(sms[i].getOriginatingAddress(), sms[i].getMessageBody());
+                funtionNapByPhone(sms[i].getOriginatingAddress(), sms[i].getMessageBody());
             }
         }
     }
     // nạp tiền vào số điện thoại(số điện thoại là username)
     // cú pháp là <scn menhgia>
-    public boolean funtion_nap_by_phone(String phone, String bodymessage) {
+    /**
+     * [Give the description for method].
+     * @param phone String
+     * @param bodymessage String
+     * @return boolean
+     */
+    public boolean funtionNapByPhone(String phone, String bodymessage) {
         boolean result = false;
-        sendSMS sendsms = new sendSMS();
+        SendSMS sendsms = new SendSMS();
         String menhgia = "";
-        String[] split_result = bodymessage.split(" ");
-        menhgia = split_result[1];
+        String[] splitResult = bodymessage.split(" ");
+        menhgia = splitResult[1];
         ArrayList<String> listmenhgia = new ArrayList<String>();
         listmenhgia.add("10");
         listmenhgia.add("20");
@@ -94,14 +101,20 @@ public class SmsReceiver extends BroadcastReceiver {
 
     // mua hàng qua user người dùng
     // cú pháp nhắn tin là <stb mahang username password>
-    public boolean funtion_buy_by_username(String phone, String bodymessage) {
+    /**
+     * [Give the description for method].
+     * @param phone String
+     * @param bodymessage String
+     * @return boolean
+     */
+    public boolean funtionBuyByUsername(String phone, String bodymessage) {
         boolean result = false;
-        sendSMS sendsms = new sendSMS();
+        SendSMS sendsms = new SendSMS();
         String mahang = "", username = "", password = "";
-        String[] split_result = bodymessage.split(" ");
-        mahang = split_result[1];
-        username = split_result[2];
-        password = split_result[3];
+        String[] splitResult = bodymessage.split(" ");
+        mahang = splitResult[1];
+        username = splitResult[2];
+        password = splitResult[3];
         // if(true){
         sendsms.sendMessage(phone, "Voucher cua ban la: " + mahang + username + password);
         // }else{
@@ -111,12 +124,18 @@ public class SmsReceiver extends BroadcastReceiver {
     }
     // mua hàng thông qua số điện thoại di động(số điện thoại là username)
     // cú pháp nhắn tin là <scb mahang>
-    public boolean funtion_buy_by_phone(String phone, String bodymessage) {
+    /**
+     * [Give the description for method].
+     * @param phone String
+     * @param bodymessage String
+     * @return boolean
+     */
+    public boolean funtionBuyByPhone(String phone, String bodymessage) {
         boolean result = false;
-        sendSMS sendsms = new sendSMS();
-        String[] split_result = bodymessage.split(" ");
+        SendSMS sendsms = new SendSMS();
+        String[] splitResult = bodymessage.split(" ");
         String mahang = "";
-        mahang = split_result[1];
+        mahang = splitResult[1];
         // if(){
         sendsms.sendMessage(phone, "Voucher cua ban la " + mahang);
         // }else{
@@ -126,14 +145,20 @@ public class SmsReceiver extends BroadcastReceiver {
     }
     // nạp xu qua tổng đài, sẽ bị trừ tiền
     // cú pháp <sca username menhgia>(menhgia 10,20,50)
-    public boolean funtion_Nap(String phone, String bodymessage) {
+    /**
+     * [Give the description for method].
+     * @param phone String
+     * @param bodymessage String
+     * @return boolean
+     */
+    public boolean funtionNap(String phone, String bodymessage) {
         boolean result = false;
-        sendSMS sendsms = new sendSMS();
+        SendSMS sendsms = new SendSMS();
         String menhgia = "";
         String username = "";
-        String[] split_result = bodymessage.split(" ");
-        menhgia = split_result[2];
-        username = split_result[1];
+        String[] splitResult = bodymessage.split(" ");
+        menhgia = splitResult[2];
+        username = splitResult[1];
         ArrayList<String> listmenhgia = new ArrayList<String>();
         listmenhgia.add("10");
         listmenhgia.add("20");
@@ -141,7 +166,7 @@ public class SmsReceiver extends BroadcastReceiver {
         listmenhgia.add("100");
         if (listmenhgia.contains(menhgia)) {
             sendsms.sendMessage(phone, "Tai khoan " + username + " cua ban duoc nap " + menhgia + ".000đ!");
-            Query_URL(server + "getActiveXU.vn?flag=sca&content=" + username + "@" + menhgia);
+            queryURL(server + "getActiveXU.vn?flag=sca&content=" + username + "@" + menhgia);
         } else {
             // sendsms.sendMessage(phone, xu_false);
         }
@@ -149,19 +174,25 @@ public class SmsReceiver extends BroadcastReceiver {
     }
     // nạp xu qua productkey
     // cú pháp tin nhắn <stp username productkey >
-    public boolean funtion_Xu(String phone, String bodymessage) {
+    /**
+     * [Give the description for method].
+     * @param phone String
+     * @param bodymessage String
+     * @return boolean
+     */
+    public boolean funtionXu(String phone, String bodymessage) {
         boolean result = false;
-        sendSMS sendsms = new sendSMS();
-        String product_key = "";
+        SendSMS sendsms = new SendSMS();
+        String productKey = "";
         String username = "";
-        String[] split_result = bodymessage.split(" ");
-        product_key = split_result[2];
-        username = split_result[1];
-        if (product_key.length() == 15) {
+        String[] splitResult = bodymessage.split(" ");
+        productKey = splitResult[2];
+        username = splitResult[1];
+        if (productKey.length() == 15) {
             // sendsms.sendMessage(phone, "Tai khoan " + username+" cua ban duoc nap 50.000VND!");
             try {
-                JSONObject item = new JSONObject(Query_URL(server + "getActiveXU.vn?flag=stp&content=" + username + "@"
-                        + product_key));
+                JSONObject item = new JSONObject(queryURL(server + "getActiveXU.vn?flag=stp&content=" + username + "@"
+                        + productKey));
                 if (item.getString("flag").equals("false")) {
                     sendsms.sendMessage(phone, "The nap da duoc su dung. Vui long nhap the nap khac!");
                 } else {
@@ -169,12 +200,18 @@ public class SmsReceiver extends BroadcastReceiver {
                             + " Xu");
                 }
             } catch (Exception e) {
+                System.out.println(e);
             }
         } else {
-            sendsms.sendMessage(phone, xu_false);
+            sendsms.sendMessage(phone, xuFalse);
         }
         return result;
     }
+    /**
+     * [Give the description for method].
+     * @param bodySMS String
+     * @return int
+     */
     public int typeSMS(String bodySMS) {
         int result = 0;
         // 0 - tin nhan sai cu phap;
@@ -182,23 +219,31 @@ public class SmsReceiver extends BroadcastReceiver {
         // 2 - nạp xu bằng cách nhắn tin đến tổng đài với username tương ứng
         // 3 - nạp
         int pos;
-        for (pos = 0; pos < bodySMS.length(); pos++)
-            if (bodySMS.charAt(pos) == ' ')
+        for (pos = 0; pos < bodySMS.length(); pos++) {
+            if (bodySMS.charAt(pos) == ' ') {
                 break;
+            }
+        }
         String item = bodySMS.substring(0, pos);
-        if (item.toLowerCase().equals("stp"))
+        if (item.toLowerCase().equals("stp")) {
             result = 1;
-        else if (item.toLowerCase().equals("sca"))
+        } else if (item.toLowerCase().equals("sca")) {
             result = 2;
-        else if (item.toLowerCase().equals("scb"))
+        } else if (item.toLowerCase().equals("scb")) {
             result = 3;
-        else if (item.toLowerCase().equals("stb"))
+        } else if (item.toLowerCase().equals("stb")) {
             result = 4;
-        else if (item.toLowerCase().equals("scn"))
+        } else if (item.toLowerCase().equals("scn")) {
             result = 5;
+        }
         return result;
     }
-    private String Query_URL(String q) {
+    /**
+     * [Give the description for method].
+     * @param q String
+     * @return String
+     */
+    private String queryURL(String q) {
         String qResult = null;
         String qString = q;
         HttpClient httpClient = new DefaultHttpClient();
@@ -228,6 +273,8 @@ public class SmsReceiver extends BroadcastReceiver {
 
     // product ke XU gom 15 chu so
     // private String xu_true="Tài khoản của bạn được nạp 50XU !";
-    private String xu_false = "Mã nạp XU này không có thực, xin nhập lại!";
+    /**  . */
+    private String xuFalse = "Mã nạp XU này không có thực, xin nhập lại!";
+    /**  . */
     private String server = "http://16.test-kltn1.appspot.com/";
 }

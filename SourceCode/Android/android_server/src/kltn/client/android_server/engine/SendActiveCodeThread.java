@@ -5,6 +5,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.util.TimerTask;
+import java.util.Vector;
+
+import kltn.client.android_server.object.HappybirthdayObject;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.client.ClientProtocolException;
@@ -18,21 +22,54 @@ import org.json.JSONObject;
 /**
  * @author nthanhphong
  */
-public class Engine {
+public class SendActiveCodeThread extends TimerTask {
+
+    @SuppressWarnings("static-access")
+    @Override
+    public void run() {
+        parseJSONBirthday(queryURL(queryURLHappybirthday));
+        for (int i = 0; i < dataBirthday.size(); i++) {
+            final int pos = i;
+            Thread send = new Thread() {
+
+                @Override
+                public void run() {
+                    SendSMS sendsms = new SendSMS();
+                    HappybirthdayObject item = dataBirthday.get(pos);
+                    sendsms.sendMessage("+841265204953", item.getMessage());
+                    System.out.println("send sms happy birthday to " + item.getPhone());
+                    System.gc();
+                }
+            };
+            send.start();
+            try {
+                // co van de cho nay
+                send.sleep(10000);
+                send.stop();
+            } catch (InterruptedException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+    }
+
     /**
      * [Give the description for method].
-     * @param produckey String
-     * @param username String
+     * @param json String
      * @return boolean
      */
-    private boolean parseJSONxu(String produckey, String username) {
+    private boolean parseJSONBirthday(String json) {
         boolean jResult = false;
         try {
-            JSONArray jsonArrayphone = new JSONArray(queryURL(urlXU));
-            JSONObject item = jsonArrayphone.getJSONObject(0);
-            if (item.getString("flag").equals("true")) {
-                jResult = true;
+            JSONArray jsonArrayPhone = new JSONArray(json);
+            int i;
+            dataBirthday = new Vector<HappybirthdayObject>();
+            for (i = 0; i < jsonArrayPhone.length(); i++) {
+                JSONObject item = (JSONObject) jsonArrayPhone.get(i);
+                HappybirthdayObject node = new HappybirthdayObject(item.getString("phone"), item.getString("name"));
+                dataBirthday.add(node);
             }
+            jResult = true;
         } catch (JSONException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -71,6 +108,8 @@ public class Engine {
         }
         return qResult;
     }
-    /** . */
-    private String urlXU = "http://5.07520349-1.appspot.com/getActiveXU.vn";
+    /**  . */
+    private Vector<HappybirthdayObject> dataBirthday;
+    /**  . */
+    private String queryURLHappybirthday = "http://16.test-kltn1.appspot.com/getHappyBirthday.vn";
 }

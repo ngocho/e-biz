@@ -5,6 +5,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.util.TimerTask;
+import java.util.Vector;
+
+import kltn.client.android_server.object.ActivecodeObject;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.client.ClientProtocolException;
@@ -16,23 +20,55 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
- * @author nthanhphong
+ * @author NThanhPhong
  */
-public class Engine {
+public class ActivecodeThread extends TimerTask {
+
+    @Override
+    public void run() {
+        // TODO Auto-generated method stub
+        parseJSONActivecode(queryURL(queryURLActivecode));
+        for (int i = 0; i < dataActivecode.size(); i++) {
+            final int pos = i;
+            Thread send = new Thread() {
+
+                @Override
+                public void run() {
+                    SendSMS sendsms = new SendSMS();
+                    ActivecodeObject item = dataActivecode.get(pos);
+                    // sendsms.sendMessage("+841265204953", item.message);
+                    System.out.println("send sms activecode " + item.getCode() + " to " + item.getPhone());
+                    System.gc();
+                }
+            };
+            send.start();
+            try {
+                send.sleep(20000);
+                send.stop();
+            } catch (InterruptedException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+    }
     /**
      * [Give the description for method].
-     * @param produckey String
-     * @param username String
+     * @param json String
      * @return boolean
      */
-    private boolean parseJSONxu(String produckey, String username) {
+    private boolean parseJSONActivecode(String json) {
         boolean jResult = false;
         try {
-            JSONArray jsonArrayphone = new JSONArray(queryURL(urlXU));
-            JSONObject item = jsonArrayphone.getJSONObject(0);
-            if (item.getString("flag").equals("true")) {
-                jResult = true;
+            JSONArray jsonArrayphone = new JSONArray(json);
+            int i;
+            dataActivecode = new Vector<ActivecodeObject>();
+            for (i = 0; i < jsonArrayphone.length(); i++) {
+                JSONObject item = (JSONObject) jsonArrayphone.get(i);
+                ActivecodeObject node = new ActivecodeObject(item.getString("phone"), item.getString("code"));
+                dataActivecode.add(node);
             }
+            jResult = true;
+
         } catch (JSONException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -71,6 +107,8 @@ public class Engine {
         }
         return qResult;
     }
-    /** . */
-    private String urlXU = "http://5.07520349-1.appspot.com/getActiveXU.vn";
+    /**  . */
+    private Vector<ActivecodeObject> dataActivecode;
+    /**  . */
+    private String queryURLActivecode = "http://5.07520349-1.appspot.com/getHappyBirthday.vn";
 }
