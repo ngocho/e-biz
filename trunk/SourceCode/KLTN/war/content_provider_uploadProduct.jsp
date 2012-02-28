@@ -88,39 +88,6 @@
         }); 
         
     });
-    jQuery(function($){
-        var x,y;
-        var jcrop_api;
-        $('#cropping').Jcrop({
-            onChange: cropChange,
-            onSelect: cropChange,
-            onRelease: cropClear,
-            aspectRatio: 3/4
-          },function(){
-                var b = this.getBounds();
-                x = b[0];y=b[1];
-              });
-        function cropChange(c){
-            $('#x').val(c.x);
-            $('#y').val(c.y);
-            $('#x2').val(c.x2);
-            $('#y2').val(c.y2);
-            
-            if(parseInt(c.w)>0){
-                var r=150/c.w;
-                $('#preview').css({
-                    width: Math.round(r * x) + 'px',
-                    height: Math.round(r * y) + 'px',
-                    marginLeft: '-' + Math.round(r * c.x) + 'px',
-                    marginTop: '-' + Math.round(r * c.y) + 'px'
-                  });
-              }
-          };
-            function cropClear(){
-                this.setSelect(getRandom());
-              }
-
-      });
 </script>
 
 <div class="home-spot">
@@ -220,40 +187,55 @@
                       $.ajax({
                           url: '/cropImage.vn',
                           data: {
-                              'leftX' : $('x').val(),
-                              'topY' : $('y').val(),
-                              'rightX' : $('x2').val(),
-                              'bottomY' : $('y2').val()
+                              'leftX' : $('#x').val(),
+                              'topY' : $('#y').val(),
+                              'rightX' : $('#x2').val(),
+                              'bottomY' : $('#y2').val(),
+                              'width' : $('#cropping').width(),
+                              'height' : $('#cropping').height()
                           },
-                          success: function(){
-                                  $('#image').src = cacheBuster($('#image').src);
+                          dataType: 'text',
+                          success: function(data){
+                                  $('#image').html('<img src="/serveImage.vn?urlKey='+data+'" width="200" height="150" />')
                           }
                       });
                       $('.pop-up').hide();
                       $('.lose-focus').hide();
                   }
+                  jQuery(function($){
+                      var x,y;
+                      var jcrop_api;
+                      $('#cropping').Jcrop({
+                          onChange: cropChange,
+                          onSelect: cropChange,
+                          onRelease: cropClear,
+                        },function(){
+                              var b = this.getBounds();
+                              x = b[0];y=b[1];
+                            });
+                      function cropChange(c){
+                          $('#x').val(c.x);
+                          $('#y').val(c.y);
+                          $('#x2').val(c.x2);
+                          $('#y2').val(c.y2);
+                        };
+                      function cropClear(){
+                              this.setSelect(getRandom());
+                            }
+                    });
                   </script>
-                  <div class="input-box">
-                    <div class="pop-up">
-                      <div class="for-preview">
-                        <div id="forPreview">
-                          <img id="preview" src="/serveImage.vn?urlKey=<bean:write name="urlImageKey" />" >
-                        </div>
-                   <!--      <form action="cropImage.vn" onsubmit="cropImage()"> -->
-                            <input type="hidden" name="leftX" id="x" >
-                            <input type="hidden" name="topY" id="y" > 
-                            <input type="hidden" name="rightX" id="x2" >
-                            <input type="hidden" name="bottomY" id="y2" >
-                            <input type="button" value="Chọn" onclick="cropImage()">
-                   <!--         </form>-->
-                      </div>
-                      <div class="for-crop" >
+                  <div class="input-box" id="image">
+                    <div class="pop-up" align="center">
+                        <input type="hidden" name="leftX" id="x" >
+                        <input type="hidden" name="topY" id="y" > 
+                        <input type="hidden" name="rightX" id="x2" >
+                        <input type="hidden" name="bottomY" id="y2" >
                         <img id="cropping" src="/serveImage.vn?urlKey=<bean:write name="urlImageKey" />" >
-                      </div>
+                        <input type="button" value="Chọn" onclick="cropImage()">
                     </div>
                     <div class="lose-focus"></div>
                   </div>
-                  <img src="/serveImage.vn?urlKey=<bean:write name="urlImageKey"/>" width="200" height="150" id="image" />
+              <%--     <img src="/serveImage.vn?urlKey=<bean:write name="urlImageKey"/>" width="200" height="150" id="image" /> --%>
                   </logic:present>
                 </logic:present>
                 <logic:notPresent name="notCropped">
