@@ -508,7 +508,7 @@ tr.summary-details-excluded { font-style:italic; }
 .header-container {
     /*border-top:5px solid #0d2131;*/
     border-bottom:1px solid #415966;
-    background-image: url(../Images/Commons/img_banner_01.jpg);
+    background-image: url(../Images/Commons/pic3.jpg);
     background-repeat: repeat;
     background-position: 50% 0;
     width : 100%;
@@ -556,7 +556,7 @@ tr.summary-details-excluded { font-style:italic; }
 .logo-sidenote p a { color:#4a452c;  padding:10px 0 10px 44px; background:url(../Images/Commons/logo_sidenote_bg_expandable.gif) no-repeat; }
 .logo-sidenote a:hover { color:#b24610; }
 .super-links, .super-links a { color:#776f5d; line-height:10px; }
-.super-links { margin-right:65px; font:11px arial, helvetica, sans-serif; }
+.super-links { margin-right:2px; font:11px arial, helvetica, sans-serif; }
 .super-links li { display:inline; border-left:1px solid #dbd7ca; padding:0 4px 0 7px;  }
 .super-links li.first { padding-left:0; border-left:0; }
 .super-links a:hover { color:#b24610; }
