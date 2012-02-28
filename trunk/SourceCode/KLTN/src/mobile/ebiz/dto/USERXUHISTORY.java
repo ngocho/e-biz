@@ -36,7 +36,7 @@ public class USERXUHISTORY  implements Serializable{
 	private static final long serialVersionUID = 1L;
 	@PrimaryKey
     @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
-	private String id;
+	private Long id;
 	@Persistent
 	private String idXu;
 	@Persistent
@@ -48,13 +48,13 @@ public class USERXUHISTORY  implements Serializable{
 	/**
 	 * @return the id
 	 */
-	public String getId() {
+	public Long getId() {
 		return id;
 	}
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	/**
