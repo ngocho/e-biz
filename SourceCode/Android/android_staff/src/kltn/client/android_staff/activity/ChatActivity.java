@@ -4,9 +4,9 @@ import java.util.Vector;
 
 import kltn.client.android_staff.R;
 import kltn.client.android_staff.engine.ChatEngine;
-import kltn.client.android_staff.engine.engine;
-import kltn.client.android_staff.model.chat_item;
-import object.chat;
+import kltn.client.android_staff.engine.Engine;
+import kltn.client.android_staff.model.ChatItem;
+import object.Chat;
 import android.app.Activity;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -34,14 +34,14 @@ public class ChatActivity extends Activity implements OnClickListener {
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
         setContentView(R.layout.chat_content);
-        mengine = new engine();
+        mengine = new Engine();
         chatengine = new ChatEngine(this);
         data = chatengine.getAllSortByDate();
 
         mlistchat = (ListView) findViewById(R.id.listView_chat_content);
-        datachat = new Vector<chat>();
-        datachat.add(new chat("Tới ngã tư", "16/12/2011", false));
-        datachat.add(new chat("Ok ", "16/12/2011", true));
+        datachat = new Vector<Chat>();
+        datachat.add(new Chat("Tới ngã tư", "16/12/2011", false));
+        datachat.add(new Chat("Ok ", "16/12/2011", true));
         madapter = new MListAdapter();
         mlistchat.setAdapter(madapter);
         btnsend = (Button) findViewById(R.id.chat_content_send);
@@ -54,7 +54,7 @@ public class ChatActivity extends Activity implements OnClickListener {
     /** . */
     private ListView mlistchat;
     /** . */
-    private Vector<chat> datachat;
+    private Vector<Chat> datachat;
     /** . */
     private Button btnsend;
     /** . */
@@ -94,7 +94,7 @@ public class ChatActivity extends Activity implements OnClickListener {
             TextView date = (TextView) convertView.findViewById(R.id.item_chat_date);
             try {
                 data.moveToPosition(position);
-                chat_item item = new chat_item(data.getString(data.getColumnIndex("message")), data.getString(data
+                ChatItem item = new ChatItem(data.getString(data.getColumnIndex("message")), data.getString(data
                         .getColumnIndex("date")), data.getInt(data.getColumnIndex("state")));
                 if (item.getState() == 0) {
                     image.setBackgroundResource(R.drawable.manager_icon);
@@ -117,7 +117,7 @@ public class ChatActivity extends Activity implements OnClickListener {
         }
     }
     /** . */
-    private engine mengine;
+    private Engine mengine;
     /**
      * [Explain the description for this method here].
      * @param v View
@@ -128,9 +128,9 @@ public class ChatActivity extends Activity implements OnClickListener {
             case R.id.chat_content_send :
                 String messagereceive = mengine.sendMessageChat("123", edtdes.getText().toString());
                 if (!messagereceive.equals("")) {
-                    chatengine.add(new chat_item(messagereceive, "12/12/2011", 0));
+                    chatengine.add(new ChatItem(messagereceive, "12/12/2011", 0));
                 }
-                chatengine.add(new chat_item(edtdes.getText().toString(), "12/02/2011", 1));
+                chatengine.add(new ChatItem(edtdes.getText().toString(), "12/02/2011", 1));
                 edtdes.setText("");
                 data = chatengine.getAllSortByDate();
                 madapter.notifyDataSetChanged();

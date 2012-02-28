@@ -1,7 +1,7 @@
 package kltn.client.android_staff.activity;
 
 import kltn.client.android_staff.R;
-import kltn.client.android_staff.engine.engine;
+import kltn.client.android_staff.engine.Engine;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -31,7 +31,7 @@ public class LoginActivity extends Activity {
         btnOk = (Button) findViewById(R.id.btn_login_ok);
         btnExit.setOnClickListener(actionExit);
         btnOk.setOnClickListener(actionOk);
-        mengine = new engine();
+        mengine = new Engine();
     }
     /** . */
     private OnClickListener actionOk = new OnClickListener() {
@@ -62,5 +62,5 @@ public class LoginActivity extends Activity {
     /**  . */
     private Button btnOk, btnExit;
     /**  . */
-    private engine mengine;
+    private Engine mengine;
 }
