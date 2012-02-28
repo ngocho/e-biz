@@ -76,6 +76,8 @@ function codeAddress() {
 	            map: map, 
 	            position: results[0].geometry.location
 	        });
+	        infowindow.setContent(address);
+	        infowindow.open(map, marker);
 	      } else {
 	        alert("Geocode was not successful for the following reason: " + status);
 	      }
