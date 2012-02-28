@@ -1,18 +1,22 @@
-/**
- * 
- */
 package kltn.client.android_server.object;
 
 /**
  * @author nthanhphong
- *
  */
-public class promotion {
-	String[] phonenumber,content;
-	public promotion() {
-	}
-	public promotion(String[] phone,String[] message){
-		phonenumber=phone;
-		content=message;
-	}
+public class Promotion {
+    /** . */
+    private String[] phonenumber, content;
+    /**
+     * 
+     */
+    public Promotion() {
+    }
+    /**
+     * @param phone String[]
+     * @param message String[]
+     */
+    public Promotion(String[] phone, String[] message) {
+        phonenumber = phone;
+        content = message;
+    }
 }
