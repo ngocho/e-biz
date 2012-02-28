@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cronentries>
+  <cron>
+    <url>/sendMailHappyBirthday.vn</url>
+    <description>Send Mail Happy Birthday</description>
+    <schedule>every day 10:45</schedule>
+    <timezone>Asia/Bangkok</timezone>
+  </cron>
+  
+  <cron>
+    <url>/promotionInfoWeekly.vn</url>
+    <description>Send Promotion Info</description>
+    <schedule>every day 00:01</schedule>
+     <timezone>Asia/Bangkok</timezone>
+  </cron>
+  
+  <cron>
+    <url>/generateXu.vn</url>
+    <description>Automatically generate Code Xu </description>
+    <schedule>every 60 minutes</schedule>
+     <timezone>Asia/Bangkok</timezone>
+  </cron>
+  
+</cronentries>

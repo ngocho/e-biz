@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+<struts-config>
+
+  <form-beans>
+  </form-beans>
+  
+  <global-exceptions>
+  </global-exceptions>
+
+  <global-forwards>
+  </global-forwards>
+
+  <action-mappings>
+    
+    <action path="/getActiveXU" type="mobile.ebiz.action.ActiveXU" scope="session" validate="false">
+    </action>
+    <action path="/getHappyBirthday" type="mobile.ebiz.action.HappyBirthday" scope="session" validate="false">
+    </action>
+    <action path="/getFoodPromotion" type="mobile.ebiz.action.getPromotion" scope="session" validate="false">
+    </action>
+    <action path="/getUserFuntion" type="mobile.ebiz.action.CustomerFuntion" scope="session" validate="false">
+    </action>
+    <action path="/getFoodByProvider" type="mobile.ebiz.action.GetFoodListByProvider" scope="session" validate="false">
+    </action>
+    <action path="/getBestList" type="mobile.ebiz.action.GetBestList" scope="session" validate="false">
+    </action>
+    <action path="/getBrowserList" type="mobile.ebiz.action.GetBrowserList" scope="session" validate="false">
+    </action>
+    <action path="/getFoodId" type="mobile.ebiz.action.GetFoodId" scope="session" validate="false">
+    </action>
+ 
+  </action-mappings>
+</struts-config>

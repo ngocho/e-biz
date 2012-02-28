@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+<struts-config>
+
+  <form-beans>
+    <form-bean name="login" type="ebiz.form.LoginForm" />
+    <form-bean name="register" type="ebiz.form.LoginForm" />
+    <form-bean name="voucherForm" type="ebiz.form.OrderBillForm" />
+  </form-beans>
+  
+  <global-exceptions>
+  </global-exceptions>
+
+  <global-forwards>
+  </global-forwards>
+
+  <action-mappings>
+    <action path="/loginCustomer" forward="loginLayout">
+    </action>
+	 <action path="/changePass" forward="home_customer_changepass">
+    </action>
+    <action path="/registerCustomer" forward="registerLayout">
+    </action>
+
+	<action path="/home" type="ebiz.action.Home" scope="session"
+		validate="false">
+		<forward name="success" path="home" redirect="true" />
+	</action>
+     
+
+    <action input="loginLayout" 
+			path="/loginAction"
+			type="ebiz.action.account.customer.Login" 
+			name="login"
+			scope="session" validate="true">
+		<forward name="success" path="/home.vn" redirect="true" />
+		<forward name="success1" path="/checkAuthentication.vn" redirect="true" />
+		<forward name="failure" path="loginLayout" redirect="true" />
+    </action>
+    
+    <action input="registerLayout" 
+			path="/registerAction"
+			type="ebiz.action.account.customer.Register" 
+			name="register"
+			scope="session" validate="true">
+		<forward name="success" path="loginLayout" redirect="true" />
+		<forward name="failure" path="registerLayout" redirect="true" />
+    </action>
+      
+    <action 
+			path="/logoutCustomer"
+			type="ebiz.action.account.customer.Logout" >
+		<forward name="success" path="/home.vn" redirect="true" />
+    </action>
+    
+    <action 
+			path="/displayBill"
+			type="ebiz.action.account.customer.DisplayBill" >
+		<forward name="success" path="home_content_bill" redirect="true" />
+    </action>
+	
+    <action 
+			path="/reOrder"
+			type="ebiz.action.account.customer.ResetOldBill" >
+		<forward name="success" path="home_customer_reOrder" redirect="true" />
+		<forward name="failure" path="home_content_bill" redirect="true" />
+    </action>
+	
+    <action 
+			path="/setStatusOrder"
+			type="ebiz.action.account.admin.SetStatusOrder" >
+		<forward name="success" path="home_customer_reOrder" redirect="true" />
+    </action>
+	
+    <action
+			path="/uploadComment"
+			type="ebiz.action.account.customer.UploadComment" >
+    </action>
+    
+    <action
+			path="/displayAss"
+			type="ebiz.action.account.customer.DisplayAss" >
+			 <forward name="success" path="customer_as" redirect="true" />
+			  <forward name="failure" path="/home.vn" redirect="true" />
+    </action>
+    
+    
+    <action
+            path="/resetFormCustomer"
+            type="ebiz.action.account.customer.ResetForm" >
+    </action>
+    
+     <action
+            path="/customer"
+            type="ebiz.action.account.customer.CustomerInfo">
+            <forward name="success" path="home_customer" redirect="true" />
+    </action>
+    
+     <action
+            path="/changePassword"
+            type="ebiz.action.account.customer.ChangePassword">
+            <forward name="success" path="home_customer" redirect="true" />
+            <forward name="failure" path="home_customer_changepass" redirect="true" />
+    </action>
+    
+     <action
+            path="/deleteBill"
+            type="ebiz.action.account.customer.BillStatus">
+            <forward name="success" path="home_customer" redirect="true" />
+    </action>
+    
+    <action
+            path="/getVoucher" 
+            type="ebiz.action.account.customer.Voucher">
+            <forward name="login" path="loginLayout" redirect="true" />
+            <forward name="success" path="voucher_optional" redirect="true" />
+            <forward name="failure" path="product" redirect="true" />
+    </action>
+    
+     <action
+            path="/getVoucherFilter" 
+            type="ebiz.action.account.customer.VoucherProcess">
+    </action>
+    
+     <action
+            path="/createVoucher" 
+            name="voucherForm"
+            type="ebiz.action.account.customer.VoucherCreation">
+             <forward name="success" path="/home.vn" redirect="true" />
+    </action>
+    
+     <action
+            path="/getVoucherType" 
+            name="voucherForm"
+            type="ebiz.action.account.customer.VoucherShipping">
+    </action>
+    
+    <action
+            path="/addXu" 
+            type="ebiz.action.account.customer.XuAdd">
+    </action>
+    
+     <action
+            path="/transferXu" 
+            type="ebiz.action.account.customer.XuTransfer">
+    </action>
+    
+    <action
+            path="/updateCustomerInfo" 
+            type="ebiz.action.account.customer.UpdateCustomerInfo">
+    </action>
+    
+     <action
+            path="/promotionInfoWeekly" 
+            type="ebiz.action.mail.PromotionWeekly">
+    </action>
+    
+   <!--  <action
+            path="/changeHomeSlide" 
+            type="ebiz.action.account.customer.UpdateCustomerInfo">
+    </action> -->
+    
+    <action
+            path="/displayProviderInfo" 
+            type="ebiz.action.account.provider.ProviderDetail">
+            <forward name="success" path="provider_info" redirect="true" />
+    </action>
+    
+    <action
+            path="/displayProductByProvider" 
+            type="ebiz.action.account.customer.FoodByProvider">
+            <forward name="success" path="product_provider" redirect="true" />
+    </action>
+    
+ 
+  </action-mappings>
+</struts-config>
