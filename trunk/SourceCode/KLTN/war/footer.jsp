@@ -12,6 +12,6 @@
                                 <li><a href="http://localhost/magento/index.php/sales/guest/form/" title="Orders and Returns">Orders and Returns</a></li>
                                 <li class=" last"><a href="http://localhost/magento/index.php/contacts/" title="Contact Us">Contact Us</a></li> -->
             </ul>
-        <p class="bugs">Mọi thắc mắc vui lòng gởi mail qua mail : uit.mmt@gmail.com hoặc liên hệ số điện thoại 0999999999</address>
+        <p class="bugs">Mọi thắc mắc vui lòng gởi mail qua : uit.mmt@gmail.com hoặc liên hệ số điện thoại : 0999999999</address>
     </div>
 
