@@ -546,7 +546,11 @@ public class FoodBLO {
                         // number product required <= number in database
                         if (numberProduct <= numberDB) {
                             foodForm.setNumber(numberProduct);
-                            foodForm.setSubTotal(foodForm.getPrice() * numberProduct);
+                            if((CommonConstant.FOODPROMOTION).equals(foodForm.getStatus())){
+                            foodForm.setSubTotal(foodForm.getPromoPrice() * numberProduct);
+                            }else{
+                                foodForm.setSubTotal(foodForm.getPrice() * numberProduct); 
+                            }
                             return true;
                         } else {
                             return false;
