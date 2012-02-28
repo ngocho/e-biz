@@ -152,7 +152,7 @@ public class DeliveryActivity extends Activity implements OnClickListener {
 
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(DeliveryActivity.this, mapActivity.class);
+                Intent i = new Intent(DeliveryActivity.this, MapEmployeeActivity.class);
                 startActivity(i);
                 dialog.cancel();
             }
