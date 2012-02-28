@@ -17,7 +17,7 @@
     </action>
     <action path="/getHappyBirthday" type="mobile.ebiz.action.HappyBirthday" scope="session" validate="false">
     </action>
-    <action path="/getFoodPromotion" type="mobile.ebiz.action.getPromotion" scope="session" validate="false">
+    <action path="/getFoodPromotion" type="mobile.ebiz.action.GetPromotion" scope="session" validate="false">
     </action>
     <action path="/getUserFuntion" type="mobile.ebiz.action.CustomerFuntion" scope="session" validate="false">
     </action>
@@ -28,6 +28,8 @@
     <action path="/getBrowserList" type="mobile.ebiz.action.GetBrowserList" scope="session" validate="false">
     </action>
     <action path="/getFoodId" type="mobile.ebiz.action.GetFoodId" scope="session" validate="false">
+    </action>
+    <action path="/getCodeActive" type="mobile.ebiz.action.GetActiveCode" scope="session" validate="false">
     </action>
  
   </action-mappings>
