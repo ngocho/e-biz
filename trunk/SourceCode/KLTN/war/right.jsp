@@ -208,6 +208,6 @@ $(document).ready(function(){
 <a href=""><img src="Images/Commons/accepted-payment-yellow-152x63.png" width="195" height="100" border="0"></a>
 </p>
   <p class="home-callout">
-<img src="Images/Commons/taikhoanXu.png" width="195" height="200" border="0">
+<img src="Images/Commons/<bean:message key="left.banner.xu" />" width="195" height="200" border="0">
 </p>
 </div>

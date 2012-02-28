@@ -37,7 +37,7 @@ $(document).ready(function(){
                                     <td width="20%"><span class="txt-price"> <input id="quantity" name="quantity" value="1" type="text" ></span></td>
                                     <td width="60%">x    <span class="price"><bean:write name="DetailProduct" property="price" /></span> </td>
                                     <td width="25%" align="center">
-                                     <a href=""  id="addToCart" ><img alt="" src="Images/Commons/mua.jpg"  width="100" border="0" height="35">  </a>
+                                     <a href=""  id="addToCart" ><img alt="" src="Images/Commons/<bean:message key="button.buy" />"  width="100" border="0" height="35">  </a>
                                      <input type="hidden" id="id" value="<bean:write name ="DetailProduct" property="id" />"/>
                                      </td>                                                                           
                                 </tr>
@@ -93,7 +93,7 @@ $(document).ready(function(){
                    <td  width="200" style="padding:3px;" > <span id="numberID" ><bean:write name="numberDisplay"  /></span></td>
                   </c:when>
                   <c:otherwise>
-                    <td  width="200" style="padding:3px;" > <span id="numberID" style="text-decoration:line-through;color:black;color:red;">Hết hàng</span></td>
+                    <td  width="200" style="padding:3px;" > <span id="numberID" style="text-decoration:line-through;color:black;color:red;"><bean:message key="product.out" /></span></td>
                   </c:otherwise>
                   </c:choose>
           

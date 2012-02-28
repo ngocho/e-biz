@@ -313,10 +313,10 @@ function slideSwitch() {
             <div class="actions">
               <a
                 href="/displayProductDetail.vn?id=<bean:write name="element" property="id" />"><img
-                src="Images/Commons/xem.jpg" width="70"></img>
+                src="Images/Commons/<bean:message key="button.view" />" width="70"></img>
               </a> <a name="<bean:write name="element" property="id"/>" class="addShopping"
                 href=""
-                ><img src="Images/Commons/mua.jpg"
+                ><img src="Images/Commons/<bean:message key="button.buy" />"
                 width="70"></img>
               </a>
             </div>

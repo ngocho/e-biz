@@ -9,7 +9,7 @@
     <div class="logo-sidenote">
     </div>
     <ul class="super-links"  id="customer_super_links">
-      <li>Lựa chọn ngôn ngữ 
+ <!--      <li>Chọn ngôn ngữ 
 <select>
 <option>
 Tiếng Việt
@@ -19,17 +19,17 @@ Tiếng Anh
 </option>
 
 </select>
-</li>
+</li> -->
 
       <li></li>
       <c:if test="${provider ==null}">
-      <li class="first"><a href="/loginProvider.vn">Đăng nhập</a>        </li>
+      <li class="first"><a href="/loginProvider.vn"><span class='impressionText'>Đăng nhập</span> </a>       </li>
       </c:if>
       <c:if test="${provider !=null}">
-      <li class="first"><a href="/logoutProviderAcc.vn">Đăng xuất</a>        </li>
+      <li class="first"><a href="/logoutProviderAcc.vn"><span class='impressionText'>Đăng xuất </span></a>       </li>
       </c:if>
         <li>
-            <a href="/registerProvider.vn">Đăng kí</a>        </li>
+            <a href="/registerProvider.vn"><span class='impressionText'>Đăng kí</span></a>        </li>
       </ul>
  </div>
  <div class="header-row3"  >
