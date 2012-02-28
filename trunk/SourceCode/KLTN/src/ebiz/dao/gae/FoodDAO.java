@@ -211,7 +211,7 @@ public class FoodDAO implements IFoodDAO {
     @Override
     public String getNameTypeById(String id) {
         FoodType type = (FoodType) PMF.getObjectById(FoodType.class, id);
-        System.out.println("FOODTYPE" + type);
+                                                  
         if (type != null) {
             return type.getProductTypeName();
         }

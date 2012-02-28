@@ -112,9 +112,9 @@ public class CommonUtil {
                 DateFormat formatter;
                 formatter = new SimpleDateFormat("dd/MM/yyyy");
                 date = (Date) formatter.parse(strDate);
-                System.out.println("Today is " + date);
+                                                          
             } catch (ParseException e) {
-                System.out.println("Exception :" + e);
+                                                          
                 return null;
             }
             return date;
@@ -172,7 +172,7 @@ public class CommonUtil {
 
     // validate
     public static boolean checkNumeric(String value) {
-        System.out.println("value checkNummeric" + value);
+                                                  
         // long result;
         try {
             Long.parseLong(value);

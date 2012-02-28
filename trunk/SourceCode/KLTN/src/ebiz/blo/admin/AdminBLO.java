@@ -1,7 +1,5 @@
 package ebiz.blo.admin;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -82,23 +80,16 @@ public class AdminBLO {
             formList.add(form);
 
         }
-        // Cache cache = SearchBLO.getMemcache();
-        // cache.put("customerBillData", formList);
         return formList;
     }
     // get bill to shipping
     public static List<OrderBillForm> getOrderBillFormListDaily() {
-        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         Date date = new Date();
         String d = CommonUtil.convertDateToString(date);
-        System.out.println(dateFormat.format(date));
-        System.out.println("DATE BILL" + date);
         List<OrderBill> orderList = new ArrayList<OrderBill>();
         List<OrderBillForm> formList = new ArrayList<OrderBillForm>();
         // get money at home
         orderList = orderDao.getOrderList();
-        // //shipping
-        // orderList.addAll(orderDao.getOrderListByStatus("2"));
         for (OrderBill order : orderList) {
             if (order.getStatus().equals("1") || order.getStatus().equals("2")) {
                 String dateOrder = CommonUtil.convertDateToString(order.getDateShip());
@@ -111,8 +102,6 @@ public class AdminBLO {
                 }
             }
         }
-        // Cache cache = SearchBLO.getMemcache();
-        // cache.put("customerBillData", formList);
         return formList;
     }
 
@@ -121,14 +110,7 @@ public class AdminBLO {
         List<Customer> customerList = new ArrayList<Customer>();
         List<LoginForm> formList = new ArrayList<LoginForm>();
         // get all
-        // if(value == null){
         customerList = CustomerBLO.getCustomerList();
-        // }
-        // //get by attr
-        // else{
-        // orderList = orderDao.getOrderListByStatus(value);
-        // }
-        //
         for (Customer customer : customerList) {
             LoginForm form = new LoginForm();
             // display

@@ -56,8 +56,6 @@ public class Search extends BaseAction {
         SearchForm searchForm = (SearchForm) form;
         if (searchForm.getSearchText() != null) {
             HttpSession se = request.getSession();
-            // HashMap<Integer, String> paging = new HashMap<Integer, String>();
-            // String page = request.getParameter("page");
             int pageIndex = 1;
             List<FoodForm> formList = new ArrayList<FoodForm>();
             List<String> pageList = new ArrayList<String>();

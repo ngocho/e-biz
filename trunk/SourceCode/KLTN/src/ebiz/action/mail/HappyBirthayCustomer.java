@@ -60,7 +60,6 @@ public class HappyBirthayCustomer extends Action {
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
 
-        // String flag=request.getParameter("flag");
         List<Customer> customerList = CustomerBLO.getCustomerList();
         for (Customer customer : customerList) {
             if (customer.getCustomerEmail() != null) {

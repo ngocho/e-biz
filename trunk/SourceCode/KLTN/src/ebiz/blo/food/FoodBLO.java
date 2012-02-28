@@ -248,7 +248,7 @@ public class FoodBLO {
         }
         for (int i = 0; i < limit; i++) {
             String dateUpload = CommonUtil.convertDateToString(foodList.get(i).getUploadDate());
-            System.out.println("DATEUPLOAD" + dateUpload + " date" + d);
+                                                      
             if (d.equals(dateUpload)) {
                 FoodForm form = new FoodForm();
                 form.editForm(foodList.get(i));
@@ -256,7 +256,7 @@ public class FoodBLO {
             }
         }
         
-        System.out.println("GET FOOD RECENT" + resultList.size());
+                                                  
         return resultList;
     }
 
@@ -359,7 +359,7 @@ public class FoodBLO {
         for (Food food : foodList) {
             FoodForm form = new FoodForm();
             // if (food.getIsDisplay() == 1) {
-            System.out.println("getIsDisplay" + food.getFoodId());
+                                                      
             form.editForm(food);
             if (!form.isEmpty()) {
                 formList.add(form);
@@ -414,7 +414,7 @@ public class FoodBLO {
 
         List<FoodForm> formList = new ArrayList<FoodForm>();
         formList = getFoodFormListAll("foodName", numberPageList, "asc", 8, 1, idProvider);
-        System.out.println("SIZE OF FOOD" + formList.size());
+                                                  
         return formList;
     }
 
@@ -444,20 +444,20 @@ public class FoodBLO {
         } else {
             if (("4".equals(status))) {
                 if (!sql.toString().equals("")) {
-                    System.out.println("SQL STATUS first" + sql);
+                                                              
                     sql.append(" &&  ");
                 }
                 sql.append(" isDisplay == 0 ");
             } else {
                 if (!sql.toString().equals("")) {
-                    System.out.println("SQL STATUS first" + sql);
+                                                              
                     sql.append(" &&  ");
                 }
                 sql.append(" isDisplay == 1 ");
                 sql.append(" &&  ");
                 sql.append(colFilter + "== \'" + status + "\'");
             }
-            System.out.println("SQL STATUS" + sql);
+                                                      
             formList = getFoodFormList(col, numberPageList, order, record, page, sql.toString());
         }
         return formList;
@@ -534,7 +534,7 @@ public class FoodBLO {
             // test number of product in database
             Food foodDB = foodDao.getFoodById(id);
             numberDB = foodDB.getNumber();
-            System.out.println("NUMBER DATEBASE" + numberDB + " " + number);
+                                                      
             if (!shopCart.isEmpty()) {
                 List<FoodForm> foodList = shopCart.getProducts();
                 // ? exist product in shopping cart
@@ -556,7 +556,7 @@ public class FoodBLO {
             }
             // shopcart is empty or don't exist required product in shop cart
             if (number <= numberDB) {
-                System.out.println("No Product");
+                                                          
                 food = new FoodForm();
                 food.editForm(foodDB);
                 // if product is a promotion products -> put into price
@@ -700,7 +700,7 @@ public class FoodBLO {
     // // customer = CustomerBLO.getCustomerByID(shop.getUser().getLoginId());
     //
     // OrderBill order = new OrderBill();
-    // System.out.println("CUSTOMER" + customer.getCustomerId());
+    //                                           
     // // create OrderBill
     // order.setIdCustomer(customer.getCustomerId());
     // order.setAddress(customer.getCustomerAddress());
@@ -746,7 +746,7 @@ public class FoodBLO {
     public static OrderBill billing(ShoppingCart shop) {
 
         OrderBillForm orderForm = shop.getOrder();
-        System.out.println("ORDER form billing" +orderForm.getBuildingName());
+                                                  
         if (orderForm != null) {
             long moneyOrder = 0;
             OrderBill order = orderForm.getOrder();
@@ -761,7 +761,7 @@ public class FoodBLO {
             order.setStatus(CommonConstant.BILLSTATUS_0);
             // save order
             order = orderDao.save(order);
-            System.out.println("ADD ORDER @@@@@@@@@@@@" + order.getAddress());
+                                                      
             Long idOrder = order.getId();
             // create detailOrder --> save in database
 
@@ -780,7 +780,7 @@ public class FoodBLO {
                 upNumberFoodOrder(food.getId(), food.getNumber());
 
             }
-            System.out.println("ID Customer" + order.getIdCustomer());
+                                                      
             return order;
         }
         // user chua dang nhap
@@ -909,7 +909,7 @@ public class FoodBLO {
         if (idFood != null) {
             Food food = getFoodById(idFood);
             if (food != null) {
-                System.out.println("DELETE");
+                                                          
                 return deleteFood(food);
             }
         }
@@ -942,7 +942,7 @@ public class FoodBLO {
 
         food.setNumberOrder(0);
         food.setFoodPriceLevelId(FoodBLO.getFoodIdPrice(food.getPrice()));
-        System.out.println("SETFOODPRICELEVELID" + food.getFoodPriceLevelId());
+                                                  
         return foodDao.saveFood(food);
     }
 
@@ -1001,7 +1001,7 @@ public class FoodBLO {
 
         if (s.length() - len > 0) {
             result = s.substring(0, s.length() - len);
-            System.out.println("Subtring" + result);
+                                                      
             result = result + "," + "000";
         }
         return result;
@@ -1012,7 +1012,7 @@ public class FoodBLO {
         for (FoodPriceLevel level : listLevel) {
             FoodPriceForm form = new FoodPriceForm();
             form.editForm(level);
-            System.out.println("FOODFORM" + form.getId());
+                                                      
             formList.add(form);
         }
         return formList;

@@ -48,7 +48,7 @@ public class GMProviderAddressList extends BaseAction {
      */
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
-        System.out.println(" GMProviderAddressList");
+                                                  
         List<ProviderForm> providerList = ProviderBLO.getProviderFormAll();
         HttpSession se = request.getSession();
         se.setAttribute("providerAddList", providerList);

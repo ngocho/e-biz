@@ -89,7 +89,7 @@ public class ProviderBLO {
         List<FoodForm> formList = new ArrayList<FoodForm>();
         // get all
         if (statusFood.equals("0")) {
-            System.out.println("ALL");
+                                                      
             foodList = foodDao.getListFoodByValue("providerID", idProvider);
         }
         // get by status
@@ -115,11 +115,11 @@ public class ProviderBLO {
         List<ProviderForm> resultList = new ArrayList<ProviderForm>();
         if (!providerList.isEmpty()) {
             for (Provider provider : providerList) {
-                System.out.println("form provider" + provider.getProviderId() + "name" + provider.getProviderName());
+                                                          
                 ProviderForm form = new ProviderForm();
                 form.editForm(provider);
                 if (form != null) {
-                    System.out.println("form provider" + form.getLoginId() + "name" + form.getLoginName());
+                                                              
                     resultList.add(form);
                 }
             }

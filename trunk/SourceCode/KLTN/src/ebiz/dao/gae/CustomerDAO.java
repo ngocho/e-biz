@@ -37,7 +37,7 @@ public class CustomerDAO implements ICustomerDAO {
 
     @Override
     public boolean saveCustomer(Customer customer) {
-        System.out.println("ADDRESS" + customer.getCustomerAddress().getHomeNumber());
+                                                  
         return PMF.insertObject(customer);
     }
     @Override

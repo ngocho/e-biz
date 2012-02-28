@@ -33,7 +33,6 @@ import ebiz.dto.checkout.OrderBill;
 import ebiz.form.OrderBillForm;
 import ebiz.form.ShoppingCart;
 import ebiz.util.CommonConstant;
-import ebiz.util.CommonUtil;
 
 /**
  * @author Administrator
@@ -56,29 +55,16 @@ public class CreateOrderBill extends BaseAction {
         HttpSession se = request.getSession();
         ShoppingCart shopCart = (ShoppingCart) se.getAttribute(CommonConstant.SHOPPING);
         OrderBillForm orderForm = (OrderBillForm) form;
-        //test value
-        System.out.println("ID CUSTOMER" + orderForm.getIdCustomer());
             // billing
             order = FoodBLO.billing(shopCart);
-            System.out.println("info MHD:" + order.getId());
-            System.out.println("sum money MHD:" + order.getSumPrice());
-            System.out.println("add money MHD:" + order.getAddress());
-            System.out.println("time money MHD:" + CommonUtil.convertDateToString(order.getDateShip()) + "time" +order.getNote());
             if (order != null) {
-
-                // send mail
-            	//SendMail.sendOrderBillMail(order.getId());
                 orderForm.editForm(order);
 //                // update atrributes
                 orderForm.setNumberProduct(shopCart.size());
 //                // set orderForm into session
                 se.setAttribute("bill", orderForm);
-//                se.removeAttribute("shop");
-                // call method to pay xu
-
-                
                 /**
-                 * Create nganluong payment url
+                 * Create nganluong payment url)
                  */
                 NL_Checkout nl_checkout = new NL_Checkout();
                 String return_url = CommonConstant.URL + "/checkoutmoney.vn?checkout=nganluong";// Địa chỉ trả về 

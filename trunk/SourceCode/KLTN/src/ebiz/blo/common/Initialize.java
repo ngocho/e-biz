@@ -80,7 +80,7 @@ public class Initialize {
         FoodAttribute attr0 = new FoodAttribute();
         attr0.setProductAttributeId("1");
         attr0.setProductAttributeName("Kho");
-        System.out.println("ATTR: "+ foodDao.insertFoodAttribute(attr0));
+                                                  
         
         FoodAttribute attr1 = new FoodAttribute();
         attr1.setProductAttributeId("2");

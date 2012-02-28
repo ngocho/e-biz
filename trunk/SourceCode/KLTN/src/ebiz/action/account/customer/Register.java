@@ -51,7 +51,6 @@ public class Register extends BaseAction {
      */
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
-System.out.println("dang kis");
         // after checked validation using xml file
         LoginForm user = (LoginForm) form;
         // check password with re-password
@@ -67,7 +66,7 @@ System.out.println("dang kis");
             boolean flag;
 
             flag = CustomerBLO.registerCustomer(register);
-            System.out.println("dang kis" + flag);
+                                                      
             if (flag) {
                 HttpSession se = request.getSession();
                 if (user.getEmail() != null) {

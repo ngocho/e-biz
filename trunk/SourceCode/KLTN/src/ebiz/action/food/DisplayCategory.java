@@ -67,7 +67,7 @@ public class DisplayCategory extends BaseAction {
         if(providerId == null){
         	providerId = (String)se.getAttribute("ProviderFood");
         }
-        System.out.println("providerId" + providerId );
+                                                  
         String typeProduct = request.getParameter("typeProduct");
         if (typeProduct == null) {
             vo = (ProductVO) se.getAttribute(CommonConstant.PRODUCTVO);
@@ -105,7 +105,7 @@ public class DisplayCategory extends BaseAction {
         vo.setAttr("0");
         vo.setPriceId("0");
         se.setAttribute(CommonConstant.PRODUCTVO, vo);
-        // System.out.println("SIZE OF FOOD" + foods.size());
+        //                                           
         // list food
         se.setAttribute(CommonConstant.FOOD_CATEGORY_F, foods);
         // return display category

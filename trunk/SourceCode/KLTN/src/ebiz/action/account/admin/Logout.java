@@ -27,7 +27,6 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import ebiz.action.BaseAction;
-import ebiz.form.LoginForm;
 import ebiz.util.CommonConstant;
 
 /**
@@ -52,7 +51,6 @@ public class Logout extends BaseAction {
         //LoginForm login = (LoginForm) se.getAttribute(CommonConstant.ADMIN);
         //if (login != null) {
         //    se.invalidate();
-        //}
 
         se.removeAttribute(CommonConstant.ADMIN);
         return mapping.findForward(SUCCESS);
