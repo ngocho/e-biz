@@ -18,6 +18,8 @@
  */
 package ebiz.action;
 
+import java.nio.ByteBuffer;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -27,6 +29,11 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import com.google.appengine.api.blobstore.BlobKey;
+import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
+import com.google.appengine.api.files.AppEngineFile;
+import com.google.appengine.api.files.FileService;
+import com.google.appengine.api.files.FileServiceFactory;
+import com.google.appengine.api.files.FileWriteChannel;
 import com.google.appengine.api.images.Image;
 import com.google.appengine.api.images.ImagesService;
 import com.google.appengine.api.images.ImagesServiceFactory;
@@ -41,20 +48,41 @@ public class CropImage extends Action {
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
         try {
-            System.out.println("aaaaaaaaaaaaaaaa");
             int leftX = Integer.parseInt(request.getParameter("leftX"));
             int topY = Integer.parseInt(request.getParameter("topY"));
             int rightX = Integer.parseInt(request.getParameter("rightX"));
             int bottomY = Integer.parseInt(request.getParameter("bottomY"));
+            double height = 1.0 * Integer.parseInt(request.getParameter("height"));
+            double width = 1.0 * Integer.parseInt(request.getParameter("width"));
+            //System.out.println(leftX);// Testing
             if ((leftX != rightX) && (topY != bottomY)) {
-                String urlKey = request.getSession().getAttribute("urlKey").toString();
+                String urlKey = request.getSession().getAttribute("urlImageKey").toString();
+               // System.out.println(urlKey);// test
+                // get image
                 Image image = ImagesServiceFactory.makeImageFromBlob(new BlobKey(urlKey));
-                Transform crop = ImagesServiceFactory.makeCrop(leftX, topY, rightX, bottomY);
+                // crop image
+                Transform crop = ImagesServiceFactory.makeCrop(leftX/width, topY/height, rightX/width, bottomY/height);
+                //Transform crop = ImagesServiceFactory.makeCrop(0.3, 0.3, 0.8, 0.8);// use in dev
                 ImagesService services = ImagesServiceFactory.getImagesService();
-                services.applyTransform(crop, image);
-                request.getSession().removeAttribute("urlImageKey");
+                Image newImage = services.applyTransform(crop, image);
+                // Delete old file.
+                BlobstoreServiceFactory.getBlobstoreService().delete(new BlobKey(urlKey));
+                //System.out.println("Tessssssssst 01");
+                // save to File
+                FileService fileService = FileServiceFactory.getFileService();
+                AppEngineFile file = fileService.createNewBlobFile("image/png");
+                FileWriteChannel writeChannel = fileService.openWriteChannel(file, true);
+                ByteBuffer buffer = ByteBuffer.wrap(newImage.getImageData());
+                //System.out.println("Test 02");
+                writeChannel.write(buffer);
+                writeChannel.closeFinally();
+                BlobKey blob = fileService.getBlobKey(file);
+                //System.out.println(blob.getKeyString());//test
+                request.getSession().setAttribute("urlImageKey", blob.getKeyString());
                 request.getSession().removeAttribute("notCropped");
-                response.getWriter().print("success");
+                response.getWriter().print(blob.getKeyString());
+                
+                //System.out.println("Test 03");
             } else {
                 throw new NumberFormatException();
             }
