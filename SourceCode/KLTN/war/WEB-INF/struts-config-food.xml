@@ -107,6 +107,14 @@
         <forward name="failure" path="checkout_optional" redirect="true" />
     </action>
     
+    <action 
+            path="/checkoutnl"
+            type="ebiz.action.food.CheckoutNL" 
+            scope="session" validate="true">
+        <forward name="success" path="bill" redirect="true" />
+        <forward name="failure" path="checkout_optional" redirect="true" />
+    </action>
+    
     <action input="home"
 			path="/search"
 			type="ebiz.action.food.Search" 
