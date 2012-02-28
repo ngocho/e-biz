@@ -50,15 +50,15 @@ public class CommonConstant {
 
     // FOOD
     public final static String CODEFOOD_0 = "0";
-    public final static String FOODPROMOTION = "2";
+    public final static String FOODPROMOTION = "1";
     // FOOD PROMOTION
     public final static String CODEFOOD_1 = "1";
     public final static String NAMEFOOD_PRO = "promotion";
 
     // FOOD STATUS
     public final static String STATUS_0 = "0"; // het hang
-    public final static String STATUS_1 = "1"; // dang ban
-    public final static String STATUS_2 = "2"; // khuyen mai
+    public final static String STATUS_1 = "1"; // khuyen mai
+    public final static String STATUS_2 = "2"; // binh thuong
     public final static String STATUS_3 = "3"; // het hsd
     public final static String STATUS_4 = "4";
     public final static String STATUS_MESSAGE_0 = "Hết hàng";
