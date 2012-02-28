@@ -93,7 +93,7 @@
             </field>
             <field
                 property="email"
-                depends="required">
+                depends="required,email">
                 <arg0 key="register.email"/>
             </field>
             <field
@@ -139,8 +139,8 @@
                 <arg0 key="order.phone"/>
             </field>
        		<field
-                property="required"
-                depends="email">
+                property="email"
+                depends="required, email">
                 <arg0 key="order.email"/>
             </field>
             <field
@@ -232,7 +232,7 @@
             </field>
              <field
                 property="email"
-                depends="required">
+                depends="required,email">
                 <arg0 key="providerForm.email"/>
             </field>
              <field
