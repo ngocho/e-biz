@@ -125,7 +125,7 @@ public class NL_Checkout {
 							+" "+payment_id.toString()
 							+" "+payment_type.toString()
 							+" "+error_text.toString().trim();
-		System.out.println("errortext:"+error_text.toString()+".");
+		System.out.println("error:'"+verify_secure_code+"'");
 
 		//thực hiện mã hóa verify_secure_code
 		try
@@ -135,18 +135,21 @@ public class NL_Checkout {
 	    catch (Exception e) {
 	    	System.err.println(e.getMessage());
 		}
-	    System.out.println(verify_secure_code);
-	    System.out.println(secure_code);
+	    System.out.println(verify_secure_code.trim());
+	    System.out.println(secure_code.trim());
 		
 		/* 2. kiem tra security code*/
-		if (verify_secure_code == secure_code)
+		if (verify_secure_code.trim().equals(secure_code.trim()))
 		{
 			result = true;
+			System.out.println("true");
 		}
 		else
 		{
 			result = false;
+			System.out.println("false");
 		}
+		
 		return result;
 	}	
 
