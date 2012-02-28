@@ -70,12 +70,19 @@ public class CheckoutType extends BaseAction {
         } else if ("nganluong".equals(typeCheckout)) {
             NL_Checkout nl_checkout = new NL_Checkout();
             String transaction_info = request.getParameter("transaction_info");
+            System.out.print(transaction_info);
             String order_code = request.getParameter("order_code");
+            System.out.print(order_code);
             String price = request.getParameter("price");
+            System.out.print(price);
             String payment_id = request.getParameter("payment_id");
+            System.out.print(payment_id);
             String payment_type = request.getParameter("payment_type");
+            System.out.print(payment_type);
             String error_text = request.getParameter("error_text");
+            System.out.print(error_text);
             String secure_code = request.getParameter("secure_code");
+            System.out.print(transaction_info);
             boolean flag = nl_checkout.verifyPaymentUrl(transaction_info, order_code, price, payment_id, payment_type,
                     error_text, secure_code);
             if (flag) {
