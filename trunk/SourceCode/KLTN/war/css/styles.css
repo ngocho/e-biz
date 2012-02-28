@@ -37,10 +37,6 @@ body {
 }
 
 img           { border:0; vertical-align:top; }
-/** add**/
-/*a             { color:#1e7ec8; text-decoration:underline; }
-a:hover       { text-decoration:none; }
-:focus        { outline:0; }*/
 a             { color:#b24610; text-decoration:none; }
 a:hover       { color:#6b2a0a; text-decoration:none; }
 :focus        { outline: 0; }
@@ -312,34 +308,6 @@ input.input-text:focus,select:focus,textarea:focus { background-color:#edf7fd; }
 .form-list .customer-dob .dob-year { width:140px; }
 .form-list .customer-dob .dob-year input.input-text { width:134px; }
 
-/* Independent fields */
-/*.form-list li { margin:0 0 8px; }
-.form-list li.fields { margin:0; }
-.form-list .field { display:block; margin:0 0 8px; }
-.form-list li.control {}
-.form-list label { float:left; width:150px; padding:2px 10px 0 0; text-align:right; }
-.form-list label.required { font-weight:bold; }
-.form-list label.required em { font-variant:normal; color:#eb340a; margin-right:3px; }
-.form-list .input-box { float:left; width:260px; }
-.form-list input.input-text,
-.form-list textarea { width:254px; }
-.form-list select { width:260px; }
-.form-list li.additional-row { border-top:1px solid #ddd; margin-top:10px; }
-.form-list li.additional-row .btn-remove { float:right; margin:5px 5px 0 0; }
-.form-list .input-range input.input-text { width:96px; }*/
-/* Customer */
-/*.form-list .customer-dob .dob-month,
-.form-list .customer-dob .dob-day,
-.form-list .customer-dob .dob-year { float:left; width:85px; }
-.form-list .customer-dob input.input-text { display:block; width:74px; }
-.form-list .customer-dob label { font-size:11px; font-weight:normal; color:#777; text-align:left; }
-.form-list .customer-dob .dob-day,
-.form-list .customer-dob .dob-month { width:60px; }
-.form-list .customer-dob .dob-day input.input-text,
-.form-list .customer-dob .dob-month input.input-text { width:46px; }
-.form-list .customer-dob .dob-year { width:140px; }
-.form-list .customer-dob .dob-year input.input-text { width:134px; }*/
-
 .buttons-set { clear:both; margin:4em 0 0; padding:8px 0 0; border-top:1px solid #e4e4e4; text-align:right; }
 .buttons-set1{ clear:both; margin:4em 0 0; padding:8px 0 0; border-top:1px solid #e4e4e4; text-align:right; }
 .buttons-set1 p.required { margin-left::10px; color:#FF0000}
@@ -407,7 +375,7 @@ p.required { font-size:11px; text-align:right; color:#EB340A; }
 .sub-title { clear:both; padding:15px 0 0; font-size:15px; font-weight:bold; margin:0 0 6px; color:#e25203; }
 
 /* Pager */
-.pager { font-size:11px; background:#fff url(../Images/Commons/../images/bkg_toolbar.gif) 0 100% repeat-x; padding:4px 8px; border-top:1px solid #e2e2e2; text-align:center; }
+.pager { font-size:11px;  padding:4px 8px; border-top:1px solid #e2e2e2; text-align:center; }
 .pager .amount { float:left; margin:0; }
 .pager .limiter { float:right; }
 .pager .limiter label { vertical-align:middle; }
@@ -418,7 +386,7 @@ p.required { font-size:11px; text-align:right; color:#EB340A; }
 .pager .pages .current {}
 
 /* Sorter */
-.sorter { font-size:11px; background:#fff url(../Images/Commons/../images/bkg_toolbar.gif) 0 100% repeat-x; padding:3px 8px; border-top:1px solid #e2e2e2; }
+.sorter { font-size:11px;  padding:3px 8px; border-top:1px solid #e2e2e2; }
 .sorter .view-mode { float:left; margin:0; }
 .sorter .sort-by { float:right; padding-right:36px; }
 .sorter .sort-by label { vertical-align:middle; }
@@ -502,27 +470,6 @@ tr.summary-details-excluded { font-style:italic; }
 .std ul.disc { list-style:disc outside; padding-left:18px; margin:0 0 10px; }
 .std dl dt { font-weight:bold; }
 .std dl dd { margin:0 0 10px; }
-/*.std ul,
-.std ol,
-.std dl,
-.std p,
-.std address,
-.std blockquote { margin:0 0 1em; padding:0; }
-.std ul { list-style:disc outside; padding-left:1.5em; }
-.std ol { list-style:decimal outside; padding-left:1.5em; }
-.std ul ul { list-style-type:circle; }
-.std ul ul,
-.std ol ol,
-.std ul ol,
-.std ol ul { margin:.5em 0; }
-.std dt { font-weight:bold; }
-.std dd { padding:0 0 0 1.5em; }
-.std blockquote { font-style:italic; padding:0 0 0 1.5em; }
-.std address { font-style:normal; }
-.std b,
-.std strong { font-weight:bold; }
-.std i,
-.std em { font-style:italic; }*/
 
 /* Misc */
 .links li { display:inline; }
@@ -617,34 +564,6 @@ tr.summary-details-excluded { font-style:italic; }
 .header .form-search .input-text { float:left; margin:3px 5px 5px 0; border:0; width:160px; padding-top:2px; padding-bottom:2px; font:14px arial, helvetica, sans-serif; }
 .header .form-search .btn { float:right; margin:1px 0; }
 
-/*
-.header .logo { float:left; margin:3px 0 10px 12px; text-decoration:none !important; }
-.header .logo strong { position:absolute; top:-999em; left:-999em; width:0; height:0; font-size:0; line-height:0; text-indent:-999em; overflow:hidden; }
-.header h1.logo { margin:0; }
-.header .quick-access { float:right; width:600px; padding:28px 10px 0 0; }
-.header .welcome-msg { margin:0; color:#fff; text-align:right; }
-.header .welcome-msg a { color:#ebbc58; }*/
-/*.header .form-search { position:absolute; top:0; right:29px; width:315px; height:30px; background:url(../Images/Commons/../images/bkg_form-search.gif) 0 0 no-repeat; padding:1px 0 0 16px; }
-.header .form-search label { float:left; width:24px; height:21px; text-align:left; text-indent:-999em; overflow:hidden; }
-.header .form-search input.input-text { float:left; border-color:#5c7989; width:209px; margin-right:4px; }
-.header .form-search button.button { float:left; }
-.header .form-search button.button span { border:0; height:21px; background:url(../Images/Commons/../images/btn_search.gif) 0 0 no-repeat; padding:0 0 0 3px; font:bold 11px/21px Tahoma, Verdana, Arial, sans-serif; }
-.header .form-search button.button span span { background-position:100% 0; padding:0 6px 0 3px; }
-.header .form-search .search-autocomplete { z-index:999; left:40px !important; top:22px !important; }
-.header .form-search .search-autocomplete ul { border:1px solid #5c7989; background-color:#f9f5f0; }
-.header .form-search .search-autocomplete li { text-align:left; border-bottom:1px solid #f4eee7; padding:2px 8px 1px 8px; cursor:pointer; }
-.header .form-search .search-autocomplete li .amount { float:right; font-weight:bold; }
-.header .form-search .search-autocomplete li.odd { background-color:#fffefb; }
-.header .form-search .search-autocomplete li.selected { background-color:#f7e8dd; }
-.header .form-language { clear:both; padding:5px 0 0; text-align:right; }
-.header .form-language label { font-weight:bold; padding-right:5px; color:#a7c6dd; vertical-align:middle; }
-.header .form-language select { padding:0; }
-.header .form-language select.flags option { background-position:4px 50%; background-repeat:no-repeat; padding-left:25px; }
-.header .links { float:right; margin:0 0 6px; }
-.header .links li { float:left; font-size:11px; background:url(../Images/Commons/../images/bkg_pipe1.gif) 100% 60% no-repeat; padding:0 8px 0 7px; }
-.header .links a { color:#ebbc58; }
-.header-container .top-container { clear:both; padding:5px 10px 0 12px; text-align:right; }
-.header-container .top-container a { font-size:11px; color:#ebbc58; }*/
 
 /**block cart **/
 
@@ -851,8 +770,8 @@ tr.summary-details-excluded { font-style:italic; }
     background-position: 0 50%;
 }
 .block-layered-nav .block-content { border:1px solid #a0b3c3; background:#e7f1f4; }
-.block-layered-nav dt { background:url(../Images/Commons/../images/bkg_block-layered-dt.gif) 9px 11px no-repeat; padding:7px 10px 0 28px; font-weight:bold; text-transform:uppercase; }
-.block-layered-nav dd { padding:0 12px 12px; background:url(../Images/Commons/../images/bkg_block-layered-dd.gif) 0 100% repeat-x; }
+.block-layered-nav dt { padding:7px 10px 0 28px; font-weight:bold; text-transform:uppercase; }
+.block-layered-nav dd { padding:0 12px 12px; }
 .block-layered-nav dd.last { background:none; }
 .block-layered-nav .currently li { background:#fff url(../Images/Commons/../images/bkg_block-layered-li.gif) 0 100% repeat-x; padding:4px 6px 4px 10px; }
 .block-layered-nav .currently .label { font-weight:bold; padding-left:18px; background:url(../Images/Commons/../images/bkg_block-layered-label.gif) 0 3px no-repeat; text-transform:uppercase; }
@@ -971,7 +890,7 @@ tr.summary-details-excluded { font-style:italic; }
 .category-products {}
 
 /* View Type: Grid */
-.products-grid {border-bottom:1px solid #d9ddd3; background:url(../images/bkg_grid.gif) 0 0 repeat;
+.products-grid {border-bottom:1px solid #d9ddd3;
  position:relative; }
 .products-grid.last { border-bottom:0; }
 .products-grid li.item {border-style:ridge;border-width:2px; border-color:#98bf21;float:left; width:250px; padding:5px 5px 5px; margin-left:4px; margin-top:4px;margin-right:4px;}/*138**/
@@ -1012,8 +931,8 @@ tr.summary-details-excluded { font-style:italic; }
 .ratings .rating-links .separator { margin:0 2px; }
 .ratings dt {}
 .ratings dd {}
-.rating-box { width:69px; height:13px; font-size:0; line-height:0; background:url(../Images/Commons/../images/bkg_rating.gif) 0 0 repeat-x; text-indent:-999em; overflow:hidden; }
-.rating-box .rating { float:left; height:13px; background:url(../Images/Commons/../images/bkg_rating.gif) 0 100% repeat-x; }
+.rating-box { width:69px; height:13px; font-size:0; line-height:0; text-indent:-999em; overflow:hidden; }
+.rating-box .rating { float:left; height:13px; }
 .ratings .rating-box { float:left; margin-right:3px; }
 .ratings .amount {}
 
@@ -2010,60 +1929,6 @@ div.price-slider li{width:342px;height:140px;float:left;list-style:none;backgrou
 .box-buble-cart{color:#FFF;float:left;font-weight:400;height:30px;width:310px;margin:19px 0 0;padding:0;}
 /*end*/
 
-/*#slideshow {
-    margin-left:20px;
-    margin-right:20px;
-    position:relative;
-    height:200px;
-    width:530px;
-    background:#0F6;
-}
-
-#slideshow IMG {
-    height:200px;
-    width:530px;
-    position:absolute;
-    top:0;
-    left:0;
-    z-index:8;
-    opacity:0.0;
-}
-
-#slideshow IMG.active {
-    z-index:10;
-    opacity:1.0;
-}
-
-#slideshow IMG.last-active {
-    z-index:9;
-}
-*/
-/*add slide show
-#slideshow {list-style:none; color:#fff;}
-#slideshow span {display:none}
-#wrapper {width:530px; height:200px; margin-left:20px;
-    margin-right:20px; display:none;}
-#wrapper * {margin:0; padding:0;}
-#fullsize {position:relative; width:530px; height:200px; padding:2px; border:1px solid #ccc; }
-#information {position:absolute; bottom:0; width:500px; height:0; background:#000; color:#fff; overflow:hidden; z-index:200; opacity:.7; filter:alpha(opacity=70)}
-#information h3 {padding:4px 8px 3px; font-size:14px}
-#information p {padding:0 8px 8px}
-#image {width:300px}
-#image img {position:absolute; z-index:25; width:auto}
-.imgnav {position:absolute; width:25%; height:200px; cursor:pointer; z-index:150}
-#imgprev {left:0; background:url(../Images/Commons/left.gif) left center no-repeat}
-#imgnext {right:0; background:url(../Images/Commons/right.gif) right center no-repeat}
-#imglink {position:absolute; height:200px; width:100%; z-index:100; opacity:.4; filter:alpha(opacity=40)}
-.linkhover {background:url(../Images/Commons/link.gif) center center no-repeat}
-#thumbnails {margin-top:5px}
-#slideleft {float:left; width:20px; height:81px; background:url(../Images/Commons/scroll-left.gif) center center no-repeat; background-color:#222}
-#slideleft:hover {background-color:#333}
-#slideright {float:right; width:20px; height:81px; background:#222 url(../Images/Commons/scroll-right.gif) center center no-repeat}
-#slideright:hover {background-color:#333}
-#slidearea {float:left; position:relative; width:456px; margin-left:5px; height:81px; overflow:hidden}
-#slider {position:absolute; left:0; height:81px}
-#slider img {cursor:pointer; border:1px solid #666; padding:2px}
-/*end*/
 #header{
     height:100px;
     background:transparent url(../Images/Commons/slideshow.png) no-repeat 50% 16px ;
@@ -2191,7 +2056,6 @@ ul#thumbs img{
 	color : white;
 	font-size: 15px;
 }
-
 /* Added by DanhDTC to show pop-up to crop image. */
 /* Begin pop-up declaration. */
 .lose-focus{
@@ -2234,7 +2098,6 @@ ul#thumbs img{
 /* JCrop Css */
 /* Fixes issue here http://code.google.com/p/jcrop/issues/detail?id=1 */
 .jcrop-holder { text-align: left; }
-
 .jcrop-vline, .jcrop-hline
 {
     font-size: 0;
@@ -2252,9 +2115,7 @@ ul#thumbs img{
     *width: 9px;
     *height: 9px;
 }
-
 .jcrop-tracker { width: 100%; height: 100%; }
-
 .custom .jcrop-vline,
 .custom .jcrop-hline
 {
@@ -2267,6 +2128,4 @@ ul#thumbs img{
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
 }
-
 /* End Jcrop css */
-    
