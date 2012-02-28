@@ -6,7 +6,7 @@
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 <div class="header">
   <div class="header-row1" >
-    <ul class="super-links"  id="customer_super_links" style="margin-right:400px;">
+    <ul class="super-links"  id="customer_super_links">
       <li><span style='color:black;' ><bean:message key="home.header.language" /></span>
 <c:if test="${language =='vi'}">
 <select name="language" onchange="setLocation(this.value)">

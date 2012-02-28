@@ -215,7 +215,6 @@
                 <logic:present name="urlImageKey">
                   <script type="text/javascript">
                   function cropImage(){
-                	  alert('cropImage');
                       $.ajax({
                           url: '/cropImage.vn',
                           data: {

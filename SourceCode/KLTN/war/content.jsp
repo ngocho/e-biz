@@ -125,8 +125,8 @@ $(document).ready(function(){
                 <a href="/compareFood.vn?screen=home&id=<bean:write name="element" property="id" />" style="color:blue;"> 
                <bean:message key="home.content.food.compare" /></a>
               </p>
-            <p><a href="/displayProductDetail.vn?id=<bean:write name="element" property="id" />"><img src="Images/Commons/xem.jpg" width="100"></img></a><!-- a class="link" href="#" >Xem hang </a> --></p>
-            <p><a  class="addShopping" name="<bean:write name="element" property="id"/>" href="" ><img src="Images/Commons/mua.jpg" width="100"></img></a>
+            <p><a href="/displayProductDetail.vn?id=<bean:write name="element" property="id" />"><img src="Images/Commons/<bean:message key="button.view" />" width="100"></img></a><!-- a class="link" href="#" >Xem hang </a> --></p>
+            <p><a  class="addShopping" name="<bean:write name="element" property="id"/>" href="" ><img src="Images/Commons/<bean:message key="button.buy" />" width="100"></img></a>
             </p>
             </div>
             </td>
