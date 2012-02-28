@@ -44,7 +44,7 @@ public class Engine {
      * @param q String
      * @return String
      */
-    private String queryURL(String q) {
+    public String queryURL(String q) {
         String qResult = null;
         String qString = q;
         HttpClient httpClient = new DefaultHttpClient();

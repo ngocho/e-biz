@@ -8,7 +8,7 @@ import java.io.Reader;
 import java.util.TimerTask;
 import java.util.Vector;
 
-import kltn.client.android_server.object.HappybirthdayObject;
+import kltn.client.android_server.object.ActivecodeObject;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.client.ClientProtocolException;
@@ -27,28 +27,28 @@ public class SendActiveCodeThread extends TimerTask {
     @SuppressWarnings("static-access")
     @Override
     public void run() {
-        parseJSONBirthday(queryURL(queryURLHappybirthday));
-        for (int i = 0; i < dataBirthday.size(); i++) {
-            final int pos = i;
-            Thread send = new Thread() {
+        if (parseJSONCode(queryURL(queryURLactivecode))) {
+            for (int i = 0; i < dataActiveCode.size(); i++) {
+                final int pos = i;
+                Thread send = new Thread() {
 
-                @Override
-                public void run() {
-                    SendSMS sendsms = new SendSMS();
-                    HappybirthdayObject item = dataBirthday.get(pos);
-                    sendsms.sendMessage("+841265204953", item.getMessage());
-                    System.out.println("send sms happy birthday to " + item.getPhone());
-                    System.gc();
+                    @Override
+                    public void run() {
+                        SendSMS sendsms = new SendSMS();
+                        ActivecodeObject item = dataActiveCode.get(pos);
+                        sendsms.sendMessage("+841655011503", "Ma chung thuc cua ban la: "+item.getCode());
+                        System.out.println("send sms active code to " + item.getPhone());
+                        System.gc();
+                    }
+                };
+                send.start();
+                try {
+                    send.sleep(10000);
+                    send.stop();
+                } catch (InterruptedException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
                 }
-            };
-            send.start();
-            try {
-                // co van de cho nay
-                send.sleep(10000);
-                send.stop();
-            } catch (InterruptedException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
             }
         }
     }
@@ -58,16 +58,16 @@ public class SendActiveCodeThread extends TimerTask {
      * @param json String
      * @return boolean
      */
-    private boolean parseJSONBirthday(String json) {
+    private boolean parseJSONCode(String json) {
         boolean jResult = false;
         try {
             JSONArray jsonArrayPhone = new JSONArray(json);
             int i;
-            dataBirthday = new Vector<HappybirthdayObject>();
+            dataActiveCode = new Vector<ActivecodeObject>();
             for (i = 0; i < jsonArrayPhone.length(); i++) {
                 JSONObject item = (JSONObject) jsonArrayPhone.get(i);
-                HappybirthdayObject node = new HappybirthdayObject(item.getString("phone"), item.getString("name"));
-                dataBirthday.add(node);
+                ActivecodeObject node = new ActivecodeObject(item.getString("phone"), item.getString("code"));
+                dataActiveCode.add(node);
             }
             jResult = true;
         } catch (JSONException e) {
@@ -108,8 +108,8 @@ public class SendActiveCodeThread extends TimerTask {
         }
         return qResult;
     }
-    /**  . */
-    private Vector<HappybirthdayObject> dataBirthday;
-    /**  . */
-    private String queryURLHappybirthday = "http://16.test-kltn1.appspot.com/getHappyBirthday.vn";
+    /** . */
+    private Vector<ActivecodeObject> dataActiveCode;
+    /** . */
+    private String queryURLactivecode = "http://16.test-kltn1.appspot.com/getCodeActive.vn";
 }

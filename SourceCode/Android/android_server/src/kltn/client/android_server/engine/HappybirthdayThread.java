@@ -9,6 +9,7 @@ import java.util.TimerTask;
 import java.util.Vector;
 
 import kltn.client.android_server.object.HappybirthdayObject;
+import kltn.client.android_server.until.Util;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.client.ClientProtocolException;
@@ -22,7 +23,7 @@ import org.json.JSONObject;
 /**
  * @author nthanhphong
  */
-public class HappybirthdayThread extends TimerTask {
+public class HappyBirthdayThread extends TimerTask {
 
     @SuppressWarnings("static-access")
     @Override
@@ -36,14 +37,13 @@ public class HappybirthdayThread extends TimerTask {
                 public void run() {
                     SendSMS sendsms = new SendSMS();
                     HappybirthdayObject item = databirthday.get(pos);
-                    sendsms.sendMessage("+841265204953", item.getMessage());
+                    sendsms.sendMessage("+841655011503", item.getMessage());
                     System.out.println("send sms happy birthday to " + item.getPhone());
                     System.gc();
                 }
             };
             send.start();
             try {
-                // co van de cho nay
                 send.sleep(10000);
                 send.stop();
             } catch (InterruptedException e) {
@@ -66,7 +66,8 @@ public class HappybirthdayThread extends TimerTask {
             databirthday = new Vector<HappybirthdayObject>();
             for (i = 0; i < jsonArrayPhone.length(); i++) {
                 JSONObject item = (JSONObject) jsonArrayPhone.get(i);
-                HappybirthdayObject node = new HappybirthdayObject(item.getString("phone"), item.getString("name"));
+                HappybirthdayObject node = new HappybirthdayObject(item.getString("phone"), Util.HAPPYBIRTHDAYA
+                        + item.getString("name") + " nhieu niem vui!");
                 databirthday.add(node);
             }
             jResult = true;
