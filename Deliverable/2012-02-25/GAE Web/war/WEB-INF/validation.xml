@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE form-validation PUBLIC
+"-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.1.3//EN"
+"http://jakarta.apache.org/commons/dtds/validator_1_1_3.dtd">
+
+<form-validation>
+
+    <!--
+     This is a minimal Validator form file with a couple of examples.
+-->
+
+    <global>
+
+        <!-- An example global constant
+        <constant>
+            <constant-name>postalCode</constant-name>
+            <constant-value>^\d{5}\d*$</constant-value>
+        </constant>
+        end example-->
+
+    </global>
+
+    <formset>
+        <!-- start Customer login  04/02/2012-->
+         <form name="login">
+          <field
+                property="loginId"
+                depends="required">
+                <arg0 key="login.loginId"/>
+            </field>
+            <field
+                property="loginPassword"
+                depends="required">
+                <arg0 key="login.loginPassword"/>
+            </field>
+            <field
+                property="loginPassword"
+                depends="minlength">
+                <var>
+                    <var-name>minlength
+                    </var-name>
+                    <var-value>8
+                    </var-value>
+                </var>
+                <arg0 key="login.loginPassword"/>
+            </field>
+         </form>
+        <!-- end Customer login  04/02/2012-->
+        
+         <!-- start Admin login  04/02/2012-->
+         <form name="adminForm">
+          	<field
+                property="id"
+                depends="required">
+                <arg0 key="login.loginId"/>
+            </field>
+            <field
+                property="pass"
+                depends="required">
+                <arg0 key="login.loginPassword"/>
+            </field>
+            <field
+                property="pass"
+                depends="minlength">
+                <var>
+                    <var-name>minlength
+                    </var-name>
+                    <var-value>8
+                    </var-value>
+                </var>
+                <arg0 key="login.loginPassword"/>
+            </field>
+         </form>
+        <!-- end Admin login  04/02/2012-->
+        
+         <!-- start Customer register  04/02/2012-->
+         <form name="register">
+          <field
+                property="loginId"
+                depends="required">
+                <arg0 key="register.loginId"/>
+            </field>
+            <field
+                property="loginPassword"
+                depends="required">
+                <arg0 key="register.loginPassword"/>
+            </field>
+            <field
+                property="loginPasswordPre"
+                depends="required">
+                <arg0 key="register.loginPasswordPre"/>
+            </field>
+            <field
+                property="email"
+                depends="required,email">
+                <arg0 key="register.email"/>
+            </field>
+            <field
+                property="phone"
+                depends="required">
+                <arg0 key="register.phone"/>
+            </field>
+            <field
+                property="loginPassword"
+                depends="minlength">
+                <var>
+                    <var-name>minlength
+                    </var-name>
+                    <var-value>8
+                    </var-value>
+                </var>
+                <arg0 key="register.loginPassword"/>
+            </field>
+              <field
+                property="loginPasswordPre"
+                depends="minlength">
+                <var>
+                    <var-name>minlength
+                    </var-name>
+                    <var-value>8
+                    </var-value>
+                </var>
+                <arg0 key="register.loginPasswordPre"/>
+            </field>
+         </form>
+        <!-- end Customer register  04/02/2012-->
+		
+		<!-- start Customer : Order -->
+        <form name="order">
+            <field
+                property="nameCustomer"
+                depends="required">
+                <arg0 key="order.nameCustomer"/>
+            </field>
+            <field
+                property="phone"
+                depends="required">
+                <arg0 key="order.phone"/>
+            </field>
+       		<field
+                property="email"
+                depends="required, email">
+                <arg0 key="order.email"/>
+            </field>
+            <field
+                property="homeNumber"
+                depends="required">
+                <arg0 key="order.homeNumber"/>
+                
+            </field>
+            <field
+                property="streetName"
+                depends="required">
+                <arg0 key="order.streetName"/>
+                
+            </field>
+            <field
+                property="wardName"
+                depends="required">
+                <arg0 key="order.wardName"/>
+                
+            </field>
+             <field
+                property="districtName"
+                depends="required">
+                <arg0 key="order.districtName"/>
+                
+            </field>
+            <field
+                property="districtName"
+                depends="required">
+                <arg0 key="order.districtName"/>
+                
+            </field>
+            <field
+                property="dateShip"
+                depends="required">
+                <arg0 key="order.dateShip"/>
+            </field>
+             <field
+                property="note"
+                depends="required">
+                <arg0 key="order.note"/>
+                
+            </field>
+        </form>
+		<!--end  Customer : Order -->
+		
+		  <!-- start Provider login  04/02/2012 -->
+		 <form name="providerFormLogin">
+            <field
+                property="loginId"
+                depends="required">
+                <arg0 key="providerFormLogin.loginId"/>
+            </field>
+            <field
+                property="loginPassword"
+                depends="required">
+                <arg0 key="providerFormLogin.loginPassword"/>
+            </field>
+            <field
+                property="loginPassword"
+                depends="minlength">
+                <var>
+                    <var-name>minlength
+                    </var-name>
+                    <var-value>8
+                    </var-value>
+                </var>
+                <arg0 key="providerFormLogin.loginPassword"/>
+            </field>
+            </form>
+              <!-- end Provider login 04/02/2012 -->
+              
+         <!-- start Provider register 04/02/2012 -->
+          <form name="providerForm">
+            <field
+                property="loginId"
+                depends="required">
+                <arg0 key="providerForm.loginId"/>
+            </field>
+             <field
+                property="loginPassword"
+                depends="required">
+                <arg0 key="providerForm.loginPassword"/>
+            </field>
+             <field
+                property="loginName"
+                depends="required">
+                <arg0 key="providerForm.loginName"/>
+            </field>
+             <field
+                property="email"
+                depends="required,email">
+                <arg0 key="providerForm.email"/>
+            </field>
+             <field
+                property="homeNumber"
+                depends="required">
+                <arg0 key="providerForm.homeNumber"/>
+            </field>
+              <field
+                property="streetName"
+                depends="required">
+                <arg0 key="providerForm.streetName"/>
+            </field>
+             <field
+                property="wardName"
+                depends="required">
+                <arg0 key="providerForm.wardName"/>
+            </field>
+           <field
+                property="districtName"
+                depends="required">
+                <arg0 key="providerForm.districtName"/>
+            </field>
+             <field
+                property="districtName"
+                depends="required">
+                <arg0 key="providerForm.districtName"/>
+            </field>
+             <field
+                property="phone"
+                depends="required">
+                <arg0 key="providerForm.detail"/>
+            </field>
+          </form>
+            <!-- start Provider register 04/02/2012 -->
+		<!-- start Provider : upload Product -->
+		 <form name="foodForm">
+            <field
+                property="name"
+                depends="required">
+                <arg0 key="foodForm.name"/>
+            </field>
+			<field
+                property="productTypeId"
+                depends="required">
+                <arg0 key="foodForm.productTypeId"/>
+            </field>
+			<field
+                property="idAttr"
+                depends="required">
+                <arg0 key="foodForm.idAttr"/>
+            </field>
+			<field
+                property="status"
+                depends="required">
+                <arg0 key="foodForm.status"/>
+            </field>
+			<field
+                property="number"
+                depends="required">
+                <arg0 key="foodForm.number"/>
+            </field>
+			<field
+                property="promoPrice"
+                depends="required">
+                <arg0 key="foodForm.promoPrice"/>
+            </field>
+			<field
+                property="detail"
+                depends="required">
+                <arg0 key="foodForm.detail"/>
+            </field>
+			</form>
+			<!-- end Provider : upload Product -->
+    </formset>
+    
+</form-validation>

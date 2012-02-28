@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!-- Licensed to the Apache Software Foundation (ASF) under one or more contributor 
+	license agreements. See the NOTICE file distributed with this work for additional 
+	information regarding copyright ownership. The ASF licenses this file to 
+	You under the Apache License, Version 2.0 (the "License"); you may not use 
+	this file except in compliance with the License. You may obtain a copy of 
+	the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required 
+	by applicable law or agreed to in writing, software distributed under the 
+	License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS 
+	OF ANY KIND, either express or implied. See the License for the specific 
+	language governing permissions and limitations under the License. -->
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+<struts-config>
+	<form-beans>
+    <form-bean name="adminForm" type="ebiz.form.AdminForm" />
+  </form-beans>
+	
+	<global-exceptions>
+
+	</global-exceptions>
+
+	<global-forwards>
+		<forward name="homeAdmin" path="/displayFoodCateAdmin.vn" />
+	</global-forwards>
+
+	<action-mappings>
+	 <action path="/admin" forward="/adminAuthentication.vn">
+    </action>
+    
+    <action path="/registerAd" forward="admin_register">
+    </action>
+    
+	<action 
+			path="/adminAuthentication"
+			type="ebiz.action.account.admin.AdminAuthentication" 
+			scope="session" validate="true">
+		<forward name="success" path="/displayFoodCateAdmin.vn" redirect="true" />
+		<forward name="failure" path="admin_login" redirect="true" />
+    </action>
+    
+	 <action input="admin_login" 
+			path="/loginAdmin"
+			type="ebiz.action.account.admin.Login" 
+			name="adminForm"
+			scope="session" validate="true">
+		<forward name="success" path="/displayFoodCateAdmin.vn" redirect="true" />
+		<forward name="failure" path="admin_login" redirect="true" />
+    </action>
+    
+     <action input="admin_register" 
+			path="/registerAdmin"
+			type="ebiz.action.account.admin.Register" 
+			name="adminForm"
+			scope="session" validate="true">
+		<forward name="success" path="admin_register" redirect="true" />
+    </action>
+    
+     <action 
+			path="/logoutAdmin"
+			type="ebiz.action.account.admin.Logout" 
+			scope="session" validate="true">
+		<forward name="success" path="admin_login" redirect="true" />
+    </action>
+    
+    <action 
+			path="/displayFoodCateAdmin"
+			type="ebiz.action.account.admin.FoodCategory" >
+		<forward name="success" path="admin_home" redirect="true" />
+    </action>
+    
+    <action 
+			path="/displayFoodCateAdminPaging"
+			type="ebiz.action.account.admin.FoodCategoryPaging" >
+		<forward name="success" path="admin_home" redirect="true" />
+    </action>
+    
+    <action 
+			path="/reviewFood"
+			type="ebiz.action.account.admin.ReviewFood" >
+		<forward name="success" path="/displayFoodCateAdminPaging.vn" redirect="true" />
+    </action>
+    
+    <action 
+			path="/deleteFood"
+			type="ebiz.action.account.admin.DeleteFood" >
+		<forward name="success" path="/displayFoodCateAdminPaging.vn" redirect="true" />
+    </action>
+    
+     <action 
+            path="/displayBillCategory"
+            type="ebiz.action.account.admin.BillCategory" >
+        <forward name="success" path="admin_content_bill" redirect="true" />
+    </action>
+    
+    <action 
+            path="/displayCustomerCategory"
+            type="ebiz.action.account.admin.CustomerCategory" >
+        <forward name="success" path="admin_content_customer" redirect="true" />
+    </action>
+    
+     <action 
+            path="/displayFoodDetail"
+            type="ebiz.action.account.admin.FoodDetail" >
+        <forward name="success" path="admin_content_detailFood" redirect="true" />
+    </action>
+    
+    <action 
+            path="/xuAdmin"
+            type="ebiz.action.account.admin.XuStatus" >
+        <forward name="success" path="admin_xu" redirect="true" />
+    </action>
+    
+    <action 
+            path="/downloadXu"
+            type="ebiz.action.account.admin.XuDownload" >
+        <forward name="success" path="admin_xu" redirect="true" />
+    </action>
+     <action 
+            path="/generateXu"
+            type="ebiz.action.account.admin.GenerationCodeXu" >
+        <forward name="success" path="admin_xu" redirect="true" />
+    </action>
+    
+	</action-mappings>
+
+</struts-config>
