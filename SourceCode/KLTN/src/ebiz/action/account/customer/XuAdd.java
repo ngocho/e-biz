@@ -62,7 +62,6 @@ public class XuAdd extends BaseAction {
         if (value != null || !("".equals(value))) {
             value = value.trim();
             long money = IDXUBLO.getMoneyByID(value);
-            System.out.println("money add " + money);
             if(money >0){
             // long money = Long.parseLong(value);
             HttpSession se = request.getSession();

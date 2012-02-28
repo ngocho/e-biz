@@ -40,21 +40,23 @@ public class InitDataListener implements ServletContextListener {
         pro.setProviderAddress("Hai Bà Trưng, Quận 1");
         pro.setActive(true);
         ProviderBLO.updateProvider(pro);
-        // ProviderBLO.registerProvider(pro);
 
         Provider pro1 = new Provider();
         pro1.setProviderId("5");
         pro1.setProviderName("thuyuit1");
+        
         pro1.setProviderPassword("12345678");
+        pro1.setProviderAddress("Võ Văn Ngân, Thủ Đức");
         pro1.setActive(true);
-        ProviderBLO.registerProvider(pro1);
+        ProviderBLO.updateProvider(pro1);
 
         Provider pro2 = new Provider();
         pro2.setProviderId("6");
         pro2.setProviderName("thuyuit2");
         pro2.setProviderPassword("12345678");
+        pro2.setProviderAddress("Võ Văn Ngân, Thủ Đức");
         pro2.setActive(true);
-        ProviderBLO.registerProvider(pro2);
+        ProviderBLO.updateProvider(pro2);
 
         Admin ad = new Admin();
         ad.setId("admin");

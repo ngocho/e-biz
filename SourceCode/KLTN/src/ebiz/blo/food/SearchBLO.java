@@ -34,10 +34,6 @@ public class SearchBLO {
         // String idProvider ;
         boolean flag = true;
         if (!"0".equals(searchForm.getDistrictNameS())) {
-            // near best
-            // if(dis != null){
-            // searchForm.setDistrictNameS(dis);
-            // }
             // get list idProvider
             List<String> list = ProviderBLO.searchProviderByDis(searchForm.getDistrictNameS());
             if (!list.isEmpty()) {
@@ -72,7 +68,6 @@ public class SearchBLO {
         return formList;
     }
     public static List<Food> searchFood(SearchForm searchForm) {
-        List<FoodForm> formList = new ArrayList<FoodForm>();
         List<Food> foodList = new ArrayList<Food>();
         String textSeach = searchForm.getSearchText();
         if (textSeach != null) {
@@ -89,11 +84,6 @@ public class SearchBLO {
             }
         }
 
-        // //save in memcache
-        // Cache cache = SearchBLO.getMemcache();
-        // cache.put("searchData", formList);
-        //
-        // System.out.println("RESULT" + formList.size());
         return foodList;
     }
 

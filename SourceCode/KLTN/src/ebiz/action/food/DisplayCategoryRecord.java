@@ -19,7 +19,6 @@
 package ebiz.action.food;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -33,7 +32,6 @@ import org.apache.struts.action.ActionMapping;
 import ebiz.action.BaseAction;
 import ebiz.blo.food.FoodBLO;
 import ebiz.form.FoodForm;
-import ebiz.form.Paging;
 import ebiz.form.ProductVO;
 import ebiz.util.CommonConstant;
 
@@ -60,9 +58,7 @@ public class DisplayCategoryRecord extends BaseAction {
         String order = request.getParameter("order");
         HttpSession se = request.getSession();
         List<FoodForm> foods = new ArrayList<FoodForm>();
-        List<Paging> pageList = new ArrayList<Paging>();
         List<String> numberPageList = new ArrayList<String>();
-        HashMap<Integer, String> paging = new HashMap<Integer, String>();
         String providerId =(String)se.getAttribute("ProviderFood");
         ProductVO vo = (ProductVO) se.getAttribute(CommonConstant.PRODUCTVO);
         int record = CommonConstant.DEFAULT_RECORD;
@@ -95,15 +91,9 @@ public class DisplayCategoryRecord extends BaseAction {
         if (p != null) {
             page = Integer.parseInt(p);
         }
-
-        // if(page >1){ //get old
-        // pageList = (List<Paging>) vo.getPagingList();
-        // paging = FoodBLO.toHashMap(pageList);
-        // }
         String filterCol = CommonConstant.FOOD_TYPE;
         foods = FoodBLO.getFoodListCategory(col, numberPageList, order, record, page, filterCol, vo.getTypeProduct(),
                 attr, price,providerId);
-        pageList = FoodBLO.updateStatusPaging(paging);
         // save in Session
         se.setAttribute(CommonConstant.FOOD_CATEGORY_F, foods);
         vo.setLimit(record);

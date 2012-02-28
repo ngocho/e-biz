@@ -116,11 +116,11 @@ public class ShoppingCart implements Serializable {
         long sumMoney = 0;
         if (key != null) {
             Long id = Long.parseLong(key);
-            System.out.println("ID product" + id);
+                                                      
             for (FoodForm food : products) {
                 if (id.equals(food.getId())) {
                     sumMoney = food.getPrice() * food.getNumber();
-                    System.out.println("sub money" + sumMoney);
+                                                              
                     break;
                 }
             }

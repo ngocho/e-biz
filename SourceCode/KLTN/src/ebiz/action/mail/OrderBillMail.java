@@ -57,10 +57,10 @@ public class OrderBillMail extends Action {
             HttpServletResponse response) throws Exception {
 
         String idOrder = request.getParameter("idOrder");
-        System.out.println("MAIL ID ORDER" + idOrder);
+                                                  
         if (idOrder != null) {
             Long id = Long.parseLong(idOrder);
-            System.out.println("ID BILL MAIL" + id);
+                                                      
             OrderBill bill = CustomerBLO.getBillById(id);
             if (bill != null) {
                 // get info

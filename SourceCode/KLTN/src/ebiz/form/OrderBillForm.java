@@ -171,11 +171,11 @@ public class OrderBillForm extends ValidatorForm implements Serializable {
         this.homeNumber = user.getCustomerAddress().getHomeNumber();
         this.streetName = user.getCustomerAddress().getStreetName();
         this.wardName = user.getCustomerAddress().getWardName();
-        System.out.println("value!!!!!!!!!!!!!");
-        System.out.println(this.buildingName);
-        System.out.println(this.districtName);
-        System.out.println( "home" + this.homeNumber);
-        System.out.println(this.wardName);
+                                                  
+                                                  
+                                                  
+                                                  
+                                                  
     }
     /**
      * Get value of id.

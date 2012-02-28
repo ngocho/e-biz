@@ -54,7 +54,6 @@ public class CustomerCategory extends BaseAction {
     @SuppressWarnings("unchecked")
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
-        
         HttpSession se = request.getSession();
         // String status = (String) request.getParameter("value");
         String page = (String) request.getParameter("page");

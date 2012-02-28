@@ -46,11 +46,8 @@ public class AdminAuthentication extends BaseAction {
      */
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
-        
-        //clear exist message in system
         ActionMessages messages = new ActionMessages();
         messages.clear();
-        
         HttpSession se = request.getSession();
         String admin = (String) se.getAttribute(CommonConstant.ADMIN);
         if (admin == null) {

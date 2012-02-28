@@ -63,7 +63,6 @@ public class BillCategory extends BaseAction {
         if (page != null) {
             pageIndex = Integer.parseInt(page);
         }
-        System.out.println("STATUS BILL" + status);
         if (status == null) {
             status = "5";
         }

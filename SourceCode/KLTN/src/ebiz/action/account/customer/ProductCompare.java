@@ -54,7 +54,6 @@ public class ProductCompare extends BaseAction {
         String id = request.getParameter("id");
         String screen = request.getParameter("screen");
         if (id != null) {
-            System.out.println("screen" + screen);
             Food food = FoodBLO.getFoodById(Long.parseLong(id));
             List<FoodForm> formList = FoodBLO.getFoodListByNameDistinctProvider(food.getFoodName(),
                     food.getProviderID());

@@ -61,10 +61,10 @@ public class ProviderList extends BaseAction {
         List<String> pageList = (List<String>) se.getAttribute("pageList");
         if (pageList == null) {
             pageList = SearchBLO.paging(displayList.size());
+                                                      
             se.setAttribute("pageList", pageList);
         }
         displayList = (List<ProviderForm>) SearchBLO.getPage(displayList, pageIndex);
-        System.out.println("displayList " + displayList.size());
         se.setAttribute("providerList", displayList);
         se.setAttribute("pageIndex", pageIndex);
         return mapping.findForward(SUCCESS);
