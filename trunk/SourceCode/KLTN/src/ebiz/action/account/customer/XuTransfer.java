@@ -100,8 +100,10 @@ public class XuTransfer extends BaseAction {
                 }
             }
         }
+        else{
         // required madatory
         out.println("5" + " ");
+        }
         return null;
     }
 
