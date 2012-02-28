@@ -18,9 +18,10 @@
  */
 package ebiz.action.food;
 
+import java.util.logging.Logger;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
@@ -32,38 +33,20 @@ import ebiz.action.BaseAction;
 import ebiz.blo.common.SendMail;
 import ebiz.blo.customer.CustomerBLO;
 import ebiz.blo.food.FoodBLO;
-import ebiz.form.LoginForm;
-import ebiz.form.OrderBillForm;
+import ebiz.dto.checkout.NL_Checkout;
+import ebiz.dto.checkout.OrderBill;
 import ebiz.util.CommonConstant;
 
 /**
  * @author Administrator
  */
-public class CheckoutType extends BaseAction {
+public class CheckoutNL extends BaseAction {
+    private static final Logger log = Logger.getLogger(CheckoutType.class.getName());
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
         ActionMessages messages = new ActionMessages();
-        boolean result = true;
-        HttpSession se = request.getSession();
-        OrderBillForm orderForm = (OrderBillForm) se.getAttribute("bill");
         String typeCheckout = request.getParameter("checkout");
-        LoginForm login = (LoginForm) se.getAttribute(CommonConstant.USER);
-        if ("home".equals(typeCheckout)) {
-            FoodBLO.updateStatusOrderBill(orderForm.getId(), CommonConstant.BILLSTATUS_1);
-        } else if ("xu".equals(typeCheckout)) {
-            LoginForm user = (LoginForm) se.getAttribute(CommonConstant.USER);
-            String uid = user.getLoginId();
-            boolean flag = CustomerBLO.checkoutXuOnline(uid, orderForm.getSumPrice());
-            if (!flag) {
-                messages.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage("xu.notEnough"));
-                result = false;
-
-            } else {
-                login.setXuOnline(CustomerBLO.getXuOnline(login.getLoginId()));
-                // paid money
-                FoodBLO.updateStatusOrderBill(orderForm.getId(), CommonConstant.BILLSTATUS_2);
-            }
-        } /*else if ("nganluong".equals(typeCheckout)) {
+        if ("nganluong".equals(typeCheckout)) {
             NL_Checkout nl_checkout = new NL_Checkout();
             String transaction_info = request.getParameter("transaction_info");
             String order_code = request.getParameter("order_code");
@@ -79,20 +62,14 @@ public class CheckoutType extends BaseAction {
                 OrderBill bill = CustomerBLO.getBillById(Long.parseLong(order_code));
                 if (price.equals(String.valueOf(bill.getSumPrice()))) {
                     FoodBLO.updateStatusOrderBill(bill.getId(), CommonConstant.BILLSTATUS_3);
-                } else {
-                    result = false;
-                }
+                    SendMail.sendOrderBillMail(bill.getId());
+                    return mapping.findForward(SUCCESS);
+                    
             } else {
-                result = false;
                 messages.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage("nganluong.false"));
 
             }
-        }*/
-        if (result) {
-           
-            SendMail.sendOrderBillMail(orderForm.getId());
-            se.removeAttribute("shop");
-            return mapping.findForward(SUCCESS);
+        }
         }
         saveMessages(request, messages);
         return mapping.findForward(FAILURE);
