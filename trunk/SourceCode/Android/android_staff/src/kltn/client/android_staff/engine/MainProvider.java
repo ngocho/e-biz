@@ -1,7 +1,7 @@
 package kltn.client.android_staff.engine;
 
-import kltn.client.android_staff.model.chat_item;
-import kltn.client.android_staff.model.delivery_item;
+import kltn.client.android_staff.model.ChatItem;
+import kltn.client.android_staff.model.DeliveryItem;
 import android.content.ContentProvider;
 import android.content.ContentUris;
 import android.content.ContentValues;
@@ -52,23 +52,23 @@ public class MainProvider extends ContentProvider {
 		}
 
 		private static final String SQL_CREATE_DELIVERY = "CREATE TABLE "
-				+ TABLE_DELIVERY + "(" + delivery_item._ID
-				+ " INTEGER PRIMARY KEY AUTOINCREMENT, " + delivery_item.IDDELIVERY
-				+ " TEXT, " + delivery_item.MSGOODS + " TEXT, "
-				+ delivery_item.GOODSNAME + " TEXT, " + delivery_item.PRICE
-				+ " TEXT, " + delivery_item.IDCUSTOMER + " TEXT, " + delivery_item.CUSTOMERNAME
-				+ " TEXT, " + delivery_item.ADDRESS + " TEXT, " + delivery_item.PHONE
-				+ " TEXT, " + delivery_item.IMAGEURL + " TEXT, " + delivery_item.XLONG
-				+ " TEXT, " + delivery_item.YLONG + " TEXT, " + delivery_item.DATE
-				+ " TEXT, " + delivery_item.STATE + " INTEGER);";
+				+ TABLE_DELIVERY + "(" + DeliveryItem._ID
+				+ " INTEGER PRIMARY KEY AUTOINCREMENT, " + DeliveryItem.IDDELIVERY
+				+ " TEXT, " + DeliveryItem.MSGOODS + " TEXT, "
+				+ DeliveryItem.GOODSNAME + " TEXT, " + DeliveryItem.PRICE
+				+ " TEXT, " + DeliveryItem.IDCUSTOMER + " TEXT, " + DeliveryItem.CUSTOMERNAME
+				+ " TEXT, " + DeliveryItem.ADDRESS + " TEXT, " + DeliveryItem.PHONE
+				+ " TEXT, " + DeliveryItem.IMAGEURL + " TEXT, " + DeliveryItem.XLONG
+				+ " TEXT, " + DeliveryItem.YLONG + " TEXT, " + DeliveryItem.DATE
+				+ " TEXT, " + DeliveryItem.STATE + " INTEGER);";
 		private static final String SQL_DROP_DELIVERY = "DROP TABLE IF EXISTS "
 				+ TABLE_DELIVERY;
 
 		private static final String SQL_CREATE_CHAT = "CREATE TABLE "
-				+ TABLE_CHAT + "(" + chat_item._ID
-				+ " INTEGER PRIMARY KEY AUTOINCREMENT, " + chat_item.MESSAGE
-				+ " TEXT, " + chat_item.STATE + " INTEGER, "
-				+ chat_item.DATE + " TEXT);";
+				+ TABLE_CHAT + "(" + ChatItem._ID
+				+ " INTEGER PRIMARY KEY AUTOINCREMENT, " + ChatItem.MESSAGE
+				+ " TEXT, " + ChatItem.STATE + " INTEGER, "
+				+ ChatItem.DATE + " TEXT);";
 
 		private static final String SQL_DROP_CHAT = "DROP TABLE IF EXISTS "
 				+ TABLE_CHAT;
@@ -125,7 +125,7 @@ public class MainProvider extends ContentProvider {
 		case CODE_DELIVERY:
 			rowID = mDatabase.insert(TABLE_DELIVERY, null, values);
 			if (rowID > 0) {
-				Uri uri1 = ContentUris.withAppendedId(delivery_item.CONTENT_URI,
+				Uri uri1 = ContentUris.withAppendedId(DeliveryItem.CONTENT_URI,
 						rowID);
 				getContext().getContentResolver().notifyChange(uri1, null);
 				// Return a URI to the newly inserted row on success.
@@ -135,7 +135,7 @@ public class MainProvider extends ContentProvider {
 		case CODE_CHAT:
 			rowID = mDatabase.insert(TABLE_CHAT, null, values);
 			if (rowID > 0) {
-				Uri uri1 = ContentUris.withAppendedId(delivery_item.CONTENT_URI,
+				Uri uri1 = ContentUris.withAppendedId(DeliveryItem.CONTENT_URI,
 						rowID);
 				getContext().getContentResolver().notifyChange(uri1, null);
 				// Return a URI to the newly inserted row on success.
@@ -158,7 +158,7 @@ public class MainProvider extends ContentProvider {
 		case CODE_DELIVERY:
 			qb.setTables(TABLE_DELIVERY);
 			if (TextUtils.isEmpty(sortOrder)) {
-				orderBy = delivery_item.DEFAULT_SORT_ORDER;
+				orderBy = DeliveryItem.DEFAULT_SORT_ORDER;
 			} else {
 				orderBy = sortOrder;
 			}
@@ -176,7 +176,7 @@ public class MainProvider extends ContentProvider {
 		case CODE_CHAT:
 			qb.setTables(TABLE_CHAT);
 			if (TextUtils.isEmpty(sortOrder)) {
-				orderBy = delivery_item.DEFAULT_SORT_ORDER;
+				orderBy = DeliveryItem.DEFAULT_SORT_ORDER;
 			} else {
 				orderBy = sortOrder;
 			}
