@@ -20,13 +20,10 @@ package kltn.client.android_server.engine;
 
 import java.util.Random;
 import java.util.TimerTask;
-import java.util.Vector;
 
-import kltn.client.android_server.object.HappybirthdayObject;
 import kltn.client.android_server.until.Util;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
