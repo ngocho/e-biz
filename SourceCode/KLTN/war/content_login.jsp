@@ -84,9 +84,9 @@ $(document).ready(function(){
         </html:form>
       </ul>
 
-      <a href="/registerCustomer.vn">Đăng kí nếu chưa có tài khoản</a>
-
-      <p class="required">* Bắt buộc phải nhập</p>
+      <a href="/registerCustomer.vn" >Đăng kí nếu chưa có tài khoản</a>
+      <div style="height:10px;"></div>
+      <p style="color:red;font-size: 11px; margin-left: 100px;">(* Bắt buộc phải nhập)</p> 	
     </div>
   </div>
 </div>

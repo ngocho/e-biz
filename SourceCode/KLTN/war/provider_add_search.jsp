@@ -18,9 +18,7 @@ $(document).ready(function(){
  <bean:message key="home.search.gm" /></a>
  </c:if>
  <c:if test="${gmDisplay == '0'}">
- <a href="/displayAddProviderGM.vn" style="color:blue; text-decoration: underline;">
-<bean:message key="home.search.gm1" /></a>
- <bean:message key="home.search.gm" />
+ <span class="impressionText" ><bean:message key="home.search.gm" /></span>
  </c:if>
 </logic:present>
 <div>

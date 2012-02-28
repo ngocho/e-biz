@@ -2,9 +2,9 @@
 <%@ page import="com.google.appengine.api.blobstore.BlobstoreServiceFactory"%>
 <%@ page import="com.google.appengine.api.blobstore.BlobstoreService"%>
 <%@taglib uri="/WEB-INF/c.tld" prefix="c"%>
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean"%>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html"%>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"%>
+<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 <%
     BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
 %>
@@ -88,15 +88,46 @@
         }); 
         
     });
+    jQuery(function($){
+        var x,y;
+        var jcrop_api;
+        $('#cropping').Jcrop({
+            onChange: cropChange,
+            onSelect: cropChange,
+            onRelease: cropClear,
+            aspectRatio: 3/4
+          },function(){
+                var b = this.getBounds();
+                x = b[0];y=b[1];
+              });
+        function cropChange(c){
+            $('#x').val(c.x);
+            $('#y').val(c.y);
+            $('#x2').val(c.x2);
+            $('#y2').val(c.y2);
+            if(parseInt(c.w)>0){
+                var r=150/c.w;
+                $('#preview').css({
+                    width: Math.round(r * x) + 'px',
+                    height: Math.round(r * y) + 'px',
+                    marginLeft: '-' + Math.round(r * c.x) + 'px',
+                    marginTop: '-' + Math.round(r * c.y) + 'px'
+                  });
+              }
+          };
+            function cropClear(){
+                this.setSelect(getRandom());
+              }
+      });
 </script>
 
 <div class="home-spot">
   <div class="account-create">
 
     <div class="page-title" id="focus">
-      <logic:notPresent name="flagUpload">
+    <logic:notPresent name="flagUpload">
         <h1>Upload sản phẩm</h1>
-      </logic:notPresent>
+     </logic:notPresent>
       <logic:present name="flagUpload">
         <h1>Chỉnh sửa sản phẩm</h1>
       </logic:present>
@@ -142,7 +173,7 @@
           <li class="fields">
             <div class="customer-name">
               <div class="field name-firstname">
-                <label for="firstname" class="required"><em>*</em>Chọn nhóm sản phẩm</label>
+                <label for="firstname" class="required" ><em>*</em>Chọn nhóm sản phẩm</label>
                 <div class="input-box">
                   <html:select property="idAttr" styleId="idAttr">
                     <html:option value="1"> Kho
@@ -179,71 +210,58 @@
           <li class="fields">
             <div class="customer-name">
               <div class="field name-firstname">
-                <label for="firstname" class="required"><em>*</em>Hình</label>
+                <label for="firstname" class="required" ><em>*</em>Hình</label>
                 <logic:present name="notCropped">
                 <logic:present name="urlImageKey">
                   <script type="text/javascript">
                   function cropImage(){
+                	  alert('cropImage');
                       $.ajax({
                           url: '/cropImage.vn',
                           data: {
-                              'leftX' : $('#x').val(),
-                              'topY' : $('#y').val(),
-                              'rightX' : $('#x2').val(),
-                              'bottomY' : $('#y2').val(),
-                              'width' : $('#cropping').width(),
-                              'height' : $('#cropping').height()
+                              'leftX' : $('x').val(),
+                              'topY' : $('y').val(),
+                              'rightX' : $('x2').val(),
+                              'bottomY' : $('y2').val()
                           },
-                          dataType: 'text',
-                          success: function(data){
-                                  $('#image').html('<img src="/serveImage.vn?urlKey='+data+'" width="200" height="150" />')
+                          success: function(){
+                                  $('#image').src = cacheBuster($('#image').src);
                           }
                       });
                       $('.pop-up').hide();
                       $('.lose-focus').hide();
                   }
-                  jQuery(function($){
-                      var x,y;
-                      var jcrop_api;
-                      $('#cropping').Jcrop({
-                          onChange: cropChange,
-                          onSelect: cropChange,
-                          onRelease: cropClear,
-                        },function(){
-                              var b = this.getBounds();
-                              x = b[0];y=b[1];
-                            });
-                      function cropChange(c){
-                          $('#x').val(c.x);
-                          $('#y').val(c.y);
-                          $('#x2').val(c.x2);
-                          $('#y2').val(c.y2);
-                        };
-                      function cropClear(){
-                              this.setSelect(getRandom());
-                            }
-                    });
                   </script>
-                  <div class="input-box" id="image">
-                    <div class="pop-up" align="center">
-                        <input type="hidden" name="leftX" id="x" >
-                        <input type="hidden" name="topY" id="y" > 
-                        <input type="hidden" name="rightX" id="x2" >
-                        <input type="hidden" name="bottomY" id="y2" >
+                <div class="input-box">
+                    <div class="pop-up">
+                      <div class="for-preview">
+                        <div id="forPreview">
+                          <img id="preview" src="/serveImage.vn?urlKey=<bean:write name="urlImageKey" />" >
+                        </div>
+                   <!--      <form action="cropImage.vn" onsubmit="cropImage()"> -->
+                            <input type="hidden" name="leftX" id="x" >
+                            <input type="hidden" name="topY" id="y" > 
+                            <input type="hidden" name="rightX" id="x2" >
+                            <input type="hidden" name="bottomY" id="y2" >
+                            <input type="button" value="Chọn" onclick="cropImage()">
+                   <!--         </form>-->
+                      </div>
+                      <div class="for-crop" >
                         <img id="cropping" src="/serveImage.vn?urlKey=<bean:write name="urlImageKey" />" >
-                        <input type="button" value="Chọn" onclick="cropImage()">
+                      </div>
                     </div>
                     <div class="lose-focus"></div>
                   </div>
-              <%--     <img src="/serveImage.vn?urlKey=<bean:write name="urlImageKey"/>" width="200" height="150" id="image" /> --%>
+                  <img src="/serveImage.vn?urlKey=<bean:write name="urlImageKey"/>" width="200" height="150" id="image" />
                   </logic:present>
                 </logic:present>
                 <logic:notPresent name="notCropped">
-                    <logic:present name="urlImageKey">
+                  <logic:present name="urlImageKey">
                       <h2>Test</h2>
                       <img src="/serveImage.vn?urlKey=<bean:write name="urlImageKey"/>" width="200" height="150" id="image" />
-                    </logic:present>
-                </logic:notPresent>
+                  </logic:present>
+                  </logic:notPresent>
+
               </div>
             </div>
           </li>
@@ -252,7 +270,7 @@
               <div class="field name-firstname">
                 <label for="firstname" class="required"><em>*</em>Tên món ăn</label>
                 <div class="input-box">
-                  <html:text property="name" styleId="name" size="45%" />
+                  <html:text property="name" styleId="name" size="45%"/>
                 </div>
               </div>
             </div>
@@ -262,7 +280,7 @@
               <div class="field name-firstname">
                 <label for="firstname" class="required"><em>*</em>Số lượng</label>
                 <div class="input-box">
-                  <html:text property="number" styleId="number" size="45%" styleClass="zero" />
+                  <html:text property="number" styleId="number"   size="45%" styleClass="zero"/>
                 </div>
               </div>
             </div>
@@ -270,9 +288,9 @@
           <li class="fields">
             <div class="customer-name">
               <div class="field name-firstname">
-                <label for="firstname" class="required"><em>*</em>Giá</label>
+                <label for="firstname" class="required" ><em>*</em>Giá</label>
                 <div class="input-box">
-                  <html:text property="price" styleId="price" size="45%" styleClass="zero" />
+                  <html:text property="price" styleId="price"  size="45%" styleClass="zero"/>
                 </div>
               </div>
             </div>
@@ -282,7 +300,7 @@
               <div class="field name-firstname">
                 <label for="firstname" class="required">Giá khuyến mãi</label>
                 <div class="input-box">
-                  <html:text property="promoPrice" styleId="promoPrice" size="45%" styleClass="zero" />
+                  <html:text property="promoPrice" styleId="promoPrice"  size="45%" styleClass="zero"/>
                 </div>
               </div>
             </div>
@@ -316,18 +334,18 @@
                 <%=error%>
               </html:messages>
           </span></li>
-          <li>
-            <div class="input-box">
-              <logic:empty name="flagUpload">
+<li>
+          <div class="input-box">
+        <logic:empty name="flagUpload">
                 <input type=submit title="Submit" class="buttonBG" id="upload" value="Upload" />
                 <input type="button" title="Reset" class="buttonBG" id="reset" value="Xóa hết" />
-              </logic:empty>
-              <logic:present name="flagUpload">
+        </logic:empty>
+        <logic:present name="flagUpload" >
                 <input type="submit" title="Submit" class="buttonBG" id="upload" value="Cập nhật" />
-              </logic:present>
-            </div>
-          </li>
-        </ul>
+        </logic:present>
+        </div>
+        </li>
+</ul>
         <div class="buttons-set1">
           <p class="buttons-set1 p.required">* Yêu cầu phải nhập</p>
           <br />
