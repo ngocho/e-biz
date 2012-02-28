@@ -67,7 +67,7 @@ public class CreateOrderBill extends BaseAction {
                  * Create nganluong payment url)
                  */
                 NL_Checkout nl_checkout = new NL_Checkout();
-                String return_url = CommonConstant.URL + "/checkoutmoney.vn?checkout=nganluong";// Địa chỉ trả về 
+                String return_url = CommonConstant.URL + "/checkoutnl.vn?checkout=nganluong";// Địa chỉ trả về 
                 String transaction_info = "Demo";//Thông tin giao dịch
                 String order_code = String.valueOf(orderForm.getId());
                 String receiver = "hailam349@gmail.com";//Tài khoản nhận tiền 
