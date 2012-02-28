@@ -3,7 +3,7 @@ package kltn.client.android_staff.activity;
 import java.util.Vector;
 
 import kltn.client.android_staff.R;
-import object.Delivery;
+import kltn.client.android_staff.object.Delivery;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;

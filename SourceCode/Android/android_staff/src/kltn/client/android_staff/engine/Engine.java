@@ -6,7 +6,8 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.util.Vector;
 
-import object.delivery;
+import kltn.client.android_staff.object.Delivery;
+
 
 import org.apache.http.HttpEntity;
 import org.apache.http.client.ClientProtocolException;
@@ -28,8 +29,8 @@ public class Engine {
      * @param password String
      * @return Vector<delivery>
      */
-    public Vector<delivery> getDelivery(String username, String password) {
-        Vector<delivery> result = parseJSONGetDelivery(queryURL(urlLogin));
+    public Vector<Delivery> getDelivery(String username, String password) {
+        Vector<Delivery> result = parseJSONGetDelivery(queryURL(urlLogin));
         return result;
     }
 
@@ -57,12 +58,12 @@ public class Engine {
      * @param json String
      * @return Vector<delivery>
      */
-    private Vector<delivery> parseJSONGetDelivery(String json) {
-        Vector<delivery> dataDelivery = null;
+    private Vector<Delivery> parseJSONGetDelivery(String json) {
+        Vector<Delivery> dataDelivery = null;
         try {
             JSONArray jsonArrayPhone = new JSONArray(json);
             int i;
-            dataDelivery = new Vector<delivery>();
+            dataDelivery = new Vector<Delivery>();
             for (i = 0; i < jsonArrayPhone.length(); i++) {
                 JSONObject item = (JSONObject) jsonArrayPhone.get(i);
                 // delivery node=new delivery(item.getString("phone"), item.getString("code"));
@@ -139,8 +140,8 @@ public class Engine {
         }
         return qResult;
     }
-    /**  . */
+    /** . */
     private String urlLogin = "http://5.07520349-1.appspot.com/getLogin.vn";
-    /**  . */
+    /** . */
     private String urlChat = "http://5.07520349-1.appspot.com/getLogin.vn";
 }

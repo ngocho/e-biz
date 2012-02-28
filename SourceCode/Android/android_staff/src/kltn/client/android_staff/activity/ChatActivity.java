@@ -6,7 +6,7 @@ import kltn.client.android_staff.R;
 import kltn.client.android_staff.engine.ChatEngine;
 import kltn.client.android_staff.engine.Engine;
 import kltn.client.android_staff.model.ChatItem;
-import object.Chat;
+import kltn.client.android_staff.object.Chat;
 import android.app.Activity;
 import android.database.Cursor;
 import android.os.Bundle;
