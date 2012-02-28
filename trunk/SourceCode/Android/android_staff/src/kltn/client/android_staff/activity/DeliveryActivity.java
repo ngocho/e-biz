@@ -3,7 +3,7 @@ package kltn.client.android_staff.activity;
 import java.util.Vector;
 
 import kltn.client.android_staff.R;
-import object.delivery;
+import object.Delivery;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
@@ -41,8 +41,8 @@ public class DeliveryActivity extends Activity implements OnClickListener {
         menustatistic = (ImageButton) findViewById(R.id.delivery_statistic);
         memuchat = (ImageButton) findViewById(R.id.delivery_chat);
 
-        datadelivery = new Vector<delivery>();
-        datadelivery.add(new delivery("D2", "P3", "Tủ lạnh Panasonic", "4.000.000 VNĐ", "Phú Nhuận", "01229905085",
+        datadelivery = new Vector<Delivery>();
+        datadelivery.add(new Delivery("D2", "P3", "Tủ lạnh Panasonic", "4.000.000 VNĐ", "Phú Nhuận", "01229905085",
                 "A.Long", "1.675", "34.8966", false));
         MlistAdapter adapter = new MlistAdapter();
         mlistviewDelivery.setAdapter(adapter);
@@ -56,7 +56,7 @@ public class DeliveryActivity extends Activity implements OnClickListener {
     /** . */
     private ListView mlistviewDelivery;
     /** . */
-    private Vector<delivery> datadelivery;
+    private Vector<Delivery> datadelivery;
     /**
      * @author NThanhPhong
      */
@@ -90,13 +90,13 @@ public class DeliveryActivity extends Activity implements OnClickListener {
             TextView address = (TextView) convertView.findViewById(R.id.item_delivery_address);
             TextView price = (TextView) convertView.findViewById(R.id.item_delivery_price);
             try {
-                final delivery item = datadelivery.get(position);
-                msgoods.setText(item.MSgoods);
-                goodsname.setText(item.GoodsName);
-                customer.setText(item.CustomerName);
-                phone.setText(item.Phone);
-                address.setText(item.Address);
-                price.setText(item.Price);
+                final Delivery item = datadelivery.get(position);
+//                msgoods.setText(item.MSgoods);
+//                goodsname.setText(item.GoodsName);
+//                customer.setText(item.CustomerName);
+//                phone.setText(item.Phone);
+//                address.setText(item.Address);
+//                price.setText(item.Price);
                 convertView.setOnClickListener(new OnClickListener() {
 
                     @Override
@@ -114,7 +114,7 @@ public class DeliveryActivity extends Activity implements OnClickListener {
      * [Give the description for method].
      * @param item delivery
      */
-    public void showDialogDetail(delivery item) {
+    public void showDialogDetail(Delivery item) {
         final Dialog dialog = new Dialog(this);
         dialog.setTitle("");
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -132,12 +132,12 @@ public class DeliveryActivity extends Activity implements OnClickListener {
         Button ok = (Button) dialog.findViewById(R.id.dialog_delivery_ok);
         Button map = (Button) dialog.findViewById(R.id.dialog_delivery_map);
         Button close = (Button) dialog.findViewById(R.id.dialog_delivery_close);
-        msgoods.setText(item.MSgoods);
-        goodsname.setText(item.GoodsName);
-        customer.setText(item.CustomerName);
-        phone.setText(item.Phone);
-        address.setText(item.Address);
-        price.setText(item.Price);
+//        msgoods.setText(item.MSgoods);
+//        goodsname.setText(item.GoodsName);
+//        customer.setText(item.CustomerName);
+//        phone.setText(item.Phone);
+//        address.setText(item.Address);
+//        price.setText(item.Price);
         date.setText("");
         note.setText("");
         check.setChecked(false);
