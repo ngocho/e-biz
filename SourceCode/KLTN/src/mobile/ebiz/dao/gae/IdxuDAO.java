@@ -3,7 +3,7 @@ package mobile.ebiz.dao.gae;
 import mobile.ebiz.dao.inf.IIdxuDAO;
 import mobile.ebiz.dto.IDXU;
 import mobile.ebiz.dto.USERXUHISTORY;
-import mobile.ebiz.dto.hashXu;
+import mobile.ebiz.dto.HashXu;
 import ebiz.dao.gae.PMF;
 /**
  * @author nthanhphong
@@ -40,7 +40,7 @@ public class IdxuDAO implements IIdxuDAO {
      */
     @Override
     public boolean createListxu() {
-        hashXu hash = new hashXu();
+        HashXu hash = new HashXu();
         return hash.createXuList(50000);
     }
     @Override
