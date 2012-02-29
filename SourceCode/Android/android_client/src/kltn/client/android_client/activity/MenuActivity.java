@@ -28,7 +28,6 @@ import android.widget.Toast;
  */
 /**
  * @author wind
- *
  */
 public class MenuActivity extends Activity implements OnClickListener, OnDismissListener {
 
@@ -75,9 +74,17 @@ public class MenuActivity extends Activity implements OnClickListener, OnDismiss
             mLogin.setText(R.string.menu_logout);
             flag = true;
         }
+        mAbout.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MenuActivity.this, SettingAppActivity.class);
+                startActivity(i);
+            }
+        });
     }
 
-    /**  . */
+    /** . */
     private OnClickListener mBrowserAction = new OnClickListener() {
 
         @Override
@@ -86,7 +93,7 @@ public class MenuActivity extends Activity implements OnClickListener, OnDismiss
             startActivity(browser);
         }
     };
-    /**  . */
+    /** . */
     private OnClickListener mBestAction = new OnClickListener() {
 
         @Override
@@ -95,7 +102,7 @@ public class MenuActivity extends Activity implements OnClickListener, OnDismiss
             startActivity(best);
         }
     };
-    /**  . */
+    /** . */
     private OnClickListener mDealsAction = new OnClickListener() {
 
         @Override
@@ -105,7 +112,7 @@ public class MenuActivity extends Activity implements OnClickListener, OnDismiss
         }
     };
 
-    /**  . */
+    /** . */
     private OnClickListener mAboutAction = new OnClickListener() {
 
         @Override
@@ -114,7 +121,7 @@ public class MenuActivity extends Activity implements OnClickListener, OnDismiss
             startActivity(about);
         }
     };
-    /**  . */
+    /** . */
     private OnClickListener mLoginAction = new OnClickListener() {
 
         @Override
@@ -160,12 +167,12 @@ public class MenuActivity extends Activity implements OnClickListener, OnDismiss
                 mIsWaiting = true;
                 Thread t = new Thread() {
                     public void run() {
-                        flag = mEngine
-                                .login(dialogusername.getText().toString(), dialogpassword.getText().toString());
+                        flag = mEngine.login(MenuActivity.this, dialogusername.getText().toString(), dialogpassword
+                                .getText().toString());
                         PrefUtil.setPref(MenuActivity.this, "username", dialogusername.getText().toString());
                         PrefUtil.setPref(MenuActivity.this, "password", dialogpassword.getText().toString());
-                        PrefUtil.setPref(MenuActivity.this, "xu", mEngine.mGetXu(dialogusername.getText().toString(),
-                                dialogpassword.getText().toString()));
+                        PrefUtil.setPref(MenuActivity.this, "xu", mEngine.mGetXu(MenuActivity.this, dialogusername
+                                .getText().toString(), dialogpassword.getText().toString()));
                         mCurrentDialog.dismiss();
                     }
                 };
@@ -231,38 +238,38 @@ public class MenuActivity extends Activity implements OnClickListener, OnDismiss
         }
     }
 
-    /**  . */
+    /** . */
     private boolean flag = false;
-    /**  . */
+    /** . */
     private Dialog mCurrentDialog;
-    /**  . */
+    /** . */
     private Engine mEngine;
-    /**  . */
+    /** . */
     private Button mLogin;
-    /**  . */
+    /** . */
     private Dialog mDialog;
-    /**  . */
+    /** . */
     private LinearLayout mBest;
-    /**  . */
+    /** . */
     private LinearLayout mDeal;
-    /**  . */
+    /** . */
     private LinearLayout mBrowser;
-    /**  . */
+    /** . */
     private LinearLayout mSaveSearch;
-    /**  . */
+    /** . */
     private LinearLayout mFavorite;
-    /**  . */
+    /** . */
     private LinearLayout mReminder;
-    /**  . */
+    /** . */
     private LinearLayout mMessage;
-    /**  . */
+    /** . */
     private LinearLayout mSetting;
-    /**  . */
+    /** . */
     private LinearLayout mAccount;
-    /**  . */
+    /** . */
     private LinearLayout mPayment;
-    /**  . */
+    /** . */
     private LinearLayout mAbout;
-    /**  . */
+    /** . */
     private boolean mIsWaiting;
 }

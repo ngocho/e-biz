@@ -106,4 +106,5 @@
     <string name="phone">Phone</string>
     <string name="introduction">Introduction:</string>
     <string name="cooking">Cooking:</string>
+    <string name="linkserver">URL Server</string>
 </resources>

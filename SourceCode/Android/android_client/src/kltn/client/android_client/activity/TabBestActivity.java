@@ -61,7 +61,7 @@ public class TabBestActivity extends Activity implements OnClickListener, OnDism
         mIsWaiting = true;
         Thread t = new Thread() {
             public void run() {
-                mData = mEngine.getBestFood();
+                mData = mEngine.getBestFood(TabBestActivity.this);
                 mCurrentDialog.dismiss();
             }
         };

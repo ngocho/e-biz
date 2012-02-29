@@ -62,7 +62,7 @@ public class RegisterActivity extends Activity implements OnDismissListener {
             }
         });
     }
-    /**  . */
+    /** . */
     private OnClickListener backAction = new OnClickListener() {
 
         @Override
@@ -74,7 +74,7 @@ public class RegisterActivity extends Activity implements OnDismissListener {
             startActivity(home);
         }
     };
-    /**  . */
+    /** . */
     private OnClickListener mOkAction = new OnClickListener() {
 
         @Override
@@ -84,28 +84,28 @@ public class RegisterActivity extends Activity implements OnDismissListener {
             mIsWaiting = true;
             Thread t = new Thread() {
                 public void run() {
-                    flag = mEngine.mRegister(nickname.getText().toString(), password.getText().toString(), fullname
-                            .getText().toString(), "male", email.getText().toString(), phone.getText().toString(),
-                            address.getText().toString(), birthday.getText().toString());
+                    flag = mEngine.mRegister(RegisterActivity.this, nickname.getText().toString(), password.getText()
+                            .toString(), fullname.getText().toString(), "male", email.getText().toString(), phone
+                            .getText().toString(), address.getText().toString(), birthday.getText().toString());
                     mCurrentDialog.dismiss();
                 }
             };
             t.start();
         }
     };
-    /**  . */
+    /** . */
     private Engine mEngine;
-    /**  . */
+    /** . */
     private boolean flag;
-    /**  . */
+    /** . */
     private boolean mIsWaiting;
-    /**  . */
+    /** . */
     private Dialog mCurrentDialog;
-    /**  . */
+    /** . */
     private EditText nickname, password, fullname, email, phone, address, birthday;
-    /**  . */
+    /** . */
     private Button back, ok;
-    /**  . */
+    /** . */
     private CheckBox male, female, check;
     /*
      * (non-Javadoc)

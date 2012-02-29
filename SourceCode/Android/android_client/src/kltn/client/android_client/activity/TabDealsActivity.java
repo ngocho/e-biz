@@ -71,7 +71,7 @@ public class TabDealsActivity extends Activity implements OnClickListener, OnDis
         mIsWaiting = true;
         Thread t = new Thread() {
             public void run() {
-                mData = mEngine.getBestFood();
+                mData = mEngine.getBestFood(TabDealsActivity.this);
                 mCurrentDialog.dismiss();
             }
         };

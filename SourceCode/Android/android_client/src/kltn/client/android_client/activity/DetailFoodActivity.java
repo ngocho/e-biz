@@ -86,7 +86,7 @@ public class DetailFoodActivity extends Activity implements OnClickListener, OnD
         mIsWaiting = true;
         Thread t = new Thread() {
             public void run() {
-                mData = mEngine.mGetFood(idfood);
+                mData = mEngine.mGetFood(DetailFoodActivity.this, idfood);
                 mCurrentDialog.dismiss();
             }
         };

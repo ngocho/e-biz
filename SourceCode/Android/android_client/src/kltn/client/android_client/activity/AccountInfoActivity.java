@@ -22,7 +22,6 @@ import android.widget.TextView;
  */
 /**
  * @author wind
- *
  */
 public class AccountInfoActivity extends Activity implements OnClickListener, OnDismissListener {
 
@@ -58,38 +57,39 @@ public class AccountInfoActivity extends Activity implements OnClickListener, On
         mIsWaiting = true;
         Thread t = new Thread() {
             public void run() {
-                mData = mEngine.mGetInfo(PrefUtil.getStringPref(AccountInfoActivity.this, "username"),
+                mData = mEngine.mGetInfo(AccountInfoActivity.this,
+                        PrefUtil.getStringPref(AccountInfoActivity.this, "username"),
                         PrefUtil.getStringPref(AccountInfoActivity.this, "password"));
                 mCurrentDialog.dismiss();
             }
         };
         t.start();
     }
-    /**  . */
+    /** . */
     private Engine mEngine;
-    /**  . */
+    /** . */
     private JSONObject mData;
-    /**  . */
+    /** . */
     private Button mBack;
-    /**  . */
+    /** . */
     private Button mPayment;
-    /**  . */
+    /** . */
     private Button mUpdate;
-    /**  . */
+    /** . */
     private TextView mUsername;
-    /**  . */
+    /** . */
     private TextView mXu;
-    /**  . */
+    /** . */
     private TextView mFullname;
-    /**  . */
+    /** . */
     private TextView mEmail;
-    /**  . */
+    /** . */
     private TextView mPhone;
-    /**  . */
+    /** . */
     private TextView mAddress;
-    /**  . */
+    /** . */
     private Dialog mCurrentDialog;
-    /**  . */
+    /** . */
     public boolean mIsWaiting;
     /*
      * (non-Javadoc)

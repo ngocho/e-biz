@@ -43,7 +43,7 @@ public class AccountTransferXuActivity extends Activity implements OnDismissList
         mEngine = new Engine();
     }
 
-    /**  . */
+    /** . */
     private OnClickListener okAction = new OnClickListener() {
 
         @Override
@@ -118,25 +118,25 @@ public class AccountTransferXuActivity extends Activity implements OnDismissList
         return jResult;
     }
 
-    /**  . */
+    /** . */
     private boolean flag = false;
-    /**  . */
+    /** . */
     private Button mOk;
-    /**  . */
+    /** . */
     private TextView mOwner;
-    /**  . */
+    /** . */
     private TextView mOwnerXu;
-    /**  . */
+    /** . */
     private EditText mUser;
-    /**  . */
+    /** . */
     private String status;
-    /**  . */
+    /** . */
     private EditText mNumber;
-    /**  . */
+    /** . */
     private boolean mIsWaiting;
-    /**  . */
+    /** . */
     private Dialog mCurrentDialog;
-    /**  . */
+    /** . */
     private Engine mEngine;
 
     /*
@@ -147,7 +147,7 @@ public class AccountTransferXuActivity extends Activity implements OnDismissList
     public void onDismiss(DialogInterface dialog) {
         Toast.makeText(AccountTransferXuActivity.this, status, Toast.LENGTH_LONG).show();
         if (flag) {
-            mOwnerXu.setText(mEngine.mGetXu(mOwner.getText().toString(),
+            mOwnerXu.setText(mEngine.mGetXu(AccountTransferXuActivity.this, mOwner.getText().toString(),
                     PrefUtil.getStringPref(AccountTransferXuActivity.this, "password")));
             mNumber.setText("");
             mUser.setText("");

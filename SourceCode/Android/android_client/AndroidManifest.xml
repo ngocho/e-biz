@@ -42,6 +42,7 @@
 		<activity android:name=".activity.SavedSearchActivity" android:theme="@android:style/Theme.NoTitleBar" android:windowSoftInputMode="stateAlwaysHidden"></activity>
 		<provider android:name=".engine.MainProvider" android:authorities="kltn.client.android_client"/>
 		<activity android:name=".activity.DetailFoodActivity" android:theme="@android:style/Theme.NoTitleBar"></activity>
-		<activity android:name=".activity.AccountChangePassAtivity"></activity>
+		<activity android:name=".activity.AccountChangePassAtivity" android:theme="@android:style/Theme.NoTitleBar"></activity>
+		<activity android:name=".activity.SettingAppActivity" android:theme="@android:style/Theme.NoTitleBar"></activity>
 	</application>
 </manifest>
