@@ -43,7 +43,7 @@ public class VoucherCreation extends BaseAction {
 
     /**
      * [Voucher(Customer)].
-     *
+     * 
      * @param mapping ActionMapping
      * @param form ActionForm
      * @param request HttpServletRequest
@@ -56,31 +56,37 @@ public class VoucherCreation extends BaseAction {
             HttpServletResponse response) throws Exception {
         HttpSession se = request.getSession();
         LoginForm login;
+        String typeCheckout = (String) se.getAttribute("typeCheckout");
         OrderBillForm voucherForm = (OrderBillForm) form;
         VoucherBill voucherBill = voucherForm.getVoucher();
         // generate code voucher
         String code = hashCode.hashID(CommonConstant.HASHCODENUMBER);
         voucherBill.setKeyVoucher(code);
         voucherBill.setStartDate(new Date());
-        // save voucherForm in database
-        voucherBill = CustomerBLO.saveVoucher(voucherBill);
-        if (voucherBill != null) {
-            // checkout
-            boolean flag = CustomerBLO.checkoutXuOnline(voucherForm.getIdCustomer(), voucherBill.getSumMoney());
-            if (flag) {
-                // send mail
-                SendMail.sendVoucherlMail(voucherBill.getId());
-                // decrease product = number of voucher
-                FoodBLO.downNumberOfFood(voucherBill.getIdFood(), voucherBill.getNumber());
-                // send mail
-                login = (LoginForm) se.getAttribute(CommonConstant.USER);
-                // update xu in LoginForm
-                login.setXuOnline(CustomerBLO.getXuOnline(login.getLoginId()));
+        if ("home".equals(typeCheckout)) {
+            // checkout in home
+            voucherBill.setStatus(CommonConstant.BILLSTATUS_1);
+            voucherBill = CustomerBLO.saveVoucher(voucherBill);
+        } else if ("xu".equals(typeCheckout)) {
+            // save voucherForm in database
+            if (voucherBill != null) {
+                // checkout
+                boolean flag = CustomerBLO.checkoutXuOnline(voucherForm.getIdCustomer(), voucherBill.getSumMoney());
+                if (flag) {
+                    voucherBill = CustomerBLO.saveVoucher(voucherBill);
+                    // send mail
+                    SendMail.sendVoucherlMail(voucherBill.getId());
+                    // decrease product = number of voucher
+                    FoodBLO.downNumberOfFood(voucherBill.getIdFood(), voucherBill.getNumber());
+                    // send mail
+                    login = (LoginForm) se.getAttribute(CommonConstant.USER);
+                    // update xu in LoginForm
+                    login.setXuOnline(CustomerBLO.getXuOnline(login.getLoginId()));
+                }
+
             }
-
         }
-        return mapping.findForward(SUCCESS);
-
+            return mapping.findForward(SUCCESS);
     }
 
 }

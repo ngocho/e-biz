@@ -34,6 +34,8 @@ public class VoucherBill implements Serializable {
     private String keyVoucher;
     @Persistent
     private Date startDate;
+    @Persistent
+    private String status;
 
     /**
      * @return the id
@@ -174,5 +176,21 @@ public class VoucherBill implements Serializable {
      */
     public void setStartDate(Date startDate) {
         this.startDate = startDate;
+    }
+
+    /**
+     * Get value of status.
+     * @return the status
+     */
+    public String getStatus() {
+        return status;
+    }
+
+    /**
+     * Set the value for status.
+     * @param status the status to set
+     */
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

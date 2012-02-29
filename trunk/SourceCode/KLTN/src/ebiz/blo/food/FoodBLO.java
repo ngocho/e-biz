@@ -33,6 +33,7 @@ import ebiz.dao.inf.IFoodDAO;
 import ebiz.dao.inf.IOrderDAO;
 import ebiz.dto.checkout.DetailOrder;
 import ebiz.dto.checkout.OrderBill;
+import ebiz.dto.checkout.VoucherBill;
 import ebiz.dto.food.Food;
 import ebiz.dto.food.FoodAttribute;
 import ebiz.dto.food.FoodPriceLevel;
@@ -794,6 +795,15 @@ public class FoodBLO {
         OrderBill order = CustomerBLO.getBillById(idBill);
         order.setStatus(typePayment);
         return CustomerBLO.saveBillById(order);
+    }
+    
+    public static boolean updateStatusVoucher(Long idVoucher, String typePayment) {
+        VoucherBill voucher = CustomerBLO.getVoucherByID(idVoucher);
+        voucher.setStatus(typePayment);
+        if( CustomerBLO.saveVoucher(voucher)!= null){
+            return true;
+        }
+        return false;
     }
 
     /**
