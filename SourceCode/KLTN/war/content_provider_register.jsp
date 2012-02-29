@@ -51,7 +51,7 @@
       <input  type="submit" value="Upload Hình"
         class="buttonBG">
     </form>
-    <html:form action="/registerProvierAcc.vn" method="get"
+    <html:form action="/registerProvierAcc.vn" method="post"
       styleId="registerForm">
       <div class="fieldset">
         <h2 class="legend">Thông tin đăng nhập</h2>
@@ -94,7 +94,7 @@
           </li>
           <li><logic:messagesPresent message="true">
               <html:messages id="message" message="true">
-                <bean:write name="message" />
+               <span class="impressionText"><bean:write name="message" /></span> 
                 <br />
               </html:messages>
             </logic:messagesPresent>

@@ -11,7 +11,7 @@
 		<div class="content">
 			
 			<h2>LỰA CHỌN HÌNH THỨC NHẬN VOUCHER</h2>
-      <form action="/getVoucherType.vn" method="get" styleId="loginForm">
+      <form action="/getVoucherType.vn" method="get" id="loginForm">
 			<ul style="margin-top:20px;" >
 				
 					<li  >
