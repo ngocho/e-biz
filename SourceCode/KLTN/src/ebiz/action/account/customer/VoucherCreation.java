@@ -34,7 +34,7 @@ import ebiz.dto.checkout.VoucherBill;
 import ebiz.form.OrderBillForm;
 import ebiz.util.CommonConstant;
 import ebiz.form.LoginForm;
-import mobile.ebiz.dto.hashCode;
+import mobile.ebiz.dto.HashCode;
 import java.util.Date;
 /**
  * @author ThuyNT
@@ -60,7 +60,7 @@ public class VoucherCreation extends BaseAction {
         OrderBillForm voucherForm = (OrderBillForm) form;
         VoucherBill voucherBill = voucherForm.getVoucher();
         // generate code voucher
-        String code = hashCode.hashID(CommonConstant.HASHCODENUMBER);
+        String code = HashCode.hashID(CommonConstant.HASHCODENUMBER);
         voucherBill.setKeyVoucher(code);
         voucherBill.setStartDate(new Date());
         if ("home".equals(typeCheckout)) {

@@ -33,7 +33,7 @@ import ebiz.blo.provider.ProviderBLO;
 import ebiz.dto.account.provider.Provider;
 import ebiz.form.ProviderForm;
 import ebiz.util.CommonConstant;
-import mobile.ebiz.dto.hashCode;
+import mobile.ebiz.dto.HashCode;
 /**
  * @author ThuyNT
  */
@@ -59,7 +59,7 @@ public class Register extends BaseAction {
             Provider register = user.getProvider();
             // set status Active
             register.setActive(false);
-            String code = hashCode.hashID(CommonConstant.HASHCODENUMBERROVIDER);
+            String code = HashCode.hashID(CommonConstant.HASHCODENUMBERROVIDER);
             register.setActiveCode(code);
             boolean flag = ProviderBLO.registerProvider(register);
             if (flag) {

@@ -56,7 +56,7 @@ public class GenerationCodeXu extends Action {
         int count = IDXUBLO.countXuAvailabel();
         if (count < CommonConstant.LIMIT_NUMBER_XU) {
             log.info(" Start Generation Xu");
-            IDXUBLO.CreateListXu();
+            IDXUBLO.createListXu();
             log.info("Generation Xu Successfully");
         }
         return null;
