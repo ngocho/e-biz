@@ -142,7 +142,7 @@
         value="Upload Hình" class="buttonBG">
     </form>
 
-    <html:form action="/uploadProduct.vn" method="get" styleId="uploadForm">
+    <html:form action="/uploadProduct.vn" method="post" styleId="uploadForm">
       <html:hidden property="idProvider" />
       <html:hidden property="id" />
       <div class="fieldset">

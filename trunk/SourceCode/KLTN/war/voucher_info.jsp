@@ -57,6 +57,7 @@
 		<div class="content">
 			
 			<h2> ĐỊA CHỈ</h2>
+            <p>Chúng tôi sẽ giao Voucher tận nhà ! Vui lòng cung cấp địa chỉ chính xác</p>
 			<ul class="form-list">
 				<html:form action="/createVoucher.vn" method="get" styleId="loginForm">
 				<li><label for="email" class="required" id="typeLogin"><em>*</em>Số điện thoại</label>
@@ -93,7 +94,6 @@
 					<li><label for="pass" class="required"><em>*</em>Tên tòa nhà</label>
 						<div class="input-box">
 							<html:password property="buildingName" styleId="buildingName"  />
-							<!--  <input type="password" name="login[password]" class="input-text required-entry validate-password" id="pass" title="Password"> -->
 						</div>
 					</li>
 					

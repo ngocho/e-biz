@@ -38,11 +38,13 @@
 						<input type="radio" name="checkoutOption" value="xu" checked="checked">Thanh toán online với tài khoản xu
 						</div>
 					</li>
-					<li style="margin-top:10px;">
+				<%-- 	<li style="margin-top:10px;">
 						<div class="input-box">
-						<input type="radio" name="checkoutOption" value="nganluong">Thanh toán online qua Ngân lượng
+            <logic:present name="nganluongurl">
+            <a href="<bean:write name="nganluongurl"/>"> <img src="Images/Commons/btn-paynow-122.png" /></a>
+            </logic:present>
 						</div>
-					</li>
+					</li> --%>
 					<li style="margin-top:10px;">
 						<div class="input-box">
 						<input type="submit" value="Tiếp tục"  class="buttonBG"/>
