@@ -27,6 +27,7 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import ebiz.action.BaseAction;
+import ebiz.util.CommonConstant;
 
 /**
  * @author ThuyNT
@@ -46,8 +47,8 @@ public class ResetForm extends BaseAction {
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
         response.setHeader("Cache-Control", "no-cache");
-        response.setContentType("text/xml; charset=utf-8");
-        response.setCharacterEncoding("utf-8");
+        response.setContentType(CommonConstant.CONTENTTYPE);
+        response.setCharacterEncoding(CommonConstant.CHARACTERENCODING);
         HttpSession se = request.getSession();
         se.removeAttribute("login");
         se.removeAttribute("register");

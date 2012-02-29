@@ -30,6 +30,7 @@ import org.apache.struts.action.ActionMapping;
 import ebiz.action.BaseAction;
 import ebiz.blo.provider.ProviderBLO;
 import ebiz.dto.account.provider.Provider;
+import ebiz.util.CommonConstant;
 
 /**
  * @author ThuyNT
@@ -49,8 +50,8 @@ public class ProviderAdd extends BaseAction {
             HttpServletResponse response) throws Exception {
         PrintWriter out = response.getWriter();
         response.setHeader("Cache-Control", "no-cache");
-        response.setContentType("text/xml; charset=utf-8");
-        response.setCharacterEncoding("utf-8");
+        response.setContentType(CommonConstant.CONTENTTYPE);
+        response.setCharacterEncoding(CommonConstant.CHARACTERENCODING);
         String id = request.getParameter("id");
         Provider provider = ProviderBLO.getProviderById(id);
         String add = provider.getProviderAddress();

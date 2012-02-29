@@ -56,8 +56,8 @@ public class XuAdd extends BaseAction {
         PrintWriter out = response.getWriter();
         // set attr for reponse
         response.setHeader("Cache-Control", "no-cache");
-        response.setContentType("text/xml; charset=utf-8");
-        response.setCharacterEncoding("utf-8");
+        response.setContentType(CommonConstant.CONTENTTYPE);
+        response.setCharacterEncoding(CommonConstant.CHARACTERENCODING);
         String value = request.getParameter("value");
         if (value != null || !("".equals(value))) {
             value = value.trim();

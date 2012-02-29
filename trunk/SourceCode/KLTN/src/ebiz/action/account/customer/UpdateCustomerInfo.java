@@ -53,8 +53,8 @@ public class UpdateCustomerInfo extends BaseAction {
             HttpServletResponse response) throws Exception {
         PrintWriter out = response.getWriter();
         response.setHeader("Cache-Control", "no-cache");
-        response.setContentType("text/xml; charset=utf-8");
-        response.setCharacterEncoding("utf-8");
+        response.setContentType(CommonConstant.CONTENTTYPE);
+        response.setCharacterEncoding(CommonConstant.CHARACTERENCODING);
         HttpSession se = request.getSession();
         LoginForm user = (LoginForm) se.getAttribute(CommonConstant.USER);
         Customer customer = CustomerBLO.getCustomerByID(user.getLoginId());

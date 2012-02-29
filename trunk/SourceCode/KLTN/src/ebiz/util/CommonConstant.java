@@ -102,4 +102,8 @@ public class CommonConstant {
     public final static String SCREEN_CHECKOUT = "scheckout";
     public final static int HASHCODENUMBER = 15;
     public final static int HASHCODENUMBERROVIDER = 8;
+    
+    //ajax
+    public final static String CONTENTTYPE = "text/xml; charset=utf-8";
+    public final static String CHARACTERENCODING = "utf-8";
 }
