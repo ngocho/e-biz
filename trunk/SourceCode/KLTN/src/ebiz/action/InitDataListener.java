@@ -31,7 +31,7 @@ public class InitDataListener implements ServletContextListener {
         // init hash code
         Initialize.createAss();
         // init xu
-        IDXUBLO.CreateListXu();
+        IDXUBLO.createListXu();
         // init
         Provider pro = new Provider();
         pro.setProviderId("4");

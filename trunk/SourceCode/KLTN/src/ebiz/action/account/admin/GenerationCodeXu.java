@@ -55,7 +55,7 @@ public class GenerationCodeXu extends Action {
         response.setCharacterEncoding("utf-8");
         int count = IDXUBLO.countXuAvailabel();
         if (count < CommonConstant.LIMIT_NUMBER_XU) {
-            IDXUBLO.CreateListXu();
+            IDXUBLO.createListXu();
             count = IDXUBLO.countXuAvailabel();
             out.println(count);
         }
