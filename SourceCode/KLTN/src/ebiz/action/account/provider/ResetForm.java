@@ -29,6 +29,7 @@ import org.apache.struts.action.ActionMapping;
 import ebiz.action.BaseAction;
 import ebiz.form.ProviderForm;
 import ebiz.form.FoodForm;
+import ebiz.util.CommonConstant;
 
 /**
  * @author ThuyNT
@@ -49,9 +50,8 @@ public class ResetForm extends BaseAction {
 
         // set attr for response
         response.setHeader("Cache-Control", "no-cache");
-        response.setContentType("text/xml; charset=utf-8");
-        response.setCharacterEncoding("utf-8");
-
+        response.setContentType(CommonConstant.CONTENTTYPE);
+        response.setCharacterEncoding(CommonConstant.CHARACTERENCODING);
         String type = request.getParameter("type");
         HttpSession se = request.getSession();
         se.removeAttribute("urlImageKey");

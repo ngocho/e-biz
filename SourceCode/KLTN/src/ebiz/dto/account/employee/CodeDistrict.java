@@ -26,7 +26,7 @@ public class CodeDistrict {
     private String name;
     /**
      * Get value of id.
-     * 
+     *
      * @return the id
      */
     public String getId() {
