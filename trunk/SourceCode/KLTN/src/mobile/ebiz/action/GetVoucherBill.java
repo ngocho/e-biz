@@ -18,9 +18,20 @@
  */
 package mobile.ebiz.action;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import mobile.ebiz.blo.MobileBLO;
+
+import org.apache.struts.action.ActionForm;
+import org.apache.struts.action.ActionForward;
+import org.apache.struts.action.ActionMapping;
 
 import com.google.appengine.repackaged.org.json.JSONException;
 import com.google.appengine.repackaged.org.json.JSONObject;
@@ -33,28 +44,62 @@ import ebiz.util.CommonUtil;
 
 /**
  * @author nthanhphong
- *
  */
 public class GetVoucherBill {
     /**
      * [Give the description for method].
-     * @return
+     * @param mapping ActionMapping
+     * @param form ActionForm
+     * @param request HttpServletRequest
+     * @param response HttpServletResponse
+     * @return ActionForward
+     * @throws Exception Exception
+     */
+    public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
+            HttpServletResponse response) throws Exception {
+        response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out;
+        List<JSONObject> objList = new ArrayList<JSONObject>();
+
+        try {
+
+            objList = createListVoucher();
+            out = response.getWriter();
+            out.println(objList);
+            out.flush();
+        } catch (JSONException ex) {
+            // TODO Auto-generated catch block
+            ex.printStackTrace();
+        } catch (IOException ex) {
+            // TODO Auto-generated catch block
+            ex.printStackTrace();
+        }
+        return null;
+    }
+    /**
+     * [Give the description for method].
+     * @return List<JSONObject>
      * @throws JSONException
      */
     @SuppressWarnings("unchecked")
-    public List<JSONObject> createListHappyBirth() throws JSONException {
+    public List<JSONObject> createListVoucher() throws JSONException {
         List<JSONObject> objList = new ArrayList<JSONObject>();
-        List<Customer> listcustomer = new ArrayList<Customer>();
-        listcustomer = (List<Customer>) PMF.getObjectList(Customer.class);
-        for (int i = 0; i < listcustomer.size(); i++) {
-            String today = CommonUtil.convertDateToString(Calendar.getInstance().getTime()).substring(0, 5);
-            Customer item = listcustomer.get(i);
+        List<VoucherBill> listvoucherbill = new ArrayList<VoucherBill>();
+        listvoucherbill = (List<VoucherBill>) PMF.getObjectList(VoucherBill.class);
+        for (int i = 0; i < listvoucherbill.size(); i++) {
+            String today = CommonUtil.convertDateToString(Calendar.getInstance().getTime());
+            VoucherBill item = listvoucherbill.get(i);
             try {
-                if (item.getCustomerPhone() != null && item.getCustomerBirth() != null
-                        && CommonUtil.convertDateToString(item.getCustomerBirth()).substring(0, 5).equals(today)) {
+                if (item.getPhone() != null && item.getStartDate() != null
+                        && CommonUtil.convertDateToString(item.getStartDate()).equals(today)) {
                     JSONObject json = new JSONObject();
-                    json.put("phone", listcustomer.get(i).getCustomerPhone());
-                    json.put("name", listcustomer.get(i).getCustomerName());
+                    json.put("id", item.getId());
+                    json.put("idfood", item.getIdFood());
+                    json.put("money", item.getSumMoney());
+                    json.put("idcustomer", item.getIdCustomer());
+                    json.put("key", item.getKeyVoucher());
+                    json.put("phone", item.getPhone());
+                    json.put("date", CommonUtil.convertDateToString(item.getStartDate()));
                     objList.add(json);
                 }
             } catch (Exception e) {
