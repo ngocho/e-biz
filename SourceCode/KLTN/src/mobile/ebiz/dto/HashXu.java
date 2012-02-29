@@ -10,7 +10,7 @@ import mobile.ebiz.blo.IDXUBLO;
 /**
  * @author nthanhphong
  */
-public class hashXu {
+public class HashXu {
     /** . */
     private int numberXu = 50;
     /**
