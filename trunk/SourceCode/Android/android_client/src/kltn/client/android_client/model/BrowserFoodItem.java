@@ -8,41 +8,40 @@ import android.provider.BaseColumns;
  */
 /**
  * @author wind
- *
  */
 public class BrowserFoodItem implements BaseColumns {
-    /**  . */
+    /** . */
     public static final Uri CONTENT_URI = Uri.parse("content://kltn.client.android_client/browser_food");
 
-    /**  . */
+    /** . */
     public static final String DEFAULT_SORT_ORDER = "startdate, _id DESC";
-    /**  . */
+    /** . */
     public static final String ID = "id";
-    /**  . */
+    /** . */
     public static final String NAME = "name";
-    /**  . */
+    /** . */
     public static final String INTRODUCTION = "introduction";
-    /**  . */
+    /** . */
     public static final String PRICE = "price";
-    /**  . */
+    /** . */
     public static final String BUYPRICE = "buyprice";
-    /**  . */
+    /** . */
     public static final String IMAGEURL = "imageurl";
-    /**  . */
+    /** . */
     public static final String STARTDATE = "startdate";
-    /**  . */
+    /** . */
     public static final String ENDDATE = "enddate";
-    /**  . */
+    /** . */
     public static final String BUYCOUNT = "buycount";
-    /**  . */
+    /** . */
     public static final String MINBUYER = "minbuyer";
-    /**  . */
+    /** . */
     public static final String RATE = "rate";
-    /**  . */
+    /** . */
     public static final String MAXBUYER = "maxbuyer";
-    /**  . */
+    /** . */
     public static final String TYPE = "type";
-    /**  . */
+    /** . */
     public static final String PROVIDER = "provider";
 
     /**
@@ -61,9 +60,9 @@ public class BrowserFoodItem implements BaseColumns {
      * @param type String
      * @param provider String
      */
-    public BrowserFoodItem(String id, String name, String introduction, String price, String buyprice,
-            String imageurl, String startdate, String enddate, int buycount, int minbuyer, int maxbuyer, int rate,
-            String type, String provider) {
+    public BrowserFoodItem(String id, String name, String introduction, String price, String buyprice, String imageurl,
+            String startdate, String enddate, int buycount, int minbuyer, int maxbuyer, int rate, String type,
+            String provider) {
         setId(id);
         setName(name);
         setIntroduction(introduction);
@@ -277,8 +276,8 @@ public class BrowserFoodItem implements BaseColumns {
         this.rate = rate;
     }
 
-    /**  . */
+    /** . */
     private String id, name, introduction, price, buyprice, imageurl, startdate, enddate, type, provider;
-    /**  . */
+    /** . */
     private int rate, buycount, minbuyer, maxbuyer;
 }
