@@ -44,7 +44,6 @@ public class InitDataListener implements ServletContextListener {
         Provider pro1 = new Provider();
         pro1.setProviderId("5");
         pro1.setProviderName("thuyuit1");
-        
         pro1.setProviderPassword("12345678");
         pro1.setProviderAddress("Võ Văn Ngân, Thủ Đức");
         pro1.setActive(true);

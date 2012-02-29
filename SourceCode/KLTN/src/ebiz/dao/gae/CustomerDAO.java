@@ -37,7 +37,7 @@ public class CustomerDAO implements ICustomerDAO {
 
     @Override
     public boolean saveCustomer(Customer customer) {
-                                                  
+
         return PMF.insertObject(customer);
     }
     @Override

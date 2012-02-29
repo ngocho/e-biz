@@ -38,6 +38,7 @@ import ebiz.form.ProviderForm;
 public class GMProviderAddressList extends BaseAction {
     /**
      * [GMProviderAddressList ].
+     *
      * @param mapping ActionMapping
      * @param form ActionForm
      * @param request HttpServletRequest
@@ -48,7 +49,7 @@ public class GMProviderAddressList extends BaseAction {
      */
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
-                                                  
+
         List<ProviderForm> providerList = ProviderBLO.getProviderFormAll();
         HttpSession se = request.getSession();
         se.setAttribute("providerAddList", providerList);

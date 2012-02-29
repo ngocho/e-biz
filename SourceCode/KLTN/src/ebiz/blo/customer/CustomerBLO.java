@@ -42,12 +42,14 @@ import ebiz.util.CommonUtil;
  * @author ThuyNT
  */
 public class CustomerBLO {
+    /** . */
     private static ICustomerDAO custDao = new CustomerDAO();
+    /** . */
     private static IOrderDAO orderDao = new OrderDAO();
     /**
-     * [deleteFood by Customer].
+     * [deleteBillCustomer].
      * 
-     * @param food Food
+     * @param idBill Long
      * @return boolean
      */
     public static boolean deleteBillCustomer(Long idBill) {
@@ -64,9 +66,9 @@ public class CustomerBLO {
     }
 
     /**
-     * [deleteFood by Admin, System].
+     * [Give the description for method].
      * 
-     * @param food Food
+     * @param bill OrderBill
      * @return boolean
      */
     public static boolean deleteBill(OrderBill bill) {
@@ -75,7 +77,7 @@ public class CustomerBLO {
 
     /**
      * [get Food by ID(Long)].
-     * 
+     *
      * @param id Long
      * @return Food
      */
@@ -85,7 +87,7 @@ public class CustomerBLO {
 
     /**
      * [saveBillBy].
-     * 
+     *
      * @param bill OrderBill
      * @return OrderBill
      */
@@ -94,20 +96,25 @@ public class CustomerBLO {
     }
     /**
      * [saveVoucher].
-     * 
+     *
      * @param voucher VoucherBill
      * @return VoucherBill
      */
     public static VoucherBill saveVoucher(VoucherBill voucher) {
         return orderDao.saveVoucherBill(voucher);
     }
-    
+
+    /**
+     * [getVoucherByID].
+     * @param idVoucher
+     * @return VoucherBill
+     */
     public static VoucherBill getVoucherByID(Long idVoucher) {
         return orderDao.getVoucherByID(idVoucher);
     }
     /**
      * [getCustomerList].
-     * 
+     *
      * @return List<Customer>
      */
     public static List<Customer> getCustomerList() {
@@ -115,7 +122,7 @@ public class CustomerBLO {
     }
     /**
      * [getCustomerByID].
-     * 
+     *
      * @param id getCustomerByID
      * @return Customer
      */
@@ -125,7 +132,7 @@ public class CustomerBLO {
     }
     /**
      * [isLoginID].
-     * 
+     *
      * @param id String
      * @param pass String
      * @return flag int
@@ -147,7 +154,7 @@ public class CustomerBLO {
     }
     /**
      * [isUID].
-     * 
+     *
      * @param id String
      * @return flag boolean
      */
@@ -156,7 +163,7 @@ public class CustomerBLO {
     }
     /**
      * [getLoginVoucher].
-     * 
+     *
      * @param login LoginForm
      */
     public static void getLoginVoucher(LoginForm login) {
@@ -167,7 +174,7 @@ public class CustomerBLO {
     }
     /**
      * [registerCustomer].
-     * 
+     *
      * @param customer Customer
      * @return flag boolean
      */
@@ -181,7 +188,7 @@ public class CustomerBLO {
     }
     /**
      * [saveComment].
-     * 
+     *
      * @param comment Comment
      * @return flag boolean
      */
@@ -190,7 +197,7 @@ public class CustomerBLO {
     }
     /**
      * [saveAss].
-     * 
+     *
      * @param content Assessment
      * @return flag boolean
      */
@@ -199,7 +206,7 @@ public class CustomerBLO {
     }
     /**
      * [getAss].
-     * 
+     *
      * @param id String
      * @return Assessment
      */
@@ -208,7 +215,7 @@ public class CustomerBLO {
     }
     /**
      * [getAssList].
-     * 
+     *
      * @return List<Assessment>
      */
     public static List<Assessment> getAssList() {
@@ -216,7 +223,7 @@ public class CustomerBLO {
     }
     /**
      * [updateCustomer].
-     * 
+     *
      * @param customer Customer
      * @return flag boolean
      */
@@ -225,7 +232,7 @@ public class CustomerBLO {
     }
     /**
      * [viewOrderHistory].
-     * 
+     *
      * @param idCustomer String
      * @return List<OrderBill>
      */
@@ -236,7 +243,7 @@ public class CustomerBLO {
 
     /**
      * [viewOrderDetailHistory].
-     * 
+     *
      * @param idOrder Long
      * @return List<DetailOrder>
      */
@@ -246,7 +253,7 @@ public class CustomerBLO {
     }
     /**
      * [toStringAddres].
-     * 
+     *
      * @param add Address
      * @return String
      */
@@ -271,6 +278,15 @@ public class CustomerBLO {
         }
         return address;
     }
+    /**
+     * [Give the description for method].
+     * @param homeNumber
+     * @param buildingName
+     * @param streetName
+     * @param wardName
+     * @param districtName
+     * @return
+     */
     public static String toStringAddres(String homeNumber, String buildingName, String streetName, String wardName,
             String districtName) {
         String address = "";
@@ -291,6 +307,12 @@ public class CustomerBLO {
         }
         return address;
     }
+    /**
+     * [Give the description for method].
+     * @param userId
+     * @param value
+     * @return
+     */
     public static List<OrderBillForm> getOrderBillFormList(String userId, String value) {
 
         List<OrderBill> orderList = new ArrayList<OrderBill>();
@@ -318,6 +340,12 @@ public class CustomerBLO {
     }
 
     // checkout by Xu account
+    /**
+     * [Give the description for method].
+     * @param uid
+     * @param money
+     * @return
+     */
     public static boolean checkoutXuOnline(String uid, long money) {
         Customer customer = custDao.getCustomerById(uid);
         if (customer != null) {
@@ -332,6 +360,13 @@ public class CustomerBLO {
     }
 
     // transfer Xu account
+    /**
+     * [Give the description for method].
+     * @param uidFrom
+     * @param uidTo
+     * @param money
+     * @return
+     */
     public static boolean transferXuOnline(String uidFrom, String uidTo, long money) {
         long result = 0;
         boolean flag = false;
@@ -349,6 +384,12 @@ public class CustomerBLO {
         return true;
 
     }
+    /**
+     * [Give the description for method].
+     * @param uid
+     * @param money
+     * @return
+     */
     public static boolean isXuOnline(String uid, long money) {
         Customer customer = custDao.getCustomerById(uid);
         if (customer != null) {
@@ -361,6 +402,12 @@ public class CustomerBLO {
     }
 
     // add Xu
+    /**
+     * [Give the description for method].
+     * @param uid
+     * @param money
+     * @return
+     */
     public static long addXuOnline(String uid, long money) {
         Customer customer = custDao.getCustomerById(uid);
         if (customer != null) {
@@ -371,6 +418,11 @@ public class CustomerBLO {
         return 0;
     }
 
+    /**
+     * [Give the description for method].
+     * @param uid
+     * @return
+     */
     public static long getXuOnline(String uid) {
         Customer customer = custDao.getCustomerById(uid);
         if (customer != null) {
@@ -381,9 +433,19 @@ public class CustomerBLO {
 
     // public boolean isXuOnline()
 
+    /**
+     * [Give the description for method].
+     * @param id
+     * @return
+     */
     public static String getNameStatusByID(String id) {
         return orderDao.getOrderStatusById(id);
     }
+    /**
+     * [Give the description for method].
+     * @param id
+     * @return
+     */
     public static boolean deleteFoodCustomer(Long id) {
         OrderBill bill = orderDao.getOrderBillById(id);
         if (bill != null) {
@@ -394,15 +456,5 @@ public class CustomerBLO {
         return false;
     }
 
-    /*
-     * public static long updateXuOnline(String idCustomer, String idXu){ IDXU xu = IDXUBLO.getXuById(idXu); long money
-     * = 0; //chua nap if(xu.getFlag().equals("true")){ money = xu.getMoney(); } //update xuOnline for customer Customer
-     * customer = getCustomerByID(idCustomer);
-     * 
-     * customer.setXuOnline(money); if(updatecustomer(customer)){ xu.setFlag("false"); IDXUBLO.updateXu(xu); } return
-     * money; } public boolean isCheckoutXuOnline(long money, long moneyXu){
-     * 
-     * if(moneyXu>=money){ return true; } else{ return false; } }
-     */
 
 }

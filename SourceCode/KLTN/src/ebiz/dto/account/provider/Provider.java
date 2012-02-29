@@ -27,64 +27,63 @@ import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
 /**
- *
- * @author ThuyNT
- * Provider
+ * @author ThuyNT Provider
  */
 @PersistenceCapable
-public class Provider implements Serializable{
-	/**  . */
+public class Provider implements Serializable {
+    /** . */
     private static final long serialVersionUID = 1L;
-    /**  . providerId*/
+    /** . providerId */
     @PrimaryKey
     @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
     private String providerId;
-    /**  . providerPassword*/
+    /** . providerPassword */
     @Persistent
     private String providerPassword;
-    /**  . providerName*/
+    /** . providerName */
     @Persistent
     private String providerName;
-    /**  . providerGender*/
+    /** . providerGender */
     @Persistent
     private String providerGender;
-    /**  . providerBirth*/
+    /** . providerBirth */
     @Persistent
     private Date providerBirth;
-    /**  . providerEmail*/
+    /** . providerEmail */
     @Persistent
     private String providerEmail;
-    /**  . providerPhone*/
+    /** . providerPhone */
     @Persistent
     private String providerPhone;
-    /**  . providerAddress*/
+    /** . providerAddress */
     private String providerAddress;
-    /**  . providerAccountPayment*/
+    /** . providerAccountPayment */
     @Persistent
     private String providerAccountPayment;
-    /**  . xuOnline*/
+    /** . xuOnline */
     @Persistent
     private long xuOnline;
-    /**  . authentication*/
+    /** . authentication */
     @Persistent
     private String authentication;
-    /**  . loginDate*/
+    /** . loginDate */
     @Persistent
     private Date loginDate;
-    /**  . dateRegister*/
+    /** . dateRegister */
     @Persistent
     private Date dateRegister;
-    /**  . detail*/
+    /** . detail */
     @Persistent
     private String detail;
-    /**  . isActive*/
+    /** . isActive */
     private String url;
     @Persistent
-    private boolean isActive;  //required
+    private boolean isActive; // required
     @Persistent
-    private String activeCode;  //required
+    private String activeCode; // required
     /**
      * Get value of providerId.
+     * 
      * @return the providerId
      */
     public String getProviderId() {
@@ -92,6 +91,7 @@ public class Provider implements Serializable{
     }
     /**
      * Set the value for providerId.
+     * 
      * @param providerId the providerId to set
      */
     public void setProviderId(String providerId) {
@@ -99,6 +99,7 @@ public class Provider implements Serializable{
     }
     /**
      * Get value of providerPassword.
+     * 
      * @return the providerPassword
      */
     public String getProviderPassword() {
@@ -106,6 +107,7 @@ public class Provider implements Serializable{
     }
     /**
      * Set the value for providerPassword.
+     * 
      * @param providerPassword the providerPassword to set
      */
     public void setProviderPassword(String providerPassword) {
@@ -113,6 +115,7 @@ public class Provider implements Serializable{
     }
     /**
      * Get value of providerName.
+     * 
      * @return the providerName
      */
     public String getProviderName() {
@@ -120,6 +123,7 @@ public class Provider implements Serializable{
     }
     /**
      * Set the value for providerName.
+     * 
      * @param providerName the providerName to set
      */
     public void setProviderName(String providerName) {
@@ -127,6 +131,7 @@ public class Provider implements Serializable{
     }
     /**
      * Get value of providerGender.
+     * 
      * @return the providerGender
      */
     public String getProviderGender() {
@@ -134,6 +139,7 @@ public class Provider implements Serializable{
     }
     /**
      * Set the value for providerGender.
+     * 
      * @param providerGender the providerGender to set
      */
     public void setProviderGender(String providerGender) {
@@ -141,6 +147,7 @@ public class Provider implements Serializable{
     }
     /**
      * Get value of providerBirth.
+     * 
      * @return the providerBirth
      */
     public Date getProviderBirth() {
@@ -148,6 +155,7 @@ public class Provider implements Serializable{
     }
     /**
      * Set the value for providerBirth.
+     * 
      * @param providerBirth the providerBirth to set
      */
     public void setProviderBirth(Date providerBirth) {
@@ -155,6 +163,7 @@ public class Provider implements Serializable{
     }
     /**
      * Get value of providerEmail.
+     * 
      * @return the providerEmail
      */
     public String getProviderEmail() {
@@ -162,6 +171,7 @@ public class Provider implements Serializable{
     }
     /**
      * Set the value for providerEmail.
+     * 
      * @param providerEmail the providerEmail to set
      */
     public void setProviderEmail(String providerEmail) {
@@ -169,6 +179,7 @@ public class Provider implements Serializable{
     }
     /**
      * Get value of providerPhone.
+     * 
      * @return the providerPhone
      */
     public String getProviderPhone() {
@@ -176,6 +187,7 @@ public class Provider implements Serializable{
     }
     /**
      * Set the value for providerPhone.
+     * 
      * @param providerPhone the providerPhone to set
      */
     public void setProviderPhone(String providerPhone) {
@@ -183,6 +195,7 @@ public class Provider implements Serializable{
     }
     /**
      * Get value of providerAddress.
+     * 
      * @return the providerAddress
      */
     public String getProviderAddress() {
@@ -190,6 +203,7 @@ public class Provider implements Serializable{
     }
     /**
      * Set the value for providerAddress.
+     * 
      * @param providerAddress the providerAddress to set
      */
     public void setProviderAddress(String providerAddress) {
@@ -197,6 +211,7 @@ public class Provider implements Serializable{
     }
     /**
      * Get value of providerAccountPayment.
+     * 
      * @return the providerAccountPayment
      */
     public String getProviderAccountPayment() {
@@ -204,6 +219,7 @@ public class Provider implements Serializable{
     }
     /**
      * Set the value for providerAccountPayment.
+     * 
      * @param providerAccountPayment the providerAccountPayment to set
      */
     public void setProviderAccountPayment(String providerAccountPayment) {
@@ -211,6 +227,7 @@ public class Provider implements Serializable{
     }
     /**
      * Get value of xuOnline.
+     * 
      * @return the xuOnline
      */
     public long getXuOnline() {
@@ -218,6 +235,7 @@ public class Provider implements Serializable{
     }
     /**
      * Set the value for xuOnline.
+     * 
      * @param xuOnline the xuOnline to set
      */
     public void setXuOnline(long xuOnline) {
@@ -225,6 +243,7 @@ public class Provider implements Serializable{
     }
     /**
      * Get value of authentication.
+     * 
      * @return the authentication
      */
     public String getAuthentication() {
@@ -232,6 +251,7 @@ public class Provider implements Serializable{
     }
     /**
      * Set the value for authentication.
+     * 
      * @param authentication the authentication to set
      */
     public void setAuthentication(String authentication) {
@@ -239,6 +259,7 @@ public class Provider implements Serializable{
     }
     /**
      * Get value of loginDate.
+     * 
      * @return the loginDate
      */
     public Date getLoginDate() {
@@ -246,6 +267,7 @@ public class Provider implements Serializable{
     }
     /**
      * Set the value for loginDate.
+     * 
      * @param loginDate the loginDate to set
      */
     public void setLoginDate(Date loginDate) {
@@ -254,6 +276,7 @@ public class Provider implements Serializable{
 
     /**
      * Get value of isActive.
+     * 
      * @return the isActive
      */
     public boolean isActive() {
@@ -261,6 +284,7 @@ public class Provider implements Serializable{
     }
     /**
      * Set the value for isActive.
+     * 
      * @param isActive the isActive to set
      */
     public void setActive(boolean isActive) {
@@ -268,6 +292,7 @@ public class Provider implements Serializable{
     }
     /**
      * Get value of dateRegister.
+     * 
      * @return the dateRegister
      */
     public Date getDateRegister() {
@@ -275,6 +300,7 @@ public class Provider implements Serializable{
     }
     /**
      * Set the value for dateRegister.
+     * 
      * @param dateRegister the dateRegister to set
      */
     public void setDateRegister(Date dateRegister) {
@@ -282,6 +308,7 @@ public class Provider implements Serializable{
     }
     /**
      * Get value of detail.
+     * 
      * @return the detail
      */
     public String getDetail() {
@@ -289,6 +316,7 @@ public class Provider implements Serializable{
     }
     /**
      * Set the value for detail.
+     * 
      * @param detail the detail to set
      */
     public void setDetail(String detail) {
@@ -300,16 +328,16 @@ public class Provider implements Serializable{
     public void setActiveCode(String activeCode) {
         this.activeCode = activeCode;
     }
-	/**
-	 * @return the url
-	 */
-	public String getUrl() {
-		return url;
-	}
-	/**
-	 * @param url the url to set
-	 */
-	public void setUrl(String url) {
-		this.url = url;
-	}
+    /**
+     * @return the url
+     */
+    public String getUrl() {
+        return url;
+    }
+    /**
+     * @param url the url to set
+     */
+    public void setUrl(String url) {
+        this.url = url;
+    }
 }

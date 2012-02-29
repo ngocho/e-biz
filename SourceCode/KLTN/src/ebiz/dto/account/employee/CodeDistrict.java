@@ -20,7 +20,6 @@ package ebiz.dto.account.employee;
 
 /**
  * @author ThuyNT
- *
  */
 public class CodeDistrict {
     private String id;

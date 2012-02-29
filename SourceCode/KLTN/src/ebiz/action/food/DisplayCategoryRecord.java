@@ -59,7 +59,7 @@ public class DisplayCategoryRecord extends BaseAction {
         HttpSession se = request.getSession();
         List<FoodForm> foods = new ArrayList<FoodForm>();
         List<String> numberPageList = new ArrayList<String>();
-        String providerId =(String)se.getAttribute("ProviderFood");
+        String providerId = (String) se.getAttribute("ProviderFood");
         ProductVO vo = (ProductVO) se.getAttribute(CommonConstant.PRODUCTVO);
         int record = CommonConstant.DEFAULT_RECORD;
         String limit;
@@ -93,7 +93,7 @@ public class DisplayCategoryRecord extends BaseAction {
         }
         String filterCol = CommonConstant.FOOD_TYPE;
         foods = FoodBLO.getFoodListCategory(col, numberPageList, order, record, page, filterCol, vo.getTypeProduct(),
-                attr, price,providerId);
+                attr, price, providerId);
         // save in Session
         se.setAttribute(CommonConstant.FOOD_CATEGORY_F, foods);
         vo.setLimit(record);

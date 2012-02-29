@@ -40,7 +40,7 @@ import ebiz.util.CommonUtil;
 public class XuTransfer extends BaseAction {
     /**
      * [XuTransfer].
-     * 
+     *
      * @param mapping ActionMapping
      * @param form ActionForm
      * @param request HttpServletRequest
@@ -99,10 +99,9 @@ public class XuTransfer extends BaseAction {
                     out.println("4" + " ");
                 }
             }
-        }
-        else{
-        // required madatory
-        out.println("5" + " ");
+        } else {
+            // required madatory
+            out.println("5" + " ");
         }
         return null;
     }

@@ -40,7 +40,7 @@ import ebiz.util.CommonUtil;
 public class UploadProduct extends BaseAction {
     /**
      * [UploadProduct ].
-     * 
+     *
      * @param mapping ActionMapping
      * @param form ActionForm
      * @param request HttpServletRequest
@@ -105,7 +105,7 @@ public class UploadProduct extends BaseAction {
                 // updated product
                 Food food = foodForm.getFood();
                 food.setFoodId(foodForm.getId());
-                                                          
+
                 boolean flag = FoodBLO.updateFood(food);
                 if (flag) {
                     // remove attr

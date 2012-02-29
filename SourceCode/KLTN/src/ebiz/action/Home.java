@@ -41,7 +41,7 @@ import ebiz.util.CommonConstant;
 public class Home extends BaseAction {
     /**
      * [Home action].
-     * 
+     *
      * @param mapping ActionMapping
      * @param form ActionForm
      * @param request HttpServletRequest

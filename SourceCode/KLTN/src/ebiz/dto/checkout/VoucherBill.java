@@ -180,6 +180,7 @@ public class VoucherBill implements Serializable {
 
     /**
      * Get value of status.
+     * 
      * @return the status
      */
     public String getStatus() {
@@ -188,6 +189,7 @@ public class VoucherBill implements Serializable {
 
     /**
      * Set the value for status.
+     * 
      * @param status the status to set
      */
     public void setStatus(String status) {

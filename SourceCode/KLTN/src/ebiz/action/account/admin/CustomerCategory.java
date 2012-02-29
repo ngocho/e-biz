@@ -72,8 +72,6 @@ public class CustomerCategory extends BaseAction {
         }
         pageList = SearchBLO.paging(formList.size());
         formList = (List<LoginForm>) SearchBLO.getPage(formList, pageIndex);
-        // // update status of OrderBill
-        // login.setIsCustomerBill(status);
         // save Bill in session to display
         se.setAttribute(CommonConstant.ADMIN_CUSTOMER, formList);
         // save PagingList in session to display

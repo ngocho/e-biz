@@ -43,7 +43,7 @@ public class VoucherCreation extends BaseAction {
 
     /**
      * [Voucher(Customer)].
-     * 
+     *
      * @param mapping ActionMapping
      * @param form ActionForm
      * @param request HttpServletRequest

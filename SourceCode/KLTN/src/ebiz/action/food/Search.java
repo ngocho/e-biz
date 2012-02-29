@@ -41,7 +41,7 @@ import ebiz.util.CommonConstant;
 public class Search extends BaseAction {
     /**
      * [Search Food ].
-     * 
+     *
      * @param mapping ActionMapping
      * @param form ActionForm
      * @param request HttpServletRequest

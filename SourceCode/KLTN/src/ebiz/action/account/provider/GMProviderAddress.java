@@ -37,49 +37,43 @@ import ebiz.util.CommonConstant;
  * @author ThuyNT
  */
 public class GMProviderAddress extends BaseAction {
-	/**
-	 * [GMProviderAddress ].
-	 * 
-	 * @param mapping
-	 *            ActionMapping
-	 * @param form
-	 *            ActionForm
-	 * @param request
-	 *            HttpServletRequest
-	 * @param response
-	 *            HttpServletResponse
-	 * @return ActionForward
-	 * @throws Exception
-	 *             Exception
-	 * @see ActionForward Struts1 Framework
-	 */
-	public ActionForward execute(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
+    /**
+     * [GMProviderAddress ].
+     *
+     * @param mapping ActionMapping
+     * @param form ActionForm
+     * @param request HttpServletRequest
+     * @param response HttpServletResponse
+     * @return ActionForward
+     * @throws Exception Exception
+     * @see ActionForward Struts1 Framework
+     */
+    public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
+            HttpServletResponse response) throws Exception {
 
-		String id = request.getParameter("id");
-		                                          
-		HttpSession se = request.getSession();
-		if (id != null) {
-			Provider provider = ProviderBLO.getProviderById(id);
-			String add = provider.getProviderAddress();
-			LoginForm login = (LoginForm) se.getAttribute(CommonConstant.USER);
-			if (login != null) {
-				                                          
-				se.setAttribute("startProvider", CustomerBLO.toStringAddres(
-						login.getHomeNumber(), login.getBuildingName(),
-						login.getStreetName(), login.getWardName(),
-						login.getDistrictName()));
-			} else {
-				se.setAttribute("startProvider", "Bến Thành");
-			}
-			se.setAttribute("endProvider", add);
-			se.setAttribute("nameProvider", provider.getProviderName());
+        String id = request.getParameter("id");
 
-		}
-		se.setAttribute("gmDisplay", "1");
-		return mapping.findForward(SUCCESS);
+        HttpSession se = request.getSession();
+        if (id != null) {
+            Provider provider = ProviderBLO.getProviderById(id);
+            String add = provider.getProviderAddress();
+            LoginForm login = (LoginForm) se.getAttribute(CommonConstant.USER);
+            if (login != null) {
 
-	}
+                se.setAttribute(
+                        "startProvider",
+                        CustomerBLO.toStringAddres(login.getHomeNumber(), login.getBuildingName(),
+                                login.getStreetName(), login.getWardName(), login.getDistrictName()));
+            } else {
+                se.setAttribute("startProvider", "Bến Thành");
+            }
+            se.setAttribute("endProvider", add);
+            se.setAttribute("nameProvider", provider.getProviderName());
+
+        }
+        se.setAttribute("gmDisplay", "1");
+        return mapping.findForward(SUCCESS);
+
+    }
 
 }

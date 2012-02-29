@@ -40,7 +40,7 @@ public class UploadImage extends BaseAction {
     private BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
     /**
      * [UploadImage Action].
-     * 
+     *
      * @param mapping ActionMapping
      * @param form ActionForm
      * @param request HttpServletRequest
