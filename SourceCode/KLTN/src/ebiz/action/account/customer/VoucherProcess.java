@@ -57,25 +57,28 @@ public class VoucherProcess extends BaseAction {
         LoginForm user = (LoginForm) se.getAttribute(CommonConstant.USER);
         if (type.equals("home")) {
             screen = "voucher_info";
+            se.setAttribute("typeCheckout", "home");
         } else if (type.equals("xu")) {
             // test xu account money : enough?
             OrderBillForm voucherForm = (OrderBillForm) se.getAttribute("voucherForm");
             boolean flag = CustomerBLO.isXuOnline(user.getLoginId(), voucherForm.getSumPrice());
             if (flag) {
+                se.setAttribute("typeCheckout", "home");
                 // if enough
                 screen = "voucher_shipping";
             } else {
                 // else
                 // display message : choose different way or input money into xu account
                 ActionMessages messages = new ActionMessages();
-                messages.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage("login.password.wrong"));
+                messages.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage("xu.notEnough"));
                 saveMessages(request, messages);
                 screen = "voucher_optional";
                 se.setAttribute("inputXu", "xu");
             }
-        } else {
-            screen = "voucher_shipping";
         }
+//        } else if("nganluong".equals(type)) {
+//            screen = "voucher_shipping";
+//        }
         ActionForward forward = mapping.getInputForward();
         forward.setPath(screen);
         return forward;

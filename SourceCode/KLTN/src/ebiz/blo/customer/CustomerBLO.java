@@ -101,6 +101,7 @@ public class CustomerBLO {
     public static VoucherBill saveVoucher(VoucherBill voucher) {
         return orderDao.saveVoucherBill(voucher);
     }
+    
     public static VoucherBill getVoucherByID(Long idVoucher) {
         return orderDao.getVoucherByID(idVoucher);
     }
