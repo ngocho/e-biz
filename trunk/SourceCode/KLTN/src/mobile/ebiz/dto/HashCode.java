@@ -8,7 +8,7 @@ import java.util.Random;
 /**
  * @author nthanhphong
  */
-public class hashCode {
+public class HashCode {
     /**
      * [hashID].
      * @param len int
