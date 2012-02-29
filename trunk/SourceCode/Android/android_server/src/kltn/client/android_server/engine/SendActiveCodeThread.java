@@ -36,7 +36,7 @@ public class SendActiveCodeThread extends TimerTask {
                     public void run() {
                         SendSMS sendsms = new SendSMS();
                         ActivecodeObject item = dataActiveCode.get(pos);
-                        sendsms.sendMessage("+841655011503", "Ma chung thuc cua ban la: "+item.getCode());
+                        sendsms.sendMessage(item.getPhone(), "Ma chung thuc cua ban la: "+item.getCode());
                         System.out.println("send sms active code to " + item.getPhone());
                         System.gc();
                     }
