@@ -30,11 +30,11 @@ import android.widget.EditText;
 /**
  * @author NThanhPhong
  */
-public class SettingAppActivity extends Activity implements OnClickListener{
+public class SettingAppActivity extends Activity implements OnClickListener {
 
     /**
      * [Explain the description for this method here].
-     * @param savedInstanceState
+     * @param savedInstanceState Bundle
      * @see android.app.Activity#onCreate(android.os.Bundle)
      */
     @Override
@@ -49,11 +49,13 @@ public class SettingAppActivity extends Activity implements OnClickListener{
         mBack.setOnClickListener(this);
         mServer.setText(PrefUtil.getStringPref(this, "linkserver"));
     }
+    /** . */
     private EditText mServer;
+    /** . */
     private Button mOk, mBack;
     /**
      * [Explain the description for this method here].
-     * @param v
+     * @param v View
      * @see android.view.View.OnClickListener#onClick(android.view.View)
      */
     @Override
@@ -63,7 +65,7 @@ public class SettingAppActivity extends Activity implements OnClickListener{
                 PrefUtil.setPref(SettingAppActivity.this, "linkserver", mServer.getText().toString());
                 finish();
                 break;
-            case R.id.setting_back:
+            case R.id.setting_back :
                 finish();
                 break;
             default :

@@ -13,16 +13,15 @@ import android.widget.TextView;
 
 /**
  * @author NThanhPhong
- *
  */
 public class ContentTab extends BaseTab {
     // ========================================================================================================
 
-    /**  . */
+    /** . */
     private JSONObject data;
-    /**  . */
+    /** . */
     private TextView content;
-    /**  . */
+    /** . */
     private TextView cooking;
 
     /**

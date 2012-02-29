@@ -81,11 +81,10 @@ public class AccountAddXuActivity extends Activity implements OnDismissListener 
      * @return 0 - not correct product key; 1 - successful; -1 - username customer not exist
      */
     public String getResultXu(String username, String productkey) {
-        String json = mEngine.mQueryURL("http://16.test-kltn1.appspot.com/getActiveXU.vn?flag=stp&content=" + username
-                + "@" + productkey);
+        String json = mEngine.mQueryURL(PrefUtil.getStringPref(AccountAddXuActivity.this, "linkserver")
+                + "/getActiveXU.vn?flag=stp&content=" + username + "@" + productkey);
         return parseJSONXu(json);
     }
-
     /**
      * @param json - parsejson
      * @return 0 - not correct product key; 1 - successful; -1 - username customer not exist

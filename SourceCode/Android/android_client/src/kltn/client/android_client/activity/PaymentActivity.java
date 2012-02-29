@@ -38,19 +38,19 @@ public class PaymentActivity extends Activity implements OnClickListener {
         mBest.setOnClickListener(this);
         mBrowser.setOnClickListener(this);
     }
-    /**  . */
+    /** . */
     private Button mBack;
-    /**  . */
+    /** . */
     private LinearLayout mAddXu;
-    /**  . */
+    /** . */
     private LinearLayout mTransferXu;
-    /**  . */
+    /** . */
     private LinearLayout mHome;
-    /**  . */
+    /** . */
     private LinearLayout mDeals;
-    /**  . */
+    /** . */
     private LinearLayout mBest;
-    /**  . */
+    /** . */
     private LinearLayout mBrowser;
     /*
      * (non-Javadoc)

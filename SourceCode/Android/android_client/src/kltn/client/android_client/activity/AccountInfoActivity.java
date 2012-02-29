@@ -1,16 +1,17 @@
 package kltn.client.android_client.activity;
 
-import org.json.JSONObject;
-
 import kltn.client.android_client.PrefUtil;
 import kltn.client.android_client.R;
 import kltn.client.android_client.engine.Engine;
+
+import org.json.JSONObject;
+
 import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.DialogInterface.OnDismissListener;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;

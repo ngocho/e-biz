@@ -11,17 +11,16 @@ import android.widget.TextView;
 
 /**
  * @author NThanhPhong
- *
  */
 public class ProviderTab extends BaseTab {
     // ======================================================================================================
-    /**  . */
+    /** . */
     private int idProvider;
-    /**  . */
+    /** . */
     private TextView mNameProvider;
-    /**  . */
+    /** . */
     private Button mAddress;
-    /**  . */
+    /** . */
     private Button mPhone;
 
     // ======================================================================================================

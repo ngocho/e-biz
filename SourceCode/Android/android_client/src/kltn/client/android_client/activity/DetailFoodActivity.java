@@ -2,8 +2,6 @@ package kltn.client.android_client.activity;
 
 import java.util.Calendar;
 
-import org.json.JSONObject;
-
 import kltn.client.android_client.R;
 import kltn.client.android_client.activity.tab.BaseTab;
 import kltn.client.android_client.activity.tab.CommentTab;
@@ -14,6 +12,9 @@ import kltn.client.android_client.engine.CommonUtil;
 import kltn.client.android_client.engine.Engine;
 import kltn.client.android_client.engine.FavouriteEngine;
 import kltn.client.android_client.model.FavoriteItem;
+
+import org.json.JSONObject;
+
 import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;

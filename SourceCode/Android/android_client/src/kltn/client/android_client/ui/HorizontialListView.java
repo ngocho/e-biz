@@ -17,37 +17,36 @@ import android.widget.Scroller;
 
 /**
  * @author NThanhPhong
- *
  */
 public class HorizontialListView extends AdapterView<ListAdapter> {
 
-    /**  . */
+    /** . */
     public boolean mAlwaysOverrideTouch = true;
-    /**  . */
+    /** . */
     protected ListAdapter mAdapter;
-    /**  . */
+    /** . */
     private int mLeftViewIndex = -1;
-    /**  . */
+    /** . */
     private int mRightViewIndex = 0;
-    /**  . */
+    /** . */
     protected int mCurrentX;
-    /**  . */
+    /** . */
     protected int mNextX;
-    /**  . */
+    /** . */
     private int mMaxX = Integer.MAX_VALUE;
-    /**  . */
+    /** . */
     private int mDisplayOffset = 0;
-    /**  . */
+    /** . */
     protected Scroller mScroller;
-    /**  . */
+    /** . */
     private GestureDetector mGesture;
-    /**  . */
+    /** . */
     private Queue<View> mRemovedViewQueue = new LinkedList<View>();
-    /**  . */
+    /** . */
     private OnItemSelectedListener mOnItemSelected;
-    /**  . */
+    /** . */
     private OnItemClickListener mOnItemClicked;
-    /**  . */
+    /** . */
     private boolean mDataChanged = false;
 
     /**
@@ -83,7 +82,7 @@ public class HorizontialListView extends AdapterView<ListAdapter> {
         mOnItemClicked = listener;
     }
 
-    /**  . */
+    /** . */
     private DataSetObserver mDataObserver = new DataSetObserver() {
 
         @Override
@@ -351,7 +350,7 @@ public class HorizontialListView extends AdapterView<ListAdapter> {
         return true;
     }
 
-    /**  . */
+    /** . */
     private OnGestureListener mOnGesture = new GestureDetector.SimpleOnGestureListener() {
 
         @Override

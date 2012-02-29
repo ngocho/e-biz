@@ -5,7 +5,6 @@ import android.content.SharedPreferences;
 
 /**
  * @author NThanhPhong
- *
  */
 public abstract class PrefsItem {
 
@@ -30,7 +29,7 @@ public abstract class PrefsItem {
      * [Give the description for method].
      */
     public void unset() {
-        SharedPreferences settings = context.getSharedPreferences(prefsname, Context.MODE_PRIVATE);
+        SharedPreferences settings = context.getSharedPreferences(PREFSNAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = settings.edit();
         editor.remove(getName());
     }
@@ -46,10 +45,10 @@ public abstract class PrefsItem {
      */
     protected abstract void setPrefValue(Object value);
 
-    /**  . */
-    public static final String prefsname = "kltn_prefs";
-    /**  . */
+    /** . */
+    public static final String PREFSNAME = "kltn_prefs";
+    /** . */
     private String name;
-    /**  . */
+    /** . */
     protected Context context;
 }

@@ -13,13 +13,12 @@ import android.util.DisplayMetrics;
 
 /**
  * @author NThanhPhong
- *
  */
 public class SplashScreenActivity extends Activity {
-    /**  . */
+    /** . */
     public static final int HANDLER_MSG_WAIT = 1;
     // time in mili, which is how long we display splash screen
-    /**  . */
+    /** . */
     public static final int SPLASH_SCREEN_DELAYED = 1000;
 
     // Called when the activity is first created.
@@ -49,7 +48,7 @@ public class SplashScreenActivity extends Activity {
     public App getApp() {
         return (App) getApplication();
     }
-    /**  . */
+    /** . */
     private Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {

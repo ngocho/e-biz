@@ -25,7 +25,7 @@ public class BooleanPrefs extends PrefsItem {
     @Override
     public void setPrefValue(Object value) {
         Boolean v = (Boolean) value;
-        SharedPreferences settings = context.getSharedPreferences(prefsname, Context.MODE_PRIVATE);
+        SharedPreferences settings = context.getSharedPreferences(PREFSNAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = settings.edit();
         editor.putBoolean(getName(), v.booleanValue());
         editor.commit();
@@ -34,7 +34,7 @@ public class BooleanPrefs extends PrefsItem {
     @Override
     public Object getPrefValue() {
         // TODO Auto-generated method stub
-        SharedPreferences settings = context.getSharedPreferences(prefsname, Context.MODE_PRIVATE);
+        SharedPreferences settings = context.getSharedPreferences(PREFSNAME, Context.MODE_PRIVATE);
         boolean v = settings.getBoolean(getName(), defValue);
         return v;
     }
@@ -56,6 +56,6 @@ public class BooleanPrefs extends PrefsItem {
         setPrefValue(value);
     }
 
-    /**  . */
+    /** . */
     private boolean defValue;
 }

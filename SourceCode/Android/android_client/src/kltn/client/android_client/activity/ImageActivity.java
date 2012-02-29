@@ -51,7 +51,7 @@ public class ImageActivity extends Activity {
 
         }
     };
-    /**  . */
+    /** . */
     private OnClickListener backAction = new OnClickListener() {
 
         @Override
@@ -62,12 +62,11 @@ public class ImageActivity extends Activity {
     };
     /**
      * @author NThanhPhong
-     *
      */
     public class AddImgAdp extends BaseAdapter {
-        /**  . */
+        /** . */
         private int mGalItemBg;
-        /**  . */
+        /** . */
         private Context cont;
 
         /**
@@ -120,18 +119,20 @@ public class ImageActivity extends Activity {
         public View getView(int position, View convertView, ViewGroup parent) {
             ImageView imgView = new ImageView(cont);
             // imgView.setImageResource(Imgid[position]);
-            imgView.setLayoutParams(new Gallery.LayoutParams(80, 70));
+            imgView.setLayoutParams(new Gallery.LayoutParams(SIZE, SIZE));
             imgView.setScaleType(ImageView.ScaleType.FIT_XY);
             imgView.setBackgroundResource(R.drawable.back);
             return imgView;
         }
     }
-    /**  . */
+    /** . */
+    private static final int SIZE = 100;
+    /** . */
     private Gallery gallery;
-    /**  . */
+    /** . */
     private Button back, save;
-    /**  . */
+    /** . */
     private TextView number;
-    /**  . */
+    /** . */
     private ImageView image;
 }

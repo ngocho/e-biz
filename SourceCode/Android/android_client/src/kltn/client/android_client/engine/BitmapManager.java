@@ -23,16 +23,16 @@ import android.widget.ImageView;
  * @author NThanhPhong
  */
 public enum BitmapManager {
-    /**  . */
+    /** . */
     INSTANCE;
 
-    /**  . */
+    /** . */
     private final Map<String, SoftReference<Bitmap>> cache;
-    /**  . */
+    /** . */
     private final ExecutorService pool;
-    /**  . */
+    /** . */
     private Map<ImageView, String> imageViews = Collections.synchronizedMap(new WeakHashMap<ImageView, String>());
-    /**  . */
+    /** . */
     private Bitmap placeholder;
     /**
      * 

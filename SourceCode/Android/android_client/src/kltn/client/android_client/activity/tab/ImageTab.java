@@ -2,11 +2,12 @@
 
 package kltn.client.android_client.activity.tab;
 
-import org.json.JSONObject;
-
 import kltn.client.android_client.R;
 import kltn.client.android_client.engine.BitmapManager;
 import kltn.client.android_client.engine.Engine;
+
+import org.json.JSONObject;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -20,16 +21,15 @@ import android.widget.ImageView;
 
 /**
  * @author NThanhPhong
- *
  */
 public class ImageTab extends BaseTab {
     // ======================================================================================================
 
-    /**  . */
+    /** . */
     private JSONObject mData;
-    /**  . */
+    /** . */
     private Gallery mGallery;
-    /**  . */
+    /** . */
     private Engine mEngine;
 
     // ======================================================================================================
@@ -66,12 +66,11 @@ public class ImageTab extends BaseTab {
     }
     /**
      * @author NThanhPhong
-     *
      */
     public class AddImgAdp extends BaseAdapter {
-        /**  . */
+        /** . */
         private int mGalItemBg;
-        /**  . */
+        /** . */
         private Context cont;
 
         /**
@@ -127,7 +126,8 @@ public class ImageTab extends BaseTab {
             imgView.setScaleType(ImageView.ScaleType.FIT_XY);
             imgView.setBackgroundResource(R.drawable.loading);
             try {
-                BitmapManager.INSTANCE.loadBitmap(mEngine.mURLImage + mData.getString("image"), imgView, 250, 250);
+                BitmapManager.INSTANCE.loadBitmap(mEngine.getUrlImage(this.cont) + mData.getString("image"), imgView,
+                        250, 250);
             } catch (Exception e) {
                 System.out.println(e);
             }

@@ -11,14 +11,13 @@ import android.widget.ListView;
 
 /**
  * @author NThanhPhong
- *
  */
 public class CommentTab extends BaseTab {
     // ======================================================================================================
 
-    /**  . */
+    /** . */
     private ListView mListView;
-    /**  . */
+    /** . */
     private Button mEditButton;
 
     // ======================================================================================================

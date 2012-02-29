@@ -2,7 +2,6 @@ package kltn.client.android_client.ui;
 
 /**
  * @author NThanhPhongs
- *
  */
 public interface FlowIndicator extends ViewSwitchListener {
     /**

@@ -19,7 +19,6 @@
 package kltn.client.android_client.activity;
 
 import kltn.client.android_client.App;
-import android.R;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
@@ -38,7 +37,7 @@ public class SettingActivity extends PreferenceActivity {
     protected void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
-        //addPreferencesFromResource(R.xml.preferences);
+        // addPreferencesFromResource(R.xml.preferences);
     }
     private Preference mVolume;
     private Preference mVolumeReminder;
