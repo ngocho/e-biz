@@ -1,6 +1,3 @@
-/**
- * 
- */
 package mobile.ebiz.dto;
 
 import java.io.Serializable;
@@ -12,32 +9,45 @@ import javax.jdo.annotations.PrimaryKey;
 
 /**
  * @author nthanhphong
- *
- *
  */
 @PersistenceCapable
-public class PhoneXU implements Serializable{
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	@PrimaryKey
+public class PhoneXU implements Serializable {
+    /** . */
+    private static final long serialVersionUID = 1L;
+    /** . */
+    @PrimaryKey
     @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
-	private String phone;
-	@Persistent
-	private long money;
-	
-	public void setPhone(String mphone){
-		this.phone=mphone;
-	}
-	public String getPhone(){
-		return phone;
-	}
-	public void setMoney(long mmoney){
-		this.money=mmoney;
-	}
-	public long getMoney(){
-		return money;
-	}
+    private String phone;
+    /** . */
+    @Persistent
+    private long money;
+
+    /**
+     * [Give the description for method].
+     * @param mphone String
+     */
+    public void setPhone(String mphone) {
+        this.phone = mphone;
+    }
+    /**
+     * [Give the description for method].
+     * @return String
+     */
+    public String getPhone() {
+        return phone;
+    }
+    /**
+     * [Give the description for method].
+     * @param mmoney long
+     */
+    public void setMoney(long mmoney) {
+        this.money = mmoney;
+    }
+    /**
+     * [Give the description for method].
+     * @return long
+     */
+    public long getMoney() {
+        return money;
+    }
 }

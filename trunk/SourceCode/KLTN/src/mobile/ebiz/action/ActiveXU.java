@@ -105,7 +105,7 @@ public class ActiveXU extends BaseAction {
         String[] listitem = content.split("@");
         String result = "false";
         try {
-            IDXUBLO.CreateListXu();
+            IDXUBLO.createListXu();
             Customer customer = CustomerBLO.getCustomerByID(listitem[0]);
             if (customer != null) {
                 System.out.println("truoc : " + customer.getXuOnline());
@@ -146,7 +146,7 @@ public class ActiveXU extends BaseAction {
             // tem.setId("1234567890");
             // tem.setMoney((long)50000);
             // PMF.save(tem);
-            IDXUBLO.CreateListXu();
+            IDXUBLO.createListXu();
             Customer customer = CustomerBLO.getCustomerByID(listitem[0]);
             if (customer != null) {
                 System.out.println("truoc : " + customer.getXuOnline());

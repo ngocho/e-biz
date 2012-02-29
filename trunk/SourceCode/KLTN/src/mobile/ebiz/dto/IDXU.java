@@ -27,38 +27,62 @@ import javax.jdo.annotations.PrimaryKey;
 
 /**
  * @author nthanhphong
- *
  */
 @PersistenceCapable
-public class IDXU implements Serializable{
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	@PrimaryKey
+public class IDXU implements Serializable {
+    /**  . */
+    private static final long serialVersionUID = 1L;
+    /** . */
+    @PrimaryKey
     @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
-	private String id;
-	@Persistent
+    private String id;
+    /** . */
+    @Persistent
     private Long money;
-	@Persistent
-	private String flag;
-	
-	public void setFlag(String flag){
-		this.flag=flag;
-	}
-	public String getFlag(){
-		return flag;
-	}
-	public String getId(){
-		return id;
-	}
-	public Long getMoney(){
-		return money;
-	}
-	public void setId(String mid){
-		this.id=mid;
-	}
-	public void setMoney(Long mmoney){
-		this.money=mmoney;
-	}
+    /** . */
+    @Persistent
+    private String flag;
+
+    /**
+     * [Give the description for method].
+     * @param flag String
+     */
+    public void setFlag(String flag) {
+        this.flag = flag;
+    }
+    /**
+     * [Give the description for method].
+     * @return String
+     */
+    public String getFlag() {
+        return flag;
+    }
+    /**
+     * [Give the description for method].
+     * @return String
+     */
+    public String getId() {
+        return id;
+    }
+    /**
+     * [Give the description for method].
+     * @return Long
+     */
+    public Long getMoney() {
+        return money;
+    }
+    /**
+     * [Give the description for method].
+     * @param mid String
+     */
+    public void setId(String mid) {
+        this.id = mid;
+    }
+    /**
+     * [Give the description for method].
+     * @param mmoney Long
+     */
+    public void setMoney(Long mmoney) {
+        this.money = mmoney;
+    }
 }

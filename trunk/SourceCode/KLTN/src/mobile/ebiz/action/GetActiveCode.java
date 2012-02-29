@@ -8,8 +8,6 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import mobile.ebiz.blo.MobileBLO;
-
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
@@ -18,7 +16,6 @@ import com.google.appengine.repackaged.org.json.JSONException;
 import com.google.appengine.repackaged.org.json.JSONObject;
 
 import ebiz.action.BaseAction;
-import ebiz.blo.customer.CustomerBLO;
 import ebiz.dao.gae.PMF;
 import ebiz.dto.account.provider.Provider;
 
@@ -45,7 +42,7 @@ public class GetActiveCode extends BaseAction {
         List<JSONObject> objList = new ArrayList<JSONObject>();
         try {
 
-            objList = GetVoucherList();
+            objList = getVoucherList();
             out = response.getWriter();
             out.println(objList);
             out.flush();
@@ -64,7 +61,7 @@ public class GetActiveCode extends BaseAction {
      * @throws JSONException JSONException
      */
     @SuppressWarnings("unchecked")
-    public List<JSONObject> GetVoucherList() throws JSONException {
+    public List<JSONObject> getVoucherList() throws JSONException {
         List<JSONObject> objList = new ArrayList<JSONObject>();
         List<Provider> listprovider = (List<Provider>) PMF.getObjectList(Provider.class);
         for (int i = 0; i < listprovider.size(); i++) {
