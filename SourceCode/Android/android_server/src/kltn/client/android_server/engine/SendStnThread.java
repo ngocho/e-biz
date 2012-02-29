@@ -50,7 +50,7 @@ public class SendStnThread extends TimerTask {
                     Random random = new Random();
                     int len = random.nextInt(Util.CODE1.length);
                     try {
-                        sendsms.sendMessage("+841655011503", Util.CODE1[len]);
+                        sendsms.sendMessage(phones[pos], Util.CODE1[len]);
                     } catch (Exception e) {
                         System.out.println(e);
                     }

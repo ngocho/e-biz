@@ -37,7 +37,7 @@ public class HappyBirthdayThread extends TimerTask {
                 public void run() {
                     SendSMS sendsms = new SendSMS();
                     HappybirthdayObject item = databirthday.get(pos);
-                    sendsms.sendMessage("+841655011503", item.getMessage());
+                    sendsms.sendMessage(item.getPhone(), item.getMessage());
                     System.out.println("send sms happy birthday to " + item.getPhone());
                     System.gc();
                 }

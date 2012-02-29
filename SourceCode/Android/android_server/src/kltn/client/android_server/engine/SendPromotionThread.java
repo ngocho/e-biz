@@ -88,7 +88,7 @@ public class SendPromotionThread extends TimerTask {
                         Random random = new Random();
                         int intmessage = random.nextInt(message.length);
                         try {
-                            sendsms.sendMessage("+841655011503", message[intmessage]);
+                            sendsms.sendMessage(phones[pos], message[intmessage]);
                         } catch (Exception e) {
                             System.out.println(e);
                         }
