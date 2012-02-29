@@ -1,6 +1,3 @@
-/**
- * 
- */
 package mobile.ebiz.action;
 
 import java.io.IOException;
@@ -24,17 +21,28 @@ import ebiz.action.BaseAction;
 
 /**
  * @author nthanhphong
- *
  */
-public class GetBestList extends BaseAction{
-	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
+public class GetBestList extends BaseAction {
+    /**
+     * [Explain the description for this method here].
+     * @param mapping ActionMapping
+     * @param form ActionForm
+     * @param request HttpServletRequest
+     * @param response HttpServletResponse
+     * @return ActionForward
+     * @throws Exception Exception
+     * @see org.apache.struts.action.Action#execute(org.apache.struts.action.ActionMapping,
+     *      org.apache.struts.action.ActionForm, javax.servlet.http.HttpServletRequest,
+     *      javax.servlet.http.HttpServletResponse)
+     */
+    public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
-		response.setContentType("text/html;charset=UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
         PrintWriter out;
         List<JSONObject> objList = new ArrayList<JSONObject>();
 
         try {
-            
+
             objList = MobileBLO.getBestListAll();
             out = response.getWriter();
             out.println(objList);

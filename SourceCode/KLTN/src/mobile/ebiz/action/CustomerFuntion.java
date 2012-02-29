@@ -65,7 +65,7 @@ public class CustomerFuntion extends BaseAction {
                 } else if (flaguser.equals("XuActive")) {
                     flag = xuActive(content);
                 } else if (flaguser.equals("XuSendCustomer")) {
-                    flag = XuSendCustomer(content);
+                    flag = xuSendCustomer(content);
                 } else if (flaguser.equals("GetXu")) {
                     items = content.split("@");
                     flag = getxu(items[0], items[1]);
@@ -262,7 +262,7 @@ public class CustomerFuntion extends BaseAction {
      * @param content String
      * @return String
      */
-    public String XuSendCustomer(String content) {
+    public String xuSendCustomer(String content) {
         String[] list = content.split("@");
         long xu = Long.parseLong(list[2]);
         Customer customerowner = CustomerBLO.getCustomerByID(list[0]);

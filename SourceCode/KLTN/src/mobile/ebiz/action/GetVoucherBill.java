@@ -27,8 +27,6 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import mobile.ebiz.blo.MobileBLO;
-
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
@@ -36,16 +34,15 @@ import org.apache.struts.action.ActionMapping;
 import com.google.appengine.repackaged.org.json.JSONException;
 import com.google.appengine.repackaged.org.json.JSONObject;
 
+import ebiz.action.BaseAction;
 import ebiz.dao.gae.PMF;
-import ebiz.dto.account.customer.Customer;
-import ebiz.dto.account.provider.Provider;
 import ebiz.dto.checkout.VoucherBill;
 import ebiz.util.CommonUtil;
 
 /**
  * @author nthanhphong
  */
-public class GetVoucherBill {
+public class GetVoucherBill extends BaseAction {
     /**
      * [Give the description for method].
      * @param mapping ActionMapping
@@ -60,9 +57,7 @@ public class GetVoucherBill {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out;
         List<JSONObject> objList = new ArrayList<JSONObject>();
-
         try {
-
             objList = createListVoucher();
             out = response.getWriter();
             out.println(objList);
@@ -79,7 +74,7 @@ public class GetVoucherBill {
     /**
      * [Give the description for method].
      * @return List<JSONObject>
-     * @throws JSONException
+     * @throws JSONException JSONException
      */
     @SuppressWarnings("unchecked")
     public List<JSONObject> createListVoucher() throws JSONException {

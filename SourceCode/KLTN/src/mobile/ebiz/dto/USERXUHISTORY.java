@@ -26,85 +26,86 @@ import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 /**
  * @author Administrator
- *
  */
 @PersistenceCapable
-public class USERXUHISTORY  implements Serializable{
-	  /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	@PrimaryKey
+public class USERXUHISTORY implements Serializable {
+    /**  . */
+    private static final long serialVersionUID = 1L;
+    /**  . */
+    @PrimaryKey
     @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
-	private Long id;
-	@Persistent
-	private String idXu;
-	@Persistent
-	private String idCustomer;
-	@Persistent
-	private Long money;
-	@Persistent
-	private Date addXu;
-	/**
-	 * @return the id
-	 */
-	public Long getId() {
-		return id;
-	}
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(Long id) {
-		this.id = id;
-	}
-	/**
-	 * @return the idXu
-	 */
-	public String getIdXu() {
-		return idXu;
-	}
-	/**
-	 * @param idXu the idXu to set
-	 */
-	public void setIdXu(String idXu) {
-		this.idXu = idXu;
-	}
-	/**
-	 * @return the money
-	 */
-	public Long getMoney() {
-		return money;
-	}
-	/**
-	 * @param money the money to set
-	 */
-	public void setMoney(Long money) {
-		this.money = money;
-	}
-	/**
-	 * @return the addXu
-	 */
-	public Date getAddXu() {
-		return addXu;
-	}
-	/**
-	 * @param addXu the addXu to set
-	 */
-	public void setAddXu(Date addXu) {
-		this.addXu = addXu;
-	}
-	/**
-	 * @return the idCustomer
-	 */
-	public String getIdCustomer() {
-		return idCustomer;
-	}
-	/**
-	 * @param idCustomer the idCustomer to set
-	 */
-	public void setIdCustomer(String idCustomer) {
-		this.idCustomer = idCustomer;
-	}
-	
+    private Long id;
+    /**  . */
+    @Persistent
+    private String idXu;
+    /**  . */
+    @Persistent
+    private String idCustomer;
+    /**  . */
+    @Persistent
+    private Long money;
+    /**  . */
+    @Persistent
+    private Date addXu;
+    /**
+     * @return the id
+     */
+    public Long getId() {
+        return id;
+    }
+    /**
+     * @param id the id to set
+     */
+    public void setId(Long id) {
+        this.id = id;
+    }
+    /**
+     * @return the idXu
+     */
+    public String getIdXu() {
+        return idXu;
+    }
+    /**
+     * @param idXu the idXu to set
+     */
+    public void setIdXu(String idXu) {
+        this.idXu = idXu;
+    }
+    /**
+     * @return the money
+     */
+    public Long getMoney() {
+        return money;
+    }
+    /**
+     * @param money the money to set
+     */
+    public void setMoney(Long money) {
+        this.money = money;
+    }
+    /**
+     * @return the addXu
+     */
+    public Date getAddXu() {
+        return addXu;
+    }
+    /**
+     * @param addXu the addXu to set
+     */
+    public void setAddXu(Date addXu) {
+        this.addXu = addXu;
+    }
+    /**
+     * @return the idCustomer
+     */
+    public String getIdCustomer() {
+        return idCustomer;
+    }
+    /**
+     * @param idCustomer the idCustomer to set
+     */
+    public void setIdCustomer(String idCustomer) {
+        this.idCustomer = idCustomer;
+    }
 
 }

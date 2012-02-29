@@ -26,21 +26,22 @@ public class hashCode {
         }
         m.update(inhash.getBytes(), 0, inhash.length());
         // get md5 bytes
-        byte p_md5Data[] = m.digest();
+        byte pmd5Data[] = m.digest();
         // create a hex string
-        String m_szUniqueID = new String();
-        for (int i = 0; i < p_md5Data.length; i++) {
-            int b = (0xFF & p_md5Data[i]);
+        String mszUniqueID = new String();
+        for (int i = 0; i < pmd5Data.length; i++) {
+            int b = (0xFF & pmd5Data[i]);
             // if it is a single digit, make sure it have 0 in front (proper
             // padding)
-            if (b <= 0xF)
-                m_szUniqueID += "0";
+            if (b <= 0xF) {
+                mszUniqueID += "0";
+            }
             // add number to string
-            m_szUniqueID += Integer.toHexString(b);
+            mszUniqueID += Integer.toHexString(b);
         }
         // hex string to uppercase
-        m_szUniqueID = m_szUniqueID.toUpperCase();
-        result = m_szUniqueID;
+        mszUniqueID = mszUniqueID.toUpperCase();
+        result = mszUniqueID;
         return result.substring(result.length() - len, result.length());
     }
 }
