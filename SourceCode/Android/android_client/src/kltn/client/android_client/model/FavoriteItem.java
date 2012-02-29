@@ -7,36 +7,36 @@ import android.provider.BaseColumns;
  * @author NThanhPhong
  */
 public class FavoriteItem implements BaseColumns {
-    /**  . */
+    /** . */
     public static final Uri CONTENT_URI = Uri.parse("content://kltn.client.android_client/favorite_food");
 
-    /**  . */
+    /** . */
     public static final String DEFAULT_SORT_ORDER = "savedate, id DESC";
-    /**  . */
+    /** . */
     public static final String ID = "id";
-    /**  . */
+    /** . */
     public static final String NAME = "name";
-    /**  . */
+    /** . */
     public static final String INTRODUCTION = "introduction";
-    /**  . */
+    /** . */
     public static final String PRICE = "price";
-    /**  . */
+    /** . */
     public static final String BUYPRICE = "buyprice";
-    /**  . */
+    /** . */
     public static final String IMAGEURL = "imageurl";
-    /**  . */
+    /** . */
     public static final String UPLOADDATE = "uploaddate";
-    /**  . */
+    /** . */
     public static final String SAVEDATE = "savedate";
-    /**  . */
+    /** . */
     public static final String BUYCOUNT = "buycount";
-    /**  . */
+    /** . */
     public static final String MINBUYER = "minbuyer";
-    /**  . */
+    /** . */
     public static final String MAXBUYER = "maxbuyer";
-    /**  . */
+    /** . */
     public static final String RATE = "rate";
-    /**  . */
+    /** . */
     public static final String PROVIDER = "provider";
 
     /**
@@ -254,8 +254,8 @@ public class FavoriteItem implements BaseColumns {
         return provider;
     }
 
-    /**  . */
+    /** . */
     private String id, name, introduction, price, buyprice, imageurl, uploaddate, savedate, provider;
-    /**  . */
+    /** . */
     private int rate, buycount, minbuyer, maxbuyer;
 }

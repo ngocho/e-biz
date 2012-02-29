@@ -7,10 +7,10 @@ import android.provider.BaseColumns;
  * @author NThanhPhong
  */
 public class DateFoodItem implements BaseColumns {
-    /**  CONTENT_URI. */
+    /** CONTENT_URI. */
     public static final Uri CONTENT_URI = Uri.parse("content://kltn.client.android_client/date_food");
 
-    /**  DEFAULT_SORT_ORDER. */
+    /** DEFAULT_SORT_ORDER. */
     public static final String DEFAULT_SORT_ORDER = "startdate, _id DESC";
 
     /** IDGOODS. */
@@ -201,8 +201,8 @@ public class DateFoodItem implements BaseColumns {
         this.countmax = countmax;
     }
 
-    /**  . */
+    /** . */
     private String idgoods, name, price, buyprice, imageurl, startdate, enddate;
-    /**  . */
+    /** . */
     private int buycount, countmin, countmax;
 }

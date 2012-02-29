@@ -12,17 +12,17 @@ public class CommentItem {
     public static final String DEFAULT_SORT_ORDER = "datetime, _id DESC";
     /** IDGOODS . */
     public static final String IDGOODS = "idgoods";
-    /**  USERNAME. */
+    /** USERNAME. */
     public static final String USERNAME = "username";
-    /**  IMAGE. */
+    /** IMAGE. */
     public static final String IMAGE = "image";
     /** CONTENT . */
     public static final String CONTENT = "content";
-    /**  DATETIME. */
+    /** DATETIME. */
     public static final String DATETIME = "datetime";
-    /**  OWNER. */
+    /** OWNER. */
     public static final String OWNER = "owner";
-    /**  COUNTUSER. */
+    /** COUNTUSER. */
     public static final String COUNTUSER = "countuser";
 
     /**
@@ -143,10 +143,10 @@ public class CommentItem {
         this.countuser = countuser;
     }
 
-    /**  . */
+    /** . */
     private String idgoods, username, content, datetime, owner;
-    /**  Countuser. */
+    /** Countuser. */
     private int countuser;
-    /**  Image. */
+    /** Image. */
     private byte[] image;
 }
