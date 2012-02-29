@@ -66,7 +66,6 @@ public class Register extends BaseAction {
             boolean flag;
 
             flag = CustomerBLO.registerCustomer(register);
-                                                      
             if (flag) {
                 HttpSession se = request.getSession();
                 if (user.getEmail() != null) {

@@ -19,6 +19,7 @@
 package ebiz.action.account.customer;
 
 import java.io.PrintWriter;
+import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -35,7 +36,6 @@ import ebiz.action.BaseAction;
 import ebiz.blo.customer.CustomerBLO;
 import ebiz.form.LoginForm;
 import ebiz.util.CommonConstant;
-import java.util.Date;
 /**
  * @author Administrator
  */
@@ -62,34 +62,33 @@ public class XuAdd extends BaseAction {
         if (value != null || !("".equals(value))) {
             value = value.trim();
             long money = IDXUBLO.getMoneyByID(value);
-            if(money >0){
-            // long money = Long.parseLong(value);
-            HttpSession se = request.getSession();
-            LoginForm user = (LoginForm) se.getAttribute(CommonConstant.USER);
-            if (user != null) {
-                String uid = user.getLoginId();
-                long result = CustomerBLO.addXuOnline(uid, money);
-                if (result > 0) {
-                	//update history
-                	USERXUHISTORY userHistory = new USERXUHISTORY();
-                	userHistory.setAddXu(new Date());
-                	userHistory.setIdCustomer(user.getLoginId());
-                	userHistory.setIdXu(value);
-                	userHistory.setMoney(money);
-                	IDXUBLO.updateHistoryXu(userHistory);
-                	
-                    user.setXuOnline(result);
-                    out.println("1" + " " + String.valueOf(result));
-                } else {
-                    // fail
-                    out.println("0" + " " + String.valueOf(result));
+            if (money > 0) {
+                // long money = Long.parseLong(value);
+                HttpSession se = request.getSession();
+                LoginForm user = (LoginForm) se.getAttribute(CommonConstant.USER);
+                if (user != null) {
+                    String uid = user.getLoginId();
+                    long result = CustomerBLO.addXuOnline(uid, money);
+                    if (result > 0) {
+                        // update history
+                        USERXUHISTORY userHistory = new USERXUHISTORY();
+                        userHistory.setAddXu(new Date());
+                        userHistory.setIdCustomer(user.getLoginId());
+                        userHistory.setIdXu(value);
+                        userHistory.setMoney(money);
+                        IDXUBLO.updateHistoryXu(userHistory);
+
+                        user.setXuOnline(result);
+                        out.println("1" + " " + String.valueOf(result));
+                    } else {
+                        // fail
+                        out.println("0" + " " + String.valueOf(result));
+                    }
+                } else { // required login
+                    out.println("2" + " " + "2");
                 }
-            } else { // required login
-                out.println("2" + " " + "2");
-            }
-            }
-            else{
-            	 out.println("0" + " " + money);
+            } else {
+                out.println("0" + " " + money);
             }
         } else {
             // required mandatory

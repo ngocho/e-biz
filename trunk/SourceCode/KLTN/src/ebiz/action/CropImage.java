@@ -33,15 +33,15 @@ import com.google.appengine.api.images.ImagesServiceFactory;
 import com.google.appengine.api.images.Transform;
 /**
  * Action Class for crop an image.
- * @author CongDanh
  *
+ * @author CongDanh
  */
 public class CropImage extends Action {
     @Override
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
         try {
-                                                      
+
             int leftX = Integer.parseInt(request.getParameter("leftX"));
             int topY = Integer.parseInt(request.getParameter("topY"));
             int rightX = Integer.parseInt(request.getParameter("rightX"));

@@ -45,7 +45,7 @@ import ebiz.util.CommonConstant;
 public class DisplayCategory extends BaseAction {
     /**
      * [DisplayCategory].
-     * 
+     *
      * @param mapping ActionMapping
      * @param form ActionForm
      * @param request HttpServletRequest
@@ -64,10 +64,10 @@ public class DisplayCategory extends BaseAction {
         List<String> numberPageList = new ArrayList<String>();
         ProductVO vo = new ProductVO();
         String providerId = request.getParameter("providerId");
-        if(providerId == null){
-        	providerId = (String)se.getAttribute("ProviderFood");
+        if (providerId == null) {
+            providerId = (String) se.getAttribute("ProviderFood");
         }
-                                                  
+
         String typeProduct = request.getParameter("typeProduct");
         if (typeProduct == null) {
             vo = (ProductVO) se.getAttribute(CommonConstant.PRODUCTVO);
@@ -88,11 +88,11 @@ public class DisplayCategory extends BaseAction {
         // get product --> save in session
         String filterCol = CommonConstant.FOOD_TYPE;
         foods = FoodBLO.initFoodCategory(numberPageList, CommonConstant.DEFAULT_RECORD, filterCol, typeProduct, null,
-                null,providerId);
-        if(providerId != null){
-        	String name = ProviderBLO.getNameProviderByID(providerId);
-        	se.setAttribute("ProviderFood", providerId);
-        	se.setAttribute("ProviderFoodName", name);
+                null, providerId);
+        if (providerId != null) {
+            String name = ProviderBLO.getNameProviderByID(providerId);
+            se.setAttribute("ProviderFood", providerId);
+            se.setAttribute("ProviderFoodName", name);
         }
         // paging
         vo.setPagingList(numberPageList);
@@ -105,7 +105,7 @@ public class DisplayCategory extends BaseAction {
         vo.setAttr("0");
         vo.setPriceId("0");
         se.setAttribute(CommonConstant.PRODUCTVO, vo);
-        //                                           
+        //
         // list food
         se.setAttribute(CommonConstant.FOOD_CATEGORY_F, foods);
         // return display category

@@ -44,7 +44,7 @@ import ebiz.util.CommonUtil;
 public class OrderBillMail extends Action {
     /**
      * [OrderBillMail].
-     * 
+     *
      * @param mapping ActionMapping
      * @param form ActionForm
      * @param request HttpServletRequest
@@ -57,10 +57,10 @@ public class OrderBillMail extends Action {
             HttpServletResponse response) throws Exception {
 
         String idOrder = request.getParameter("idOrder");
-                                                  
+
         if (idOrder != null) {
             Long id = Long.parseLong(idOrder);
-                                                      
+
             OrderBill bill = CustomerBLO.getBillById(id);
             if (bill != null) {
                 // get info

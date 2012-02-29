@@ -19,6 +19,7 @@ import ebiz.form.OrderBillForm;
 import ebiz.util.CommonUtil;
 /**
  * @author ThuyNT
+ *
  */
 public class AdminBLO {
     /** . */
@@ -49,6 +50,7 @@ public class AdminBLO {
 
     /**
      * [registerAdmin].
+     *
      * @param admin Admin
      * @return boolean
      */
@@ -61,6 +63,11 @@ public class AdminBLO {
         return false;
     }
 
+    /**
+     * [getOrderBillFormList].
+     * @param value String
+     * @return List<OrderBillForm>
+     */
     public static List<OrderBillForm> getOrderBillFormList(String value) {
 
         List<OrderBill> orderList = new ArrayList<OrderBill>();
@@ -82,7 +89,10 @@ public class AdminBLO {
         }
         return formList;
     }
-    // get bill to shipping
+    /**
+     * [getOrderBillFormListDaily].
+     * @return List<OrderBillForm>
+     */
     public static List<OrderBillForm> getOrderBillFormListDaily() {
         Date date = new Date();
         String d = CommonUtil.convertDateToString(date);
@@ -104,7 +114,10 @@ public class AdminBLO {
         }
         return formList;
     }
-
+    /**
+     * [getCustomerList].
+     * @return List<LoginForm>
+     */
     public static List<LoginForm> getCustomerList() {
 
         List<Customer> customerList = new ArrayList<Customer>();

@@ -11,7 +11,6 @@ import com.google.appengine.api.datastore.Key;
 
 /**
  * @author ThuyNT
- *
  */
 @PersistenceCapable
 public class Address implements Serializable {

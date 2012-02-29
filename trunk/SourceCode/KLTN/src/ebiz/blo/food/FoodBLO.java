@@ -92,7 +92,7 @@ public class FoodBLO {
                 limit = foodList.size();
             }
 
-            for (int i = foodList.size(); i < foodList.size() -limit; i--) {
+            for (int i = foodList.size(); i < foodList.size() - limit; i--) {
                 if (foodList.get(i).getIsDisplay() == 1) {
                     FoodForm form = new FoodForm();
                     form.editForm(foodList.get(i));
@@ -123,7 +123,7 @@ public class FoodBLO {
         // transfer FoodForm to display
         return formList;
     }
-    
+
     public static List<FoodForm> getFoodListByProvider(String id) {
         List<FoodForm> formList = new ArrayList<FoodForm>();
         List<Food> foodList = new ArrayList<Food>();
@@ -142,7 +142,7 @@ public class FoodBLO {
         // transfer FoodForm to display
         return formList;
     }
-    
+
     public static List<FoodForm> getFoodListByNameDistinctProvider(String name, String idProvider) {
         List<FoodForm> formList = new ArrayList<FoodForm>();
         List<Food> foodList = new ArrayList<Food>();
@@ -164,7 +164,7 @@ public class FoodBLO {
 
     /**
      * [get ProductList by atrr(kho, xao, canh)].
-     *
+     * 
      * @param limit
      * @param idStatus
      * @return
@@ -198,44 +198,44 @@ public class FoodBLO {
         // get Promotin food
         List<FoodForm> formList = getFoodListByStatus("1");
         List<FoodForm> resultList = new ArrayList<FoodForm>();
-        if(!formList.isEmpty()){
-       
-        // long valueCopare = formList.get(0).getPrice() -
-        // List<Long> sortList1 = new ArrayList<Long>();
-        List<Long> sortList2 = new ArrayList<Long>();
-        for (FoodForm form : formList) {
-            // sortList1.add(form.getId());
-            sortList2.add(form.getPrice() - form.getPromoPrice());
-        }
-        Collections.sort(sortList2, Collections.reverseOrder());
-        if (limit >= sortList2.size()) {
-            limit = sortList2.size();
-            value = sortList2.get(limit - 1);
-        } else {
-            value = sortList2.get(limit);
-        }
-        for (int i = 0; i < limit; i++) {
-            if (formList.get(i).getPrice() - formList.get(i).getPromoPrice() >= value) {
-                resultList.add(formList.get(i));
+        if (!formList.isEmpty()) {
+
+            // long valueCopare = formList.get(0).getPrice() -
+            // List<Long> sortList1 = new ArrayList<Long>();
+            List<Long> sortList2 = new ArrayList<Long>();
+            for (FoodForm form : formList) {
+                // sortList1.add(form.getId());
+                sortList2.add(form.getPrice() - form.getPromoPrice());
             }
-        }
-        
+            Collections.sort(sortList2, Collections.reverseOrder());
+            if (limit >= sortList2.size()) {
+                limit = sortList2.size();
+                value = sortList2.get(limit - 1);
+            } else {
+                value = sortList2.get(limit);
+            }
+            for (int i = 0; i < limit; i++) {
+                if (formList.get(i).getPrice() - formList.get(i).getPromoPrice() >= value) {
+                    resultList.add(formList.get(i));
+                }
+            }
+
         }
         return resultList;
     }
     // call get Food
     public static List<FoodForm> getFoodListRecent(int limit) {
         List<Food> foodList = getFoodListAll();
-        List<FoodForm> resultList =  new ArrayList<FoodForm>();
-            //getFoodListByDate(foodList, new Date(), limit);
-        for(int i =0; i<3; i++){
-        if(resultList.size() < 8){
-            Calendar cal=Calendar.getInstance();
-            cal.setTime(new Date());
-            cal.add(Calendar.DATE, - i);
-            resultList.addAll(getFoodListByDate(foodList, cal.getTime(), limit - resultList.size()));
-            
-        }
+        List<FoodForm> resultList = new ArrayList<FoodForm>();
+        // getFoodListByDate(foodList, new Date(), limit);
+        for (int i = 0; i < 3; i++) {
+            if (resultList.size() < 8) {
+                Calendar cal = Calendar.getInstance();
+                cal.setTime(new Date());
+                cal.add(Calendar.DATE, -i);
+                resultList.addAll(getFoodListByDate(foodList, cal.getTime(), limit - resultList.size()));
+
+            }
         }
         return resultList;
 
@@ -249,15 +249,14 @@ public class FoodBLO {
         }
         for (int i = 0; i < limit; i++) {
             String dateUpload = CommonUtil.convertDateToString(foodList.get(i).getUploadDate());
-                                                      
+
             if (d.equals(dateUpload)) {
                 FoodForm form = new FoodForm();
                 form.editForm(foodList.get(i));
                 resultList.add(form);
             }
         }
-        
-                                                  
+
         return resultList;
     }
 
@@ -328,7 +327,7 @@ public class FoodBLO {
 
     // Customer
     public static List<FoodForm> getFoodListCategory(String col, List<String> numberPageList, String order, int record,
-            int page, String colFilter, String typeProduct, String attr, String price,String providerId) {
+            int page, String colFilter, String typeProduct, String attr, String price, String providerId) {
         StringBuffer sql = new StringBuffer();
         sql.append(" isDisplay == 1 ");
         sql.append(" &&  ");
@@ -360,7 +359,7 @@ public class FoodBLO {
         for (Food food : foodList) {
             FoodForm form = new FoodForm();
             // if (food.getIsDisplay() == 1) {
-                                                      
+
             form.editForm(food);
             if (!form.isEmpty()) {
                 formList.add(form);
@@ -379,7 +378,7 @@ public class FoodBLO {
      * @return List<FoodForm> to display
      */
     public static List<FoodForm> initFoodCategory(List<String> numberPageList, int record, String colFilter,
-            String typeProduct, String attr, String price,String providerId) {
+            String typeProduct, String attr, String price, String providerId) {
 
         List<FoodForm> formList = new ArrayList<FoodForm>();
         StringBuffer sql = new StringBuffer();
@@ -398,7 +397,7 @@ public class FoodBLO {
             sql.append(" &&  ");
             sql.append("providerID == \'" + providerId + "\'");
         }
-        
+
         formList = getFoodFormList("foodName", numberPageList, "asc", record, 1, sql.toString());
         return formList;
     }
@@ -415,7 +414,7 @@ public class FoodBLO {
 
         List<FoodForm> formList = new ArrayList<FoodForm>();
         formList = getFoodFormListAll("foodName", numberPageList, "asc", 8, 1, idProvider);
-                                                  
+
         return formList;
     }
 
@@ -445,20 +444,20 @@ public class FoodBLO {
         } else {
             if (("4".equals(status))) {
                 if (!sql.toString().equals("")) {
-                                                              
+
                     sql.append(" &&  ");
                 }
                 sql.append(" isDisplay == 0 ");
             } else {
                 if (!sql.toString().equals("")) {
-                                                              
+
                     sql.append(" &&  ");
                 }
                 sql.append(" isDisplay == 1 ");
                 sql.append(" &&  ");
                 sql.append(colFilter + "== \'" + status + "\'");
             }
-                                                      
+
             formList = getFoodFormList(col, numberPageList, order, record, page, sql.toString());
         }
         return formList;
@@ -535,7 +534,7 @@ public class FoodBLO {
             // test number of product in database
             Food foodDB = foodDao.getFoodById(id);
             numberDB = foodDB.getNumber();
-                                                      
+
             if (!shopCart.isEmpty()) {
                 List<FoodForm> foodList = shopCart.getProducts();
                 // ? exist product in shopping cart
@@ -547,10 +546,10 @@ public class FoodBLO {
                         // number product required <= number in database
                         if (numberProduct <= numberDB) {
                             foodForm.setNumber(numberProduct);
-                            if((CommonConstant.FOODPROMOTION).equals(foodForm.getStatus())){
-                            foodForm.setSubTotal(foodForm.getPromoPrice() * numberProduct);
-                            }else{
-                                foodForm.setSubTotal(foodForm.getPrice() * numberProduct); 
+                            if ((CommonConstant.FOODPROMOTION).equals(foodForm.getStatus())) {
+                                foodForm.setSubTotal(foodForm.getPromoPrice() * numberProduct);
+                            } else {
+                                foodForm.setSubTotal(foodForm.getPrice() * numberProduct);
                             }
                             return true;
                         } else {
@@ -561,7 +560,7 @@ public class FoodBLO {
             }
             // shopcart is empty or don't exist required product in shop cart
             if (number <= numberDB) {
-                                                          
+
                 food = new FoodForm();
                 food.editForm(foodDB);
                 // if product is a promotion products -> put into price
@@ -581,15 +580,15 @@ public class FoodBLO {
         return true;
     }
 
-   public static List<FoodForm> getFoodListByProvider(List<FoodForm> list, String providerId){
-	   List<FoodForm> foodList = new ArrayList<FoodForm>();
-	   for(FoodForm form: list){
-		   if(form.getIdProvider().equals(providerId)){
-			   foodList.add(form);
-		   }
-	   }
-	   return foodList;
-   }
+    public static List<FoodForm> getFoodListByProvider(List<FoodForm> list, String providerId) {
+        List<FoodForm> foodList = new ArrayList<FoodForm>();
+        for (FoodForm form : list) {
+            if (form.getIdProvider().equals(providerId)) {
+                foodList.add(form);
+            }
+        }
+        return foodList;
+    }
     /**
      * [test number of food in database with food which add into shop].
      * 
@@ -705,7 +704,7 @@ public class FoodBLO {
     // // customer = CustomerBLO.getCustomerByID(shop.getUser().getLoginId());
     //
     // OrderBill order = new OrderBill();
-    //                                           
+    //
     // // create OrderBill
     // order.setIdCustomer(customer.getCustomerId());
     // order.setAddress(customer.getCustomerAddress());
@@ -751,7 +750,7 @@ public class FoodBLO {
     public static OrderBill billing(ShoppingCart shop) {
 
         OrderBillForm orderForm = shop.getOrder();
-                                                  
+
         if (orderForm != null) {
             long moneyOrder = 0;
             OrderBill order = orderForm.getOrder();
@@ -766,7 +765,7 @@ public class FoodBLO {
             order.setStatus(CommonConstant.BILLSTATUS_0);
             // save order
             order = orderDao.save(order);
-                                                      
+
             Long idOrder = order.getId();
             // create detailOrder --> save in database
 
@@ -785,7 +784,7 @@ public class FoodBLO {
                 upNumberFoodOrder(food.getId(), food.getNumber());
 
             }
-                                                      
+
             return order;
         }
         // user chua dang nhap
@@ -796,11 +795,11 @@ public class FoodBLO {
         order.setStatus(typePayment);
         return CustomerBLO.saveBillById(order);
     }
-    
+
     public static boolean updateStatusVoucher(Long idVoucher, String typePayment) {
         VoucherBill voucher = CustomerBLO.getVoucherByID(idVoucher);
         voucher.setStatus(typePayment);
-        if( CustomerBLO.saveVoucher(voucher)!= null){
+        if (CustomerBLO.saveVoucher(voucher) != null) {
             return true;
         }
         return false;
@@ -923,7 +922,7 @@ public class FoodBLO {
         if (idFood != null) {
             Food food = getFoodById(idFood);
             if (food != null) {
-                                                          
+
                 return deleteFood(food);
             }
         }
@@ -956,7 +955,7 @@ public class FoodBLO {
 
         food.setNumberOrder(0);
         food.setFoodPriceLevelId(FoodBLO.getFoodIdPrice(food.getPrice()));
-                                                  
+
         return foodDao.saveFood(food);
     }
 
@@ -1015,7 +1014,7 @@ public class FoodBLO {
 
         if (s.length() - len > 0) {
             result = s.substring(0, s.length() - len);
-                                                      
+
             result = result + "," + "000";
         }
         return result;
@@ -1026,7 +1025,7 @@ public class FoodBLO {
         for (FoodPriceLevel level : listLevel) {
             FoodPriceForm form = new FoodPriceForm();
             form.editForm(level);
-                                                      
+
             formList.add(form);
         }
         return formList;

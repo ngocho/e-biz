@@ -40,6 +40,17 @@ import ebiz.util.CommonConstant;
  * @author Administrator
  */
 public class CheckoutType extends BaseAction {
+    /**
+     * [CheckoutType].
+     *
+     * @param mapping ActionMapping
+     * @param form ActionForm
+     * @param request HttpServletRequest
+     * @param response HttpServletResponse
+     * @return ActionForward
+     * @throws Exception Exception
+     * @see ActionForward Struts1 Framework
+     */
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
         ActionMessages messages = new ActionMessages();
@@ -63,33 +74,23 @@ public class CheckoutType extends BaseAction {
                 // paid money
                 FoodBLO.updateStatusOrderBill(orderForm.getId(), CommonConstant.BILLSTATUS_2);
             }
-        } /*else if ("nganluong".equals(typeCheckout)) {
-            NL_Checkout nl_checkout = new NL_Checkout();
-            String transaction_info = request.getParameter("transaction_info");
-            String order_code = request.getParameter("order_code");
-            String price = request.getParameter("price");
-            String payment_id = request.getParameter("payment_id");
-            String payment_type = request.getParameter("payment_type");
-            String error_text = request.getParameter("error_text");
-            String secure_code = request.getParameter("secure_code");
-            boolean flag = nl_checkout.verifyPaymentUrl(transaction_info, order_code, price, payment_id, payment_type,
-                    error_text, secure_code);
-            if (flag) {
-                log.info("Gia tien thanh toan tu Ngan luong" + price);
-                OrderBill bill = CustomerBLO.getBillById(Long.parseLong(order_code));
-                if (price.equals(String.valueOf(bill.getSumPrice()))) {
-                    FoodBLO.updateStatusOrderBill(bill.getId(), CommonConstant.BILLSTATUS_3);
-                } else {
-                    result = false;
-                }
-            } else {
-                result = false;
-                messages.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage("nganluong.false"));
-
-            }
-        }*/
+        } /*
+           * else if ("nganluong".equals(typeCheckout)) { NL_Checkout nl_checkout = new NL_Checkout(); String
+           * transaction_info = request.getParameter("transaction_info"); String order_code =
+           * request.getParameter("order_code"); String price = request.getParameter("price"); String payment_id =
+           * request.getParameter("payment_id"); String payment_type = request.getParameter("payment_type"); String
+           * error_text = request.getParameter("error_text"); String secure_code = request.getParameter("secure_code");
+           * boolean flag = nl_checkout.verifyPaymentUrl(transaction_info, order_code, price, payment_id, payment_type,
+           * error_text, secure_code); if (flag) { log.info("Gia tien thanh toan tu Ngan luong" + price); OrderBill bill
+           * = CustomerBLO.getBillById(Long.parseLong(order_code)); if
+           * (price.equals(String.valueOf(bill.getSumPrice()))) { FoodBLO.updateStatusOrderBill(bill.getId(),
+           * CommonConstant.BILLSTATUS_3); } else { result = false; } } else { result = false;
+           * messages.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage("nganluong.false"));
+           * 
+           * } }
+           */
         if (result) {
-           
+
             SendMail.sendOrderBillMail(orderForm.getId());
             se.removeAttribute("shop");
             return mapping.findForward(SUCCESS);

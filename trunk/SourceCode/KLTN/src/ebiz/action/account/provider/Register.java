@@ -40,7 +40,7 @@ import mobile.ebiz.dto.HashCode;
 public class Register extends BaseAction {
     /**
      * [Register ].
-     * 
+     *
      * @param mapping ActionMapping
      * @param form ActionForm
      * @param request HttpServletRequest
@@ -63,7 +63,7 @@ public class Register extends BaseAction {
             register.setActiveCode(code);
             boolean flag = ProviderBLO.registerProvider(register);
             if (flag) {
-                
+
                 HttpSession se = request.getSession();
                 // save value in session
                 se.setAttribute("providerForm", user);

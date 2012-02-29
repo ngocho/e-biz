@@ -58,7 +58,7 @@ public class DisplayProductPaging extends BaseAction {
         int page = 1;
         String limit, col, status;
         String filterCol = CommonConstant.FOOD_STATUS;
-                                                  
+
         List<FoodForm> foods = new ArrayList<FoodForm>();
         List<String> numberPageList = new ArrayList<String>();
         // get param

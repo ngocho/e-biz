@@ -41,7 +41,19 @@ import ebiz.util.CommonConstant;
  * @author Administrator
  */
 public class CheckoutNL extends BaseAction {
+    /**  Logger. */
     private static final Logger log = Logger.getLogger(CheckoutType.class.getName());
+    /**
+     * [CheckoutNL].
+     *
+     * @param mapping ActionMapping
+     * @param form ActionForm
+     * @param request HttpServletRequest
+     * @param response HttpServletResponse
+     * @return ActionForward
+     * @throws Exception Exception
+     * @see ActionForward Struts1 Framework
+     */
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
         ActionMessages messages = new ActionMessages();
@@ -64,12 +76,12 @@ public class CheckoutNL extends BaseAction {
                     FoodBLO.updateStatusOrderBill(bill.getId(), CommonConstant.BILLSTATUS_3);
                     SendMail.sendOrderBillMail(bill.getId());
                     return mapping.findForward(SUCCESS);
-                    
-            } else {
-                messages.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage("nganluong.false"));
 
+                } else {
+                    messages.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage("nganluong.false"));
+
+                }
             }
-        }
         }
         saveMessages(request, messages);
         return mapping.findForward(FAILURE);

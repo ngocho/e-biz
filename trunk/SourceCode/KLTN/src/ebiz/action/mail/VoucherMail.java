@@ -47,7 +47,7 @@ public class VoucherMail extends Action {
     private static final Logger log = Logger.getLogger(SendMailRegister.class.getName());
     /**
      * [VoucherMail].
-     * 
+     *
      * @param mapping ActionMapping
      * @param form ActionForm
      * @param request HttpServletRequest

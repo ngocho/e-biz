@@ -42,7 +42,7 @@ import java.util.logging.Logger;
  * @author ThuyNT
  */
 public class AuthenticationProvider extends Action {
-    /** . */
+    /** Logger. */
     private static final Logger log = Logger.getLogger(SendMailRegister.class.getName());
     /**
      * [AuthenticationProvider].

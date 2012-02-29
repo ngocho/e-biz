@@ -246,7 +246,7 @@ public final class PMF {
         List<Object> results = null;
         List<Object> detachedList = null;
         query.setFilter(sql);
-                                                  
+
         query.setOrdering(col + " " + order);
         try {
             detachedList = (List<Object>) query.execute();
@@ -276,7 +276,7 @@ public final class PMF {
         List<Object> detachedList = null;
         if (!sql.equals("")) {
             query.setFilter(sql);
-                                                      
+
         }
         query.setOrdering(col + " " + order);
         try {
@@ -312,7 +312,7 @@ public final class PMF {
         if (!sql.equals("")) {
             tempSql = " where " + sql;
         }
-                                                  
+
         // re-count amount of page
         Query query = pm.newQuery("select count(" + col + ")  from " + className.getName() + tempSql);
         try {
@@ -346,7 +346,7 @@ public final class PMF {
         PersistenceManager pm = getPMF();
         if (!sql.equals("")) {
             tempSql = " where " + sql;
-                                                      
+
         }
         // re-count amount of page
         Query query = pm.newQuery("select count(" + col + ")  from " + className.getName() + tempSql);
@@ -384,7 +384,7 @@ public final class PMF {
         List<Object> results = null;
         List<Object> detachedList = null;
         query.setFilter(col + " == param");
-                                                  
+
         query.declareParameters("String param");
         try {
             detachedList = (List<Object>) query.execute(key);
@@ -403,7 +403,7 @@ public final class PMF {
         List<Object> results = null;
         List<Object> detachedList = null;
         query.setFilter(col + " == param");
-                                                  
+
         query.declareParameters("Date param");
         try {
             detachedList = (List<Object>) query.execute(key);
@@ -422,7 +422,7 @@ public final class PMF {
         List<Object> results = null;
         List<Object> detachedList = null;
         query.setFilter(col + " == param");
-                                                  
+
         query.setOrdering(orderCol + " " + order);
         query.declareParameters("Date param");
         try {
@@ -448,7 +448,7 @@ public final class PMF {
         List<Object> results = null;
         List<Object> detachedList = null;
         query.setFilter(col + " == param");
-                                                  
+
         query.declareParameters("String param");
         try {
             detachedList = (List<Object>) query.execute(value);
@@ -466,7 +466,7 @@ public final class PMF {
         List<Object> results = null;
         List<Object> detachedList = null;
         query.setFilter(col + " == param");
-                                                  
+
         query.declareParameters("Long param");
         try {
             detachedList = (List<Object>) query.execute(key);
@@ -500,7 +500,7 @@ public final class PMF {
         sql.append(key2);
         sql.append(" )");
         Query q = pm.newQuery(className, sql.toString());
-                                                  
+
         // Query q = pm.newQuery("select  from  " + className.getName()+ " where "+col1 +"== \""+key1 +"\" and  "+col2
         // +"== " + key2);
         List<Object> results = null;
@@ -537,7 +537,7 @@ public final class PMF {
         sql.append(key2);
         sql.append("\')");
         Query q = pm.newQuery(className, sql.toString());
-                                                  
+
         // Query q = pm.newQuery("select  from  " + className.getName()+ " where "+col1 +"== \""+key1 +"\" and  "+col2
         // +"== " + key2);
         List<Object> results = null;
@@ -602,13 +602,13 @@ public final class PMF {
             sqlSearch.append(" && ");
             sqlSearch.append("providerID == \'" + provider + "\'");
         }
-                                                  
+
         Query q = pm.newQuery(className);
         List<Object> results = null;
         List<Object> detachedList = null;
         // set the filter and params
         q.setFilter("foodName >= :1 && foodName < :2" + sqlSearch);
-                                                  
+
         // run query with param values and return results
         try {
             detachedList = (List<Object>) q.execute(searchText, (searchText + "\ufffd"));
@@ -642,13 +642,13 @@ public final class PMF {
         // sqlSearch.append(" && ");
         // sqlSearch.append("foodStatusId == \'" + status + "\'");
         // }
-        //                                           
+        //
         Query q = pm.newQuery(className);
         List<Object> results = null;
         List<Object> detachedList = null;
         // set the filter and params
         q.setFilter("providerName >= :1 && providerName < :2");
-                                                  
+
         // run query with param values and return results
         try {
             detachedList = (List<Object>) q.execute(value, (value + "\ufffd"));

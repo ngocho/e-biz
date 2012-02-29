@@ -38,7 +38,7 @@ public class XuDownload extends BaseAction {
 
     /**
      * [Logout(Customer)].
-     * 
+     *
      * @param mapping ActionMapping
      * @param form ActionForm
      * @param request HttpServletRequest

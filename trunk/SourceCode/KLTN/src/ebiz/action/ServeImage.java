@@ -37,7 +37,7 @@ public class ServeImage extends BaseAction {
     private BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
     /**
      * [ServeImage(Display Image dynamic)].
-     * 
+     *
      * @param mapping ActionMapping
      * @param form ActionForm
      * @param request HttpServletRequest

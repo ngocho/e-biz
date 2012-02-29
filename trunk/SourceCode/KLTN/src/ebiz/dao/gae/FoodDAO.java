@@ -56,6 +56,7 @@ public class FoodDAO implements IFoodDAO {
 
     /**
      * [upNumberFood].
+     *
      * @param id Long
      * @param number int
      * @return boolean
@@ -72,9 +73,10 @@ public class FoodDAO implements IFoodDAO {
 
     /**
      * [downNumberFood].
-     * @param id    Long
-     * @param number   int
-     * @return   boolean
+     *
+     * @param id Long
+     * @param number int
+     * @return boolean
      */
     public static boolean downNumberFood(Long id, int number) {
         Food food = null;
@@ -118,8 +120,6 @@ public class FoodDAO implements IFoodDAO {
         return PMF.insertObject(food);
 
     }
-    
-   
 
     @Override
     public boolean insertFoodAttribute(FoodAttribute food) {
@@ -184,9 +184,10 @@ public class FoodDAO implements IFoodDAO {
 
     /**
      * [getFoodListByProviderStatus].
+     *
      * @param idProvider String
      * @param statusFood String
-     * @return  @SuppressWarnings("unchecked")
+     * @return @SuppressWarnings("unchecked")
      * @see ebiz.dao.inf.IFoodDAO#getFoodListByProviderStatus()
      * @SuppressWarnings
      */
@@ -207,17 +208,17 @@ public class FoodDAO implements IFoodDAO {
         }
         return null;
     }
-    
+
     @Override
     public String getNameTypeById(String id) {
         FoodType type = (FoodType) PMF.getObjectById(FoodType.class, id);
-                                                  
+
         if (type != null) {
             return type.getProductTypeName();
         }
         return null;
     }
-    
+
     @Override
     public String getNameAttrById(String id) {
         FoodAttribute type = (FoodAttribute) PMF.getObjectById(FoodAttribute.class, id);
@@ -236,17 +237,18 @@ public class FoodDAO implements IFoodDAO {
     }
     @SuppressWarnings("unchecked")
     @Override
-    public List<Food> searchFoodByName(String searchText, String type, String attr, String price, String status,String provider) {
+    public List<Food> searchFoodByName(String searchText, String type, String attr, String price, String status,
+            String provider) {
         List<Food> foodList = new ArrayList<Food>();
-        foodList = (List<Food>) PMF.searchListFoodByName(Food.class, searchText, type, attr, price, status,provider);
+        foodList = (List<Food>) PMF.searchListFoodByName(Food.class, searchText, type, attr, price, status, provider);
         return foodList;
     }
-    
+
     @SuppressWarnings("unchecked")
     @Override
     public boolean deleteFoodAll(Class<?> className) {
         List<Object> list = new ArrayList<Object>();
-        list = ( List<Object>)PMF.getObjectList(className);
-;       return PMF.deleteAll(list);
+        list = (List<Object>) PMF.getObjectList(className);
+        return PMF.deleteAll(list);
     }
 }
