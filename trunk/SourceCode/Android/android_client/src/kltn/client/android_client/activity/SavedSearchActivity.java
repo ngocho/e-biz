@@ -3,7 +3,6 @@ package kltn.client.android_client.activity;
 import kltn.client.android_client.R;
 import kltn.client.android_client.engine.BitmapManager;
 import kltn.client.android_client.engine.Engine;
-import kltn.client.android_client.engine.FavouriteEngine;
 import kltn.client.android_client.engine.SaveSearchEngine;
 import android.app.Activity;
 import android.content.Context;
@@ -13,8 +12,8 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -24,6 +23,13 @@ import android.widget.TextView;
 
 /**
  * @author NThanhPhong
+ */
+/**
+ * @author wind
+ *
+ */
+/**
+ * @author wind
  */
 public class SavedSearchActivity extends Activity implements OnClickListener, TextWatcher {
 
@@ -81,7 +87,8 @@ public class SavedSearchActivity extends Activity implements OnClickListener, Te
                 convertView = getLayoutInflater().inflate(R.layout.item_search, null);
             }
             mData.moveToPosition(position);
-            String url = mEngine.mURLImage + mData.getString(mData.getColumnIndex("imageurl"));
+            String url = mEngine.getUrlImage(SavedSearchActivity.this)
+                    + mData.getString(mData.getColumnIndex("imageurl"));
             ImageView image = (ImageView) convertView.findViewById(R.id.item_search_image);
             TextView name = (TextView) convertView.findViewById(R.id.item_search_name);
             TextView price = (TextView) convertView.findViewById(R.id.item_search_price);
@@ -96,7 +103,7 @@ public class SavedSearchActivity extends Activity implements OnClickListener, Te
             provider.setText(getString(R.string.provider) + " " + mData.getString(mData.getColumnIndex("provider")));
             count.setText(getString(R.string.buyer) + " " + mData.getString(mData.getColumnIndex("buycount")));
             saveddate.setText(getString(R.string.saved_date) + " " + mData.getString(mData.getColumnIndex("savedate")));
-            BitmapManager.INSTANCE.loadBitmap(url, image, 150, 150);
+            BitmapManager.INSTANCE.loadBitmap(url, image, SIZE, SIZE);
             final String idfood = mData.getString(mData.getColumnIndex("id"));
             convertView.setOnClickListener(new OnClickListener() {
 
@@ -110,6 +117,8 @@ public class SavedSearchActivity extends Activity implements OnClickListener, Te
             return convertView;
         }
     };
+    /** . */
+    private static final int SIZE = 150;
     /** . */
     private Engine mEngine;
     /** . */

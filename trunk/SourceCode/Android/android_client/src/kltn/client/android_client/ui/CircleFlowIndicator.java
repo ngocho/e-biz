@@ -24,17 +24,17 @@ import android.view.View;
  * </ul>
  */
 public class CircleFlowIndicator extends View implements FlowIndicator {
-    /**  . */
+    /** . */
     private float radius = 4;
-    /**  . */
+    /** . */
     private final Paint mPaintStroke = new Paint(Paint.ANTI_ALIAS_FLAG);
-    /**  . */
+    /** . */
     private final Paint mPaintFill = new Paint(Paint.ANTI_ALIAS_FLAG);
-    /**  . */
+    /** . */
     private ViewFlow viewFlow;
-    /**  . */
+    /** . */
     private int currentScroll = 0;
-    /**  . */
+    /** . */
     private int flowWidth = 0;
 
     /**

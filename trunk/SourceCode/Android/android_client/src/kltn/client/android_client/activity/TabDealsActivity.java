@@ -122,7 +122,8 @@ public class TabDealsActivity extends Activity implements OnClickListener, OnDis
             mPrice.setText(getString(R.string.deals_price) + " " + mItemData.getPrice() + " " + getString(R.string.vnd));
             mPricePromotion.setText(getString(R.string.deals_sale) + " " + mItemData.getBuyprice() + " "
                     + getString(R.string.vnd));
-            BitmapManager.INSTANCE.loadBitmap(mEngine.mURLImage + mItemData.getImageurl(), image, 500, 500);
+            BitmapManager.INSTANCE.loadBitmap(mEngine.getUrlImage(TabDealsActivity.this) + mItemData.getImageurl(),
+                    image, SIZE, SIZE);
             convertView.setOnClickListener(new OnClickListener() {
 
                 @Override
@@ -135,6 +136,8 @@ public class TabDealsActivity extends Activity implements OnClickListener, OnDis
             return convertView;
         }
     };
+    /** . */
+    private static final int SIZE = 500;
     /** . */
     private BestFoodItem mItemData;
     /** . */
@@ -160,7 +163,7 @@ public class TabDealsActivity extends Activity implements OnClickListener, OnDis
     /** . */
     private LinearLayout mBrowser;
     /** . */
-    public boolean mIsWaiting;
+    private boolean mIsWaiting;
     /*
      * (non-Javadoc)
      * @see android.view.View.OnClickListener#onClick(android.view.View)

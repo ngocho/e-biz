@@ -45,25 +45,25 @@ public class MyAccountActivity extends Activity implements OnClickListener {
         mHistory.setOnClickListener(this);
     }
 
-    /**  . */
+    /** . */
     private LinearLayout mAccountInfo;
-    /**  . */
+    /** . */
     private Button mBack;
-    /**  . */
+    /** . */
     private LinearLayout mAccountchangepass;
-    /**  . */
+    /** . */
     private LinearLayout mHome;
-    /**  . */
+    /** . */
     private LinearLayout mDeals;
-    /**  . */
+    /** . */
     private LinearLayout mBest;
-    /**  . */
+    /** . */
     private LinearLayout mBrowse;
-    /**  . */
+    /** . */
     private LinearLayout mPayment;
-    /**  . */
+    /** . */
     private LinearLayout mOrder;
-    /**  . */
+    /** . */
     private LinearLayout mHistory;
 
     /*

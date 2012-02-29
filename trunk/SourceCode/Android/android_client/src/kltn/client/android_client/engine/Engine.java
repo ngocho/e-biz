@@ -7,8 +7,8 @@ import java.io.Reader;
 import java.util.Vector;
 
 import kltn.client.android_client.PrefUtil;
-import kltn.client.android_client.model.BrowserFoodItem;
 import kltn.client.android_client.model.BestFoodItem;
+import kltn.client.android_client.model.BrowserFoodItem;
 import kltn.client.android_client.model.DateFoodItem;
 
 import org.apache.http.HttpEntity;
@@ -25,19 +25,16 @@ import android.content.Context;
 /**
  * @author NThanhPhong
  */
-public class Engine {
-    /** . */
-    private String mURLLogin = "http://16.test-kltn1.appspot.com/getUserFuntion.vn";
-    /** . */
-    private String mURLCUSTOMERFUNTION = "http://16.test-kltn1.appspot.com/getUserFuntion.vn";
-    /** . */
-    private String mURLGetDateFood;
-    /** . */
-    private String mURLGetBestFood = "http://16.test-kltn1.appspot.com/getBestList.vn";
-    /** . */
-    public String mURLImage = "http://16.test-kltn1.appspot.com/serveImage.vn?urlKey=";
+public class Engine {;
 
-    // getBrowserList
+    /**
+     * [Give the description for method].
+     * @param mcontext Context
+     * @return String
+     */
+    public String getUrlImage(Context mcontext){
+        return PrefUtil.getStringPref(mcontext, "linkserver")+"/serveImage.vn?urlKey=";
+    }
 
     /**
      * [Give the description for method].
@@ -48,7 +45,7 @@ public class Engine {
         Vector<BrowserFoodItem> result = new Vector<BrowserFoodItem>();
         try {
             JSONArray jsonArrayBrowser = new JSONArray(mQueryURL(PrefUtil.getStringPref(mContext, "linkserver")
-                    + "getBrowserList.vn"));
+                    + "/getBrowserList.vn"));
             int i;
             for (i = 0; i < jsonArrayBrowser.length(); i++) {
                 JSONObject item = (JSONObject) jsonArrayBrowser.get(i);
@@ -75,7 +72,7 @@ public class Engine {
         Vector<BestFoodItem> result = new Vector<BestFoodItem>();
         try {
             JSONArray jsonArrayphone = new JSONArray(mQueryURL(PrefUtil.getStringPref(mContext, "linkserver")
-                    + "getBestList.vn"));
+                    + "/getBestList.vn"));
             int i;
             for (i = 0; i < jsonArrayphone.length(); i++) {
                 JSONObject item = (JSONObject) jsonArrayphone.get(i);
@@ -100,7 +97,7 @@ public class Engine {
         Vector<DateFoodItem> result = new Vector<DateFoodItem>();
         try {
             JSONArray jsonArrayPhone = new JSONArray(mQueryURL(PrefUtil.getStringPref(mContext, "linkserver")
-                    + "getBestList.vn"));
+                    + "/getBestList.vn"));
             int i;
             for (i = 0; i < jsonArrayPhone.length(); i++) {
                 JSONObject item = (JSONObject) jsonArrayPhone.get(i);
@@ -127,7 +124,7 @@ public class Engine {
         String result = "0";
         try {
             JSONObject item = new JSONObject(mQueryURL(PrefUtil.getStringPref(mContext, "linkserver")
-                    + "getUserFuntion.vn?flag=GetXu&content=" + username + "@" + password));
+                    + "/getUserFuntion.vn?flag=GetXu&content=" + username + "@" + password));
             return item.getString("flag");
         } catch (Exception e) {
             e.printStackTrace();
@@ -143,7 +140,7 @@ public class Engine {
     public JSONObject mGetInfo(Context mContext, String username, String password) {
         try {
             JSONObject item = new JSONObject(mQueryURL(mQueryURL(PrefUtil.getStringPref(mContext, "linkserver")
-                    + "getUserFuntion.vn?flag=Info&content=" + username + "@" + password)));
+                    + "/getUserFuntion.vn?flag=Info&content=" + username + "@" + password)));
             return item;
         } catch (Exception e) {
             e.printStackTrace();
@@ -158,7 +155,7 @@ public class Engine {
     public JSONObject mGetFood(Context mContext, String idfood) {
         try {
             JSONObject item = new JSONObject(mQueryURL(PrefUtil.getStringPref(mContext, "linkserver")
-                    + "getFoodId.vn?idfood=" + idfood));
+                    + "/getFoodId.vn?idfood=" + idfood));
             return item;
         } catch (Exception e) {
             e.printStackTrace();
@@ -184,7 +181,7 @@ public class Engine {
         boolean result = false;
         try {
             JSONObject item = new JSONObject(mQueryURL(PrefUtil.getStringPref(mContext, "linkserver")
-                    + "getUserFuntion.vn?flag=register&content=" + username + "@" + password + "@" + fullname + "@"
+                    + "/getUserFuntion.vn?flag=register&content=" + username + "@" + password + "@" + fullname + "@"
                     + phone + "@" + email + "@" + birthday + "@" + sex + "@" + address));
             if (item.getInt("flag") == 1) {
                 result = true;
@@ -216,7 +213,7 @@ public class Engine {
         boolean jResult = false;
         try {
             JSONObject item = new JSONObject(mQueryURL(PrefUtil.getStringPref(mContext, "linkserver")
-                    + "getUserFuntion.vn?flag=changepass&content=" + username + "@" + oldpassword + "@" + newpassword));
+                    + "/getUserFuntion.vn?flag=changepass&content=" + username + "@" + oldpassword + "@" + newpassword));
             if (item.getString("flag").equals("1")) {
                 jResult = true;
             }
@@ -236,7 +233,7 @@ public class Engine {
         boolean jResult = false;
         try {
             JSONObject item = new JSONObject(mQueryURL(PrefUtil.getStringPref(mContext, "linkserver")
-                    + "getUserFuntion.vn?flag=login&content=" + username + "@" + password));
+                    + "/getUserFuntion.vn?flag=login&content=" + username + "@" + password));
             if (item.getString("flag").equals("1")) {
                 jResult = true;
             }

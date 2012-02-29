@@ -5,7 +5,6 @@ import android.content.SharedPreferences;
 
 /**
  * @author NThanhPhong
- *
  */
 public class IntegerPrefs extends PrefsItem {
     /**
@@ -21,7 +20,7 @@ public class IntegerPrefs extends PrefsItem {
     @Override
     public void setPrefValue(Object value) {
         Integer v = (Integer) value;
-        SharedPreferences settings = context.getSharedPreferences(prefsname, Context.MODE_PRIVATE);
+        SharedPreferences settings = context.getSharedPreferences(PREFSNAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = settings.edit();
         editor.putInt(getName(), v.intValue());
         editor.commit();
@@ -30,7 +29,7 @@ public class IntegerPrefs extends PrefsItem {
     @Override
     public Object getPrefValue() {
         // TODO Auto-generated method stub
-        SharedPreferences settings = context.getSharedPreferences(prefsname, Context.MODE_PRIVATE);
+        SharedPreferences settings = context.getSharedPreferences(PREFSNAME, Context.MODE_PRIVATE);
         int v = settings.getInt(getName(), defValue);
         return v;
     }
@@ -52,6 +51,6 @@ public class IntegerPrefs extends PrefsItem {
         setPrefValue(value);
     }
 
-    /**  . */
+    /** . */
     private int defValue;
 }

@@ -7,10 +7,8 @@ import kltn.client.android_client.R;
 import kltn.client.android_client.engine.BitmapManager;
 import kltn.client.android_client.engine.CommonUtil;
 import kltn.client.android_client.engine.Engine;
-import kltn.client.android_client.engine.FavouriteEngine;
 import kltn.client.android_client.engine.SaveSearchEngine;
 import kltn.client.android_client.model.BrowserFoodItem;
-import kltn.client.android_client.model.FavoriteItem;
 import kltn.client.android_client.model.SaveSearchItem;
 import android.app.Activity;
 import android.app.Dialog;
@@ -178,8 +176,8 @@ public class TabBrowserActivity extends Activity implements OnClickListener, Tex
                 convertView = getLayoutInflater().inflate(R.layout.item_browser_get, null);
             }
             ImageView image = (ImageView) convertView.findViewById(R.id.item_browser_get_image);
-            BitmapManager.INSTANCE.loadBitmap(mEngine.mURLImage + mItemsData.get(position).getImageurl(), image, 500,
-                    500);
+            BitmapManager.INSTANCE.loadBitmap(mEngine.getUrlImage(TabBrowserActivity.this)
+                    + mItemsData.get(position).getImageurl(), image, SIZE, SIZE);
             TextView name = (TextView) convertView.findViewById(R.id.item_browser_get_name);
             TextView price = (TextView) convertView.findViewById(R.id.item_browser_get_buy);
             TextView pricepromotion = (TextView) convertView.findViewById(R.id.item_browser_get_buyend);
@@ -192,7 +190,7 @@ public class TabBrowserActivity extends Activity implements OnClickListener, Tex
             pricepromotion.setText("$" + item.getBuyprice() + " " + getString(R.string.vnd));
             TextView provider = (TextView) convertView.findViewById(R.id.item_browser_get_provider);
             provider.setText(getString(R.string.provider) + " " + item.getProvider());
-            content.setText(mEngine.fillString(item.getIntroduction(), 40));
+            content.setText(mEngine.fillString(item.getIntroduction(), SIZEB));
             date.setText(item.getStartdate());
             TextView buyer = (TextView) convertView.findViewById(R.id.item_browser_get_buyer);
             buyer.setText(item.getBuycount() + " " + getString(R.string.buyer));
@@ -208,7 +206,10 @@ public class TabBrowserActivity extends Activity implements OnClickListener, Tex
             return convertView;
         }
     };
-
+    /**  . */
+    private static final int SIZE = 500;
+    /**  . */
+    private static final int SIZEB = 40;
     /** . */
     private Vector<BrowserFoodItem> mItemsData;
     /** . */
@@ -236,7 +237,7 @@ public class TabBrowserActivity extends Activity implements OnClickListener, Tex
     /** . */
     private Dialog mCurrentDialog;
     /** . */
-    public boolean mIsWaiting;
+    private boolean mIsWaiting;
     /** . */
     private Vector<BrowserFoodItem> mListBrowser;
     /** . */

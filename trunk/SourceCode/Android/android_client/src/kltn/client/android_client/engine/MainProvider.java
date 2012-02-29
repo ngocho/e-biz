@@ -1,7 +1,7 @@
 package kltn.client.android_client.engine;
 
-import kltn.client.android_client.model.FavoriteItem;
 import kltn.client.android_client.model.DateFoodItem;
+import kltn.client.android_client.model.FavoriteItem;
 import kltn.client.android_client.model.HistotyBuyItem;
 import kltn.client.android_client.model.SaveSearchItem;
 import android.content.ContentProvider;
@@ -12,9 +12,9 @@ import android.content.UriMatcher;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteQueryBuilder;
-import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.net.Uri;
 import android.text.TextUtils;
 import android.util.Log;

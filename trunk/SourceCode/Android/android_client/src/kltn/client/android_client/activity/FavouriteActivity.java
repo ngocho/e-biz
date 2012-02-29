@@ -52,10 +52,9 @@ public class FavouriteActivity extends Activity implements OnClickListener {
 
     /**
      * @author NThanhPhong
-     *
      */
     public class FavouriteAdapter extends BaseAdapter {
-        /**  . */
+        /** . */
         private Context context;
 
         /**
@@ -98,11 +97,13 @@ public class FavouriteActivity extends Activity implements OnClickListener {
                     + mData.getString(mData.getColumnIndex("name")));
             datesaved.setText(getString(R.string.saved_date) + " " + mData.getString(mData.getColumnIndex("savedate")));
             content.setText(mData.getString(mData.getColumnIndex("introduction")));
-            price.setText("$" + mData.getString(mData.getColumnIndex("price"))+" "+getString(R.string.vnd));
+            price.setText("$" + mData.getString(mData.getColumnIndex("price")) + " " + getString(R.string.vnd));
             price.setPaintFlags(price.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-            promotionprice.setText("$" + mData.getString(mData.getColumnIndex("buyprice"))+" "+getString(R.string.vnd));
+            promotionprice.setText("$" + mData.getString(mData.getColumnIndex("buyprice")) + " "
+                    + getString(R.string.vnd));
             provider.setText(getString(R.string.provider) + " " + mData.getString(mData.getColumnIndex("provider")));
-            BitmapManager.INSTANCE.loadBitmap(mEngine.mURLImage + mData.getString(mData.getColumnIndex("imageurl")),
+            BitmapManager.INSTANCE.loadBitmap(
+                    mEngine.getUrlImage(FavouriteActivity.this) + mData.getString(mData.getColumnIndex("imageurl")),
                     image, 90, 90);
             if (mflag) {
                 flag.setVisibility(0);
@@ -133,25 +134,25 @@ public class FavouriteActivity extends Activity implements OnClickListener {
         }
     };
 
-    /**  . */
+    /** . */
     private String listDelete = "";
-    /**  . */
+    /** . */
     private Engine mEngine;
-    /**  . */
+    /** . */
     private FavouriteEngine mFavoriteEngine;
-    /**  . */
+    /** . */
     private Cursor mData;
-    /**  . */
+    /** . */
     private boolean mflag = false;
-    /**  . */
+    /** . */
     private Button mBack;
-    /**  . */
+    /** . */
     private Button mAdvance;
-    /**  . */
+    /** . */
     private ListView mList;
-    /**  . */
+    /** . */
     private TextView mCount;
-    /**  . */
+    /** . */
     private FavouriteAdapter mFavouriteAdapter;
 
     @Override

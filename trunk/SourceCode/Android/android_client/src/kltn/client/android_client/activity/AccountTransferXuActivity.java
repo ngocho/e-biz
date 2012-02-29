@@ -1,10 +1,11 @@
 package kltn.client.android_client.activity;
 
-import org.json.JSONObject;
-
 import kltn.client.android_client.PrefUtil;
 import kltn.client.android_client.R;
 import kltn.client.android_client.engine.Engine;
+
+import org.json.JSONObject;
+
 import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
@@ -92,9 +93,9 @@ public class AccountTransferXuActivity extends Activity implements OnDismissList
      * @return String
      */
     public String getResultXu(String mOwner, String password, String mOwnerXu, String mUser) {
-        String json = mEngine
-                .mQueryURL("http://16.test-kltn1.appspot.com/getUserFuntion.vn?flag=XuSendCustomer&content=" + mOwner
-                        + "@" + password + "@" + mOwnerXu + "@" + mUser);
+        String json = mEngine.mQueryURL(PrefUtil.getStringPref(AccountTransferXuActivity.this, "linkserver")
+                + "/getUserFuntion.vn?flag=XuSendCustomer&content=" + mOwner + "@" + password + "@" + mOwnerXu + "@"
+                + mUser);
         return parseJSONXu(json);
     }
 

@@ -4,7 +4,6 @@ import android.view.View;
 
 /**
  * @author NThanhPhong
- *
  */
 public interface ViewSwitchListener {
 

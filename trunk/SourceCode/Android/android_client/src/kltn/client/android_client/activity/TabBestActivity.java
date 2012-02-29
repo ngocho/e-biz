@@ -15,8 +15,8 @@ import android.content.DialogInterface.OnDismissListener;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -109,7 +109,8 @@ public class TabBestActivity extends Activity implements OnClickListener, OnDism
             }
             ImageView image = (ImageView) convertView.findViewById(R.id.item_best_image);
             final BestFoodItem item = mData.get(position);
-            BitmapManager.INSTANCE.loadBitmap(mEngine.mURLImage + item.getImageurl(), image, 300, 300);
+            BitmapManager.INSTANCE.loadBitmap(mEngine.getUrlImage(TabBestActivity.this) + item.getImageurl(), image,
+                    SIZE, SIZE);
             TextView promotion = (TextView) convertView.findViewById(R.id.item_best_gt);
             TextView date = (TextView) convertView.findViewById(R.id.item_best_date);
             TextView price = (TextView) convertView.findViewById(R.id.item_best_price);
@@ -128,7 +129,7 @@ public class TabBestActivity extends Activity implements OnClickListener, OnDism
                 numbuyprice = Integer.parseInt(item.getBuyprice());
                 s = numprice - numbuyprice;
                 subprice.setText(String.valueOf(s) + " " + getString(R.string.vnd));
-                pecent = (int) ((s * 100) / numprice);
+                pecent = (int) ((s * SIZEB) / numprice);
                 promotion.setText(String.valueOf(pecent) + "%");
             } catch (Exception e) {
                 System.out.println(e);
@@ -145,6 +146,10 @@ public class TabBestActivity extends Activity implements OnClickListener, OnDism
             return convertView;
         }
     };
+    /** . */
+    private static final int SIZE = 300;
+    /** . */
+    private static final int SIZEB = 100;
     /** . */
     private ListView mList;
     /** . */

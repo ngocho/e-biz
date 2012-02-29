@@ -7,7 +7,6 @@ import android.widget.ScrollView;
 
 /**
  * @author NThanhPhong
- *
  */
 public class ControllableScrollView extends ScrollView {
     /**
@@ -53,6 +52,6 @@ public class ControllableScrollView extends ScrollView {
         allowScroll = enable;
     }
 
-    /**  . */
+    /** . */
     private boolean allowScroll = true;
 }

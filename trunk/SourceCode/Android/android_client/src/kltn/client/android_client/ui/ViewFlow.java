@@ -22,7 +22,6 @@ import android.widget.Scroller;
 
 /**
  * @author NThanhPhong
- *
  */
 public class ViewFlow extends AdapterView<Adapter> {
     /** . */
