@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" android:background="@drawable/my_background"
+	android:layout_height="fill_parent" android:orientation="vertical">
+
+	<LinearLayout android:id="@+id/linearLayout1"
+		android:background="@drawable/theme_activity_title_bar"
+		android:layout_width="fill_parent" android:layout_height="wrap_content">
+		<LinearLayout android:layout_width="fill_parent"
+			android:id="@+id/linearLayout4" android:layout_height="fill_parent"
+			android:gravity="center_vertical|center_horizontal">
+			<TextView android:textStyle="bold" android:gravity="center_horizontal"
+				android:id="@+id/textView1" android:text="Setting"
+				android:textColor="@color/white" android:layout_height="wrap_content"
+				android:textSize="18dp" android:layout_width="wrap_content"
+				android:textAppearance="?android:attr/textAppearanceMedium"></TextView>
+		</LinearLayout>
+	</LinearLayout>
+	<TextView android:layout_marginLeft="5dp" android:text="Thời gian chạy quảng cáo"
+		android:textColor="@color/black" android:id="@+id/textView2"
+		android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
+	<LinearLayout android:layout_width="fill_parent"
+		android:orientation="horizontal" android:id="@+id/linearLayout2"
+		android:layout_height="wrap_content">
+		<EditText android:inputType="number" android:layout_weight="1.0"
+			android:id="@+id/setting_ads" android:layout_width="wrap_content"
+			android:layout_height="wrap_content"></EditText>
+		<TextView android:text="phút/1 lần" android:textColor="@color/black"
+			android:id="@+id/textView3" android:layout_width="wrap_content"
+			android:layout_height="wrap_content"></TextView>
+	</LinearLayout>
+	<TextView android:layout_marginLeft="5dp"
+		android:text="Thời gian chạy Active Code" android:textColor="@color/black"
+		android:id="@+id/textView2" android:layout_width="wrap_content"
+		android:layout_height="wrap_content"></TextView>
+	<LinearLayout android:layout_width="fill_parent"
+		android:orientation="horizontal" android:id="@+id/linearLayout2"
+		android:layout_height="wrap_content">
+		<EditText android:inputType="number" android:layout_weight="1.0"
+			android:id="@+id/setting_activecode" android:layout_width="wrap_content"
+			android:layout_height="wrap_content"></EditText>
+		<TextView android:text="phút/1 lần" android:textColor="@color/black"
+			android:id="@+id/textView3" android:layout_width="wrap_content"
+			android:layout_height="wrap_content"></TextView>
+	</LinearLayout>
+	<TextView android:layout_marginLeft="5dp"
+		android:text="Thời gian chạy hướng dẫn nạp xu" android:textColor="@color/black"
+		android:id="@+id/textView2" android:layout_width="wrap_content"
+		android:layout_height="wrap_content"></TextView>
+	<LinearLayout android:layout_width="fill_parent"
+		android:orientation="horizontal" android:id="@+id/linearLayout2"
+		android:layout_height="wrap_content">
+		<EditText android:inputType="number" android:layout_weight="1.0"
+			android:id="@+id/setting_napxu" android:layout_width="wrap_content"
+			android:layout_height="wrap_content"></EditText>
+		<TextView android:text="phút/1 lần" android:textColor="@color/black"
+			android:id="@+id/textView3" android:layout_width="wrap_content"
+			android:layout_height="wrap_content"></TextView>
+	</LinearLayout>
+	<LinearLayout android:layout_weight="1.0"
+		android:layout_width="fill_parent" android:id="@+id/linearLayout5"
+		android:layout_height="wrap_content" android:gravity="center_horizontal">
+		<Button android:layout_width="wrap_content"
+			android:layout_height="wrap_content" android:text="Cập nhật"
+			android:id="@+id/setting_update"></Button>
+	</LinearLayout>
+	<LinearLayout android:layout_width="fill_parent"
+		android:id="@+id/linearLayout3" android:layout_height="wrap_content"
+		android:gravity="center_horizontal">
+
+		<Button android:text="Start Server" android:id="@+id/setting_start"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"></Button>
+		<Button android:text="Stop Server" android:id="@+id/setting_stop"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"></Button>
+	</LinearLayout>
+</LinearLayout>
