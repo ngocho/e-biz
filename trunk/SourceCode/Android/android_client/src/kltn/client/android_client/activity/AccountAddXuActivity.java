@@ -108,23 +108,23 @@ public class AccountAddXuActivity extends Activity implements OnDismissListener 
     public App getApp() {
         return (App) getApplication();
     }
-    /**  . */
+    /** . */
     private boolean flag = false;
-    /**  . */
+    /** . */
     private String status;
-    /**  . */
+    /** . */
     private boolean mIsWaiting;
-    /**  . */
+    /** . */
     private TextView mUsername;
-    /**  . */
+    /** . */
     private TextView mMoney;
-    /**  . */
+    /** . */
     private EditText mProductkey;
-    /**  . */
+    /** . */
     private Button mOk;
-    /**  . */
+    /** . */
     private Engine mEngine;
-    /**  . */
+    /** . */
     private Dialog mCurrentDialog;
 
     /*
@@ -135,7 +135,7 @@ public class AccountAddXuActivity extends Activity implements OnDismissListener 
     public void onDismiss(DialogInterface dialog) {
         Toast.makeText(AccountAddXuActivity.this, status, Toast.LENGTH_LONG).show();
         if (flag) {
-            mMoney.setText(mEngine.mGetXu(mUsername.getText().toString(),
+            mMoney.setText(mEngine.mGetXu(AccountAddXuActivity.this, mUsername.getText().toString(),
                     PrefUtil.getStringPref(AccountAddXuActivity.this, "password")));
             PrefUtil.setPref(AccountAddXuActivity.this, "xu", mMoney.getText());
             mProductkey.setText("");

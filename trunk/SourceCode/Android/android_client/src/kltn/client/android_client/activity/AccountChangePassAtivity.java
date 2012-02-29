@@ -41,19 +41,19 @@ public class AccountChangePassAtivity extends Activity implements OnClickListene
         mEngine = new Engine();
         mName.setText(PrefUtil.getStringPref(this, "username"));
     }
-    /**  . */
+    /** . */
     private Button mBack, mOk;
-    /**  . */
+    /** . */
     private EditText mOldPass, mNewPass, mComfirmPass;
-    /**  . */
+    /** . */
     private TextView mName;
-    /**  . */
+    /** . */
     private Dialog mCurrentDialog;
-    /**  . */
+    /** . */
     public boolean mIsWaiting;
-    /**  . */
+    /** . */
     private Engine mEngine;
-    /**  . */
+    /** . */
     private boolean flag = false;
     /*
      * (non-Javadoc)
@@ -64,7 +64,8 @@ public class AccountChangePassAtivity extends Activity implements OnClickListene
         switch (v.getId()) {
             case R.id.account_changepass_ok :
                 if (!mOldPass.getText().equals("") && !mNewPass.getText().equals("")
-                        && !mComfirmPass.getText().equals("") && mNewPass.getText().toString().equals(mComfirmPass.getText().toString())) {
+                        && !mComfirmPass.getText().equals("")
+                        && mNewPass.getText().toString().equals(mComfirmPass.getText().toString())) {
                     mLoadData();
                 } else {
                     Toast.makeText(AccountChangePassAtivity.this, getString(R.string.transfer_xu_status),
@@ -106,8 +107,9 @@ public class AccountChangePassAtivity extends Activity implements OnClickListene
         mIsWaiting = true;
         Thread t = new Thread() {
             public void run() {
-                flag = mEngine.mChangePass(PrefUtil.getStringPref(AccountChangePassAtivity.this, "username"), mOldPass
-                        .getText().toString(), mNewPass.getText().toString());
+                flag = mEngine.mChangePass(AccountChangePassAtivity.this, PrefUtil.getStringPref(
+                        AccountChangePassAtivity.this, "username"), mOldPass.getText().toString(), mNewPass.getText()
+                        .toString());
                 mCurrentDialog.dismiss();
             }
         };

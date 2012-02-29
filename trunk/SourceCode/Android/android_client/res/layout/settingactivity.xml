@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" android:background="@drawable/my_background"
+	android:layout_height="fill_parent" android:orientation="vertical">
+
+	<LinearLayout android:id="@+id/linearLayout1"
+		android:background="@drawable/theme_activity_title_bar"
+		android:layout_marginBottom="5dp" android:layout_height="40dp"
+		android:layout_width="fill_parent" android:gravity="center_vertical">
+		<Button android:id="@+id/setting_back" android:background="@drawable/btn_back"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+			android:gravity="left" android:layout_gravity="left"></Button>
+		<LinearLayout android:layout_width="fill_parent"
+			android:id="@+id/linearLayout4" android:layout_height="fill_parent"
+			android:gravity="center_vertical|center_horizontal">
+			<TextView android:textStyle="bold" android:gravity="center_horizontal"
+				android:id="@+id/textView1" android:textColor="@color/white"
+				android:layout_marginRight="40dp" android:layout_height="wrap_content"
+				android:textSize="18dp" android:layout_width="wrap_content"
+				android:textAppearance="?android:attr/textAppearanceMedium"
+				android:text="@string/linkserver"></TextView>
+		</LinearLayout>
+	</LinearLayout>
+	<TextView android:textColor="@color/black"
+		android:layout_margin="10dp" android:textStyle="bold" android:id="@+id/textView2"
+		android:layout_width="wrap_content" android:layout_height="wrap_content"
+		android:text="@string/linkserver"></TextView>
+	<EditText android:layout_height="wrap_content" android:layout_marginLeft="10dp" android:layout_marginRight="10dp"
+		android:layout_width="fill_parent" android:id="@+id/setting_link"></EditText>
+	<Button android:id="@+id/setting_ok"
+		android:layout_width="50dp" android:layout_height="wrap_content" android:layout_gravity="center_horizontal" android:text="@string/ok"></Button>
+	<LinearLayout android:id="@+id/linearLayout2"
+		android:layout_height="fill_parent" android:layout_width="wrap_content"></LinearLayout>
+</LinearLayout>

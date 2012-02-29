@@ -71,10 +71,11 @@ public class Engine {
      * [Give the description for method].
      * @return Vector<best_food_item>
      */
-    public Vector<BestFoodItem> getBestFood() {
+    public Vector<BestFoodItem> getBestFood(Context mContext) {
         Vector<BestFoodItem> result = new Vector<BestFoodItem>();
         try {
-            JSONArray jsonArrayphone = new JSONArray(mQueryURL(mURLGetBestFood));
+            JSONArray jsonArrayphone = new JSONArray(mQueryURL(PrefUtil.getStringPref(mContext, "linkserver")
+                    + "getBestList.vn"));
             int i;
             for (i = 0; i < jsonArrayphone.length(); i++) {
                 JSONObject item = (JSONObject) jsonArrayphone.get(i);
@@ -95,10 +96,11 @@ public class Engine {
      * [get_date_food].
      * @return Vector<date_food_item>
      */
-    public Vector<DateFoodItem> getDateFood() {
+    public Vector<DateFoodItem> getDateFood(Context mContext) {
         Vector<DateFoodItem> result = new Vector<DateFoodItem>();
         try {
-            JSONArray jsonArrayPhone = new JSONArray(mQueryURL(mURLGetDateFood));
+            JSONArray jsonArrayPhone = new JSONArray(mQueryURL(PrefUtil.getStringPref(mContext, "linkserver")
+                    + "getBestList.vn"));
             int i;
             for (i = 0; i < jsonArrayPhone.length(); i++) {
                 JSONObject item = (JSONObject) jsonArrayPhone.get(i);
@@ -121,12 +123,11 @@ public class Engine {
      * @param password String
      * @return String
      */
-    public String mGetXu(String username, String password) {
+    public String mGetXu(Context mContext, String username, String password) {
         String result = "0";
         try {
-            JSONObject item = new JSONObject(
-                    mQueryURL("http://16.test-kltn1.appspot.com/getUserFuntion.vn?flag=GetXu&content=" + username + "@"
-                            + password));
+            JSONObject item = new JSONObject(mQueryURL(PrefUtil.getStringPref(mContext, "linkserver")
+                    + "getUserFuntion.vn?flag=GetXu&content=" + username + "@" + password));
             return item.getString("flag");
         } catch (Exception e) {
             e.printStackTrace();
@@ -139,11 +140,10 @@ public class Engine {
      * @param password String
      * @return JSONObject
      */
-    public JSONObject mGetInfo(String username, String password) {
+    public JSONObject mGetInfo(Context mContext, String username, String password) {
         try {
-            JSONObject item = new JSONObject(
-                    mQueryURL("http://16.test-kltn1.appspot.com/getUserFuntion.vn?flag=Info&content=" + username + "@"
-                            + password));
+            JSONObject item = new JSONObject(mQueryURL(mQueryURL(PrefUtil.getStringPref(mContext, "linkserver")
+                    + "getUserFuntion.vn?flag=Info&content=" + username + "@" + password)));
             return item;
         } catch (Exception e) {
             e.printStackTrace();
@@ -155,10 +155,10 @@ public class Engine {
      * @param idfood String
      * @return JSONObject
      */
-    public JSONObject mGetFood(String idfood) {
+    public JSONObject mGetFood(Context mContext, String idfood) {
         try {
-            JSONObject item = new JSONObject(
-                    mQueryURL("http://16.test-kltn1.appspot.com/getFoodId.vn?idfood=" + idfood));
+            JSONObject item = new JSONObject(mQueryURL(PrefUtil.getStringPref(mContext, "linkserver")
+                    + "getFoodId.vn?idfood=" + idfood));
             return item;
         } catch (Exception e) {
             e.printStackTrace();
@@ -179,13 +179,13 @@ public class Engine {
      * @param birthday String
      * @return boolean
      */
-    public boolean mRegister(String username, String password, String fullname, String sex, String email, String phone,
-            String address, String birthday) {
+    public boolean mRegister(Context mContext, String username, String password, String fullname, String sex,
+            String email, String phone, String address, String birthday) {
         boolean result = false;
         try {
-            JSONObject item = new JSONObject(mQueryURL(mURLCUSTOMERFUNTION + "?flag=register&content=" + username + "@"
-                    + password + "@" + fullname + "@" + phone + "@" + email + "@" + birthday + "@" + sex + "@"
-                    + address));
+            JSONObject item = new JSONObject(mQueryURL(PrefUtil.getStringPref(mContext, "linkserver")
+                    + "getUserFuntion.vn?flag=register&content=" + username + "@" + password + "@" + fullname + "@"
+                    + phone + "@" + email + "@" + birthday + "@" + sex + "@" + address));
             if (item.getInt("flag") == 1) {
                 result = true;
             }
@@ -202,8 +202,8 @@ public class Engine {
      * @param password String
      * @return boolean
      */
-    public boolean login(String username, String password) {
-        return mParseJSONLogin(username, password);
+    public boolean login(Context mContext, String username, String password) {
+        return mParseJSONLogin(mContext, username, password);
     }
     /**
      * [ChangePass].
@@ -212,11 +212,11 @@ public class Engine {
      * @param newpassword String
      * @return boolean
      */
-    public boolean mChangePass(String username, String oldpassword, String newpassword) {
+    public boolean mChangePass(Context mContext, String username, String oldpassword, String newpassword) {
         boolean jResult = false;
         try {
-            JSONObject item = new JSONObject(mQueryURL(mURLCUSTOMERFUNTION + "?flag=changepass&content=" + username
-                    + "@" + oldpassword + "@" + newpassword));
+            JSONObject item = new JSONObject(mQueryURL(PrefUtil.getStringPref(mContext, "linkserver")
+                    + "getUserFuntion.vn?flag=changepass&content=" + username + "@" + oldpassword + "@" + newpassword));
             if (item.getString("flag").equals("1")) {
                 jResult = true;
             }
@@ -232,10 +232,11 @@ public class Engine {
      * @param password String
      * @return boolean
      */
-    private boolean mParseJSONLogin(String username, String password) {
+    private boolean mParseJSONLogin(Context mContext, String username, String password) {
         boolean jResult = false;
         try {
-            JSONObject item = new JSONObject(mQueryURL(mURLLogin + "?flag=login&content=" + username + "@" + password));
+            JSONObject item = new JSONObject(mQueryURL(PrefUtil.getStringPref(mContext, "linkserver")
+                    + "getUserFuntion.vn?flag=login&content=" + username + "@" + password));
             if (item.getString("flag").equals("1")) {
                 jResult = true;
             }

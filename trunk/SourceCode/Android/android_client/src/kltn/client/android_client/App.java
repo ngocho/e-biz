@@ -18,7 +18,8 @@ public class App extends Application {
         userName.setValue("wind");
         password.setValue("1234567890");
         xu.setValue("0");
-        linkserver.setValue("http://16.test-kltn1.appspot.com/");
+        if(PrefUtil.getStringPref(this, "linkserver")==null)
+            linkserver.setValue("http://16.test-kltn1.appspot.com/");
     }
 
     /**  . */

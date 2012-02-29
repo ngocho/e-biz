@@ -5,8 +5,7 @@
 			<CheckBoxPreference android:key="auto_rotation"
 			android:title="@string/settings_tudongxoay" />
 		-->
-		<Preference android:key="sound_reminder" android:title="@string/settings_volume"></Preference>
-		<CheckBoxPreference android:key="show_status_bar" android:title="@string/settings_titlebar"/><!--
+		<Preference android:key="sound_reminder" android:title="@string/settings_volume"></Preference><!--
 		<CheckBoxPreference android:title="@string/settings_giumanhinh"
 			android:key="keep_screen_on" />
 		--><Preference android:key="media_volume" android:title="@string/settings_volume"/>
