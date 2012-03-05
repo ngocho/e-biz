@@ -32,8 +32,8 @@ import ebiz.blo.common.SendMail;
 import ebiz.blo.provider.ProviderBLO;
 import ebiz.dto.account.provider.Provider;
 import ebiz.form.ProviderForm;
+import ebiz.mobile.dto.HashCode;
 import ebiz.util.CommonConstant;
-import mobile.ebiz.dto.HashCode;
 /**
  * @author ThuyNT
  */

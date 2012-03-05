@@ -23,25 +23,23 @@ import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import mobile.ebiz.blo.IDXUBLO;
-
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
+import ebiz.mobile.blo.IDXUBLO;
 import ebiz.util.CommonConstant;
 
 /**
  * @author ThuyNT
- *
  */
 public class GenerationCodeXu extends Action {
-    /**  . */
-    private static final Logger log = Logger.getLogger(GenerationCodeXu.class.getName());
+    /** . */
+    private static final Logger log = Logger.getLogger("GenerationCodeXu");
+
     /**
      * [AuthenticationProvider].
-     *
      * @param mapping ActionMapping
      * @param form ActionForm
      * @param request HttpServletRequest

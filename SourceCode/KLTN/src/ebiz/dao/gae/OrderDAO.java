@@ -171,4 +171,9 @@ public class OrderDAO implements IOrderDAO {
         return orderList;
     }
 
+    @Override
+    public boolean deleteOrderBill(Long id) {
+        return PMF.delete(OrderBill.class, id);
+    }
+
 }

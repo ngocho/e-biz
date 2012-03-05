@@ -26,6 +26,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import ebiz.blo.customer.CustomerBLO;
+import ebiz.dao.DaoManager;
 import ebiz.dao.gae.FoodDAO;
 import ebiz.dao.gae.OrderDAO;
 import ebiz.dao.gae.PMF;
@@ -50,13 +51,12 @@ import ebiz.util.CommonUtil;
  */
 public class FoodBLO {
     /** FoodDAO . */
-    private static IFoodDAO foodDao = new FoodDAO();
+    private static IFoodDAO foodDao = DaoManager.getInstance().getFoodDao();
     /** OrderDAO. */
-    private static IOrderDAO orderDao = new OrderDAO();
+    private static IOrderDAO orderDao = DaoManager.getInstance().getOrderDao();
 
     /**
      * [get Food by ID(Long type)].
-     * 
      * @param id Long
      * @return Food
      */
@@ -66,7 +66,6 @@ public class FoodBLO {
 
     /**
      * [Get all food List].
-     * 
      * @return List<Food>
      */
     public static List<Food> getFoodListAll() {
@@ -76,7 +75,6 @@ public class FoodBLO {
 
     /**
      * [get FoodFormList By Status with limit].
-     * 
      * @param limit number of food to get
      * @param idStatus status of food
      * @return List<FoodForm> to display
@@ -164,7 +162,6 @@ public class FoodBLO {
 
     /**
      * [get ProductList by atrr(kho, xao, canh)].
-     * 
      * @param limit
      * @param idStatus
      * @return
@@ -274,7 +271,6 @@ public class FoodBLO {
 
     /**
      * [get Name of Food by ID].
-     * 
      * @param id Id of Food
      * @return String Name of Food
      */
@@ -284,7 +280,6 @@ public class FoodBLO {
 
     /**
      * [get Name of Type Foood by Type ID].
-     * 
      * @param id Id of Food
      * @return String Name of Food
      */
@@ -298,7 +293,6 @@ public class FoodBLO {
 
     /**
      * [get FoodForm(paging)].
-     * 
      * @param col Name Column
      * @param paging content list Cursor String
      * @param order type Order
@@ -371,7 +365,6 @@ public class FoodBLO {
 
     /**
      * [initialize Food Category ].
-     * 
      * @param paging Cursor string
      * @param record record in 1 page
      * @param typeProduct type of Food
@@ -404,7 +397,6 @@ public class FoodBLO {
 
     /**
      * [initialize Food Category Provider ].
-     * 
      * @param paging Cursor string
      * @param record record in 1 page
      * @param typeProduct type of Food
@@ -420,7 +412,6 @@ public class FoodBLO {
 
     /**
      * [displayFoodCategoryProvider].
-     * 
      * @param col String
      * @param paging HashMap
      * @param order String
@@ -465,7 +456,6 @@ public class FoodBLO {
 
     /**
      * [Give the description for method].
-     * 
      * @param key String
      * @return FoodForm
      */
@@ -484,7 +474,6 @@ public class FoodBLO {
 
     /**
      * [update Status of paging].
-     * 
      * @param p HashMap<Integer, String>
      * @return List<Paging> Class for cursor String
      */
@@ -503,7 +492,6 @@ public class FoodBLO {
 
     /**
      * [transfer HashMap<Integer, String> to List<Paging>].
-     * 
      * @param pageList List<Paging>
      * @return HashMap<Integer, String>
      */
@@ -519,7 +507,6 @@ public class FoodBLO {
 
     /**
      * [add food into shopping cart].
-     * 
      * @param shopCart ShoppingCart
      * @param key key of food
      * @param number amount of food
@@ -591,7 +578,6 @@ public class FoodBLO {
     }
     /**
      * [test number of food in database with food which add into shop].
-     * 
      * @param shopCart ShoppingCart
      * @param key id of Food
      * @param number amount of Food
@@ -642,7 +628,6 @@ public class FoodBLO {
 
     /**
      * [decrease amount of FoodNumber, FoodOrder].
-     * 
      * @param id id of Food
      * @param number amount of Food
      * @return boolean
@@ -658,7 +643,6 @@ public class FoodBLO {
 
     /**
      * [increase amount of Food].
-     * 
      * @param id id of Food
      * @param number amount of Food
      * @return boolean
@@ -673,7 +657,6 @@ public class FoodBLO {
 
     /**
      * [increase amount of FoodOrder(Order column)].
-     * 
      * @param id id of Food
      * @param number amount of Food
      * @return boolean
@@ -743,7 +726,6 @@ public class FoodBLO {
 
     /**
      * [billing for Order].
-     * 
      * @param shop ShoppingCart
      * @return OrderBill
      */
@@ -807,7 +789,6 @@ public class FoodBLO {
 
     /**
      * [getDetailOrderReset(function of Customer)].
-     * 
      * @param orderID Long
      * @return List<DetailOrder>
      */
@@ -835,7 +816,6 @@ public class FoodBLO {
 
     /**
      * [getDetailOrder by Order ID].
-     * 
      * @param orderID Long
      * @return List<DetailOrder>
      */
@@ -849,7 +829,6 @@ public class FoodBLO {
 
     /**
      * [isEqual].
-     * 
      * @param list1 List<DetailOrder>
      * @param list2 List<DetailOrder>
      * @return boolean
@@ -868,7 +847,6 @@ public class FoodBLO {
 
     /**
      * [cancelOrderBill(set status of OrderBill)].
-     * 
      * @param id Long
      * @return boolean
      */
@@ -888,7 +866,6 @@ public class FoodBLO {
 
     /**
      * [updateStatusOrderBill].
-     * 
      * @param id Long
      * @param status int
      * @return boolean
@@ -904,17 +881,17 @@ public class FoodBLO {
 
     /**
      * [deleteFood].
-     * 
      * @param food Food
      * @return boolean
      */
     public static boolean deleteFood(Food food) {
-        return PMF.delete(Food.class, food.getFoodId());
+        // return PMF.delete(Food.class, food.getFoodId());
+        return foodDao.deleteFood(food);
+
     }
 
     /**
      * [deleteFood].
-     * 
      * @param food Food
      * @return boolean
      */
@@ -931,7 +908,6 @@ public class FoodBLO {
 
     /**
      * [sumMoneyOrder].
-     * 
      * @param shop ShoppingCart
      * @return long
      */
@@ -945,7 +921,6 @@ public class FoodBLO {
 
     /**
      * [upload Food (provider)].
-     * 
      * @param food Food
      * @return boolean
      */
@@ -961,7 +936,6 @@ public class FoodBLO {
 
     /**
      * [upload Food (provider)].
-     * 
      * @param food Food
      * @return boolean
      */
@@ -971,7 +945,6 @@ public class FoodBLO {
 
     /**
      * [upload Food (provider)].
-     * 
      * @param food Food
      * @return boolean
      */
@@ -993,7 +966,6 @@ public class FoodBLO {
     }
     /**
      * [getAttributeFoodList].
-     * 
      * @return List<String>
      */
     public static List<FoodAttribute> getAttributeFoodList() {
@@ -1002,7 +974,6 @@ public class FoodBLO {
 
     /**
      * [getPriceFoodList].
-     * 
      * @return List<FoodPriceLevel>
      */
     public static List<FoodPriceLevel> getPriceFoodList() {
@@ -1033,7 +1004,6 @@ public class FoodBLO {
 
     /**
      * [getFoodIdPrice].
-     * 
      * @param money long
      * @return String
      */
@@ -1051,7 +1021,6 @@ public class FoodBLO {
 
     /**
      * [shortDisplayText].
-     * 
      * @param list List<FoodForm>
      * @param len int
      */

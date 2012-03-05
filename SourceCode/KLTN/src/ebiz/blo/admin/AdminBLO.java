@@ -7,7 +7,7 @@ import java.util.List;
 import net.sf.jsr107cache.Cache;
 import ebiz.blo.customer.CustomerBLO;
 import ebiz.blo.food.SearchBLO;
-import ebiz.dao.gae.AdminDAO;
+import ebiz.dao.DaoManager;
 import ebiz.dao.gae.OrderDAO;
 import ebiz.dao.inf.IAdminDAO;
 import ebiz.dao.inf.IOrderDAO;
@@ -23,9 +23,9 @@ import ebiz.util.CommonUtil;
  */
 public class AdminBLO {
     /** . */
-    private static IAdminDAO adminDao = new AdminDAO();
+    private static IAdminDAO adminDao = DaoManager.getInstance().getAdminDao();
     /** . */
-    private static IOrderDAO orderDao = new OrderDAO();
+    private static IOrderDAO orderDao = DaoManager.getInstance().getOrderDao();
     /**
      * [isLoginID].
      *

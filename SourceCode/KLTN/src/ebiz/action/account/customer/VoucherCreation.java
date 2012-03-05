@@ -34,7 +34,8 @@ import ebiz.dto.checkout.VoucherBill;
 import ebiz.form.OrderBillForm;
 import ebiz.util.CommonConstant;
 import ebiz.form.LoginForm;
-import mobile.ebiz.dto.HashCode;
+import ebiz.mobile.dto.HashCode;
+
 import java.util.Date;
 /**
  * @author ThuyNT
