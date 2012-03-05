@@ -3,6 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+<%@ taglib uri="/WEB-INF/c.tld" prefix="c" %>
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -43,10 +44,10 @@
                 }
         });
       function cropImage(){
-    	  if($('x').val() != ''
-    			  && $('y').val() != ''
-    			  && $('x2').val() != ''
-    			  && $('y2').val() != ''){
+    	  if($('#x').val() != ''
+    			  && $('#y').val() != ''
+    			  && $('#x2').val() != ''
+    			  && $('#y2').val() != ''){
     		  $.ajax({
                   url: '/cropImage.vn',
                   data: {
@@ -55,12 +56,13 @@
                       'rightX' : $('#x2').val(),
                       'bottomY' : $('#y2').val(),
                       'width' : $('#cropping').width(),
-                      'height' : $('#cropping').height()
+                      'height' : $('#cropping').height(),
+                      'key' : $('#key').val()
                   },
                   dataType: 'text',
                   success: function(data){
-                          window.opener.updateImage(data);
-                          window.close();
+                	  window.opener.updateImage(data);
+                      window.close();
                   }
               });
     	  } else {
@@ -71,18 +73,38 @@
       </script>
   </head>
   <body>
-    <logic:present name="urlImageKey" >
-      <img src="/serveImage.vn?urlKey=<bean:write name="urlImageKey"/>" id="cropping" />
+    <c:if test="${not empty param.key}">
+      <input type="hidden" id="key" value="${param.key }">
+      <c:if test="${'product' == param.key }">
+        <logic:present name="urlImageKey" >
+          <img src="/serveImage.vn?urlKey=<bean:write name="urlImageKey"/>" id="cropping" />
+        </logic:present>
+        <logic:notPresent name="urlImageKey">
+          <div>
+            Website của chúng tôi phát hiện 1 lỗi đang xảy ra. Bồ vui lòng quay lại vào lúc khác. Cảm ơn bồ đã thông cảm.
+        </div>
+        </logic:notPresent>
+      </c:if>
+      <c:if test="${'provider' == param.key }">
+        <logic:present name="urlImageKeyP" >
+          <img src="/serveImage.vn?urlKey=<bean:write name="urlImageKeyP"/>" id="cropping" />
+        </logic:present>
+        <logic:notPresent name="urlImageKeyP">
+          <div>
+            Website của chúng tôi phát hiện 1 lỗi đang xảy ra. Bồ vui lòng quay lại vào lúc khác. Cảm ơn bồ đã thông cảm.
+        </div>
+        </logic:notPresent>
+      </c:if>
       <input type="hidden" id="x" >
       <input type="hidden" id="y" >
       <input type="hidden" id="x2" >
       <input type="hidden" id="y2" >
       <input type="button" value="Chọn" onclick="cropImage()" />
-    </logic:present>
-    <logic:notPresent name="urlImageKey">
+    </c:if>
+    <c:if test="${empty param.key }">
       <div>
         Website của chúng tôi phát hiện 1 lỗi đang xảy ra. Bồ vui lòng quay lại vào lúc khác. Cảm ơn bồ đã thông cảm.
       </div>
-    </logic:notPresent>
+    </c:if>
   </body>
 </html>

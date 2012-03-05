@@ -22,6 +22,7 @@ import java.nio.ByteBuffer;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
@@ -48,21 +49,34 @@ public class CropImage extends Action {
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
         try {
+            System.out.println(request.getQueryString());
             int leftX = Integer.parseInt(request.getParameter("leftX"));
             int topY = Integer.parseInt(request.getParameter("topY"));
             int rightX = Integer.parseInt(request.getParameter("rightX"));
             int bottomY = Integer.parseInt(request.getParameter("bottomY"));
             double height = 1.0 * Integer.parseInt(request.getParameter("height"));
             double width = 1.0 * Integer.parseInt(request.getParameter("width"));
-            if ((leftX != rightX) && (topY != bottomY)) {
-                String urlKey = request.getSession().getAttribute("urlImageKey").toString();
+            HttpSession session = request.getSession();
+            if ((leftX < rightX) && (topY < bottomY)) {
+                System.out.println("Milestone 1");
+                String type = request.getParameter("key");
+                
+                // check request crop image for provider or product.
+                String key ="";
+                if("product".equalsIgnoreCase(type)){
+                    key = "urlImageKey";
+                }else if ("provider".equalsIgnoreCase(type)){
+                    key = "urlImageKeyP";
+                } else {
+                    throw new RuntimeException();
+                }
+                String urlKey = session.getAttribute(key).toString();
                 // get image
                 Image image = ImagesServiceFactory.makeImageFromBlob(new BlobKey(urlKey));
                 // crop image
                 Transform crop = ImagesServiceFactory.makeCrop(leftX/width, topY/height, rightX/width, bottomY/height);
                 ImagesService services = ImagesServiceFactory.getImagesService();
                 Image newImage = services.applyTransform(crop, image);
-                
                 // Delete old file.
                 BlobstoreServiceFactory.getBlobstoreService().delete(new BlobKey(urlKey));
                 // save to File
@@ -75,13 +89,13 @@ public class CropImage extends Action {
                 
                 // Get new blob key and write to session.
                 BlobKey blob = fileService.getBlobKey(file);
-                request.getSession().setAttribute("urlImageKey", blob.getKeyString());
+                request.getSession().setAttribute(key, blob.getKeyString());
                 request.getSession().removeAttribute("notCropped");
                 response.getWriter().print(blob.getKeyString());
             } else {
-                throw new NumberFormatException();
+                throw new RuntimeException();
             }
-        } catch (NumberFormatException re) {
+        } catch (RuntimeException re) {
             response.getWriter().print("fail");
         }
         return null;

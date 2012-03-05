@@ -24,6 +24,7 @@
             var flag = validateProviderRegister();
             if (!flag) {
                 return false;
+            }
         });
 
         $(".reset").blur(function() {
@@ -32,6 +33,9 @@
             }
         });
     });
+    function updateImage(urlKey){
+        $('#image-container').html('<img src="/serveImage.vn?urlKey='+urlKey+'" width="200" height="150" />');
+   }
 </script>
 <%
     BlobstoreService blobstoreService = BlobstoreServiceFactory
@@ -51,6 +55,7 @@
       <input  type="submit" value="Upload Hình"
         class="buttonBG">
     </form>
+    
     <html:form action="/registerProvierAcc.vn" method="post"
       styleId="registerForm">
       <div class="fieldset">
@@ -113,18 +118,24 @@
             <div class="customer-name">
               <div class="field name-firstname">
                 <label for="firstname" class="required" ><em>*</em>Hình</label>
-                <div class="input-box">
-                  <logic:present name="urlImageKeyP">
-                    <img
-                      src="/serveImage.vn?urlKey=<bean:write name="urlImageKeyP"/>"
-                      width="200" height="150" id="image" />
-                       <input type="hidden" value="<bean:write name="urlImageKeyP"/>" name="urlImageKeyP"/>
+                <div class="input-box" id="image-container">
+                  
+                  <logic:present name="notCropped">
+                    <logic:present name="urlImageKeyP">
+                      <script>
+                      $(document).ready( function(){
+                    	  window.open('viewImage.vn?key=provider','Chọn phần ảnh làm ảnh đại diện.','height=500,width=800,status=1,resizable=0,menubar=0');
+                      });
+                      </script>
+                    </logic:present>
                   </logic:present>
-                  <%-- <logic:notPresent name="urlImageKey">
-                  <input type="hidden" value="" name="url"/>
-                  </logic:notPresent> --%>
+                  <logic:notPresent name="notCropped">
+                    <logic:present name="urlImageKeyP">
+                      <img src="/serveImage.vn?urlKey=<bean:write name="urlImageKeyP"/>" width="200" height="150" id="image" />
+                    </logic:present>
+                  </logic:notPresent>
+                 
                 </div>
-
               </div>
             </div>
           </li>
