@@ -71,6 +71,12 @@
           
       }
       </script>
+      <style type="text/css">
+      img{
+      max-height: 450px;
+      max-width: 800px;
+      }
+      </style>
   </head>
   <body>
     <c:if test="${not empty param.key}">
