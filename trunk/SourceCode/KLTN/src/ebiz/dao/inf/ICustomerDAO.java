@@ -27,7 +27,7 @@ import ebiz.dto.account.customer.Customer;
 /**
  * Interface for CRUD of Customer entity.
  *
- * @author ThuyNT17, thachln
+ * @author ThuyNT17, Thach.Le
  */
 public interface ICustomerDAO {
 

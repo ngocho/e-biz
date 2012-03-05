@@ -16,6 +16,7 @@ import net.sf.jsr107cache.CacheManager;
 import com.google.appengine.api.memcache.jsr107cache.GCacheFactory;
 
 import ebiz.blo.provider.ProviderBLO;
+import ebiz.dao.DaoManager;
 import ebiz.dao.gae.FoodDAO;
 import ebiz.dao.inf.IFoodDAO;
 import ebiz.dto.food.Food;
@@ -25,7 +26,7 @@ import ebiz.form.SearchForm;
 public class SearchBLO {
 
     /** FoodDAO . */
-    private static IFoodDAO foodDao = new FoodDAO();
+    private static IFoodDAO foodDao = DaoManager.getInstance().getFoodDao();
 
     public static List<FoodForm> searchFullText(SearchForm searchForm) {
 

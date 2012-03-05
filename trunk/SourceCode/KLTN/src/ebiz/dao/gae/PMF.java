@@ -25,7 +25,6 @@ public final class PMF {
 
     /**
      * Kiem tra su ton tai cua object trong database
-     * 
      * @param className
      * @param string
      * @return boolean
@@ -71,7 +70,6 @@ public final class PMF {
 
     /**
      * delete obj in database
-     * 
      * @param obj
      * @return
      */
@@ -89,8 +87,7 @@ public final class PMF {
     }
 
     /**
-     * get object by ID(String)
-     * 
+     * get object by ID(String).
      * @param className
      * @param key
      * @return
@@ -107,9 +104,9 @@ public final class PMF {
         }
         return obj;
     }
+
     /**
-     * get object by ID(Long)
-     * 
+     * get object by ID(Long).
      * @param className
      * @param key
      * @return
@@ -148,7 +145,6 @@ public final class PMF {
 
     /**
      * get list of object
-     * 
      * @param className
      * @return
      */
@@ -169,7 +165,6 @@ public final class PMF {
     }
     /**
      * delete all
-     * 
      * @param className
      * @return
      */
@@ -189,7 +184,6 @@ public final class PMF {
     }
     /**
      * delete 1 obj
-     * 
      * @param className
      * @return
      */
@@ -211,7 +205,6 @@ public final class PMF {
 
     /**
      * delete 1 obj
-     * 
      * @param className
      * @return
      */
@@ -233,7 +226,6 @@ public final class PMF {
 
     /**
      * get list of object( order by name)
-     * 
      * @param className
      * @return
      */
@@ -261,7 +253,6 @@ public final class PMF {
 
     /**
      * count paging and display first page
-     * 
      * @param className
      * @return
      */
@@ -373,7 +364,6 @@ public final class PMF {
 
     /**
      * get list of object by input value order column (search, display
-     * 
      * @param className
      * @return
      */
@@ -437,7 +427,6 @@ public final class PMF {
 
     /**
      * get list of object by input value order column (search, display
-     * 
      * @param className
      * @return
      */
@@ -479,7 +468,6 @@ public final class PMF {
     }
     /**
      * get list of object by input value order column (search, display
-     * 
      * @param className
      * @return
      */
@@ -516,7 +504,6 @@ public final class PMF {
     }
     /**
      * get list of object by input value order column (search, display
-     * 
      * @param className
      * @return
      */
@@ -555,7 +542,6 @@ public final class PMF {
 
     /**
      * select column from talbe
-     * 
      * @param className
      * @param col
      * @return

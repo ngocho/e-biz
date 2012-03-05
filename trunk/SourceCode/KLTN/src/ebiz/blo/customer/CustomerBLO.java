@@ -23,8 +23,7 @@ import java.util.List;
 
 import net.sf.jsr107cache.Cache;
 import ebiz.blo.food.SearchBLO;
-import ebiz.dao.gae.CustomerDAO;
-import ebiz.dao.gae.OrderDAO;
+import ebiz.dao.DaoManager;
 import ebiz.dao.gae.PMF;
 import ebiz.dao.inf.ICustomerDAO;
 import ebiz.dao.inf.IOrderDAO;
@@ -43,12 +42,12 @@ import ebiz.util.CommonUtil;
  */
 public class CustomerBLO {
     /** . */
-    private static ICustomerDAO custDao = new CustomerDAO();
+    private static ICustomerDAO custDao = DaoManager.getInstance().getCustomerDao();
     /** . */
-    private static IOrderDAO orderDao = new OrderDAO();
+    private static IOrderDAO orderDao = DaoManager.getInstance().getOrderDao();
+
     /**
      * [deleteBillCustomer].
-     * 
      * @param idBill Long
      * @return boolean
      */
@@ -67,17 +66,15 @@ public class CustomerBLO {
 
     /**
      * [Give the description for method].
-     * 
      * @param bill OrderBill
      * @return boolean
      */
     public static boolean deleteBill(OrderBill bill) {
-        return PMF.delete(OrderBill.class, bill.getId());
+        return orderDao.deleteOrderBill(bill.getId());
     }
 
     /**
      * [get Food by ID(Long)].
-     *
      * @param id Long
      * @return Food
      */
@@ -87,7 +84,6 @@ public class CustomerBLO {
 
     /**
      * [saveBillBy].
-     *
      * @param bill OrderBill
      * @return OrderBill
      */
@@ -96,7 +92,6 @@ public class CustomerBLO {
     }
     /**
      * [saveVoucher].
-     *
      * @param voucher VoucherBill
      * @return VoucherBill
      */
@@ -114,7 +109,6 @@ public class CustomerBLO {
     }
     /**
      * [getCustomerList].
-     *
      * @return List<Customer>
      */
     public static List<Customer> getCustomerList() {
@@ -122,7 +116,6 @@ public class CustomerBLO {
     }
     /**
      * [getCustomerByID].
-     *
      * @param id getCustomerByID
      * @return Customer
      */
@@ -132,7 +125,6 @@ public class CustomerBLO {
     }
     /**
      * [isLoginID].
-     *
      * @param id String
      * @param pass String
      * @return flag int
@@ -154,7 +146,6 @@ public class CustomerBLO {
     }
     /**
      * [isUID].
-     *
      * @param id String
      * @return flag boolean
      */
@@ -163,7 +154,6 @@ public class CustomerBLO {
     }
     /**
      * [getLoginVoucher].
-     *
      * @param login LoginForm
      */
     public static void getLoginVoucher(LoginForm login) {
@@ -174,7 +164,6 @@ public class CustomerBLO {
     }
     /**
      * [registerCustomer].
-     *
      * @param customer Customer
      * @return flag boolean
      */
@@ -188,7 +177,6 @@ public class CustomerBLO {
     }
     /**
      * [saveComment].
-     *
      * @param comment Comment
      * @return flag boolean
      */
@@ -197,7 +185,6 @@ public class CustomerBLO {
     }
     /**
      * [saveAss].
-     *
      * @param content Assessment
      * @return flag boolean
      */
@@ -206,7 +193,6 @@ public class CustomerBLO {
     }
     /**
      * [getAss].
-     *
      * @param id String
      * @return Assessment
      */
@@ -215,7 +201,6 @@ public class CustomerBLO {
     }
     /**
      * [getAssList].
-     *
      * @return List<Assessment>
      */
     public static List<Assessment> getAssList() {
@@ -223,7 +208,6 @@ public class CustomerBLO {
     }
     /**
      * [updateCustomer].
-     *
      * @param customer Customer
      * @return flag boolean
      */
@@ -232,7 +216,6 @@ public class CustomerBLO {
     }
     /**
      * [viewOrderHistory].
-     *
      * @param idCustomer String
      * @return List<OrderBill>
      */
@@ -243,7 +226,6 @@ public class CustomerBLO {
 
     /**
      * [viewOrderDetailHistory].
-     *
      * @param idOrder Long
      * @return List<DetailOrder>
      */
@@ -253,7 +235,6 @@ public class CustomerBLO {
     }
     /**
      * [toStringAddres].
-     *
      * @param add Address
      * @return String
      */
@@ -455,6 +436,5 @@ public class CustomerBLO {
         }
         return false;
     }
-
 
 }

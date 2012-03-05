@@ -37,4 +37,6 @@ public interface IOrderDAO {
     VoucherBill saveVoucherBill(VoucherBill voucher);
     VoucherBill getVoucherByID(Long idVoucher);
 
+    boolean deleteOrderBill(Long id);
+
 }

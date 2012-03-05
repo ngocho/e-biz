@@ -2,26 +2,27 @@ package ebiz.dao.inf;
 
 import ebiz.dto.account.admin.Admin;
 /**
- * @author ThuyNT
- *
+ * @author ThuyNT, Thach.Le
  */
 public interface IAdminDAO {
     /**
      * [getAdminById].
-     * @param id  String
-     * @return  Admin
+     * @param id String
+     * @return Admin
      */
     Admin getAdminById(String id);
+
     /**
      * [getAdminById].
      * @param id String
      * @return boolean
      */
     boolean isAdmin(String id);
+
     /**
      * [saveAdmin].
      * @param admin Admin
-     * @return  boolean
+     * @return boolean
      */
     boolean saveAdmin(Admin admin);
 

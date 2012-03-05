@@ -23,6 +23,7 @@ import java.util.Date;
 import java.util.List;
 
 import ebiz.blo.customer.CustomerBLO;
+import ebiz.dao.DaoManager;
 import ebiz.dao.gae.FoodDAO;
 import ebiz.dao.inf.IFoodDAO;
 import ebiz.dto.account.customer.Assessment;
@@ -38,7 +39,7 @@ import ebiz.util.CommonConstant;
  * @author ThuyNT
  */
 public class Initialize {
-    private static IFoodDAO foodDao = new FoodDAO();
+    private static IFoodDAO foodDao = DaoManager.getInstance().getFoodDao();
 
     public static List<Food> initializeFood() {
         List<Food> foodList = new ArrayList<Food>();

@@ -21,6 +21,7 @@ package ebiz.blo.provider;
 import java.util.ArrayList;
 import java.util.List;
 
+import ebiz.dao.DaoManager;
 import ebiz.dao.gae.FoodDAO;
 import ebiz.dao.gae.ProviderDAO;
 import ebiz.dao.inf.IFoodDAO;
@@ -35,8 +36,8 @@ import ebiz.form.ProviderForm;
  */
 public class ProviderBLO {
 
-    private static IProviderDAO proDao = new ProviderDAO();
-    private static IFoodDAO foodDao = new FoodDAO();
+    private static IProviderDAO proDao = DaoManager.getInstance().getProviderDao();
+    private static IFoodDAO foodDao = DaoManager.getInstance().getFoodDao();
 
     public static boolean registerProvider(Provider provider) {
 
