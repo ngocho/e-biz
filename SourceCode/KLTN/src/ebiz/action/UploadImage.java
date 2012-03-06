@@ -18,6 +18,7 @@
  */
 package ebiz.action;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -51,8 +52,8 @@ public class UploadImage extends BaseAction {
      */
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
-        Map<String, BlobKey> blobs = blobstoreService.getUploadedBlobs(request);
-        BlobKey blobKey = blobs.get("myFile");
+        Map<String, List<BlobKey>> blobs = blobstoreService.getUploads(request);
+        BlobKey blobKey = blobs.get("myFile").get(0);
         HttpSession se = request.getSession();
         String type = request.getParameter("type");
         if (blobKey != null) {
