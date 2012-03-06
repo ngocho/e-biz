@@ -49,7 +49,6 @@ public class CropImage extends Action {
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
         try {
-            System.out.println(request.getQueryString());
             int leftX = Integer.parseInt(request.getParameter("leftX"));
             int topY = Integer.parseInt(request.getParameter("topY"));
             int rightX = Integer.parseInt(request.getParameter("rightX"));
@@ -58,7 +57,6 @@ public class CropImage extends Action {
             double width = 1.0 * Integer.parseInt(request.getParameter("width"));
             HttpSession session = request.getSession();
             if ((leftX < rightX) && (topY < bottomY)) {
-                System.out.println("Milestone 1");
                 String type = request.getParameter("key");
                 
                 // check request crop image for provider or product.
