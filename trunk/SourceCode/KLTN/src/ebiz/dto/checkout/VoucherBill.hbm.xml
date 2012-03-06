@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 6, 2012 11:11:26 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="ebiz.dto.checkout.VoucherBill" table="VOUCHERBILL">
+        <id name="id" type="java.lang.Long">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="idCustomer" type="java.lang.String">
+            <column name="IDCUSTOMER" />
+        </property>
+        <property name="idFood" type="long">
+            <column name="IDFOOD" />
+        </property>
+        <property name="sumMoney" type="long">
+            <column name="SUMMONEY" />
+        </property>
+        <property name="number" type="int">
+            <column name="NUMBER" />
+        </property>
+        <property name="address" type="java.lang.String">
+            <column name="ADDRESS" />
+        </property>
+        <property name="phone" type="java.lang.String">
+            <column name="PHONE" />
+        </property>
+        <property name="email" type="java.lang.String">
+            <column name="EMAIL" />
+        </property>
+        <property name="keyVoucher" type="java.lang.String">
+            <column name="KEYVOUCHER" />
+        </property>
+        <property name="startDate" type="java.util.Date">
+            <column name="STARTDATE" />
+        </property>
+        <property name="status" type="java.lang.String">
+            <column name="STATUS" />
+        </property>
+    </class>
+</hibernate-mapping>

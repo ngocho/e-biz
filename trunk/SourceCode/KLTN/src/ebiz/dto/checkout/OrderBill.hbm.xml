@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 6, 2012 11:11:26 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="ebiz.dto.checkout.OrderBill" table="ORDERBILL">
+        <id name="id" type="java.lang.Long">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="idCustomer" type="java.lang.String">
+            <column name="IDCUSTOMER" />
+        </property>
+        <property name="address" type="java.lang.String">
+            <column name="ADDRESS" />
+        </property>
+        <property name="email" type="java.lang.String">
+            <column name="EMAIL" />
+        </property>
+        <property name="phone" type="java.lang.String">
+            <column name="PHONE" />
+        </property>
+        <property name="status" type="java.lang.String">
+            <column name="STATUS" />
+        </property>
+        <property name="dateOrder" type="java.util.Date">
+            <column name="DATEORDER" />
+        </property>
+        <property name="dateShip" type="java.util.Date">
+            <column name="DATESHIP" />
+        </property>
+        <property name="sumPrice" type="long">
+            <column name="SUMPRICE" />
+        </property>
+        <property name="idEmployee" type="java.lang.String">
+            <column name="IDEMPLOYEE" />
+        </property>
+        <property name="note" type="java.lang.String">
+            <column name="NOTE" />
+        </property>
+        <property name="typePayment" type="int">
+            <column name="TYPEPAYMENT" />
+        </property>
+        <property name="isDeleted" type="boolean" access="field">
+            <column name="ISDELETED" />
+        </property>
+    </class>
+</hibernate-mapping>
