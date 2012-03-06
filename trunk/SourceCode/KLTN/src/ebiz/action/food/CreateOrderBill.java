@@ -66,13 +66,13 @@ public class CreateOrderBill extends BaseAction {
             /**
              * Create nganluong payment url)
              */
-            NL_Checkout nl_checkout = new NL_Checkout();
-            String return_url = CommonConstant.URL + "/checkoutnl.vn?checkout=nganluong";// Địa chỉ trả về
-            String transaction_info = "Demo";// Thông tin giao dịch
-            String order_code = String.valueOf(orderForm.getId());
-            String receiver = "hailam349@gmail.com";// Tài khoản nhận tiền
+            NL_Checkout nlCheckout = new NL_Checkout();
+            String returnUrl = CommonConstant.URL + "/checkoutnl.vn?checkout=nganluong"; // Địa chỉ trả về
+            String transactionInfo = "Demo"; // Thông tin giao dịch
+            String orderCode = String.valueOf(orderForm.getId());
+            String receiver = "hailam349@gmail.com"; // Tài khoản nhận tiền
             String price = String.valueOf(orderForm.getSumPrice());
-            String url = nl_checkout.buildCheckoutUrl(return_url, receiver, order_code, price, transaction_info);
+            String url = nlCheckout.buildCheckoutUrl(returnUrl, receiver, orderCode, price, transactionInfo);
             se.setAttribute("nganluongurl", url);
             return mapping.findForward(SUCCESS);
         }
