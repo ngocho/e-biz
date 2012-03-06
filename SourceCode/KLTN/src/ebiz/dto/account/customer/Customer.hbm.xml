@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 6, 2012 11:10:05 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="ebiz.dto.account.customer.Customer" table="CUSTOMER">
+        <id name="customerId" type="java.lang.String">
+            <column name="CUSTOMERID" />
+            <generator class="assigned" />
+        </id>
+        <property name="customerPassword" type="java.lang.String">
+            <column name="CUSTOMERPASSWORD" />
+        </property>
+        <property name="customerName" type="java.lang.String">
+            <column name="CUSTOMERNAME" />
+        </property>
+        <property name="customerGender" type="java.lang.String">
+            <column name="CUSTOMERGENDER" />
+        </property>
+        <property name="customerBirth" type="java.util.Date">
+            <column name="CUSTOMERBIRTH" />
+        </property>
+        <property name="customerEmail" type="java.lang.String">
+            <column name="CUSTOMEREMAIL" />
+        </property>
+        <property name="customerPhone" type="java.lang.String">
+            <column name="CUSTOMERPHONE" />
+        </property>
+        <one-to-one name="customerAddress" class="ebiz.dto.account.customer.Address"></one-to-one>
+        <property name="customerType" type="java.lang.String">
+            <column name="CUSTOMERTYPE" />
+        </property>
+        <property name="customerSumMoney" type="long">
+            <column name="CUSTOMERSUMMONEY" />
+        </property>
+        <property name="customerMark" type="int">
+            <column name="CUSTOMERMARK" />
+        </property>
+        <property name="isPay" type="boolean">
+            <column name="ISPAY" />
+        </property>
+        <property name="payOnlineType" type="java.lang.String">
+            <column name="PAYONLINETYPE" />
+        </property>
+        <property name="isAdEmail" type="boolean">
+            <column name="ISADEMAIL" />
+        </property>
+        <property name="isAdPhone" type="boolean">
+            <column name="ISADPHONE" />
+        </property>
+        <property name="isActive" type="boolean">
+            <column name="ISACTIVE" />
+        </property>
+        <property name="xuOnline" type="long">
+            <column name="XUONLINE" />
+        </property>
+        <property name="loginDate" type="java.util.Date">
+            <column name="LOGINDATE" />
+        </property>
+        <property name="url" type="java.lang.String">
+            <column name="URL" />
+        </property>
+    </class>
+</hibernate-mapping>
