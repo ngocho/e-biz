@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 6, 2012 11:11:46 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="ebiz.dto.food.Food" table="FOOD">
+        <id name="foodId" type="java.lang.Long">
+            <column name="FOODID" />
+            <generator class="assigned" />
+        </id>
+        <property name="foodName" type="java.lang.String">
+            <column name="FOODNAME" />
+        </property>
+        <property name="foodPriceLevelId" type="java.lang.String">
+            <column name="FOODPRICELEVELID" />
+        </property>
+        <property name="productAttributeId" type="java.lang.String">
+            <column name="PRODUCTATTRIBUTEID" />
+        </property>
+        <property name="foodStatusId" type="java.lang.String">
+            <column name="FOODSTATUSID" />
+        </property>
+        <property name="foodTypeId" type="java.lang.String">
+            <column name="FOODTYPEID" />
+        </property>
+        <property name="startDate" type="java.util.Date">
+            <column name="STARTDATE" />
+        </property>
+        <property name="expDate" type="java.util.Date">
+            <column name="EXPDATE" />
+        </property>
+        <property name="number" type="int">
+            <column name="NUMBER" />
+        </property>
+        <property name="numberOrder" type="int">
+            <column name="NUMBERORDER" />
+        </property>
+        <property name="detail" type="java.lang.String">
+            <column name="DETAIL" />
+        </property>
+        <property name="cooking" type="java.lang.String">
+            <column name="COOKING" />
+        </property>
+        <property name="calo" type="java.lang.String">
+            <column name="CALO" />
+        </property>
+        <property name="price" type="long">
+            <column name="PRICE" />
+        </property>
+        <property name="pricePromotion" type="long">
+            <column name="PRICEPROMOTION" />
+        </property>
+        <property name="providerID" type="java.lang.String">
+            <column name="PROVIDERID" />
+        </property>
+        <property name="urlKey" type="java.lang.String">
+            <column name="URLKEY" />
+        </property>
+        <property name="saleProduct" type="int">
+            <column name="SALEPRODUCT" />
+        </property>
+        <property name="uploadDate" type="java.util.Date">
+            <column name="UPLOADDATE" />
+        </property>
+        <property name="isDisplay" type="int">
+            <column name="ISDISPLAY" />
+        </property>
+    </class>
+</hibernate-mapping>
