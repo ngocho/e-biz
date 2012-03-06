@@ -92,6 +92,16 @@ public class Customer implements Serializable {
     /**. url */
     @Persistent
     private String url;
+    @Persistent
+    private String buildingName;
+    @Persistent
+    private String districtName;
+    @Persistent
+    private String homeNumber;
+    @Persistent
+    private String streetName;
+    @Persistent
+    private String wardName;
     /**
      *Get value of customerId.
      *
@@ -210,6 +220,11 @@ public class Customer implements Serializable {
      *@return the customerAddress
      */
     public Address getCustomerAddress() {
+        this.customerAddress.setBuildingName(this.buildingName);
+        this.customerAddress.setDistrictName(this.districtName);
+        this.customerAddress.setHomeNumber(this.homeNumber);
+        this.customerAddress.setStreetName(this.streetName);
+        this.customerAddress.setWardName(this.wardName);
         return customerAddress;
     }
     /**
@@ -217,8 +232,13 @@ public class Customer implements Serializable {
      *
      *@param customerAddress the customerAddress to set
      */
-    public void setCustomerAddress(Address customerAddress) {
-        this.customerAddress = customerAddress;
+    public void setCustomerAddress(Address address) {
+        this.buildingName = address.getBuildingName();
+        this.districtName = address.getDistrictName();
+        this.homeNumber   = address.getHomeNumber();
+        this.streetName   = address.getStreetName();
+        this.wardName     = address.getWardName();
+        this.customerAddress = address;
     }
     /**
      *Get value of customerType.
