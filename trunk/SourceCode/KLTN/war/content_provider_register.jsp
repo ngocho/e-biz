@@ -124,7 +124,7 @@
                     <logic:present name="urlImageKeyP">
                       <script>
                       $(document).ready( function(){
-                    	  window.open('viewImage.vn?key=provider','Chọn phần ảnh làm ảnh đại diện.','height=500,width=800,status=1,resizable=0,menubar=0');
+                    	  window.open('viewImage.vn?key=provider','Cropping','height=500,width=800,status=1,resizable=0,menubar=0');
                       });
                       </script>
                     </logic:present>
