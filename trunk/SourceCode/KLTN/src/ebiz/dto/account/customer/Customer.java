@@ -225,11 +225,11 @@ public class Customer implements Serializable {
      *@return the customerAddress
      */
     public Address getCustomerAddress() {
-        this.customerAddress.setBuildingName(this.buildingName);
+        /*this.customerAddress.setBuildingName(this.buildingName);
         this.customerAddress.setDistrictName(this.districtName);
         this.customerAddress.setHomeNumber(this.homeNumber);
         this.customerAddress.setStreetName(this.streetName);
-        this.customerAddress.setWardName(this.wardName);
+        this.customerAddress.setWardName(this.wardName);*/
         return customerAddress;
     }
     /**
@@ -238,11 +238,11 @@ public class Customer implements Serializable {
      *@param address the address to set
      */
     public void setCustomerAddress(Address address) {
-        this.buildingName = address.getBuildingName();
+        /*this.buildingName = address.getBuildingName();
         this.districtName = address.getDistrictName();
         this.homeNumber   = address.getHomeNumber();
         this.streetName   = address.getStreetName();
-        this.wardName     = address.getWardName();
+        this.wardName     = address.getWardName();*/
         this.customerAddress = address;
     }
     /**
@@ -462,4 +462,75 @@ public class Customer implements Serializable {
     public void setUrl(String url) {
         this.url = url;
     }
+    /**
+     * Get value of buildingName.
+     * @return the buildingName
+     */
+    public String getBuildingName() {
+        return buildingName;
+    }
+    /**
+     * Set the value for buildingName.
+     * @param buildingName the buildingName to set
+     */
+    public void setBuildingName(String buildingName) {
+        this.buildingName = buildingName;
+    }
+    /**
+     * Get value of districtName.
+     * @return the districtName
+     */
+    public String getDistrictName() {
+        return districtName;
+    }
+    /**
+     * Set the value for districtName.
+     * @param districtName the districtName to set
+     */
+    public void setDistrictName(String districtName) {
+        this.districtName = districtName;
+    }
+    /**
+     * Get value of homeNumber.
+     * @return the homeNumber
+     */
+    public String getHomeNumber() {
+        return homeNumber;
+    }
+    /**
+     * Set the value for homeNumber.
+     * @param homeNumber the homeNumber to set
+     */
+    public void setHomeNumber(String homeNumber) {
+        this.homeNumber = homeNumber;
+    }
+    /**
+     * Get value of streetName.
+     * @return the streetName
+     */
+    public String getStreetName() {
+        return streetName;
+    }
+    /**
+     * Set the value for streetName.
+     * @param streetName the streetName to set
+     */
+    public void setStreetName(String streetName) {
+        this.streetName = streetName;
+    }
+    /**
+     * Get value of wardName.
+     * @return the wardName
+     */
+    public String getWardName() {
+        return wardName;
+    }
+    /**
+     * Set the value for wardName.
+     * @param wardName the wardName to set
+     */
+    public void setWardName(String wardName) {
+        this.wardName = wardName;
+    }
+
 }
