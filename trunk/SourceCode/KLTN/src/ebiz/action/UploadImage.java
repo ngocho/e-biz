@@ -41,7 +41,6 @@ public class UploadImage extends BaseAction {
     private BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
     /**
      * [UploadImage Action].
-     *
      * @param mapping ActionMapping
      * @param form ActionForm
      * @param request HttpServletRequest
@@ -53,22 +52,26 @@ public class UploadImage extends BaseAction {
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
         Map<String, List<BlobKey>> blobs = blobstoreService.getUploads(request);
-        BlobKey blobKey = blobs.get("myFile").get(0);
-        HttpSession se = request.getSession();
-        String type = request.getParameter("type");
-        if (blobKey != null) {
-            // get Key
-            String urlKey = blobKey.getKeyString();
-            if (urlKey != null) {
-            	
-                // save in session
-                se.setAttribute("urlImageKey", urlKey);
-                se.setAttribute("notCropped", "1");
-            }
-            if (type != null && type.equals("1")) {
-                // register Provider
-                se.setAttribute("urlImageKeyP", urlKey);
-                return mapping.findForward(SUCCESS1);
+        List<BlobKey> blobList = blobs.get("myFile");
+        BlobKey blobKey = null;
+        if (blobList != null && !blobList.isEmpty()) {
+            blobKey = blobList.get(0);
+            HttpSession se = request.getSession();
+            String type = request.getParameter("type");
+            if (blobKey != null) {
+                // get Key
+                String urlKey = blobKey.getKeyString();
+                if (urlKey != null) {
+
+                    // save in session
+                    se.setAttribute("urlImageKey", urlKey);
+                    se.setAttribute("notCropped", "1");
+                }
+                if (type != null && type.equals("1")) {
+                    // register Provider
+                    se.setAttribute("urlImageKeyP", urlKey);
+                    return mapping.findForward(SUCCESS1);
+                }
             }
         }
         return mapping.findForward(SUCCESS);
