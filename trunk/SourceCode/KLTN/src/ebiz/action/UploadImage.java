@@ -54,27 +54,30 @@ public class UploadImage extends BaseAction {
         Map<String, List<BlobKey>> blobs = blobstoreService.getUploads(request);
         List<BlobKey> blobList = blobs.get("myFile");
         BlobKey blobKey = null;
+        String type = request.getParameter("type");
+        HttpSession se = request.getSession();
         if (blobList != null && !blobList.isEmpty()) {
             blobKey = blobList.get(0);
-            HttpSession se = request.getSession();
-            String type = request.getParameter("type");
             if (blobKey != null) {
                 // get Key
                 String urlKey = blobKey.getKeyString();
                 if (urlKey != null) {
-
-                    // save in session
-                    se.setAttribute("urlImageKey", urlKey);
                     se.setAttribute("notCropped", "1");
                 }
                 if (type != null && type.equals("1")) {
                     // register Provider
                     se.setAttribute("urlImageKeyP", urlKey);
-                    return mapping.findForward(SUCCESS1);
+                } else {
+                    // save in session
+                    se.setAttribute("urlImageKey", urlKey);
                 }
             }
         }
-        return mapping.findForward(SUCCESS);
+        if (type != null && type.equals("1")) {
+            return mapping.findForward(SUCCESS1);
+        } else {
+            return mapping.findForward(SUCCESS);
+        }
     }
 
 }
