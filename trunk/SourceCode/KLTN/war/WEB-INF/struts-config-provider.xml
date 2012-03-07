@@ -7,7 +7,8 @@
     <form-bean name="foodForm" type="ebiz.form.FoodForm"/>
   </form-beans>
   <action-mappings>
-    <action path="/registerProvider" forward="home_provider_register">
+    <action path="/registerProvider" type="ebiz.action.account.provider.ProviderRegisterLink">
+      <forward name="success" redirect="true" path="home_provider_register"/>
     </action>
     <action path="/loginProvider" forward="home_provider_login">
     </action>
