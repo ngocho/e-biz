@@ -27,31 +27,17 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import ebiz.action.BaseAction;
-
 /**
- * @author ThuyNT
+ * @author DanhDTC
  */
-public class UploadLink extends BaseAction {
-    /**
-     * [display screen Upload Product ].
-     * @param mapping ActionMapping
-     * @param form ActionForm
-     * @param request HttpServletRequest
-     * @param response HttpServletResponse
-     * @return ActionForward
-     * @throws Exception Exception
-     * @see ActionForward Struts1 Framework
-     */
-
+public class ProviderRegisterLink extends BaseAction {
+    @Override
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
         HttpSession se = request.getSession();
-        se.removeAttribute("flagUpload");
-        se.removeAttribute("foodForm");
-        se.removeAttribute("urlImageKey");
+        se.removeAttribute("urlImageKeyP");
         se.removeAttribute("notCropped");
         return mapping.findForward(SUCCESS);
 
     }
-
 }

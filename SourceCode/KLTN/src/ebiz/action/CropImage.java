@@ -42,7 +42,6 @@ import com.google.appengine.api.images.Transform;
 /**
  * Action Class for crop an image.
  * @author CongDanh
- *
  */
 public class CropImage extends Action {
     @Override
@@ -58,12 +57,12 @@ public class CropImage extends Action {
             HttpSession session = request.getSession();
             if ((leftX < rightX) && (topY < bottomY)) {
                 String type = request.getParameter("key");
-                
+
                 // check request crop image for provider or product.
-                String key ="";
-                if("product".equalsIgnoreCase(type)){
+                String key = "";
+                if ("product".equalsIgnoreCase(type)) {
                     key = "urlImageKey";
-                }else if ("provider".equalsIgnoreCase(type)){
+                } else if ("provider".equalsIgnoreCase(type)) {
                     key = "urlImageKeyP";
                 } else {
                     throw new RuntimeException();
@@ -72,7 +71,8 @@ public class CropImage extends Action {
                 // get image
                 Image image = ImagesServiceFactory.makeImageFromBlob(new BlobKey(urlKey));
                 // crop image
-                Transform crop = ImagesServiceFactory.makeCrop(leftX/width, topY/height, rightX/width, bottomY/height);
+                Transform crop = ImagesServiceFactory.makeCrop(leftX / width, topY / height, rightX / width, bottomY
+                        / height);
                 ImagesService services = ImagesServiceFactory.getImagesService();
                 Image newImage = services.applyTransform(crop, image);
                 // Delete old file.
@@ -84,7 +84,7 @@ public class CropImage extends Action {
                 ByteBuffer buffer = ByteBuffer.wrap(newImage.getImageData());
                 writeChannel.write(buffer);
                 writeChannel.closeFinally();
-                
+
                 // Get new blob key and write to session.
                 BlobKey blob = fileService.getBlobKey(file);
                 request.getSession().setAttribute(key, blob.getKeyString());
