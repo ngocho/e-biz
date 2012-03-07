@@ -19,7 +19,6 @@
               onChange: cropChange,
               onSelect: cropChange,
               onRelease: cropClear,
-              aspectRatio: 3/4
             },function(){
                   var b = this.getBounds();
                   x = b[0];y=b[1];
