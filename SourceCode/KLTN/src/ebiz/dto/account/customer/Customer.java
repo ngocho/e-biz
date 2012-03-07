@@ -92,14 +92,19 @@ public class Customer implements Serializable {
     /**. url */
     @Persistent
     private String url;
+    /**. building name of customer */
     @Persistent
     private String buildingName;
+    /**. district name of customer */
     @Persistent
     private String districtName;
+    /**. home number of customer */
     @Persistent
     private String homeNumber;
+    /**. street name of customer */
     @Persistent
     private String streetName;
+    /**. ward name of customer */
     @Persistent
     private String wardName;
     /**
@@ -230,7 +235,7 @@ public class Customer implements Serializable {
     /**
      *Set the value for customerAddress.
      *
-     *@param customerAddress the customerAddress to set
+     *@param address the address to set
      */
     public void setCustomerAddress(Address address) {
         this.buildingName = address.getBuildingName();
@@ -437,6 +442,7 @@ public class Customer implements Serializable {
      *
      *@param isActive the isActive to set
      */
+
     public void setActive(boolean isActive) {
         this.isActive = isActive;
     }

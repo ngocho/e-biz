@@ -3,16 +3,16 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated Mar 6, 2012 11:10:05 AM by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
-    <class name="ebiz.dto.account.customer.Comment" table="COMMENT">
+    <class name="ebiz.dto.account.customer.Comment" table="tblComment">
         <id name="id" type="java.lang.Long">
-            <column name="ID" />
+            <column name="id" />
             <generator class="assigned" />
         </id>
         <property name="uid" type="java.lang.String">
-            <column name="UID" />
+            <column name="uid" />
         </property>
         <property name="comment" type="java.lang.String">
-            <column name="COMMENT" />
+            <column name="comment" />
         </property>
     </class>
 </hibernate-mapping>
