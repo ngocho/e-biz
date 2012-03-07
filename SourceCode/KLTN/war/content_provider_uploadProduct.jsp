@@ -86,7 +86,16 @@
                 $(this).css("background", "#FFF");
             }
         }); 
-        
+
+        $('#uploadForm').submit(function(){
+            var img = $('input#myFile').val();
+            if(img==''){
+                alert('Vui lòng chọn 1 ảnh làm ảnh đại diện trước khi nhấn Upload hình.');
+                return false;
+            } else {
+            return true;
+            }
+        });
     });
     function updateImage(urlKey){
     	 $('#image-container').html('<img src="/serveImage.vn?urlKey='+urlKey+'" width="200" height="150" />');
@@ -109,9 +118,9 @@
       <br>
     </logic:present>
     <form name="uploadImage" action="<%=blobstoreService.createUploadUrl("/uploadImage.vn")%>" method="post"
-      enctype="multipart/form-data">
-      <input type="file" name="myFile" class="buttonBG"> <input id="uploadAction" type="submit"
-        value="Upload Hình" class="buttonBG">
+      enctype="multipart/form-data" id="uploadForm">
+      <input type="file" name="myFile" class="buttonBG" id="myFile">
+      <input id="uploadAction" type="submit" value="Upload Hình" class="buttonBG">
     </form>
 
     <html:form action="/uploadProduct.vn" method="post" styleId="uploadForm">
