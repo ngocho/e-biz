@@ -3,58 +3,58 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated Mar 6, 2012 11:10:59 AM by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
-    <class name="ebiz.dto.account.provider.Provider" table="PROVIDER">
+    <class name="ebiz.dto.account.provider.Provider" table="tblProvider">
         <id name="providerId" type="java.lang.String">
-            <column name="PROVIDERID" />
+            <column name="providerId" />
             <generator class="assigned" />
         </id>
         <property name="providerPassword" type="java.lang.String">
-            <column name="PROVIDERPASSWORD" />
+            <column name="providerPassword" />
         </property>
         <property name="providerName" type="java.lang.String">
-            <column name="PROVIDERNAME" />
+            <column name="providerName" />
         </property>
         <property name="providerGender" type="java.lang.String">
-            <column name="PROVIDERGENDER" />
+            <column name="providerGender" />
         </property>
         <property name="providerBirth" type="java.util.Date">
-            <column name="PROVIDERBIRTH" />
+            <column name="providerBirth" />
         </property>
         <property name="providerEmail" type="java.lang.String">
-            <column name="PROVIDEREMAIL" />
+            <column name="providerEmail" />
         </property>
         <property name="providerPhone" type="java.lang.String">
-            <column name="PROVIDERPHONE" />
+            <column name="providerPhone" />
         </property>
         <property name="providerAddress" type="java.lang.String">
-            <column name="PROVIDERADDRESS" />
+            <column name="providerAddress" />
         </property>
         <property name="providerAccountPayment" type="java.lang.String">
-            <column name="PROVIDERACCOUNTPAYMENT" />
+            <column name="providerAccountPayment" />
         </property>
         <property name="xuOnline" type="long">
-            <column name="XUONLINE" />
+            <column name="xuOnline" />
         </property>
         <property name="authentication" type="java.lang.String">
-            <column name="AUTHENTICATION" />
+            <column name="authentication" />
         </property>
         <property name="loginDate" type="java.util.Date">
-            <column name="LOGINDATE" />
+            <column name="loginDate" />
         </property>
         <property name="dateRegister" type="java.util.Date">
-            <column name="DATEREGISTER" />
+            <column name="dateRegister" />
         </property>
         <property name="detail" type="java.lang.String">
-            <column name="DETAIL" />
+            <column name="detail" />
         </property>
         <property name="url" type="java.lang.String">
-            <column name="URL" />
+            <column name="url" />
         </property>
         <property name="isActive" type="boolean" access="field">
-            <column name="ISACTIVE" />
+            <column name="isActive" />
         </property>
         <property name="activeCode" type="java.lang.String">
-            <column name="ACTIVECODE" />
+            <column name="activeCode" />
         </property>
     </class>
 </hibernate-mapping>

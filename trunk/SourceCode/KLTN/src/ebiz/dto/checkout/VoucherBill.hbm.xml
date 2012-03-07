@@ -3,40 +3,40 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated Mar 6, 2012 11:11:26 AM by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
-    <class name="ebiz.dto.checkout.VoucherBill" table="VOUCHERBILL">
+    <class name="ebiz.dto.checkout.VoucherBill" table="tblVoucherBill">
         <id name="id" type="java.lang.Long">
-            <column name="ID" />
+            <column name="id" />
             <generator class="assigned" />
         </id>
         <property name="idCustomer" type="java.lang.String">
-            <column name="IDCUSTOMER" />
+            <column name="idCustomer" />
         </property>
         <property name="idFood" type="long">
-            <column name="IDFOOD" />
+            <column name="idFood" />
         </property>
         <property name="sumMoney" type="long">
-            <column name="SUMMONEY" />
+            <column name="sumMoney" />
         </property>
         <property name="number" type="int">
-            <column name="NUMBER" />
+            <column name="number" />
         </property>
         <property name="address" type="java.lang.String">
-            <column name="ADDRESS" />
+            <column name="address" />
         </property>
         <property name="phone" type="java.lang.String">
-            <column name="PHONE" />
+            <column name="phone" />
         </property>
         <property name="email" type="java.lang.String">
-            <column name="EMAIL" />
+            <column name="email" />
         </property>
         <property name="keyVoucher" type="java.lang.String">
-            <column name="KEYVOUCHER" />
+            <column name="keyVoucher" />
         </property>
         <property name="startDate" type="java.util.Date">
-            <column name="STARTDATE" />
+            <column name="startDate" />
         </property>
         <property name="status" type="java.lang.String">
-            <column name="STATUS" />
+            <column name="status" />
         </property>
     </class>
 </hibernate-mapping>

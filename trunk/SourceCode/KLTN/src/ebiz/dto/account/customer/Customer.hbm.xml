@@ -1,64 +1,78 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated Mar 6, 2012 11:10:05 AM by Hibernate Tools 3.4.0.CR1 -->
+<!-- Generated Mar 7, 2012 10:18:33 AM by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
-    <class name="ebiz.dto.account.customer.Customer" table="CUSTOMER">
+    <class name="ebiz.dto.account.customer.Customer" table="tblCustomer">
         <id name="customerId" type="java.lang.String">
-            <column name="CUSTOMERID" />
+            <column name="customerId" />
             <generator class="assigned" />
         </id>
         <property name="customerPassword" type="java.lang.String">
-            <column name="CUSTOMERPASSWORD" />
+            <column name="customerPassword" />
         </property>
         <property name="customerName" type="java.lang.String">
-            <column name="CUSTOMERNAME" />
+            <column name="customerName" />
         </property>
         <property name="customerGender" type="java.lang.String">
-            <column name="CUSTOMERGENDER" />
+            <column name="customerGender" />
         </property>
         <property name="customerBirth" type="java.util.Date">
-            <column name="CUSTOMERBIRTH" />
+            <column name="customerBirth" />
         </property>
         <property name="customerEmail" type="java.lang.String">
-            <column name="CUSTOMEREMAIL" />
+            <column name="customerEmail" />
         </property>
         <property name="customerPhone" type="java.lang.String">
-            <column name="CUSTOMERPHONE" />
+            <column name="customerPhone" />
         </property>
-        <one-to-one name="customerAddress" class="ebiz.dto.account.customer.Address"></one-to-one>
         <property name="customerType" type="java.lang.String">
-            <column name="CUSTOMERTYPE" />
+            <column name="customerType" />
         </property>
         <property name="customerSumMoney" type="long">
-            <column name="CUSTOMERSUMMONEY" />
+            <column name="customerSumMoney" />
         </property>
         <property name="customerMark" type="int">
-            <column name="CUSTOMERMARK" />
+            <column name="customerMark" />
         </property>
         <property name="isPay" type="boolean">
-            <column name="ISPAY" />
+            <column name="isPay" />
         </property>
         <property name="payOnlineType" type="java.lang.String">
-            <column name="PAYONLINETYPE" />
+            <column name="payOnlineType" />
         </property>
         <property name="isAdEmail" type="boolean">
-            <column name="ISADEMAIL" />
+            <column name="isAdEmail" />
         </property>
         <property name="isAdPhone" type="boolean">
-            <column name="ISADPHONE" />
+            <column name="isAdPhone" />
         </property>
         <property name="isActive" type="boolean">
-            <column name="ISACTIVE" />
+            <column name="isActive" />
         </property>
         <property name="xuOnline" type="long">
-            <column name="XUONLINE" />
+            <column name="xuOnline" />
         </property>
         <property name="loginDate" type="java.util.Date">
-            <column name="LOGINDATE" />
+            <column name="loginDate" />
         </property>
         <property name="url" type="java.lang.String">
-            <column name="URL" />
+            <column name="url" />
+        </property>
+        <property name="buildingName" type="java.lang.String" access="field">
+            <column name="buildingName" />
+        </property>
+        <property name="districtName" type="java.lang.String" access="field">
+            <column name="districtName" />
+        </property>
+        <property name="homeNumber" type="java.lang.String" access="field">
+            <column name="homeNumber" />
+        </property>
+        <property name="streetName" type="java.lang.String" access="field">
+            <column name="streetName" />
+        </property>
+        <property name="wardName" type="java.lang.String" access="field">
+            <column name="wardName" />
         </property>
     </class>
 </hibernate-mapping>
