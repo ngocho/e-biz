@@ -34,6 +34,7 @@ import ebiz.blo.customer.CustomerBLO;
 import ebiz.blo.food.FoodBLO;
 import ebiz.form.LoginForm;
 import ebiz.form.OrderBillForm;
+import ebiz.util.BillType;
 import ebiz.util.CommonConstant;
 
 /**
@@ -60,7 +61,7 @@ public class CheckoutType extends BaseAction {
         String typeCheckout = request.getParameter("checkout");
         LoginForm login = (LoginForm) se.getAttribute(CommonConstant.USER);
         if ("home".equals(typeCheckout)) {
-            FoodBLO.updateStatusOrderBill(orderForm.getId(), CommonConstant.BILLSTATUS_1);
+            FoodBLO.updateStatusOrderBill(orderForm.getId(), BillType.WILL_PAID_WHEN_DELIVERY);
         } else if ("xu".equals(typeCheckout)) {
             LoginForm user = (LoginForm) se.getAttribute(CommonConstant.USER);
             String uid = user.getLoginId();
@@ -72,7 +73,7 @@ public class CheckoutType extends BaseAction {
             } else {
                 login.setXuOnline(CustomerBLO.getXuOnline(login.getLoginId()));
                 // paid money
-                FoodBLO.updateStatusOrderBill(orderForm.getId(), CommonConstant.BILLSTATUS_2);
+                FoodBLO.updateStatusOrderBill(orderForm.getId(), BillType.PAID_BY_XU);
             }
         } /*
            * else if ("nganluong".equals(typeCheckout)) { NL_Checkout nl_checkout = new NL_Checkout(); String
@@ -84,7 +85,7 @@ public class CheckoutType extends BaseAction {
            * error_text, secure_code); if (flag) { log.info("Gia tien thanh toan tu Ngan luong" + price); OrderBill bill
            * = CustomerBLO.getBillById(Long.parseLong(order_code)); if
            * (price.equals(String.valueOf(bill.getSumPrice()))) { FoodBLO.updateStatusOrderBill(bill.getId(),
-           * CommonConstant.BILLSTATUS_3); } else { result = false; } } else { result = false;
+           * BillType.PAID_THROUGH_NGANLUONG); } else { result = false; } } else { result = false;
            * messages.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage("nganluong.false"));
            * 
            * } }

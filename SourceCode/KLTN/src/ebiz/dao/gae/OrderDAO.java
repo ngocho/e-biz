@@ -27,12 +27,14 @@ import ebiz.dto.checkout.DetailOrder;
 import ebiz.dto.checkout.OrderBill;
 import ebiz.dto.checkout.OrderStatus;
 import ebiz.dto.checkout.VoucherBill;
+import ebiz.util.BillType;
 
 /**
  * @author ThuyNT
  */
 public class OrderDAO implements IOrderDAO {
 
+    @Override
     public OrderBill save(OrderBill order) {
 
         return (OrderBill) PMF.save(order);
@@ -51,11 +53,15 @@ public class OrderDAO implements IOrderDAO {
         return (VoucherBill) PMF.getObjectById(VoucherBill.class, idVoucher);
 
     }
+    
+    @Override
     public boolean insertDetailOrder(DetailOrder order) {
 
         return PMF.insertObject(order);
 
     }
+    
+    @Override
     public OrderBill getOrderBillById(Long id) {
         return (OrderBill) PMF.getObjectById(OrderBill.class, id);
 
@@ -65,30 +71,18 @@ public class OrderDAO implements IOrderDAO {
     // String key = String.valueOf(id);
     // return (List<DetailOrder>)PMF.getObjectListByValue(DetailOrder.class, "orderId", key);
     // }
-    /**
-     * [Explain the description for this method here].
-     * 
-     * @param id
-     * @return
-     */
+
     @Override
     public boolean deleteDetailOrderList(List<DetailOrder> list) {
         return PMF.deleteAll(list);
 
     }
-    /**
-     * [Explain the description for this method here].
-     * 
-     * @param id
-     * @return
-     */
+    
     @Override
     public boolean deleteDetailOrder(DetailOrder item) {
         return PMF.delete(item);
     }
-    /**
-     * get list order bill by id customer
-     */
+    
     @SuppressWarnings("unchecked")
     @Override
     public List<OrderBill> getOrListByIDCustomer(String idCustomer) {
@@ -98,9 +92,7 @@ public class OrderDAO implements IOrderDAO {
         return orderList;
 
     }
-    /**
-     * get List order detail by Id order
-     */
+    
     @SuppressWarnings("unchecked")
     @Override
     public List<DetailOrder> getDetailByIDOrBill(Long id) {
@@ -108,9 +100,7 @@ public class OrderDAO implements IOrderDAO {
         orderList = (List<DetailOrder>) PMF.getObjectListByValue(DetailOrder.class, "orderId", id);
         return orderList;
     }
-    /**
-     * get List order bill by Id employee
-     */
+    
     @SuppressWarnings("unchecked")
     @Override
     public List<OrderBill> getOrListByIDEmployee(String idEmployee) {
@@ -118,9 +108,7 @@ public class OrderDAO implements IOrderDAO {
         orderList = (List<OrderBill>) PMF.getObjectListByValue(OrderBill.class, "idEmployee", idEmployee);
         return orderList;
     }
-    /**
-     * get List order bill by Id employee
-     */
+    
     @SuppressWarnings("unchecked")
     @Override
     public List<OrderBill> getOrListByStatus(String userID, String status) {
@@ -129,9 +117,7 @@ public class OrderDAO implements IOrderDAO {
                 status);
         return orderList;
     }
-    /**
-     * get List order bill by Id employee
-     */
+    
     @SuppressWarnings("unchecked")
     @Override
     public List<OrderBill> getOrderList() {
@@ -139,13 +125,7 @@ public class OrderDAO implements IOrderDAO {
         orderList = (List<OrderBill>) PMF.getObjectList(OrderBill.class);
         return orderList;
     }
-    /**
-     * [Explain the description for this method here].
-     * 
-     * @param id
-     * @return
-     * @see ebiz.dao.inf.IOrderDAO#getOrderStatusById(java.lang.String)
-     */
+    
     @Override
     public String getOrderStatusById(String id) {
         OrderStatus orderStatus;
@@ -155,11 +135,20 @@ public class OrderDAO implements IOrderDAO {
         }
         return null;
     }
+
+    @Deprecated
     @SuppressWarnings("unchecked")
     @Override
-    public List<OrderBill> getOrderListByStatus(String idStatus) {
+    public List<OrderBill> getOrderListByStatus(String status) {
         List<OrderBill> orderList = new ArrayList<OrderBill>();
-        orderList = (List<OrderBill>) PMF.getObjectListByValue(OrderBill.class, "status", idStatus);
+        orderList = (List<OrderBill>) PMF.getObjectListByValue(OrderBill.class, "status", status);
+        return orderList;
+    }
+    @SuppressWarnings("unchecked")
+    @Override
+    public List<OrderBill> getOrderListByStatus(BillType status) {
+        List<OrderBill> orderList = new ArrayList<OrderBill>();
+        orderList = (List<OrderBill>) PMF.getObjectListByValue(OrderBill.class, "status", status.toString());
         return orderList;
     }
 

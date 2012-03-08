@@ -35,14 +35,14 @@ import ebiz.blo.customer.CustomerBLO;
 import ebiz.blo.food.FoodBLO;
 import ebiz.dto.checkout.NL_Checkout;
 import ebiz.dto.checkout.OrderBill;
-import ebiz.util.CommonConstant;
+import ebiz.util.BillType;
 
 /**
  * @author Administrator
  */
 public class CheckoutNL extends BaseAction {
     /**  Logger. */
-    private static final Logger log = Logger.getLogger(CheckoutType.class.getName());
+    private static final Logger LOG = Logger.getLogger(CheckoutType.class.getName());
     /**
      * [CheckoutNL].
      *
@@ -59,21 +59,21 @@ public class CheckoutNL extends BaseAction {
         ActionMessages messages = new ActionMessages();
         String typeCheckout = request.getParameter("checkout");
         if ("nganluong".equals(typeCheckout)) {
-            NL_Checkout nl_checkout = new NL_Checkout();
-            String transaction_info = request.getParameter("transaction_info");
-            String order_code = request.getParameter("order_code");
+            NL_Checkout nlCheckout = new NL_Checkout();
+            String transactionInfo = request.getParameter("transaction_info");
+            String orderCode = request.getParameter("order_code");
             String price = request.getParameter("price");
-            String payment_id = request.getParameter("payment_id");
-            String payment_type = request.getParameter("payment_type");
-            String error_text = request.getParameter("error_text");
-            String secure_code = request.getParameter("secure_code");
-            boolean flag = nl_checkout.verifyPaymentUrl(transaction_info, order_code, price, payment_id, payment_type,
-                    error_text, secure_code);
+            String paymentId = request.getParameter("payment_id");
+            String paymentType = request.getParameter("payment_type");
+            String errorText = request.getParameter("error_text");
+            String secureCode = request.getParameter("secure_code");
+            boolean flag = nlCheckout.verifyPaymentUrl(transactionInfo, orderCode, price, paymentId, paymentType,
+                    errorText, secureCode);
             if (flag) {
-                log.info("Gia tien thanh toan tu Ngan luong" + price);
-                OrderBill bill = CustomerBLO.getBillById(Long.parseLong(order_code));
+                LOG.info("Gia tien thanh toan tu Ngan luong" + price);
+                OrderBill bill = CustomerBLO.getBillById(Long.parseLong(orderCode));
                 if (price.equals(String.valueOf(bill.getSumPrice()))) {
-                    FoodBLO.updateStatusOrderBill(bill.getId(), CommonConstant.BILLSTATUS_3);
+                    FoodBLO.updateStatusOrderBill(bill.getId(), BillType.PAID_THROUGH_NGANLUONG);
                     SendMail.sendOrderBillMail(bill.getId());
                     return mapping.findForward(SUCCESS);
 

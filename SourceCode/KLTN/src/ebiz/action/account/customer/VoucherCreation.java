@@ -32,6 +32,7 @@ import ebiz.blo.customer.CustomerBLO;
 import ebiz.blo.food.FoodBLO;
 import ebiz.dto.checkout.VoucherBill;
 import ebiz.form.OrderBillForm;
+import ebiz.util.BillType;
 import ebiz.util.CommonConstant;
 import ebiz.form.LoginForm;
 import ebiz.mobile.dto.HashCode;
@@ -66,7 +67,7 @@ public class VoucherCreation extends BaseAction {
         voucherBill.setStartDate(new Date());
         if ("home".equals(typeCheckout)) {
             // checkout in home
-            voucherBill.setStatus(CommonConstant.BILLSTATUS_1);
+            voucherBill.setStatus(BillType.WILL_PAID_WHEN_DELIVERY);
             voucherBill = CustomerBLO.saveVoucher(voucherBill);
         } else if ("xu".equals(typeCheckout)) {
             // save voucherForm in database

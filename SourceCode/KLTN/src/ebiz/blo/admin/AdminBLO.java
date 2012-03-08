@@ -8,7 +8,6 @@ import net.sf.jsr107cache.Cache;
 import ebiz.blo.customer.CustomerBLO;
 import ebiz.blo.food.SearchBLO;
 import ebiz.dao.DaoManager;
-import ebiz.dao.gae.OrderDAO;
 import ebiz.dao.inf.IAdminDAO;
 import ebiz.dao.inf.IOrderDAO;
 import ebiz.dto.account.admin.Admin;
@@ -16,16 +15,21 @@ import ebiz.dto.account.customer.Customer;
 import ebiz.dto.checkout.OrderBill;
 import ebiz.form.LoginForm;
 import ebiz.form.OrderBillForm;
+import ebiz.util.BillType;
 import ebiz.util.CommonUtil;
 /**
  * @author ThuyNT
  *
  */
-public class AdminBLO {
+public final class AdminBLO {
     /** . */
     private static IAdminDAO adminDao = DaoManager.getInstance().getAdminDao();
     /** . */
     private static IOrderDAO orderDao = DaoManager.getInstance().getOrderDao();
+    /** . */
+    private AdminBLO() {
+        
+    }
     /**
      * [isLoginID].
      *
@@ -68,7 +72,34 @@ public class AdminBLO {
      * @param value String
      * @return List<OrderBillForm>
      */
+    @Deprecated
     public static List<OrderBillForm> getOrderBillFormList(String value) {
+
+        List<OrderBill> orderList = new ArrayList<OrderBill>();
+        List<OrderBillForm> formList = new ArrayList<OrderBillForm>();
+        // get all
+        if ("0".equals(value)) {
+            orderList = orderDao.getOrderList();
+            // get by attr
+        } else {
+            orderList = orderDao.getOrderListByStatus(value);
+        }
+
+        for (OrderBill order : orderList) {
+            OrderBillForm form = new OrderBillForm();
+            // display
+            form.editForm(order);
+            formList.add(form);
+
+        }
+        return formList;
+    }
+    /**
+     * [getOrderBillFormList].
+     * @param value String
+     * @return List<OrderBillForm>
+     */
+    public static List<OrderBillForm> getOrderBillFormList(BillType value) {
 
         List<OrderBill> orderList = new ArrayList<OrderBill>();
         List<OrderBillForm> formList = new ArrayList<OrderBillForm>();

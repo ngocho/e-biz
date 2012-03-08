@@ -8,32 +8,54 @@ import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
+import ebiz.util.BillType;
+/**
+ * 
+ * This class is used for VoucherBill.
+ * @author ThuyNT, ThanhPhong.
+ * Not me, but I fix convention.
+ */
 @PersistenceCapable
 public class VoucherBill implements Serializable {
     /** . */
     private static final long serialVersionUID = 1L;
+    /** . */
     @PrimaryKey
     @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
     private Long id;
+    /**
+     * .
+     */
     @Persistent
     private String idCustomer;
+    /** . */
     @Persistent
     private long idFood;
+    /** . */
     @Persistent
     private long sumMoney;
+    /** . */
     @Persistent
-    // number of voucher
+    /**
+     * number of voucher.
+     */
     private int number;
+    /** . */
     @Persistent
     private String address;
+    /** . */
     @Persistent
     private String phone; // authenticate
+    /** . */
     @Persistent
     private String email;
+    /** . */
     @Persistent
     private String keyVoucher;
+    /** . */
     @Persistent
     private Date startDate;
+    /** . */
     @Persistent
     private String status;
 
@@ -157,9 +179,20 @@ public class VoucherBill implements Serializable {
         this.sumMoney = sumMoney;
     }
 
+    /**
+     * 
+     * getter for keyVoucher.
+     * @return Key voucher.
+     */
     public String getKeyVoucher() {
         return keyVoucher;
     }
+    
+    /**
+     * 
+     * Setter for keyVoucher.
+     * @param keyVoucher key to set.
+     */
     public void setKeyVoucher(String keyVoucher) {
         this.keyVoucher = keyVoucher;
     }
@@ -194,5 +227,13 @@ public class VoucherBill implements Serializable {
      */
     public void setStatus(String status) {
         this.status = status;
+    }
+    /**
+     * Set the value for status.
+     * 
+     * @param status the status to set
+     */
+    public void setStatus(BillType status) {
+        this.status = status.toString();
     }
 }
