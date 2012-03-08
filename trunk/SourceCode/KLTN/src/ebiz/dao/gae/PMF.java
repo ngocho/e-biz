@@ -503,9 +503,14 @@ public final class PMF {
         return results;
     }
     /**
-     * get list of object by input value order column (search, display
-     * @param className
-     * @return
+     * get list of object by input value order column (search, display).
+     * 
+     * @param className class name
+     * @param col1 column
+     * @param key1 key
+     * @param col2 column
+     * @param key2 key
+     * @return list of object
      */
     @SuppressWarnings("unchecked")
     public static List<?> getObjectListByTwoValues(Class<?> className, String col1, String key1, String col2,
@@ -541,10 +546,10 @@ public final class PMF {
     }
 
     /**
-     * select column from talbe
-     * @param className
-     * @param col
-     * @return
+     * select column from table.
+     * @param className name
+     * @param col column
+     * @return list of column
      */
     @SuppressWarnings("unchecked")
     public static List<?> getColList(Class<?> className, String col) {

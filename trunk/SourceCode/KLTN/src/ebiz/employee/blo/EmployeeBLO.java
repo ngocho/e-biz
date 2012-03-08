@@ -9,17 +9,21 @@ import ebiz.dto.checkout.OrderBill;
 import ebiz.employee.dao.EmpDaoManager;
 import ebiz.employee.dao.inf.IEmployeeDAO;
 import ebiz.form.OrderBillForm;
-import ebiz.util.CommonConstant;
+import ebiz.util.BillType;
 import employee.ebiz.dto.Employee;
 
 /**
  * @author nthanhphong
  */
-public class EmployeeBLO {
+public final class EmployeeBLO {
     /** . */
     private static IEmployeeDAO custDao = EmpDaoManager.getInstance().getEmployeeDao();
     /** . */
     private static IOrderDAO orderDao = DaoManager.getInstance().getOrderDao();
+    /** . */
+    private EmployeeBLO() {
+        
+    }
     /**
      * [Give the description for method].
      * @return List<Employee>
@@ -97,15 +101,15 @@ public class EmployeeBLO {
      * @return int
      */
     public static int assignJob(String idEmployee, int numberJob) {
-        List<OrderBill> orderList = orderDao.getOrderListByStatus(CommonConstant.BILLSTATUS_1);
-        orderList.addAll(orderDao.getOrderListByStatus(CommonConstant.BILLSTATUS_2));
+        List<OrderBill> orderList = orderDao.getOrderListByStatus(BillType.WILL_PAID_WHEN_DELIVERY);
+        orderList.addAll(orderDao.getOrderListByStatus(BillType.PAID_BY_XU));
         if (!orderList.isEmpty()) {
             if (orderList.size() < numberJob) {
                 numberJob = orderList.size();
             }
             for (int i = 0; i < numberJob; i++) {
                 // assgin task
-                orderList.get(i).setStatus(CommonConstant.BILLSTATUS_5);
+                orderList.get(i).setStatus(BillType.MUST_DELIVER_TODAY);
                 orderList.get(i).setIdEmployee(idEmployee);
                 orderDao.save(orderList.get(i));
             }

@@ -34,6 +34,7 @@ import ebiz.blo.admin.AdminBLO;
 import ebiz.blo.food.SearchBLO;
 import ebiz.form.OrderBillForm;
 import ebiz.form.ProviderVO;
+import ebiz.util.BillType;
 import ebiz.util.CommonConstant;
 
 /**
@@ -69,7 +70,7 @@ public class BillCategory extends BaseAction {
         if ("5".equals(status)) {
             formList = AdminBLO.getOrderBillFormListDaily();
         } else {
-            formList = AdminBLO.getOrderBillFormList(status);
+            formList = AdminBLO.getOrderBillFormList(BillType.valueOf(Integer.parseInt(status)));
         }
         // }
         pageList = SearchBLO.paging(formList.size());

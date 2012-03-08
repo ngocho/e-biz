@@ -8,6 +8,8 @@ import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
+import ebiz.util.BillType;
+
 /**
  * @author Administrator
  */
@@ -139,6 +141,13 @@ public class OrderBill implements Serializable {
      */
     public void setStatus(String status) {
         this.status = status;
+    }
+    /**
+     * Set the value for status.
+     * @param status the status to set
+     */
+    public void setStatus(BillType status) {
+        this.status = status.toString();
     }
     /**
      * Get value of dateOrder.

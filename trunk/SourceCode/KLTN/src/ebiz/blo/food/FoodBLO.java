@@ -43,6 +43,7 @@ import ebiz.form.FoodPriceForm;
 import ebiz.form.OrderBillForm;
 import ebiz.form.Paging;
 import ebiz.form.ShoppingCart;
+import ebiz.util.BillType;
 import ebiz.util.CommonConstant;
 import ebiz.util.CommonUtil;
 
@@ -693,7 +694,7 @@ public class FoodBLO {
     // order.setAddress(customer.getCustomerAddress());
     // order.setEmail(customer.getCustomerEmail());
     // order.setPhone(customer.getCustomerPhone());
-    // order.setStatus(CommonConstant.BILLSTATUS_1); // chua giao
+    // order.setStatus(BillType.WILL_PAID_WHEN_DELIVERY); // chua giao
     // order.setDateOrder(new Date());
     // List<DetailOrder> detailOrderList = new ArrayList<DetailOrder>();
     // // save order
@@ -744,7 +745,7 @@ public class FoodBLO {
             // return null;
             // }
             order.setSumPrice(moneyOrder);
-            order.setStatus(CommonConstant.BILLSTATUS_0);
+            order.setStatus(BillType.UNPAID);
             // save order
             order = orderDao.save(order);
 
@@ -851,7 +852,7 @@ public class FoodBLO {
      * @return boolean
      */
     public static boolean cancelOrderBill(Long id) {
-        if (updateStatusOrderBill(id, CommonConstant.BILLSTATUS_4)) {
+        if (updateStatusOrderBill(id, BillType.DONE)) {
             List<DetailOrder> detailOrderList = new ArrayList<DetailOrder>();
             detailOrderList = orderDao.getDetailByIDOrBill(id);
             for (DetailOrder detail : detailOrderList) {
@@ -870,7 +871,23 @@ public class FoodBLO {
      * @param status int
      * @return boolean
      */
+    @Deprecated
     public static boolean updateStatusOrderBill(Long id, String status) {
+        OrderBill order = orderDao.getOrderBillById(id);
+        order.setStatus(status);
+        if (orderDao.save(order) != null) {
+            return true;
+        }
+        return false;
+    }
+    
+    /**
+     * [updateStatusOrderBill].
+     * @param id Long
+     * @param status bill status.
+     * @return boolean
+     */
+    public static boolean updateStatusOrderBill(Long id, BillType status) {
         OrderBill order = orderDao.getOrderBillById(id);
         order.setStatus(status);
         if (orderDao.save(order) != null) {
@@ -892,7 +909,7 @@ public class FoodBLO {
 
     /**
      * [deleteFood].
-     * @param food Food
+     * @param idFood Food
      * @return boolean
      */
     public static boolean deleteFood(Long idFood) {
@@ -956,6 +973,12 @@ public class FoodBLO {
         return false;
     }
 
+    /**
+     * 
+     * [Give the description for method].
+     * @param idFood food to display.
+     * @return true if successfull, false otherwise.
+     */
     public static boolean displayFood(Long idFood) {
         Food foodTemp = getFoodById(idFood);
         if (foodTemp != null) {
