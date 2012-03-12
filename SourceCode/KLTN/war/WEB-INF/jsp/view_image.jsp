@@ -13,59 +13,53 @@
       <link rel="stylesheet" type="css/jquery.Jcrop.css" />
       <script>
       jQuery(function($){
-          var x,y;
-          var jcrop_api;
           $('#cropping').Jcrop({
               onChange: cropChange,
               onSelect: cropChange,
               onRelease: cropClear,
-            },function(){
-                  var b = this.getBounds();
-                  x = b[0];y=b[1];
-                });
+            });
           function cropChange(c){
               $('#x').val(c.x);
               $('#y').val(c.y);
               $('#x2').val(c.x2);
               $('#y2').val(c.y2);
-              if(parseInt(c.w)>0){
-                  var r=150/c.w;
-                  $('#preview').css({
-                      width: Math.round(r * x) + 'px',
-                      height: Math.round(r * y) + 'px',
-                      marginLeft: '-' + Math.round(r * c.x) + 'px',
-                      marginTop: '-' + Math.round(r * c.y) + 'px'
-                    });
-                }
             };
               function cropClear(){
-                  this.setSelect(getRandom());
+                  //this.setSelect(getRandom());
                 }
         });
       function cropImage(){
-    	  if($('#x').val() != ''
-    			  && $('#y').val() != ''
-    			  && $('#x2').val() != ''
-    			  && $('#y2').val() != ''){
-    		  $.ajax({
-                  url: '/cropImage.vn',
-                  data: {
-                      'leftX' : $('#x').val(),
-                      'topY' : $('#y').val(),
-                      'rightX' : $('#x2').val(),
-                      'bottomY' : $('#y2').val(),
-                      'width' : $('#cropping').width(),
-                      'height' : $('#cropping').height(),
-                      'key' : $('#key').val()
-                  },
-                  dataType: 'text',
-                  success: function(data){
-                	  window.opener.updateImage(data);
-                      window.close();
-                  }
-              });
+    	  var x = $('#x').val();
+    	  var y = $('#y').val();
+    	  var x2 = $('#x2').val();
+    	  var y2 = $('#y2').val();
+    	  if(x != '' && y != ''
+    			  && x != x2 && y != y2 ){
+    		  if(confirm('Bạn xác nhận chọn vùng ảnh đã chọn làm ảnh đại diện.')){
+    			  $.ajax({
+                      url: '/cropImage.vn',
+                      data: {
+                          'leftX' : x,
+                          'topY' : y,
+                          'rightX' : x2,
+                          'bottomY' : y2,
+                          'width' : $('#cropping').width(),
+                          'height' : $('#cropping').height(),
+                          'key' : $('#key').val()
+                      },
+                      dataType: 'text',
+                      success: function(data){
+                    	  if(data != 'fail'){
+                    		  window.opener.updateImage(data);
+                              window.close();
+                    	  }else{
+                    		  alert('Có 1 sai sót nhỏ trong việc lưu ảnh.\nBồ vui lòng chọn lại giùm mình.')
+                    	  }
+                      }
+                  });
+    		  }
     	  } else {
-    		  alert('Please choose an area to crop.');
+    		  alert('Vui lòng chọn 1 vùng ảnh làm ảnh đại diện.');
     	  }
           
       }
