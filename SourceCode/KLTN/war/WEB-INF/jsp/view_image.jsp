@@ -10,7 +10,7 @@
       <title>Chọn ảnh làm avatar. </title>
       <script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
       <script type="text/javascript" src="js/jquery.Jcrop.min.js"></script>
-      <link rel="stylesheet" type="css/jquery.Jcrop.css" />
+      <link rel="stylesheet" href="css/jquery.Jcrop.css" type="text/css" />
       <script>
       jQuery(function($){
           $('#cropping').Jcrop({
