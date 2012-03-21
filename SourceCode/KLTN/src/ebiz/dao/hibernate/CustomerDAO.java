@@ -1,21 +1,12 @@
 package ebiz.dao.hibernate;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import javax.jdo.PersistenceManager;
-import javax.jdo.Query;
-
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-
-import ebiz.dao.gae.PMF;
 import ebiz.dao.inf.ICustomerDAO;
-import ebiz.dto.account.admin.Admin;
 import ebiz.dto.account.customer.Assessment;
 import ebiz.dto.account.customer.Comment;
 import ebiz.dto.account.customer.Customer;
-import ebiz.util.CommonConstant;
 /**
  * Customer dao implement in hibernate.
  * @author DuyLT60571
