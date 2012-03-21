@@ -2,7 +2,6 @@ package ebiz.dao.hibernate;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-
 import ebiz.dto.account.admin.Admin;
 
 /**
@@ -13,7 +12,7 @@ import ebiz.dto.account.admin.Admin;
 public class HibernateHelper {
 
     /**
-     * Use to save a object to database.
+     * Use to save an object to database.
      * @param obj input object
      * @return true/false
      */
@@ -34,7 +33,12 @@ public class HibernateHelper {
         }
         return saveSuccess;
     }
-    
+
+    /**
+     * Deleted an object in database.
+     * @param obj input object
+     * @return true/false
+     */
     public static boolean deleteObject(Object obj) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = null;
@@ -51,24 +55,6 @@ public class HibernateHelper {
             session.close();
         }
         return saveSuccess;
-    }
-
-    public static boolean isAdmin(String id) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction transaction = null;
-        Admin admin = null;
-        try {
-        transaction = session.beginTransaction();
-        admin = (Admin) session.get(Admin.class, id);
-        } catch (Exception e) {
-            System.out.print(e);
-        transaction.rollback();
-        e.printStackTrace();
-        } finally {
-            session.flush();
-            session.close();
-        }
-        return (admin != null);
     }
 
 }
