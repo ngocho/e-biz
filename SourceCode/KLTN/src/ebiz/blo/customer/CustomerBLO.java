@@ -24,7 +24,6 @@ import java.util.List;
 import net.sf.jsr107cache.Cache;
 import ebiz.blo.food.SearchBLO;
 import ebiz.dao.DaoManager;
-import ebiz.dao.gae.PMF;
 import ebiz.dao.inf.ICustomerDAO;
 import ebiz.dao.inf.IOrderDAO;
 import ebiz.dto.account.customer.Address;
