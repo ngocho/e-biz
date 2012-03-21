@@ -31,21 +31,7 @@ public class AdminDAO implements IAdminDAO {
 
     @Override
     public boolean saveAdmin(Admin admin) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction transaction = null;
-        boolean saveSuccess = false;
-        try {
-        transaction = session.beginTransaction();
-        session.saveOrUpdate(admin);
-        saveSuccess = true;
-        } catch (Exception e) {
-            transaction.rollback();
-            e.printStackTrace();
-        } finally {
-            session.flush();
-            session.close();
-        }
-        return saveSuccess;
+        return HibernateHelper.saveObject(admin);
     }
 
     @Override
