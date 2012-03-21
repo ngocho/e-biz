@@ -51,12 +51,12 @@ public interface IOrderDAO {
      */
     boolean deleteDetailOrderList(List<DetailOrder> list);
 
-    /**
-     * delete order.
-     * @param item order
-     * @return true if success.
-     */
-    boolean deleteDetailOrder(DetailOrder item);
+//    /**
+//     * delete order.
+//     * @param item order
+//     * @return true if success.
+//     */
+//    boolean deleteDetailOrder(DetailOrder item);
 
     /**
      * get order of a customer.
