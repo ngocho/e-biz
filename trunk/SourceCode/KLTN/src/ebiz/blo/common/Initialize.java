@@ -125,7 +125,6 @@ public class Initialize {
      */
     public static void initializeFoodPriceLevel() {
 
-        foodDao.deleteFoodAll(FoodPriceLevel.class);
 
         FoodPriceLevel level0 = new FoodPriceLevel();
         level0.setFoodPriceLevelId("1");
