@@ -51,7 +51,7 @@ public class GenerationCodeXu extends Action {
             HttpServletResponse response) throws Exception {
         PrintWriter out = response.getWriter();
         response.setHeader("Cache-Control", "no-cache");
-        response.setContentType("text/xml; charset=utf-8");
+        response.setContentType("CommonConstant.CONTENTTYPE");
         response.setCharacterEncoding("utf-8");
         int count = IDXUBLO.countXuAvailabel();
         if (count < CommonConstant.LIMIT_NUMBER_XU) {
