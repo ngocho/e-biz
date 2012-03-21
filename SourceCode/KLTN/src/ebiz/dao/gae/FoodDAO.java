@@ -32,6 +32,13 @@ import ebiz.dto.food.FoodType;
  */
 public class FoodDAO implements IFoodDAO {
 
+    /**
+     * [get List Food filter by property(column in database) ].
+     * @param col
+     * @param id
+     * @return List<Food>
+     * @see ebiz.dao.inf.IFoodDAO#getListFoodByValue(java.lang.String, java.lang.String)
+     */
     @SuppressWarnings("unchecked")
     @Override
     public List<Food> getListFoodByValue(String col, String id) {
@@ -40,13 +47,25 @@ public class FoodDAO implements IFoodDAO {
         return foodList;
     }
 
-    @Override
-    public Food getFoodById(String key) {
-        Food food = null;
-        food = (Food) PMF.getObjectById(Food.class, key);
-        return food;
-    }
+//    /**
+//     * [get an obj Food by ID(String)].
+//     * @param key
+//     * @return Food
+//     * @see ebiz.dao.inf.IFoodDAO#getFoodById(java.lang.String)
+//     */
+//    @Override
+//    public Food getFoodById(String key) {
+//        Food food = null;
+//        food = (Food) PMF.getObjectById(Food.class, key);
+//        return food;
+//    }
 
+    /**
+     * [get an obj Food by ID].
+     * @param key
+     * @return Food
+     * @see ebiz.dao.inf.IFoodDAO#getFoodById(java.lang.Long)
+     */
     @Override
     public Food getFoodById(Long key) {
         Food food = null;
@@ -55,11 +74,11 @@ public class FoodDAO implements IFoodDAO {
     }
 
     /**
-     * [upNumberFood].
+     * [increase number of Food ].
      *
-     * @param id Long
-     * @param number int
-     * @return boolean
+     * @param id of Food
+     * @param number will be increased
+     * @return true if success and else
      */
     public static boolean upNumberFood(Long id, int number) {
         Food food = null;
@@ -72,11 +91,10 @@ public class FoodDAO implements IFoodDAO {
     }
 
     /**
-     * [downNumberFood].
-     *
-     * @param id Long
-     * @param number int
-     * @return boolean
+     * [decrease number of Food].
+     * @param id of Food
+     * @param number will be decreased
+     * @return true if success and else
      */
     public static boolean downNumberFood(Long id, int number) {
         Food food = null;
@@ -88,6 +106,11 @@ public class FoodDAO implements IFoodDAO {
         return false;
     }
 
+    /**
+     * [get all Food in database (Food table)].
+     * @return List<Food>
+     * @see ebiz.dao.inf.IFoodDAO#getFoodListAll()
+     */
     @SuppressWarnings("unchecked")
     @Override
     public List<Food> getFoodListAll() {
@@ -96,6 +119,17 @@ public class FoodDAO implements IFoodDAO {
         return foodList;
     }
 
+    /**
+     * [paging Food].
+     * @param col
+     * @param numberPageList
+     * @param order
+     * @param record
+     * @param page
+     * @param sql
+     * @return List<Food>
+     * @see ebiz.dao.inf.IFoodDAO#diplayPageFood(java.lang.String, java.util.List, java.lang.String, int, int, java.lang.String)
+     */
     @SuppressWarnings("unchecked")
     @Override
     public List<Food> diplayPageFood(String col, List<String> numberPageList, String order, int record, int page,
@@ -105,6 +139,17 @@ public class FoodDAO implements IFoodDAO {
         return foodList;
     }
 
+    /**
+     * [display initialize List Food ].
+     * @param col
+     * @param numberPageList
+     * @param order
+     * @param record
+     * @param page
+     * @param sql
+     * @return List<Food>
+     * @see ebiz.dao.inf.IFoodDAO#diplayFoodCategoryAll(java.lang.String, java.util.List, java.lang.String, int, int, java.lang.String)
+     */
     @SuppressWarnings("unchecked")
     @Override
     public List<Food> diplayFoodCategoryAll(String col, List<String> numberPageList, String order, int record,
@@ -114,6 +159,12 @@ public class FoodDAO implements IFoodDAO {
         return foodList;
     }
 
+    /**
+     * [save Food].
+     * @param food
+     * @return boolean
+     * @see ebiz.dao.inf.IFoodDAO#saveFood(ebiz.dto.food.Food)
+     */
     @Override
     public boolean saveFood(Food food) {
 
@@ -121,6 +172,12 @@ public class FoodDAO implements IFoodDAO {
 
     }
 
+    /**
+     * [insertFoodAttribute].
+     * @param food
+     * @return boolean
+     * @see ebiz.dao.inf.IFoodDAO#insertFoodAttribute(ebiz.dto.food.FoodAttribute)
+     */
     @Override
     public boolean insertFoodAttribute(FoodAttribute food) {
 
@@ -128,6 +185,12 @@ public class FoodDAO implements IFoodDAO {
 
     }
 
+    /**
+     * [insertFoodStatus].
+     * @param food
+     * @return boolean
+     * @see ebiz.dao.inf.IFoodDAO#insertFoodStatus(ebiz.dto.food.FoodStatus)
+     */
     @Override
     public boolean insertFoodStatus(FoodStatus food) {
 
@@ -135,6 +198,12 @@ public class FoodDAO implements IFoodDAO {
 
     }
 
+    /**
+     * [insertFoodType].
+     * @param food
+     * @return
+     * @see ebiz.dao.inf.IFoodDAO#insertFoodType(ebiz.dto.food.FoodType)
+     */
     @Override
     public boolean insertFoodType(FoodType food) {
 
@@ -142,6 +211,12 @@ public class FoodDAO implements IFoodDAO {
 
     }
 
+    /**
+     * [insertFoodPriceLevel].
+     * @param food
+     * @return
+     * @see ebiz.dao.inf.IFoodDAO#insertFoodPriceLevel(ebiz.dto.food.FoodPriceLevel)
+     */
     @Override
     public boolean insertFoodPriceLevel(FoodPriceLevel food) {
 
@@ -149,21 +224,24 @@ public class FoodDAO implements IFoodDAO {
 
     }
 
+    /**
+     * [deleteFood].
+     * @param food  Food
+     * @return boolean
+     * @see ebiz.dao.inf.IFoodDAO#deleteFood(ebiz.dto.food.Food)
+     */
     @Override
     public boolean deleteFood(Food food) {
         return PMF.delete(food);
 
     }
 
-    @SuppressWarnings("unchecked")
-    @Override
-    public List<String> getAttributeList(String col) {
-        List<String> foodProList = new ArrayList<String>();
-        foodProList = (List<String>) PMF.getColList(FoodAttribute.class, col);
-        return foodProList;
 
-    }
-
+    /**
+     * [getPriceList].
+     * @return List<FoodPriceLevel>
+     * @see ebiz.dao.inf.IFoodDAO#getPriceList()
+     */
     @SuppressWarnings("unchecked")
     @Override
     public List<FoodPriceLevel> getPriceList() {
@@ -174,6 +252,12 @@ public class FoodDAO implements IFoodDAO {
 
     }
 
+    /**
+     * [test a food is exist].
+     * @param id
+     * @return boolean
+     * @see ebiz.dao.inf.IFoodDAO#isFood(java.lang.Long)
+     */
     @Override
     public boolean isFood(Long id) {
         if (id != null) {
@@ -200,6 +284,12 @@ public class FoodDAO implements IFoodDAO {
         return foodList;
     }
 
+    /**
+     * [getStatusNameByID].
+     * @param id
+     * @return nameStatus
+     * @see ebiz.dao.inf.IFoodDAO#getStatusNameByID(java.lang.String)
+     */
     @Override
     public String getStatusNameByID(String id) {
         FoodStatus status = (FoodStatus) PMF.getObjectById(FoodStatus.class, id);
@@ -209,6 +299,12 @@ public class FoodDAO implements IFoodDAO {
         return null;
     }
 
+    /**
+     * [getNameTypeById].
+     * @param id
+     * @return nameType
+     * @see ebiz.dao.inf.IFoodDAO#getNameTypeById(java.lang.String)
+     */
     @Override
     public String getNameTypeById(String id) {
         FoodType type = (FoodType) PMF.getObjectById(FoodType.class, id);
@@ -219,6 +315,12 @@ public class FoodDAO implements IFoodDAO {
         return null;
     }
 
+    /**
+     * [getNameAttrById].
+     * @param id
+     * @return String
+     * @see ebiz.dao.inf.IFoodDAO#getNameAttrById(java.lang.String)
+     */
     @Override
     public String getNameAttrById(String id) {
         FoodAttribute type = (FoodAttribute) PMF.getObjectById(FoodAttribute.class, id);
@@ -228,6 +330,11 @@ public class FoodDAO implements IFoodDAO {
         return null;
     }
 
+    /**
+     * [getAttributeList].
+     * @return List<FoodAttribute>
+     * @see ebiz.dao.inf.IFoodDAO#getAttributeList()
+     */
     @SuppressWarnings("unchecked")
     @Override
     public List<FoodAttribute> getAttributeList() {
@@ -235,6 +342,17 @@ public class FoodDAO implements IFoodDAO {
         list = (List<FoodAttribute>) PMF.getObjectList(FoodAttribute.class);
         return list;
     }
+    /**
+     * [searchFoodByName].
+     * @param searchText
+     * @param type
+     * @param attr
+     * @param price
+     * @param status
+     * @param provider
+     * @return
+     * @see ebiz.dao.inf.IFoodDAO#searchFoodByName(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)
+     */
     @SuppressWarnings("unchecked")
     @Override
     public List<Food> searchFoodByName(String searchText, String type, String attr, String price, String status,
@@ -244,11 +362,4 @@ public class FoodDAO implements IFoodDAO {
         return foodList;
     }
 
-    @SuppressWarnings("unchecked")
-    @Override
-    public boolean deleteFoodAll(Class<?> className) {
-        List<Object> list = new ArrayList<Object>();
-        list = (List<Object>) PMF.getObjectList(className);
-        return PMF.deleteAll(list);
-    }
 }

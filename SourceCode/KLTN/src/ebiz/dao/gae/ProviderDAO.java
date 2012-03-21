@@ -29,7 +29,7 @@ import ebiz.dto.account.provider.Provider;
 public class ProviderDAO implements IProviderDAO {
 
     /**
-     * [Explain the description for this method here].
+     * [save a obj provider in database].
      * 
      * @param provider
      * @return
@@ -42,7 +42,7 @@ public class ProviderDAO implements IProviderDAO {
     }
 
     /**
-     * [Explain the description for this method here].
+     * [Test login provider is validated].
      * 
      * @param id
      * @return
@@ -54,7 +54,7 @@ public class ProviderDAO implements IProviderDAO {
     }
 
     /**
-     * [Explain the description for this method here].
+     * [get Provider By ID].
      * 
      * @param id
      * @return
@@ -68,7 +68,7 @@ public class ProviderDAO implements IProviderDAO {
     }
 
     /**
-     * [Explain the description for this method here].
+     * [get All Provider].
      * 
      * @return
      * @see ebiz.dao.inf.IProviderDAO#getProviderAll()
@@ -79,6 +79,12 @@ public class ProviderDAO implements IProviderDAO {
         return (List<Provider>) PMF.getObjectList(Provider.class);
     }
 
+    /**
+     * [get List Provider by Name].
+     * @param value
+     * @return
+     * @see ebiz.dao.inf.IProviderDAO#getProviderByName(java.lang.String)
+     */
     @SuppressWarnings("unchecked")
     @Override
     public List<Provider> getProviderByName(String value) {
