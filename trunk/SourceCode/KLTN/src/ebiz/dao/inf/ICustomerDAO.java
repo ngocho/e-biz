@@ -72,11 +72,11 @@ public interface ICustomerDAO {
      */
     Customer getCustomerById(String id);
 
-    /**
-     * [getPhoneList].
-     * @return List<String>
-     */
-    List<String> getPhoneList();
+//    /**
+//     * [getPhoneList].
+//     * @return List<String>
+//     */
+//    List<String> getPhoneList();
 
     /**
      * [getCustomerList].

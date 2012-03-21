@@ -26,7 +26,6 @@ public interface IFoodDAO {
 
     List<Food> getFoodListByProviderStatus(String idProvider, String statusFood);
 
-    List<String> getAttributeList(String col);
     List<FoodAttribute> getAttributeList();
 
     List<FoodPriceLevel> getPriceList();
@@ -42,8 +41,6 @@ public interface IFoodDAO {
     boolean saveFood(Food food); // save = update
 
     boolean deleteFood(Food food);
-
-    boolean deleteFoodAll(Class<?> className);
 
     boolean isFood(Long id);
 
