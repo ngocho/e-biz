@@ -53,7 +53,7 @@ public class UpdateShoppingCart extends BaseAction {
             HttpServletResponse response) throws Exception {
         PrintWriter out = response.getWriter();
         response.setHeader("Cache-Control", "no-cache");
-        response.setContentType("text/xml; charset=utf-8");
+        response.setContentType("CommonConstant.CONTENTTYPE");
         response.setCharacterEncoding("utf-8");
         String id = request.getParameter("id");
         String num = request.getParameter("number");
