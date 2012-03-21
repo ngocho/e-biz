@@ -1,8 +1,9 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 21, 2012 11:10:54 AM by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
-    <class name="ebiz.dto.account.customer.Customer" table="tblCustomer">
+    <class name="ebiz.dto.account.customer.Customer" table="Customer">
         <id name="customerId" type="java.lang.String">
             <column name="customerId" />
             <generator class="assigned" />
@@ -25,6 +26,7 @@
         <property name="customerPhone" type="java.lang.String">
             <column name="customerPhone" />
         </property>
+        <one-to-one cascade="save-update" name="customerAddress" class="ebiz.dto.account.customer.Address" />
         <property name="customerType" type="java.lang.String">
             <column name="customerType" />
         </property>
@@ -57,21 +59,6 @@
         </property>
         <property name="url" type="java.lang.String">
             <column name="url" />
-        </property>
-        <property name="buildingName" type="java.lang.String">
-            <column name="buildingName" />
-        </property>
-        <property name="districtName" type="java.lang.String">
-            <column name="districtName" />
-        </property>
-        <property name="homeNumber" type="java.lang.String">
-            <column name="homeNumber" />
-        </property>
-        <property name="streetName" type="java.lang.String">
-            <column name="streetName" />
-        </property>
-        <property name="wardName" type="java.lang.String">
-            <column name="wardName" />
         </property>
     </class>
 </hibernate-mapping>
