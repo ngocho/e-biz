@@ -1,31 +1,30 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated Mar 6, 2012 11:10:05 AM by Hibernate Tools 3.4.0.CR1 -->
+<!-- Generated Mar 21, 2012 11:10:54 AM by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
-    <class name="ebiz.dto.account.customer.Address" table="ADDRESS">
-        <id name="id" type="java.lang.Long">
-            <column name="ID" />
-            <generator class="assigned" />
+    <class name="ebiz.dto.account.customer.Address" table="Address">
+        <id name="customerId" type="java.lang.String">
+            <column name="customerId" />
+             <generator class="foreign">
+               <param name="property">customer</param>
+             </generator>
         </id>
-        <property name="key" type="com.google.appengine.api.datastore.Key">
-            <column name="KEY" />
-        </property>
         <property name="buildingName" type="java.lang.String">
-            <column name="BUILDINGNAME" />
+            <column name="buildingName" />
         </property>
         <property name="districtName" type="java.lang.String">
-            <column name="DISTRICTNAME" />
+            <column name="districtName" />
         </property>
         <property name="homeNumber" type="java.lang.String">
-            <column name="HOMENUMBER" />
+            <column name="homeNumber" />
         </property>
         <property name="streetName" type="java.lang.String">
-            <column name="STREETNAME" />
+            <column name="streetName" />
         </property>
         <property name="wardName" type="java.lang.String">
-            <column name="WARDNAME" />
+            <column name="wardName" />
         </property>
-        <one-to-one name="customer" class="ebiz.dto.account.customer.Customer"></one-to-one>
+        <one-to-one name="customer" class="ebiz.dto.account.customer.Customer" constrained="true"/>
     </class>
 </hibernate-mapping>

@@ -31,6 +31,23 @@ public class Address implements Serializable {
     private String wardName;
     @Persistent(mappedBy = "customerAddress")
     private Customer customer;
+
+    private String customerId;
+
+    /**
+     * Get value of customerId.
+     * @return the customerId
+     */
+    public String getCustomerId() {
+        return customerId;
+    }
+    /**
+     * Set the value for customerId.
+     * @param customerId the customerId to set
+     */
+    public void setCustomerId(String customerId) {
+        this.customerId = customerId;
+    }
     public String getBuildingName() {
         return buildingName;
     }

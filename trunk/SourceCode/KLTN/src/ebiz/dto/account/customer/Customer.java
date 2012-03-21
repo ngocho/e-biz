@@ -92,21 +92,6 @@ public class Customer implements Serializable {
     /**. url */
     @Persistent
     private String url;
-    /**. building name of customer */
-    @Persistent
-    private String buildingName;
-    /**. district name of customer */
-    @Persistent
-    private String districtName;
-    /**. home number of customer */
-    @Persistent
-    private String homeNumber;
-    /**. street name of customer */
-    @Persistent
-    private String streetName;
-    /**. ward name of customer */
-    @Persistent
-    private String wardName;
     /**
      *Get value of customerId.
      *
@@ -462,75 +447,4 @@ public class Customer implements Serializable {
     public void setUrl(String url) {
         this.url = url;
     }
-    /**
-     * Get value of buildingName.
-     * @return the buildingName
-     */
-    public String getBuildingName() {
-        return buildingName;
-    }
-    /**
-     * Set the value for buildingName.
-     * @param buildingName the buildingName to set
-     */
-    public void setBuildingName(String buildingName) {
-        this.buildingName = buildingName;
-    }
-    /**
-     * Get value of districtName.
-     * @return the districtName
-     */
-    public String getDistrictName() {
-        return districtName;
-    }
-    /**
-     * Set the value for districtName.
-     * @param districtName the districtName to set
-     */
-    public void setDistrictName(String districtName) {
-        this.districtName = districtName;
-    }
-    /**
-     * Get value of homeNumber.
-     * @return the homeNumber
-     */
-    public String getHomeNumber() {
-        return homeNumber;
-    }
-    /**
-     * Set the value for homeNumber.
-     * @param homeNumber the homeNumber to set
-     */
-    public void setHomeNumber(String homeNumber) {
-        this.homeNumber = homeNumber;
-    }
-    /**
-     * Get value of streetName.
-     * @return the streetName
-     */
-    public String getStreetName() {
-        return streetName;
-    }
-    /**
-     * Set the value for streetName.
-     * @param streetName the streetName to set
-     */
-    public void setStreetName(String streetName) {
-        this.streetName = streetName;
-    }
-    /**
-     * Get value of wardName.
-     * @return the wardName
-     */
-    public String getWardName() {
-        return wardName;
-    }
-    /**
-     * Set the value for wardName.
-     * @param wardName the wardName to set
-     */
-    public void setWardName(String wardName) {
-        this.wardName = wardName;
-    }
-
 }
