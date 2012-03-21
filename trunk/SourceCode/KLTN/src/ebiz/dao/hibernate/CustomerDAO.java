@@ -1,66 +1,141 @@
 package ebiz.dao.hibernate;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.jdo.PersistenceManager;
+import javax.jdo.Query;
+
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
+import ebiz.dao.gae.PMF;
 import ebiz.dao.inf.ICustomerDAO;
+import ebiz.dto.account.admin.Admin;
 import ebiz.dto.account.customer.Assessment;
 import ebiz.dto.account.customer.Comment;
 import ebiz.dto.account.customer.Customer;
-
+import ebiz.util.CommonConstant;
+/**
+ * Customer dao implement in hibernate.
+ * @author DuyLT60571
+ *
+ */
 public class CustomerDAO implements ICustomerDAO {
 
     @Override
     public boolean saveCustomer(Customer customer) {
-        // TODO Auto-generated method stub
-        return false;
+        return HibernateHelper.saveObject(customer);
     }
 
     @Override
     public boolean saveComment(Comment comment) {
-        // TODO Auto-generated method stub
-        return false;
+        return HibernateHelper.saveObject(comment);
     }
 
     @Override
     public boolean saveAss(Assessment content) {
-        // TODO Auto-generated method stub
-        return false;
+        return HibernateHelper.saveObject(content);
     }
 
     @Override
     public Assessment getAssByID(String id) {
-        // TODO Auto-generated method stub
-        return null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction transaction = null;
+        Assessment assessment = null;
+        try {
+        transaction = session.beginTransaction();
+        assessment = (Assessment) session.get(Assessment.class, id);
+        } catch (Exception e) {
+            System.out.print(e);
+        transaction.rollback();
+        e.printStackTrace();
+        } finally {
+            session.flush();
+            session.close();
+        }
+        return assessment;
     }
 
     @Override
     public boolean isCustomer(String id) {
-        // TODO Auto-generated method stub
-        return false;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction transaction = null;
+        Customer customer = null;
+        try {
+        transaction = session.beginTransaction();
+        customer = (Customer) session.get(Customer.class, id);
+        } catch (Exception e) {
+            System.out.print(e);
+        transaction.rollback();
+        e.printStackTrace();
+        } finally {
+            session.flush();
+            session.close();
+        }
+        return (customer != null);
     }
 
     @Override
     public Customer getCustomerById(String id) {
-        // TODO Auto-generated method stub
-        return null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction transaction = null;
+        Customer customer = null;
+        try {
+        transaction = session.beginTransaction();
+        customer = (Customer) session.get(Customer.class, id);
+        } catch (Exception e) {
+            System.out.print(e);
+        transaction.rollback();
+        e.printStackTrace();
+        } finally {
+            session.flush();
+            session.close();
+        }
+        return customer;
     }
 
-    @Override
+    @Override //not implement, will be implement in next short time
     public List<String> getPhoneList() {
-        // TODO Auto-generated method stub
         return null;
     }
 
     @Override
     public List<Customer> getCustomerList() {
-        // TODO Auto-generated method stub
-        return null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction transaction = null;
+        List<Customer> customers = null;
+        try {
+        transaction = session.beginTransaction();
+        customers = (List<Customer>) session.createQuery("from Customer");
+        } catch (Exception e) {
+            System.out.print(e);
+        transaction.rollback();
+        e.printStackTrace();
+        } finally {
+            session.flush();
+            session.close();
+        }
+        return customers;
     }
 
     @Override
     public List<Assessment> getAssList() {
-        // TODO Auto-generated method stub
-        return null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction transaction = null;
+        List<Assessment> assessment = null;
+        try {
+        transaction = session.beginTransaction();
+        assessment = (List<Assessment>) session.createQuery("from Assessment");
+        } catch (Exception e) {
+            System.out.print(e);
+        transaction.rollback();
+        e.printStackTrace();
+        } finally {
+            session.flush();
+            session.close();
+        }
+        return assessment;
     }
 
 }
