@@ -34,6 +34,12 @@ import ebiz.util.BillType;
  */
 public class OrderDAO implements IOrderDAO {
 
+    /**
+     * [save an obj OrderBill into database].
+     * @param order
+     * @return OrderBill
+     * @see ebiz.dao.inf.IOrderDAO#save(ebiz.dto.checkout.OrderBill)
+     */
     @Override
     public OrderBill save(OrderBill order) {
 
@@ -41,12 +47,24 @@ public class OrderDAO implements IOrderDAO {
 
     }
 
+    /**
+     * [save an obj VoucherBill into database].
+     * @param voucher
+     * @return VoucherBill 
+     * @see ebiz.dao.inf.IOrderDAO#saveVoucherBill(ebiz.dto.checkout.VoucherBill)
+     */
     @Override
     public VoucherBill saveVoucherBill(VoucherBill voucher) {
 
         return (VoucherBill) PMF.save(voucher);
 
     }
+    /**
+     * [get a obj VoucherBill by ID].
+     * @param idVoucher
+     * @return VoucherBill
+     * @see ebiz.dao.inf.IOrderDAO#getVoucherByID(java.lang.Long)
+     */
     @Override
     public VoucherBill getVoucherByID(Long idVoucher) {
 
@@ -54,6 +72,12 @@ public class OrderDAO implements IOrderDAO {
 
     }
     
+    /**
+     * [insert an obj DetailOrder into database].
+     * @param order
+     * @return boolean
+     * @see ebiz.dao.inf.IOrderDAO#insertDetailOrder(ebiz.dto.checkout.DetailOrder)
+     */
     @Override
     public boolean insertDetailOrder(DetailOrder order) {
 
@@ -61,28 +85,41 @@ public class OrderDAO implements IOrderDAO {
 
     }
     
+    /**
+     * [get an obj DetailOrder by ID].
+     * @param id
+     * @return OrderBill
+     * @see ebiz.dao.inf.IOrderDAO#getOrderBillById(java.lang.Long)
+     */
     @Override
     public OrderBill getOrderBillById(Long id) {
         return (OrderBill) PMF.getObjectById(OrderBill.class, id);
 
     }
-    // @SuppressWarnings("unchecked")
-    // public List<DetailOrder> getDetailOrderList(Long id){
-    // String key = String.valueOf(id);
-    // return (List<DetailOrder>)PMF.getObjectListByValue(DetailOrder.class, "orderId", key);
-    // }
 
+    /**
+     * [delete All Detail Order of a Order].
+     * @param list
+     * @return boolean
+     * @see ebiz.dao.inf.IOrderDAO#deleteDetailOrderList(java.util.List)
+     */
     @Override
     public boolean deleteDetailOrderList(List<DetailOrder> list) {
         return PMF.deleteAll(list);
 
     }
     
-    @Override
-    public boolean deleteDetailOrder(DetailOrder item) {
-        return PMF.delete(item);
-    }
+//    @Override
+//    public boolean deleteDetailOrder(DetailOrder item) {
+//        return PMF.delete(item);
+//    }
     
+    /**
+     * [get list order by ID Customer].
+     * @param idCustomer
+     * @return List<OrderBill>
+     * @see ebiz.dao.inf.IOrderDAO#getOrListByIDCustomer(java.lang.String)
+     */
     @SuppressWarnings("unchecked")
     @Override
     public List<OrderBill> getOrListByIDCustomer(String idCustomer) {
@@ -93,6 +130,12 @@ public class OrderDAO implements IOrderDAO {
 
     }
     
+    /**
+     * [get List detail order by ID Order].
+     * @param id
+     * @return List<DetailOrder>
+     * @see ebiz.dao.inf.IOrderDAO#getDetailByIDOrBill(java.lang.Long)
+     */
     @SuppressWarnings("unchecked")
     @Override
     public List<DetailOrder> getDetailByIDOrBill(Long id) {
@@ -101,6 +144,12 @@ public class OrderDAO implements IOrderDAO {
         return orderList;
     }
     
+    /**
+     * [get list order by ID Employee].
+     * @param idEmployee
+     * @return List<OrderBill>
+     * @see ebiz.dao.inf.IOrderDAO#getOrListByIDEmployee(java.lang.String)
+     */
     @SuppressWarnings("unchecked")
     @Override
     public List<OrderBill> getOrListByIDEmployee(String idEmployee) {
@@ -109,6 +158,13 @@ public class OrderDAO implements IOrderDAO {
         return orderList;
     }
     
+    /**
+     * [get list order filter:customerID, status].
+     * @param userID
+     * @param status
+     * @return List<OrderBill>
+     * @see ebiz.dao.inf.IOrderDAO#getOrListByStatus(java.lang.String, java.lang.String)
+     */
     @SuppressWarnings("unchecked")
     @Override
     public List<OrderBill> getOrListByStatus(String userID, String status) {
@@ -118,6 +174,11 @@ public class OrderDAO implements IOrderDAO {
         return orderList;
     }
     
+    /**
+     * [get All Order].
+     * @return List<OrderBill>
+     * @see ebiz.dao.inf.IOrderDAO#getOrderList()
+     */
     @SuppressWarnings("unchecked")
     @Override
     public List<OrderBill> getOrderList() {
@@ -126,10 +187,16 @@ public class OrderDAO implements IOrderDAO {
         return orderList;
     }
     
+    /**
+     * [get nameStatus of a order By idStatus].
+     * @param id
+     * @return nameStatus
+     * @see ebiz.dao.inf.IOrderDAO#getOrderStatusById(java.lang.String)
+     */
     @Override
-    public String getOrderStatusById(String id) {
+    public String getOrderStatusById(String idStatus) {
         OrderStatus orderStatus;
-        orderStatus = (OrderStatus) PMF.getObjectById(OrderStatus.class, id);
+        orderStatus = (OrderStatus) PMF.getObjectById(OrderStatus.class, idStatus);
         if (orderStatus != null) {
             return orderStatus.getName();
         }
@@ -144,6 +211,12 @@ public class OrderDAO implements IOrderDAO {
         orderList = (List<OrderBill>) PMF.getObjectListByValue(OrderBill.class, "status", status);
         return orderList;
     }
+    /**
+     * [get list order by status].
+     * @param status
+     * @return List<OrderBill>
+     * @see ebiz.dao.inf.IOrderDAO#getOrderListByStatus(ebiz.util.BillType)
+     */
     @SuppressWarnings("unchecked")
     @Override
     public List<OrderBill> getOrderListByStatus(BillType status) {
@@ -152,6 +225,12 @@ public class OrderDAO implements IOrderDAO {
         return orderList;
     }
 
+    /**
+     * [get list order by date].
+     * @param date
+     * @return List<OrderBill>
+     * @see ebiz.dao.inf.IOrderDAO#getOrderListByDate(java.util.Date)
+     */
     @SuppressWarnings("unchecked")
     @Override
     public List<OrderBill> getOrderListByDate(Date date) {
@@ -160,6 +239,12 @@ public class OrderDAO implements IOrderDAO {
         return orderList;
     }
 
+    /**
+     * [delete an obj order By ID].
+     * @param id
+     * @return
+     * @see ebiz.dao.inf.IOrderDAO#deleteOrderBill(java.lang.Long)
+     */
     @Override
     public boolean deleteOrderBill(Long id) {
         return PMF.delete(OrderBill.class, id);

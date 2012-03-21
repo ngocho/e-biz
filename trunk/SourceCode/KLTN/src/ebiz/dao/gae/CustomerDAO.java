@@ -90,20 +90,4 @@ public class CustomerDAO implements ICustomerDAO {
         assList = (List<Assessment>) PMF.getObjectList(Assessment.class);
         return assList;
     }
-
-    @SuppressWarnings("unchecked")
-    @Override
-    public List<String> getPhoneList() {
-        List<String> phoneList = new ArrayList<String>();
-        PersistenceManager pm = PMF.getPMF();
-        Query q = pm.newQuery("select customerId  from " + Customer.class + " where customerService = \'"
-                + CommonConstant.CUSTOMER_SERVICE1);
-        try {
-            phoneList = (List<String>) q.execute();
-        } finally {
-            q.closeAll();
-        }
-        return phoneList;
-
-    }
 }
