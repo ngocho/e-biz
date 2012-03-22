@@ -2,127 +2,162 @@ package ebiz.dao.hibernate;
 
 import java.util.List;
 
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
 import ebiz.dao.inf.IFoodDAO;
+import ebiz.dto.account.customer.Assessment;
+import ebiz.dto.account.customer.Customer;
 import ebiz.dto.food.Food;
 import ebiz.dto.food.FoodAttribute;
 import ebiz.dto.food.FoodPriceLevel;
 import ebiz.dto.food.FoodStatus;
 import ebiz.dto.food.FoodType;
 
+/**
+ * Implement dao of food in hibernate.
+ * @author DuyLT60571
+ *
+ */
 public class FoodDAO implements IFoodDAO {
 
-    @Override
-    public Food getFoodById(String key) {
-        // TODO Auto-generated method stub
-        return null;
-    }
+    //@Override
+    //public Food getFoodById(String key) {
+    //    // TODO Auto-generated method stub
+    //    return null;
+    //}
 
     @Override
     public Food getFoodById(Long key) {
-        // TODO Auto-generated method stub
-        return null;
+        return (Food) HibernateHelper.getObjectById(Food.class, key);
     }
 
     @Override
     public String getStatusNameByID(String id) {
-        // TODO Auto-generated method stub
-        return null;
+        return ((FoodStatus) HibernateHelper.getObjectById(FoodStatus.class, id)).getFoodStatusName();
     }
 
     @Override
     public String getNameTypeById(String id) {
-        // TODO Auto-generated method stub
-        return null;
+        return ((FoodType) HibernateHelper.getObjectById(FoodType.class, id)).getProductTypeName();
     }
 
     @Override
     public String getNameAttrById(String id) {
-        // TODO Auto-generated method stub
-        return null;
+        return ((FoodAttribute)HibernateHelper.getObjectById(FoodAttribute.class, id)).getProductAttributeName();
     }
 
+    /**
+     * Get list of food by column name in database and it's value.
+     * @param col column name in database
+     * @param value value of above column
+     * @return list of food dto
+     * @see ebiz.dao.inf.IFoodDAO#getListFoodByValue(java.lang.String, java.lang.String)
+     */
     @Override
-    public List<Food> getListFoodByValue(String col, String id) {
-        // TODO Auto-generated method stub
-        return null;
+    public List<Food> getListFoodByValue(String col, String value) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction transaction = null;
+        List<Food> listFood = null;
+        try {
+        transaction = session.beginTransaction();
+        Query query = session.createQuery("from Food where " + col + "= :col");
+        query.setString("col", value);
+        listFood = (List<Food>) query.list();
+        } catch (Exception e) {
+            System.out.print(e);
+        transaction.rollback();
+        e.printStackTrace();
+        } finally {
+            session.flush();
+            session.close();
+        }
+        return listFood;
     }
 
+    /**
+     * Get all food.
+     * @return list of food dto
+     * @see ebiz.dao.inf.IFoodDAO#getFoodListAll()
+     */
     @Override
     public List<Food> getFoodListAll() {
-        // TODO Auto-generated method stub
-        return null;
+        return (List<Food>) HibernateHelper.getObjectList(Food.class);
     }
 
+    /**
+     * get list of food by status and provider.
+     * @param idProvider id of provider
+     * @param statusFood status of food
+     * @return list of food dto
+     * @see ebiz.dao.inf.IFoodDAO#getFoodListByProviderStatus(java.lang.String, java.lang.String)
+     */
     @Override
     public List<Food> getFoodListByProviderStatus(String idProvider, String statusFood) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public List<String> getAttributeList(String col) {
-        // TODO Auto-generated method stub
-        return null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction transaction = null;
+        List<Food> listFood = null;
+        try {
+        transaction = session.beginTransaction();
+        Query query = session.createQuery("from Food where providerID = :providerID and foodStatusId = :foodStatusId");
+        query.setString("providerID", idProvider);
+        query.setString("foodStatusId", statusFood);
+        listFood = (List<Food>) query.list();
+        } catch (Exception e) {
+            System.out.print(e);
+        transaction.rollback();
+        e.printStackTrace();
+        } finally {
+            session.flush();
+            session.close();
+        }
+        return listFood;
     }
 
     @Override
     public List<FoodAttribute> getAttributeList() {
-        // TODO Auto-generated method stub
-        return null;
+        return (List<FoodAttribute>) HibernateHelper.getObjectList(FoodAttribute.class);
     }
 
     @Override
     public List<FoodPriceLevel> getPriceList() {
-        // TODO Auto-generated method stub
-        return null;
+        return (List<FoodPriceLevel>) HibernateHelper.getObjectList(FoodPriceLevel.class);
     }
 
     @Override
     public boolean insertFoodAttribute(FoodAttribute food) {
-        // TODO Auto-generated method stub
-        return false;
+        return HibernateHelper.saveObject(food);
     }
 
     @Override
     public boolean insertFoodStatus(FoodStatus food) {
-        // TODO Auto-generated method stub
-        return false;
+        return HibernateHelper.saveObject(food);
     }
 
     @Override
     public boolean insertFoodType(FoodType food) {
-        // TODO Auto-generated method stub
-        return false;
+        return HibernateHelper.saveObject(food);
     }
 
     @Override
     public boolean insertFoodPriceLevel(FoodPriceLevel food) {
-        // TODO Auto-generated method stub
-        return false;
+        return HibernateHelper.saveObject(food);
     }
 
     @Override
     public boolean saveFood(Food food) {
-        // TODO Auto-generated method stub
-        return false;
+        return HibernateHelper.saveObject(food);
     }
 
     @Override
     public boolean deleteFood(Food food) {
-        // TODO Auto-generated method stub
-        return false;
-    }
-
-    @Override
-    public boolean deleteFoodAll(Class<?> className) {
-        // TODO Auto-generated method stub
-        return false;
+        return HibernateHelper.deleteObject(food);
     }
 
     @Override
     public boolean isFood(Long id) {
-        // TODO Auto-generated method stub
-        return false;
+        return HibernateHelper.isObject(Food.class, id);
     }
 
     @Override
