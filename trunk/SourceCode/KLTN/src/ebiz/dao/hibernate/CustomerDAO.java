@@ -31,98 +31,28 @@ public class CustomerDAO implements ICustomerDAO {
 
     @Override
     public Assessment getAssByID(String id) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction transaction = null;
-        Assessment assessment = null;
-        try {
-        transaction = session.beginTransaction();
-        assessment = (Assessment) session.get(Assessment.class, id);
-        } catch (Exception e) {
-            System.out.print(e);
-        transaction.rollback();
-        e.printStackTrace();
-        } finally {
-            session.flush();
-            session.close();
-        }
-        return assessment;
+        return (Assessment) HibernateHelper.getObjectById(Assessment.class, id);
     }
 
     @Override
     public boolean isCustomer(String id) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction transaction = null;
-        Customer customer = null;
-        try {
-        transaction = session.beginTransaction();
-        customer = (Customer) session.get(Customer.class, id);
-        } catch (Exception e) {
-            System.out.print(e);
-        transaction.rollback();
-        e.printStackTrace();
-        } finally {
-            session.flush();
-            session.close();
-        }
-        return (customer != null);
+        return HibernateHelper.isObject(Customer.class, id);
     }
 
     @Override
     public Customer getCustomerById(String id) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction transaction = null;
-        Customer customer = null;
-        try {
-        transaction = session.beginTransaction();
-        customer = (Customer) session.get(Customer.class, id);
-        } catch (Exception e) {
-            System.out.print(e);
-        transaction.rollback();
-        e.printStackTrace();
-        } finally {
-            session.flush();
-            session.close();
-        }
-        return customer;
+        return (Customer) HibernateHelper.getObjectById(Customer.class, id);
     }
 
 
     @Override
     public List<Customer> getCustomerList() {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction transaction = null;
-        List<Customer> customers = null;
-        try {
-        transaction = session.beginTransaction();
-        customers = (List<Customer>) session.createQuery("from Customer");
-        } catch (Exception e) {
-            System.out.print(e);
-        transaction.rollback();
-        e.printStackTrace();
-        } finally {
-            session.flush();
-            session.close();
-        }
-        return customers;
+        return (List<Customer>) HibernateHelper.getObjectList(Customer.class);
     }
 
     @Override
     public List<Assessment> getAssList() {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction transaction = null;
-        List<Assessment> assessment = null;
-        try {
-        transaction = session.beginTransaction();
-        assessment = (List<Assessment>) session.createQuery("from Assessment");
-        } catch (Exception e) {
-            System.out.print(e);
-        transaction.rollback();
-        e.printStackTrace();
-        } finally {
-            session.flush();
-            session.close();
-        }
-        return assessment;
+        return (List<Assessment>) HibernateHelper.getObjectList(Assessment.class);
     }
 
 }
