@@ -41,9 +41,9 @@ public class FoodDAO implements IFoodDAO {
      */
     @SuppressWarnings("unchecked")
     @Override
-    public List<Food> getListFoodByValue(String col, String id) {
+    public List<Food> getListFoodByValue(String col, String value) {
         List<Food> foodList = new ArrayList<Food>();
-        foodList = (List<Food>) PMF.getObjectListByValue(Food.class, col, id);
+        foodList = (List<Food>) PMF.getObjectListByValue(Food.class, col, value);
         return foodList;
     }
 
