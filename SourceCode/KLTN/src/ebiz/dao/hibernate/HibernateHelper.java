@@ -2,6 +2,9 @@ package ebiz.dao.hibernate;
 
 import java.util.List;
 
+import javax.jdo.PersistenceManager;
+import javax.jdo.Query;
+
 import org.datanucleus.ClassNameConstants;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -203,7 +206,7 @@ public class HibernateHelper {
         }
         return object;
     }
-    
+
     /**
      * Get list of all object exist in database.
      * @param classname type of dto
@@ -225,6 +228,21 @@ public class HibernateHelper {
             session.close();
         }
         return objectlist;
+    }
+
+    /**
+     * Will implement soon.
+     * [Give the description for method].
+     * @param className object type
+     * @param col column name in database
+     * @param order ascending/descending
+     * @param record amount of record need to be list
+     * @param page index of page need to be list
+     * @param sql critical to list object
+     * @return list of object
+     */
+    public static List<?> getObjectList(Class<?> className, String col, String order, int record, int page, String sql) {
+       return null;
     }
 
 }
