@@ -1,7 +1,5 @@
 package ebiz.dao.hibernate;
 
-import org.hibernate.Session;
-import org.hibernate.Transaction;
 import ebiz.dao.inf.IAdminDAO;
 import ebiz.dto.account.admin.Admin;
 
@@ -12,21 +10,7 @@ import ebiz.dto.account.admin.Admin;
 public class AdminDAO implements IAdminDAO {
     @Override
     public Admin getAdminById(String id) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction transaction = null;
-        Admin admin = null;
-        try {
-        transaction = session.beginTransaction();
-        admin = (Admin) session.get(Admin.class, id);
-        } catch (Exception e) {
-            System.out.print(e);
-        transaction.rollback();
-        e.printStackTrace();
-        } finally {
-            session.flush();
-            session.close();
-        }
-        return admin;
+        return (Admin) HibernateHelper.getObjectById(Admin.class, id);
     }
 
     @Override
@@ -36,21 +20,7 @@ public class AdminDAO implements IAdminDAO {
 
     @Override
     public boolean isAdmin(String id) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction transaction = null;
-        Admin admin = null;
-        try {
-        transaction = session.beginTransaction();
-        admin = (Admin) session.get(Admin.class, id);
-        } catch (Exception e) {
-            System.out.print(e);
-        transaction.rollback();
-        e.printStackTrace();
-        } finally {
-            session.flush();
-            session.close();
-        }
-        return (admin != null);
+        return HibernateHelper.isObject(Admin.class, id);
     }
 
 }
