@@ -86,10 +86,6 @@ public class CustomerDAO implements ICustomerDAO {
         return customer;
     }
 
-    @Override //not implement, will be implement in next short time
-    public List<String> getPhoneList() {
-        return null;
-    }
 
     @Override
     public List<Customer> getCustomerList() {
