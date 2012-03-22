@@ -9,24 +9,44 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Query;
 
+/**
+ * PersistenceManagerFactory class.
+ * @author ThuyNT
+ *
+ */
 public final class PMF {
+    /**
+     * PersistenceManagerFactory object.
+     */
     public static final PersistenceManagerFactory pmfInstance = JDOHelper
             .getPersistenceManagerFactory("transactions-optional");
 
+    /**
+     * Default constructor.
+     */
     private PMF() {
     }
 
+    /**
+     * get PersistenceManagerFactory.
+     * @return PersistenceManagerFactory
+     */
     public static PersistenceManagerFactory get() {
         return pmfInstance;
     }
+
+    /**
+     * Get PersistenceManager.
+     * @return PersistenceManager
+     */
     public static PersistenceManager getPMF() {
         return get().getPersistenceManager();
     }
 
     /**
-     * Kiem tra su ton tai cua object trong database
-     * @param className
-     * @param string
+     * Kiem tra su ton tai cua object trong database.
+     * @param className object type
+     * @param key primary key of object
      * @return boolean
      */
     public static boolean isObject(Class<?> className, String key) {
@@ -42,6 +62,11 @@ public final class PMF {
         return true;
     }
 
+    /**
+     * Insert data of object to database.
+     * @param obj input object
+     * @return true/false
+     */
     public static boolean insertObject(Object obj) {
         PersistenceManager pm = getPMF();
         try {
@@ -55,6 +80,11 @@ public final class PMF {
         return true;
     }
 
+    /**
+     * Save data of an object to database.
+     * @param obj input object
+     * @return object after save
+     */
     public static Object save(Object obj) {
         PersistenceManager pm = getPMF();
 
@@ -69,9 +99,9 @@ public final class PMF {
     }
 
     /**
-     * delete obj in database
-     * @param obj
-     * @return
+     * delete obj in database.
+     * @param obj input object
+     * @return true/false
      */
     public static boolean deleteObject(Object obj) {
         PersistenceManager pm = getPMF();
@@ -88,9 +118,9 @@ public final class PMF {
 
     /**
      * get object by ID(String).
-     * @param className
-     * @param key
-     * @return
+     * @param className object type
+     * @param key of object
+     * @return object
      */
     public static Object getObjectById(Class<?> className, String key) {
         PersistenceManager pm = getPMF();
@@ -107,9 +137,9 @@ public final class PMF {
 
     /**
      * get object by ID(Long).
-     * @param className
-     * @param key
-     * @return
+     * @param className object type
+     * @param key of object
+     * @return output object
      */
     public static Object getObjectById(Class<?> className, Long key) {
         PersistenceManager pm = getPMF();
@@ -125,6 +155,12 @@ public final class PMF {
         return obj;
     }
 
+    /**
+     * List object by emain.
+     * @param className object type
+     * @param mail email address
+     * @return list of object
+     */
     @SuppressWarnings("unchecked")
     public static List<Object> getObjectByMail(Class<?> className, String mail) {
         PersistenceManager pm = getPMF();
@@ -144,9 +180,9 @@ public final class PMF {
     }
 
     /**
-     * get list of object
-     * @param className
-     * @return
+     * get list of object.
+     * @param className object type
+     * @return list of object
      */
     @SuppressWarnings("unchecked")
     public static List<?> getObjectList(Class<?> className) {
@@ -164,11 +200,10 @@ public final class PMF {
         return results;
     }
     /**
-     * delete all
-     * @param className
-     * @return
+     * delete all.
+     * @param objs object type
+     * @return true/false
      */
-
     public static boolean deleteAll(List<?> objs) {
         PersistenceManager pm = getPMF();
 
@@ -183,9 +218,10 @@ public final class PMF {
 
     }
     /**
-     * delete 1 obj
-     * @param className
-     * @return
+     * delete 1 obj.
+     * @param className object type
+     * @param id of object
+     * @return true/false
      */
     // OK
     public static boolean delete(Class<?> className, Long id) {
@@ -204,9 +240,9 @@ public final class PMF {
     }
 
     /**
-     * delete 1 obj
-     * @param className
-     * @return
+     * delete 1 obj.
+     * @param obj object
+     * @return true/false
      */
     // fail
     public static boolean delete(Object obj) {
@@ -225,11 +261,21 @@ public final class PMF {
     }
 
     /**
-     * get list of object( order by name)
+     * get list of object( order by name).
      * @param className
      * @return
      */
 
+    /**
+     * getObjectList by some critical below.
+     * @param className object type
+     * @param col column name in database
+     * @param order ascending/descending
+     * @param record amount of record need to be list
+     * @param page index of page need to be list
+     * @param sql critical to list
+     * @return list of object
+     */
     @SuppressWarnings("unchecked")
     public static List<?> getObjectList(Class<?> className, String col, String order, int record, int page, String sql) {
         PersistenceManager pm = getPMF();
@@ -252,11 +298,16 @@ public final class PMF {
     }
 
     /**
-     * count paging and display first page
-     * @param className
-     * @return
+     * List all object in a page.
+     * @param className object type
+     * @param col column name
+     * @param numberPageList list of page list
+     * @param order ascending/descending
+     * @param record amount of record need to be list
+     * @param page page to be list
+     * @param sql critical to list
+     * @return list of object
      */
-
     @SuppressWarnings("unchecked")
     public static List<?> getObjectListAll(Class<?> className, String col, List<String> numberPageList, String order,
             int record, int page, String sql) {
@@ -280,6 +331,13 @@ public final class PMF {
         return results;
     }
 
+    /**
+     * count available object.
+     * @param className object type
+     * @param col column name
+     * @param flag active/deactive (true/false)
+     * @return amount of object
+     */
     public static int countRecordObject(Class<?> className, String col, boolean flag) {
         int count = 0;
         PersistenceManager pm = getPMF();
@@ -363,7 +421,7 @@ public final class PMF {
     }
 
     /**
-     * get list of object by input value order column (search, display
+     * get list of object by input value order column (search, display.
      * @param className
      * @return
      */
