@@ -9,6 +9,11 @@ import ebiz.dto.checkout.OrderBill;
 import ebiz.dto.checkout.VoucherBill;
 import ebiz.util.BillType;
 
+/**
+ * Order dao implement in hibernate.
+ * @author DuyLT60571
+ *
+ */
 public class OrderDAO implements IOrderDAO {
 
     @Override
@@ -37,12 +42,6 @@ public class OrderDAO implements IOrderDAO {
 
     @Override
     public boolean deleteDetailOrderList(List<DetailOrder> list) {
-        // TODO Auto-generated method stub
-        return false;
-    }
-
-    @Override
-    public boolean deleteDetailOrder(DetailOrder item) {
         // TODO Auto-generated method stub
         return false;
     }
