@@ -3,9 +3,9 @@ package ebiz.dao.hibernate;
 import java.util.List;
 
 import javax.jdo.PersistenceManager;
-import javax.jdo.Query;
 
 import org.datanucleus.ClassNameConstants;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import ebiz.dto.account.admin.Admin;
@@ -242,7 +242,58 @@ public class HibernateHelper {
      * @return list of object
      */
     public static List<?> getObjectList(Class<?> className, String col, String order, int record, int page, String sql) {
-       return null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        String tempQuery ="From ";
+        tempQuery += className.getName();
+        //query.setRange((record * (page - 1)), record * page);
+        int fromRecord = (record * (page - 1));
+        int toRecord   = (record * page);
+        List<Object> results = null;
+        tempQuery += sql;
+
+        tempQuery += "Order by " + col + " " + order;
+        try {
+            //detachedList = (List<Object>) query.execute();
+            results = (List<Object>) session.createQuery(tempQuery).list().subList(fromRecord, toRecord);
+        } finally {
+            session.flush();
+            session.close();
+        }
+        return results;
+    }
+
+    public static List<?> displayPageFood(Class<?> className, String col, List<String> numberPageList, String order,
+            int record, int page, String sql) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction transaction = null;
+        List<Object> results = null;
+        int count;
+        String tempSql = "";
+        if (!sql.equals("")) {
+            tempSql = " where " + sql;
+        }
+
+        // re-count amount of page
+        Query query = session.createQuery("select count(" + col + ")  from " + className.getName() + tempSql);
+        try {
+            count = (Integer) query.uniqueResult();
+            // count number of page
+            int div = count / record;
+            if (count % record > 0) {
+                div = div + 1;
+            }
+
+            // put number of page into HashMap
+            for (int i = 1; i <= div; i++) {
+                numberPageList.add(String.valueOf(i));
+            }
+            results = (List<Object>) getObjectList(className, col, order, record, page, sql);
+
+        } finally {
+            session.flush();
+            session.close();
+        }
+        return results;
     }
 
 }
