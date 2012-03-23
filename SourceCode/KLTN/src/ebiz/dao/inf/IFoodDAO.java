@@ -14,13 +14,24 @@ import ebiz.dto.food.FoodType;
  */
 public interface IFoodDAO {
 
-    Food getFoodById(String key);
+    //Food getFoodById(String key);
 
     Food getFoodById(Long key);
+
     String getStatusNameByID(String id);
+
     String getNameTypeById(String id);
+
     String getNameAttrById(String id);
-    List<Food> getListFoodByValue(String col, String id);
+
+    /**
+     * [get List Food filter by property(column in database) ].
+     * @param col column name
+     * @param value calue of above column
+     * @return List<Food>
+     * @see ebiz.dao.inf.IFoodDAO#getListFoodByValue(java.lang.String, java.lang.String)
+     */
+    List<Food> getListFoodByValue(String col, String value);
 
     List<Food> getFoodListAll();
 
@@ -45,10 +56,10 @@ public interface IFoodDAO {
     boolean isFood(Long id);
 
     List<Food> diplayPageFood(String col, List<String> numberPageList, String order, int record, int page, String sql);
+
     List<Food> diplayFoodCategoryAll(String col, List<String> numberPageList, String order, int record, int page,
             String sql);
 
     List<Food> searchFoodByName(String searchText, String type, String attr, String price, String status,
             String provider);
-
 }
