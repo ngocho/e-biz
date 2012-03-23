@@ -1,11 +1,13 @@
 package ebiz.dao.hibernate;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import ebiz.dao.gae.PMF;
 import ebiz.dao.inf.IFoodDAO;
 import ebiz.dto.account.customer.Assessment;
 import ebiz.dto.account.customer.Customer;
@@ -163,8 +165,9 @@ public class FoodDAO implements IFoodDAO {
     @Override
     public List<Food> diplayPageFood(String col, List<String> numberPageList, String order, int record, int page,
             String sql) {
-        // TODO Auto-generated method stub
-        return null;
+        List<Food> foodList = new ArrayList<Food>();
+        foodList = (List<Food>) HibernateHelper.displayPageFood(Food.class, col, numberPageList, order, record, page, sql);
+        return foodList;
     }
 
     @Override
