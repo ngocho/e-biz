@@ -6,6 +6,7 @@ import java.util.List;
 import ebiz.dao.inf.IOrderDAO;
 import ebiz.dto.checkout.DetailOrder;
 import ebiz.dto.checkout.OrderBill;
+import ebiz.dto.checkout.OrderStatus;
 import ebiz.dto.checkout.VoucherBill;
 import ebiz.util.BillType;
 
@@ -18,31 +19,27 @@ public class OrderDAO implements IOrderDAO {
 
     @Override
     public OrderBill save(OrderBill order) {
-        // TODO Auto-generated method stub
-        return null;
+        return HibernateHelper.saveOrder(order);
     }
 
     @Override
     public boolean insertDetailOrder(DetailOrder order) {
         // TODO Auto-generated method stub
-        return false;
+        return HibernateHelper.saveObject(order);
     }
 
     @Override
     public OrderBill getOrderBillById(Long id) {
-        // TODO Auto-generated method stub
-        return null;
+        return (OrderBill) HibernateHelper.getObjectById(OrderBill.class, id);
     }
 
     @Override
     public String getOrderStatusById(String id) {
-        // TODO Auto-generated method stub
-        return null;
+        return ((OrderStatus) HibernateHelper.getObjectById(OrderStatus.class, id)).getName();
     }
 
     @Override
     public boolean deleteDetailOrderList(List<DetailOrder> list) {
-        // TODO Auto-generated method stub
         return false;
     }
 
