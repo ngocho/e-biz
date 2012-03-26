@@ -173,15 +173,16 @@ public class FoodDAO implements IFoodDAO {
     @Override
     public List<Food> diplayFoodCategoryAll(String col, List<String> numberPageList, String order, int record,
             int page, String sql) {
-        // TODO Auto-generated method stub
-        return null;
+        List<Food> foodList = new ArrayList<Food>();
+        foodList = (List<Food>) HibernateHelper.displayPageFoodAll(Food.class, col, numberPageList, order, record, page, sql);
+        return foodList;
     }
 
     @Override
     public List<Food> searchFoodByName(String searchText, String type, String attr, String price, String status,
             String provider) {
-        // TODO Auto-generated method stub
-        return null;
+        List<Food> foodList = new ArrayList<Food>();
+        foodList = (List<Food>) HibernateHelper.searchListFoodByName(Food.class, searchText, type, attr, price, status, provider);
+        return foodList;
     }
-
 }
