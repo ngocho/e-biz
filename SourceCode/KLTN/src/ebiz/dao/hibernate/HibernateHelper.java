@@ -10,6 +10,8 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import ebiz.dto.account.admin.Admin;
 import ebiz.dto.account.customer.Customer;
+import ebiz.dto.checkout.OrderBill;
+import ebiz.dto.food.Food;
 
 /**
  * Provide some basic hibernate action.
@@ -294,6 +296,125 @@ public class HibernateHelper {
             session.close();
         }
         return results;
+    }
+
+    public static List<?> displayPageFoodAll(Class<?> className, String col, List<String> numberPageList,
+            String order, int record, int page, String sql) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction transaction = null;
+        List<Object> results = null;
+        int count;
+        String tempSql = "";
+        if (!sql.equals("")) {
+            tempSql = " where " + sql;
+
+        }
+        // re-count amount of page
+        Query query = session.createQuery("select count(" + col + ")  from " + className.getName() + tempSql);
+        try {
+            count = (Integer) query.uniqueResult();
+            // count number of page
+            int div = count / record;
+            if (count % record > 0) {
+                div = div + 1;
+            }
+
+            // put number of page into HashMap
+            for (int i = 1; i <= div; i++) {
+                numberPageList.add(String.valueOf(i));
+            }
+            results = (List<Object>) getObjectListAll(className, col, numberPageList, order, record, page, sql);
+
+        } finally {
+            session.close();
+        }
+        return results;
+    }
+
+    private static List<Object> getObjectListAll(Class<?> className, String col, List<String> numberPageList,
+            String order, int record, int page, String sql) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        String tempQuery = "";
+        tempQuery += "From " + className.getName();
+        List<Object> results = null;
+        if (!sql.equals("")) {
+            tempQuery += " Where " + sql;
+        }
+        //query.setOrdering(col + " " + order);
+        tempQuery += "Order by " + col + " " + order;
+        try {
+            Query query = session.createQuery(tempQuery);
+            results = (List<Object>) query.list().subList((record * (page - 1)), record * page);
+        } finally {
+            session.close();
+        }
+        return results;
+    }
+
+    public static List<?> searchListFoodByName(Class<?> classname, String searchText, String type, String attr,
+            String price, String status, String provider) {
+        //PersistenceManager pm = getPMF();
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        StringBuffer sqlSearch = new StringBuffer();
+        sqlSearch.append("");
+        if (!("0".equals(type))) {
+            sqlSearch.append(" && ");
+            sqlSearch.append("foodTypeId == \'" + type + "\'");
+        }
+        if (!("0".equals(attr))) {
+            sqlSearch.append(" && ");
+            sqlSearch.append("productAttributeId == \'" + attr + "\'");
+        }
+        if (!("0".equals(price))) {
+            sqlSearch.append(" && ");
+            sqlSearch.append("foodPriceLevelId == \'" + price + "\'");
+        }
+        if (!("0".equals(status))) {
+            sqlSearch.append(" && ");
+            sqlSearch.append("foodStatusId == \'" + status + "\'");
+        }
+        if (!("0".equals(provider))) {
+            sqlSearch.append(" && ");
+            sqlSearch.append("providerID == \'" + provider + "\'");
+        }
+
+        //Query q = pm.newQuery(className);
+        String tempQuery = "";
+        tempQuery += "From " + classname.getName();
+        List<Object> results = null;
+        // set the filter and params
+        //q.setFilter("foodName >= :1 && foodName < :2" + sqlSearch);
+        tempQuery += " Where foodName like %:searchtext% " + sqlSearch;
+
+        // run query with param values and return results
+        try {
+            Query query = session.createQuery(tempQuery);
+            query.setString(":searchtext", searchText);
+            //detachedList = (List<Object>) q.execute(searchText, (searchText + "\ufffd"));
+            // db.GqlQuery("SELECT * FROM MyModel WHERE prop >= :1 AND prop < :2", "abc", u"abc" + u"\ufffd")
+            results = (List<Object>) query.list();
+        } finally {
+            session.close();
+        }
+        return results;
+    }
+
+    public static OrderBill saveOrder(OrderBill order) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction transaction = null;
+        try {
+        transaction = session.beginTransaction();
+        session.saveOrUpdate(order);
+        session.flush();
+        return order;
+        } catch (Exception e) {
+            transaction.rollback();
+            e.printStackTrace();
+        } finally {
+            session.flush();
+            session.close();
+        }
+        return null;
     }
 
 }
