@@ -11,6 +11,7 @@ import org.hibernate.Transaction;
 import ebiz.dto.account.admin.Admin;
 import ebiz.dto.account.customer.Customer;
 import ebiz.dto.checkout.OrderBill;
+import ebiz.dto.checkout.VoucherBill;
 import ebiz.dto.food.Food;
 
 /**
@@ -32,6 +33,7 @@ public class HibernateHelper {
         try {
         transaction = session.beginTransaction();
         session.saveOrUpdate(obj);
+        transaction.commit();
         saveSuccess = true;
         } catch (Exception e) {
             transaction.rollback();
@@ -55,6 +57,7 @@ public class HibernateHelper {
         try {
         transaction = session.beginTransaction();
         session.delete(obj);
+        transaction.commit();
         saveSuccess = true;
         } catch (Exception e) {
             transaction.rollback();
@@ -351,6 +354,17 @@ public class HibernateHelper {
         return results;
     }
 
+    /**
+     * [searchListFoodByName].
+     * @param classname object type
+     * @param searchText critical to search
+     * @param type type of food
+     * @param attr attribute of food
+     * @param price price of food
+     * @param status status of food
+     * @param provider provider of food
+     * @return list of result
+     */
     public static List<?> searchListFoodByName(Class<?> classname, String searchText, String type, String attr,
             String price, String status, String provider) {
         //PersistenceManager pm = getPMF();
@@ -399,6 +413,12 @@ public class HibernateHelper {
         return results;
     }
 
+    /**
+     *
+     * Save an order to database.
+     * @param order input order use to save
+     * @return order object with it's id
+     */
     public static OrderBill saveOrder(OrderBill order) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = null;
@@ -406,15 +426,158 @@ public class HibernateHelper {
         transaction = session.beginTransaction();
         session.saveOrUpdate(order);
         session.flush();
+        transaction.commit();
         return order;
         } catch (Exception e) {
             transaction.rollback();
             e.printStackTrace();
         } finally {
-            session.flush();
             session.close();
         }
         return null;
+    }
+    
+    /**
+    *
+    * Save an order to database.
+    * @param bill input order use to save
+    * @return order object with it's id
+    */
+   public static VoucherBill saveVoucherBill(VoucherBill bill) {
+       Session session = HibernateUtil.getSessionFactory().openSession();
+       Transaction transaction = null;
+       try {
+       transaction = session.beginTransaction();
+       session.saveOrUpdate(bill);
+       session.flush();
+       transaction.commit();
+       return bill;
+       } catch (Exception e) {
+           transaction.rollback();
+           e.printStackTrace();
+       } finally {
+           session.close();
+       }
+       return null;
+   }
+
+    /**
+     * Delete list of object with transaction implement.
+     * @param list list of object
+     * @return true/false success/not success
+     */
+    public static boolean deleteListObject(List<?> list) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction transaction = null;
+        try {
+        transaction = session.beginTransaction();
+        for (Object object : list) {
+            session.delete(object);
+        }
+        session.flush();
+        transaction.commit();
+        return true;
+        } catch (Exception e) {
+            transaction.rollback();
+            e.printStackTrace();
+            return false;
+        } finally {
+            session.close();
+        }
+    }
+
+    /**
+     *
+     * Get list of object depend it's attribute.
+     * @param className object type
+     * @param col name of attribute
+     * @param key value of above attribute
+     * @return list of result object
+     */
+    public static List<?> getObjectListByValue(Class<?> className, String col, String key) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        List<Object> results = null;
+
+        String queryString = "From " + className.getName();
+        queryString += " Where " + col + " = :value";
+
+        Query query = session.createQuery(queryString);
+        query.setString(":value", key);
+
+        try {
+            results = (List<Object>) query.list();
+        } finally {
+            session.close();
+        }
+        return results;
+    }
+
+    /**
+    *
+    * Get list of object depend it's attribute.
+    * @param className object type
+    * @param col name of attribute
+    * @param key value of above attribute
+    * @return list of result object
+    */
+   public static List<?> getObjectListByValue(Class<?> className, String col, Long key) {
+       Session session = HibernateUtil.getSessionFactory().openSession();
+       List<Object> results = null;
+
+       String queryString = "From " + className.getName();
+       queryString += " Where " + col + " = :value";
+
+       Query query = session.createQuery(queryString);
+       query.setLong(":value", key);
+
+       try {
+           results = (List<Object>) query.list();
+       } finally {
+           session.close();
+       }
+       return results;
+   }
+
+    /**
+     * getObjectListByTwoValues - get list of object depend 2 attribute.
+     * @param className object type
+     * @param col1 attribute 1
+     * @param key1 value of attribute 1
+     * @param col2 attribute 2
+     * @param key2 value of attribute 2
+     * @return list of object
+     */
+    public static List<?> getObjectListByTwoValues(Class<?> className, String col1, String key1, String col2,
+            String key2) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+
+        StringBuffer criticalSql = new StringBuffer();
+        criticalSql.append("( ");
+        criticalSql.append(col1);
+        criticalSql.append(" == :value1");
+        criticalSql.append(" && ");
+        criticalSql.append(col2);
+        criticalSql.append(" == :value2");
+        criticalSql.append(" )");
+
+        //Create query string from input parameter.
+        String queryString = "From " + className.getName() + " Where " + criticalSql.toString();
+
+        /**
+         * create query in hibernate with 2 parameter.
+         */
+        Query query = session.createQuery(queryString);
+        query.setString(":value1", key1);
+        query.setString(":value2", key1);
+
+        List<Object> results = null;
+        try {
+            results = (List<Object>) query.list();
+
+        } finally {
+            session.close();
+        }
+        return results;
     }
 
 }

@@ -9,32 +9,27 @@ public class ProviderDAO implements IProviderDAO {
 
     @Override
     public boolean saveProvider(Provider provider) {
-        // TODO Auto-generated method stub
-        return false;
+        return HibernateHelper.saveObject(provider);
     }
 
     @Override
     public boolean isProvider(String id) {
-        // TODO Auto-generated method stub
-        return false;
+        return HibernateHelper.isObject(Provider.class, id);
     }
 
     @Override
     public Provider getProviderById(String id) {
-        // TODO Auto-generated method stub
-        return null;
+        return (Provider) HibernateHelper.getObjectById(Provider.class, id);
     }
 
     @Override
     public List<Provider> getProviderAll() {
-        // TODO Auto-generated method stub
-        return null;
+        return (List<Provider>) HibernateHelper.getObjectList(Provider.class);
     }
 
     @Override
     public List<Provider> getProviderByName(String value) {
-        // TODO Auto-generated method stub
-        return null;
+        return (List<Provider>) HibernateHelper.getObjectListByValue(Provider.class, "providerName", value);
     }
 
 }
