@@ -28,7 +28,7 @@ public interface IOrderDAO {
     boolean insertDetailOrder(DetailOrder order);
 
     /**
-     * 
+     *
      * Get bill by ID.
      * @param id order ID
      * @return bill
@@ -90,7 +90,7 @@ public interface IOrderDAO {
 
     /**
      * [Give the description for method].
-     * 
+     *
      * @return List of Order
      */
     List<OrderBill> getOrderList();
@@ -122,7 +122,7 @@ public interface IOrderDAO {
     List<OrderBill> getOrderListByDate(Date date);
 
     /**
-     * 
+     *
      * [Give the description for method].
      * @param voucher voucher
      * @return voucher
@@ -130,7 +130,7 @@ public interface IOrderDAO {
     VoucherBill saveVoucherBill(VoucherBill voucher);
 
     /**
-     * 
+     *
      * Get voucher by ID.
      * @param idVoucher voucher's ID
      * @return voucher.
@@ -138,7 +138,7 @@ public interface IOrderDAO {
     VoucherBill getVoucherByID(Long idVoucher);
 
     /**
-     * 
+     *
      * delete voucher by ID.
      * @param id voucher's ID
      * @return true if success.
