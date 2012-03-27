@@ -3,10 +3,10 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated Mar 6, 2012 11:11:26 AM by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
-    <class name="ebiz.dto.checkout.OrderBill" table="tblOrderBill">
+    <class name="ebiz.dto.checkout.OrderBill" table="OrderBill">
         <id name="id" type="java.lang.Long">
             <column name="id" />
-            <generator class="assigned" />
+            <generator class="identity" />
         </id>
         <property name="idCustomer" type="java.lang.String">
             <column name="idCustomer" />
