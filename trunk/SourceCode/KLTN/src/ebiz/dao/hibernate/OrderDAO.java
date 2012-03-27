@@ -1,8 +1,10 @@
 package ebiz.dao.hibernate;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import ebiz.dao.gae.PMF;
 import ebiz.dao.inf.IOrderDAO;
 import ebiz.dto.checkout.DetailOrder;
 import ebiz.dto.checkout.OrderBill;
@@ -40,73 +42,79 @@ public class OrderDAO implements IOrderDAO {
 
     @Override
     public boolean deleteDetailOrderList(List<DetailOrder> list) {
-        return false;
+        return HibernateHelper.deleteListObject(list);
     }
 
     @Override
     public List<OrderBill> getOrListByIDCustomer(String idCustomer) {
-        // TODO Auto-generated method stub
-        return null;
+        List<OrderBill> orderList = new ArrayList<OrderBill>();
+        orderList = (List<OrderBill>) HibernateHelper.getObjectListByValue(OrderBill.class, "idCustomer", idCustomer);
+        return orderList;
     }
 
     @Override
     public List<OrderBill> getOrListByIDEmployee(String idEmployee) {
-        // TODO Auto-generated method stub
-        return null;
+        List<OrderBill> orderList = new ArrayList<OrderBill>();
+        orderList = (List<OrderBill>) HibernateHelper.getObjectListByValue(OrderBill.class, "idEmployee", idEmployee);
+        return orderList;
     }
 
     @Override
     public List<DetailOrder> getDetailByIDOrBill(Long id) {
-        // TODO Auto-generated method stub
-        return null;
+        List<DetailOrder> orderList = new ArrayList<DetailOrder>();
+        orderList = (List<DetailOrder>) HibernateHelper.getObjectListByValue(DetailOrder.class, "orderId", id);
+        return orderList;
     }
 
     @Override
     public List<OrderBill> getOrListByStatus(String userID, String status) {
-        // TODO Auto-generated method stub
-        return null;
+        List<OrderBill> orderList = new ArrayList<OrderBill>();
+        orderList = (List<OrderBill>) HibernateHelper.getObjectListByTwoValues(OrderBill.class, "idCustomer", userID, "status",
+                status);
+        return orderList;
     }
 
     @Override
     public List<OrderBill> getOrderList() {
-        // TODO Auto-generated method stub
-        return null;
+        List<OrderBill> orderList = new ArrayList<OrderBill>();
+        orderList = (List<OrderBill>) PMF.getObjectList(OrderBill.class);
+        return orderList;
     }
 
     @Override
     public List<OrderBill> getOrderListByStatus(BillType status) {
-        // TODO Auto-generated method stub
-        return null;
+        List<OrderBill> orderList = new ArrayList<OrderBill>();
+        orderList = (List<OrderBill>) HibernateHelper.getObjectListByValue(OrderBill.class, "status", status.toString());
+        return orderList;
     }
 
     @Override
     public List<OrderBill> getOrderListByStatus(String status) {
-        // TODO Auto-generated method stub
-        return null;
+        List<OrderBill> orderList = new ArrayList<OrderBill>();
+        orderList = (List<OrderBill>) HibernateHelper.getObjectListByValue(OrderBill.class, "status", status);
+        return orderList;
     }
 
     @Override
     public List<OrderBill> getOrderListByDate(Date date) {
-        // TODO Auto-generated method stub
-        return null;
+        List<OrderBill> orderList = new ArrayList<OrderBill>();
+        orderList = (List<OrderBill>) PMF.getObjectListByValueOrder(OrderBill.class, "dateShip", date, "status", "asc");
+        return orderList;
     }
 
     @Override
     public VoucherBill saveVoucherBill(VoucherBill voucher) {
-        // TODO Auto-generated method stub
-        return null;
+        return HibernateHelper.saveVoucherBill(voucher);
     }
 
     @Override
     public VoucherBill getVoucherByID(Long idVoucher) {
-        // TODO Auto-generated method stub
-        return null;
+        return (VoucherBill) HibernateHelper.getObjectById(VoucherBill.class, idVoucher);
     }
 
     @Override
     public boolean deleteOrderBill(Long id) {
-        // TODO Auto-generated method stub
-        return false;
+        return HibernateHelper.deleteObject(HibernateHelper.getObjectById(OrderBill.class, id));
     }
 
 }
