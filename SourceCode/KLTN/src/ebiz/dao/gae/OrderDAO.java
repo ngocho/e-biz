@@ -36,7 +36,7 @@ public class OrderDAO implements IOrderDAO {
 
     /**
      * [save an obj OrderBill into database].
-     * @param order
+     * @param order orderbill
      * @return OrderBill
      * @see ebiz.dao.inf.IOrderDAO#save(ebiz.dto.checkout.OrderBill)
      */
@@ -49,8 +49,8 @@ public class OrderDAO implements IOrderDAO {
 
     /**
      * [save an obj VoucherBill into database].
-     * @param voucher
-     * @return VoucherBill 
+     * @param voucher information of voucher bill
+     * @return VoucherBill
      * @see ebiz.dao.inf.IOrderDAO#saveVoucherBill(ebiz.dto.checkout.VoucherBill)
      */
     @Override
@@ -61,7 +61,7 @@ public class OrderDAO implements IOrderDAO {
     }
     /**
      * [get a obj VoucherBill by ID].
-     * @param idVoucher
+     * @param idVoucher id of voucher
      * @return VoucherBill
      * @see ebiz.dao.inf.IOrderDAO#getVoucherByID(java.lang.Long)
      */
@@ -71,10 +71,10 @@ public class OrderDAO implements IOrderDAO {
         return (VoucherBill) PMF.getObjectById(VoucherBill.class, idVoucher);
 
     }
-    
+
     /**
      * [insert an obj DetailOrder into database].
-     * @param order
+     * @param order the detail order
      * @return boolean
      * @see ebiz.dao.inf.IOrderDAO#insertDetailOrder(ebiz.dto.checkout.DetailOrder)
      */
@@ -84,7 +84,7 @@ public class OrderDAO implements IOrderDAO {
         return PMF.insertObject(order);
 
     }
-    
+
     /**
      * [get an obj DetailOrder by ID].
      * @param id
@@ -99,7 +99,7 @@ public class OrderDAO implements IOrderDAO {
 
     /**
      * [delete All Detail Order of a Order].
-     * @param list
+     * @param list list of detailorder
      * @return boolean
      * @see ebiz.dao.inf.IOrderDAO#deleteDetailOrderList(java.util.List)
      */
@@ -108,15 +108,15 @@ public class OrderDAO implements IOrderDAO {
         return PMF.deleteAll(list);
 
     }
-    
+
 //    @Override
 //    public boolean deleteDetailOrder(DetailOrder item) {
 //        return PMF.delete(item);
 //    }
-    
+
     /**
      * [get list order by ID Customer].
-     * @param idCustomer
+     * @param idCustomer id of customer
      * @return List<OrderBill>
      * @see ebiz.dao.inf.IOrderDAO#getOrListByIDCustomer(java.lang.String)
      */
@@ -129,10 +129,10 @@ public class OrderDAO implements IOrderDAO {
         return orderList;
 
     }
-    
+
     /**
      * [get List detail order by ID Order].
-     * @param id
+     * @param id id of detail order
      * @return List<DetailOrder>
      * @see ebiz.dao.inf.IOrderDAO#getDetailByIDOrBill(java.lang.Long)
      */
@@ -143,10 +143,10 @@ public class OrderDAO implements IOrderDAO {
         orderList = (List<DetailOrder>) PMF.getObjectListByValue(DetailOrder.class, "orderId", id);
         return orderList;
     }
-    
+
     /**
      * [get list order by ID Employee].
-     * @param idEmployee
+     * @param idEmployee id of employee
      * @return List<OrderBill>
      * @see ebiz.dao.inf.IOrderDAO#getOrListByIDEmployee(java.lang.String)
      */
@@ -157,11 +157,11 @@ public class OrderDAO implements IOrderDAO {
         orderList = (List<OrderBill>) PMF.getObjectListByValue(OrderBill.class, "idEmployee", idEmployee);
         return orderList;
     }
-    
+
     /**
      * [get list order filter:customerID, status].
-     * @param userID
-     * @param status
+     * @param userID id of user
+     * @param status status of order bill
      * @return List<OrderBill>
      * @see ebiz.dao.inf.IOrderDAO#getOrListByStatus(java.lang.String, java.lang.String)
      */
@@ -173,7 +173,7 @@ public class OrderDAO implements IOrderDAO {
                 status);
         return orderList;
     }
-    
+
     /**
      * [get All Order].
      * @return List<OrderBill>
@@ -186,10 +186,10 @@ public class OrderDAO implements IOrderDAO {
         orderList = (List<OrderBill>) PMF.getObjectList(OrderBill.class);
         return orderList;
     }
-    
+
     /**
      * [get nameStatus of a order By idStatus].
-     * @param id
+     * @param idStatus id of status
      * @return nameStatus
      * @see ebiz.dao.inf.IOrderDAO#getOrderStatusById(java.lang.String)
      */
@@ -213,7 +213,7 @@ public class OrderDAO implements IOrderDAO {
     }
     /**
      * [get list order by status].
-     * @param status
+     * @param status status of orderbill
      * @return List<OrderBill>
      * @see ebiz.dao.inf.IOrderDAO#getOrderListByStatus(ebiz.util.BillType)
      */
@@ -227,7 +227,7 @@ public class OrderDAO implements IOrderDAO {
 
     /**
      * [get list order by date].
-     * @param date
+     * @param date date of order bill
      * @return List<OrderBill>
      * @see ebiz.dao.inf.IOrderDAO#getOrderListByDate(java.util.Date)
      */
@@ -241,8 +241,8 @@ public class OrderDAO implements IOrderDAO {
 
     /**
      * [delete an obj order By ID].
-     * @param id
-     * @return
+     * @param id id of orderbill
+     * @return delete success/not true/false
      * @see ebiz.dao.inf.IOrderDAO#deleteOrderBill(java.lang.Long)
      */
     @Override
