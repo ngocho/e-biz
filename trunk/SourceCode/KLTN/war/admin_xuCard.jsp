@@ -8,11 +8,13 @@
 <script type="text/javascript">
     $(document).ready(function() {
         $("#generate").click(function() {
+        	alert("click");
+        	generateXu();
             //resetFormProvider(0);
             //$(".remove").val("");
-             $("#loginId").val('');
+            /*  $("#loginId").val('');
              $("#loginPassword").val('');
-             $("#loginId").focus();
+             $("#loginId").focus(); */
         });
         
            $("#login").click(function() {
@@ -36,7 +38,7 @@
           <div class="input-box">
            <input type="button" name="download" id="download" onclick="setLocation('/downloadXu.vn')"
                value="Download mã Xu" class="buttonBG" />
-            <input type="button" name="Generate" id="generate"
+            <input type="button" name="Generate" id="generate" 
               title="Password" value="Sinh ra mã Xu mới" class="buttonBG" />
           </div></li>
       </ul>
