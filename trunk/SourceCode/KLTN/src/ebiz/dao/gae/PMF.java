@@ -341,8 +341,8 @@ public final class PMF {
     public static int countRecordObject(Class<?> className, String col, boolean flag) {
         int count = 0;
         PersistenceManager pm = getPMF();
-        Query query = pm.newQuery("select count(" + col + ")  from " + className.getName() + " where " + col + " =="
-                + flag);
+        Query query = pm.newQuery("select count(" + col + ")  from " + className.getName() + " where " + col + " == \'"
+                + flag + "\'");
         try {
             count = (Integer) query.execute();
         } finally {
